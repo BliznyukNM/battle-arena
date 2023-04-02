@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://cethbwab8fd76"]
+
+[ext_resource type="PackedScene" uid="uid://1yo4mj6s6r16" path="res://assets/dungeon/models/floor_dirt_large.gltf.glb" id="1_imyht"]
+[ext_resource type="PackedScene" uid="uid://82jpj4b2emr3" path="res://assets/dungeon/models/floor_dirt_large_rocky.gltf.glb" id="2_uwvfv"]
+[ext_resource type="PackedScene" uid="uid://dvbkkd1jpqqly" path="res://assets/dungeon/models/wall.gltf.glb" id="3_cjbs4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_chvgw"]
+size = Vector3(4, 0.2, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_edm3a"]
+size = Vector3(4, 4, 1)
+
+[node name="TileSet" type="Node3D"]
+
+[node name="floor_dirt_large" parent="." instance=ExtResource("1_imyht")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="floor_dirt_large/floor_dirt_large" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor_dirt_large/floor_dirt_large/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+shape = SubResource("BoxShape3D_chvgw")
+
+[node name="floor_dirt_large_rocky" parent="." instance=ExtResource("2_uwvfv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.85802, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="floor_dirt_large_rocky/floor_dirt_large_rocky" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor_dirt_large_rocky/floor_dirt_large_rocky/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+shape = SubResource("BoxShape3D_chvgw")
+
+[node name="wall" parent="." instance=ExtResource("3_cjbs4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.05214)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="wall/wall" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall/wall/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2, 0)
+shape = SubResource("BoxShape3D_edm3a")
+
+[editable path="floor_dirt_large"]
+[editable path="floor_dirt_large_rocky"]
+[editable path="wall"]
