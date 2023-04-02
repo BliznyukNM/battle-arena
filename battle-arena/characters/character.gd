@@ -3,9 +3,15 @@ class_name Character extends CharacterBody3D
 
 @export var camera: Camera3D
 @export var speed: = 1.0
+@export var attack_speed: = 1.0
 
 
-@onready var camera_direction: = camera.basis.z.slide(Vector3.UP).normalized()
+@onready var camera_direction: = Vector3.ZERO if not camera else camera.basis.z.slide(Vector3.UP).normalized()
+@onready var animator: = $Animator
+
+
+var is_attacking: bool:
+    get: return Input.is_action_pressed("character.attack.basic");
 
 
 func _process(delta: float) -> void:
@@ -14,6 +20,12 @@ func _process(delta: float) -> void:
     var rotation = Quaternion(Vector3.LEFT, camera_direction)
     velocity = (velocity if velocity.length_squared() < 1 else velocity.normalized()) * rotation * speed
     move_and_slide()
+    
+    animator["parameters/Movement/blend_position"] = velocity.length() / speed * 2
+    animator["parameters/Attack/speed/scale"] = attack_speed
+    animator["parameters/Combo/speed/scale"] = attack_speed
+    
+    if not camera: return
     
     var mouse_position: = get_viewport().get_mouse_position()
     var origin: = camera.project_ray_origin(mouse_position)

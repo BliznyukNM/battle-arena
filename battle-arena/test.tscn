@@ -4,6 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://s00gget5wqk5" path="res://characters/character_monk_a.tscn" id="2_v4rjq"]
 
 [sub_resource type="Environment" id="Environment_r4cc4"]
+ssao_enabled = true
+sdfgi_enabled = true
+volumetric_fog_density = 0.0238
+volumetric_fog_length = 1024.0
 
 [node name="Test" type="Node3D"]
 

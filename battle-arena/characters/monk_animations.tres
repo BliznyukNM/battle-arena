@@ -1,0 +1,8 @@
+[gd_resource type="AnimationLibrary" load_steps=2 format=3 uid="uid://bfuik6h3oeij3"]
+
+[ext_resource type="Animation" uid="uid://bfoh83o82lvpu" path="res://assets/characters/monk/attack_combo.res" id="1_sct83"]
+
+[resource]
+_data = {
+"attack_combo": ExtResource("1_sct83")
+}
