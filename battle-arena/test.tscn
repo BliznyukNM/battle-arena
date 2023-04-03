@@ -28,5 +28,5 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_r4cc4")
 
-[node name="character_monk_A" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("2_v4rjq")]
+[node name="Monk" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("2_v4rjq")]
 camera = NodePath("../Camera3D")
