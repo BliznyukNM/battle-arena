@@ -12,13 +12,17 @@ class_name Character extends CharacterBody3D
 
 var is_attacking: bool:
     get: return Input.is_action_pressed("character.attack.basic");
+    
+    
+func _ready() -> void:
+    animator.active = true
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
     var input: = _get_input()
     velocity = Vector3(input.x, 0.0, input.y)
-    var rotation = Quaternion(Vector3.LEFT, camera_direction)
-    velocity = (velocity if velocity.length_squared() < 1 else velocity.normalized()) * rotation * speed
+    var velocity_rotation = Quaternion(Vector3.LEFT, camera_direction)
+    velocity = (velocity if velocity.length_squared() < 1 else velocity.normalized()) * velocity_rotation * speed
     move_and_slide()
     
     animator["parameters/Movement/blend_position"] = velocity.length() / speed * 2

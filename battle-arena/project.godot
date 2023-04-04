@@ -15,6 +15,11 @@ run/main_scene="res://test.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Nakama="*res://addons/com.heroiclabs.nakama/Nakama.gd"
+LocalClient="*res://LocalClient.gd"
+
 [display]
 
 window/size/mode=2
@@ -66,5 +71,10 @@ character.move.right={
 character.attack.basic={
 "deadzone": 0.5,
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(505, 46),"global_position":Vector2(513, 130),"factor":1.0,"button_index":1,"pressed":true,"double_click":false,"script":null)
+]
+}
+character.attack.strong={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":2,"position":Vector2(446, 38),"global_position":Vector2(454, 122),"factor":1.0,"button_index":2,"pressed":true,"double_click":false,"script":null)
 ]
 }

@@ -2319,6 +2319,9 @@ tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = PackedFloat32Array(0, 1, 1, 1, 1)
 
+[sub_resource type="Animation" id="Animation_43ltd"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_iq2p8"]
 resource_name = "Roll"
 length = 1.1
@@ -3479,9 +3482,6 @@ tracks/15/path = NodePath("KayKit Animated Character2/Skeleton3D:handSlotRight")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = PackedFloat32Array(0, 1, 1, 1, 1)
-
-[sub_resource type="Animation" id="Animation_43ltd"]
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xb1bi"]
 _data = {

@@ -1,8 +1,9 @@
-[gd_scene load_steps=75 format=3 uid="uid://s00gget5wqk5"]
+[gd_scene load_steps=74 format=3 uid="uid://s00gget5wqk5"]
 
 [ext_resource type="Script" path="res://characters/character.gd" id="1_x766q"]
 [ext_resource type="PackedScene" uid="uid://cvq6ek87jxuh3" path="res://assets/characters/animations/animations.tscn" id="2_i5wi0"]
 [ext_resource type="PackedScene" uid="uid://ik7nrkljtv63" path="res://assets/characters/monk/staff_A.gltf.glb" id="3_c0xbt"]
+[ext_resource type="PackedScene" uid="uid://dob7vsbx6yjg2" path="res://assets/characters/monk/cup_empty.gltf.glb" id="3_g10hs"]
 [ext_resource type="AnimationLibrary" uid="uid://bfuik6h3oeij3" path="res://characters/monk_animations.tres" id="4_l6w2o"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uqonq"]
@@ -432,13 +433,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_x0cks")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cttvq"]
-shading_mode = 0
-vertex_color_use_as_albedo = true
-
-[sub_resource type="SphereMesh" id="SphereMesh_qe3l7"]
-material = SubResource("StandardMaterial3D_cttvq")
 
 [sub_resource type="Animation" id="Animation_1vnuu"]
 resource_name = "Attack(1h)"
@@ -903,6 +897,18 @@ tracks/15/path = NodePath("KayKit Animated Character2/Skeleton3D:Head")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = PackedFloat32Array(0, 1, 1, 1, 1)
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("KayKit Animated Character2/Skeleton3D/HandSlotLeft/cup_empty:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_v5eo4"]
 resource_name = "Block"
@@ -2759,6 +2765,9 @@ tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = PackedFloat32Array(0, 1, 1, 1, 1)
 
+[sub_resource type="Animation" id="Animation_43ltd"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_iq2p8"]
 resource_name = "Roll"
 length = 1.1
@@ -3920,9 +3929,6 @@ tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = PackedFloat32Array(0, 1, 1, 1, 1)
 
-[sub_resource type="Animation" id="Animation_43ltd"]
-length = 0.001
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xb1bi"]
 _data = {
 "Attack(1h)": SubResource("Animation_1vnuu"),
@@ -4040,9 +4046,9 @@ states/Combo/position = Vector2(537.812, 231.803)
 states/End/position = Vector2(869, 94.2347)
 states/Movement/node = SubResource("AnimationNodeBlendSpace1D_6mnmq")
 states/Movement/position = Vector2(447.074, 94.3611)
-states/Start/position = Vector2(217, 94.2319)
+states/Start/position = Vector2(217, 94.2333)
 transitions = ["Start", "Movement", SubResource("AnimationNodeStateMachineTransition_3bqs3"), "Combo", "Movement", SubResource("AnimationNodeStateMachineTransition_xkq2d"), "Movement", "Attack", SubResource("AnimationNodeStateMachineTransition_h4qee"), "Attack", "Movement", SubResource("AnimationNodeStateMachineTransition_b084h"), "Attack", "Combo", SubResource("AnimationNodeStateMachineTransition_kt6ed")]
-graph_offset = Vector2(-27.525, 19.8519)
+graph_offset = Vector2(-55.05, 31.5293)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_dwqbg"]
 
@@ -4054,16 +4060,16 @@ speed = 5.0
 transform = Transform3D(-1, 3.48787e-16, -8.74228e-08, 3.48787e-16, 1, -3.48787e-16, 8.74228e-08, -3.48787e-16, -1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="View/KayKit Animated Character2" index="0"]
-bones/0/position = Vector3(0, 2.08636e-06, 0)
-bones/0/rotation = Quaternion(-0.00562804, -1.67802e-07, 2.85745e-07, 0.999984)
-bones/1/rotation = Quaternion(0.0526676, 8.22216e-08, -2.93643e-07, 0.998612)
-bones/2/rotation = Quaternion(0.683799, 0.181169, -0.683167, 0.181329)
-bones/3/rotation = Quaternion(0.606612, -0.606622, 0.363349, 0.36333)
-bones/4/rotation = Quaternion(-0.702457, 0.291916, 0.646458, 0.0585733)
-bones/5/rotation = Quaternion(0.300521, -0.376584, 0.679873, 0.552851)
+bones/0/rotation = Quaternion(-0.0163836, 0, 1.15714e-18, 0.999866)
+bones/1/rotation = Quaternion(0.0683291, 0, -9.89174e-18, 0.997663)
+bones/2/rotation = Quaternion(0.679426, 0.198873, -0.677564, 0.199341)
+bones/3/rotation = Quaternion(0.606617, -0.606617, 0.36334, 0.36334)
+bones/4/position = Vector3(-0.14, 0.691598, 8.40813e-15)
+bones/4/rotation = Quaternion(-0.697203, 0.303463, 0.645798, 0.0690086)
+bones/5/rotation = Quaternion(0.300506, -0.376591, 0.679877, 0.55285)
 
 [node name="Head" parent="View/KayKit Animated Character2/Skeleton3D" index="0"]
-transform = Transform3D(1, -6.93957e-09, -1.43736e-07, -6.60071e-09, 0.995573, -0.0939889, 1.43752e-07, 0.0939889, 0.995573, -4.05321e-07, 0.711555, -0.00800968)
+transform = Transform3D(1, 1.74397e-17, -1.07387e-18, -1.7457e-17, 0.994597, -0.103809, -7.4233e-19, 0.103809, 0.994597, -1.64662e-18, 0.711216, -0.023314)
 
 [node name="character_monk_A_head" type="MeshInstance3D" parent="View/KayKit Animated Character2/Skeleton3D/Head" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00706154, 0)
@@ -4076,14 +4082,14 @@ mesh = SubResource("ArrayMesh_woq0k")
 skeleton = NodePath("")
 
 [node name="Body" parent="View/KayKit Animated Character2/Skeleton3D" index="1"]
-transform = Transform3D(1, -5.69592e-07, -3.38815e-07, 5.7337e-07, 0.999937, 0.0112559, 3.32382e-07, -0.0112559, 0.999937, 0, 2.08636e-06, 0)
+transform = Transform3D(1, -2.31398e-18, -3.79164e-20, 2.31398e-18, 0.999463, 0.0327629, -3.79164e-20, -0.0327629, 0.999463, 0, 0, 0)
 
 [node name="character_monk_A_body" type="MeshInstance3D" parent="View/KayKit Animated Character2/Skeleton3D/Body" index="0"]
 mesh = SubResource("ArrayMesh_ers31")
 skeleton = NodePath("")
 
 [node name="ArmLeft" parent="View/KayKit Animated Character2/Skeleton3D" index="2"]
-transform = Transform3D(0.000921946, 0.495523, -0.868595, -0.0112443, -0.868535, -0.495501, -0.999936, 0.0102236, 0.00477098, 0.14, 0.691556, -0.00778451)
+transform = Transform3D(0.00271392, 0.540372, -0.841422, -0.0326557, -0.840928, -0.54016, -0.999463, 0.0289431, 0.0153639, 0.14, 0.691227, -0.0226587)
 
 [node name="character_monk_A_armLeft" type="MeshInstance3D" parent="View/KayKit Animated Character2/Skeleton3D/ArmLeft" index="0"]
 transform = Transform3D(-3.24651e-07, 1.36428e-06, -1, 0.471936, -0.881633, -1.36428e-06, -0.881633, -0.471936, -3.24651e-07, -9.99705e-08, 0.0813911, -0.0290701)
@@ -4091,7 +4097,7 @@ mesh = SubResource("ArrayMesh_gx00l")
 skeleton = NodePath("")
 
 [node name="ArmRight" parent="View/KayKit Animated Character2/Skeleton3D" index="3"]
-transform = Transform3D(-0.00624582, -0.485847, -0.874021, -0.344973, -0.819335, 0.457913, -0.938592, 0.304374, -0.162487, -0.14, 0.691556, -0.00778461)
+transform = Transform3D(-0.0182911, -0.512283, -0.858622, -0.364716, -0.796174, 0.482793, -0.930939, 0.321984, -0.172275, -0.14, 0.691227, -0.0226587)
 
 [node name="character_monk_A_armRight" type="MeshInstance3D" parent="View/KayKit Animated Character2/Skeleton3D/ArmRight" index="0"]
 transform = Transform3D(0, 0, -1, -0.471937, -0.881632, 0, -0.881632, 0.471937, 0, 8.40813e-15, 0.0813983, 0.0290835)
@@ -4099,30 +4105,16 @@ mesh = SubResource("ArrayMesh_xlrek")
 skeleton = NodePath("")
 
 [node name="HandSlotLeft" parent="View/KayKit Animated Character2/Skeleton3D" index="4"]
-transform = Transform3D(-0.999637, -0.000896461, -0.0269452, -0.0269535, 0.011261, 0.999573, -0.000592779, 0.999936, -0.0112811, 0.412994, 0.213061, -0.00215213)
+transform = Transform3D(-0.996846, -0.00271389, -0.0793122, -0.0793585, 0.0326557, 0.996311, -0.000113954, 0.999463, -0.032768, 0.437703, 0.227941, -0.00671333)
 
-[node name="Particles" type="CPUParticles3D" parent="View/KayKit Animated Character2/Skeleton3D/HandSlotLeft" index="0"]
-transform = Transform3D(1, -4.27091e-09, -6.2996e-09, -1.5828e-08, 1, 1.0754e-08, 3.42549e-08, -2.23777e-09, 1, 0, 0, 0)
-emitting = false
-amount = 20
-one_shot = true
-explosiveness = 1.0
-lifetime_randomness = 0.5
-draw_order = 1
-mesh = SubResource("SphereMesh_qe3l7")
-direction = Vector3(1, 4.294, 0.386)
-spread = 25.82
-gravity = Vector3(-4.52514e-12, -4.52514e-12, -4.52514e-12)
-initial_velocity_min = 2.0
-initial_velocity_max = 4.0
-scale_amount_min = 0.05
-scale_amount_max = 0.3
-color = Color(1, 1, 0, 1)
+[node name="cup_empty" parent="View/KayKit Animated Character2/Skeleton3D/HandSlotLeft" index="0" instance=ExtResource("3_g10hs")]
+visible = false
 
 [node name="HandlSlotRight" parent="View/KayKit Animated Character2/Skeleton3D" index="5"]
-transform = Transform3D(-0.975048, 0.214286, -0.0579815, 0.0190972, 0.341187, 0.939801, 0.221169, 0.915244, -0.336766, -0.407664, 0.240167, 0.159902)
+transform = Transform3D(-0.973721, 0.226098, -0.0273244, 0.0558965, 0.353569, 0.933737, 0.220778, 0.907672, -0.356916, -0.422228, 0.252597, 0.154729)
 
 [node name="staff_Agltf" parent="View/KayKit Animated Character2/Skeleton3D/HandlSlotRight" index="0" instance=ExtResource("3_c0xbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.47, 2.08165e-12)
 
 [node name="AnimationPlayer" parent="View" index="1"]
 libraries = {
@@ -4142,6 +4134,6 @@ active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_dwqbg")
 parameters/Attack/speed/scale = 1.0
 parameters/Combo/speed/scale = 1.0
-parameters/Movement/blend_position = 0.000109002
+parameters/Movement/blend_position = -0.0011989
 
 [editable path="View"]

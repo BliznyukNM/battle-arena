@@ -29,4 +29,5 @@ shadow_enabled = true
 environment = SubResource("Environment_r4cc4")
 
 [node name="Monk" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("2_v4rjq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.176853, 0)
 camera = NodePath("../Camera3D")
