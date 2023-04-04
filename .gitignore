@@ -17,4 +17,5 @@ mono_crash.*.json
 # MacOS-specific ignores
 .DS_Store
 
+.cookie
 battle-arena/addons/com.heroiclabs.nakama/
