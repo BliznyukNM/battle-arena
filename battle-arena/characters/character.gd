@@ -12,6 +12,7 @@ class_name Character extends CharacterBody3D
 @onready var animator: = $Animator
 @onready var input: = $Input
 @onready var spawner: = $Spawner
+@onready var right_hand: = $"View/KayKit Animated Character2/Skeleton3D/HandlSlotRight"
 
 
 @onready var cup: = preload("res://characters/cup_throwable.tscn")
@@ -49,7 +50,7 @@ func _throw() -> void:
     if not multiplayer.is_server(): return
     
     var cup_instance: Node3D = cup.instantiate()
-    cup_instance.position = position
+    cup_instance.position = right_hand.global_position
     cup_instance.set_attack_number(0)
     cup_instance.throw(input.look_at_point)
     spawner.add_child(cup_instance, true)
