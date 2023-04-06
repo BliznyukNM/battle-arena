@@ -1,6 +1,9 @@
 extends MultiplayerSynchronizer
 
 
+signal secondary_attack
+
+
 @export var is_attacking: bool
 @export var movement: Vector2
 @export var look_at_point: Vector3 = Vector3(1, 1, 1)
@@ -25,3 +28,11 @@ func _process(_delta: float) -> void:
         if intersection: look_at_point = intersection
     
     is_attacking = Input.is_action_pressed("character.attack.basic")
+    
+    if Input.is_action_just_pressed("character.attack.strong"):
+        _execute_secondary_attack.rpc()
+
+
+@rpc("call_local")
+func _execute_secondary_attack() -> void:
+    secondary_attack.emit()

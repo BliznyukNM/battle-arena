@@ -11,6 +11,10 @@ class_name Character extends CharacterBody3D
 
 @onready var animator: = $Animator
 @onready var input: = $Input
+@onready var spawner: = $Spawner
+
+
+@onready var cup: = preload("res://characters/cup_throwable.tscn")
 
 
 var is_attacking: bool:
@@ -37,3 +41,19 @@ func _process(_delta: float) -> void:
     var look_at_point: Vector3 = input.look_at_point
     look_at(look_at_point)
     rotation_degrees.x = 0.0
+
+
+func _throw() -> void:
+    animator["parameters/conditions/is_throwing"] = false
+    
+    if not multiplayer.is_server(): return
+    
+    var cup_instance: Node3D = cup.instantiate()
+    cup_instance.position = position
+    cup_instance.set_attack_number(0)
+    cup_instance.throw(input.look_at_point)
+    spawner.add_child(cup_instance, true)
+
+
+func _execute_secondary_attack() -> void:
+    animator["parameters/conditions/is_throwing"] = true

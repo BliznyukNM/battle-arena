@@ -1,10 +1,11 @@
-[gd_resource type="AnimationLibrary" load_steps=6 format=3 uid="uid://bbhk6f1apfiuw"]
+[gd_resource type="AnimationLibrary" load_steps=7 format=3 uid="uid://bbhk6f1apfiuw"]
 
 [ext_resource type="Animation" uid="uid://bfoh83o82lvpu" path="res://assets/characters/monk/monk_attack_combo.res" id="1_vjig5"]
 [ext_resource type="Animation" uid="uid://nt17y4b8vukh" path="res://assets/characters/monk/monk_idle.res" id="2_j1ty6"]
 [ext_resource type="Animation" uid="uid://ce3vl6ds70yci" path="res://assets/characters/monk/monk_attack.res" id="3_u1sq7"]
 [ext_resource type="Animation" uid="uid://fgdm0kimq3p6" path="res://assets/characters/monk/monk_walk.res" id="4_pgx1j"]
 [ext_resource type="Animation" uid="uid://dueeow4d0fq5a" path="res://assets/characters/monk/monk_run.res" id="5_m17ba"]
+[ext_resource type="Animation" uid="uid://co08a2oswtq1" path="res://assets/characters/monk/monk_throw.res" id="6_dn4lx"]
 
 [resource]
 _data = {
@@ -12,5 +13,6 @@ _data = {
 "monk_attack_combo": ExtResource("1_vjig5"),
 "monk_idle": ExtResource("2_j1ty6"),
 "monk_run": ExtResource("5_m17ba"),
+"monk_throw": ExtResource("6_dn4lx"),
 "monk_walk": ExtResource("4_pgx1j")
 }

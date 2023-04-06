@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1xx06eyu0fg2"]
+
+[ext_resource type="PackedScene" uid="uid://dblqaroqiwj6i" path="res://characters/cup.tscn" id="1_hfvb7"]
+[ext_resource type="Script" path="res://characters/weapon_throwable.gd" id="2_o6g3q"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_mxdeu"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/sync = true
+
+[node name="CupThrowable" instance=ExtResource("1_hfvb7")]
+script = ExtResource("2_o6g3q")
+speed = 15
+damage = Array[float]([10.0])
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." index="2"]
+replication_config = SubResource("SceneReplicationConfig_mxdeu")
