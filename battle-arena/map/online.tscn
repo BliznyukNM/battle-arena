@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5pbkpjmxk30b"]
+
+[ext_resource type="PackedScene" uid="uid://flt4bdecd0xj" path="res://map/map.tscn" id="1_3ki23"]
+[ext_resource type="Script" path="res://ENetMultiplayer.gd" id="2_0wyig"]
+
+[node name="Map" instance=ExtResource("1_3ki23")]
+
+[node name="ENetMultiplayer" type="Node" parent="." index="5"]
+script = ExtResource("2_0wyig")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="ENetMultiplayer" index="0"]
+_spawnable_scenes = PackedStringArray("res://characters/character_monk_a.tscn")
+spawn_path = NodePath(".")

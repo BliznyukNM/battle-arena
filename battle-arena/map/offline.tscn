@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://deg1m3itxh0g1"]
+
+[ext_resource type="PackedScene" uid="uid://flt4bdecd0xj" path="res://map/map.tscn" id="1_j7vok"]
+[ext_resource type="PackedScene" uid="uid://s00gget5wqk5" path="res://characters/character_monk_a.tscn" id="2_tg4p8"]
+[ext_resource type="PackedScene" uid="uid://bietm3duomkt2" path="res://characters/trainingdummy_a.tscn" id="3_fwo4e"]
+
+[node name="Map" instance=ExtResource("1_j7vok")]
+
+[node name="Monk" parent="." index="5" instance=ExtResource("2_tg4p8")]
+
+[node name="Dummy" parent="." index="6" instance=ExtResource("3_fwo4e")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.39638, 0, -0.22471)

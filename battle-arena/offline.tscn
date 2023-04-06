@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://deg1m3itxh0g1"]
-
-[ext_resource type="PackedScene" uid="uid://flt4bdecd0xj" path="res://map/map.tscn" id="1_qg61i"]
-[ext_resource type="PackedScene" uid="uid://s00gget5wqk5" path="res://characters/character_monk_a.tscn" id="2_6ghvv"]
-
-[node name="Map" instance=ExtResource("1_qg61i")]
-
-[node name="Monk" parent="Players" index="0" instance=ExtResource("2_6ghvv")]

@@ -8,6 +8,11 @@ extends Node
 var monk: = preload("res://characters/character_monk_a.tscn")
 
 
+func _ready() -> void:
+    var is_server = ProjectSettings.get_setting("application/run/server", false)
+    start(is_server)
+
+
 func start(is_server: bool) -> void:
     multiplayer.connected_to_server.connect(self._on_connected_to_server)
     multiplayer.connection_failed.connect(self._on_connection_failed)
@@ -15,11 +20,18 @@ func start(is_server: bool) -> void:
     multiplayer.peer_connected.connect(self._on_peer_connected)
     multiplayer.peer_disconnected.connect(self._on_peer_disconnected)
     
+    $MultiplayerSpawner.spawned.connect(self._on_spawned)
+    
     var peer: = ENetMultiplayerPeer.new()
     if is_server: peer.create_server(port)
     else: peer.create_client(host, port)
     
     multiplayer.multiplayer_peer = peer
+
+
+func _on_spawned(node: Node) -> void:
+    if node.player_id == multiplayer.get_unique_id():
+        %Camera.target = node
 
 
 func _on_server_disconnected() -> void:
@@ -35,18 +47,21 @@ func _on_peer_connected(id: int) -> void:
     
     if not multiplayer.is_server(): return
     
+    var index = $MultiplayerSpawner.get_child_count()
+    
     var monk_instance: Character = monk.instantiate()
     monk_instance.name = str(id)
     monk_instance.player_id = id
+    monk_instance.position = %SpawnPoints.get_child(index).global_position
     
-    %Players.add_child(monk_instance)
+    $MultiplayerSpawner.add_child(monk_instance)
 
 
 func _on_peer_disconnected(id: int) -> void:
     print("Client disconnected: %d" % id)
     
-    if not %Players.has_node(str(id)): return
-    %Players.get_node(str(id)).queue_free()
+    if not $MultiplayerSpawner.has_node(str(id)): return
+    $MultiplayerSpawner.get_node(str(id)).queue_free()
 
 
 func _on_connection_failed() -> void:
