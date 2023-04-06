@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://d20ow4hb14bmv"]
+[gd_scene load_steps=4 format=3 uid="uid://flt4bdecd0xj"]
 
-[ext_resource type="MeshLibrary" uid="uid://bjja43ocp6hvr" path="res://map/dungeon.meshlib" id="1_m3iih"]
-[ext_resource type="Script" path="res://ENetMultiplayer.gd" id="3_j3bj4"]
+[ext_resource type="MeshLibrary" uid="uid://bjja43ocp6hvr" path="res://map/dungeon.meshlib" id="1_p1vss"]
+[ext_resource type="PackedScene" uid="uid://bietm3duomkt2" path="res://characters/trainingdummy_a.tscn" id="3_x463q"]
 
 [sub_resource type="Environment" id="Environment_r4cc4"]
 ssao_enabled = true
@@ -9,10 +9,10 @@ sdfgi_enabled = true
 volumetric_fog_density = 0.0238
 volumetric_fog_length = 1024.0
 
-[node name="Test" type="Node3D"]
+[node name="Map" type="Node3D"]
 
 [node name="GridMap" type="GridMap" parent="."]
-mesh_library = ExtResource("1_m3iih")
+mesh_library = ExtResource("1_p1vss")
 cell_center_y = false
 data = {
 "cells": PackedInt32Array(1, 65535, 655360, 3, 65535, 655360, 3, 1, 655360, 1, 1, 655360, 65535, 1, 655360, 65535, 65535, 655360, 65535, 65533, 655360, 1, 65533, 655360, 3, 65533, 655360, 65535, 3, 655360, 1, 3, 655360, 3, 3, 655360, 65533, 65533, 655360, 65533, 65535, 655360, 65533, 1, 655360, 65533, 3, 655360, 2, 65531, 2, 0, 65531, 2, 65534, 65531, 2, 65532, 65531, 2, 65531, 65533, 1048578, 65531, 65535, 1048578, 65531, 1, 1048578, 65531, 3, 1048578, 65533, 4, 655362, 65535, 4, 655362, 1, 4, 655362, 3, 4, 655362, 4, 2, 1441794, 4, 0, 1441794, 4, 65534, 1441794, 4, 65532, 1441794)
@@ -28,43 +28,8 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_r4cc4")
 
-[node name="ENetMultiplayer" type="Node" parent="."]
-script = ExtResource("3_j3bj4")
-
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="ENetMultiplayer"]
-_spawnable_scenes = PackedStringArray("res://characters/character_monk_a.tscn")
-spawn_path = NodePath("../../Players")
-
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 54.0
-grow_horizontal = 2
-
-[node name="Server" type="Button" parent="UI"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -76.0
-offset_right = -18.0
-offset_bottom = 31.0
-grow_horizontal = 2
-text = "Server"
-
-[node name="Client" type="Button" parent="UI"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 24.0
-offset_right = 77.0
-offset_bottom = 31.0
-grow_horizontal = 2
-text = "Client"
-
 [node name="Players" type="Node3D" parent="."]
+unique_name_in_owner = true
 
-[connection signal="pressed" from="UI/Server" to="ENetMultiplayer" method="start" binds= [true]]
-[connection signal="pressed" from="UI/Client" to="ENetMultiplayer" method="start" binds= [false]]
+[node name="Dummy" parent="." instance=ExtResource("3_x463q")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.39638, 0, -0.22471)

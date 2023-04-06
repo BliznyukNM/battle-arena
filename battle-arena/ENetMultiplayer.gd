@@ -36,13 +36,17 @@ func _on_peer_connected(id: int) -> void:
     if not multiplayer.is_server(): return
     
     var monk_instance: Character = monk.instantiate()
+    monk_instance.name = str(id)
     monk_instance.player_id = id
     
-    get_node("../Players").add_child(monk_instance)
+    %Players.add_child(monk_instance)
 
 
 func _on_peer_disconnected(id: int) -> void:
     print("Client disconnected: %d" % id)
+    
+    if not %Players.has_node(str(id)): return
+    %Players.get_node(str(id)).queue_free()
 
 
 func _on_connection_failed() -> void:

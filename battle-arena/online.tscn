@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5pbkpjmxk30b"]
+
+[ext_resource type="PackedScene" uid="uid://flt4bdecd0xj" path="res://map/map.tscn" id="1_wsml8"]
+[ext_resource type="Script" path="res://ENetMultiplayer.gd" id="2_3d2q3"]
+
+[node name="Map" instance=ExtResource("1_wsml8")]
+
+[node name="ENetMultiplayer" type="Node" parent="." index="6"]
+script = ExtResource("2_3d2q3")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="ENetMultiplayer" index="0"]
+_spawnable_scenes = PackedStringArray("res://characters/character_monk_a.tscn")
+spawn_path = NodePath("../../Players")
+
+[node name="UI" type="Control" parent="." index="7"]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 54.0
+grow_horizontal = 2
+
+[node name="Server" type="Button" parent="UI" index="0"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -76.0
+offset_right = -18.0
+offset_bottom = 31.0
+grow_horizontal = 2
+text = "Server"
+
+[node name="Client" type="Button" parent="UI" index="1"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 24.0
+offset_right = 77.0
+offset_bottom = 31.0
+grow_horizontal = 2
+text = "Client"
+
+[connection signal="pressed" from="UI/Server" to="ENetMultiplayer" method="start" binds= [true]]
+[connection signal="pressed" from="UI/Client" to="ENetMultiplayer" method="start" binds= [false]]
