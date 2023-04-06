@@ -52,6 +52,7 @@ func _on_peer_connected(id: int) -> void:
     var monk_instance: Character = monk.instantiate()
     monk_instance.name = str(id)
     monk_instance.player_id = id
+    monk_instance.team_number = index
     monk_instance.position = %SpawnPoints.get_child(index).global_position
     
     $MultiplayerSpawner.add_child(monk_instance)

@@ -1,22 +1,17 @@
 extends Node3D
 
 
-@export var health: float = 100:
-    set(value):
-        health = value
-        health_bar.value = health
-        
+@export var health: float = 100
 
-@onready var health_bar: = $SubViewport/HealthBar
+
+var current_health
 
 
 func _ready() -> void:
     set_multiplayer_authority(1)
-    
-    health_bar.max_value = health
-    health_bar.value = health
+    current_health = health
 
 
 func apply_damage(damage: float) -> void:
     if not multiplayer.is_server(): return
-    health -= damage
+    current_health -= damage

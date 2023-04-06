@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://bietm3duomkt2"]
+[gd_scene load_steps=13 format=3 uid="uid://c3ynl5q2qo2p8"]
 
 [ext_resource type="Script" path="res://characters/Dummy.gd" id="2_c5ldp"]
 [ext_resource type="Script" path="res://characters/HitBox.gd" id="2_nh1h6"]
+[ext_resource type="PackedScene" uid="uid://7xkefn5xpy47" path="res://hud/hud.tscn" id="3_amfwc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e6td8"]
 resource_name = "BrownDark"
@@ -125,9 +126,6 @@ radius = 1.0
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5lmk6"]
 radius = 0.626995
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_pkkis"]
-viewport_path = NodePath("SubViewport")
-
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_csebl"]
 properties/0/path = NodePath(".:health")
 properties/0/spawn = true
@@ -154,22 +152,11 @@ shape = SubResource("CylinderShape3D_pwvl2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
 shape = SubResource("CapsuleShape3D_5lmk6")
 
-[node name="SubViewport" type="SubViewport" parent="."]
-size = Vector2i(128, 20)
-
-[node name="HealthBar" type="ProgressBar" parent="SubViewport"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.39278, 0)
-billboard = 1
-texture = SubResource("ViewportTexture_pkkis")
-
 [node name="Synchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_csebl")
+
+[node name="HUD" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_amfwc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.43588, 0)
+target = NodePath("..")
 
 [connection signal="on_hit" from="HitBox" to="." method="apply_damage"]

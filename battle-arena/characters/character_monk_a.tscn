@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://s00gget5wqk5"]
+[gd_scene load_steps=51 format=3 uid="uid://dcujmm1a8i6am"]
 
 [ext_resource type="Script" path="res://characters/character.gd" id="1_x766q"]
 [ext_resource type="PackedScene" uid="uid://cvq6ek87jxuh3" path="res://assets/characters/animations/animations.tscn" id="2_i5wi0"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dig4mv4i2ia1m" path="res://characters/staff_a.tscn" id="4_0tjoq"]
 [ext_resource type="AnimationLibrary" uid="uid://bbhk6f1apfiuw" path="res://characters/monk_animations.tres" id="4_l6w2o"]
 [ext_resource type="Script" path="res://characters/Input.gd" id="6_k2caa"]
+[ext_resource type="Script" path="res://characters/HitBox.gd" id="6_y4pkg"]
+[ext_resource type="PackedScene" uid="uid://7xkefn5xpy47" path="res://hud/hud.tscn" id="8_ld8h5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uqonq"]
 resource_name = "PinkLight"
@@ -435,6 +437,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_x0cks")
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ln8p5"]
+radius = 0.8
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_csm2n"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_txl0i"]
@@ -560,6 +565,7 @@ properties/2/spawn = true
 properties/2/sync = true
 
 [node name="Monk" type="CharacterBody3D"]
+collision_mask = 7
 script = ExtResource("1_x766q")
 speed = 5.0
 
@@ -627,6 +633,20 @@ libraries = {
 "monk": ExtResource("4_l6w2o")
 }
 
+[node name="HUD" parent="." node_paths=PackedStringArray("target") instance=ExtResource("8_ld8h5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.44599, 0)
+target = NodePath("..")
+
+[node name="HitBox" type="Area3D" parent="."]
+collision_layer = 7
+collision_mask = 0
+monitoring = false
+script = ExtResource("6_y4pkg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
+shape = SubResource("CylinderShape3D_ln8p5")
+
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
 shape = SubResource("CapsuleShape3D_csm2n")
@@ -653,6 +673,7 @@ script = ExtResource("6_k2caa")
 _spawnable_scenes = PackedStringArray("res://characters/cup_throwable.tscn")
 spawn_path = NodePath(".")
 
+[connection signal="on_hit" from="HitBox" to="." method="_apply_damage"]
 [connection signal="secondary_attack" from="Input" to="." method="_execute_secondary_attack"]
 
 [editable path="View"]

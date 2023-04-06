@@ -1,12 +1,21 @@
 class_name Character extends CharacterBody3D
 
 
+enum Team { None = 0, TeamA = 1, TeamB = 2 }
+
+
+@export var health: = 100
 @export var speed: = 1.0
 @export var attack_speed: = 1.0
 @export var player_id: int:
     set(value):
         player_id = value
         $Input.set_multiplayer_authority(player_id)
+@export var team: Team:
+    set(value):
+        team = value
+        collision_layer = 1 << value
+        $HitBox.collision_layer = 1 << value
 
 
 @onready var animator: = $Animator
@@ -18,12 +27,16 @@ class_name Character extends CharacterBody3D
 @onready var cup: = preload("res://characters/cup_throwable.tscn")
 
 
+var current_health: float
+
+
 var is_attacking: bool:
     get: return input.is_attacking
     
     
 func _ready() -> void:
     animator.active = true
+    current_health = health
 
 
 func _process(_delta: float) -> void:
@@ -58,3 +71,7 @@ func _throw() -> void:
 
 func _execute_secondary_attack() -> void:
     animator["parameters/conditions/is_throwing"] = true
+
+
+func _apply_damage(damage: float) -> void:
+    current_health -= damage

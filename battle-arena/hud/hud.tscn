@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://7xkefn5xpy47"]
+
+[ext_resource type="Script" path="res://hud/HUD.gd" id="1_pla10"]
+[ext_resource type="PackedScene" uid="uid://bs6m5j1v06l5l" path="res://hud/hud_ui.tscn" id="2_3r1ed"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_pq1ht"]
+viewport_path = NodePath("SubViewport")
+
+[node name="HUD" type="Node3D"]
+script = ExtResource("1_pla10")
+
+[node name="View" type="Sprite3D" parent="."]
+transform = Transform3D(0.342, 0, 0, 0, 0.342, 0, 0, 0, 0.342, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+billboard = 1
+texture = SubResource("ViewportTexture_pq1ht")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(300, 130)
+
+[node name="HUD" parent="SubViewport" instance=ExtResource("2_3r1ed")]

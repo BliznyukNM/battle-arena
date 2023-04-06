@@ -125,6 +125,7 @@ shadow_mesh = SubResource("ArrayMesh_1im7e")
 size = Vector3(0.1024, 2.27031, 0.181399)
 
 [node name="staff_A" type="Area3D"]
+collision_mask = 7
 input_ray_pickable = false
 monitoring = false
 monitorable = false

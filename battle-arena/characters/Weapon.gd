@@ -8,6 +8,12 @@ var _current_damage: float
 var _damaged_bodies: Array[Area3D]
 
 
+func _ready() -> void:
+    if not owner: return
+    collision_layer = 1 << owner.team
+    set_collision_mask_value(owner.team + 1, false)
+
+
 func set_attack_number(attack_number: int) -> void:
     _damaged_bodies.clear()
     _current_damage = damage[attack_number]
