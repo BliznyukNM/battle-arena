@@ -1,14 +1,68 @@
-[gd_scene load_steps=6 format=3 uid="uid://cethbwab8fd76"]
+[gd_scene load_steps=37 format=3 uid="uid://cethbwab8fd76"]
 
 [ext_resource type="PackedScene" uid="uid://1yo4mj6s6r16" path="res://assets/dungeon/models/floor_dirt_large.gltf.glb" id="1_imyht"]
 [ext_resource type="PackedScene" uid="uid://82jpj4b2emr3" path="res://assets/dungeon/models/floor_dirt_large_rocky.gltf.glb" id="2_uwvfv"]
 [ext_resource type="PackedScene" uid="uid://dvbkkd1jpqqly" path="res://assets/dungeon/models/wall.gltf.glb" id="3_cjbs4"]
+[ext_resource type="PackedScene" uid="uid://cwebtlu3swtxa" path="res://assets/dungeon/models/floor_dirt_small_A.gltf.glb" id="3_nwr1o"]
+[ext_resource type="PackedScene" uid="uid://dqia8n6lh5tqw" path="res://assets/dungeon/models/floor_dirt_small_B.gltf.glb" id="4_tgebs"]
+[ext_resource type="PackedScene" uid="uid://082dntfqpe6r" path="res://assets/dungeon/models/floor_dirt_small_C.gltf.glb" id="5_7rnde"]
+[ext_resource type="PackedScene" uid="uid://doow6tqbwkg1o" path="res://assets/dungeon/models/floor_dirt_small_D.gltf.glb" id="6_mp6ln"]
+[ext_resource type="PackedScene" uid="uid://c2xqbqu1e68q0" path="res://assets/dungeon/models/floor_dirt_small_corner.gltf.glb" id="7_l6ag1"]
+[ext_resource type="PackedScene" uid="uid://pusjd7eyjoti" path="res://assets/dungeon/models/floor_dirt_small_weeds.gltf.glb" id="8_hvyqi"]
+[ext_resource type="PackedScene" uid="uid://bn1s7i4sgkbao" path="res://assets/dungeon/models/floor_foundation_allsides.gltf.glb" id="9_ucj63"]
+[ext_resource type="PackedScene" uid="uid://dvgqbmklhxitg" path="res://assets/dungeon/models/floor_foundation_diagonal_corner.gltf.glb" id="10_xtxpi"]
+[ext_resource type="PackedScene" uid="uid://7136co2yo2xl" path="res://assets/dungeon/models/floor_foundation_front.gltf.glb" id="11_6oaxn"]
+[ext_resource type="PackedScene" uid="uid://clsptyg5nea3n" path="res://assets/dungeon/models/floor_foundation_front_and_back.gltf.glb" id="12_mig85"]
+[ext_resource type="PackedScene" uid="uid://b87c4hwt2l8mr" path="res://assets/dungeon/models/floor_foundation_front_and_sides.gltf.glb" id="13_poagx"]
+[ext_resource type="PackedScene" uid="uid://d3cvanwapu3va" path="res://assets/dungeon/models/floor_tile_big_grate.gltf.glb" id="14_0wr7y"]
+[ext_resource type="PackedScene" uid="uid://24inhq2c6ano" path="res://assets/dungeon/models/floor_tile_big_grate_open.gltf.glb" id="15_rjtq3"]
+[ext_resource type="PackedScene" uid="uid://cb5o1jxsg84q7" path="res://assets/dungeon/models/floor_tile_big_spikes.glb" id="16_n0lkb"]
+[ext_resource type="PackedScene" uid="uid://db6ony043ep34" path="res://assets/dungeon/models/floor_tile_extralarge_grates.gltf.glb" id="17_ynksc"]
+[ext_resource type="PackedScene" uid="uid://bjqcrq1ee2xwc" path="res://assets/dungeon/models/pillar.gltf.glb" id="18_jt2a5"]
+[ext_resource type="PackedScene" uid="uid://dkagq4j1lbero" path="res://assets/dungeon/models/pillar_decorated.gltf.glb" id="19_svlef"]
+[ext_resource type="PackedScene" uid="uid://b3ta4udlh6r1y" path="res://assets/dungeon/models/wall_arched.gltf.glb" id="21_4ef8o"]
+[ext_resource type="PackedScene" uid="uid://dtr4hiaok0vk6" path="res://assets/dungeon/models/wall_archedwindow_gated.gltf.glb" id="22_gauxj"]
+[ext_resource type="PackedScene" uid="uid://lh7a2ypej01b" path="res://assets/dungeon/models/wall_endcap.gltf.glb" id="23_y7y5q"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_chvgw"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_me0e5"]
 size = Vector3(4, 0.2, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vydq2"]
+size = Vector3(4, 0.2, 4)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_njphj"]
+points = PackedVector3Array(0.99918, 2, 1.09918, -1.09918, 1.4334e-16, -0.99918, -1.11667, -0.0166667, -0.949843, -1.11667, 2.01667, -0.949843, 0.99918, 1.4334e-16, -0.99918, 0.949843, -0.0166667, 1.11667, 0.99918, 2, -0.99918, 0.949843, 2.01667, 1.11667, 0.99918, 1.4334e-16, 1.09918, -1.09918, 2, -0.99918)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hqy5s"]
+size = Vector3(2, 2, 2.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nari1"]
+size = Vector3(2, 2, 2.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ky58o"]
+size = Vector3(2.2, 2, 2.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0alwh"]
+size = Vector3(4, 0.2, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rvr1x"]
+size = Vector3(4, 0.2, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m2w62"]
+size = Vector3(4, 0.2, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l4ij7"]
+size = Vector3(8, 0.2, 8)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5qfje"]
+height = 4.0
+radius = 0.8
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_edm3a"]
 size = Vector3(4, 4, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sd5ii"]
+size = Vector3(1, 4, 1)
 
 [node name="TileSet" type="Node3D"]
 
@@ -18,7 +72,7 @@ size = Vector3(4, 4, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor_dirt_large/floor_dirt_large/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
-shape = SubResource("BoxShape3D_chvgw")
+shape = SubResource("BoxShape3D_me0e5")
 
 [node name="floor_dirt_large_rocky" parent="." instance=ExtResource("2_uwvfv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.85802, 0, 0)
@@ -27,7 +81,123 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.85802, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor_dirt_large_rocky/floor_dirt_large_rocky/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
-shape = SubResource("BoxShape3D_chvgw")
+shape = SubResource("BoxShape3D_vydq2")
+
+[node name="floor_dirt_small_A" parent="." instance=ExtResource("3_nwr1o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.23535)
+
+[node name="floor_dirt_small_B" parent="." instance=ExtResource("4_tgebs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.03671, 0, 4.30621)
+
+[node name="floor_dirt_small_C" parent="." instance=ExtResource("5_7rnde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.07494, 0, 4.17922)
+
+[node name="floor_dirt_small_D" parent="." instance=ExtResource("6_mp6ln")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.31307, 0, 4.29275)
+
+[node name="floor_dirt_small_corner" parent="." instance=ExtResource("7_l6ag1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.25529, 0, 4.25502)
+
+[node name="floor_dirt_small_weeds" parent="." instance=ExtResource("8_hvyqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.91247, 0, 4.19071)
+
+[node name="floor_foundation_allsides" parent="." instance=ExtResource("9_ucj63")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0543175, 9.53674e-07, 7.74735)
+
+[node name="floor_foundation_allsides" parent="floor_foundation_allsides" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.148859)
+
+[node name="floor_foundation_diagonal_corner" parent="." instance=ExtResource("10_xtxpi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0403, 0, 7.67058)
+
+[node name="floor_foundation_diagonal_corner" parent="floor_foundation_diagonal_corner" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.178006)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="floor_foundation_diagonal_corner/floor_foundation_diagonal_corner" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor_foundation_diagonal_corner/floor_foundation_diagonal_corner/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_njphj")
+
+[node name="floor_foundation_front" parent="." instance=ExtResource("11_6oaxn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.06111, 0, 7.60863)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="floor_foundation_front/floor_foundation_front" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor_foundation_front/floor_foundation_front/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.0524874)
+shape = SubResource("BoxShape3D_hqy5s")
+
+[node name="floor_foundation_front_and_back" parent="." instance=ExtResource("12_mig85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.02877, 0, 7.7416)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="floor_foundation_front_and_back/floor_foundation_front_and_back" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor_foundation_front_and_back/floor_foundation_front_and_back/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_nari1")
+
+[node name="floor_foundation_front_and_sides" parent="." instance=ExtResource("13_poagx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.32297, 0, 7.58387)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="floor_foundation_front_and_sides/floor_foundation_front_and_sides" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor_foundation_front_and_sides/floor_foundation_front_and_sides/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.0486546)
+shape = SubResource("BoxShape3D_ky58o")
+
+[node name="floor_tile_big_grate" parent="." instance=ExtResource("14_0wr7y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.87811, 0, 0.0920715)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="floor_tile_big_grate/floor_tile_big_grate" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor_tile_big_grate/floor_tile_big_grate/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+shape = SubResource("BoxShape3D_0alwh")
+
+[node name="floor_tile_big_grate_open" parent="." instance=ExtResource("15_rjtq3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.54397, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="floor_tile_big_grate_open/floor_tile_big_grate_open" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor_tile_big_grate_open/floor_tile_big_grate_open/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+shape = SubResource("BoxShape3D_rvr1x")
+
+[node name="floor_tile_big_spikes" parent="." instance=ExtResource("16_n0lkb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.99778, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="floor_tile_big_spikes/floor_tile_big_spikes2" index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor_tile_big_spikes/floor_tile_big_spikes2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+shape = SubResource("BoxShape3D_m2w62")
+
+[node name="floor_tile_extralarge_grates" parent="." instance=ExtResource("17_ynksc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.061466, 0, -9.46003)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="floor_tile_extralarge_grates/floor_tile_extralarge_grates" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor_tile_extralarge_grates/floor_tile_extralarge_grates/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+shape = SubResource("BoxShape3D_l4ij7")
+
+[node name="pillar" parent="." instance=ExtResource("18_jt2a5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.78605, 0, -4.05214)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="pillar/pillar" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pillar/pillar/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2, 2.08165e-12)
+shape = SubResource("CylinderShape3D_5qfje")
+
+[node name="pillar_decorated" parent="." instance=ExtResource("19_svlef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.95896, 0, -4.01082)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="pillar_decorated/pillar_decorated" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pillar_decorated/pillar_decorated/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2, 2.08165e-12)
+shape = SubResource("CylinderShape3D_5qfje")
 
 [node name="wall" parent="." instance=ExtResource("3_cjbs4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.05214)
@@ -38,6 +208,53 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.05214)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2, 0)
 shape = SubResource("BoxShape3D_edm3a")
 
+[node name="wall_arched" parent="." instance=ExtResource("21_4ef8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.05032, -9.53674e-07, -3.94004)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="wall_arched/wall_arched" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall_arched/wall_arched/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2, 0)
+shape = SubResource("BoxShape3D_edm3a")
+
+[node name="wall_arched_window_gated" parent="." instance=ExtResource("22_gauxj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.74072, 0, -3.9077)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="wall_arched_window_gated/wall_archedwindow_gated" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall_arched_window_gated/wall_archedwindow_gated/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2, 0)
+shape = SubResource("BoxShape3D_edm3a")
+
+[node name="wall_endcap" parent="." instance=ExtResource("23_y7y5q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3512, 0, -3.92515)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="wall_endcap/wall_endcap" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall_endcap/wall_endcap/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2, 2.08165e-12)
+shape = SubResource("BoxShape3D_sd5ii")
+
 [editable path="floor_dirt_large"]
 [editable path="floor_dirt_large_rocky"]
+[editable path="floor_dirt_small_A"]
+[editable path="floor_dirt_small_B"]
+[editable path="floor_dirt_small_C"]
+[editable path="floor_dirt_small_D"]
+[editable path="floor_dirt_small_corner"]
+[editable path="floor_dirt_small_weeds"]
+[editable path="floor_foundation_allsides"]
+[editable path="floor_foundation_diagonal_corner"]
+[editable path="floor_foundation_front"]
+[editable path="floor_foundation_front_and_back"]
+[editable path="floor_foundation_front_and_sides"]
+[editable path="floor_tile_big_grate"]
+[editable path="floor_tile_big_grate_open"]
+[editable path="floor_tile_big_spikes"]
+[editable path="floor_tile_extralarge_grates"]
+[editable path="pillar"]
+[editable path="pillar_decorated"]
 [editable path="wall"]
+[editable path="wall_arched"]
+[editable path="wall_arched_window_gated"]
+[editable path="wall_endcap"]

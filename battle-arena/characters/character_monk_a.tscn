@@ -568,22 +568,14 @@ transform = Transform3D(-1, 3.48787e-16, -8.74228e-08, 3.48787e-16, 1, -3.48787e
 
 [node name="Skeleton3D" parent="View/KayKit Animated Character2" index="0"]
 bones/0/rotation = Quaternion(0, 0, 0, 1)
-bones/1/position = Vector3(0, 0.711598, 0)
 bones/1/rotation = Quaternion(-1.77636e-16, 4.23516e-23, 7.00649e-45, 1)
-bones/1/scale = Vector3(1, 1, 1)
-bones/2/position = Vector3(0.14, 0.691598, -1.3027e-15)
 bones/2/rotation = Quaternion(0.685863, 0.172023, -0.685863, 0.172022)
-bones/3/position = Vector3(1.04314e-15, 0.550922, 1.13735e-08)
-bones/3/rotation = Quaternion(0.606617, -0.606617, 0.36334, 0.36334)
-bones/3/scale = Vector3(1, 1, 1)
 bones/4/position = Vector3(-0.14, 0.691598, 8.40813e-15)
 bones/4/rotation = Quaternion(-0.685863, 0.172023, 0.685863, 0.172023)
-bones/5/position = Vector3(3.33226e-15, 0.550922, -1.84059e-08)
 bones/5/rotation = Quaternion(0.358623, -0.365279, 0.602334, 0.612498)
-bones/5/scale = Vector3(1, 1, 1)
 
 [node name="Head" parent="View/KayKit Animated Character2/Skeleton3D" index="0"]
-transform = Transform3D(1, -1.50463e-38, 8.47032e-23, -1.50463e-38, 1, 3.55271e-16, -8.47032e-23, -3.55271e-16, 1, 0, 0.711598, 0)
+transform = Transform3D(1, -1.50464e-38, 8.47032e-23, -1.50463e-38, 1, 3.55272e-16, -8.47032e-23, -3.55272e-16, 1, 0, 0.711598, 0)
 
 [node name="character_monk_A_head" type="MeshInstance3D" parent="View/KayKit Animated Character2/Skeleton3D/Head" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00706154, 0)
@@ -603,7 +595,7 @@ mesh = SubResource("ArrayMesh_ers31")
 skeleton = NodePath("")
 
 [node name="ArmLeft" parent="View/KayKit Animated Character2/Skeleton3D" index="2"]
-transform = Transform3D(0, 0.471936, -0.881633, 2.23517e-07, -0.881633, -0.471936, -1, -2.23517e-07, 0, 0.14, 0.691598, -1.3027e-15)
+transform = Transform3D(-3.57628e-07, 0.471936, -0.881633, 1.35601e-06, -0.881633, -0.471936, -1, -1.35601e-06, -3.57628e-07, 0.14, 0.691598, -1.3027e-15)
 
 [node name="character_monk_A_armLeft" type="MeshInstance3D" parent="View/KayKit Animated Character2/Skeleton3D/ArmLeft" index="0"]
 transform = Transform3D(-3.24651e-07, 1.36428e-06, -1, 0.471936, -0.881633, -1.36428e-06, -0.881633, -0.471936, -3.24651e-07, -9.99705e-08, 0.0813911, -0.0290701)
@@ -611,7 +603,7 @@ mesh = SubResource("ArrayMesh_gx00l")
 skeleton = NodePath("")
 
 [node name="ArmRight" parent="View/KayKit Animated Character2/Skeleton3D" index="3"]
-transform = Transform3D(-1.19209e-07, -0.471936, -0.881633, -2.5332e-07, -0.881633, 0.471936, -1, 2.5332e-07, -1.19209e-07, -0.14, 0.691598, 8.40813e-15)
+transform = Transform3D(0, -0.471937, -0.881632, 0, -0.881632, 0.471937, -1, 0, 0, -0.14, 0.691598, 8.40813e-15)
 
 [node name="character_monk_A_armRight" type="MeshInstance3D" parent="View/KayKit Animated Character2/Skeleton3D/ArmRight" index="0"]
 transform = Transform3D(0, 0, -1, -0.471937, -0.881632, 0, -0.881632, 0.471937, 0, 8.40813e-15, 0.0813983, 0.0290835)
@@ -619,13 +611,13 @@ mesh = SubResource("ArrayMesh_xlrek")
 skeleton = NodePath("")
 
 [node name="HandSlotLeft" parent="View/KayKit Animated Character2/Skeleton3D" index="4"]
-transform = Transform3D(-1, -1.46212e-07, 2.74117e-07, 8.17465e-08, 2.39072e-07, 1, 1.05486e-07, 1, -1.60568e-07, 0.4, 0.205887, -1.23141e-07)
+transform = Transform3D(-1, 3.57628e-07, 7.89302e-07, 7.84929e-07, -1.35601e-06, 1, 3.24652e-07, 1, 1.36428e-06, 0.4, 0.205887, -7.47053e-07)
 
 [node name="cup" parent="View/KayKit Animated Character2/Skeleton3D/HandSlotLeft" index="0" instance=ExtResource("3_5h0ic")]
 visible = false
 
 [node name="HandlSlotRight" parent="View/KayKit Animated Character2/Skeleton3D" index="5"]
-transform = Transform3D(-0.999962, -0.00745931, -0.00459091, -0.00447508, -0.0154768, 0.99987, -0.00752948, 0.999852, 0.0154428, -0.4, 0.205887, 1.39559e-07)
+transform = Transform3D(-0.999962, -0.00745919, -0.00458871, -0.00447289, -0.0154776, 0.99987, -0.0075292, 0.999852, 0.0154437, -0.4, 0.205887, 5.07587e-15)
 
 [node name="staff_A" parent="View/KayKit Animated Character2/Skeleton3D/HandlSlotRight" index="0" instance=ExtResource("4_0tjoq")]
 transform = Transform3D(0.999941, 0.00387495, 0.0101501, -0.00391651, 0.999984, 0.00407982, -0.0101342, -0.00411929, 0.99994, -0.0020982, 0.487724, -0.00612868)
