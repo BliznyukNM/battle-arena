@@ -32,6 +32,10 @@ var current_health: float
 
 var is_attacking: bool:
     get: return input.is_attacking
+
+
+var is_local: bool:
+    get: return player_id == multiplayer.get_unique_id()
     
     
 func _ready() -> void:

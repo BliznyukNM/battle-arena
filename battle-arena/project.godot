@@ -22,6 +22,10 @@ run/port=7350
 
 Nakama="*res://addons/com.heroiclabs.nakama/Nakama.gd"
 
+[debug]
+
+gdscript/warnings/int_as_enum_without_cast=0
+
 [display]
 
 window/stretch/mode="canvas_items"

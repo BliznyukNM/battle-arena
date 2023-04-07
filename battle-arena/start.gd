@@ -10,17 +10,19 @@ enum Mode { Local, Client, Server }
 
 func _ready() -> void:
     var args: = OS.get_cmdline_user_args()
-    for arg in args: _parse_argument(arg)
-
-
-func _parse_argument(arg: String) -> void:
-    match arg:
-        "--server":
-            _start.call_deferred(Mode.Server)
-        "--client":
-            _start.call_deferred(Mode.Client)
-        "--local":
-            _start.call_deferred(Mode.Local)
+    var i = 0
+    while i < args.size():
+        match args[i]:
+            "--server":
+                _start.call_deferred(Mode.Server)
+            "--client":
+                _start.call_deferred(Mode.Client)
+            "--local":
+                _start.call_deferred(Mode.Local)
+            "--ip":
+                i += 1
+                _change_ip(args[i])
+        i += 1
 
 
 func _change_ip(ip: String) -> void:

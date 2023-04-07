@@ -7,6 +7,10 @@ extends Node3D
 var current_health
 
 
+var is_local: bool:
+    get: return false
+
+
 func _ready() -> void:
     set_multiplayer_authority(1)
     current_health = health
