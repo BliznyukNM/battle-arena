@@ -56,7 +56,7 @@ func _ready() -> void:
     current_health = health
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
     if _evading_direction.length_squared() > 0:
         velocity = _evading_direction * evade_speed
     else:
@@ -69,16 +69,13 @@ func _process(_delta: float) -> void:
         animator["parameters/Attack/speed/scale"] = attack_speed
         animator["parameters/Combo/speed/scale"] = attack_speed
         
-        var look_at_point: Vector3 = input.look_at_point
-        look_at(look_at_point)
-        rotation_degrees.x = 0.0
+        var new_basis: = transform.basis.looking_at(input.look_at_point - position)
+        transform.basis = lerp(transform.basis, new_basis, delta * 10)
     
     move_and_slide()
 
 
 func _throw() -> void:
-    animator["parameters/conditions/is_throwing"] = false
-    
     if not multiplayer.is_server(): return
     
     var cup_instance: Node3D = cup.instantiate()
@@ -89,16 +86,24 @@ func _throw() -> void:
     spawner.add_child(cup_instance, true)
 
 
+func _roll() -> void:
+    if not multiplayer.is_server(): return
+    
+    _evading_direction = -transform.basis.z
+    await animator.animation_finished
+    _evading_direction = Vector3.ZERO
+
+
 func _execute_secondary_attack() -> void:
     animator["parameters/conditions/is_throwing"] = true
+    await get_tree().create_timer(0.1).timeout
+    animator["parameters/conditions/is_throwing"] = false
 
 
 func _execute_evade() -> void:
-    if _evading_direction.length_squared() > 0: return
-    _evading_direction = (input.look_at_point - position).slide(Vector3.UP) \
-        .normalized()
-    await animator.animation_finished
-    _evading_direction = Vector3.ZERO
+    animator["parameters/conditions/is_evading"] = true
+    await get_tree().create_timer(0.1).timeout
+    animator["parameters/conditions/is_evading"] = false
 
 
 func _apply_damage(damage: float) -> void:
