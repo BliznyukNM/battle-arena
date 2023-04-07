@@ -1,8 +1,10 @@
 extends Node
 
 
-@export var host: = "127.0.0.1"
-@export var port: = 7350
+var host: String:
+    get: return ProjectSettings.get_setting("application/run/ip_address", "127.0.0.1")
+var port: int:
+    get: return ProjectSettings.get_setting("application/run/port", 7350)
 
 
 var monk: = preload("res://characters/character_monk_a.tscn")

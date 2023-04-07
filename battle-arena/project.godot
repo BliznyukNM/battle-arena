@@ -15,6 +15,8 @@ run/main_scene="res://start.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 run/server=false
+run/ip_address="127.0.0.1"
+run/port=7350
 
 [autoload]
 

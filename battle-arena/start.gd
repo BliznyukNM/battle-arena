@@ -23,6 +23,10 @@ func _parse_argument(arg: String) -> void:
             _start.call_deferred(Mode.Local)
 
 
+func _change_ip(ip: String) -> void:
+    ProjectSettings.set_setting("application/run/ip_address", ip)
+
+
 func _start(mode: Mode) -> void:
     match mode:
         Mode.Local:

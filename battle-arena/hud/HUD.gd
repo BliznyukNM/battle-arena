@@ -11,6 +11,6 @@ extends Node3D
 @onready var health_bar: = $SubViewport/HUD/Container/Health
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
     if not target: return
     health_bar.value = target.current_health
