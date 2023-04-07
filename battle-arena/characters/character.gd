@@ -9,6 +9,8 @@ enum Team { None = 0, TeamA = 1, TeamB = 2 }
 @export var evade_speed: = 5.0
 @export var attack_speed: = 1.0
 
+@export var rotation_lerp_speed: = 10
+
 @export var player_id: int:
     set(value):
         player_id = value
@@ -69,10 +71,15 @@ func _process(delta: float) -> void:
         animator["parameters/Attack/speed/scale"] = attack_speed
         animator["parameters/Combo/speed/scale"] = attack_speed
         
-        var new_basis: = transform.basis.looking_at(input.look_at_point - position)
-        transform.basis = lerp(transform.basis, new_basis, delta * 10)
+        _apply_rotation(input.look_at_point, delta * rotation_lerp_speed)
     
     move_and_slide()
+
+
+func _apply_rotation(look_at_point: Vector3, weight: float) -> void: 
+    var new_basis: = transform.basis.looking_at(look_at_point - position)
+    transform.basis = lerp(transform.basis, new_basis, weight)
+    
 
 
 func _throw() -> void:
@@ -88,7 +95,8 @@ func _throw() -> void:
 
 func _roll() -> void:
     if not multiplayer.is_server(): return
-    
+    var direction = velocity if velocity.length_squared() > 0 else -transform.basis.z
+    _apply_rotation(position + direction, 1)
     _evading_direction = -transform.basis.z
     await animator.animation_finished
     _evading_direction = Vector3.ZERO
