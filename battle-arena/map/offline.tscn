@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmkgijnr66pj6"]
+[gd_scene load_steps=4 format=3]
 
 [ext_resource type="PackedScene" uid="uid://flt4bdecd0xj" path="res://map/map.tscn" id="1_j7vok"]
 [ext_resource type="PackedScene" path="res://characters/monk/character_monk_a.tscn" id="2_teatj"]
-[ext_resource type="PackedScene" uid="uid://c3ynl5q2qo2p8" path="res://characters/trainingdummy_a.tscn" id="3_fwo4e"]
+[ext_resource type="PackedScene" uid="uid://c3ynl5q2qo2p8" path="res://characters/dummy/hittable_dummy.tscn" id="3_fwo4e"]
 
 [node name="Map" instance=ExtResource("1_j7vok")]
 
