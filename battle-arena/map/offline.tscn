@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://boulj8buo8ukk"]
+[gd_scene load_steps=6 format=3 uid="uid://boulj8buo8ukk"]
 
 [ext_resource type="PackedScene" uid="uid://flt4bdecd0xj" path="res://map/map.tscn" id="1_j7vok"]
 [ext_resource type="PackedScene" uid="uid://bfpahu8chsp5v" path="res://characters/monk/character_monk_a.tscn" id="2_teatj"]
 [ext_resource type="PackedScene" uid="uid://b1qwyrs0h5rsv" path="res://characters/dummy/hittable_dummy.tscn" id="3_m7qy3"]
 [ext_resource type="PackedScene" uid="uid://whj2dg67w3yo" path="res://characters/dummy/shooting_dummy.tscn" id="4_45dqf"]
+[ext_resource type="PackedScene" uid="uid://i7omap6s14v1" path="res://characters/spawner.tscn" id="5_c30k3"]
 
 [node name="Map" instance=ExtResource("1_j7vok")]
 
@@ -17,5 +18,6 @@ team = 1
 [node name="ShootingDummy" parent="." index="6" instance=ExtResource("4_45dqf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.98806, 0.1, -11.1433)
 
-[node name="HittableDummy" parent="." index="7" instance=ExtResource("3_m7qy3")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.67834, 0, -0.423069)
+[node name="HittableDummySpawner" parent="." index="7" instance=ExtResource("5_c30k3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.74455, 0, -0.616189)
+spawnee = ExtResource("3_m7qy3")
