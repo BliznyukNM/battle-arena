@@ -24,7 +24,7 @@ enum Team { None = 0, TeamA = 1, TeamB = 2 }
 @onready var right_hand: = $"View/KayKit Animated Character2/Skeleton3D/HandlSlotRight"
 
 
-@onready var cup: = preload("res://characters/cup_throwable.tscn")
+@onready var cup: = preload("res://characters/monk/cup_throwable.tscn")
 
 
 var current_health: float

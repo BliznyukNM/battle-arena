@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1xx06eyu0fg2"]
+[gd_scene load_steps=4 format=3]
 
-[ext_resource type="PackedScene" uid="uid://dblqaroqiwj6i" path="res://characters/cup.tscn" id="1_hfvb7"]
+[ext_resource type="PackedScene" uid="uid://dblqaroqiwj6i" path="res://characters/monk/cup.tscn" id="1_hfvb7"]
 [ext_resource type="Script" path="res://characters/weapon_throwable.gd" id="2_o6g3q"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_mxdeu"]

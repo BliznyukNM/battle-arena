@@ -7,7 +7,7 @@ var port: int:
     get: return ProjectSettings.get_setting("application/run/port", 7350)
 
 
-var monk: = preload("res://characters/character_monk_a.tscn")
+var monk: = preload("res://characters/monk/character_monk_a.tscn")
 
 
 func _ready() -> void:
