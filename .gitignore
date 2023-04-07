@@ -18,6 +18,8 @@ mono_crash.*.json
 .DS_Store
 
 .cookie
+
 battle-arena/addons/com.heroiclabs.nakama/
+battle-arena/addons/beehave/
 
 *.app
