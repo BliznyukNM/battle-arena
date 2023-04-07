@@ -64,6 +64,7 @@ func _throw() -> void:
     
     var cup_instance: Node3D = cup.instantiate()
     cup_instance.position = right_hand.global_position
+    cup_instance.set_team(team)
     cup_instance.set_attack_number(0)
     cup_instance.throw(input.look_at_point)
     spawner.add_child(cup_instance, true)

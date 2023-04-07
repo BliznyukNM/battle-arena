@@ -66,4 +66,4 @@ text = "Server"
 
 [connection signal="pressed" from="UI/Online" to="." method="_start" binds= [1]]
 [connection signal="pressed" from="UI/Offline" to="." method="_start" binds= [0]]
-[connection signal="pressed" from="UI/Server" to="." method="_start"]
+[connection signal="pressed" from="UI/Server" to="." method="_start" binds= [2]]

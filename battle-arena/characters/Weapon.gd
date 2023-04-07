@@ -10,8 +10,12 @@ var _damaged_bodies: Array[Area3D]
 
 func _ready() -> void:
     if not owner: return
-    collision_layer = 1 << owner.team
-    set_collision_mask_value(owner.team + 1, false)
+    set_team(owner.team)
+
+
+func set_team(team: int) -> void:
+    collision_layer = 1 << team
+    set_collision_mask_value(team + 1, false)
 
 
 func set_attack_number(attack_number: int) -> void:

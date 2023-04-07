@@ -549,9 +549,12 @@ properties/0/sync = true
 properties/1/path = NodePath(".:player_id")
 properties/1/spawn = true
 properties/1/sync = false
-properties/2/path = NodePath(".:velocity")
+properties/2/path = NodePath(".:team")
 properties/2/spawn = true
-properties/2/sync = true
+properties/2/sync = false
+properties/3/path = NodePath(".:current_health")
+properties/3/spawn = true
+properties/3/sync = true
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_fbvk3"]
 properties/0/path = NodePath(".:look_at_point")

@@ -8,7 +8,7 @@ var _direction: Vector3
 
 
 func throw(point: Vector3) -> void:
-    _direction = (point - position).normalized()
+    _direction = (point - position).slide(Vector3.UP).normalized()
     monitoring = true
 
 
