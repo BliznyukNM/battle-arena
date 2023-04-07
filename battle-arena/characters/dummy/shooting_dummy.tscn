@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://whj2dg67w3yo"]
+
+[ext_resource type="PackedScene" uid="uid://cctq8rylkflvh" path="res://characters/dummy/dummy.tscn" id="1_njr10"]
+[ext_resource type="Script" path="res://characters/dummy/shooting_dummy.gd" id="2_8syr1"]
+
+[node name="ShootingDummy" instance=ExtResource("1_njr10")]
+script = ExtResource("2_8syr1")
+
+[node name="Shooting" type="Timer" parent="." index="2"]
+wait_time = 2.0
+autostart = true
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." index="3"]
+_spawnable_scenes = PackedStringArray("res://characters/dummy/fireball.tscn")
+spawn_path = NodePath(".")
+
+[connection signal="timeout" from="Shooting" to="." method="_on_shoot"]

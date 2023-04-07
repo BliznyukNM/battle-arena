@@ -1,0 +1,75 @@
+[gd_scene load_steps=13 format=3 uid="uid://dq65b75wnotso"]
+
+[ext_resource type="Script" path="res://characters/weapon_throwable.gd" id="1_1ir6t"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_s5yfn"]
+
+[sub_resource type="Gradient" id="Gradient_6racq"]
+offsets = PackedFloat32Array(0, 0.493094)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_w62s2"]
+gradient = SubResource("Gradient_6racq")
+
+[sub_resource type="Gradient" id="Gradient_g0rv5"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_g056b"]
+gradient = SubResource("Gradient_g0rv5")
+
+[sub_resource type="Curve" id="Curve_yq347"]
+_data = [Vector2(0, 0.504568), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5jkl5"]
+curve = SubResource("Curve_yq347")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k0gjg"]
+emission_shape = 1
+emission_sphere_radius = 0.1
+gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+scale_curve = SubResource("CurveTexture_5jkl5")
+color = Color(4, 2, 0, 1)
+color_ramp = SubResource("GradientTexture1D_g056b")
+color_initial_ramp = SubResource("GradientTexture1D_w62s2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sslwc"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+grow_amount = 2.66
+
+[sub_resource type="SphereMesh" id="SphereMesh_aiwkw"]
+material = SubResource("StandardMaterial3D_sslwc")
+radial_segments = 8
+rings = 8
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_cap13"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/sync = true
+
+[node name="Fireball" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0160511, 0, 0)
+collision_layer = 0
+collision_mask = 7
+monitoring = false
+monitorable = false
+script = ExtResource("1_1ir6t")
+speed = 7
+damage = Array[float]([3.0])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_s5yfn")
+
+[node name="FireballVFX" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.078342, 0, 0.0229368)
+amount = 25
+lifetime = 0.5
+visibility_aabb = AABB(-4, -0.380901, -4, 8, 0.761803, 8)
+trail_lifetime = 1.0
+process_material = SubResource("ParticleProcessMaterial_k0gjg")
+draw_pass_1 = SubResource("SphereMesh_aiwkw")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_cap13")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

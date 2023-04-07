@@ -1,14 +1,14 @@
-[gd_scene load_steps=52 format=3]
+[gd_scene load_steps=52 format=3 uid="uid://bfpahu8chsp5v"]
 
-[ext_resource type="Script" path="res://characters/character.gd" id="1_x766q"]
-[ext_resource type="PackedScene" uid="uid://cvq6ek87jxuh3" path="res://assets/characters/animations/animations.tscn" id="2_i5wi0"]
-[ext_resource type="PackedScene" uid="uid://dblqaroqiwj6i" path="res://characters/monk/cup.tscn" id="3_5h0ic"]
-[ext_resource type="Script" path="res://characters/View.gd" id="3_60pw8"]
-[ext_resource type="PackedScene" uid="uid://dig4mv4i2ia1m" path="res://characters/monk/staff_a.tscn" id="4_0tjoq"]
-[ext_resource type="AnimationLibrary" uid="uid://bbhk6f1apfiuw" path="res://characters/monk/monk_animations.tres" id="4_l6w2o"]
-[ext_resource type="Script" path="res://characters/Input.gd" id="6_k2caa"]
-[ext_resource type="Script" path="res://characters/HitBox.gd" id="6_y4pkg"]
-[ext_resource type="PackedScene" uid="uid://7xkefn5xpy47" path="res://hud/hud.tscn" id="8_ld8h5"]
+[ext_resource type="Script" path="res://characters/character.gd" id="1_ghycu"]
+[ext_resource type="PackedScene" uid="uid://cvq6ek87jxuh3" path="res://assets/characters/animations/animations.tscn" id="2_8hmnk"]
+[ext_resource type="Script" path="res://characters/View.gd" id="3_b5h8s"]
+[ext_resource type="PackedScene" uid="uid://dblqaroqiwj6i" path="res://characters/monk/cup.tscn" id="4_lfpqf"]
+[ext_resource type="PackedScene" uid="uid://dig4mv4i2ia1m" path="res://characters/monk/staff_a.tscn" id="5_cxyub"]
+[ext_resource type="AnimationLibrary" uid="uid://bbhk6f1apfiuw" path="res://characters/monk/monk_animations.tres" id="6_156oj"]
+[ext_resource type="PackedScene" uid="uid://7xkefn5xpy47" path="res://hud/hud.tscn" id="7_e0lrh"]
+[ext_resource type="Script" path="res://characters/HitBox.gd" id="8_v71ms"]
+[ext_resource type="Script" path="res://characters/Input.gd" id="9_76dy4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uqonq"]
 resource_name = "PinkLight"
@@ -570,10 +570,10 @@ properties/2/sync = true
 
 [node name="Monk" type="CharacterBody3D"]
 collision_mask = 7
-script = ExtResource("1_x766q")
+script = ExtResource("1_ghycu")
 speed = 5.0
 
-[node name="View" parent="." instance=ExtResource("2_i5wi0")]
+[node name="View" parent="." instance=ExtResource("2_8hmnk")]
 transform = Transform3D(-1, 3.48787e-16, -8.74228e-08, 3.48787e-16, 1, -3.48787e-16, 8.74228e-08, -3.48787e-16, -1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="View/KayKit Animated Character2" index="0"]
@@ -591,7 +591,7 @@ transform = Transform3D(1, -1.50464e-38, 8.47032e-23, -1.50463e-38, 1, 3.55272e-
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00706154, 0)
 mesh = SubResource("ArrayMesh_8l4ck")
 skeleton = NodePath("")
-script = ExtResource("3_60pw8")
+script = ExtResource("3_b5h8s")
 
 [node name="character_monk_A_necklace" type="MeshInstance3D" parent="View/KayKit Animated Character2/Skeleton3D/Head" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52588e-05, -0.711598, 0)
@@ -604,7 +604,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 [node name="character_monk_A_body" type="MeshInstance3D" parent="View/KayKit Animated Character2/Skeleton3D/Body" index="0"]
 mesh = SubResource("ArrayMesh_ers31")
 skeleton = NodePath("")
-script = ExtResource("3_60pw8")
+script = ExtResource("3_b5h8s")
 
 [node name="ArmLeft" parent="View/KayKit Animated Character2/Skeleton3D" index="2"]
 transform = Transform3D(-3.57628e-07, 0.471936, -0.881633, 1.35601e-06, -0.881633, -0.471936, -1, -1.35601e-06, -3.57628e-07, 0.14, 0.691598, -1.3027e-15)
@@ -625,29 +625,28 @@ skeleton = NodePath("")
 [node name="HandSlotLeft" parent="View/KayKit Animated Character2/Skeleton3D" index="4"]
 transform = Transform3D(-1, 3.57628e-07, 7.89302e-07, 7.84929e-07, -1.35601e-06, 1, 3.24652e-07, 1, 1.36428e-06, 0.4, 0.205887, -7.47053e-07)
 
-[node name="cup" parent="View/KayKit Animated Character2/Skeleton3D/HandSlotLeft" index="0" instance=ExtResource("3_5h0ic")]
+[node name="cup" parent="View/KayKit Animated Character2/Skeleton3D/HandSlotLeft" index="0" instance=ExtResource("4_lfpqf")]
 visible = false
 
 [node name="HandlSlotRight" parent="View/KayKit Animated Character2/Skeleton3D" index="5"]
 transform = Transform3D(-0.999962, -0.00745919, -0.00458871, -0.00447289, -0.0154776, 0.99987, -0.0075292, 0.999852, 0.0154437, -0.4, 0.205887, 5.07587e-15)
 
-[node name="staff_A" parent="View/KayKit Animated Character2/Skeleton3D/HandlSlotRight" index="0" instance=ExtResource("4_0tjoq")]
+[node name="staff_A" parent="View/KayKit Animated Character2/Skeleton3D/HandlSlotRight" index="0" instance=ExtResource("5_cxyub")]
 transform = Transform3D(0.999941, 0.00387495, 0.0101501, -0.00391651, 0.999984, 0.00407982, -0.0101342, -0.00411929, 0.99994, -0.0020982, 0.487724, -0.00612868)
 
 [node name="AnimationPlayer" parent="View" index="1"]
 libraries = {
-"monk": ExtResource("4_l6w2o")
+"monk": ExtResource("6_156oj")
 }
 
-[node name="HUD" parent="." node_paths=PackedStringArray("target") instance=ExtResource("8_ld8h5")]
+[node name="HUD" parent="." instance=ExtResource("7_e0lrh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.44599, 0)
-target = NodePath("..")
 
 [node name="HitBox" type="Area3D" parent="."]
 collision_layer = 7
 collision_mask = 0
 monitoring = false
-script = ExtResource("6_y4pkg")
+script = ExtResource("8_v71ms")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
@@ -673,10 +672,10 @@ replication_config = SubResource("SceneReplicationConfig_cowo4")
 [node name="Input" type="MultiplayerSynchronizer" parent="."]
 root_path = NodePath(".")
 replication_config = SubResource("SceneReplicationConfig_fbvk3")
-script = ExtResource("6_k2caa")
+script = ExtResource("9_76dy4")
 
 [node name="Spawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://characters/cup_throwable.tscn")
+_spawnable_scenes = PackedStringArray("res://characters/monk/cup_throwable.tscn")
 spawn_path = NodePath(".")
 
 [connection signal="on_hit" from="HitBox" to="." method="_apply_damage"]

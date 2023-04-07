@@ -23,19 +23,22 @@ grow_vertical = 2
 
 [node name="Name" type="Label" parent="Container"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 60
-text = "Name"
+theme_override_font_sizes/font_size = 40
+text = "ReallyLongName"
 horizontal_alignment = 1
+text_overrun_behavior = 3
 
 [node name="Health" type="ProgressBar" parent="Container"]
-custom_minimum_size = Vector2(2.08165e-12, 25)
+custom_minimum_size = Vector2(300, 25)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_styles/background = ExtResource("1_ior5a")
 theme_override_styles/fill = ExtResource("2_2t6jf")
 value = 50.0
 show_percentage = false
 
 [node name="Energy" type="ProgressBar" parent="Container"]
-custom_minimum_size = Vector2(2.08165e-12, 10)
+custom_minimum_size = Vector2(300, 10)
 layout_mode = 2
+size_flags_horizontal = 4
 show_percentage = false

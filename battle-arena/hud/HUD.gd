@@ -1,16 +1,17 @@
-extends Node3D
-
-
-@export var target: Node:
-    set(value):
-        target = value
-        $SubViewport/HUD/Container/Health.max_value = target.health
-        $SubViewport/HUD/Container/Name.text = target.name
+extends Node
 
 
 @onready var health_bar: = $SubViewport/HUD/Container/Health
+@onready var name_label: = $SubViewport/HUD/Container/Name
+
+
+func _ready() -> void:
+    if owner:
+        health_bar.max_value = owner.health
+        health_bar.value = owner.current_health
+        name_label.text = owner.name
+    set_process(owner != null)
 
 
 func _process(_delta: float) -> void:
-    if not target: return
-    health_bar.value = target.current_health
+    health_bar.value = owner.current_health

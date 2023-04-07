@@ -9,5 +9,5 @@
 script = ExtResource("2_0wyig")
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="ENetMultiplayer" index="0"]
-_spawnable_scenes = PackedStringArray("res://characters/character_monk_a.tscn")
+_spawnable_scenes = PackedStringArray("res://characters/monk/character_monk_a.tscn")
 spawn_path = NodePath(".")

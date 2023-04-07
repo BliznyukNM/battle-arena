@@ -16,6 +16,6 @@ texture = SubResource("ViewportTexture_pq1ht")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
-size = Vector2i(300, 130)
+size = Vector2i(500, 130)
 
 [node name="HUD" parent="SubViewport" instance=ExtResource("2_3r1ed")]

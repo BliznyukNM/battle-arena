@@ -4,7 +4,7 @@ extends Node3D
 @export var health: float = 100
 
 
-var current_health
+var current_health: float
 
 
 var is_local: bool:

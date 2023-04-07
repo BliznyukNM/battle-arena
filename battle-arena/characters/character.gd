@@ -7,10 +7,12 @@ enum Team { None = 0, TeamA = 1, TeamB = 2 }
 @export var health: = 100
 @export var speed: = 1.0
 @export var attack_speed: = 1.0
+
 @export var player_id: int:
     set(value):
         player_id = value
         $Input.set_multiplayer_authority(player_id)
+
 @export var team: Team:
     set(value):
         team = value

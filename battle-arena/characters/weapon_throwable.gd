@@ -7,9 +7,13 @@ extends Weapon
 var _direction: Vector3
 
 
-func throw(point: Vector3) -> void:
-    _direction = (point - position).slide(Vector3.UP).normalized()
+func throw_direction(direction: Vector3) -> void:
+    _direction = direction
     monitoring = true
+
+
+func throw(point: Vector3) -> void:
+    throw_direction((point - position).slide(Vector3.UP).normalized())
 
 
 func _process(delta: float) -> void:
