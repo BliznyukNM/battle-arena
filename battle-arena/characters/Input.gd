@@ -2,6 +2,7 @@ extends MultiplayerSynchronizer
 
 
 signal secondary_attack
+signal evade
 
 
 @export var is_attacking: bool
@@ -31,8 +32,16 @@ func _process(_delta: float) -> void:
     
     if Input.is_action_just_pressed("character.attack.strong"):
         _execute_secondary_attack.rpc()
+    
+    if Input.is_action_just_pressed("character.move.evade"):
+        _execute_evade.rpc()
 
 
-@rpc("call_local")
+@rpc("call_local", "reliable")
 func _execute_secondary_attack() -> void:
     secondary_attack.emit()
+
+
+@rpc("call_local", "reliable")
+func _execute_evade() -> void:
+    evade.emit()

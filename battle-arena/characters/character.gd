@@ -6,6 +6,7 @@ enum Team { None = 0, TeamA = 1, TeamB = 2 }
 
 @export var health: = 100
 @export var speed: = 1.0
+@export var evade_speed: = 5.0
 @export var attack_speed: = 1.0
 
 @export var player_id: int:
@@ -40,6 +41,12 @@ var is_attacking: bool:
     get: return input.is_attacking
 
 
+var _evading_direction: Vector3:
+    set(value):
+        _evading_direction = value
+        animator["parameters/conditions/is_evading"] = value.length_squared() > 0
+
+
 var is_local: bool:
     get: return player_id == multiplayer.get_unique_id()
     
@@ -50,21 +57,23 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-    var movement: Vector2 = input.movement
-    velocity = Vector3(movement.x, 0.0, movement.y)
-    if velocity.length_squared() > 1: velocity = velocity.normalized()
-    
-    animator["parameters/Movement/blend_position"] = velocity.length() * 2
-    velocity *= speed
+    if _evading_direction.length_squared() > 0:
+        velocity = _evading_direction * evade_speed
+    else:
+        var movement: Vector2 = input.movement
+        velocity = Vector3(movement.x, 0.0, movement.y)
+        if velocity.length_squared() > 1: velocity = velocity.normalized()
+        animator["parameters/Movement/blend_position"] = velocity.length() * 2
+        velocity *= speed
+
+        animator["parameters/Attack/speed/scale"] = attack_speed
+        animator["parameters/Combo/speed/scale"] = attack_speed
+        
+        var look_at_point: Vector3 = input.look_at_point
+        look_at(look_at_point)
+        rotation_degrees.x = 0.0
     
     move_and_slide()
-
-    animator["parameters/Attack/speed/scale"] = attack_speed
-    animator["parameters/Combo/speed/scale"] = attack_speed
-    
-    var look_at_point: Vector3 = input.look_at_point
-    look_at(look_at_point)
-    rotation_degrees.x = 0.0
 
 
 func _throw() -> void:
@@ -82,6 +91,14 @@ func _throw() -> void:
 
 func _execute_secondary_attack() -> void:
     animator["parameters/conditions/is_throwing"] = true
+
+
+func _execute_evade() -> void:
+    if _evading_direction.length_squared() > 0: return
+    _evading_direction = (input.look_at_point - position).slide(Vector3.UP) \
+        .normalized()
+    await animator.animation_finished
+    _evading_direction = Vector3.ZERO
 
 
 func _apply_damage(damage: float) -> void:
