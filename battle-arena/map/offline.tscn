@@ -12,6 +12,7 @@
 target = NodePath("../Monk")
 
 [node name="Monk" parent="." index="5" instance=ExtResource("2_teatj")]
+health = 10
 player_id = 1
 team = 1
 

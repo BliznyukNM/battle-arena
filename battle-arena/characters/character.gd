@@ -29,7 +29,11 @@ enum Team { None = 0, TeamA = 1, TeamB = 2 }
 @onready var cup: = preload("res://characters/monk/cup_throwable.tscn")
 
 
-var current_health: float
+var current_health: float:
+    set(value):
+        current_health = value
+        if current_health <= 0.0 and multiplayer.is_server():
+            queue_free()
 
 
 var is_attacking: bool:

@@ -19,3 +19,5 @@ mono_crash.*.json
 
 .cookie
 battle-arena/addons/com.heroiclabs.nakama/
+
+*.app

@@ -3,6 +3,8 @@ extends Node
 
 @onready var health_bar: = $SubViewport/HUD/Container/Health
 @onready var name_label: = $SubViewport/HUD/Container/Name
+@onready var view: = $View
+@onready var viewport: = $SubViewport
 
 
 func _ready() -> void:

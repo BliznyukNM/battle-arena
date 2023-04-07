@@ -25,7 +25,7 @@ func _process(_delta: float) -> void:
         timer.start(cooldown)
 
 
-func _spawn(data: Variant) -> Node:
+func _spawn(_data: Variant) -> Node:
     var instance = spawnee.instantiate()
     instance.position = position
     return instance

@@ -91,3 +91,7 @@ character.attack.strong={
 3d_physics/layer_1="Default"
 3d_physics/layer_2="Team_A"
 3d_physics/layer_3="Team_B"
+
+[rendering]
+
+textures/vram_compression/import_s3tc_bptc=true
