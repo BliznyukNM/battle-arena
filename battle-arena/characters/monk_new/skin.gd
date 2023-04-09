@@ -1,7 +1,7 @@
 extends Node3D
 
 
-var direction: Vector2
+@export var input: PlayerInput
 
 
 @onready var animation: = $AnimationTree
@@ -12,4 +12,4 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-     animation["parameters/blend_position"] = direction
+     animation["parameters/blend_position"] = input.movement

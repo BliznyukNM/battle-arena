@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bx32hx72romqb"]
+[gd_scene load_steps=12 format=3 uid="uid://bx32hx72romqb"]
 
 [ext_resource type="ArrayMesh" uid="uid://b8lkulqrykj1d" path="res://assets/characters/monk/meshes/staff_Agltf_Cylinder010.res" id="1_40uo1"]
 [ext_resource type="Script" path="res://characters/monk_new/weapon.gd" id="1_it0ke"]
@@ -28,6 +28,34 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 1.5708)]
+}
+
+[sub_resource type="Animation" id="Animation_o3hyr"]
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("View:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.127155, 0.957348, 0.945704), Vector3(0.169191, 0.957348, 0.918456), Vector3(0.27761, 0.964459, 0.869784), Vector3(0.332825, 0.968932, 0.851299), Vector3(0.408242, 0.974394, 0.75456), Vector3(0.0977407, 0.525152, 0.583165)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("View:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.25, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-2.10309e-10, 0.0837234, -1.54896), Vector3(-0.00691832, 0.193025, -3.07863), Vector3(-0.00698132, 0.193732, -4.18879), Vector3(-0.0169219, 0.321766, 1.64747), Vector3(-0.0404348, 0.715385, 0.0531989), Vector3(-0.0942799, 0.700633, -2.07744)]
 }
 
 [sub_resource type="Animation" id="Animation_1t3x4"]
@@ -86,34 +114,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0.0061079, 1.15444, -2.07499), Vector3(-0.0596838, 1.08748, -2.07596)]
-}
-
-[sub_resource type="Animation" id="Animation_o3hyr"]
-length = 0.5
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("View:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-0.127155, 0.957348, 0.945704), Vector3(0.169191, 0.957348, 0.918456), Vector3(0.27761, 0.964459, 0.869784), Vector3(0.332825, 0.968932, 0.851299), Vector3(0.408242, 0.974394, 0.75456), Vector3(0.0977407, 0.525152, 0.583165)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("View:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.25, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-2.10309e-10, 0.0837234, -1.54896), Vector3(-0.00691832, 0.193025, -3.07863), Vector3(-0.00698132, 0.193732, -4.18879), Vector3(-0.0169219, 0.321766, 1.64747), Vector3(-0.0404348, 0.715385, 0.0531989), Vector3(-0.0942799, 0.700633, -2.07744)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fe375"]
@@ -218,94 +218,16 @@ _data = {
 "swing_3": SubResource("Animation_k6x1u")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rs2fa"]
-animation = &"attack/swing_1"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s3rym"]
-animation = &"attack/swing_2"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1uk1f"]
-animation = &"attack/swing_3"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_77uq7"]
-animation = &"back_to_idle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d6vwh"]
-animation = &"idle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nhi02"]
-animation = &"movement"
-
-[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_tv8ko"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_d6vwh")
-blend_point_0/pos = 0.0
-blend_point_1/node = SubResource("AnimationNodeAnimation_nhi02")
-blend_point_1/pos = 1.0
-min_space = 0.0
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wh83r"]
-switch_mode = 2
-advance_mode = 2
-advance_expression = "is_attacking"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fjn6c"]
-switch_mode = 2
-advance_mode = 2
-advance_expression = "is_attacking"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4rsmv"]
-xfade_time = 0.1
-priority = 2
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_inksk"]
-xfade_time = 0.1
-priority = 2
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j0xts"]
-xfade_time = 0.1
-priority = 2
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nsd5e"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yy3su"]
-advance_mode = 2
-advance_expression = "is_attacking"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tk68l"]
-xfade_time = 0.3
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_37bay"]
-states/End/position = Vector2(166, 253)
-states/Start/position = Vector2(166, 322.137)
-states/attackswing_1/node = SubResource("AnimationNodeAnimation_rs2fa")
-states/attackswing_1/position = Vector2(362.74, 119)
-states/attackswing_2/node = SubResource("AnimationNodeAnimation_s3rym")
-states/attackswing_2/position = Vector2(693, 119)
-states/attackswing_3/node = SubResource("AnimationNodeAnimation_1uk1f")
-states/attackswing_3/position = Vector2(693, 322.137)
-states/back_to_idle/node = SubResource("AnimationNodeAnimation_77uq7")
-states/back_to_idle/position = Vector2(524.18, 218.884)
-states/movement/node = SubResource("AnimationNodeBlendSpace1D_tv8ko")
-states/movement/position = Vector2(362.74, 322.137)
-transitions = ["attackswing_1", "attackswing_2", SubResource("AnimationNodeStateMachineTransition_wh83r"), "attackswing_2", "attackswing_3", SubResource("AnimationNodeStateMachineTransition_fjn6c"), "attackswing_3", "back_to_idle", SubResource("AnimationNodeStateMachineTransition_4rsmv"), "attackswing_1", "back_to_idle", SubResource("AnimationNodeStateMachineTransition_inksk"), "attackswing_2", "back_to_idle", SubResource("AnimationNodeStateMachineTransition_j0xts"), "Start", "movement", SubResource("AnimationNodeStateMachineTransition_nsd5e"), "movement", "attackswing_1", SubResource("AnimationNodeStateMachineTransition_yy3su"), "back_to_idle", "movement", SubResource("AnimationNodeStateMachineTransition_tk68l")]
-graph_offset = Vector2(-92.82, 57.8841)
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_7ish6"]
-
 [node name="Staff" type="Node3D"]
 script = ExtResource("1_it0ke")
+skill_to_animation = {
+"Swing1": "attack/swing_1",
+"Swing2": "attack/swing_2",
+"Swing3": "attack/swing_3"
+}
 
 [node name="View" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37113e-08, -1, 0, 0.999999, -4.37114e-08, 0, 0, 0, 1, 2.08165e-12, 0.604514, 0.801838)
+transform = Transform3D(-3.61999e-06, -1, 0, 0.999999, -3.61999e-06, 0, 0, 0, 1, 2.08165e-12, 0.604514, 0.801838)
 mesh = ExtResource("1_40uo1")
 
 [node name="Animations" type="AnimationPlayer" parent="."]
@@ -313,10 +235,3 @@ libraries = {
 "": SubResource("AnimationLibrary_fe375"),
 "attack": SubResource("AnimationLibrary_nigde")
 }
-
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeStateMachine_37bay")
-anim_player = NodePath("../Animations")
-advance_expression_base_node = NodePath("..")
-parameters/playback = SubResource("AnimationNodeStateMachinePlayback_7ish6")
-parameters/movement/blend_position = 0

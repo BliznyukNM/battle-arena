@@ -1,4 +1,4 @@
-class_name Weapon extends Area3D
+extends Area3D
 
 
 @export var damage: Array[float]

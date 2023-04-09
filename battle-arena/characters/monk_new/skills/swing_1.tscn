@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b63ty8x5klj2h"]
+
+[ext_resource type="PackedScene" uid="uid://76ddkyhgdvp" path="res://skills/base_skill.tscn" id="1_ufsno"]
+[ext_resource type="Script" path="res://skills/base_attack_skill.gd" id="2_pv3jd"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vaat8"]
+
+[node name="Swing1" instance=ExtResource("1_ufsno")]
+script = ExtResource("2_pv3jd")
+hit_time = 0.3
+hit_register_time = 0.1
+
+[node name="Cooldown" parent="." index="0"]
+wait_time = 0.75
+one_shot = true
+
+[node name="Execution" parent="." index="1"]
+wait_time = 0.75
+one_shot = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.957369, 1.30786)
+shape = SubResource("SphereShape3D_vaat8")

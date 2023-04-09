@@ -1,11 +1,10 @@
-extends MultiplayerSynchronizer
+class_name PlayerInput extends MultiplayerSynchronizer
 
 
-signal secondary_attack
-signal evade
+signal basic_attack(pressed: bool)
+signal secondary_attack(pressed: bool)
 
 
-@export var is_attacking: bool
 @export var movement: Vector2
 @export var look_at_point: Vector3 = Vector3(1, 1, 1)
 
@@ -28,15 +27,17 @@ func _process(_delta: float) -> void:
 
         if intersection: look_at_point = intersection
     
-    is_attacking = Input.is_action_pressed("character.attack.basic")
+    if Input.is_action_just_pressed("character.attack.basic"):
+        _on_action_changed.rpc("basic_attack", true)
+    elif Input.is_action_just_released("character.attack.basic"):
+        _on_action_changed.rpc("basic_attack", false)
     
     if Input.is_action_just_pressed("character.attack.strong"):
-        _emit_signal.rpc("_execute_secondary_attack")
-    
-    if Input.is_action_just_pressed("character.move.evade"):
-        _emit_signal.rpc("_execute_evade")
+        _on_action_changed.rpc("secondary_attack", true)
+    elif Input.is_action_just_released("character.attack.strong"):
+        _on_action_changed.rpc("secondary_attack", false)
 
 
-@rpc("call_local", "reliable")
-func _emit_signal(signal_name: String) -> void:
-    emit_signal(signal_name)
+@rpc("reliable", "call_local")
+func _on_action_changed(action: String, enabled: bool) -> void:
+    emit_signal(action, enabled)
