@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b11eij2qr414"]
+
+[ext_resource type="PackedScene" uid="uid://bapcflr6vjnnl" path="res://characters/monk_new/monk_skin_a.tscn" id="1_55mbh"]
+[ext_resource type="PackedScene" uid="uid://bx32hx72romqb" path="res://characters/monk_new/staff_a.tscn" id="2_swmur"]
+[ext_resource type="Script" path="res://characters/Input.gd" id="3_4bpxn"]
+
+[node name="Monk" type="Node3D"]
+
+[node name="Skin" parent="." instance=ExtResource("1_55mbh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.1, 2.08165e-12)
+
+[node name="Weapon" parent="." instance=ExtResource("2_swmur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.1, 2.08165e-12)
+
+[node name="Input" type="MultiplayerSynchronizer" parent="."]
+script = ExtResource("3_4bpxn")
+
+[node name="Skills" type="Node" parent="."]
+
+[node name="BasicAttack" type="Node" parent="Skills"]

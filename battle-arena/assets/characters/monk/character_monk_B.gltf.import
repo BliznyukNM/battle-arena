@@ -28,5 +28,54 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"meshes": {
+"character_monk_B_Cube10841": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://assets/characters/monk/meshes/character_monk_B_Cube10841.res"
+},
+"character_monk_B_Cube10842": {
+"save_to_file/enabled": true,
+"save_to_file/path": "res://assets/characters/monk/meshes/character_monk_B_Cube10842.res"
+},
+"character_monk_B_Cube10843": {
+"save_to_file/enabled": true,
+"save_to_file/path": "res://assets/characters/monk/meshes/character_monk_B_Cube10843.res"
+},
+"character_monk_B_Cube10844": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://assets/characters/monk/meshes/character_monk_B_Cube10844.res"
+},
+"character_monk_B_Icosphere067": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://assets/characters/monk/meshes/character_monk_B_Icosphere067.res"
+}
+},
+"nodes": {
+"PATH:character_monk_B_body/character_monk_B_armLeft": {
+"import/skip_import": true
+},
+"PATH:character_monk_B_body/character_monk_B_armRight": {
+"import/skip_import": true
+}
+}
+}
 gltf/embedded_image_handling=0

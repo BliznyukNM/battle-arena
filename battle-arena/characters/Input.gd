@@ -31,17 +31,12 @@ func _process(_delta: float) -> void:
     is_attacking = Input.is_action_pressed("character.attack.basic")
     
     if Input.is_action_just_pressed("character.attack.strong"):
-        _execute_secondary_attack.rpc()
+        _emit_signal.rpc("_execute_secondary_attack")
     
     if Input.is_action_just_pressed("character.move.evade"):
-        _execute_evade.rpc()
+        _emit_signal.rpc("_execute_evade")
 
 
 @rpc("call_local", "reliable")
-func _execute_secondary_attack() -> void:
-    secondary_attack.emit()
-
-
-@rpc("call_local", "reliable")
-func _execute_evade() -> void:
-    evade.emit()
+func _emit_signal(signal_name: String) -> void:
+    emit_signal(signal_name)

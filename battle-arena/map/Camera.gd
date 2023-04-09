@@ -6,7 +6,7 @@ extends Camera3D
 @export var target: Node3D:
     set(value):
         target = value
-        position = target.position + offset
+        if target: position = target.position + offset
 
 
 func _process(delta: float) -> void:
