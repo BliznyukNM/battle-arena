@@ -1,4 +1,4 @@
-extends Weapon
+extends "res://characters/Weapon.gd"
 
 
 @export var speed: = 5

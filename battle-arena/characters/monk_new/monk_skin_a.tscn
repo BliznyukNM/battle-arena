@@ -93,4 +93,4 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeBlendSpace2D_o86lj")
 anim_player = NodePath("../Animations")
-parameters/blend_position = Vector2(0.303817, 0.394231)
+parameters/blend_position = Vector2(0.931468, -0.011889)
