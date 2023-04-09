@@ -43,13 +43,13 @@ _data = {
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dwibv"]
-animation = &"movement/left"
+animation = &"movement/right"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vbtua"]
 animation = &"movement/forward"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4gms8"]
-animation = &"movement/right"
+animation = &"movement/left"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p61w5"]
 animation = &"movement/back"

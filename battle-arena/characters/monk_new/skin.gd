@@ -14,5 +14,4 @@ func _ready() -> void:
 func _process(delta: float) -> void:
     var angle: float = owner.rotation.y
     var animation_direction: = input.movement.rotated(angle)
-    animation_direction.x *= -1
     animation["parameters/blend_position"] = animation_direction
