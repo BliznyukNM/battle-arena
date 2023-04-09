@@ -1,10 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://bapcflr6vjnnl"]
+[gd_scene load_steps=14 format=3 uid="uid://drk870rf7vm7a"]
 
-[ext_resource type="Script" path="res://characters/monk_new/skin.gd" id="1_cspuj"]
-[ext_resource type="ArrayMesh" uid="uid://bblqujqvaovow" path="res://assets/characters/monk/meshes/character_monk_A_Cube10802.res" id="1_cwyk7"]
-[ext_resource type="ArrayMesh" uid="uid://cuijpkxjdblyd" path="res://assets/characters/monk/meshes/character_monk_A_Cube10806.res" id="2_bfo1u"]
-[ext_resource type="ArrayMesh" uid="uid://bx3yorlrc6fpc" path="res://assets/characters/monk/meshes/character_monk_A_Icosphere054.res" id="3_5uxut"]
-[ext_resource type="AnimationLibrary" uid="uid://bole5xmlnq8f2" path="res://characters/monk_new/movement.res" id="5_xh3na"]
+[ext_resource type="AnimationLibrary" uid="uid://bole5xmlnq8f2" path="res://characters/monk/movement.res" id="1_8ypcx"]
+[ext_resource type="Script" path="res://characters/monk/skins/skin.gd" id="1_ki3bu"]
+[ext_resource type="ArrayMesh" uid="uid://bblqujqvaovow" path="res://assets/characters/monk/meshes/character_monk_A_Cube10802.res" id="1_t3abb"]
+[ext_resource type="ArrayMesh" uid="uid://cuijpkxjdblyd" path="res://assets/characters/monk/meshes/character_monk_A_Cube10806.res" id="2_0j70v"]
+[ext_resource type="ArrayMesh" uid="uid://bx3yorlrc6fpc" path="res://assets/characters/monk/meshes/character_monk_A_Icosphere054.res" id="3_ggsap"]
 
 [sub_resource type="Animation" id="Animation_5j14w"]
 length = 0.001
@@ -70,27 +70,27 @@ blend_point_4/node = SubResource("AnimationNodeAnimation_w2xyq")
 blend_point_4/pos = Vector2(0, 0)
 
 [node name="MonkSkin" type="Node3D"]
-script = ExtResource("1_cspuj")
+script = ExtResource("1_ki3bu")
 
 [node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, -4.1633e-12, 4.1633e-12, 4.1633e-12, 1, -4.1633e-12, -4.1633e-12, 4.1633e-12, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
-mesh = ExtResource("1_cwyk7")
+mesh = ExtResource("1_t3abb")
 
 [node name="Head" type="MeshInstance3D" parent="Body"]
 transform = Transform3D(1, -4.1633e-12, 4.1633e-12, 4.1633e-12, 1, -4.1633e-12, -4.1633e-12, 4.1633e-12, 1, 0, 0.688017, 0)
-mesh = ExtResource("2_bfo1u")
+mesh = ExtResource("2_0j70v")
 
 [node name="Necklace" type="MeshInstance3D" parent="Body"]
-mesh = ExtResource("3_5uxut")
+mesh = ExtResource("3_ggsap")
 
-[node name="Animations" type="AnimationPlayer" parent="."]
+[node name="Animation" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Body")
 libraries = {
 "": SubResource("AnimationLibrary_d8kcw"),
-"movement": ExtResource("5_xh3na")
+"movement": ExtResource("1_8ypcx")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeBlendSpace2D_o86lj")
-anim_player = NodePath("../Animations")
-parameters/blend_position = Vector2(0.931468, -0.011889)
+anim_player = NodePath("../Animation")
+parameters/blend_position = Vector2(0.303817, 0.394231)

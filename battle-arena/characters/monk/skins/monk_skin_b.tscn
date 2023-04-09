@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3j6amnluujtr"]
+[gd_scene load_steps=5 format=3]
 
-[ext_resource type="PackedScene" uid="uid://ct1mxic06iolp" path="res://characters/monk_new/monk_skin.tscn" id="1_f4tnf"]
+[ext_resource type="PackedScene" path="res://characters/monk/skins/monk_skin_a.tscn" id="1_f4tnf"]
 [ext_resource type="ArrayMesh" uid="uid://cgx4kyrq2ct47" path="res://assets/characters/monk/meshes/character_monk_B_Cube10841.res" id="2_7ki5h"]
 [ext_resource type="ArrayMesh" uid="uid://dswi0hanvw0em" path="res://assets/characters/monk/meshes/character_monk_B_Cube10844.res" id="3_1haav"]
 [ext_resource type="ArrayMesh" uid="uid://qsbueetil5yx" path="res://assets/characters/monk/meshes/character_monk_B_Icosphere067.res" id="4_7oxxo"]

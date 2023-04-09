@@ -1,7 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://bx32hx72romqb"]
+[gd_scene load_steps=12 format=3]
 
+[ext_resource type="Script" path="res://characters/monk/weapons/weapon.gd" id="1_8bm0e"]
 [ext_resource type="ArrayMesh" uid="uid://b8lkulqrykj1d" path="res://assets/characters/monk/meshes/staff_Agltf_Cylinder010.res" id="1_40uo1"]
-[ext_resource type="Script" path="res://characters/monk_new/weapon.gd" id="1_it0ke"]
 
 [sub_resource type="Animation" id="Animation_hid2m"]
 length = 0.001
@@ -219,7 +219,7 @@ _data = {
 }
 
 [node name="Staff" type="Node3D"]
-script = ExtResource("1_it0ke")
+script = ExtResource("1_8bm0e")
 skill_to_animation = {
 "Swing1": "attack/swing_1",
 "Swing2": "attack/swing_2",

@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://boulj8buo8ukk"]
 
 [ext_resource type="PackedScene" uid="uid://flt4bdecd0xj" path="res://map/map.tscn" id="1_j7vok"]
-[ext_resource type="PackedScene" uid="uid://ch2b6qkysmsp1" path="res://characters/monk_new/monk.tscn" id="5_f0cbp"]
+[ext_resource type="PackedScene" uid="uid://oq7mpxlxlk1x" path="res://characters/monk/monk.tscn" id="2_yxrme"]
 
 [node name="Map" instance=ExtResource("1_j7vok")]
 
 [node name="Camera" parent="." index="1" node_paths=PackedStringArray("target")]
 target = NodePath("")
 
-[node name="Monk" parent="." index="5" instance=ExtResource("5_f0cbp")]
+[node name="Monk" parent="." index="5" instance=ExtResource("2_yxrme")]
