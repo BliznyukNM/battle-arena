@@ -13,6 +13,7 @@
 [node name="Skin" parent="." node_paths=PackedStringArray("input") instance=ExtResource("1_j7ccy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.1, 2.08165e-12)
 input = NodePath("../Input")
+acceleration = 12.0
 
 [node name="Weapon" parent="." instance=ExtResource("2_nqx7i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.1, 2.08165e-12)
