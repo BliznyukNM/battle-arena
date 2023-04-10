@@ -6,6 +6,7 @@
 [node name="Map" instance=ExtResource("1_j7vok")]
 
 [node name="Camera" parent="." index="1" node_paths=PackedStringArray("target")]
-target = NodePath("")
+target = NodePath("../Monk")
+max_distance = 7.0
 
 [node name="Monk" parent="." index="5" instance=ExtResource("2_yxrme")]
