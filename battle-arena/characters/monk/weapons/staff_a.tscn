@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3]
+[gd_scene load_steps=12 format=3 uid="uid://c6ip2utb0o38d"]
 
 [ext_resource type="Script" path="res://characters/monk/weapons/weapon.gd" id="1_8bm0e"]
 [ext_resource type="ArrayMesh" uid="uid://b8lkulqrykj1d" path="res://assets/characters/monk/meshes/staff_Agltf_Cylinder010.res" id="1_40uo1"]
@@ -132,13 +132,13 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("View:position")
-tracks/0/interp = 2
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.25, 0.3, 0.35, 0.6, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0.397333, 0.525153, 0.368936), Vector3(0.49104, 0.934885, 0.380423), Vector3(0.408942, 1.3323, 0.629956), Vector3(0.100339, 1.23099, 0.93905), Vector3(0.0505082, 0.887712, 1.0143), Vector3(0.0112013, 0.347557, 0.879818), Vector3(0.0112013, 0.347557, 0.879818), Vector3(0.507421, 0.808156, 0.474709)]
+"values": [Vector3(0.397333, 0.525153, 0.368936), Vector3(0.702669, 1.08162, 0.0664273), Vector3(0.724833, 1.61086, 0.29024), Vector3(0.110365, 1.38289, 1.03238), Vector3(0.0505082, 0.887712, 1.0143), Vector3(0.0112013, 0.347557, 0.879818), Vector3(0.0112013, 0.347557, 0.879818), Vector3(0.507421, 0.808156, 0.474709)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -150,7 +150,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.25, 0.3, 0.35, 0.6, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.143378, 1.13424, -2.08071), Vector3(-0.119917, 0.931031, -1.5332), Vector3(-0.100137, 0.761352, -1.02699), Vector3(-0.35107, -2.09814, 0.0548471), Vector3(-0.216448, -2.29816, -0.933135), Vector3(-0.216448, -2.29816, -1.70436), Vector3(-0.216448, -2.29816, -1.70436), Vector3(-0.216448, -2.29816, -2.21147)]
+"values": [Vector3(-0.143378, 1.13424, -2.08071), Vector3(-0.119917, 0.931031, -1.19829), Vector3(-0.100137, 0.761352, -0.74004), Vector3(-0.35107, -2.09814, -0.437214), Vector3(-0.216448, -2.29816, -0.933135), Vector3(-0.216448, -2.29816, -1.70436), Vector3(-0.216448, -2.29816, -1.70436), Vector3(-0.216448, -2.29816, -2.21147)]
 }
 
 [sub_resource type="Animation" id="Animation_1keb5"]
@@ -161,25 +161,25 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("View:position")
-tracks/0/interp = 2
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.25, 0.3, 0.35, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.15, 0.2, 0.25, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1.41421, 1),
 "update": 0,
-"values": [Vector3(0.507421, 0.808156, 0.474709), Vector3(0.331191, 0.81358, 0.674474), Vector3(0.0748107, 0.821471, 0.965091), Vector3(0.118211, 1.18069, 1.03513), Vector3(0.184028, 0.958582, 0.887745), Vector3(0.184028, 0.958582, 0.887745), Vector3(0.259312, 0.704531, 0.719156)]
+"values": [Vector3(0.507421, 0.808156, 0.474709), Vector3(0.331191, 0.81358, 0.674474), Vector3(0.0748107, 0.821471, 0.965091), Vector3(0.249085, 0.864924, 0.783682), Vector3(0.243841, 0.873115, 1.18846), Vector3(0.259312, 0.704531, 0.719156)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("View:rotation")
-tracks/1/interp = 2
+tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.25, 0.3, 0.35, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.15, 0.2, 0.25, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1.56917, 1),
 "update": 0,
-"values": [Vector3(-0.216448, -2.29816, -2.21147), Vector3(-0.216448, -2.29816, -1.54995), Vector3(-0.216448, -2.29816, -0.78637), Vector3(-0.216448, -2.29816, -0.063699), Vector3(-0.216448, -2.29816, 0.975994), Vector3(-0.216448, -2.29816, 1.33295), Vector3(-0.216448, -2.29816, 0.975994)]
+"values": [Vector3(-0.216448, -2.29816, -2.21147), Vector3(-0.216448, -2.29816, -1.54995), Vector3(-0.216448, -2.29816, -0.78637), Vector3(-0.216448, -2.29816, -0.063699), Vector3(-0.182585, -2.16326, 1.71229), Vector3(-0.216448, -2.29816, 0.975994)]
 }
 
 [sub_resource type="Animation" id="Animation_k6x1u"]

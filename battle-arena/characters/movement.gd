@@ -15,7 +15,6 @@ func _process(delta: float) -> void:
     owner.velocity = velocity
     owner.move_and_slide()
     
-    var owner_basis: Basis = owner.transform.basis
-    var new_basis: Basis = owner_basis.looking_at(owner.position - input.look_at_point)
+    var new_basis: Basis = Basis.looking_at(owner.position - input.look_at_point)
     var weight = delta * rotation_speed
-    owner.transform.basis = lerp(owner_basis, new_basis, weight)
+    owner.transform.basis = lerp(owner.transform.basis, new_basis, weight)

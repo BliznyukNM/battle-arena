@@ -16,6 +16,6 @@ func on_skill_activated(skill: BaseSkill) -> void:
     var animation_name: String = skill_to_animation[skill.name]
     animator.current_animation = ""
     animator.clear_queue()
-    animator.play(animation_name, 0.1)
+    animator.play(animation_name)
     animator.queue("back_to_idle")
     animator.queue("idle")

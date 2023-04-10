@@ -1,12 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://oq7mpxlxlk1x"]
+[gd_scene load_steps=9 format=3 uid="uid://oq7mpxlxlk1x"]
 
 [ext_resource type="PackedScene" uid="uid://drk870rf7vm7a" path="res://characters/monk/skins/monk_skin_a.tscn" id="1_j7ccy"]
-[ext_resource type="PackedScene" path="res://characters/monk/weapons/staff_a.tscn" id="2_nqx7i"]
+[ext_resource type="PackedScene" uid="uid://c6ip2utb0o38d" path="res://characters/monk/weapons/staff_a.tscn" id="2_nqx7i"]
 [ext_resource type="Script" path="res://skills/skill_sequence.gd" id="3_8cmn1"]
 [ext_resource type="PackedScene" uid="uid://b63ty8x5klj2h" path="res://characters/monk/skills/swing.tscn" id="4_dw16p"]
 [ext_resource type="Script" path="res://characters/movement.gd" id="5_ncu48"]
 [ext_resource type="PackedScene" uid="uid://cr15w6fww7s2g" path="res://characters/monk/skills/final_swing.tscn" id="5_q6fe0"]
 [ext_resource type="Script" path="res://characters/Input.gd" id="6_isohw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cc0dj"]
+radius = 0.6
+height = 1.8
 
 [node name="Monk" type="CharacterBody3D"]
 
@@ -35,6 +39,10 @@ input = NodePath("../Input")
 
 [node name="Input" type="MultiplayerSynchronizer" parent="."]
 script = ExtResource("6_isohw")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.954418, 0.0368596)
+shape = SubResource("CapsuleShape3D_cc0dj")
 
 [connection signal="activated" from="Skills/BasicAttack/Swing1" to="Weapon" method="on_skill_activated"]
 [connection signal="activated" from="Skills/BasicAttack/Swing2" to="Weapon" method="on_skill_activated"]

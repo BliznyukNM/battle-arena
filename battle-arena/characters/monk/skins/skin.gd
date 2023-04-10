@@ -14,6 +14,5 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
     var last_direction: Vector2 = animation["parameters/blend_position"]
-    var angle: float = owner.rotation.y
-    var direction: = input.movement.rotated(angle)
+    var direction: = input.movement.rotated(owner.rotation.y)
     animation["parameters/blend_position"] = lerp(last_direction, direction, delta * acceleration)
