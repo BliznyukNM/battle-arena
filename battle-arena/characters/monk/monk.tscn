@@ -36,6 +36,7 @@ script = ExtResource("3_8cmn1")
 [node name="Movement" type="Node" parent="." node_paths=PackedStringArray("input")]
 script = ExtResource("5_ncu48")
 input = NodePath("../Input")
+rotation_speed = 15.0
 
 [node name="Input" type="MultiplayerSynchronizer" parent="."]
 script = ExtResource("6_isohw")
@@ -45,6 +46,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.954418, 0.0368596)
 shape = SubResource("CapsuleShape3D_cc0dj")
 
 [connection signal="activated" from="Skills/BasicAttack/Swing1" to="Weapon" method="on_skill_activated"]
+[connection signal="activated" from="Skills/BasicAttack/Swing1" to="Movement" method="_on_skill_activate"]
 [connection signal="activated" from="Skills/BasicAttack/Swing2" to="Weapon" method="on_skill_activated"]
+[connection signal="activated" from="Skills/BasicAttack/Swing2" to="Movement" method="_on_skill_activate"]
 [connection signal="activated" from="Skills/BasicAttack/Swing3" to="Weapon" method="on_skill_activated"]
+[connection signal="activated" from="Skills/BasicAttack/Swing3" to="Movement" method="_on_skill_activate"]
 [connection signal="basic_attack" from="Input" to="Skills/BasicAttack" method="activate"]

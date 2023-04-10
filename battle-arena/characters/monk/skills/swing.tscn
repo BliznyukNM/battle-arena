@@ -15,7 +15,7 @@ wait_time = 0.75
 one_shot = true
 
 [node name="Execution" parent="." index="1"]
-wait_time = 0.75
+wait_time = 0.65
 one_shot = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]

@@ -6,6 +6,9 @@ extends Node
 @export var rotation_speed: float = 10.0
 
 
+var _is_rotating: = true
+
+
 func _process(delta: float) -> void:
     var movement: Vector2 = input.movement
     var velocity: = Vector3(movement.x, 0.0, movement.y)
@@ -15,6 +18,14 @@ func _process(delta: float) -> void:
     owner.velocity = velocity
     owner.move_and_slide()
     
+    if not _is_rotating: return
+    
     var new_basis: Basis = Basis.looking_at(owner.position - input.look_at_point)
     var weight = delta * rotation_speed
     owner.transform.basis = lerp(owner.transform.basis, new_basis, weight)
+
+
+func _on_skill_activate(skill: BaseSkill) -> void:
+    _is_rotating = false
+    await skill.execution.timeout
+    _is_rotating = true
