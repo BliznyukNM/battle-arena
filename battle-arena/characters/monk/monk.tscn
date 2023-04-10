@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://oq7mpxlxlk1x"]
+[gd_scene load_steps=11 format=3 uid="uid://oq7mpxlxlk1x"]
 
 [ext_resource type="PackedScene" uid="uid://drk870rf7vm7a" path="res://characters/monk/skins/monk_skin_a.tscn" id="1_j7ccy"]
 [ext_resource type="PackedScene" uid="uid://c6ip2utb0o38d" path="res://characters/monk/weapons/staff_a.tscn" id="2_nqx7i"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://characters/movement.gd" id="5_ncu48"]
 [ext_resource type="PackedScene" uid="uid://cr15w6fww7s2g" path="res://characters/monk/skills/final_swing.tscn" id="5_q6fe0"]
 [ext_resource type="Script" path="res://characters/Input.gd" id="6_isohw"]
+[ext_resource type="Script" path="res://characters/health.gd" id="6_lfg0i"]
+[ext_resource type="PackedScene" uid="uid://7xkefn5xpy47" path="res://hud/hud.tscn" id="9_3im8r"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cc0dj"]
 radius = 0.6
@@ -30,8 +32,13 @@ script = ExtResource("3_8cmn1")
 [node name="Swing1" parent="Skills/BasicAttack" instance=ExtResource("4_dw16p")]
 
 [node name="Swing2" parent="Skills/BasicAttack" instance=ExtResource("4_dw16p")]
+hit_time = 0.25
 
 [node name="Swing3" parent="Skills/BasicAttack" instance=ExtResource("5_q6fe0")]
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("6_lfg0i")
+max_value = 500
 
 [node name="Movement" type="Node" parent="." node_paths=PackedStringArray("input")]
 script = ExtResource("5_ncu48")
@@ -44,6 +51,10 @@ script = ExtResource("6_isohw")
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.954418, 0.0368596)
 shape = SubResource("CapsuleShape3D_cc0dj")
+
+[node name="HUD" parent="." node_paths=PackedStringArray("health") instance=ExtResource("9_3im8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.36563, 0)
+health = NodePath("../Health")
 
 [connection signal="activated" from="Skills/BasicAttack/Swing1" to="Weapon" method="on_skill_activated"]
 [connection signal="activated" from="Skills/BasicAttack/Swing1" to="Movement" method="_on_skill_activate"]

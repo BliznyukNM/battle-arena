@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://skills/base_skill.gd" id="1_i4lru"]
 
 [node name="BaseSkill" type="Area3D"]
-monitoring = false
 monitorable = false
 script = ExtResource("1_i4lru")
 

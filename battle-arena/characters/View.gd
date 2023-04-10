@@ -5,7 +5,7 @@ extends MeshInstance3D
 
 
 func blink(_damage: float) -> void:
-    var color = Color.RED if owner.is_local else Color.WHITE
+    var color = Color.RED # TODO: if owner.is_local else Color.WHITE
     var tween = create_tween()
     
     if material_overlay == null: material_overlay = blink_material.duplicate()

@@ -1,33 +1,30 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1qwyrs0h5rsv"]
+[gd_scene load_steps=6 format=3 uid="uid://b1qwyrs0h5rsv"]
 
 [ext_resource type="PackedScene" uid="uid://cctq8rylkflvh" path="res://characters/dummy/dummy.tscn" id="1_gykvh"]
-[ext_resource type="Script" path="res://characters/dummy/Dummy.gd" id="2_3xxwk"]
 [ext_resource type="PackedScene" uid="uid://7xkefn5xpy47" path="res://hud/hud.tscn" id="2_bau5m"]
 [ext_resource type="Script" path="res://characters/HitBox.gd" id="2_ff6yy"]
+[ext_resource type="Script" path="res://characters/health.gd" id="4_car63"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_tv83v"]
-radius = 0.8
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ar8u2"]
-properties/0/path = NodePath(".:health")
-properties/0/spawn = true
-properties/0/sync = true
+radius = 0.7
 
 [node name="HittableDummy" instance=ExtResource("1_gykvh")]
-script = ExtResource("2_3xxwk")
 
-[node name="HUD" parent="." index="2" instance=ExtResource("2_bau5m")]
+[node name="HUD" parent="." index="2" node_paths=PackedStringArray("health") instance=ExtResource("2_bau5m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.77264, 0)
+health = NodePath("../Health")
 
 [node name="HitBox" type="Area3D" parent="." index="3"]
+monitoring = false
 script = ExtResource("2_ff6yy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
 shape = SubResource("CylinderShape3D_tv83v")
 
-[node name="Synchronizer" type="MultiplayerSynchronizer" parent="." index="4"]
-replication_config = SubResource("SceneReplicationConfig_ar8u2")
+[node name="Health" type="Node" parent="." index="4"]
+script = ExtResource("4_car63")
+max_value = 50
 
-[connection signal="on_hit" from="HitBox" to="." method="apply_damage"]
 [connection signal="on_hit" from="HitBox" to="trainingdummy_a" method="blink"]
+[connection signal="on_hit" from="HitBox" to="Health" method="damage"]
