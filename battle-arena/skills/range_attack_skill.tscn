@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt7dp8amhbd5b"]
+
+[ext_resource type="PackedScene" uid="uid://76ddkyhgdvp" path="res://skills/base_skill.tscn" id="1_mmles"]
+[ext_resource type="Script" path="res://skills/range_attack_skill.gd" id="2_seuh6"]
+
+[node name="RangeAttack" instance=ExtResource("1_mmles")]
+monitoring = false
+script = ExtResource("2_seuh6")
+projectile = null
+spawn_delay = 2.08165e-12
+
+[node name="SpawnPosition" type="Node3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 1)
+
+[node name="Container" type="Node" parent="." index="3"]

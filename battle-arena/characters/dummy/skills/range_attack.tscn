@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cb2uoihgq5yrq"]
+
+[ext_resource type="PackedScene" uid="uid://dt7dp8amhbd5b" path="res://skills/range_attack_skill.tscn" id="1_rpxaj"]
+[ext_resource type="PackedScene" uid="uid://dq65b75wnotso" path="res://characters/dummy/fireball.tscn" id="2_ujciw"]
+
+[node name="RangeAttack" instance=ExtResource("1_rpxaj")]
+projectile = ExtResource("2_ujciw")
+spawn_delay = 0.3
+
+[node name="Cooldown" parent="." index="0"]
+wait_time = 3.0
+
+[node name="Execution" parent="." index="1"]
+wait_time = 0.3

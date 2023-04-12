@@ -1,6 +1,4 @@
-[gd_scene load_steps=9 format=3]
-
-[ext_resource type="Script" path="res://characters/blinker.gd" id="2_4qt2t"]
+[gd_scene load_steps=8 format=3 uid="uid://t26xifgp5dgp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e6td8"]
 resource_name = "BrownDark"
@@ -121,15 +119,12 @@ shadow_mesh = SubResource("ArrayMesh_cv8m4")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5lmk6"]
 radius = 0.626995
 
-[node name="Dummy" type="Node3D"]
+[node name="Dummy" type="StaticBody3D"]
 
-[node name="trainingdummy_a" type="MeshInstance3D" parent="."]
+[node name="View" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_fc8fa")
 skeleton = NodePath("")
-script = ExtResource("2_4qt2t")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
 shape = SubResource("CapsuleShape3D_5lmk6")
