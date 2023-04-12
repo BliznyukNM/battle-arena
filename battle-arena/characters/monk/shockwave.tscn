@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3htset4mieyc"]
+
+[ext_resource type="Texture2D" uid="uid://bjc2dpb03uogx" path="res://assets/vfx/twirl_03.png" id="1_02hb5"]
+[ext_resource type="Script" path="res://characters/projectile.gd" id="1_vxgbf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pa18n"]
+size = Vector3(2.91711, 1, 1.06981)
+
+[node name="Shockwave" type="Area3D"]
+monitorable = false
+script = ExtResource("1_vxgbf")
+damage = 10
+speed = 15.0
+max_travel_distance = 15.0
+
+[node name="View" type="Sprite3D" parent="."]
+transform = Transform3D(-0.364763, 0, -0.9311, 0, 1, 0, 0.9311, 0, -0.364763, -0.29833, 0, -0.40015)
+axis = 1
+double_sided = false
+texture = ExtResource("1_02hb5")
+region_enabled = true
+region_rect = Rect2(229, 0.5, 284, 511)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_pa18n")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://3yhpuldocttv"]
+
+[ext_resource type="PackedScene" uid="uid://76ddkyhgdvp" path="res://skills/base_skill.tscn" id="1_luyj7"]
+[ext_resource type="Script" path="res://skills/range_attack_skill.gd" id="2_hdxt4"]
+[ext_resource type="PackedScene" uid="uid://d3htset4mieyc" path="res://characters/monk/shockwave.tscn" id="3_8wx4d"]
+
+[node name="SecondaryAttack" instance=ExtResource("1_luyj7")]
+monitoring = false
+script = ExtResource("2_hdxt4")
+projectile = ExtResource("3_8wx4d")
+spawn_delay = 0.4
+
+[node name="Cooldown" parent="." index="0"]
+wait_time = 4.0
+
+[node name="Execution" parent="." index="1"]
+wait_time = 0.5
+
+[node name="SpawnPosition" type="Node3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 1)
+
+[node name="Container" type="Node" parent="." index="3"]

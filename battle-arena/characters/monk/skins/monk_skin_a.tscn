@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://drk870rf7vm7a"]
+[gd_scene load_steps=19 format=3 uid="uid://drk870rf7vm7a"]
 
 [ext_resource type="AnimationLibrary" uid="uid://bole5xmlnq8f2" path="res://characters/monk/movement.res" id="1_8ypcx"]
 [ext_resource type="Script" path="res://characters/monk/skins/skin.gd" id="1_ki3bu"]
@@ -42,6 +42,43 @@ _data = {
 "RESET": SubResource("Animation_5j14w")
 }
 
+[sub_resource type="Animation" id="Animation_kfvwv"]
+length = 0.5
+step = 0.05
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12, 1, 0.1, 1, 2.08165e-12, -0.541, 2.08165e-12, 0.841, 0.2, 1, 2.08165e-12, -1, 2.08165e-12, 2.08165e-12, 0.3, 1, 2.08165e-12, -0.707, 2.08165e-12, -0.707, 0.4, 1, 2.08165e-12, -0.131, 2.08165e-12, 0.991, 0.5, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12, 1)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12, 1, 0.1, 1, 2.08165e-12, 0.423, 2.08165e-12, 0.906, 0.2, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12, 1, 0.3, 1, 2.08165e-12, -0.423, 2.08165e-12, 0.906, 0.4, 1, 2.08165e-12, 0.131, 2.08165e-12, 0.991, 0.5, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12, 1)
+tracks/3/type = "position_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Head")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 0.688017, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_avelw"]
+_data = {
+"secondary": SubResource("Animation_kfvwv")
+}
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dwibv"]
 animation = &"movement/right"
 
@@ -69,6 +106,23 @@ blend_point_3/pos = Vector2(0, -1)
 blend_point_4/node = SubResource("AnimationNodeAnimation_w2xyq")
 blend_point_4/pos = Vector2(0, 0)
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gmgmj"]
+animation = &"attack/secondary"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_o4x0t"]
+filters = [".", "Head"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_huiln"]
+graph_offset = Vector2(-903.24, -82)
+nodes/movement/node = SubResource("AnimationNodeBlendSpace2D_o86lj")
+nodes/movement/position = Vector2(-180, 120)
+nodes/output/position = Vector2(280, 120)
+nodes/secondary_animation/node = SubResource("AnimationNodeAnimation_gmgmj")
+nodes/secondary_animation/position = Vector2(-200, 300)
+nodes/secondary_attack/node = SubResource("AnimationNodeOneShot_o4x0t")
+nodes/secondary_attack/position = Vector2(40, 120)
+node_connections = [&"output", 0, &"secondary_attack", &"secondary_attack", 0, &"movement", &"secondary_attack", 1, &"secondary_animation"]
+
 [node name="MonkSkin" type="Node3D"]
 script = ExtResource("1_ki3bu")
 
@@ -87,10 +141,13 @@ mesh = ExtResource("3_ggsap")
 root_node = NodePath("../Body")
 libraries = {
 "": SubResource("AnimationLibrary_d8kcw"),
+"attack": SubResource("AnimationLibrary_avelw"),
 "movement": ExtResource("1_8ypcx")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeBlendSpace2D_o86lj")
+tree_root = SubResource("AnimationNodeBlendTree_huiln")
 anim_player = NodePath("../Animation")
-parameters/blend_position = Vector2(0.303817, 0.394231)
+parameters/movement/blend_position = Vector2(2.08165e-12, 2.08165e-12)
+parameters/secondary_attack/active = false
+parameters/secondary_attack/request = 0

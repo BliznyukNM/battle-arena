@@ -9,9 +9,15 @@ signal activated(skill: BaseSkill)
 
 
 func activate(pressed: bool) -> void:
+    if not cooldown.is_stopped(): return
+    
     if pressed: _on_pressed()
     else: _on_released()
 
 
-func _on_pressed() -> void: pass
+func _on_pressed() -> void:
+    execution.start()
+    cooldown.start()
+    activated.emit(self)
+
 func _on_released() -> void: pass

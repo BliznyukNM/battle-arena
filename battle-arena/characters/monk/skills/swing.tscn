@@ -20,5 +20,5 @@ wait_time = 0.4
 one_shot = true
 
 [node name="Area" type="CollisionShape3D" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.957369, 1.71605)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 1.716)
 shape = SubResource("SphereShape3D_vaat8")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://oq7mpxlxlk1x"]
+[gd_scene load_steps=13 format=3 uid="uid://oq7mpxlxlk1x"]
 
 [ext_resource type="PackedScene" uid="uid://drk870rf7vm7a" path="res://characters/monk/skins/monk_skin_a.tscn" id="1_j7ccy"]
 [ext_resource type="PackedScene" uid="uid://c6ip2utb0o38d" path="res://characters/monk/weapons/staff_a.tscn" id="2_nqx7i"]
@@ -6,8 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://b63ty8x5klj2h" path="res://characters/monk/skills/swing.tscn" id="4_dw16p"]
 [ext_resource type="Script" path="res://characters/movement.gd" id="5_ncu48"]
 [ext_resource type="PackedScene" uid="uid://cr15w6fww7s2g" path="res://characters/monk/skills/final_swing.tscn" id="5_q6fe0"]
+[ext_resource type="PackedScene" uid="uid://3yhpuldocttv" path="res://characters/monk/skills/secondary.tscn" id="6_i15dq"]
 [ext_resource type="Script" path="res://characters/Input.gd" id="6_isohw"]
 [ext_resource type="Script" path="res://characters/health.gd" id="6_lfg0i"]
+[ext_resource type="Script" path="res://characters/rotation.gd" id="8_vhdio"]
 [ext_resource type="PackedScene" uid="uid://7xkefn5xpy47" path="res://hud/hud.tscn" id="9_3im8r"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cc0dj"]
@@ -20,9 +22,18 @@ height = 1.8
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.1, 2.08165e-12)
 input = NodePath("../Input")
 acceleration = 12.0
+skill_to_animation = {
+"SecondaryAttack": "secondary_attack"
+}
 
 [node name="Weapon" parent="." instance=ExtResource("2_nqx7i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.1, 2.08165e-12)
+skill_to_animation = {
+"SecondaryAttack": "attack/secondary",
+"Swing1": "attack/swing_1",
+"Swing2": "attack/swing_2",
+"Swing3": "attack/swing_3"
+}
 
 [node name="Skills" type="Node3D" parent="."]
 
@@ -36,6 +47,8 @@ hit_time = 0.25
 
 [node name="Swing3" parent="Skills/BasicAttack" instance=ExtResource("5_q6fe0")]
 
+[node name="SecondaryAttack" parent="Skills" instance=ExtResource("6_i15dq")]
+
 [node name="Health" type="Node" parent="."]
 script = ExtResource("6_lfg0i")
 max_value = 500
@@ -43,23 +56,33 @@ max_value = 500
 [node name="Movement" type="Node" parent="." node_paths=PackedStringArray("input")]
 script = ExtResource("5_ncu48")
 input = NodePath("../Input")
-rotation_speed = 15.0
+
+[node name="Rotation" type="Node" parent="." node_paths=PackedStringArray("input")]
+script = ExtResource("8_vhdio")
+input = NodePath("../Input")
 
 [node name="Input" type="MultiplayerSynchronizer" parent="."]
 script = ExtResource("6_isohw")
-
-[node name="Collision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.954418, 0.0368596)
-shape = SubResource("CapsuleShape3D_cc0dj")
 
 [node name="HUD" parent="." node_paths=PackedStringArray("health") instance=ExtResource("9_3im8r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.36563, 0)
 health = NodePath("../Health")
 
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.954418, 0.0368596)
+shape = SubResource("CapsuleShape3D_cc0dj")
+
 [connection signal="activated" from="Skills/BasicAttack/Swing1" to="Weapon" method="on_skill_activated"]
 [connection signal="activated" from="Skills/BasicAttack/Swing1" to="Movement" method="_on_skill_activate"]
+[connection signal="activated" from="Skills/BasicAttack/Swing1" to="Rotation" method="_on_skill_activate"]
 [connection signal="activated" from="Skills/BasicAttack/Swing2" to="Weapon" method="on_skill_activated"]
 [connection signal="activated" from="Skills/BasicAttack/Swing2" to="Movement" method="_on_skill_activate"]
+[connection signal="activated" from="Skills/BasicAttack/Swing2" to="Rotation" method="_on_skill_activate"]
 [connection signal="activated" from="Skills/BasicAttack/Swing3" to="Weapon" method="on_skill_activated"]
 [connection signal="activated" from="Skills/BasicAttack/Swing3" to="Movement" method="_on_skill_activate"]
+[connection signal="activated" from="Skills/BasicAttack/Swing3" to="Rotation" method="_on_skill_activate"]
+[connection signal="activated" from="Skills/SecondaryAttack" to="Skin" method="on_skill_activated"]
+[connection signal="activated" from="Skills/SecondaryAttack" to="Weapon" method="on_skill_activated"]
+[connection signal="activated" from="Skills/SecondaryAttack" to="Movement" method="_on_skill_activate"]
 [connection signal="basic_attack" from="Input" to="Skills/BasicAttack" method="activate"]
+[connection signal="secondary_attack" from="Input" to="Skills/SecondaryAttack" method="activate"]

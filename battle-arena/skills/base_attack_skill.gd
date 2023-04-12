@@ -11,10 +11,7 @@ func _ready() -> void:
 
 
 func _on_pressed() -> void:
-    execution.start()
-    cooldown.start()
-    
-    activated.emit(self)
+    super._on_pressed()
     
     var tween: = create_tween()
     tween.tween_callback(self._try_hit).set_delay(hit_time)
