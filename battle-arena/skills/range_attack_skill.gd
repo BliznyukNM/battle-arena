@@ -16,8 +16,9 @@ func _on_pressed() -> void:
 
 
 func _shoot() -> void:
-    var projectile_instance: Node3D = projectile.instantiate()
+    var projectile_instance: Area3D = projectile.instantiate()
     projectile_instance.position = spawn_point.global_position
     projectile_instance.rotate_y(owner.rotation.y)
     projectile_instance.shoot(owner.transform.basis.z)
+    projectile_instance.collision_mask = collision_mask
     container.add_child(projectile_instance)

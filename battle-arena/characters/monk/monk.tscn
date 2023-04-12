@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://oq7mpxlxlk1x"]
+[gd_scene load_steps=15 format=3 uid="uid://oq7mpxlxlk1x"]
 
 [ext_resource type="PackedScene" uid="uid://drk870rf7vm7a" path="res://characters/monk/skins/monk_skin_a.tscn" id="1_j7ccy"]
 [ext_resource type="PackedScene" uid="uid://c6ip2utb0o38d" path="res://characters/monk/weapons/staff_a.tscn" id="2_nqx7i"]
@@ -11,12 +11,18 @@
 [ext_resource type="Script" path="res://characters/health.gd" id="6_lfg0i"]
 [ext_resource type="Script" path="res://characters/rotation.gd" id="8_vhdio"]
 [ext_resource type="PackedScene" uid="uid://7xkefn5xpy47" path="res://hud/hud.tscn" id="9_3im8r"]
+[ext_resource type="Script" path="res://characters/hit_box.gd" id="12_eu5ss"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cc0dj"]
 radius = 0.6
 height = 1.8
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_kr7eb"]
+height = 1.5
+radius = 0.6
+
 [node name="Monk" type="CharacterBody3D"]
+collision_mask = 7
 
 [node name="Skin" parent="." node_paths=PackedStringArray("input") instance=ExtResource("1_j7ccy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.1, 2.08165e-12)
@@ -72,6 +78,15 @@ health = NodePath("../Health")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.954418, 0.0368596)
 shape = SubResource("CapsuleShape3D_cc0dj")
 
+[node name="HitBox" type="Area3D" parent="."]
+collision_mask = 0
+monitoring = false
+script = ExtResource("12_eu5ss")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.75, 2.08165e-12)
+shape = SubResource("CylinderShape3D_kr7eb")
+
 [connection signal="activated" from="Skills/BasicAttack/Swing1" to="Weapon" method="on_skill_activated"]
 [connection signal="activated" from="Skills/BasicAttack/Swing1" to="Movement" method="_on_skill_activate"]
 [connection signal="activated" from="Skills/BasicAttack/Swing1" to="Rotation" method="_on_skill_activate"]
@@ -86,3 +101,5 @@ shape = SubResource("CapsuleShape3D_cc0dj")
 [connection signal="activated" from="Skills/SecondaryAttack" to="Movement" method="_on_skill_activate"]
 [connection signal="basic_attack" from="Input" to="Skills/BasicAttack" method="activate"]
 [connection signal="secondary_attack" from="Input" to="Skills/SecondaryAttack" method="activate"]
+[connection signal="on_hit" from="HitBox" to="Health" method="damage"]
+[connection signal="on_hit" from="HitBox" to="Skin" method="blink" binds= [true]]

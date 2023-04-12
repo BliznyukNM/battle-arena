@@ -8,6 +8,7 @@ extends "res://skills/base_skill.gd"
 func _ready() -> void:
     assert(cooldown.time_left >= execution.time_left, \
         "Execution time have to be bigger or equal than cooldown.")
+    super._ready()
 
 
 func _on_pressed() -> void:

@@ -13,11 +13,9 @@ hit_time = 0.3
 
 [node name="Cooldown" parent="." index="0"]
 wait_time = 0.75
-one_shot = true
 
 [node name="Execution" parent="." index="1"]
 wait_time = 0.4
-one_shot = true
 
 [node name="Area" type="CollisionShape3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 1.716)

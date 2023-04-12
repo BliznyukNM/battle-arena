@@ -7,18 +7,24 @@ extends Node3D
 
 
 @onready var animation: = $AnimationTree
+@onready var blinker: = $Blinker
 
 
 func _ready() -> void:
     assert(input, "Cannot control skin without PlayerInput.")
     
     animation.active = true
+    blinker.input = input
 
 
 func _process(delta: float) -> void:
     var last_direction: Vector2 = animation["parameters/movement/blend_position"]
     var direction: = input.movement.rotated(owner.rotation.y)
     animation["parameters/movement/blend_position"] = lerp(last_direction, direction, delta * acceleration)
+
+
+func blink(delta: float, is_damage: bool) -> void:
+    blinker.blink(delta, is_damage)
 
 
 func on_skill_activated(skill: BaseSkill) -> void:

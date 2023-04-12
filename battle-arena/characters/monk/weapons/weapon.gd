@@ -7,6 +7,10 @@ extends Node3D
 @onready var animator: AnimationPlayer = $Animations
 
 
+func _ready() -> void:
+    animator.play("idle")
+
+
 func on_skill_activated(skill: BaseSkill) -> void:
     #if animator.current_animation != "":
     #    var current_animation: = animator.get_animation(animator.current_animation)

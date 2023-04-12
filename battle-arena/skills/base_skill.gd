@@ -8,6 +8,11 @@ signal activated(skill: BaseSkill)
 @onready var execution: Timer = $Execution
 
 
+func _ready() -> void:
+    assert(owner)
+    collision_mask = collision_mask & (~owner.collision_layer)
+
+
 func activate(pressed: bool) -> void:
     if not cooldown.is_stopped(): return
     

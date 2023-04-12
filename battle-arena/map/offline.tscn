@@ -13,17 +13,22 @@ lerp_speed = 3.0
 max_distance = 8.0
 
 [node name="Monk" parent="." index="5" instance=ExtResource("2_yxrme")]
+collision_layer = 2
 
 [node name="Dummies" type="Node" parent="." index="6"]
 
 [node name="HittableDummy" parent="Dummies" index="0" instance=ExtResource("3_nienj")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.8014, 0.1, -0.38788)
+collision_mask = 1
 
 [node name="HittableDummy3" parent="Dummies" index="1" instance=ExtResource("3_nienj")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.28052, 0.1, -1.11438)
+collision_mask = 1
 
 [node name="HittableDummy2" parent="Dummies" index="2" instance=ExtResource("3_nienj")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.69743, 0.1, 0.750804)
+collision_mask = 1
 
 [node name="ShootingDummy" parent="Dummies" index="3" instance=ExtResource("4_s6uo6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.17788, 0.1, -10.9805)
+collision_mask = 1

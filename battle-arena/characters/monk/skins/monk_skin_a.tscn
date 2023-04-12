@@ -1,10 +1,12 @@
-[gd_scene load_steps=19 format=3 uid="uid://drk870rf7vm7a"]
+[gd_scene load_steps=22 format=3 uid="uid://drk870rf7vm7a"]
 
 [ext_resource type="AnimationLibrary" uid="uid://bole5xmlnq8f2" path="res://characters/monk/movement.res" id="1_8ypcx"]
 [ext_resource type="Script" path="res://characters/monk/skins/skin.gd" id="1_ki3bu"]
 [ext_resource type="ArrayMesh" uid="uid://bblqujqvaovow" path="res://assets/characters/monk/meshes/character_monk_A_Cube10802.res" id="1_t3abb"]
 [ext_resource type="ArrayMesh" uid="uid://cuijpkxjdblyd" path="res://assets/characters/monk/meshes/character_monk_A_Cube10806.res" id="2_0j70v"]
 [ext_resource type="ArrayMesh" uid="uid://bx3yorlrc6fpc" path="res://assets/characters/monk/meshes/character_monk_A_Icosphere054.res" id="3_ggsap"]
+[ext_resource type="Script" path="res://characters/blinker.gd" id="6_o4ysr"]
+[ext_resource type="Material" uid="uid://bru7nbbk2xlim" path="res://characters/hit_overlay.tres" id="7_anh1j"]
 
 [sub_resource type="Animation" id="Animation_5j14w"]
 length = 0.001
@@ -123,6 +125,10 @@ nodes/secondary_attack/node = SubResource("AnimationNodeOneShot_o4x0t")
 nodes/secondary_attack/position = Vector2(40, 120)
 node_connections = [&"output", 0, &"secondary_attack", &"secondary_attack", 0, &"movement", &"secondary_attack", 1, &"secondary_animation"]
 
+[sub_resource type="Gradient" id="Gradient_8xmad"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1, 0.0166667, 1, 0, 1)
+
 [node name="MonkSkin" type="Node3D"]
 script = ExtResource("1_ki3bu")
 
@@ -151,3 +157,9 @@ anim_player = NodePath("../Animation")
 parameters/movement/blend_position = Vector2(2.08165e-12, 2.08165e-12)
 parameters/secondary_attack/active = false
 parameters/secondary_attack/request = 0
+
+[node name="Blinker" type="Node" parent="."]
+script = ExtResource("6_o4ysr")
+target_paths = Array[NodePath]([NodePath("../Body"), NodePath("../Body/Head"), NodePath("../Body/Necklace")])
+material = ExtResource("7_anh1j")
+colors = SubResource("Gradient_8xmad")

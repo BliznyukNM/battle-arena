@@ -125,6 +125,52 @@ _data = {
 "movement": SubResource("Animation_55e41")
 }
 
+[sub_resource type="Animation" id="Animation_lcvae"]
+resource_name = "secondary"
+length = 0.8
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("View:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.143378, 1.13424, -2.08071), Vector3(-0.183733, 0.430102, -1.56664), Vector3(-0.0227677, -0.99514, -1.43887), Vector3(0.11459, -2.18995, -1.50145), Vector3(0.102911, 2.85054, -1.65655), Vector3(-0.016877, 1.85087, -1.7036), Vector3(-0.109549, 1.02078, -1.64788), Vector3(-0.0703079, -0.614742, -1.45679), Vector3(0.1329, -2.61527, -1.55474), Vector3(0.0968558, -1.971, -1.47825)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("View:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.397333, 0.525153, 0.368936), Vector3(0.194924, 0.524243, 0.461976), Vector3(-0.470574, 0.503227, 0.57801), Vector3(-0.51093, 0.482193, -0.34612), Vector3(0.217359, 0.484943, -0.63675), Vector3(0.627618, 0.53853, -0.379906), Vector3(0.928264, 0.591776, -0.0787248), Vector3(0.268572, 0.699161, 1.07255), Vector3(-1.34341, 0.57884, 0.792596), Vector3(-0.859005, 0.590239, 0.676631)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Trail")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"enable"
+}, {
+"args": [false],
+"method": &"enable"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_ofvl1"]
 resource_name = "swing_1"
 length = 0.8
@@ -265,52 +311,6 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [true],
-"method": &"enable"
-}, {
-"args": [false],
-"method": &"enable"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_lcvae"]
-resource_name = "secondary"
-length = 0.8
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("View:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-0.143378, 1.13424, -2.08071), Vector3(-0.183733, 0.430102, -1.56664), Vector3(-0.0227677, -0.99514, -1.43887), Vector3(0.11459, -2.18995, -1.50145), Vector3(0.102911, 2.85054, -1.65655), Vector3(-0.016877, 1.85087, -1.7036), Vector3(-0.109549, 1.02078, -1.64788), Vector3(-0.0703079, -0.614742, -1.45679), Vector3(0.1329, -2.61527, -1.55474), Vector3(0.0968558, -1.971, -1.47825)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("View:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0.397333, 0.525153, 0.368936), Vector3(0.194924, 0.524243, 0.461976), Vector3(-0.470574, 0.503227, 0.57801), Vector3(-0.51093, 0.482193, -0.34612), Vector3(0.217359, 0.484943, -0.63675), Vector3(0.627618, 0.53853, -0.379906), Vector3(0.928264, 0.591776, -0.0787248), Vector3(0.268572, 0.699161, 1.07255), Vector3(-1.34341, 0.57884, 0.792596), Vector3(-0.859005, 0.590239, 0.676631)]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Trail")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.1, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [true],

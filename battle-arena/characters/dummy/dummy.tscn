@@ -120,6 +120,7 @@ shadow_mesh = SubResource("ArrayMesh_cv8m4")
 radius = 0.626995
 
 [node name="Dummy" type="StaticBody3D"]
+collision_mask = 7
 
 [node name="View" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_fc8fa")
