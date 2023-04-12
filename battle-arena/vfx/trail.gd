@@ -23,7 +23,7 @@ var _surface_array: = []
 
 
 func _generate_mesh() -> void:
-    $View.mesh.clear_surfaces()
+    $View.mesh = ArrayMesh.new()
     
     _surface_array = []
     _surface_array.resize(Mesh.ARRAY_MAX)
@@ -81,6 +81,7 @@ func enable(value: bool) -> void:
 
 
 func _ready() -> void:
+    $View.material_override = material
     enable(false)
     
 

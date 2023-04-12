@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c6ip2utb0o38d"]
+[gd_scene load_steps=15 format=3 uid="uid://c6ip2utb0o38d"]
 
 [ext_resource type="Script" path="res://characters/monk/weapons/weapon.gd" id="1_8bm0e"]
 [ext_resource type="ArrayMesh" uid="uid://b8lkulqrykj1d" path="res://assets/characters/monk/meshes/staff_Agltf_Cylinder010.res" id="1_40uo1"]
@@ -283,25 +283,14 @@ _data = {
 }
 
 [sub_resource type="Curve" id="Curve_fs016"]
-_data = [Vector2(0, 1), 0.0, -0.0991134, 0, 0, Vector2(0.512301, 0.115267), -0.563523, -0.563523, 0, 0, Vector2(1, 0), -0.128917, 0.0, 0, 0]
-point_count = 3
+_data = [Vector2(0, 1), 0.0, -0.719847, 0, 1, Vector2(1, 0.280153), -0.719847, 0.0, 1, 0]
+point_count = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pf4vy"]
 transparency = 1
 blend_mode = 1
 shading_mode = 0
 albedo_color = Color(1, 0.984314, 0, 0.54902)
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_k6bvl"]
-_surfaces = [{
-"aabb": AABB(-1.1, 0.70451, 0.801838, 1, 1.00136e-05, 1.00136e-05),
-"format": 4097,
-"index_count": 60,
-"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 1, 0, 3, 0, 2, 0, 1, 0, 2, 0, 3, 0, 2, 0, 4, 0, 3, 0, 2, 0, 3, 0, 4, 0, 3, 0, 5, 0, 4, 0, 3, 0, 4, 0, 5, 0, 4, 0, 6, 0, 5, 0, 4, 0, 5, 0, 6, 0, 5, 0, 7, 0, 6, 0, 5, 0, 6, 0, 7, 0, 6, 0, 8, 0, 7, 0, 6, 0, 7, 0, 8, 0, 7, 0, 9, 0, 8, 0, 7, 0, 8, 0, 9, 0, 8, 0, 10, 0, 9, 0, 8, 0, 9, 0, 10, 0, 9, 0, 11, 0, 10, 0, 9, 0, 10, 0, 11, 0, 10, 0, 12, 0, 11, 0),
-"primitive": 3,
-"vertex_count": 23,
-"vertex_data": PackedByteArray(205, 204, 140, 191, 198, 90, 52, 63, 65, 69, 77, 63, 208, 204, 204, 189, 2, 91, 52, 63, 65, 69, 77, 63, 19, 44, 136, 191, 200, 90, 52, 63, 65, 69, 77, 63, 58, 108, 11, 190, 0, 91, 52, 63, 65, 69, 77, 63, 160, 249, 122, 191, 205, 90, 52, 63, 65, 69, 77, 63, 80, 230, 96, 190, 251, 90, 52, 63, 65, 69, 77, 63, 12, 161, 95, 191, 211, 90, 52, 63, 65, 69, 77, 63, 79, 36, 167, 190, 245, 90, 52, 63, 65, 69, 77, 63, 115, 113, 68, 191, 218, 90, 52, 63, 65, 69, 77, 63, 130, 131, 221, 190, 238, 90, 52, 63, 65, 69, 77, 63, 213, 141, 47, 191, 223, 90, 52, 63, 65, 69, 77, 63, 95, 165, 3, 191, 233, 90, 52, 63, 65, 69, 77, 63, 199, 29, 38, 191, 225, 90, 52, 63, 65, 69, 77, 63, 109, 21, 13, 191, 231, 90, 52, 63, 65, 69, 77, 63, 149, 99, 33, 191, 226, 90, 52, 63, 65, 69, 77, 63, 159, 207, 17, 191, 230, 90, 52, 63, 65, 69, 77, 63, 138, 78, 30, 191, 227, 90, 52, 63, 65, 69, 77, 63, 170, 228, 20, 191, 229, 90, 52, 63, 65, 69, 77, 63, 44, 86, 28, 191, 227, 90, 52, 63, 65, 69, 77, 63, 8, 221, 22, 191, 229, 90, 52, 63, 65, 69, 77, 63, 4, 242, 26, 191, 228, 90, 52, 63, 65, 69, 77, 63, 48, 65, 24, 191, 228, 90, 52, 63, 65, 69, 77, 63, 4, 242, 26, 191, 228, 90, 52, 63, 65, 69, 77, 63)
-}]
 
 [node name="Staff" type="Node3D"]
 script = ExtResource("1_8bm0e")
@@ -327,9 +316,8 @@ target = NodePath("../View")
 width = 1.0
 offset = Vector3(2.08165e-12, 0.6, 2.08165e-12)
 curve = SubResource("Curve_fs016")
+material = SubResource("StandardMaterial3D_pf4vy")
 
 [node name="View" type="MeshInstance3D" parent="Trail"]
 transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_pf4vy")
-mesh = SubResource("ArrayMesh_k6bvl")
 skeleton = NodePath("../../View")

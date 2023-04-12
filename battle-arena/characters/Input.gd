@@ -9,8 +9,12 @@ signal secondary_attack(pressed: bool)
 @export var look_at_point: Vector3 = Vector3(1, 1, 1)
 
 
+var is_local: bool:
+    get: return get_multiplayer_authority() == multiplayer.get_unique_id()
+
+
 func _ready() -> void:
-    set_process(get_multiplayer_authority() == multiplayer.get_unique_id())
+    set_process(is_local)
 
 
 func _process(_delta: float) -> void:

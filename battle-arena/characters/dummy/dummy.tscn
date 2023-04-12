@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://cctq8rylkflvh"]
+[gd_scene load_steps=9 format=3]
 
-[ext_resource type="Script" path="res://characters/View.gd" id="2_4qt2t"]
+[ext_resource type="Script" path="res://characters/blinker.gd" id="2_4qt2t"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e6td8"]
 resource_name = "BrownDark"

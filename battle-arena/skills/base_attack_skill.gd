@@ -34,7 +34,7 @@ func _get_closest_hitbox(areas: Array[Area3D]) -> HitBox:
     
     for area in areas:
         if not area is HitBox: continue
-        var new_distance: float = area.position.distance_squared_to(owner.position)
+        var new_distance: float = area.position.distance_to(owner.position)
         if new_distance < distance:
             distance = new_distance
             hitbox = area

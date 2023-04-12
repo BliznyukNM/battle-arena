@@ -1,14 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1qwyrs0h5rsv"]
+[gd_scene load_steps=9 format=3 uid="uid://c23cowaue0hsj"]
 
-[ext_resource type="PackedScene" uid="uid://cctq8rylkflvh" path="res://characters/dummy/dummy.tscn" id="1_gykvh"]
+[ext_resource type="PackedScene" path="res://characters/dummy/dummy.tscn" id="1_gykvh"]
 [ext_resource type="PackedScene" uid="uid://7xkefn5xpy47" path="res://hud/hud.tscn" id="2_bau5m"]
-[ext_resource type="Script" path="res://characters/HitBox.gd" id="2_ff6yy"]
+[ext_resource type="Script" path="res://characters/hit_box.gd" id="3_pw2kn"]
 [ext_resource type="Script" path="res://characters/health.gd" id="4_car63"]
+[ext_resource type="Script" path="res://characters/blinker.gd" id="5_nt3s3"]
+[ext_resource type="Material" uid="uid://bru7nbbk2xlim" path="res://characters/hit_overlay.tres" id="6_dvoud"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_tv83v"]
 radius = 0.7
 
+[sub_resource type="Gradient" id="Gradient_uxcld"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1, 0.0166667, 1, 0, 1)
+
 [node name="HittableDummy" instance=ExtResource("1_gykvh")]
+
+[node name="trainingdummy_a" parent="." index="0"]
+script = null
 
 [node name="HUD" parent="." index="2" node_paths=PackedStringArray("health") instance=ExtResource("2_bau5m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.77264, 0)
@@ -16,7 +25,7 @@ health = NodePath("../Health")
 
 [node name="HitBox" type="Area3D" parent="." index="3"]
 monitoring = false
-script = ExtResource("2_ff6yy")
+script = ExtResource("3_pw2kn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
@@ -26,5 +35,11 @@ shape = SubResource("CylinderShape3D_tv83v")
 script = ExtResource("4_car63")
 max_value = 50
 
-[connection signal="on_hit" from="HitBox" to="trainingdummy_a" method="blink"]
+[node name="Blinker" type="Node" parent="." index="5"]
+script = ExtResource("5_nt3s3")
+target_paths = Array[NodePath]([NodePath("../trainingdummy_a")])
+material = ExtResource("6_dvoud")
+colors = SubResource("Gradient_uxcld")
+
 [connection signal="on_hit" from="HitBox" to="Health" method="damage"]
+[connection signal="on_hit" from="HitBox" to="Blinker" method="blink" binds= [true]]

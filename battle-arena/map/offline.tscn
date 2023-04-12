@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://flt4bdecd0xj" path="res://map/map.tscn" id="1_j7vok"]
 [ext_resource type="PackedScene" uid="uid://oq7mpxlxlk1x" path="res://characters/monk/monk.tscn" id="2_yxrme"]
-[ext_resource type="PackedScene" uid="uid://b1qwyrs0h5rsv" path="res://characters/dummy/hittable_dummy.tscn" id="3_nienj"]
+[ext_resource type="PackedScene" uid="uid://c23cowaue0hsj" path="res://characters/dummy/hittable_dummy.tscn" id="3_nienj"]
 
 [node name="Map" instance=ExtResource("1_j7vok")]
 
