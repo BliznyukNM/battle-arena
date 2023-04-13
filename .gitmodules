@@ -4,3 +4,6 @@
 [submodule "beehave"]
 	path = beehave
 	url = https://github.com/bitbrain/beehave.git
+[submodule "Gut"]
+	path = Gut
+	url = https://github.com/bitwes/Gut.git

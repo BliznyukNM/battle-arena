@@ -21,5 +21,6 @@ mono_crash.*.json
 
 battle-arena/addons/com.heroiclabs.nakama/
 battle-arena/addons/beehave/
+battle-arena/addons/gut/
 
 *.app
