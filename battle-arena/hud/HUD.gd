@@ -14,7 +14,6 @@ func _ready() -> void:
         health_bar.max_value = health.max_value
         health_bar.value = health.current_value
         name_label.text = owner.name # TODO
-    set_process(health != null)
 
 
 func _process(_delta: float) -> void:

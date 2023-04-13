@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bfw2wtcvmtapu"]
+
+[ext_resource type="Script" path="res://status_effects/slowdown.gd" id="1_su8ni"]
+
+[resource]
+script = ExtResource("1_su8ni")
+amount = 100
+time = 0.0

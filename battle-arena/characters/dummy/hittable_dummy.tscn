@@ -15,7 +15,7 @@ has_max_value = true
 max_value = 50.0
 has_min_value = true
 min_value = 0.0
-current_value = 50.0
+flat_value = 50.0
 
 [sub_resource type="Gradient" id="Gradient_uxcld"]
 offsets = PackedFloat32Array(0, 0.5, 1)
