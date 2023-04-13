@@ -1,24 +1,23 @@
-class_name Health extends Node
+extends Node
 
 
 signal died
 
 
-@export var max_value: int:
-    set(value):
-        max_value = value
-        current_value = value
+@onready var health: NumberStat = %Stats.get_stat("health")
 
 
-var current_value: float:
-    set(value):
-        current_value = clamp(value, 0, max_value)
-        if (current_value <= 0): died.emit()
+func _ready() -> void:
+    health.value_changed.connect(self._on_health_value_changed)
+
+
+func _on_health_value_changed(old_value: float, new_value: float) -> void:
+    if new_value <= 0: died.emit()
 
 
 func damage(value: float) -> void:
-    current_value -= value
+    health.current_value -= value
 
 
 func heal(value: float) -> void:
-    current_value += value
+    health.current_value += value

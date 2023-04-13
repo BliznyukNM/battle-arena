@@ -1,4 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://t26xifgp5dgp"]
+[gd_scene load_steps=9 format=3 uid="uid://t26xifgp5dgp"]
+
+[ext_resource type="Script" path="res://stats/stats_manager.gd" id="1_1ca8h"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e6td8"]
 resource_name = "BrownDark"
@@ -129,3 +131,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
 shape = SubResource("CapsuleShape3D_5lmk6")
+
+[node name="Stats" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_1ca8h")

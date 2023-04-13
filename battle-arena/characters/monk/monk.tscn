@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://oq7mpxlxlk1x"]
+[gd_scene load_steps=20 format=3 uid="uid://oq7mpxlxlk1x"]
 
 [ext_resource type="PackedScene" uid="uid://drk870rf7vm7a" path="res://characters/monk/skins/monk_skin_a.tscn" id="1_j7ccy"]
 [ext_resource type="PackedScene" uid="uid://c6ip2utb0o38d" path="res://characters/monk/weapons/staff_a.tscn" id="2_nqx7i"]
@@ -9,9 +9,38 @@
 [ext_resource type="PackedScene" uid="uid://3yhpuldocttv" path="res://characters/monk/skills/secondary.tscn" id="6_i15dq"]
 [ext_resource type="Script" path="res://characters/Input.gd" id="6_isohw"]
 [ext_resource type="Script" path="res://characters/health.gd" id="6_lfg0i"]
+[ext_resource type="Script" path="res://stats/stats_manager.gd" id="7_ukdno"]
+[ext_resource type="Script" path="res://stats/number_stat.gd" id="8_p2yis"]
 [ext_resource type="Script" path="res://characters/rotation.gd" id="8_vhdio"]
 [ext_resource type="PackedScene" uid="uid://7xkefn5xpy47" path="res://hud/hud.tscn" id="9_3im8r"]
 [ext_resource type="Script" path="res://characters/hit_box.gd" id="12_eu5ss"]
+
+[sub_resource type="Resource" id="Resource_3c7lh"]
+resource_name = "health"
+script = ExtResource("8_p2yis")
+has_max_value = true
+max_value = 500.0
+has_min_value = true
+min_value = 0.0
+current_value = 500.0
+
+[sub_resource type="Resource" id="Resource_h8kog"]
+resource_name = "movement_speed"
+script = ExtResource("8_p2yis")
+has_max_value = false
+max_value = 0.0
+has_min_value = true
+min_value = 0.0
+current_value = 5.0
+
+[sub_resource type="Resource" id="Resource_aoy4u"]
+resource_name = "rotation_speed"
+script = ExtResource("8_p2yis")
+has_max_value = false
+max_value = 0.0
+has_min_value = true
+min_value = 0.0
+current_value = 15.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cc0dj"]
 radius = 0.6
@@ -55,24 +84,32 @@ hit_time = 0.25
 
 [node name="SecondaryAttack" parent="Skills" instance=ExtResource("6_i15dq")]
 
-[node name="Health" type="Node" parent="."]
+[node name="Stats" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("7_ukdno")
+basic_stats = Array[Resource("res://stats/base_stat.gd")]([SubResource("Resource_3c7lh"), SubResource("Resource_h8kog"), SubResource("Resource_aoy4u")])
+
+[node name="StatusEffects" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="Controllers" type="Node" parent="."]
+
+[node name="Health" type="Node" parent="Controllers"]
 script = ExtResource("6_lfg0i")
-max_value = 500
 
-[node name="Movement" type="Node" parent="." node_paths=PackedStringArray("input")]
+[node name="Movement" type="Node" parent="Controllers" node_paths=PackedStringArray("input")]
 script = ExtResource("5_ncu48")
-input = NodePath("../Input")
+input = NodePath("../../Input")
 
-[node name="Rotation" type="Node" parent="." node_paths=PackedStringArray("input")]
+[node name="Rotation" type="Node" parent="Controllers" node_paths=PackedStringArray("input")]
 script = ExtResource("8_vhdio")
-input = NodePath("../Input")
+input = NodePath("../../Input")
 
 [node name="Input" type="MultiplayerSynchronizer" parent="."]
 script = ExtResource("6_isohw")
 
-[node name="HUD" parent="." node_paths=PackedStringArray("health") instance=ExtResource("9_3im8r")]
+[node name="HUD" parent="." instance=ExtResource("9_3im8r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.36563, 0)
-health = NodePath("../Health")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.954418, 0.0368596)
@@ -88,18 +125,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.75, 2.08165e-1
 shape = SubResource("CylinderShape3D_kr7eb")
 
 [connection signal="activated" from="Skills/BasicAttack/Swing1" to="Weapon" method="on_skill_activated"]
-[connection signal="activated" from="Skills/BasicAttack/Swing1" to="Movement" method="_on_skill_activate"]
-[connection signal="activated" from="Skills/BasicAttack/Swing1" to="Rotation" method="_on_skill_activate"]
 [connection signal="activated" from="Skills/BasicAttack/Swing2" to="Weapon" method="on_skill_activated"]
-[connection signal="activated" from="Skills/BasicAttack/Swing2" to="Movement" method="_on_skill_activate"]
-[connection signal="activated" from="Skills/BasicAttack/Swing2" to="Rotation" method="_on_skill_activate"]
 [connection signal="activated" from="Skills/BasicAttack/Swing3" to="Weapon" method="on_skill_activated"]
-[connection signal="activated" from="Skills/BasicAttack/Swing3" to="Movement" method="_on_skill_activate"]
-[connection signal="activated" from="Skills/BasicAttack/Swing3" to="Rotation" method="_on_skill_activate"]
 [connection signal="activated" from="Skills/SecondaryAttack" to="Skin" method="on_skill_activated"]
 [connection signal="activated" from="Skills/SecondaryAttack" to="Weapon" method="on_skill_activated"]
-[connection signal="activated" from="Skills/SecondaryAttack" to="Movement" method="_on_skill_activate"]
 [connection signal="basic_attack" from="Input" to="Skills/BasicAttack" method="activate"]
 [connection signal="secondary_attack" from="Input" to="Skills/SecondaryAttack" method="activate"]
-[connection signal="on_hit" from="HitBox" to="Health" method="damage"]
+[connection signal="on_hit" from="HitBox" to="Controllers/Health" method="damage"]
 [connection signal="on_hit" from="HitBox" to="Skin" method="blink" binds= [true]]

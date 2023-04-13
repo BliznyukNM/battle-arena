@@ -20,7 +20,6 @@ data = {
 }
 
 [node name="Camera" type="Camera3D" parent="."]
-unique_name_in_owner = true
 transform = Transform3D(1, -6.5054e-16, 1.7492e-16, 1.7492e-16, 0.501511, 0.865151, -6.5054e-16, -0.865151, 0.501511, 2.08165e-12, 13.384, 6.6)
 script = ExtResource("2_fe6qu")
 offset = Vector3(2.08165e-12, 13.384, 6.6)
@@ -33,7 +32,6 @@ shadow_enabled = true
 environment = SubResource("Environment_r4cc4")
 
 [node name="SpawnPoints" type="Node3D" parent="."]
-unique_name_in_owner = true
 
 [node name="Point1" type="Node3D" parent="SpawnPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.3569, 2.08165e-12, -0.426946)
