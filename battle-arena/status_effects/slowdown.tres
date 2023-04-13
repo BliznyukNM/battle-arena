@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_su8ni")
-amount = 100
+amount = 50
 time = 0.0
