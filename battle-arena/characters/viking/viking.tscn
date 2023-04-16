@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgimyn5ykx25w"]
+
+[ext_resource type="PackedScene" uid="uid://dar8prd7p7pqp" path="res://characters/character.tscn" id="1_fvn2d"]
+[ext_resource type="Script" path="res://stats/number_stat.gd" id="2_pvujp"]
+
+[node name="Viking" instance=ExtResource("1_fvn2d")]
+
+[node name="Health" type="Node" parent="Stats" index="0"]
+script = ExtResource("2_pvujp")
+has_max_value = true
+max_value = 500.0
+has_min_value = true
+base_value = 500.0

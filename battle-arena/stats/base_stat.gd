@@ -1,4 +1,4 @@
-class_name BaseStat extends Resource
+class_name BaseStat extends Node
 
 
-signal value_changed(old_value, new_value)
+signal changed(old_value, new_value)

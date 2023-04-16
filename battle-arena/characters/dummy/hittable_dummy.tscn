@@ -1,21 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://c23cowaue0hsj"]
+[gd_scene load_steps=9 format=3 uid="uid://c23cowaue0hsj"]
 
 [ext_resource type="PackedScene" uid="uid://t26xifgp5dgp" path="res://characters/dummy/dummy.tscn" id="1_gykvh"]
 [ext_resource type="PackedScene" uid="uid://7xkefn5xpy47" path="res://hud/hud.tscn" id="2_bau5m"]
-[ext_resource type="Script" path="res://stats/number_stat.gd" id="3_barht"]
 [ext_resource type="Script" path="res://characters/hit_box.gd" id="3_pw2kn"]
 [ext_resource type="Script" path="res://characters/health.gd" id="4_car63"]
 [ext_resource type="Script" path="res://characters/blinker.gd" id="5_nt3s3"]
 [ext_resource type="Material" uid="uid://bru7nbbk2xlim" path="res://characters/hit_overlay.tres" id="6_dvoud"]
-
-[sub_resource type="Resource" id="Resource_ic8m4"]
-resource_name = "health"
-script = ExtResource("3_barht")
-has_max_value = true
-max_value = 50.0
-has_min_value = true
-min_value = 0.0
-flat_value = 50.0
 
 [sub_resource type="Gradient" id="Gradient_uxcld"]
 offsets = PackedFloat32Array(0, 0.5, 1)
@@ -25,9 +15,6 @@ colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1, 0.0166667, 1, 0, 1)
 radius = 0.7
 
 [node name="HittableDummy" instance=ExtResource("1_gykvh")]
-
-[node name="Stats" parent="." index="2"]
-basic_stats = Array[Resource("res://stats/base_stat.gd")]([SubResource("Resource_ic8m4")])
 
 [node name="Blinker" type="Node" parent="." index="3"]
 script = ExtResource("5_nt3s3")
