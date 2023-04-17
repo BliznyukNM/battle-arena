@@ -11,3 +11,6 @@ has_max_value = true
 max_value = 500.0
 has_min_value = true
 base_value = 500.0
+
+[node name="DamageProcessor" parent="." index="3" node_paths=PackedStringArray("health")]
+health = NodePath("../Stats/Health")

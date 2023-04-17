@@ -40,6 +40,10 @@ func test_base_10_flat_3_percentual_0_5() -> void:
     _test_current_value(10, 3, 0.5, 19.5)
 
 
+func test_base_10_flat_2_percentual_minus_0_1() -> void:
+    _test_current_value(10, 2, -0.1, 10.8)
+
+
 func test_min() -> void:
     number_stat.has_min_value = true
     number_stat.min_value = 5

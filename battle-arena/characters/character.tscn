@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dar8prd7p7pqp"]
+[gd_scene load_steps=5 format=3 uid="uid://dar8prd7p7pqp"]
 
 [ext_resource type="Script" path="res://characters/character.gd" id="1_8kwiu"]
 [ext_resource type="Script" path="res://stats/stats_manager.gd" id="2_3n7xj"]
 [ext_resource type="Script" path="res://characters/hit_box.gd" id="2_nshhg"]
+[ext_resource type="Script" path="res://characters/damage_processor.gd" id="3_d6bpp"]
 
 [node name="Character" type="CharacterBody3D"]
 script = ExtResource("1_8kwiu")
@@ -13,6 +14,9 @@ script = ExtResource("2_3n7xj")
 [node name="Effects" type="Node" parent="."]
 
 [node name="Skills" type="Node" parent="."]
+
+[node name="DamageProcessor" type="Node" parent="."]
+script = ExtResource("3_d6bpp")
 
 [node name="HitBox" type="Area3D" parent="."]
 monitoring = false

@@ -16,8 +16,8 @@
  "include_subdirs": true,
  "inner_class": null,
  "junit_xml_file": "",
- "junit_xml_timestamp": false,
- "log_level": 2,
+ "junit_xml_timestamp": true,
+ "log_level": 1,
  "opacity": 100,
  "paint_after": 0.1,
  "panel_options": {
@@ -25,7 +25,7 @@
   "font_size": 30,
   "hide_output_text": false,
   "hide_result_tree": false,
-  "hide_settings": false,
+  "hide_settings": true,
   "use_colors": false
  },
  "post_run_script": "",

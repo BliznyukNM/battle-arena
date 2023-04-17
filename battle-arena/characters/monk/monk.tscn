@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://oq7mpxlxlk1x"]
+[gd_scene load_steps=17 format=3]
 
 [ext_resource type="PackedScene" uid="uid://drk870rf7vm7a" path="res://characters/monk/skins/monk_skin_a.tscn" id="1_j7ccy"]
 [ext_resource type="PackedScene" uid="uid://c6ip2utb0o38d" path="res://characters/monk/weapons/staff_a.tscn" id="2_nqx7i"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cr15w6fww7s2g" path="res://characters/monk/skills/final_swing.tscn" id="5_q6fe0"]
 [ext_resource type="PackedScene" uid="uid://3yhpuldocttv" path="res://characters/monk/skills/secondary.tscn" id="6_i15dq"]
 [ext_resource type="Script" path="res://characters/Input.gd" id="6_isohw"]
-[ext_resource type="Script" path="res://characters/health.gd" id="6_lfg0i"]
+[ext_resource type="Script" path="res://characters/damage_processor.gd" id="6_lfg0i"]
 [ext_resource type="Script" path="res://stats/stats_manager.gd" id="7_ukdno"]
 [ext_resource type="Script" path="res://characters/rotation.gd" id="8_vhdio"]
 [ext_resource type="PackedScene" uid="uid://7xkefn5xpy47" path="res://hud/hud.tscn" id="9_3im8r"]

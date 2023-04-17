@@ -13,6 +13,7 @@ const MIN_VALUE: = -MAX_VALUE
 @export var min_value: float:
     get: return min_value if has_min_value else MIN_VALUE
 
+
 @export var base_value: float
 
 
@@ -33,3 +34,8 @@ var percentual_modifier: float:
 var current_value: float:
     get:
         return clamp((base_value + flat_modifier) * max(1 + percentual_modifier, 0), min_value, max_value)
+    set(value):
+        var old_value: = current_value
+        base_value = clamp(value, min_value, max_value)
+        if current_value != old_value: changed.emit(old_value, current_value)
+        
