@@ -1,8 +1,0 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cjvwr12cjdi58"]
-
-[ext_resource type="Script" path="res://status_effects/slow_rotation.gd" id="1_llrlk"]
-
-[resource]
-script = ExtResource("1_llrlk")
-amount = 90
-time = 0.0

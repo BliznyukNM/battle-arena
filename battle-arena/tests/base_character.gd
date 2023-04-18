@@ -69,3 +69,7 @@ func test_death() -> void:
     watch_signals(damage_processor)
     damage_processor.damage(1e20)
     assert_signal_emitted(damage_processor, "death")
+
+
+func test_has_movement() -> void:
+    assert_not_null(character_instance.stats.get_stat("Movement"))

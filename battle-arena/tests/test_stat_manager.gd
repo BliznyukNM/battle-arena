@@ -6,8 +6,7 @@ var stat_manager: Node
 
 
 func before_all() -> void:
-    stat_manager = Node.new()
-    stat_manager.set_script(stat_mananger_script)
+    stat_manager = stat_mananger_script.new()
     
     const stat_name: = "BaseStat"
     var base_stat: = BaseStat.new()

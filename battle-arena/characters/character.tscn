@@ -11,7 +11,7 @@ script = ExtResource("1_8kwiu")
 [node name="Stats" type="Node" parent="."]
 script = ExtResource("2_3n7xj")
 
-[node name="Effects" type="Node" parent="."]
+[node name="Modifiers" type="Node" parent="."]
 
 [node name="Skills" type="Node" parent="."]
 
