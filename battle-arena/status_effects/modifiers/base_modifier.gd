@@ -5,8 +5,8 @@ class_name BaseModifier extends Node
 
 
 func _ready() -> void:
-    owner = get_parent().owner
-    trigger_effects(true)
+    # call deferred to avoid problems with setting up owner
+    trigger_effects.call_deferred(true)
 
 
 func _exit_tree() -> void:

@@ -1,9 +1,31 @@
 extends Node
 
 
+var _stats: Dictionary
+
+
+func _ready() -> void:
+    for child in get_children():
+        if not child is BaseStat: continue
+        _stats[child.name] = child
+
+
+func add_stat(stat: BaseStat) -> void:
+    assert(has_stat(stat.name))
+    _stats[stat.name] = stat
+    add_child(stat)
+
+
+func remove_stat(stat_name: String) -> void:
+    var stat: = get_stat(stat_name)
+    assert(stat)
+    stat.queue_free()
+    _stats.erase(stat_name)
+
+
 func get_stat(stat_name: String) -> BaseStat:
-    return get_node(stat_name) as BaseStat
+    return _stats.get(stat_name)
 
 
 func has_stat(stat_name: String) -> bool:
-    return has_node(stat_name)
+    return _stats.has(stat_name)

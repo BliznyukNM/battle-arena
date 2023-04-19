@@ -1,19 +1,52 @@
-[gd_scene load_steps=5 format=3 uid="uid://dar8prd7p7pqp"]
+[gd_scene load_steps=12 format=3 uid="uid://b3qs2xsrlw5fb"]
 
 [ext_resource type="Script" path="res://characters/character.gd" id="1_8kwiu"]
 [ext_resource type="Script" path="res://stats/stats_manager.gd" id="2_3n7xj"]
 [ext_resource type="Script" path="res://characters/hit_box.gd" id="2_nshhg"]
+[ext_resource type="Script" path="res://stats/number_stat.gd" id="3_018qh"]
+[ext_resource type="Script" path="res://status_effects/modifiers/conditional_modifier.gd" id="3_634ol"]
+[ext_resource type="Script" path="res://status_effects/modifiers_manager.gd" id="3_687mx"]
 [ext_resource type="Script" path="res://characters/damage_processor.gd" id="3_d6bpp"]
+[ext_resource type="Script" path="res://status_effects/effects/slowdown.gd" id="6_wy4eh"]
+[ext_resource type="Script" path="res://skills/skills_manager.gd" id="7_nutv6"]
+
+[sub_resource type="Resource" id="Resource_qukul"]
+script = ExtResource("6_wy4eh")
+amount = 50
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_47r4a"]
 
 [node name="Character" type="CharacterBody3D"]
+collision_mask = 7
 script = ExtResource("1_8kwiu")
 
 [node name="Stats" type="Node" parent="."]
 script = ExtResource("2_3n7xj")
 
+[node name="Health" type="Node" parent="Stats"]
+script = ExtResource("3_018qh")
+has_max_value = true
+max_value = 100.0
+has_min_value = true
+base_value = 100.0
+
+[node name="Movement" type="Node" parent="Stats"]
+script = ExtResource("3_018qh")
+has_max_value = true
+max_value = 15.0
+has_min_value = true
+base_value = 5.0
+
 [node name="Modifiers" type="Node" parent="."]
+script = ExtResource("3_687mx")
+
+[node name="SlowdownOnAttack" type="Node" parent="Modifiers"]
+script = ExtResource("3_634ol")
+condition = "false"
+effects = Array[Resource("res://status_effects/effects/base_effect.gd")]([SubResource("Resource_qukul")])
 
 [node name="Skills" type="Node" parent="."]
+script = ExtResource("7_nutv6")
 
 [node name="DamageProcessor" type="Node" parent="."]
 script = ExtResource("3_d6bpp")
@@ -21,3 +54,9 @@ script = ExtResource("3_d6bpp")
 [node name="HitBox" type="Area3D" parent="."]
 monitoring = false
 script = ExtResource("2_nshhg")
+
+[node name="Collider" type="CollisionShape3D" parent="HitBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
+shape = SubResource("CylinderShape3D_47r4a")
+
+[connection signal="on_hit" from="HitBox" to="DamageProcessor" method="damage"]

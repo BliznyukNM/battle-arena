@@ -2,10 +2,7 @@
 
 [ext_resource type="Script" path="res://skills/base_skill.gd" id="1_i4lru"]
 
-[node name="BaseSkill" type="Area3D"]
-collision_layer = 0
-collision_mask = 7
-monitorable = false
+[node name="BaseSkill" type="Node"]
 script = ExtResource("1_i4lru")
 
 [node name="Cooldown" type="Timer" parent="."]

@@ -24,9 +24,12 @@ func test_basic_modifier_with_slowdown() -> void:
     var slowdown_modifier: = BaseModifier.new()
     slowdown_modifier.effects.append(slowdown_effect)
     character.modifiers.add_child(slowdown_modifier)
+    slowdown_modifier.owner = character
     
     var movement_stat: NumberStat = character.stats.get_stat("Movement")
     
+    assert_eq(movement_stat.percentual_modifier, 0.0)
+    await wait_frames(1)
     assert_eq(movement_stat.percentual_modifier, -slowdown_effect.amount / 100.0)
     slowdown_modifier.free()
     assert_eq(movement_stat.percentual_modifier, 0.0)
@@ -40,9 +43,11 @@ func test_conditional_modifier_with_slowdown() -> void:
     conditional_modifier.effects.append(slowdown_effect)
     conditional_modifier.condition = "owner.visible"
     character.modifiers.add_child(conditional_modifier)
+    conditional_modifier.owner = character
     
     var movement_stat: NumberStat = character.stats.get_stat("Movement")
     
+    await wait_frames(1)
     assert_eq(movement_stat.percentual_modifier, 0.0)
     simulate(character, 1, 0.1)
     assert_eq(movement_stat.percentual_modifier, -slowdown_effect.amount / 100.0)
@@ -66,6 +71,7 @@ func test_timed_modifier_with_slowdown() -> void:
     timed_modifier.effects.append(slowdown_effect)
     timed_modifier.time = 10.0
     character.modifiers.add_child(timed_modifier)
+    timed_modifier.owner = character
     
     var movement_stat: NumberStat = character.stats.get_stat("Movement")
     

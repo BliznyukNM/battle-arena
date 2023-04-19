@@ -1,4 +1,4 @@
-class_name BaseSkill extends Area3D
+class_name BaseSkill extends Node
 
 
 signal activated(skill: BaseSkill)
@@ -9,20 +9,16 @@ signal activated(skill: BaseSkill)
 
 
 func _ready() -> void:
-    assert(owner)
-    collision_mask = collision_mask & (~owner.collision_layer)
+    assert(cooldown.time_left >= execution.time_left, \
+        "Execution time have to be bigger or equal than cooldown.")
 
 
 func activate(pressed: bool) -> void:
     if not cooldown.is_stopped(): return
-    
-    if pressed: _on_pressed()
-    else: _on_released()
+    if pressed: _on_activate()
 
 
-func _on_pressed() -> void:
+func _on_activate() -> void:
     execution.start()
     cooldown.start()
     activated.emit(self)
-
-func _on_released() -> void: pass

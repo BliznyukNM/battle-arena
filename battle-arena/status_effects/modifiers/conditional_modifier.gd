@@ -14,7 +14,6 @@ var _current_condition: bool:
 
 
 func _ready() -> void:
-    owner = get_parent().owner
     _condition_expression = Expression.new()
     var parsing_result: = _condition_expression.parse(condition)
     assert(parsing_result == OK)

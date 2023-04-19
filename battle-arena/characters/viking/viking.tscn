@@ -1,23 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://d25vmsj2p5dq5"]
+[gd_scene load_steps=5 format=3 uid="uid://d25vmsj2p5dq5"]
 
-[ext_resource type="PackedScene" uid="uid://dar8prd7p7pqp" path="res://characters/character.tscn" id="1_fvn2d"]
-[ext_resource type="Script" path="res://stats/number_stat.gd" id="2_pvujp"]
+[ext_resource type="PackedScene" uid="uid://b3qs2xsrlw5fb" path="res://characters/character.tscn" id="1_fvn2d"]
+[ext_resource type="Script" path="res://skills/skill_sequence.gd" id="2_ye3mo"]
+[ext_resource type="PackedScene" uid="uid://di3gecnsy5fv3" path="res://skills/base_melee_attack_skill.tscn" id="3_f3ea2"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lq1o0"]
 
 [node name="Viking" instance=ExtResource("1_fvn2d")]
 
-[node name="Health" type="Node" parent="Stats" index="0"]
-script = ExtResource("2_pvujp")
-has_max_value = true
-max_value = 500.0
-has_min_value = true
-base_value = 500.0
+[node name="BasicMeleeAttack" type="Node" parent="Skills" index="0"]
+script = ExtResource("2_ye3mo")
 
-[node name="Movement" type="Node" parent="Stats" index="1"]
-script = ExtResource("2_pvujp")
-has_max_value = true
-max_value = 15.0
-has_min_value = true
-base_value = 5.0
+[node name="BaseMeleeAttackSkill1" parent="Skills/BasicMeleeAttack" index="0" instance=ExtResource("3_f3ea2")]
+
+[node name="BaseMeleeAttackSkill2" parent="Skills/BasicMeleeAttack" index="1" instance=ExtResource("3_f3ea2")]
 
 [node name="DamageProcessor" parent="." index="3" node_paths=PackedStringArray("health")]
 health = NodePath("../Stats/Health")
+
+[node name="Collider" parent="HitBox" index="0"]
+shape = SubResource("CylinderShape3D_lq1o0")

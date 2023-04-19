@@ -18,14 +18,10 @@ func after_all() -> void:
     character_instance.free()
 
 
-func test_has_health() -> void:
-    var health: NumberStat = character_instance.stats.get_stat("Health")
-    assert_not_null(health)
-
-
 func test_health_setup_correctly() -> void:
     var health: NumberStat = character_instance.stats.get_stat("Health")
     
+    assert_not_null(health)
     assert_true(health.has_max_value)
     assert_true(health.has_min_value)
     assert_eq(health.current_value, health.max_value)
@@ -71,5 +67,9 @@ func test_death() -> void:
     assert_signal_emitted(damage_processor, "death")
 
 
-func test_has_movement() -> void:
-    assert_not_null(character_instance.stats.get_stat("Movement"))
+func test_movement_setup_correctly() -> void:
+    var movement: NumberStat = character_instance.stats.get_stat("Movement")
+    
+    assert_not_null(movement)
+    assert_true(movement.has_max_value)
+    assert_true(movement.has_min_value)
