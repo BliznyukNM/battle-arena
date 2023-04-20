@@ -7,5 +7,5 @@
 script = ExtResource("2_5mqrw")
 damage = 0
 hit_time = 0.0
-range = 1.0
+hit_range = 1.0
 area = 0.0

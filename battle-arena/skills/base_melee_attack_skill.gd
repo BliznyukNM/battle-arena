@@ -4,7 +4,7 @@ extends "res://skills/base_skill.gd"
 @export var damage: int
 @export var hit_time: float
 
-@export var range: float = 1.0
+@export var hit_range: float = 1.0
 @export_range(0, 360, RAYCAST_PER_ANGLE, "degrees") var area: float
 
 
@@ -39,13 +39,12 @@ func _try_hit() -> void:
     
     while angle_step <= area / 2.0 and angle_step > -180.0 and angle_step <= 180.0:
         var rotated_forward: = forward.rotated(Vector3.UP, deg_to_rad(angle_step))
-        var raycast: = PhysicsRayQueryParameters3D.create(origin, origin + rotated_forward * range, _collision_mask)
+        var raycast: = PhysicsRayQueryParameters3D.create(origin, origin + rotated_forward * hit_range, _collision_mask)
         raycast.collide_with_bodies = false
         raycast.collide_with_areas = true
-        raycast.hit_from_inside = true
         var result: = space_state.intersect_ray(raycast)
         
-        angle_step = -angle_step + (0 if angle_step > 0 else RAYCAST_PER_ANGLE)
+        angle_step = -angle_step + (0.0 if angle_step > 0 else RAYCAST_PER_ANGLE)
         
         if result.is_empty(): continue
         if not result.collider is HitBox: continue
