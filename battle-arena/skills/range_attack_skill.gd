@@ -9,8 +9,8 @@ extends "res://skills/base_skill.gd"
 @onready var container: = $Container
 
 
-func _on_pressed() -> void:
-    super._on_pressed()
+func _on_activate() -> void:
+    super._on_activate()
     var tween: = create_tween()
     tween.tween_callback(self._shoot).set_delay(spawn_delay)
 
@@ -20,5 +20,5 @@ func _shoot() -> void:
     projectile_instance.position = spawn_point.global_position
     projectile_instance.rotate_y(owner.rotation.y)
     projectile_instance.shoot(owner.transform.basis.z)
-    projectile_instance.collision_mask = collision_mask
+    projectile_instance.collision_mask = _collision_mask
     container.add_child(projectile_instance)

@@ -11,18 +11,6 @@ extends "res://skills/base_skill.gd"
 const RAYCAST_PER_ANGLE = 5.0
 
 
-var _collision_mask: int
-
-
-func _ready() -> void:
-    super._ready()
-    _setup_collision_mask.call_deferred()
-
-
-func _setup_collision_mask() -> void:
-    _collision_mask = owner.collision_mask & (~owner.collision_layer)
-
-
 func _on_activate() -> void:
     super._on_activate()
     

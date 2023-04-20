@@ -8,12 +8,12 @@
 
 [node name="Viking" instance=ExtResource("1_fvn2d")]
 
-[node name="BasicMeleeAttack" type="Node" parent="Skills" index="0"]
+[node name="BasicAttack" type="Node" parent="Skills" index="0"]
 script = ExtResource("2_ye3mo")
 
-[node name="BaseMeleeAttackSkill1" parent="Skills/BasicMeleeAttack" index="0" instance=ExtResource("3_f3ea2")]
+[node name="BaseMeleeAttackSkill1" parent="Skills/BasicAttack" index="0" instance=ExtResource("3_f3ea2")]
 
-[node name="BaseMeleeAttackSkill2" parent="Skills/BasicMeleeAttack" index="1" instance=ExtResource("3_f3ea2")]
+[node name="BaseMeleeAttackSkill2" parent="Skills/BasicAttack" index="1" instance=ExtResource("3_f3ea2")]
 
 [node name="DamageProcessor" parent="." index="3" node_paths=PackedStringArray("health")]
 health = NodePath("../Stats/Health")

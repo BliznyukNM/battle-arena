@@ -8,9 +8,18 @@ signal activated(skill: BaseSkill)
 @onready var execution: Timer = $Execution
 
 
+var _collision_mask: int
+
+
 func _ready() -> void:
     assert(cooldown.time_left >= execution.time_left, \
         "Execution time have to be bigger or equal than cooldown.")
+    owner = get_parent().owner
+    _setup_collision_mask()
+
+
+func _setup_collision_mask() -> void:
+    _collision_mask = owner.collision_mask & (~owner.collision_layer)
 
 
 func activate(pressed: bool) -> void:

@@ -73,3 +73,19 @@ func test_movement_setup_correctly() -> void:
     assert_not_null(movement)
     assert_true(movement.has_max_value)
     assert_true(movement.has_min_value)
+
+
+func test_movement_slowdown_on_attack() -> void:
+    var movement: NumberStat = character_instance.stats.get_stat("Movement")
+    var basic_attack = character_instance.skills.basic_attack
+    var slowdown_modifier: ConditionalModifier = character_instance.modifiers.get_node("SlowdownOnBasicAttack")
+
+    assert_eq(movement.percentual_modifier, 0.0)
+    basic_attack.activate(true)
+    simulate(slowdown_modifier, 1, 0.01)
+    assert_eq(movement.percentual_modifier, -slowdown_modifier.effects[0].amount / 100.0)
+    basic_attack.activate(false)
+
+    await wait_seconds(basic_attack.execution.time_left)
+    assert_eq(movement.percentual_modifier, 0.0)
+

@@ -10,9 +10,10 @@ var _skill_scheduled: bool
 
 var current_skill: BaseSkill:
     get: return _skills[_current_skill_number]
-
-var is_ready: bool:
-    get: return _current_skill_number == 0 and current_skill.cooldown.time_left <= 0.0
+var cooldown: Timer:
+    get: return current_skill.cooldown
+var execution: Timer:
+    get: return current_skill.execution
 
 
 func _ready() -> void:
@@ -23,7 +24,8 @@ func _ready() -> void:
 
 func activate(pressed: bool) -> void:
     _skill_scheduled = pressed
-    if is_ready: _trigger_next_skill()
+    if _current_skill_number == 0 and current_skill.cooldown.time_left <= 0.0:
+        _trigger_next_skill()
 
 
 func _trigger_next_skill() -> void:

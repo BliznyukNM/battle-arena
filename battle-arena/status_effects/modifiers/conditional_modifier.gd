@@ -8,7 +8,7 @@ var _condition_expression: Expression
 
 
 func _ready() -> void:
-    super._ready()
+    owner = get_parent().owner
     _condition_expression = Expression.new()
     var parsing_result: = _condition_expression.parse(condition)
     assert(parsing_result == OK)
