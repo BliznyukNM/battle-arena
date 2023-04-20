@@ -8,6 +8,7 @@ var _current_time: float:
     set(value):
         _current_time = value
         if _current_time <= 0.0:
+            _current_condition = false
             queue_free()
 
 
