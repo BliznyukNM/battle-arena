@@ -1,108 +1,17 @@
-[gd_scene load_steps=17 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://doow4e7sy3d1l"]
 
-[ext_resource type="PackedScene" uid="uid://drk870rf7vm7a" path="res://characters/monk/skins/monk_skin_a.tscn" id="1_j7ccy"]
-[ext_resource type="PackedScene" uid="uid://c6ip2utb0o38d" path="res://characters/monk/weapons/staff_a.tscn" id="2_nqx7i"]
+[ext_resource type="PackedScene" uid="uid://b3qs2xsrlw5fb" path="res://characters/character.tscn" id="1_kfi3n"]
 [ext_resource type="Script" path="res://skills/skill_sequence.gd" id="3_8cmn1"]
-[ext_resource type="PackedScene" uid="uid://b63ty8x5klj2h" path="res://characters/monk/skills/swing.tscn" id="4_dw16p"]
-[ext_resource type="Script" path="res://characters/movement.gd" id="5_ncu48"]
+[ext_resource type="PackedScene" uid="uid://btr7ljsmjnjuw" path="res://characters/monk/skills/swing.tscn" id="4_dw16p"]
 [ext_resource type="PackedScene" uid="uid://cr15w6fww7s2g" path="res://characters/monk/skills/final_swing.tscn" id="5_q6fe0"]
-[ext_resource type="PackedScene" uid="uid://3yhpuldocttv" path="res://characters/monk/skills/secondary.tscn" id="6_i15dq"]
-[ext_resource type="Script" path="res://characters/Input.gd" id="6_isohw"]
-[ext_resource type="Script" path="res://characters/damage_processor.gd" id="6_lfg0i"]
-[ext_resource type="Script" path="res://stats/stats_manager.gd" id="7_ukdno"]
-[ext_resource type="Script" path="res://characters/rotation.gd" id="8_vhdio"]
-[ext_resource type="PackedScene" uid="uid://7xkefn5xpy47" path="res://hud/hud.tscn" id="9_3im8r"]
-[ext_resource type="Script" path="res://status_effects/modifiers_manager.gd" id="9_whcnv"]
-[ext_resource type="Script" path="res://characters/hit_box.gd" id="12_eu5ss"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cc0dj"]
-radius = 0.6
-height = 1.8
+[node name="Monk" instance=ExtResource("1_kfi3n")]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_kr7eb"]
-height = 1.5
-radius = 0.6
-
-[node name="Monk" type="CharacterBody3D"]
-collision_mask = 7
-
-[node name="Skin" parent="." node_paths=PackedStringArray("input") instance=ExtResource("1_j7ccy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.1, 2.08165e-12)
-input = NodePath("../Input")
-acceleration = 12.0
-skill_to_animation = {
-"SecondaryAttack": "secondary_attack"
-}
-
-[node name="Weapon" parent="." instance=ExtResource("2_nqx7i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.1, 2.08165e-12)
-skill_to_animation = {
-"SecondaryAttack": "attack/secondary",
-"Swing1": "attack/swing_1",
-"Swing2": "attack/swing_2",
-"Swing3": "attack/swing_3"
-}
-
-[node name="Skills" type="Node3D" parent="."]
-
-[node name="BasicAttack" type="Node3D" parent="Skills"]
+[node name="BasicAttack" type="Node" parent="Skills" index="0"]
 script = ExtResource("3_8cmn1")
 
-[node name="Swing1" parent="Skills/BasicAttack" instance=ExtResource("4_dw16p")]
+[node name="Swing1" parent="Skills/BasicAttack" index="0" instance=ExtResource("4_dw16p")]
 
-[node name="Swing2" parent="Skills/BasicAttack" instance=ExtResource("4_dw16p")]
-hit_time = 0.25
+[node name="Swing2" parent="Skills/BasicAttack" index="1" instance=ExtResource("4_dw16p")]
 
-[node name="Swing3" parent="Skills/BasicAttack" instance=ExtResource("5_q6fe0")]
-
-[node name="SecondaryAttack" parent="Skills" instance=ExtResource("6_i15dq")]
-
-[node name="Stats" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("7_ukdno")
-
-[node name="StatusEffects" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("9_whcnv")
-
-[node name="Controllers" type="Node" parent="."]
-
-[node name="Health" type="Node" parent="Controllers"]
-script = ExtResource("6_lfg0i")
-
-[node name="Movement" type="Node" parent="Controllers" node_paths=PackedStringArray("input")]
-script = ExtResource("5_ncu48")
-input = NodePath("../../Input")
-
-[node name="Rotation" type="Node" parent="Controllers" node_paths=PackedStringArray("input")]
-script = ExtResource("8_vhdio")
-input = NodePath("../../Input")
-
-[node name="Input" type="MultiplayerSynchronizer" parent="."]
-script = ExtResource("6_isohw")
-
-[node name="HUD" parent="." instance=ExtResource("9_3im8r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.36563, 0)
-
-[node name="Collision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.954418, 0.0368596)
-shape = SubResource("CapsuleShape3D_cc0dj")
-
-[node name="HitBox" type="Area3D" parent="."]
-collision_mask = 0
-monitoring = false
-script = ExtResource("12_eu5ss")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.75, 2.08165e-12)
-shape = SubResource("CylinderShape3D_kr7eb")
-
-[connection signal="activated" from="Skills/BasicAttack/Swing1" to="Weapon" method="on_skill_activated"]
-[connection signal="activated" from="Skills/BasicAttack/Swing2" to="Weapon" method="on_skill_activated"]
-[connection signal="activated" from="Skills/BasicAttack/Swing3" to="Weapon" method="on_skill_activated"]
-[connection signal="activated" from="Skills/SecondaryAttack" to="Skin" method="on_skill_activated"]
-[connection signal="activated" from="Skills/SecondaryAttack" to="Weapon" method="on_skill_activated"]
-[connection signal="basic_attack" from="Input" to="Skills/BasicAttack" method="activate"]
-[connection signal="secondary_attack" from="Input" to="Skills/SecondaryAttack" method="activate"]
-[connection signal="on_hit" from="HitBox" to="Controllers/Health" method="damage"]
-[connection signal="on_hit" from="HitBox" to="Skin" method="blink" binds= [true]]
+[node name="Swing3" parent="Skills/BasicAttack" index="2" instance=ExtResource("5_q6fe0")]

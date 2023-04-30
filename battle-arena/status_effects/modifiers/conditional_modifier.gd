@@ -1,6 +1,7 @@
 class_name ConditionalModifier extends BaseModifier
 
 
+@export var default_condition: bool
 @export_multiline var condition: String = "true"
 
 
@@ -15,5 +16,5 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-    _current_condition = _condition_expression.execute([], self)
-    assert(not _condition_expression.has_execute_failed())
+    var new_condition = _condition_expression.execute([], self, false, true)
+    _current_condition = default_condition if _condition_expression.has_execute_failed() else new_condition

@@ -7,7 +7,7 @@ var port: int:
     get: return ProjectSettings.get_setting("application/run/port", 7350)
 
 
-var monk: = preload("res://characters/monk/character_monk_a.tscn")
+var monk #: = preload("res://characters/monk/character_monk_a.tscn")
 
 
 func _ready() -> void:
@@ -51,7 +51,7 @@ func _on_peer_connected(id: int) -> void:
     
     var index = $MultiplayerSpawner.get_child_count()
     
-    var monk_instance: Character = monk.instantiate()
+    var monk_instance = monk.instantiate()
     monk_instance.name = str(id)
     monk_instance.player_id = id
     monk_instance.team = index

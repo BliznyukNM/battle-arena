@@ -5,8 +5,8 @@
 [node name="BaseSkill" type="Node"]
 script = ExtResource("1_i4lru")
 
-[node name="Cooldown" type="Timer" parent="."]
+[node name="Execution" type="Timer" parent="."]
 one_shot = true
 
-[node name="Execution" type="Timer" parent="."]
+[node name="Cooldown" type="Timer" parent="."]
 one_shot = true

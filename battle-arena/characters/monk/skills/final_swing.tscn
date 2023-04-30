@@ -1,9 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://cr15w6fww7s2g"]
 
-[ext_resource type="PackedScene" uid="uid://b63ty8x5klj2h" path="res://characters/monk/skills/swing.tscn" id="1_ieu31"]
+[ext_resource type="PackedScene" uid="uid://btr7ljsmjnjuw" path="res://characters/monk/skills/swing.tscn" id="1_ieu31"]
 
 [node name="FinalSwing" instance=ExtResource("1_ieu31")]
-damage = 10
-
-[node name="Cooldown" parent="." index="0"]
-wait_time = 1.25
+damage = 8
+area = 40.0

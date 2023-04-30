@@ -1,22 +1,15 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://btr7ljsmjnjuw"]
 
-[ext_resource type="PackedScene" uid="uid://76ddkyhgdvp" path="res://skills/base_skill.tscn" id="1_5giij"]
-[ext_resource type="Script" path="res://skills/base_melee_attack_skill.gd" id="2_u3q06"]
+[ext_resource type="PackedScene" uid="uid://di3gecnsy5fv3" path="res://skills/base_melee_attack_skill.tscn" id="1_wv7iw"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_vaat8"]
-radius = 0.7
-
-[node name="Swing" instance=ExtResource("1_5giij")]
-script = ExtResource("2_u3q06")
-damage = 6
+[node name="Swing" instance=ExtResource("1_wv7iw")]
+damage = 5
 hit_time = 0.3
+hit_range = 2.0
+area = 30.0
 
-[node name="Cooldown" parent="." index="0"]
-wait_time = 0.75
-
-[node name="Execution" parent="." index="1"]
+[node name="Execution" parent="." index="0"]
 wait_time = 0.4
 
-[node name="Area" type="CollisionShape3D" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 1.716)
-shape = SubResource("SphereShape3D_vaat8")
+[node name="Cooldown" parent="." index="1"]
+wait_time = 0.5

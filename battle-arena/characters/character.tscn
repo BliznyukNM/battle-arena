@@ -48,8 +48,9 @@ effects = Array[Resource("res://status_effects/effects/base_effect.gd")]([SubRes
 [node name="Skills" type="Node" parent="."]
 script = ExtResource("7_nutv6")
 
-[node name="DamageProcessor" type="Node" parent="."]
+[node name="DamageProcessor" type="Node" parent="." node_paths=PackedStringArray("health")]
 script = ExtResource("3_d6bpp")
+health = NodePath("../Stats/Health")
 
 [node name="HitBox" type="Area3D" parent="."]
 monitoring = false
