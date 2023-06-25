@@ -48,9 +48,21 @@ func test_min() -> void:
     number_stat.has_min_value = true
     number_stat.min_value = 5
     _test_current_value(10, -7, 0, 5)
+    
+    
+func test_no_min() -> void:
+    number_stat.has_min_value = false
+    number_stat.min_value = 5
+    _test_current_value(10, -7, -0.5, 1.5)
 
 
 func test_max() -> void:
     number_stat.has_max_value = true
     number_stat.max_value = 12
-    _test_current_value(10, 0, 0.5, 12)
+    _test_current_value(10, 5, 0.5, 12)
+
+
+func test_no_max() -> void:
+    number_stat.has_max_value = false
+    number_stat.max_value = 12
+    _test_current_value(10, 5, 0.5, 22.5)

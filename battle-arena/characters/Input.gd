@@ -13,6 +13,12 @@ var is_local: bool:
     get: return get_multiplayer_authority() == multiplayer.get_unique_id()
 
 
+var _camera: Camera3D:
+    get:
+        if _camera == null: _camera = get_viewport().get_camera_3d()
+        return _camera
+
+
 func _ready() -> void:
     set_process(is_local)
 
@@ -21,11 +27,10 @@ func _process(_delta: float) -> void:
     movement = Input.get_vector("character.move.left", "character.move.right", \
         "character.move.up", "character.move.down")
         
-    var camera: = get_viewport().get_camera_3d()
-    if camera:
+    if _camera:
         var mouse_position: = get_viewport().get_mouse_position()
-        var origin: = camera.project_ray_origin(mouse_position)
-        var normal: = camera.project_ray_normal(mouse_position)
+        var origin: = _camera.project_ray_origin(mouse_position)
+        var normal: = _camera.project_ray_normal(mouse_position)
         var plane: = Plane(Vector3.UP)
         var intersection = plane.intersects_ray(origin, normal)
 

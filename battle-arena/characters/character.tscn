@@ -8,10 +8,10 @@
 [ext_resource type="Script" path="res://status_effects/modifiers/conditional_modifier.gd" id="5_cj7sc"]
 [ext_resource type="Script" path="res://status_effects/effects/slowdown.gd" id="6_ogbm5"]
 [ext_resource type="Script" path="res://skills/skills_manager.gd" id="7_nutv6"]
-[ext_resource type="Script" path="res://processors/processor_manager.gd" id="8_bkv6b"]
 [ext_resource type="Script" path="res://processors/health.gd" id="9_q665c"]
 [ext_resource type="Script" path="res://processors/movement.gd" id="10_hj0il"]
 [ext_resource type="Script" path="res://processors/rotation.gd" id="11_747v1"]
+[ext_resource type="PackedScene" uid="uid://7xkefn5xpy47" path="res://hud/hud.tscn" id="12_4f13d"]
 
 [sub_resource type="Resource" id="Resource_7s487"]
 script = ExtResource("6_ogbm5")
@@ -45,10 +45,8 @@ base_value = 5.0
 
 [node name="RotationSpeed" type="Node" parent="Stats"]
 script = ExtResource("3_018qh")
-has_max_value = true
-max_value = 15.0
 has_min_value = true
-base_value = 5.0
+base_value = 10.0
 
 [node name="Modifiers" type="Node" parent="."]
 script = ExtResource("3_687mx")
@@ -62,7 +60,6 @@ effects = Array[Resource("res://status_effects/effects/base_effect.gd")]([SubRes
 script = ExtResource("7_nutv6")
 
 [node name="Processors" type="Node" parent="."]
-script = ExtResource("8_bkv6b")
 
 [node name="Health" type="Node" parent="Processors" node_paths=PackedStringArray("health")]
 script = ExtResource("9_q665c")
@@ -76,10 +73,9 @@ movement_speed = NodePath("../../Stats/MovementSpeed")
 script = ExtResource("11_747v1")
 rotation_speed = NodePath("../../Stats/RotationSpeed")
 
-[node name="HitBox" type="Area3D" parent="." node_paths=PackedStringArray("processor_manager")]
+[node name="HitBox" type="Area3D" parent="."]
 monitoring = false
 script = ExtResource("2_nshhg")
-processor_manager = NodePath("../Processors")
 
 [node name="Collider" type="CollisionShape3D" parent="HitBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
@@ -88,3 +84,7 @@ shape = SubResource("CylinderShape3D_47r4a")
 [node name="Collider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
 shape = SubResource("CylinderShape3D_vwbuv")
+
+[node name="HUD" parent="." node_paths=PackedStringArray("health") instance=ExtResource("12_4f13d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.07557, 0)
+health = NodePath("../Stats/Health")

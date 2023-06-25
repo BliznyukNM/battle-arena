@@ -64,7 +64,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 40
 text = "Server"
 
-[node name="LineEdit" type="LineEdit" parent="UI"]
+[node name="IP" type="LineEdit" parent="UI"]
 custom_minimum_size = Vector2(300, 2.08165e-12)
 layout_mode = 1
 anchors_preset = 8
@@ -82,8 +82,11 @@ theme_override_font_sizes/font_size = 40
 text = "127.0.0.1"
 placeholder_text = "IP Address"
 alignment = 1
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
 
 [connection signal="pressed" from="UI/Online" to="." method="_start" binds= [1]]
 [connection signal="pressed" from="UI/Offline" to="." method="_start" binds= [0]]
 [connection signal="pressed" from="UI/Server" to="." method="_start" binds= [2]]
-[connection signal="text_changed" from="UI/LineEdit" to="." method="_change_ip"]
+[connection signal="text_changed" from="UI/IP" to="." method="_change_ip"]

@@ -1,12 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://boulj8buo8ukk"]
+[gd_scene load_steps=5 format=3 uid="uid://boulj8buo8ukk"]
 
 [ext_resource type="PackedScene" uid="uid://flt4bdecd0xj" path="res://map/map.tscn" id="1_j7vok"]
 [ext_resource type="PackedScene" uid="uid://dbd7wthfy4ok3" path="res://characters/monk/monk_white.tscn" id="2_8dt7n"]
+[ext_resource type="Script" path="res://characters/Input.gd" id="3_lw50h"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_sfije"]
+properties/0/path = NodePath("Input:movement")
+properties/0/spawn = false
+properties/0/sync = true
+properties/0/watch = false
+properties/1/path = NodePath("Input:look_at_point")
+properties/1/spawn = false
+properties/1/sync = true
+properties/1/watch = false
 
 [node name="Map" instance=ExtResource("1_j7vok")]
 
-[node name="Camera" parent="." index="1"]
+[node name="Camera" parent="." index="1" node_paths=PackedStringArray("target")]
+target = NodePath("../MonkWhite")
 lerp_speed = 3.0
 max_distance = 8.0
 
 [node name="MonkWhite" parent="." index="4" instance=ExtResource("2_8dt7n")]
+
+[node name="Movement" parent="MonkWhite/Processors" index="1" node_paths=PackedStringArray("input")]
+input = NodePath("../../Input")
+
+[node name="Rotation" parent="MonkWhite/Processors" index="2" node_paths=PackedStringArray("input")]
+input = NodePath("../../Input")
+
+[node name="Input" type="MultiplayerSynchronizer" parent="MonkWhite" index="7"]
+replication_config = SubResource("SceneReplicationConfig_sfije")
+script = ExtResource("3_lw50h")
+
+[editable path="MonkWhite"]

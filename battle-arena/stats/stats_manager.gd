@@ -17,10 +17,10 @@ func add_stat(stat: BaseStat) -> void:
 
 
 func remove_stat(stat_name: String) -> void:
+    assert(has_stat(stat_name))
     var stat: = get_stat(stat_name)
-    assert(stat)
-    stat.queue_free()
     _stats.erase(stat_name)
+    stat.queue_free()
 
 
 func get_stat(stat_name: String) -> BaseStat:

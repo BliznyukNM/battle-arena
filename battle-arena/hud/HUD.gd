@@ -1,12 +1,13 @@
 extends Node
 
 
+@export var health: NumberStat
+
+
 @onready var health_bar: = $SubViewport/HUD/Container/Health
 @onready var name_label: = $SubViewport/HUD/Container/Name
 @onready var view: = $View
 @onready var viewport: = $SubViewport
-
-@onready var health: NumberStat = %Stats.get_stat("health")
 
 
 func _ready() -> void:

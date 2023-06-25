@@ -5,4 +5,8 @@
 
 [node name="MonkWhite" instance=ExtResource("1_8ttnk")]
 
-[node name="Skin" parent="." index="0" instance=ExtResource("2_b6c6f")]
+[node name="RotationSpeed" parent="Stats" index="2"]
+base_value = 1000.0
+
+[node name="Skin" parent="." index="6" instance=ExtResource("2_b6c6f")]
+script = null
