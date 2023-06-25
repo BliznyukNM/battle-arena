@@ -1,34 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://boulj8buo8ukk"]
+[gd_scene load_steps=3 format=3 uid="uid://boulj8buo8ukk"]
 
 [ext_resource type="PackedScene" uid="uid://flt4bdecd0xj" path="res://map/map.tscn" id="1_j7vok"]
-[ext_resource type="PackedScene" uid="uid://oq7mpxlxlk1x" path="res://characters/monk/monk.tscn" id="2_yxrme"]
-[ext_resource type="PackedScene" uid="uid://c23cowaue0hsj" path="res://characters/dummy/hittable_dummy.tscn" id="3_nienj"]
-[ext_resource type="PackedScene" uid="uid://whj2dg67w3yo" path="res://characters/dummy/shooting_dummy.tscn" id="4_s6uo6"]
+[ext_resource type="PackedScene" uid="uid://dbd7wthfy4ok3" path="res://characters/monk/monk_white.tscn" id="2_8dt7n"]
 
 [node name="Map" instance=ExtResource("1_j7vok")]
 
-[node name="Camera" parent="." index="1" node_paths=PackedStringArray("target")]
-target = NodePath("../Monk")
+[node name="Camera" parent="." index="1"]
 lerp_speed = 3.0
 max_distance = 8.0
 
-[node name="Monk" parent="." index="5" instance=ExtResource("2_yxrme")]
-collision_layer = 2
-
-[node name="Dummies" type="Node" parent="." index="6"]
-
-[node name="HittableDummy" parent="Dummies" index="0" instance=ExtResource("3_nienj")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.8014, 0.1, -0.38788)
-collision_mask = 1
-
-[node name="HittableDummy3" parent="Dummies" index="1" instance=ExtResource("3_nienj")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.28052, 0.1, -1.11438)
-collision_mask = 1
-
-[node name="HittableDummy2" parent="Dummies" index="2" instance=ExtResource("3_nienj")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.69743, 0.1, 0.750804)
-collision_mask = 1
-
-[node name="ShootingDummy" parent="Dummies" index="3" instance=ExtResource("4_s6uo6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.17788, 0.1, -10.9805)
-collision_mask = 1
+[node name="MonkWhite" parent="." index="4" instance=ExtResource("2_8dt7n")]

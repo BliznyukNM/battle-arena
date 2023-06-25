@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbd7wthfy4ok3"]
+
+[ext_resource type="PackedScene" uid="uid://doow4e7sy3d1l" path="res://characters/monk/base_monk.tscn" id="1_8ttnk"]
+[ext_resource type="PackedScene" uid="uid://drk870rf7vm7a" path="res://characters/monk/skins/monk_skin_a.tscn" id="2_b6c6f"]
+
+[node name="MonkWhite" instance=ExtResource("1_8ttnk")]
+
+[node name="Skin" parent="." index="0" instance=ExtResource("2_b6c6f")]

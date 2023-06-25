@@ -30,11 +30,3 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_r4cc4")
-
-[node name="SpawnPoints" type="Node3D" parent="."]
-
-[node name="Point1" type="Node3D" parent="SpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.3569, 2.08165e-12, -0.426946)
-
-[node name="Point2" type="Node3D" parent="SpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2571, 2.08165e-12, -0.426946)

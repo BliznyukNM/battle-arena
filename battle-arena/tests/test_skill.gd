@@ -60,7 +60,7 @@ func test_basic_melee_area_0():
     
     basic_melee.activate(true)
     await wait_frames(2)
-    assert_signal_emitted_with_parameters(hitbox, "on_hit", [basic_melee.damage])
+    assert_signal_emitted_with_parameters(hitbox, "on_damage", [basic_melee.damage])
     
     basic_melee.free()
 
@@ -72,7 +72,7 @@ func test_basic_melee_out_of_range() -> void:
     
     basic_melee.activate(true)
     await wait_frames(2)
-    assert_signal_not_emitted(hitbox, "on_hit")
+    assert_signal_not_emitted(hitbox, "on_damage")
     
     basic_melee.free()
 
@@ -90,4 +90,4 @@ func test_basic_melee_area_30() -> void:
     await wait_frames(2)
     basic_melee.activate(true)
     await wait_frames(2)
-    assert_signal_emitted_with_parameters(hitbox, "on_hit", [basic_melee.damage])
+    assert_signal_emitted_with_parameters(hitbox, "on_damage", [basic_melee.damage])

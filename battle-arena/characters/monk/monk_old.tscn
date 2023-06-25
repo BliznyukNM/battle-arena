@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ct7aq3n2rgpjn"]
+[gd_scene load_steps=17 format=3 uid="uid://yrc515rlr03e"]
 
 [ext_resource type="PackedScene" uid="uid://drk870rf7vm7a" path="res://characters/monk/skins/monk_skin_a.tscn" id="1_dfi3x"]
 [ext_resource type="PackedScene" uid="uid://c6ip2utb0o38d" path="res://characters/monk/weapons/staff_a.tscn" id="2_jawvr"]
@@ -8,9 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://3yhpuldocttv" path="res://characters/monk/skills/secondary.tscn" id="6_w7ik8"]
 [ext_resource type="Script" path="res://stats/stats_manager.gd" id="7_d858n"]
 [ext_resource type="Script" path="res://status_effects/modifiers_manager.gd" id="8_rlyvq"]
-[ext_resource type="Script" path="res://characters/damage_processor.gd" id="9_vv20g"]
-[ext_resource type="Script" path="res://characters/movement.gd" id="10_u8ukf"]
-[ext_resource type="Script" path="res://characters/rotation.gd" id="11_su0o6"]
+[ext_resource type="Script" path="res://processors/health.gd" id="9_sybx1"]
+[ext_resource type="Script" path="res://processors/movement.gd" id="10_tpiy5"]
+[ext_resource type="Script" path="res://processors/rotation.gd" id="11_ex0dd"]
 [ext_resource type="Script" path="res://characters/Input.gd" id="12_48esm"]
 [ext_resource type="PackedScene" uid="uid://7xkefn5xpy47" path="res://hud/hud.tscn" id="13_ws3ur"]
 [ext_resource type="Script" path="res://characters/hit_box.gd" id="14_mjbgf"]
@@ -74,14 +74,14 @@ script = ExtResource("8_rlyvq")
 [node name="Controllers" type="Node" parent="."]
 
 [node name="Health" type="Node" parent="Controllers"]
-script = ExtResource("9_vv20g")
+script = ExtResource("9_sybx1")
 
 [node name="Movement" type="Node" parent="Controllers" node_paths=PackedStringArray("input")]
-script = ExtResource("10_u8ukf")
+script = ExtResource("10_tpiy5")
 input = NodePath("../../Input")
 
 [node name="Rotation" type="Node" parent="Controllers" node_paths=PackedStringArray("input")]
-script = ExtResource("11_su0o6")
+script = ExtResource("11_ex0dd")
 input = NodePath("../../Input")
 
 [node name="Input" type="MultiplayerSynchronizer" parent="."]
@@ -110,5 +110,3 @@ shape = SubResource("CylinderShape3D_kr7eb")
 [connection signal="activated" from="Skills/SecondaryAttack" to="Weapon" method="on_skill_activated"]
 [connection signal="basic_attack" from="Input" to="Skills/BasicAttack" method="activate"]
 [connection signal="secondary_attack" from="Input" to="Skills/SecondaryAttack" method="activate"]
-[connection signal="on_hit" from="HitBox" to="Controllers/Health" method="damage"]
-[connection signal="on_hit" from="HitBox" to="Skin" method="blink" binds= [true]]

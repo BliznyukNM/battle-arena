@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://doow4e7sy3d1l"]
 
-[ext_resource type="PackedScene" uid="uid://b3qs2xsrlw5fb" path="res://characters/character.tscn" id="1_kfi3n"]
+[ext_resource type="PackedScene" uid="uid://d26br4f45m27g" path="res://characters/character.tscn" id="1_kfi3n"]
 [ext_resource type="Script" path="res://skills/skill_sequence.gd" id="3_8cmn1"]
 [ext_resource type="PackedScene" uid="uid://btr7ljsmjnjuw" path="res://characters/monk/skills/swing.tscn" id="4_dw16p"]
 [ext_resource type="PackedScene" uid="uid://cr15w6fww7s2g" path="res://characters/monk/skills/final_swing.tscn" id="5_q6fe0"]
 
-[node name="Monk" instance=ExtResource("1_kfi3n")]
+[node name="BaseMonk" instance=ExtResource("1_kfi3n")]
 
 [node name="BasicAttack" type="Node" parent="Skills" index="0"]
 script = ExtResource("3_8cmn1")

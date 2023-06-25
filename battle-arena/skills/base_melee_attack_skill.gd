@@ -37,5 +37,5 @@ func _try_hit() -> void:
         if result.is_empty(): continue
         if not result.collider is HitBox: continue
         
-        result.collider.on_hit.emit(damage)
+        result.collider.register_damage(damage)
         break

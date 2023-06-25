@@ -13,10 +13,10 @@ func clear(owner) -> void:
 
 
 func _apply_stats_modifiers(stats) -> void:
-    var movement: NumberStat = stats.get_stat("Movement")
+    var movement: NumberStat = stats.get_stat("MovementSpeed")
     movement.percentual_modifier -= amount / 100.0
 
 
 func _clear_stats_modifiers(stats) -> void:
-    var movement: NumberStat = stats.get_stat("Movement")
+    var movement: NumberStat = stats.get_stat("MovementSpeed")
     movement.percentual_modifier += amount / 100.0

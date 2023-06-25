@@ -12,11 +12,15 @@ func _ready() -> void:
 
 func add_modifier(modifier: BaseModifier) -> void:
     _modifiers[modifier.name] = modifier
+    modifier.register(owner)
     add_child(modifier)
-    modifier.owner = owner
 
 
-func remove_modifier(modifier_name: String) -> void:
-    var modifier: BaseModifier = _modifiers[modifier_name]
-    _modifiers.erase(modifier_name)
-    modifier.queue_free()
+func remove_modifier_by_name(modifier_name: String) -> void:
+    remove_modifier(_modifiers.get(modifier_name))
+
+
+func remove_modifier(modifier: BaseModifier) -> void:
+    if modifier == null or not _modifiers.has(modifier.name): return
+    modifier.deactivate()
+    _modifiers.erase(modifier.name)

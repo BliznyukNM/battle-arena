@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://t26xifgp5dgp" path="res://characters/dummy/dummy.tscn" id="1_gykvh"]
 [ext_resource type="PackedScene" uid="uid://7xkefn5xpy47" path="res://hud/hud.tscn" id="2_bau5m"]
 [ext_resource type="Script" path="res://characters/hit_box.gd" id="3_pw2kn"]
-[ext_resource type="Script" path="res://characters/damage_processor.gd" id="4_car63"]
+[ext_resource type="Script" path="res://processors/health.gd" id="4_car63"]
 [ext_resource type="Script" path="res://characters/blinker.gd" id="5_nt3s3"]
 [ext_resource type="Material" uid="uid://bru7nbbk2xlim" path="res://characters/hit_overlay.tres" id="6_dvoud"]
 

@@ -1,20 +1,26 @@
-[gd_scene load_steps=12 format=3 uid="uid://b3qs2xsrlw5fb"]
+[gd_scene load_steps=16 format=3 uid="uid://d26br4f45m27g"]
 
 [ext_resource type="Script" path="res://characters/character.gd" id="1_8kwiu"]
 [ext_resource type="Script" path="res://stats/stats_manager.gd" id="2_3n7xj"]
 [ext_resource type="Script" path="res://characters/hit_box.gd" id="2_nshhg"]
 [ext_resource type="Script" path="res://stats/number_stat.gd" id="3_018qh"]
 [ext_resource type="Script" path="res://status_effects/modifiers_manager.gd" id="3_687mx"]
-[ext_resource type="Script" path="res://characters/damage_processor.gd" id="3_d6bpp"]
 [ext_resource type="Script" path="res://status_effects/modifiers/conditional_modifier.gd" id="5_cj7sc"]
 [ext_resource type="Script" path="res://status_effects/effects/slowdown.gd" id="6_ogbm5"]
 [ext_resource type="Script" path="res://skills/skills_manager.gd" id="7_nutv6"]
+[ext_resource type="Script" path="res://processors/processor_manager.gd" id="8_bkv6b"]
+[ext_resource type="Script" path="res://processors/health.gd" id="9_q665c"]
+[ext_resource type="Script" path="res://processors/movement.gd" id="10_hj0il"]
+[ext_resource type="Script" path="res://processors/rotation.gd" id="11_747v1"]
 
 [sub_resource type="Resource" id="Resource_7s487"]
 script = ExtResource("6_ogbm5")
 amount = 40
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_47r4a"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vwbuv"]
+radius = 0.4
 
 [node name="Character" type="CharacterBody3D"]
 collision_mask = 7
@@ -30,7 +36,14 @@ max_value = 100.0
 has_min_value = true
 base_value = 100.0
 
-[node name="Movement" type="Node" parent="Stats"]
+[node name="MovementSpeed" type="Node" parent="Stats"]
+script = ExtResource("3_018qh")
+has_max_value = true
+max_value = 15.0
+has_min_value = true
+base_value = 5.0
+
+[node name="RotationSpeed" type="Node" parent="Stats"]
 script = ExtResource("3_018qh")
 has_max_value = true
 max_value = 15.0
@@ -48,16 +61,30 @@ effects = Array[Resource("res://status_effects/effects/base_effect.gd")]([SubRes
 [node name="Skills" type="Node" parent="."]
 script = ExtResource("7_nutv6")
 
-[node name="DamageProcessor" type="Node" parent="." node_paths=PackedStringArray("health")]
-script = ExtResource("3_d6bpp")
-health = NodePath("../Stats/Health")
+[node name="Processors" type="Node" parent="."]
+script = ExtResource("8_bkv6b")
 
-[node name="HitBox" type="Area3D" parent="."]
+[node name="Health" type="Node" parent="Processors" node_paths=PackedStringArray("health")]
+script = ExtResource("9_q665c")
+health = NodePath("../../Stats/Health")
+
+[node name="Movement" type="Node" parent="Processors" node_paths=PackedStringArray("movement_speed")]
+script = ExtResource("10_hj0il")
+movement_speed = NodePath("../../Stats/MovementSpeed")
+
+[node name="Rotation" type="Node" parent="Processors" node_paths=PackedStringArray("rotation_speed")]
+script = ExtResource("11_747v1")
+rotation_speed = NodePath("../../Stats/RotationSpeed")
+
+[node name="HitBox" type="Area3D" parent="." node_paths=PackedStringArray("processor_manager")]
 monitoring = false
 script = ExtResource("2_nshhg")
+processor_manager = NodePath("../Processors")
 
 [node name="Collider" type="CollisionShape3D" parent="HitBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
 shape = SubResource("CylinderShape3D_47r4a")
 
-[connection signal="on_hit" from="HitBox" to="DamageProcessor" method="damage"]
+[node name="Collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
+shape = SubResource("CylinderShape3D_vwbuv")
