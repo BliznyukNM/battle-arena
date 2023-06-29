@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d26br4f45m27g"]
+[gd_scene load_steps=17 format=3 uid="uid://d26br4f45m27g"]
 
 [ext_resource type="Script" path="res://characters/character.gd" id="1_8kwiu"]
 [ext_resource type="Script" path="res://stats/stats_manager.gd" id="2_3n7xj"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://status_effects/effects/slowdown.gd" id="6_ogbm5"]
 [ext_resource type="Script" path="res://skills/skills_manager.gd" id="7_nutv6"]
 [ext_resource type="Script" path="res://processors/health.gd" id="9_q665c"]
+[ext_resource type="Script" path="res://processors/heal.gd" id="9_urlqi"]
 [ext_resource type="Script" path="res://processors/movement.gd" id="10_hj0il"]
 [ext_resource type="Script" path="res://processors/rotation.gd" id="11_747v1"]
 [ext_resource type="PackedScene" uid="uid://7xkefn5xpy47" path="res://hud/hud.tscn" id="12_4f13d"]
@@ -36,6 +37,12 @@ max_value = 100.0
 has_min_value = true
 base_value = 100.0
 
+[node name="Shield" type="Node" parent="Stats"]
+script = ExtResource("3_018qh")
+has_max_value = true
+max_value = 100.0
+has_min_value = true
+
 [node name="MovementSpeed" type="Node" parent="Stats"]
 script = ExtResource("3_018qh")
 has_max_value = true
@@ -61,8 +68,13 @@ script = ExtResource("7_nutv6")
 
 [node name="Processors" type="Node" parent="."]
 
-[node name="Health" type="Node" parent="Processors" node_paths=PackedStringArray("health")]
+[node name="Damage" type="Node" parent="Processors" node_paths=PackedStringArray("health", "shield")]
 script = ExtResource("9_q665c")
+health = NodePath("../../Stats/Health")
+shield = NodePath("../../Stats/Shield")
+
+[node name="Heal" type="Node" parent="Processors" node_paths=PackedStringArray("health")]
+script = ExtResource("9_urlqi")
 health = NodePath("../../Stats/Health")
 
 [node name="Movement" type="Node" parent="Processors" node_paths=PackedStringArray("movement_speed")]
@@ -88,3 +100,6 @@ shape = SubResource("CylinderShape3D_vwbuv")
 [node name="HUD" parent="." node_paths=PackedStringArray("health") instance=ExtResource("12_4f13d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.07557, 0)
 health = NodePath("../Stats/Health")
+
+[connection signal="on_damage" from="HitBox" to="Processors/Damage" method="apply"]
+[connection signal="on_heal" from="HitBox" to="Processors/Heal" method="apply"]

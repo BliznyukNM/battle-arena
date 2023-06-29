@@ -1,12 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbd7wthfy4ok3"]
+[gd_scene load_steps=4 format=3 uid="uid://dbd7wthfy4ok3"]
 
 [ext_resource type="PackedScene" uid="uid://doow4e7sy3d1l" path="res://characters/monk/base_monk.tscn" id="1_8ttnk"]
+[ext_resource type="Script" path="res://processors/health.gd" id="2_7fee0"]
 [ext_resource type="PackedScene" uid="uid://drk870rf7vm7a" path="res://characters/monk/skins/monk_skin_a.tscn" id="2_b6c6f"]
 
 [node name="MonkWhite" instance=ExtResource("1_8ttnk")]
 
 [node name="RotationSpeed" parent="Stats" index="2"]
 base_value = 1000.0
+
+[node name="Health" type="Node" parent="Processors" index="0" node_paths=PackedStringArray("health")]
+script = ExtResource("2_7fee0")
+health = NodePath("../../Stats/Health")
 
 [node name="Skin" parent="." index="6" instance=ExtResource("2_b6c6f")]
 script = null

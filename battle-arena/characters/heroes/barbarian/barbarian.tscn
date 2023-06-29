@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://brn6cw5tr1mxb"]
+
+[ext_resource type="PackedScene" uid="uid://d26br4f45m27g" path="res://characters/character.tscn" id="1_6uqpy"]
+[ext_resource type="PackedScene" uid="uid://dkbnsqkgykbxy" path="res://characters/heroes/barbarian/skin.tscn" id="2_lwxa8"]
+
+[node name="Barbarian" instance=ExtResource("1_6uqpy")]
+
+[node name="Skin" parent="." index="0" instance=ExtResource("2_lwxa8")]
+
+[node name="HUD" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.81294, 0)

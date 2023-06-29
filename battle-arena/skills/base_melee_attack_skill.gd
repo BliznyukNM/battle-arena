@@ -15,7 +15,7 @@ func _on_activate() -> void:
     super._on_activate()
     
     var tween: = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-    tween.tween_callback(self._try_hit).set_delay(hit_time)
+    tween.tween_callback(_try_hit).set_delay(hit_time)
 
 
 func _try_hit() -> void:
@@ -37,5 +37,5 @@ func _try_hit() -> void:
         if result.is_empty(): continue
         if not result.collider is HitBox: continue
         
-        result.collider.register_damage(damage)
+        result.collider.on_damage.emit(damage)
         break

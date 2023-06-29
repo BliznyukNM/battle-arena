@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://jsrj0tg2ovs4"]
+
+[ext_resource type="Texture2D" uid="uid://cae5rr0ydjayw" path="res://assets/characters/heroes/barbarian/barbarian_texture.png" id="1_1rfqe"]
+
+[resource]
+resource_name = "barbarian_texture"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_1rfqe")
+roughness = 0.5
