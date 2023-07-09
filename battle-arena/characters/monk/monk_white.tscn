@@ -9,15 +9,6 @@
 [node name="RotationSpeed" parent="Stats" index="3"]
 base_value = 1000.0
 
-[node name="Swing1" parent="Skills/BasicAttack" index="0"]
-offset = Vector3(0, 0, 0)
-
-[node name="Swing2" parent="Skills/BasicAttack" index="1"]
-offset = Vector3(0, 0, 0)
-
-[node name="Swing3" parent="Skills/BasicAttack" index="2"]
-offset = Vector3(0, 0, 0)
-
 [node name="Health" type="Node" parent="Processors" index="0" node_paths=PackedStringArray("health")]
 script = ExtResource("2_7fee0")
 health = NodePath("../../Stats/Health")
