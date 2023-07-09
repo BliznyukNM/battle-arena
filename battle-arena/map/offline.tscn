@@ -22,6 +22,13 @@ max_distance = 8.0
 
 [node name="MonkWhite" parent="." index="4" instance=ExtResource("2_8dt7n")]
 
+[node name="MovementSpeed" parent="MonkWhite/Stats" index="2"]
+base_value = 5.0
+
+[node name="RotationSpeed" parent="MonkWhite/Stats" index="3"]
+has_max_value = false
+max_value = 0.0
+
 [node name="Movement" parent="MonkWhite/Processors" index="3" node_paths=PackedStringArray("input")]
 input = NodePath("../../Input")
 

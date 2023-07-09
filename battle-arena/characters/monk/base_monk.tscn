@@ -11,7 +11,10 @@
 script = ExtResource("3_8cmn1")
 
 [node name="Swing1" parent="Skills/BasicAttack" index="0" instance=ExtResource("4_dw16p")]
+offset = Vector3(0, 0, 0)
 
 [node name="Swing2" parent="Skills/BasicAttack" index="1" instance=ExtResource("4_dw16p")]
+offset = Vector3(0, 0, 0)
 
 [node name="Swing3" parent="Skills/BasicAttack" index="2" instance=ExtResource("5_q6fe0")]
+offset = Vector3(0, 0, 0)

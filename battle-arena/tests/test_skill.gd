@@ -44,18 +44,17 @@ func test_base_skill() -> void:
     base_skill.free()
 
 
-func _get_basic_melee_skill() -> BaseSkill:
+func _get_basic_melee_skill(hit_range: float, area: float) -> BaseSkill:
     var basic_melee: BaseSkill = load("res://skills/base_melee_attack_skill.tscn").instantiate()
-    basic_melee.hit_range = 5
+    basic_melee.hit_range = hit_range
+    basic_melee.area = area
+    basic_melee.setup(character)
     character.skills.add_child(basic_melee)
-    basic_melee.owner = character
-    basic_melee._setup_collision_mask()
     return basic_melee
 
 
 func test_basic_melee_area_0():
-    var basic_melee: = _get_basic_melee_skill()
-    basic_melee.hit_range = 5
+    var basic_melee: = _get_basic_melee_skill(5, 0)
     watch_signals(hitbox)
     
     basic_melee.activate(true)
@@ -66,8 +65,7 @@ func test_basic_melee_area_0():
 
 
 func test_basic_melee_out_of_range() -> void:
-    var basic_melee: = _get_basic_melee_skill()
-    basic_melee.hit_range = 1
+    var basic_melee: = _get_basic_melee_skill(1, 0)
     watch_signals(hitbox)
     
     basic_melee.activate(true)
@@ -78,12 +76,7 @@ func test_basic_melee_out_of_range() -> void:
 
 
 func test_basic_melee_area_30() -> void:
-    var basic_melee: = _get_basic_melee_skill()
-    basic_melee.hit_range = 5
-    basic_melee.area = 30
-    basic_melee.execution.wait_time = 0.001
-    basic_melee.cooldown.wait_time = 0.001
-    
+    var basic_melee: = _get_basic_melee_skill(5, 30)
     watch_signals(hitbox)
     
     target.position = Vector3(1, 0, 2)

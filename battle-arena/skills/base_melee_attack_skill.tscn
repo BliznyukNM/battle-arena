@@ -9,3 +9,4 @@ damage = 0
 hit_time = 0.0
 hit_range = 1.0
 area = 0.0
+offset = Vector3(2.08165e-12, 1, 2.08165e-12)
