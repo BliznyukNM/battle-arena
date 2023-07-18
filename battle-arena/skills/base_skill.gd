@@ -8,13 +8,11 @@ signal activated(skill: BaseSkill)
 @onready var execution: Timer = $Execution
 
 
-var _character
 var _collision_mask: int
 
 
-func setup(character) -> void:
-    _character = character
-    _collision_mask = character.collision_mask & (~character.collision_layer)
+func _ready() -> void:
+    if owner: _collision_mask = owner.collision_mask & (~owner.collision_layer)
 
 
 func activate(pressed: bool) -> void:

@@ -17,7 +17,7 @@ const RAYCAST_PER_ANGLE = 5.0
 
 func _ready() -> void:
     var points: = PackedVector3Array([Vector3.ZERO])
-    var forward: Vector3 = _character.global_transform.basis.z * hit_range
+    var forward: Vector3 = owner.global_transform.basis.z * hit_range
     
     var angle_step: = 0.0
     while angle_step <= area / 2.0 and angle_step > -180.0 and angle_step <= 180.0:
@@ -36,14 +36,14 @@ func _on_activate() -> void:
 
 
 func _try_hit_shape() -> void:
-    var space_state: PhysicsDirectSpaceState3D = _character.get_world_3d().direct_space_state
+    var space_state: PhysicsDirectSpaceState3D = owner.get_world_3d().direct_space_state
     
     var params = PhysicsShapeQueryParameters3D.new()
     params.shape_rid = _shape.get_rid()
     params.collide_with_bodies = false
     params.collide_with_areas = true
     params.collision_mask = _collision_mask
-    params.transform = _character.transform.translated(offset)
+    params.transform = owner.transform.translated(offset)
     
     var result: = space_state.intersect_shape(params)
     

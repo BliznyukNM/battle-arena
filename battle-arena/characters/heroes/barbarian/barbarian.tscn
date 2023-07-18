@@ -1,11 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://brn6cw5tr1mxb"]
+[gd_scene load_steps=8 format=3 uid="uid://brn6cw5tr1mxb"]
 
 [ext_resource type="PackedScene" uid="uid://d26br4f45m27g" path="res://characters/character.tscn" id="1_6uqpy"]
+[ext_resource type="Script" path="res://characters/heroes/barbarian/barbarian.gd" id="2_6pbkp"]
 [ext_resource type="PackedScene" uid="uid://dkbnsqkgykbxy" path="res://characters/heroes/barbarian/skin.tscn" id="2_lwxa8"]
+[ext_resource type="PackedScene" uid="uid://dduw5yupkf46b" path="res://characters/heroes/barbarian/skills/chop.tscn" id="3_fur47"]
+[ext_resource type="Script" path="res://skills/skill_sequence.gd" id="3_pngyg"]
+[ext_resource type="Script" path="res://processors/skill_trigger.gd" id="4_3uxm0"]
+[ext_resource type="PackedScene" uid="uid://cq3ieognt8p8y" path="res://characters/heroes/barbarian/skills/slice.tscn" id="4_bcofc"]
 
 [node name="Barbarian" instance=ExtResource("1_6uqpy")]
+script = ExtResource("2_6pbkp")
+interpolation = 5.0
 
-[node name="Skin" parent="." index="0" instance=ExtResource("2_lwxa8")]
+[node name="Health" parent="Stats" index="0"]
+max_value = 500.0
+base_value = 500.0
 
-[node name="HUD" parent="." index="7"]
+[node name="BasicAttack" type="Node" parent="Skills" index="0"]
+script = ExtResource("3_pngyg")
+
+[node name="Chop" parent="Skills/BasicAttack" index="0" instance=ExtResource("3_fur47")]
+
+[node name="Slice" parent="Skills/BasicAttack" index="1" instance=ExtResource("4_bcofc")]
+
+[node name="SkillTrigger" parent="Processors" index="0"]
+script = ExtResource("4_3uxm0")
+
+[node name="HUD" parent="." index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.81294, 0)
+
+[node name="Skin" parent="." index="8" instance=ExtResource("2_lwxa8")]
+
+[connection signal="activated" from="Skills/BasicAttack/Chop" to="Skin" method="trigger_attack"]
+[connection signal="activated" from="Skills/BasicAttack/Slice" to="Skin" method="trigger_attack"]
+[connection signal="on_basic_attack" from="Input" to="Skills/BasicAttack" method="activate"]

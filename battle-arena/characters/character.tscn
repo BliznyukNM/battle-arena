@@ -1,22 +1,18 @@
-[gd_scene load_steps=17 format=3 uid="uid://d26br4f45m27g"]
+[gd_scene load_steps=16 format=3 uid="uid://d26br4f45m27g"]
 
 [ext_resource type="Script" path="res://characters/character.gd" id="1_8kwiu"]
 [ext_resource type="Script" path="res://stats/stats_manager.gd" id="2_3n7xj"]
+[ext_resource type="Script" path="res://input/input_provider.gd" id="2_fj6tx"]
 [ext_resource type="Script" path="res://characters/hit_box.gd" id="2_nshhg"]
 [ext_resource type="Script" path="res://stats/number_stat.gd" id="3_018qh"]
 [ext_resource type="Script" path="res://status_effects/modifiers_manager.gd" id="3_687mx"]
-[ext_resource type="Script" path="res://status_effects/modifiers/conditional_modifier.gd" id="5_cj7sc"]
-[ext_resource type="Script" path="res://status_effects/effects/slowdown.gd" id="6_ogbm5"]
+[ext_resource type="Script" path="res://stats/tag_stat.gd" id="4_u52ko"]
 [ext_resource type="Script" path="res://skills/skills_manager.gd" id="7_nutv6"]
 [ext_resource type="Script" path="res://processors/health.gd" id="9_q665c"]
 [ext_resource type="Script" path="res://processors/heal.gd" id="9_urlqi"]
 [ext_resource type="Script" path="res://processors/movement.gd" id="10_hj0il"]
 [ext_resource type="Script" path="res://processors/rotation.gd" id="11_747v1"]
 [ext_resource type="PackedScene" uid="uid://7xkefn5xpy47" path="res://hud/hud.tscn" id="12_4f13d"]
-
-[sub_resource type="Resource" id="Resource_7s487"]
-script = ExtResource("6_ogbm5")
-amount = 40
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_47r4a"]
 
@@ -55,18 +51,19 @@ script = ExtResource("3_018qh")
 has_min_value = true
 base_value = 10.0
 
+[node name="Name" type="Node" parent="Stats"]
+script = ExtResource("4_u52ko")
+current_value = "Character"
+
 [node name="Modifiers" type="Node" parent="."]
 script = ExtResource("3_687mx")
-
-[node name="SlowdownOnBasicAttack" type="Node" parent="Modifiers"]
-script = ExtResource("5_cj7sc")
-condition = "not owner.skills.basic_attack.execution.is_stopped()"
-effects = Array[Resource("res://status_effects/effects/base_effect.gd")]([SubResource("Resource_7s487")])
 
 [node name="Skills" type="Node" parent="."]
 script = ExtResource("7_nutv6")
 
 [node name="Processors" type="Node" parent="."]
+
+[node name="SkillTrigger" type="Node" parent="Processors"]
 
 [node name="Damage" type="Node" parent="Processors" node_paths=PackedStringArray("health", "shield")]
 script = ExtResource("9_q665c")
@@ -77,12 +74,14 @@ shield = NodePath("../../Stats/Shield")
 script = ExtResource("9_urlqi")
 health = NodePath("../../Stats/Health")
 
-[node name="Movement" type="Node" parent="Processors" node_paths=PackedStringArray("movement_speed")]
+[node name="Movement" type="Node" parent="Processors" node_paths=PackedStringArray("input", "movement_speed")]
 script = ExtResource("10_hj0il")
+input = NodePath("../../Input")
 movement_speed = NodePath("../../Stats/MovementSpeed")
 
-[node name="Rotation" type="Node" parent="Processors" node_paths=PackedStringArray("rotation_speed")]
+[node name="Rotation" type="Node" parent="Processors" node_paths=PackedStringArray("input", "rotation_speed")]
 script = ExtResource("11_747v1")
+input = NodePath("../../Input")
 rotation_speed = NodePath("../../Stats/RotationSpeed")
 
 [node name="HitBox" type="Area3D" parent="."]
@@ -97,9 +96,13 @@ shape = SubResource("CylinderShape3D_47r4a")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
 shape = SubResource("CylinderShape3D_vwbuv")
 
-[node name="HUD" parent="." node_paths=PackedStringArray("health") instance=ExtResource("12_4f13d")]
+[node name="HUD" parent="." node_paths=PackedStringArray("health", "name_tag") instance=ExtResource("12_4f13d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.07557, 0)
 health = NodePath("../Stats/Health")
+name_tag = NodePath("../Stats/Name")
+
+[node name="Input" type="MultiplayerSynchronizer" parent="."]
+script = ExtResource("2_fj6tx")
 
 [connection signal="on_damage" from="HitBox" to="Processors/Damage" method="apply"]
 [connection signal="on_heal" from="HitBox" to="Processors/Heal" method="apply"]

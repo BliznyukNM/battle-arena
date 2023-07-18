@@ -11,7 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Container" type="VBoxContainer" parent="."]
+[node name="Container" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,7 +22,14 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Name" type="Label" parent="Container"]
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -565.0
+offset_right = 565.0
+offset_bottom = 58.0
+grow_horizontal = 2
 theme_override_font_sizes/font_size = 40
 text = "ReallyLongName"
 horizontal_alignment = 1
@@ -30,7 +37,15 @@ text_overrun_behavior = 3
 
 [node name="Health" type="ProgressBar" parent="Container"]
 custom_minimum_size = Vector2(300, 25)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = 62.0
+offset_right = 150.0
+offset_bottom = 87.0
+grow_horizontal = 2
 size_flags_horizontal = 4
 theme_override_styles/background = ExtResource("1_ior5a")
 theme_override_styles/fill = ExtResource("2_2t6jf")
@@ -38,7 +53,32 @@ value = 50.0
 show_percentage = false
 
 [node name="Energy" type="ProgressBar" parent="Container"]
-custom_minimum_size = Vector2(300, 10)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = 94.0
+offset_right = 150.0
+offset_bottom = 109.0
+grow_horizontal = 2
 size_flags_horizontal = 4
+value = 80.0
+rounded = true
+show_percentage = false
+
+[node name="ProgressBar" type="ProgressBar" parent="Container"]
+custom_minimum_size = Vector2(300, 7)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = 112.0
+offset_right = 150.0
+offset_bottom = 119.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+value = 20.0
+rounded = true
 show_percentage = false

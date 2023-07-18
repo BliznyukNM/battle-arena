@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dduw5yupkf46b"]
+
+[ext_resource type="PackedScene" uid="uid://di3gecnsy5fv3" path="res://skills/base_melee_attack_skill.tscn" id="1_o7k0s"]
+
+[node name="Chop" instance=ExtResource("1_o7k0s")]
+damage = 10
+hit_time = 0.3
+hit_range = 2.0
+area = 30.0
