@@ -5,6 +5,10 @@ extends Node3D
 @onready var axe: = $"Rig/Skeleton3D/2H_Axe/2H_Axe"
 
 
+func _ready() -> void:
+    animationTree.animation_started.connect(func(n): print(n))
+
+
 func update_stance(stance: String) -> void:
     axe.visible = stance == "axe"
     animationTree.set("parameters/ArmedState/transition_request", stance)
@@ -22,9 +26,19 @@ func update_attack_speed(speed: float) -> void:
     animationTree.set("parameters/AttackSpeed/scale", speed)
 
 
-func trigger_attack(skill: BaseSkill) -> void:
-    animationTree.set("parameters/AttackType/transition_request", skill.name);
+func play_slice(skill: BaseSkill) -> void:
+    _trigger_attack("slice")
+
+
+func play_chop(skill: BaseSkill) -> void:
+    _trigger_attack("chop")
+
+
+func _trigger_attack(attack_name: String) -> void:
+    animationTree.set("parameters/AttackType/transition_request", attack_name);
+    animationTree.set("parameters/PlayAttack/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT)
     animationTree.set("parameters/PlayAttack/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+
 
 
 """

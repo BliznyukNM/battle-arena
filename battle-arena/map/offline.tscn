@@ -13,7 +13,6 @@ max_distance = 8.0
 
 [node name="Barbarian" parent="." index="4" instance=ExtResource("4_c2t6k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.01597, 0, -3.52847)
-interpolation = 10.0
 
 [node name="Input" parent="Barbarian" index="7"]
 script = ExtResource("3_0fth3")

@@ -63,8 +63,6 @@ script = ExtResource("7_nutv6")
 
 [node name="Processors" type="Node" parent="."]
 
-[node name="SkillTrigger" type="Node" parent="Processors"]
-
 [node name="Damage" type="Node" parent="Processors" node_paths=PackedStringArray("health", "shield")]
 script = ExtResource("9_q665c")
 health = NodePath("../../Stats/Health")

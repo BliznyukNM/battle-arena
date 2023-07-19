@@ -30,6 +30,9 @@ func activate(pressed: bool) -> void:
 func _trigger_next_skill() -> void:
     var force_schedule: = false # true wnen skill is activated by holding button
     while _skill_scheduled or force_schedule:
+        if not current_skill.cooldown.is_stopped():
+            await current_skill.cooldown.timeout
+
         force_schedule = false
         current_skill.activate(true)
 
@@ -37,9 +40,6 @@ func _trigger_next_skill() -> void:
             await current_skill.execution.timeout
 
         force_schedule = _skill_scheduled
-
-        if not current_skill.cooldown.is_stopped():
-            await current_skill.cooldown.timeout
 
         _current_skill_number = (_current_skill_number + 1) % _skills.size()
     _current_skill_number = 0
