@@ -5,10 +5,6 @@ extends Node3D
 @onready var axe: = $"Rig/Skeleton3D/2H_Axe/2H_Axe"
 
 
-func _ready() -> void:
-    animationTree.animation_started.connect(func(n): print(n))
-
-
 func update_stance(stance: String) -> void:
     axe.visible = stance == "axe"
     animationTree.set("parameters/ArmedState/transition_request", stance)

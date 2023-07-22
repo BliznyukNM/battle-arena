@@ -24,10 +24,10 @@ func _ready() -> void:
 func activate(pressed: bool) -> void:
     _skill_scheduled = pressed
     var is_fully_reset: = _current_skill_number == 0 and current_skill.cooldown.time_left <= 0.0
-    if is_fully_reset: _trigger_next_skill()
+    if is_fully_reset: _trigger_skill_sequence()
 
 
-func _trigger_next_skill() -> void:
+func _trigger_skill_sequence() -> void:
     var force_schedule: = false # true wnen skill is activated by holding button
     while _skill_scheduled or force_schedule:
         if not current_skill.cooldown.is_stopped():

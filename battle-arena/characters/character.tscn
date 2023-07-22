@@ -72,14 +72,12 @@ shield = NodePath("../../Stats/Shield")
 script = ExtResource("9_urlqi")
 health = NodePath("../../Stats/Health")
 
-[node name="Movement" type="Node" parent="Processors" node_paths=PackedStringArray("input", "movement_speed")]
+[node name="Movement" type="Node" parent="Processors" node_paths=PackedStringArray("movement_speed")]
 script = ExtResource("10_hj0il")
-input = NodePath("../../Input")
 movement_speed = NodePath("../../Stats/MovementSpeed")
 
-[node name="Rotation" type="Node" parent="Processors" node_paths=PackedStringArray("input", "rotation_speed")]
+[node name="Rotation" type="Node" parent="Processors" node_paths=PackedStringArray("rotation_speed")]
 script = ExtResource("11_747v1")
-input = NodePath("../../Input")
 rotation_speed = NodePath("../../Stats/RotationSpeed")
 
 [node name="HitBox" type="Area3D" parent="."]
