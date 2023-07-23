@@ -28,3 +28,7 @@ func _initialize_bar(bar: ProgressBar, stat: NumberStat) -> void:
     bar.max_value = stat.max_value
     bar.value = stat.current_value
     stat.changed.connect(func(old, new): bar.value = new)
+
+
+func on_skill_activated(skill: BaseSkill) -> void:
+    progress_bar.register_skill(skill)

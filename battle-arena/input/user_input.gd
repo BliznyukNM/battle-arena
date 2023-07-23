@@ -28,7 +28,7 @@ func get_look_at_point() -> Vector3:
     
     if _camera:
         var plane: = Plane(Vector3.UP)
-        var mouse_position: = _owner.get_viewport().get_mouse_position()
+        var mouse_position: Vector2 = _owner.get_viewport().get_mouse_position()
         var origin: = _camera.project_ray_origin(mouse_position)
         var normal: = _camera.project_ray_normal(mouse_position)
         var intersection = plane.intersects_ray(origin, normal)

@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bs6m5j1v06l5l"]
+[gd_scene load_steps=5 format=3 uid="uid://bs6m5j1v06l5l"]
 
 [ext_resource type="StyleBox" uid="uid://devdhjl8yjik1" path="res://hud/health_background.stylebox" id="1_ior5a"]
 [ext_resource type="StyleBox" uid="uid://hjcubt1iadqw" path="res://hud/health_fill.stylebox" id="2_2t6jf"]
+[ext_resource type="Script" path="res://hud/progress_bar.gd" id="3_j1f8r"]
+[ext_resource type="StyleBox" uid="uid://csn4pekn2r26y" path="res://hud/progress_fill.stylebox" id="3_ygy35"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -29,7 +31,7 @@ grow_vertical = 2
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 77.0
+offset_bottom = 72.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 50
 text = "ReallyLongName"
@@ -38,15 +40,15 @@ vertical_alignment = 1
 text_overrun_behavior = 3
 
 [node name="Health" type="ProgressBar" parent="Container"]
-custom_minimum_size = Vector2(300, 25)
+custom_minimum_size = Vector2(300, 2.08165e-12)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -250.0
-offset_top = 84.0
+offset_top = 74.0
 offset_right = 250.0
-offset_bottom = 109.0
+offset_bottom = 94.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 theme_override_styles/background = ExtResource("1_ior5a")
@@ -56,12 +58,13 @@ show_percentage = false
 
 [node name="Energy" type="ProgressBar" parent="Container"]
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = -5.0
-offset_top = 118.0
-offset_right = 5.0
-offset_bottom = 133.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_top = 101.0
+offset_right = 250.0
+offset_bottom = 114.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 value = 80.0
@@ -71,14 +74,17 @@ show_percentage = false
 [node name="ProgressBar" type="ProgressBar" parent="Container"]
 custom_minimum_size = Vector2(300, 7)
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = -5.0
-offset_top = 137.0
-offset_right = 5.0
-offset_bottom = 144.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_top = 118.0
+offset_right = 250.0
+offset_bottom = 125.0
 grow_horizontal = 2
 size_flags_horizontal = 4
-value = 20.0
-rounded = true
+theme_override_styles/fill = ExtResource("3_ygy35")
+max_value = 1.0
+value = 0.5
 show_percentage = false
+script = ExtResource("3_j1f8r")

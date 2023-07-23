@@ -1,4 +1,4 @@
-class_name InputProvider extends MultiplayerSynchronizer
+extends MultiplayerSynchronizer
 
 
 signal on_basic_attack(pressed: bool)
@@ -12,7 +12,7 @@ signal on_ultimate(pressed: bool)
 @export var input_source: InputSource:
     set(value):
         input_source = value
-        input_source.init(self)
+        input_source.init(owner)
 
 @export var move_direction: Vector2
 @export var look_at_point: Vector3

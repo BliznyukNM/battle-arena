@@ -32,7 +32,7 @@ max_value = 500.0
 has_max_value = true
 max_value = 10.0
 
-[node name="Name" parent="Stats" index="4"]
+[node name="Name" parent="Stats" index="5"]
 current_value = "Barbarian"
 
 [node name="SlowdownOnAttack" type="Node" parent="Modifiers" index="0"]
@@ -61,6 +61,8 @@ input_source = SubResource("Resource_86j2e")
 
 [node name="Skin" parent="." index="8" instance=ExtResource("2_lwxa8")]
 
+[connection signal="activated" from="Skills/BasicAttack/Chop" to="HUD" method="on_skill_activated"]
 [connection signal="activated" from="Skills/BasicAttack/Chop" to="Skin" method="play_chop"]
+[connection signal="activated" from="Skills/BasicAttack/Slice" to="HUD" method="on_skill_activated"]
 [connection signal="activated" from="Skills/BasicAttack/Slice" to="Skin" method="play_slice"]
 [connection signal="on_basic_attack" from="Input" to="Skills/BasicAttack" method="activate"]

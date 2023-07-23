@@ -1,10 +1,10 @@
 class_name InputSource extends Resource
 
 
-var _owner: InputProvider
+var _owner
 
 
-func init(owner: InputProvider) -> void:
+func init(owner) -> void:
     _owner = owner
 
 
