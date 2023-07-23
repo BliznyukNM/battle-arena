@@ -17,5 +17,8 @@ max_distance = 8.0
 [node name="Barbarian" parent="." index="4" instance=ExtResource("4_c2t6k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.01597, 0, -3.52847)
 
-[node name="Dummy" parent="." index="5" instance=ExtResource("4_si2op")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.33129, 0, 4.50515)
+[node name="Dummy1" parent="." index="5" instance=ExtResource("4_si2op")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5241, -9.53674e-07, -3.41823)
+
+[node name="Dummy2" parent="." index="6" instance=ExtResource("4_si2op")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.43866, -9.53674e-07, 3.00214)

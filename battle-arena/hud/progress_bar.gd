@@ -10,14 +10,13 @@ func _ready() -> void:
 
 func register_skill(skill: BaseSkill) -> void:
     _skill = skill
-    _skill.execution.timeout.connect(_clear_skill)
+    _skill.execution.timeout.connect(_clear_skill, CONNECT_ONE_SHOT)
     value = 0
     
     visible = true
 
 
 func _clear_skill() -> void:
-    if _skill: _skill.execution.timeout.disconnect(_clear_skill)
     _skill = null
     visible = false
 

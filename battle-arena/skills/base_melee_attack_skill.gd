@@ -1,4 +1,4 @@
-extends "res://skills/base_skill.gd"
+extends BaseSkill
 
 @export var damage: int
 @export var hit_time: float
@@ -32,8 +32,11 @@ func _setup_shape() -> void:
     _shape.points = points
 
 
-func _on_activate() -> void:
-    super._on_activate()
+func _on_activate(pressed: bool) -> void:
+    if not pressed: return
+    if not execution.is_stopped(): return
+    
+    super._on_activate(pressed)
     
     var tween: = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
     tween.tween_callback(_try_hit_shape).set_delay(hit_time)

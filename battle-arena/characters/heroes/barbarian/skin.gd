@@ -30,6 +30,15 @@ func play_chop(skill: BaseSkill) -> void:
     _trigger_attack("chop")
 
 
+func play_taunt(skill: BaseSkill) -> void:
+    animationTree.set("parameters/PlayTaunt/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT)
+    skill.finished.connect(_stop_taunt, CONNECT_ONE_SHOT)
+
+
+func _stop_taunt(skill: BaseSkill) -> void:
+    animationTree.set("parameters/PlayTaunt/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FADE_OUT)
+
+
 func _trigger_attack(attack_name: String) -> void:
     animationTree.set("parameters/AttackType/transition_request", attack_name);
     animationTree.set("parameters/PlayAttack/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT)
