@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bewvugtopdfvv"]
+
+[ext_resource type="PackedScene" uid="uid://dg33gxxx0jsgk" path="res://assets/dummy/trainingdummy_a.gltf.glb" id="1_gr2dw"]
+
+[node name="Skin" type="Node3D"]
+
+[node name="View" parent="." instance=ExtResource("1_gr2dw")]

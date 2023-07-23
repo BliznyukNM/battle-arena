@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://boulj8buo8ukk"]
+[gd_scene load_steps=5 format=3 uid="uid://boulj8buo8ukk"]
 
 [ext_resource type="PackedScene" uid="uid://flt4bdecd0xj" path="res://map/map.tscn" id="1_j7vok"]
 [ext_resource type="Script" path="res://map/offline.gd" id="2_0d8ho"]
 [ext_resource type="PackedScene" uid="uid://brn6cw5tr1mxb" path="res://characters/heroes/barbarian/barbarian.tscn" id="4_c2t6k"]
+[ext_resource type="PackedScene" uid="uid://vs53g10noy3c" path="res://characters/dummy/dummy.tscn" id="4_si2op"]
 
 [node name="Map" node_paths=PackedStringArray("barbarian") instance=ExtResource("1_j7vok")]
 script = ExtResource("2_0d8ho")
@@ -15,3 +16,6 @@ max_distance = 8.0
 
 [node name="Barbarian" parent="." index="4" instance=ExtResource("4_c2t6k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.01597, 0, -3.52847)
+
+[node name="Dummy" parent="." index="5" instance=ExtResource("4_si2op")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.33129, 0, 4.50515)

@@ -15,6 +15,7 @@ const RAYCAST_PER_ANGLE = 5.0
 
 
 func _ready() -> void:
+    super._ready()
     _setup_shape()
 
 
@@ -46,7 +47,7 @@ func _try_hit_shape() -> void:
     params.collide_with_bodies = false
     params.collide_with_areas = true
     params.collision_mask = _collision_mask
-    params.transform = owner.transform.translated(offset)
+    params.transform = owner.transform.translated_local(offset)
     
     var result: = space_state.intersect_shape(params)
     

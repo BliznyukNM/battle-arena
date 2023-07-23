@@ -15,7 +15,7 @@ var _collision_mask: int
 
 
 func _ready() -> void:
-    if owner: _collision_mask = owner.collision_mask & (~owner.collision_layer)
+    _collision_mask = owner.collision_mask & (~owner.collision_layer)
 
 
 func activate(pressed: bool) -> void:
