@@ -32,7 +32,7 @@ max_value = 500.0
 has_max_value = true
 max_value = 10.0
 
-[node name="Name" parent="Stats" index="5"]
+[node name="Name" parent="Stats" index="6"]
 current_value = "Barbarian"
 
 [node name="SlowdownOnAttack" type="Node" parent="Modifiers" index="0"]
@@ -43,14 +43,17 @@ effects = Array[Resource("res://status_effects/effects/base_effect.gd")]([SubRes
 [node name="BasicAttack" type="Node" parent="Skills" index="0"]
 script = ExtResource("3_pngyg")
 
-[node name="Chop" parent="Skills/BasicAttack" index="0" instance=ExtResource("3_fur47")]
+[node name="Chop" parent="Skills/BasicAttack" index="0" node_paths=PackedStringArray("skill_speed") instance=ExtResource("3_fur47")]
+skill_speed = NodePath("../../../Stats/AttackSpeed")
 
-[node name="Slice" parent="Skills/BasicAttack" index="1" instance=ExtResource("4_bcofc")]
+[node name="Slice" parent="Skills/BasicAttack" index="1" node_paths=PackedStringArray("skill_speed") instance=ExtResource("4_bcofc")]
+skill_speed = NodePath("../../../Stats/AttackSpeed")
 
-[node name="Skin" type="Node" parent="Processors" index="4" node_paths=PackedStringArray("skin", "move_speed")]
+[node name="Skin" type="Node" parent="Processors" index="4" node_paths=PackedStringArray("skin", "move_speed", "attack_speed")]
 script = ExtResource("6_5y8y2")
 skin = NodePath("../../Skin")
 move_speed = NodePath("../../Stats/MovementSpeed")
+attack_speed = NodePath("../../Stats/AttackSpeed")
 interpolation = 10.0
 
 [node name="HUD" parent="." index="6"]

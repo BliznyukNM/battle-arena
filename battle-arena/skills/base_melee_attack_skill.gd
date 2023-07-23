@@ -1,6 +1,5 @@
 extends "res://skills/base_skill.gd"
 
-
 @export var damage: int
 @export var hit_time: float
 
@@ -16,6 +15,10 @@ const RAYCAST_PER_ANGLE = 5.0
 
 
 func _ready() -> void:
+    _setup_shape()
+
+
+func _setup_shape() -> void:
     var points: = PackedVector3Array([Vector3.ZERO])
     var forward: Vector3 = owner.global_transform.basis.z * hit_range
     

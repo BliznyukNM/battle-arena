@@ -1,11 +1,14 @@
 class_name BaseSkill extends Node
 
 
+@export var skill_speed: NumberStat
+
+
 signal activated(skill: BaseSkill)
 
 
-@onready var cooldown: Timer = $Cooldown
-@onready var execution: Timer = $Execution
+@onready var cooldown: SkillTimer = $Cooldown
+@onready var execution: SkillTimer = $Execution
 
 
 var _collision_mask: int
@@ -21,6 +24,7 @@ func activate(pressed: bool) -> void:
 
 
 func _on_activate() -> void:
-    execution.start()
-    cooldown.start()
+    var speed: = 1.0 if not skill_speed else 1.0 / skill_speed.current_value
+    execution.activate(speed)
+    cooldown.activate(speed)
     activated.emit(self)

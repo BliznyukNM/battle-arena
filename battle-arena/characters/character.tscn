@@ -51,6 +51,13 @@ script = ExtResource("3_018qh")
 has_min_value = true
 base_value = 10.0
 
+[node name="AttackSpeed" type="Node" parent="Stats"]
+script = ExtResource("3_018qh")
+has_max_value = true
+max_value = 5.0
+has_min_value = true
+base_value = 1.0
+
 [node name="SkillProgress" type="Node" parent="Stats"]
 script = ExtResource("3_018qh")
 has_max_value = true

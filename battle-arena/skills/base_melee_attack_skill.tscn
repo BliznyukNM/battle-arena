@@ -5,8 +5,8 @@
 
 [node name="BaseMeleeAttackSkill" instance=ExtResource("1_88kqx")]
 script = ExtResource("2_5mqrw")
-damage = null
-hit_time = null
-hit_range = null
-area = null
+damage = 0
+hit_time = 0.0
+hit_range = 1.0
+area = 0.0
 offset = Vector3(2.08165e-12, 1, 2.08165e-12)
