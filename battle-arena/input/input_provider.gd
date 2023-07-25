@@ -24,6 +24,7 @@ func _process(delta: float) -> void:
     
     _process_actions("basic_attack")
     _process_actions("secondary_attack")
+    _process_actions("block")
 
 
 func _process_actions(action: String) -> void:

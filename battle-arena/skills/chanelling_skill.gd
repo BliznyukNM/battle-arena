@@ -2,4 +2,13 @@ extends BaseSkill
 
 
 func _on_activate(pressed: bool) -> void:
-    pass
+    if not pressed: return
+    
+    if execution.is_stopped():
+        super._on_activate(pressed)
+    else:
+        finish()
+
+
+func finish() -> void:
+    super.finish()

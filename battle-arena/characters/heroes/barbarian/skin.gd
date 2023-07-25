@@ -31,11 +31,11 @@ func play_chop(skill: BaseSkill) -> void:
 
 
 func play_taunt(skill: BaseSkill) -> void:
-    animationTree.set("parameters/PlayTaunt/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT)
-    skill.finished.connect(_stop_taunt, CONNECT_ONE_SHOT)
+    animationTree.set("parameters/PlayTaunt/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+    skill.execution.timeout.connect(_stop_taunt, CONNECT_ONE_SHOT)
 
 
-func _stop_taunt(skill: BaseSkill) -> void:
+func _stop_taunt() -> void:
     animationTree.set("parameters/PlayTaunt/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FADE_OUT)
 
 

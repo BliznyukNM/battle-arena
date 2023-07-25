@@ -5,7 +5,6 @@ class_name BaseSkill extends Node
 
 
 signal activated(skill: BaseSkill)
-signal finished(skill: BaseSkill)
 signal cancelled(skill: BaseSkill)
 
 
@@ -18,10 +17,7 @@ var _collision_mask: int
 
 func _ready() -> void:
     _collision_mask = owner.collision_mask & (~owner.collision_layer)
-    execution.timeout.connect(func():
-        finished.emit(self)
-        cooldown.activate()
-    )
+    execution.timeout.connect(finish)
 
 
 func activate(pressed: bool) -> void:
@@ -36,4 +32,16 @@ func _on_activate(pressed: bool) -> void:
 
 
 func cancel() -> void:
+    _stop_execution()
+    cancelled.emit(self)
+
+
+func finish() -> void:
+    _stop_execution()
+    cooldown.activate()
+
+
+func _stop_execution() -> void:
+    if execution.is_stopped(): return
     execution.stop()
+    execution.timeout.emit()

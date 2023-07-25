@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1dskurwvvtkl"]
+
+[ext_resource type="PackedScene" uid="uid://che4gvvalmv58" path="res://skills/chanelling_skill.tscn" id="1_svguu"]
+
+[node name="Rage" instance=ExtResource("1_svguu")]
+
+[node name="Execution" parent="." index="0"]
+base_time = 3.0
+
+[node name="Cooldown" parent="." index="1"]
+base_time = 5.0

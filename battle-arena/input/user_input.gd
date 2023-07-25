@@ -23,6 +23,14 @@ func is_secondary_attack_just_released() -> bool:
     return Input.is_action_just_released("character.attack.strong")
 
 
+func is_block_just_pressed() -> bool:
+    return Input.is_action_just_pressed("character.attack.block")
+
+
+func is_block_just_released() -> bool:
+    return Input.is_action_just_released("character.attack.block")
+
+
 func get_look_at_point() -> Vector3:
     var look_at_point: = Vector3()
     

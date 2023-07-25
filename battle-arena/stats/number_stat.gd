@@ -33,9 +33,9 @@ var percentual_modifier: float:
 
 var current_value: float:
     get:
-        return clamp((base_value + flat_modifier) * max(1 + percentual_modifier, 0), min_value, max_value)
+        return clamp(base_value * max(1 + percentual_modifier, 0) + flat_modifier, min_value, max_value)
     set(value):
         var old_value: = current_value
-        base_value = clamp(value, min_value, max_value)
+        flat_modifier += value - old_value
         if current_value != old_value: changed.emit(old_value, current_value)
         
