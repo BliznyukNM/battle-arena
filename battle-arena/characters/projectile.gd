@@ -2,8 +2,8 @@ extends Area3D
 
 
 @export var damage: int
-@export var speed: float
-@export var max_travel_distance: float
+@export var speed: float = 5
+@export var max_travel_distance: float = 100
 
 
 var _direction: Vector3
@@ -25,5 +25,5 @@ func _process(delta: float) -> void:
 
 func _on_area_entered(area: Area3D) -> void:
     if not area is HitBox: return
-    area.on_hit.emit(damage)
+    area.on_damage.emit(damage)
     queue_free()

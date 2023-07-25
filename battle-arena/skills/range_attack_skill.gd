@@ -2,23 +2,20 @@ extends "res://skills/base_skill.gd"
 
 
 @export var projectile: PackedScene
-@export var spawn_delay: float
+@export var spawn_point: Vector3
 
 
-@onready var spawn_point: = $SpawnPosition
 @onready var container: = $Container
 
 
-func _on_activate() -> void:
-    super._on_activate()
-    var tween: = create_tween()
-    tween.tween_callback(self._shoot).set_delay(spawn_delay)
+func _ready() -> void:
+    super._ready()
+    execution.timeout.connect(_shoot)
 
 
 func _shoot() -> void:
-    var projectile_instance: Area3D = projectile.instantiate()
-    projectile_instance.position = spawn_point.global_position
-    projectile_instance.rotate_y(owner.rotation.y)
-    projectile_instance.shoot(owner.transform.basis.z)
+    var projectile_instance: CollisionObject3D = projectile.instantiate()
+    projectile_instance.transform = owner.transform.translated_local(spawn_point)
     projectile_instance.collision_mask = _collision_mask
+    projectile_instance.shoot(owner.transform.basis.z)
     container.add_child(projectile_instance)

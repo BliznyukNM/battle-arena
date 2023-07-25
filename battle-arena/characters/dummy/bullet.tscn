@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://caren8rarubvr"]
+
+[ext_resource type="Script" path="res://characters/projectile.gd" id="1_bw3ca"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ykawq"]
+radius = 0.1
+height = 0.2
+radial_segments = 8
+rings = 8
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ub5lp"]
+radius = 0.15
+
+[node name="Bullet" type="Area3D"]
+script = ExtResource("1_bw3ca")
+damage = 10
+max_travel_distance = 10.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_ykawq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_ub5lp")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

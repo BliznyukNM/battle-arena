@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://chrefq00p1nw0"]
+
+[ext_resource type="PackedScene" uid="uid://dt7dp8amhbd5b" path="res://skills/range_attack_skill.tscn" id="1_oy01m"]
+[ext_resource type="PackedScene" uid="uid://caren8rarubvr" path="res://characters/dummy/bullet.tscn" id="2_tl6d3"]
+
+[node name="Shoot" instance=ExtResource("1_oy01m")]
+projectile = ExtResource("2_tl6d3")
+spawn_point = Vector3(2.08165e-12, 1, 1)
+
+[node name="Execution" parent="." index="0"]
+base_time = 0.5
+
+[node name="Cooldown" parent="." index="1"]
+base_time = 2.5
