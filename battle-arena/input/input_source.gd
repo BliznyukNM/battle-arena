@@ -56,6 +56,10 @@ func is_ultimate_just_released() -> bool:
     return false
 
 
+func is_cancel_just_pressed() -> bool:
+    return false
+
+
 func get_move_direction() -> Vector2:
     return Vector2()
 

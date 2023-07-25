@@ -8,7 +8,3 @@ func _on_activate(pressed: bool) -> void:
         super._on_activate(pressed)
     else:
         finish()
-
-
-func finish() -> void:
-    super.finish()

@@ -7,6 +7,7 @@ signal on_block(pressed: bool)
 signal on_third_attack(pressed: bool)
 signal on_dodge(pressed: bool)
 signal on_ultimate(pressed: bool)
+signal on_cancel()
 
 
 @export var input_source: InputSource:
@@ -25,6 +26,8 @@ func _process(delta: float) -> void:
     _process_actions("basic_attack")
     _process_actions("secondary_attack")
     _process_actions("block")
+    
+    if input_source.is_cancel_just_pressed(): on_cancel.emit()
 
 
 func _process_actions(action: String) -> void:

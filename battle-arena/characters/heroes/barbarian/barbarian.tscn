@@ -69,9 +69,9 @@ input_source = SubResource("Resource_86j2e")
 
 [connection signal="activated" from="Skills/BasicAttack/Chop" to="HUD" method="on_skill_activated"]
 [connection signal="activated" from="Skills/BasicAttack/Chop" to="Skin" method="play_chop"]
+[connection signal="cancelled" from="Skills/BasicAttack/Chop" to="Skin" method="stop_attack"]
 [connection signal="activated" from="Skills/BasicAttack/Slice" to="HUD" method="on_skill_activated"]
 [connection signal="activated" from="Skills/BasicAttack/Slice" to="Skin" method="play_slice"]
+[connection signal="cancelled" from="Skills/BasicAttack/Slice" to="Skin" method="stop_attack"]
 [connection signal="activated" from="Skills/Block" to="HUD" method="on_skill_activated"]
 [connection signal="activated" from="Skills/Block" to="Skin" method="play_taunt"]
-[connection signal="on_basic_attack" from="Input" to="Skills" method="activate_basic_attack"]
-[connection signal="on_block" from="Input" to="Skills" method="activate_block"]

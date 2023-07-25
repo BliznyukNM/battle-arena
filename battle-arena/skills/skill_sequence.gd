@@ -27,6 +27,11 @@ func activate(pressed: bool) -> void:
     if pressed and is_fully_reset: _trigger_skill_sequence()
 
 
+func cancel() -> void:
+    if execution.is_stopped(): return
+    current_skill.cancel()
+
+
 func _trigger_skill_sequence() -> void:
     while _skill_scheduled:
         if not current_skill.cooldown.is_stopped():

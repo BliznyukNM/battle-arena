@@ -31,6 +31,10 @@ func is_block_just_released() -> bool:
     return Input.is_action_just_released("character.attack.block")
 
 
+func is_cancel_just_pressed() -> bool:
+    return Input.is_action_just_pressed("character.attack.cancel")
+
+
 func get_look_at_point() -> Vector3:
     var look_at_point: = Vector3()
     

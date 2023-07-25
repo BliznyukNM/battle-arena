@@ -32,6 +32,11 @@ func _setup_shape() -> void:
     _shape.points = points
 
 
+func cancel() -> void:
+    if execution.wait_time - execution.time_left > hit_time: return
+    super.cancel()
+
+
 func _on_activate(pressed: bool) -> void:
     if not pressed: return
     if not execution.is_stopped(): return
