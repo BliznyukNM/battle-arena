@@ -33,7 +33,7 @@ func _setup_shape() -> void:
 
 
 func cancel() -> void:
-    if execution.wait_time - execution.time_left > hit_time: return
+    if execution.wait_time - execution.time_left > hit_time * speed: return
     super.cancel()
 
 
@@ -44,7 +44,7 @@ func _on_activate(pressed: bool) -> void:
     super._on_activate(pressed)
     
     var tween: = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-    tween.tween_callback(_try_hit_shape).set_delay(hit_time)
+    tween.tween_callback(_try_hit_shape).set_delay(hit_time * speed)
 
 
 func _try_hit_shape() -> void:

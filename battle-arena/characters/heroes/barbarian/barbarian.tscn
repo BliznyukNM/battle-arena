@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://brn6cw5tr1mxb"]
+[gd_scene load_steps=17 format=3 uid="uid://brn6cw5tr1mxb"]
 
 [ext_resource type="PackedScene" uid="uid://d26br4f45m27g" path="res://characters/character.tscn" id="1_6uqpy"]
 [ext_resource type="Script" path="res://characters/heroes/barbarian/barbarian.gd" id="2_6pbkp"]
@@ -8,13 +8,21 @@
 [ext_resource type="Script" path="res://skills/skill_sequence.gd" id="3_pngyg"]
 [ext_resource type="PackedScene" uid="uid://cq3ieognt8p8y" path="res://characters/heroes/barbarian/skills/slice.tscn" id="4_bcofc"]
 [ext_resource type="Script" path="res://status_effects/effects/slowdown.gd" id="4_h87is"]
+[ext_resource type="Script" path="res://status_effects/effects/invulnerability.gd" id="5_5sv1s"]
 [ext_resource type="Script" path="res://characters/heroes/barbarian/processors/skin.gd" id="6_5y8y2"]
-[ext_resource type="PackedScene" uid="uid://d1dskurwvvtkl" path="res://characters/heroes/barbarian/skills/rage.tscn" id="8_faxlx"]
+[ext_resource type="PackedScene" uid="uid://d1dskurwvvtkl" path="res://characters/heroes/barbarian/skills/block.tscn" id="9_2nipq"]
 [ext_resource type="Script" path="res://input/input_source.gd" id="9_shd64"]
 
 [sub_resource type="Resource" id="Resource_221r4"]
 script = ExtResource("4_h87is")
 amount = 30
+
+[sub_resource type="Resource" id="Resource_dhhgg"]
+script = ExtResource("4_h87is")
+amount = 20
+
+[sub_resource type="Resource" id="Resource_lfolj"]
+script = ExtResource("5_5sv1s")
 
 [sub_resource type="Resource" id="Resource_86j2e"]
 script = ExtResource("9_shd64")
@@ -40,6 +48,13 @@ current_value = "Barbarian"
 script = ExtResource("3_hhx1p")
 condition = "owner.skills.basic_attack.execution.time_left > 0.0"
 effects = Array[Resource("res://status_effects/effects/base_effect.gd")]([SubResource("Resource_221r4")])
+default_condition = null
+
+[node name="Blocking" type="Node" parent="Modifiers" index="1"]
+script = ExtResource("3_hhx1p")
+condition = "not owner.skills.block.execution.is_stopped()"
+effects = Array[Resource("res://status_effects/effects/base_effect.gd")]([SubResource("Resource_dhhgg"), SubResource("Resource_lfolj")])
+default_condition = null
 
 [node name="BasicAttack" type="Node" parent="Skills" index="0"]
 script = ExtResource("3_pngyg")
@@ -50,7 +65,7 @@ skill_speed = NodePath("../../../Stats/AttackSpeed")
 [node name="Slice" parent="Skills/BasicAttack" index="1" node_paths=PackedStringArray("skill_speed") instance=ExtResource("4_bcofc")]
 skill_speed = NodePath("../../../Stats/AttackSpeed")
 
-[node name="Block" parent="Skills" index="1" instance=ExtResource("8_faxlx")]
+[node name="Block" parent="Skills" index="1" instance=ExtResource("9_2nipq")]
 
 [node name="Skin" type="Node" parent="Processors" index="4" node_paths=PackedStringArray("skin", "move_speed", "attack_speed")]
 script = ExtResource("6_5y8y2")
@@ -75,3 +90,4 @@ input_source = SubResource("Resource_86j2e")
 [connection signal="cancelled" from="Skills/BasicAttack/Slice" to="Skin" method="stop_attack"]
 [connection signal="activated" from="Skills/Block" to="HUD" method="on_skill_activated"]
 [connection signal="activated" from="Skills/Block" to="Skin" method="play_taunt"]
+[connection signal="on_damage" from="HitBox" to="Skills/Block" method="on_damage"]

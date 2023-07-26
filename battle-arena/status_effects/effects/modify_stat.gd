@@ -1,7 +1,9 @@
-class_name EffectModifyStat extends Node
+class_name EffectModifyNumberStat extends BaseEffect
 
 
-@export_range(0, 100, 1, "suffix:%") var amount: int
+@export var stat_name: String
+@export_range(-100, 100, 1, "or_greater", "or_less", "suffix:%") var percentage: float
+@export var flat: float
 
 
 func trigger(owner) -> void:
@@ -13,10 +15,12 @@ func clear(owner) -> void:
 
 
 func _apply_stats_modifiers(stats) -> void:
-    var movement: NumberStat = stats.get_stat("MovementSpeed")
-    movement.percentual_modifier -= amount / 100.0
+    var stat: NumberStat = stats.get_stat(stat_name)
+    stat.percentual_modifier += percentage / 100.0
+    stat.flat_modifier += flat
 
 
 func _clear_stats_modifiers(stats) -> void:
-    var movement: NumberStat = stats.get_stat("MovementSpeed")
-    movement.percentual_modifier += amount / 100.0
+    var stat: NumberStat = stats.get_stat(stat_name)
+    stat.percentual_modifier -= percentage / 100.0
+    stat.flat_modifier -= flat

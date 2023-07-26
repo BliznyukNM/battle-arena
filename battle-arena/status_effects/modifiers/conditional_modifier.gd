@@ -1,7 +1,6 @@
 class_name ConditionalModifier extends BaseModifier
 
 
-@export var default_condition: bool
 @export_multiline var condition: String = "true"
 
 

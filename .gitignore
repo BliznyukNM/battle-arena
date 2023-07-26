@@ -27,4 +27,4 @@ battle-arena/addons/gut/
 
 battle-arena/.gut_editor_config.json
 
-*.app
+*.app*

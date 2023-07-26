@@ -12,8 +12,8 @@ func _ready() -> void:
 
 func add_modifier(modifier: BaseModifier) -> void:
     _modifiers[modifier.name] = modifier
-    modifier.register(owner)
     add_child(modifier)
+    modifier.owner = owner
 
 
 func remove_modifier_by_name(modifier_name: String) -> void:

@@ -2,6 +2,7 @@ class_name BaseModifier extends Node
 
 
 @export var effects: Array[BaseEffect]
+@export var default_condition: bool = true
 
 
 var _current_condition: bool:
@@ -12,7 +13,7 @@ var _current_condition: bool:
 
 
 func _ready() -> void:
-    _current_condition = true
+    _current_condition = default_condition
     tree_exiting.connect(func(): _current_condition = false)
 
 

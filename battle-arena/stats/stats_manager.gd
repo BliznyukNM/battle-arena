@@ -11,7 +11,7 @@ func _ready() -> void:
 
 
 func add_stat(stat: BaseStat) -> void:
-    assert(has_stat(stat.name))
+    assert(!has_stat(stat.name))
     _stats[stat.name] = stat
     add_child(stat)
 

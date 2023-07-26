@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1dskurwvvtkl"]
+
+[ext_resource type="PackedScene" uid="uid://che4gvvalmv58" path="res://skills/chanelling_skill.tscn" id="1_svguu"]
+[ext_resource type="Script" path="res://characters/heroes/barbarian/skills/rage.gd" id="2_t1s1q"]
+[ext_resource type="PackedScene" uid="uid://eq45bchesouq" path="res://characters/heroes/barbarian/modifiers/rage.tscn" id="3_7hwes"]
+
+[node name="Block" instance=ExtResource("1_svguu")]
+script = ExtResource("2_t1s1q")
+rage_length = 5.0
+rage_modifier = ExtResource("3_7hwes")
+
+[node name="Execution" parent="." index="0"]
+base_time = 3.0
+
+[node name="Cooldown" parent="." index="1"]
+base_time = 5.0

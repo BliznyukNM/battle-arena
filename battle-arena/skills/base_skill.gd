@@ -15,6 +15,10 @@ signal cancelled(skill: BaseSkill)
 var _collision_mask: int
 
 
+var speed: float:
+    get: return 1.0 if not skill_speed else 1.0 / skill_speed.current_value
+
+
 func _ready() -> void:
     _collision_mask = owner.collision_mask & (~owner.collision_layer)
     execution.timeout.connect(finish)
@@ -26,7 +30,6 @@ func activate(pressed: bool) -> void:
 
 
 func _on_activate(pressed: bool) -> void:
-    var speed: = 1.0 if not skill_speed else 1.0 / skill_speed.current_value
     execution.activate(speed)
     activated.emit(self)
 
