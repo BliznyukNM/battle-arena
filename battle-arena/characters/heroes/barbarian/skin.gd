@@ -31,7 +31,7 @@ func play_chop(skill: BaseSkill) -> void:
 
 
 func stop_attack(skill: BaseSkill) -> void:
-    animationTree.set("parameters/PlayAttack/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FADE_OUT)
+    animationTree.set("parameters/PlayAttack/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT)
 
 
 func play_taunt(skill: BaseSkill) -> void:

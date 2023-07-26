@@ -37,6 +37,7 @@ func _on_activate(pressed: bool) -> void:
 func cancel() -> void:
     _stop_execution()
     cancelled.emit(self)
+    cooldown.start(0.5)
 
 
 func finish() -> void:

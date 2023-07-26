@@ -48,6 +48,7 @@ func _on_activate(pressed: bool) -> void:
 
 
 func _try_hit_shape() -> void:
+    if execution.is_stopped(): return
     var space_state: PhysicsDirectSpaceState3D = owner.get_world_3d().direct_space_state
     
     var params = PhysicsShapeQueryParameters3D.new()
