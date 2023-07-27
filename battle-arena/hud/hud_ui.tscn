@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bs6m5j1v06l5l"]
+[gd_scene load_steps=6 format=3 uid="uid://bs6m5j1v06l5l"]
 
 [ext_resource type="StyleBox" uid="uid://devdhjl8yjik1" path="res://hud/health_background.stylebox" id="1_ior5a"]
 [ext_resource type="StyleBox" uid="uid://hjcubt1iadqw" path="res://hud/health_fill.stylebox" id="2_2t6jf"]
+[ext_resource type="StyleBox" uid="uid://bxjgtdo5iyp1j" path="res://hud/energy_fill.stylebox" id="3_eidsd"]
 [ext_resource type="Script" path="res://hud/progress_bar.gd" id="3_j1f8r"]
 [ext_resource type="StyleBox" uid="uid://csn4pekn2r26y" path="res://hud/progress_fill.stylebox" id="3_ygy35"]
 
@@ -67,6 +68,7 @@ offset_right = 250.0
 offset_bottom = 114.0
 grow_horizontal = 2
 size_flags_horizontal = 4
+theme_override_styles/fill = ExtResource("3_eidsd")
 value = 80.0
 rounded = true
 show_percentage = false

@@ -3,7 +3,6 @@ extends Node
 
 @export var health: NumberStat
 @export var energy: NumberStat
-@export var skill_progress: NumberStat
 @export var name_tag: TagStat
 
 
@@ -19,12 +18,14 @@ extends Node
 func _ready() -> void:
     _initialize_bar(health_bar, health)
     _initialize_bar(energy_bar, energy)
-    _initialize_bar(progress_bar, skill_progress)
     name_label.text = name_tag.current_value
 
 
 func _initialize_bar(bar: ProgressBar, stat: NumberStat) -> void:
-    if not stat: return
+    if not stat:
+        bar.visible = false
+        return
+    
     bar.max_value = stat.max_value
     bar.value = stat.current_value
     stat.changed.connect(func(old, new): bar.value = new)
