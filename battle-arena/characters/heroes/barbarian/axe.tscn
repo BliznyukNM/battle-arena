@@ -1,0 +1,110 @@
+[gd_scene load_steps=9 format=3 uid="uid://c413rb5v027xl"]
+
+[ext_resource type="ArrayMesh" uid="uid://cqg4oxmk8rq2g" path="res://assets/characters/heroes/barbarian/meshes/Barbarian_Cube222.res" id="1_rmcip"]
+[ext_resource type="Script" path="res://characters/heroes/barbarian/axe.gd" id="1_tvqmv"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_y4j1l"]
+radius = 0.8043
+
+[sub_resource type="Animation" id="Animation_8ydus"]
+resource_name = "rotating"
+length = 0.4
+loop_mode = 1
+step = 0.05
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.1, 1, 0.707107, 7.66647e-20, -7.66647e-20, 0.707107, 0.2, 1, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12, 0.3, 1, -0.707, 2.08165e-12, 2.08165e-12, 0.707, 0.4, 1, 0, 0, 0, 1)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Root")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_dngsa"]
+resource_name = "obstacle_stuck"
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.383, 2.08165e-12, 2.08165e-12, 0.924)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Root")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_ololx"]
+resource_name = "RESET"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Root")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_04g1b"]
+resource_name = "floor_stuck"
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.887, 2.08165e-12, 2.08165e-12, 0.462)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Root")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 2.08165e-12, -0.55, 2.08165e-12)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8qj0m"]
+_data = {
+"RESET": SubResource("Animation_ololx"),
+"floor_stuck": SubResource("Animation_04g1b"),
+"obstacle_stuck": SubResource("Animation_dngsa"),
+"rotating": SubResource("Animation_8ydus")
+}
+
+[node name="Axe" type="Area3D"]
+script = ExtResource("1_tvqmv")
+damage = 10
+speed = 18.0
+max_travel_distance = 15.0
+
+[node name="Root" type="Node3D" parent="."]
+
+[node name="Mesh" type="MeshInstance3D" parent="Root"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.381693, 0)
+mesh = ExtResource("1_rmcip")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_y4j1l")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8qj0m")
+}
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_obstacle_hit"]

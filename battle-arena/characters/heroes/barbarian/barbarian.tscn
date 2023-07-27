@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://brn6cw5tr1mxb"]
+[gd_scene load_steps=20 format=3 uid="uid://brn6cw5tr1mxb"]
 
 [ext_resource type="PackedScene" uid="uid://d26br4f45m27g" path="res://characters/character.tscn" id="1_6uqpy"]
 [ext_resource type="Script" path="res://characters/heroes/barbarian/barbarian.gd" id="2_6pbkp"]
@@ -12,6 +12,9 @@
 [ext_resource type="Script" path="res://characters/heroes/barbarian/processors/skin.gd" id="6_5y8y2"]
 [ext_resource type="PackedScene" uid="uid://d1dskurwvvtkl" path="res://characters/heroes/barbarian/skills/block.tscn" id="9_2nipq"]
 [ext_resource type="Script" path="res://input/input_source.gd" id="9_shd64"]
+[ext_resource type="PackedScene" uid="uid://ci811lsyijdqv" path="res://characters/heroes/barbarian/skills/axe_throw.tscn" id="10_i2xy0"]
+[ext_resource type="Script" path="res://skills/skill_transition.gd" id="10_otvns"]
+[ext_resource type="PackedScene" uid="uid://dyxib0cnjsx2l" path="res://characters/heroes/barbarian/skills/axe_recall.tscn" id="11_jsp2i"]
 
 [sub_resource type="Resource" id="Resource_221r4"]
 script = ExtResource("4_h87is")
@@ -57,15 +60,25 @@ effects = Array[Resource("res://status_effects/effects/base_effect.gd")]([SubRes
 default_condition = null
 
 [node name="BasicAttack" type="Node" parent="Skills" index="0"]
+script = ExtResource("10_otvns")
+
+[node name="AxeSlash" type="Node" parent="Skills/BasicAttack" index="0"]
 script = ExtResource("3_pngyg")
 
-[node name="Chop" parent="Skills/BasicAttack" index="0" node_paths=PackedStringArray("skill_speed") instance=ExtResource("3_fur47")]
-skill_speed = NodePath("../../../Stats/AttackSpeed")
+[node name="Chop" parent="Skills/BasicAttack/AxeSlash" index="0" node_paths=PackedStringArray("skill_speed") instance=ExtResource("3_fur47")]
+skill_speed = NodePath("../../../../Stats/AttackSpeed")
 
-[node name="Slice" parent="Skills/BasicAttack" index="1" node_paths=PackedStringArray("skill_speed") instance=ExtResource("4_bcofc")]
-skill_speed = NodePath("../../../Stats/AttackSpeed")
+[node name="Slice" parent="Skills/BasicAttack/AxeSlash" index="1" node_paths=PackedStringArray("skill_speed") instance=ExtResource("4_bcofc")]
+skill_speed = NodePath("../../../../Stats/AttackSpeed")
 
-[node name="Block" parent="Skills" index="1" instance=ExtResource("9_2nipq")]
+[node name="SecondaryAttack" type="Node" parent="Skills" index="1"]
+script = ExtResource("10_otvns")
+
+[node name="AxeThrow" parent="Skills/SecondaryAttack" index="0" instance=ExtResource("10_i2xy0")]
+
+[node name="AxeRecall" parent="Skills/SecondaryAttack" index="1" instance=ExtResource("11_jsp2i")]
+
+[node name="Block" parent="Skills" index="2" instance=ExtResource("9_2nipq")]
 
 [node name="Skin" type="Node" parent="Processors" index="4" node_paths=PackedStringArray("skin", "move_speed", "attack_speed")]
 script = ExtResource("6_5y8y2")
@@ -82,12 +95,15 @@ input_source = SubResource("Resource_86j2e")
 
 [node name="Skin" parent="." index="8" instance=ExtResource("2_lwxa8")]
 
-[connection signal="activated" from="Skills/BasicAttack/Chop" to="HUD" method="on_skill_activated"]
-[connection signal="activated" from="Skills/BasicAttack/Chop" to="Skin" method="play_chop"]
-[connection signal="cancelled" from="Skills/BasicAttack/Chop" to="Skin" method="stop_attack"]
-[connection signal="activated" from="Skills/BasicAttack/Slice" to="HUD" method="on_skill_activated"]
-[connection signal="activated" from="Skills/BasicAttack/Slice" to="Skin" method="play_slice"]
-[connection signal="cancelled" from="Skills/BasicAttack/Slice" to="Skin" method="stop_attack"]
+[connection signal="activated" from="Skills/BasicAttack/AxeSlash/Chop" to="HUD" method="on_skill_activated"]
+[connection signal="activated" from="Skills/BasicAttack/AxeSlash/Chop" to="Skin" method="play_chop"]
+[connection signal="cancelled" from="Skills/BasicAttack/AxeSlash/Chop" to="Skin" method="stop_attack"]
+[connection signal="activated" from="Skills/BasicAttack/AxeSlash/Slice" to="HUD" method="on_skill_activated"]
+[connection signal="activated" from="Skills/BasicAttack/AxeSlash/Slice" to="Skin" method="play_slice"]
+[connection signal="cancelled" from="Skills/BasicAttack/AxeSlash/Slice" to="Skin" method="stop_attack"]
+[connection signal="activated" from="Skills/SecondaryAttack/AxeThrow" to="HUD" method="on_skill_activated"]
+[connection signal="activated" from="Skills/SecondaryAttack/AxeThrow" to="Skin" method="play_throw"]
+[connection signal="activated" from="Skills/SecondaryAttack/AxeRecall" to="HUD" method="on_skill_activated"]
 [connection signal="activated" from="Skills/Block" to="HUD" method="on_skill_activated"]
 [connection signal="activated" from="Skills/Block" to="Skin" method="play_taunt"]
 [connection signal="on_damage" from="HitBox" to="Skills/Block" method="on_damage"]

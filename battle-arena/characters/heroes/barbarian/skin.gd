@@ -43,6 +43,15 @@ func _stop_taunt() -> void:
     animationTree.set("parameters/PlayTaunt/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FADE_OUT)
 
 
+func play_throw(skill: BaseSkill) -> void:
+    animationTree.set("parameters/PlayThrow/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+    skill.execution.timeout.connect(_stop_throw, CONNECT_ONE_SHOT)
+
+
+func _stop_throw() -> void:
+    animationTree.set("parameters/PlayThrow/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FADE_OUT)
+
+
 func _trigger_attack(attack_name: String) -> void:
     animationTree.set("parameters/AttackType/transition_request", attack_name);
     animationTree.set("parameters/PlayAttack/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT)

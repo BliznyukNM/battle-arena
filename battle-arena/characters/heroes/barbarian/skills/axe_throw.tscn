@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://ci811lsyijdqv"]
+
+[ext_resource type="PackedScene" uid="uid://dt7dp8amhbd5b" path="res://skills/range_attack_skill.tscn" id="1_ojjvj"]
+[ext_resource type="Script" path="res://characters/heroes/barbarian/skills/axe_throw.gd" id="2_vnyhn"]
+[ext_resource type="PackedScene" uid="uid://c413rb5v027xl" path="res://characters/heroes/barbarian/axe.tscn" id="2_yiiiv"]
+
+[node name="AxeThrow" instance=ExtResource("1_ojjvj")]
+script = ExtResource("2_vnyhn")
+projectile = ExtResource("2_yiiiv")
+spawn_point = Vector3(2.08165e-12, 1, 1.5)
+
+[node name="Execution" parent="." index="0"]
+base_time = 0.6
+
+[node name="Cooldown" parent="." index="1"]
+base_time = 0.5

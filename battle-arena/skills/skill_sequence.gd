@@ -2,12 +2,12 @@
 extends Node
 
 
-var _skills: Array[BaseSkill]
+var _skills: Array
 var _current_skill_number: int
 var _skill_scheduled: bool
 
 
-var current_skill: BaseSkill:
+var current_skill:
     get: return _skills[_current_skill_number]
 var cooldown: Timer:
     get: return current_skill.cooldown
@@ -17,7 +17,7 @@ var execution: Timer:
 
 func _ready() -> void:
     for child in get_children():
-        var skill = child as BaseSkill
+        var skill = child
         _skills.append(skill)
 
 

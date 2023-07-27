@@ -61,4 +61,4 @@ func _try_hit_shape() -> void:
     var result: = space_state.intersect_shape(params)
     
     for hit in result:
-        hit.collider.on_damage.emit(damage)
+        if hit.collider is HitBox: hit.collider.on_damage.emit(damage)

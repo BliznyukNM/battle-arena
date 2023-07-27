@@ -6,24 +6,32 @@ extends Area3D
 @export var max_travel_distance: float = 100
 
 
+var _is_travelling: bool
 var _direction: Vector3
 var _travelled_distance: float
 
 
 func shoot(direction: Vector3) -> void:
     _direction = direction.normalized()
+    _is_travelling = true
 
 
 func _process(delta: float) -> void:
+    if not _is_travelling: return
+    
     var distance: = speed * delta
     position += _direction * distance
     _travelled_distance += distance
     
     if _travelled_distance >= max_travel_distance:
-        queue_free()
+        _on_finish_travel()
+
+
+func _on_finish_travel() -> void:
+    queue_free()
 
 
 func _on_area_entered(area: Area3D) -> void:
     if not area is HitBox: return
     area.on_damage.emit(damage)
-    queue_free()
+    _on_finish_travel()
