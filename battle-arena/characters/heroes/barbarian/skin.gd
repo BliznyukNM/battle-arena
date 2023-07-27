@@ -3,6 +3,7 @@ extends Node3D
 
 @onready var animationTree: AnimationTree = $AnimationTree
 @onready var axe: = $"Rig/Skeleton3D/2H_Axe/2H_Axe"
+@onready var mug: = $"Rig/Skeleton3D/Mug/Mug"
 
 
 func update_stance(stance: String) -> void:
@@ -67,6 +68,12 @@ func play_throw(skill: BaseSkill) -> void:
 
 func _stop_throw() -> void:
     animationTree.set("parameters/PlayThrow/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FADE_OUT)
+
+
+func play_drink(skill: BaseSkill) -> void:
+    mug.visible = true
+    animationTree.set("parameters/PlayDrink/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+    skill.execution.timeout.connect(func(): mug.visible = false, CONNECT_ONE_SHOT)
 
 
 func _trigger_attack(attack_name: String) -> void:

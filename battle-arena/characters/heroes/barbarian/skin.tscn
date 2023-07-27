@@ -1,4 +1,4 @@
-[gd_scene load_steps=123 format=3 uid="uid://dkbnsqkgykbxy"]
+[gd_scene load_steps=125 format=3 uid="uid://dkbnsqkgykbxy"]
 
 [ext_resource type="Script" path="res://characters/heroes/barbarian/skin.gd" id="1_a0c63"]
 [ext_resource type="ArrayMesh" uid="uid://dgmlc8o3ir4of" path="res://assets/characters/heroes/barbarian/meshes/Barbarian_Cube001.res" id="1_v6qb8"]
@@ -778,6 +778,10 @@ sync = true
 fadein_time = 0.15
 fadeout_time = 0.15
 
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_ro41e"]
+filter_enabled = true
+filters = ["Rig/Skeleton3D:chest", "Rig/Skeleton3D:hand.l", "Rig/Skeleton3D:hand.r", "Rig/Skeleton3D:handslot.l", "Rig/Skeleton3D:handslot.r", "Rig/Skeleton3D:head", "Rig/Skeleton3D:lowerarm.l", "Rig/Skeleton3D:lowerarm.r", "Rig/Skeleton3D:upperarm.l", "Rig/Skeleton3D:upperarm.r"]
+
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_gx5ep"]
 fadeout_time = 0.1
 
@@ -816,8 +820,11 @@ animation = &"Throw"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4wpm0"]
 animation = &"Unarmed_Idle"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7ifgj"]
+animation = &"Use_Item"
+
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_8ynhc"]
-graph_offset = Vector2(-334.435, 942.139)
+graph_offset = Vector2(34.5651, 895.139)
 nodes/ArmedState/node = SubResource("AnimationNodeTransition_oc5vl")
 nodes/ArmedState/position = Vector2(-300, 1280)
 nodes/AttackSpeed/node = SubResource("AnimationNodeTimeScale_hmea8")
@@ -836,6 +843,8 @@ nodes/MovementBlend/node = SubResource("AnimationNodeBlend2_mbqps")
 nodes/MovementBlend/position = Vector2(-80, 1280)
 nodes/PlayAttack/node = SubResource("AnimationNodeOneShot_55wul")
 nodes/PlayAttack/position = Vector2(420, 1280)
+nodes/PlayDrink/node = SubResource("AnimationNodeOneShot_ro41e")
+nodes/PlayDrink/position = Vector2(1420, 1280)
 nodes/PlaySpinning/node = SubResource("AnimationNodeOneShot_gx5ep")
 nodes/PlaySpinning/position = Vector2(1170, 1280)
 nodes/PlayTaunt/node = SubResource("AnimationNodeOneShot_876bk")
@@ -860,8 +869,10 @@ nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_ek33d")
 nodes/TimeScale/position = Vector2(-560, 1700)
 nodes/UnarmedIdleAnim/node = SubResource("AnimationNodeAnimation_4wpm0")
 nodes/UnarmedIdleAnim/position = Vector2(-620, 1280)
-nodes/output/position = Vector2(1410, 1280)
-node_connections = [&"output", 0, &"PlaySpinning", &"ArmedState", 0, &"UnarmedIdleAnim", &"ArmedState", 1, &"AxeIdleAnim", &"AttackSpeed", 0, &"AttackType", &"AttackType", 0, &"TimeScale", &"AttackType", 1, &"SliceAnim", &"AttackType", 2, &"PunchAAnim", &"AttackType", 3, &"PunchBAnim", &"MoveSpeed", 0, &"MovementBlend", &"MovementBlend", 0, &"ArmedState", &"MovementBlend", 1, &"Movement", &"PlayAttack", 0, &"MoveSpeed", &"PlayAttack", 1, &"AttackSpeed", &"PlayTaunt", 0, &"PlayAttack", &"PlayTaunt", 1, &"TauntAnim", &"TimeScale", 0, &"ChopAnim", &"PlayThrow", 0, &"PlayTaunt", &"PlayThrow", 1, &"ThrowAnim", &"SpinningAnimSpeed", 0, &"Spinning Anim", &"PlaySpinning", 0, &"PlayThrow", &"PlaySpinning", 1, &"SpinningAnimSpeed"]
+nodes/UseItemAnim/node = SubResource("AnimationNodeAnimation_7ifgj")
+nodes/UseItemAnim/position = Vector2(1160, 1650)
+nodes/output/position = Vector2(1760, 1280)
+node_connections = [&"output", 0, &"PlayDrink", &"ArmedState", 0, &"UnarmedIdleAnim", &"ArmedState", 1, &"AxeIdleAnim", &"AttackSpeed", 0, &"AttackType", &"AttackType", 0, &"TimeScale", &"AttackType", 1, &"SliceAnim", &"AttackType", 2, &"PunchAAnim", &"AttackType", 3, &"PunchBAnim", &"MoveSpeed", 0, &"MovementBlend", &"MovementBlend", 0, &"ArmedState", &"MovementBlend", 1, &"Movement", &"PlayAttack", 0, &"MoveSpeed", &"PlayAttack", 1, &"AttackSpeed", &"PlayTaunt", 0, &"PlayAttack", &"PlayTaunt", 1, &"TauntAnim", &"TimeScale", 0, &"ChopAnim", &"PlayThrow", 0, &"PlayTaunt", &"PlayThrow", 1, &"ThrowAnim", &"SpinningAnimSpeed", 0, &"Spinning Anim", &"PlaySpinning", 0, &"PlayThrow", &"PlaySpinning", 1, &"SpinningAnimSpeed", &"PlayDrink", 0, &"PlaySpinning", &"PlayDrink", 1, &"UseItemAnim"]
 
 [node name="Skin" type="Node3D"]
 script = ExtResource("1_a0c63")
@@ -1207,7 +1218,7 @@ bones/47/rotation = Quaternion(-0.5, 0.5, 0.5, 0.5)
 bones/47/scale = Vector3(1, 1, 1)
 
 [node name="1H_Axe_Offhand" type="BoneAttachment3D" parent="Rig/Skeleton3D"]
-transform = Transform3D(0.137886, 0.722423, 0.677563, 0.23133, 0.641688, -0.731247, -0.963053, 0.257569, -0.0786383, 0.43892, 0.815832, 0.469826)
+transform = Transform3D(0.134245, 0.723715, 0.676915, 0.227431, 0.642363, -0.731877, -0.964495, 0.252203, -0.0783611, 0.43926, 0.816936, 0.469429)
 bone_name = "1H_Axe_Offhand"
 bone_idx = 9
 
@@ -1217,7 +1228,7 @@ mesh = ExtResource("1_v6qb8")
 skeleton = NodePath("")
 
 [node name="Barbarian_Round_Shield" type="BoneAttachment3D" parent="Rig/Skeleton3D"]
-transform = Transform3D(0.137887, 0.722422, 0.677563, 0.231332, 0.641687, -0.731247, -0.963053, 0.257572, -0.0786391, 0.532769, 0.691384, 0.45337)
+transform = Transform3D(0.134247, 0.723715, 0.676915, 0.227434, 0.642363, -0.731876, -0.964495, 0.252205, -0.0783619, 0.532987, 0.692379, 0.453103)
 bone_name = "Barbarian_Round_Shield"
 bone_idx = 10
 
@@ -1227,7 +1238,7 @@ mesh = ExtResource("2_mqe0v")
 skeleton = NodePath("")
 
 [node name="1H_Axe" type="BoneAttachment3D" parent="Rig/Skeleton3D"]
-transform = Transform3D(-0.0871235, 0.918288, 0.386205, 0.661038, 0.343321, -0.667202, -0.745276, 0.197167, -0.636936, -0.139644, 0.674359, 0.483968)
+transform = Transform3D(-0.0897176, 0.919207, 0.383416, 0.65811, 0.343666, -0.669914, -0.747556, 0.192227, -0.635773, -0.14094, 0.674977, 0.486143)
 bone_name = "1H_Axe"
 bone_idx = 16
 
@@ -1237,7 +1248,7 @@ mesh = ExtResource("3_f7yoj")
 skeleton = NodePath("")
 
 [node name="2H_Axe" type="BoneAttachment3D" parent="Rig/Skeleton3D"]
-transform = Transform3D(-0.0871235, 0.918288, 0.386205, 0.661038, 0.343321, -0.667202, -0.745276, 0.197167, -0.636936, -0.139644, 0.674359, 0.483968)
+transform = Transform3D(-0.0897176, 0.919207, 0.383416, 0.65811, 0.343666, -0.669914, -0.747556, 0.192227, -0.635773, -0.14094, 0.674977, 0.486143)
 bone_name = "2H_Axe"
 bone_idx = 17
 
@@ -1246,7 +1257,7 @@ mesh = ExtResource("4_qxc28")
 skeleton = NodePath("")
 
 [node name="Mug" type="BoneAttachment3D" parent="Rig/Skeleton3D"]
-transform = Transform3D(-0.0871235, 0.918288, 0.386205, 0.661038, 0.343321, -0.667202, -0.745276, 0.197167, -0.636936, -0.158404, 0.458869, 0.698322)
+transform = Transform3D(-0.0897176, 0.919207, 0.383416, 0.65811, 0.343666, -0.669914, -0.747556, 0.192227, -0.635773, -0.158965, 0.460351, 0.701424)
 bone_name = "Mug"
 bone_idx = 18
 
@@ -1256,7 +1267,7 @@ mesh = ExtResource("5_nvb0g")
 skeleton = NodePath("")
 
 [node name="Barbarian_Hat" type="BoneAttachment3D" parent="Rig/Skeleton3D"]
-transform = Transform3D(0.99972, -1.40144e-09, 0.0236466, 1.39341e-09, 1, 3.55686e-10, -0.0236466, -3.22637e-10, 0.99972, -7.55727e-09, 1.18523, -1.39052e-07)
+transform = Transform3D(0.99972, -1.40144e-09, 0.0236466, 1.39341e-09, 1, 3.55686e-10, -0.0236466, -3.22637e-10, 0.99972, -7.55727e-09, 1.18422, -1.39052e-07)
 bone_name = "Barbarian_Hat"
 bone_idx = 20
 
@@ -1265,7 +1276,7 @@ mesh = ExtResource("6_28tjb")
 skeleton = NodePath("")
 
 [node name="Barbarian_Cape" type="BoneAttachment3D" parent="Rig/Skeleton3D"]
-transform = Transform3D(0.996275, -5.14962e-09, 0.0862353, 5.13043e-09, 1, 4.44077e-10, -0.0862353, 1.8939e-15, 0.996275, -1.91641e-06, 1.18523, 2.59001e-08)
+transform = Transform3D(0.996275, -5.14962e-09, 0.0862353, 5.13043e-09, 1, 4.44077e-10, -0.0862353, 1.8939e-15, 0.996275, -1.91641e-06, 1.18422, 2.59001e-08)
 bone_name = "Barbarian_Cape"
 bone_idx = 21
 
@@ -1320,6 +1331,9 @@ parameters/MovementBlend/blend_amount = 1.0
 parameters/PlayAttack/active = false
 parameters/PlayAttack/internal_active = false
 parameters/PlayAttack/request = 0
+parameters/PlayDrink/active = false
+parameters/PlayDrink/internal_active = false
+parameters/PlayDrink/request = 0
 parameters/PlaySpinning/active = false
 parameters/PlaySpinning/internal_active = false
 parameters/PlaySpinning/request = 0
