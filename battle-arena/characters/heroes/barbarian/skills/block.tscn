@@ -9,8 +9,5 @@ script = ExtResource("2_t1s1q")
 rage_length = 5.0
 rage_modifier = ExtResource("3_7hwes")
 
-[node name="Execution" parent="." index="0"]
-base_time = 3.0
-
 [node name="Cooldown" parent="." index="1"]
 base_time = 5.0

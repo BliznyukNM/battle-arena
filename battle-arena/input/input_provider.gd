@@ -25,6 +25,7 @@ func _process(delta: float) -> void:
     
     _process_actions("basic_attack")
     _process_actions("secondary_attack")
+    _process_actions("third_attack")
     _process_actions("block")
     
     if input_source.is_cancel_just_pressed(): on_cancel.emit()

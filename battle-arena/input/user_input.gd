@@ -23,6 +23,14 @@ func is_secondary_attack_just_released() -> bool:
     return Input.is_action_just_released("character.attack.strong")
 
 
+func is_third_attack_just_pressed() -> bool:
+    return Input.is_action_just_pressed("character.attack.third")
+
+
+func is_third_attack_just_released() -> bool:
+    return Input.is_action_just_released("character.attack.third")
+
+
 func is_block_just_pressed() -> bool:
     return Input.is_action_just_pressed("character.attack.block")
 
@@ -31,8 +39,8 @@ func is_block_just_released() -> bool:
     return Input.is_action_just_released("character.attack.block")
 
 
-func is_cancel_just_pressed() -> bool:
-    return Input.is_action_just_pressed("character.attack.cancel")
+#func is_cancel_just_pressed() -> bool:
+#    return Input.is_action_just_pressed("character.attack.cancel")
 
 
 func get_look_at_point() -> Vector3:

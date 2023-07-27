@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://brn6cw5tr1mxb"]
+[gd_scene load_steps=25 format=3 uid="uid://brn6cw5tr1mxb"]
 
 [ext_resource type="PackedScene" uid="uid://d26br4f45m27g" path="res://characters/character.tscn" id="1_6uqpy"]
 [ext_resource type="Script" path="res://characters/heroes/barbarian/barbarian.gd" id="2_6pbkp"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://skills/skill_transition.gd" id="10_otvns"]
 [ext_resource type="PackedScene" uid="uid://dyxib0cnjsx2l" path="res://characters/heroes/barbarian/skills/axe_recall.tscn" id="11_jsp2i"]
 [ext_resource type="PackedScene" uid="uid://c1dfj25hhq1cq" path="res://characters/heroes/barbarian/skills/kick_b.tscn" id="11_tvqbx"]
+[ext_resource type="PackedScene" uid="uid://cwn0cy54tbtor" path="res://characters/heroes/barbarian/skills/spinning.tscn" id="16_j6fet"]
 [ext_resource type="Script" path="res://processors/energy.gd" id="17_6fxxn"]
 
 [sub_resource type="Resource" id="Resource_221r4"]
@@ -101,7 +102,10 @@ script = ExtResource("10_otvns")
 
 [node name="AxeRecall" parent="Skills/SecondaryAttack" index="1" instance=ExtResource("11_jsp2i")]
 
-[node name="Block" parent="Skills" index="2" instance=ExtResource("9_2nipq")]
+[node name="ThirdAttack" parent="Skills" index="2" instance=ExtResource("16_j6fet")]
+offset = Vector3(0, 0, 0)
+
+[node name="Block" parent="Skills" index="3" instance=ExtResource("9_2nipq")]
 
 [node name="Skin" type="Node" parent="Processors" index="4" node_paths=PackedStringArray("skin", "move_speed", "attack_speed")]
 script = ExtResource("6_5y8y2")
@@ -138,6 +142,8 @@ input_source = SubResource("Resource_86j2e")
 [connection signal="activated" from="Skills/SecondaryAttack/AxeThrow" to="HUD" method="on_skill_activated"]
 [connection signal="activated" from="Skills/SecondaryAttack/AxeThrow" to="Skin" method="play_throw"]
 [connection signal="activated" from="Skills/SecondaryAttack/AxeRecall" to="HUD" method="on_skill_activated"]
+[connection signal="activated" from="Skills/ThirdAttack" to="HUD" method="on_skill_activated"]
+[connection signal="activated" from="Skills/ThirdAttack" to="Skin" method="play_spin"]
 [connection signal="activated" from="Skills/Block" to="HUD" method="on_skill_activated"]
 [connection signal="activated" from="Skills/Block" to="Skin" method="play_taunt"]
 [connection signal="on_damage" from="HitBox" to="Skills/Block" method="on_damage"]

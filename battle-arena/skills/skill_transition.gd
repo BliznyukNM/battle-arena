@@ -5,6 +5,7 @@ extends Node
 
 
 var _skills: Array
+var _last_pressed: bool
 
 
 var current_skill:
@@ -22,10 +23,15 @@ func _ready() -> void:
 
 
 func select(index: int) -> void:
+    var old_skill = current_skill
     current_index = index
+    if not old_skill.execution.is_stopped():
+        old_skill.finish()
+        current_skill.activate(_last_pressed)
 
 
 func activate(pressed: bool) -> void:
+    _last_pressed = pressed
     current_skill.activate(pressed)
 
 

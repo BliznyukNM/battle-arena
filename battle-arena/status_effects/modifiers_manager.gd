@@ -22,5 +22,6 @@ func remove_modifier_by_name(modifier_name: String) -> void:
 
 func remove_modifier(modifier: BaseModifier) -> void:
     if modifier == null or not _modifiers.has(modifier.name): return
-    modifier.deactivate()
     _modifiers.erase(modifier.name)
+    remove_child(modifier)
+    modifier.queue_free()
