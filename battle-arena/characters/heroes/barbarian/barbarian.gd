@@ -9,7 +9,7 @@ var _thrown_axe
 
 func on_throw_axe(axe) -> void:
     _thrown_axe = axe
-    skills.basic_attack.select(0) # TODO: change to 1
+    skills.basic_attack.select(1)
     skills.secondary_attack.select(1)
     skin.update_stance("hands")
 

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bp7f6dgygfoa"]
+
+[ext_resource type="PackedScene" uid="uid://di3gecnsy5fv3" path="res://skills/base_melee_attack_skill.tscn" id="1_7v7vf"]
+
+[node name="KickA" instance=ExtResource("1_7v7vf")]
+damage = 5
+hit_time = 0.42
+hit_range = 1.5
+area = 20.0
+offset = Vector3(2.08165e-12, 1, 1)
+
+[node name="Execution" parent="." index="0"]
+base_time = 0.8

@@ -30,6 +30,14 @@ func play_chop(skill: BaseSkill) -> void:
     _trigger_attack("chop")
 
 
+func play_kick_a(skill: BaseSkill) -> void:
+    _trigger_attack("punch_a")
+
+
+func play_kick_b(skill: BaseSkill) -> void:
+    _trigger_attack("punch_b")
+
+
 func stop_attack(skill: BaseSkill) -> void:
     animationTree.set("parameters/PlayAttack/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT)
 

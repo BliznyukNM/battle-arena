@@ -1,4 +1,4 @@
-[gd_scene load_steps=118 format=3 uid="uid://dkbnsqkgykbxy"]
+[gd_scene load_steps=120 format=3 uid="uid://dkbnsqkgykbxy"]
 
 [ext_resource type="Script" path="res://characters/heroes/barbarian/skin.gd" id="1_a0c63"]
 [ext_resource type="ArrayMesh" uid="uid://dgmlc8o3ir4of" path="res://assets/characters/heroes/barbarian/meshes/Barbarian_Cube001.res" id="1_v6qb8"]
@@ -720,6 +720,12 @@ input_0/reset = true
 input_1/name = "slice"
 input_1/auto_advance = false
 input_1/reset = true
+input_2/name = "punch_a"
+input_2/auto_advance = false
+input_2/reset = true
+input_3/name = "punch_b"
+input_3/auto_advance = false
+input_3/reset = true
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m5ym3"]
 animation = &"2H_Melee_Idle"
@@ -782,6 +788,12 @@ fadeout_time = 0.15
 filter_enabled = true
 filters = ["Rig/Skeleton3D:chest", "Rig/Skeleton3D:hand.l", "Rig/Skeleton3D:hand.r", "Rig/Skeleton3D:handslot.l", "Rig/Skeleton3D:handslot.r", "Rig/Skeleton3D:head", "Rig/Skeleton3D:hips", "Rig/Skeleton3D:lowerarm.l", "Rig/Skeleton3D:lowerarm.r", "Rig/Skeleton3D:spine", "Rig/Skeleton3D:upperarm.l", "Rig/Skeleton3D:upperarm.r"]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_28ral"]
+animation = &"Unarmed_Melee_Attack_Punch_A"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dn8ty"]
+animation = &"Unarmed_Melee_Attack_Punch_B"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ug7rn"]
 animation = &"2H_Melee_Attack_Slice"
 
@@ -797,7 +809,7 @@ animation = &"Throw"
 animation = &"Unarmed_Idle"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_8ynhc"]
-graph_offset = Vector2(-457.364, 708.14)
+graph_offset = Vector2(-839.93, 814.093)
 nodes/ArmedState/node = SubResource("AnimationNodeTransition_oc5vl")
 nodes/ArmedState/position = Vector2(-300, 1280)
 nodes/AttackSpeed/node = SubResource("AnimationNodeTimeScale_hmea8")
@@ -820,6 +832,10 @@ nodes/PlayTaunt/node = SubResource("AnimationNodeOneShot_876bk")
 nodes/PlayTaunt/position = Vector2(660, 1280)
 nodes/PlayThrow/node = SubResource("AnimationNodeOneShot_7tvb1")
 nodes/PlayThrow/position = Vector2(910, 1280)
+nodes/PunchAAnim/node = SubResource("AnimationNodeAnimation_28ral")
+nodes/PunchAAnim/position = Vector2(-770, 2010)
+nodes/PunchBAnim/node = SubResource("AnimationNodeAnimation_dn8ty")
+nodes/PunchBAnim/position = Vector2(-740, 2160)
 nodes/SliceAnim/node = SubResource("AnimationNodeAnimation_ug7rn")
 nodes/SliceAnim/position = Vector2(-880, 1820)
 nodes/TauntAnim/node = SubResource("AnimationNodeAnimation_3m3k2")
@@ -831,7 +847,7 @@ nodes/TimeScale/position = Vector2(-560, 1700)
 nodes/UnarmedIdleAnim/node = SubResource("AnimationNodeAnimation_4wpm0")
 nodes/UnarmedIdleAnim/position = Vector2(-620, 1280)
 nodes/output/position = Vector2(1170, 1280)
-node_connections = [&"output", 0, &"PlayThrow", &"ArmedState", 0, &"UnarmedIdleAnim", &"ArmedState", 1, &"AxeIdleAnim", &"AttackSpeed", 0, &"AttackType", &"AttackType", 0, &"TimeScale", &"AttackType", 1, &"SliceAnim", &"MoveSpeed", 0, &"MovementBlend", &"MovementBlend", 0, &"ArmedState", &"MovementBlend", 1, &"Movement", &"PlayAttack", 0, &"MoveSpeed", &"PlayAttack", 1, &"AttackSpeed", &"PlayTaunt", 0, &"PlayAttack", &"PlayTaunt", 1, &"TauntAnim", &"TimeScale", 0, &"ChopAnim", &"PlayThrow", 0, &"PlayTaunt", &"PlayThrow", 1, &"ThrowAnim"]
+node_connections = [&"output", 0, &"PlayThrow", &"ArmedState", 0, &"UnarmedIdleAnim", &"ArmedState", 1, &"AxeIdleAnim", &"AttackSpeed", 0, &"AttackType", &"AttackType", 0, &"TimeScale", &"AttackType", 1, &"SliceAnim", &"AttackType", 2, &"PunchAAnim", &"AttackType", 3, &"PunchBAnim", &"MoveSpeed", 0, &"MovementBlend", &"MovementBlend", 0, &"ArmedState", &"MovementBlend", 1, &"Movement", &"PlayAttack", 0, &"MoveSpeed", &"PlayAttack", 1, &"AttackSpeed", &"PlayTaunt", 0, &"PlayAttack", &"PlayTaunt", 1, &"TauntAnim", &"TimeScale", 0, &"ChopAnim", &"PlayThrow", 0, &"PlayTaunt", &"PlayThrow", 1, &"ThrowAnim"]
 
 [node name="Skin" type="Node3D"]
 script = ExtResource("1_a0c63")
@@ -1177,7 +1193,7 @@ bones/47/rotation = Quaternion(-0.5, 0.5, 0.5, 0.5)
 bones/47/scale = Vector3(1, 1, 1)
 
 [node name="1H_Axe_Offhand" type="BoneAttachment3D" parent="Rig/Skeleton3D"]
-transform = Transform3D(0.149436, 0.718237, 0.679561, 0.243618, 0.639347, -0.729305, -0.958289, 0.274538, -0.0794339, 0.437841, 0.812288, 0.47102)
+transform = Transform3D(0.199163, 0.698711, 0.687121, 0.295005, 0.625896, -0.721959, -0.934507, 0.346492, -0.0814683, 0.433143, 0.79634, 0.474931)
 bone_name = "1H_Axe_Offhand"
 bone_idx = 9
 
@@ -1187,7 +1203,7 @@ mesh = ExtResource("1_v6qb8")
 skeleton = NodePath("")
 
 [node name="Barbarian_Round_Shield" type="BoneAttachment3D" parent="Rig/Skeleton3D"]
-transform = Transform3D(0.149437, 0.718237, 0.679561, 0.24362, 0.639346, -0.729304, -0.958288, 0.27454, -0.0794348, 0.532069, 0.688181, 0.454163)
+transform = Transform3D(0.199164, 0.698711, 0.687122, 0.295007, 0.625895, -0.721959, -0.934507, 0.346494, -0.0814691, 0.528868, 0.673597, 0.456584)
 bone_name = "Barbarian_Round_Shield"
 bone_idx = 10
 
@@ -1197,7 +1213,7 @@ mesh = ExtResource("2_mqe0v")
 skeleton = NodePath("")
 
 [node name="1H_Axe" type="BoneAttachment3D" parent="Rig/Skeleton3D"]
-transform = Transform3D(-0.0789459, 0.915271, 0.395025, 0.670241, 0.342063, -0.658612, -0.737931, 0.212767, -0.640458, -0.135548, 0.67247, 0.477024)
+transform = Transform3D(-0.0431499, 0.90052, 0.432666, 0.708548, 0.332897, -0.622205, -0.704341, 0.279717, -0.652427, -0.118724, 0.665334, 0.446568)
 bone_name = "1H_Axe"
 bone_idx = 16
 
@@ -1207,7 +1223,7 @@ mesh = ExtResource("3_f7yoj")
 skeleton = NodePath("")
 
 [node name="2H_Axe" type="BoneAttachment3D" parent="Rig/Skeleton3D"]
-transform = Transform3D(-0.0789459, 0.915271, 0.395025, 0.670241, 0.342063, -0.658612, -0.737931, 0.212767, -0.640458, -0.135548, 0.67247, 0.477024)
+transform = Transform3D(-0.0431499, 0.90052, 0.432666, 0.708548, 0.332897, -0.622205, -0.704341, 0.279717, -0.652427, -0.118724, 0.665334, 0.446568)
 bone_name = "2H_Axe"
 bone_idx = 17
 
@@ -1216,7 +1232,7 @@ mesh = ExtResource("4_qxc28")
 skeleton = NodePath("")
 
 [node name="Mug" type="BoneAttachment3D" parent="Rig/Skeleton3D"]
-transform = Transform3D(-0.0789459, 0.915271, 0.395025, 0.670241, 0.342063, -0.658612, -0.737931, 0.212767, -0.640458, -0.156618, 0.454276, 0.688407)
+transform = Transform3D(-0.0431499, 0.90052, 0.432666, 0.708548, 0.332897, -0.622205, -0.704341, 0.279717, -0.652427, -0.149831, 0.436075, 0.644578)
 bone_name = "Mug"
 bone_idx = 18
 
@@ -1226,7 +1242,7 @@ mesh = ExtResource("5_nvb0g")
 skeleton = NodePath("")
 
 [node name="Barbarian_Hat" type="BoneAttachment3D" parent="Rig/Skeleton3D"]
-transform = Transform3D(0.99972, -1.40144e-09, 0.0236466, 1.39341e-09, 1, 3.55686e-10, -0.0236466, -3.22637e-10, 0.99972, -7.55727e-09, 1.18843, -1.39052e-07)
+transform = Transform3D(0.99972, -1.40144e-09, 0.0236466, 1.39341e-09, 1, 3.55686e-10, -0.0236466, -3.22637e-10, 0.99972, -7.55727e-09, 1.20207, -1.39052e-07)
 bone_name = "Barbarian_Hat"
 bone_idx = 20
 
@@ -1235,7 +1251,7 @@ mesh = ExtResource("6_28tjb")
 skeleton = NodePath("")
 
 [node name="Barbarian_Cape" type="BoneAttachment3D" parent="Rig/Skeleton3D"]
-transform = Transform3D(0.996275, -5.14962e-09, 0.0862353, 5.13043e-09, 1, 4.44077e-10, -0.0862353, 1.8939e-15, 0.996275, -1.91641e-06, 1.18843, 2.59001e-08)
+transform = Transform3D(0.996275, -5.14962e-09, 0.0862353, 5.13043e-09, 1, 4.44077e-10, -0.0862353, 1.8939e-15, 0.996275, -1.91641e-06, 1.20207, 2.59001e-08)
 bone_name = "Barbarian_Cape"
 bone_idx = 21
 
@@ -1281,9 +1297,9 @@ parameters/ArmedState/current_state = "axe"
 parameters/ArmedState/transition_request = ""
 parameters/ArmedState/current_index = 1
 parameters/AttackSpeed/scale = 1.0
-parameters/AttackType/current_state = "slice"
+parameters/AttackType/current_state = "punch_a"
 parameters/AttackType/transition_request = ""
-parameters/AttackType/current_index = 1
+parameters/AttackType/current_index = 2
 parameters/MoveSpeed/scale = 1.0
 parameters/Movement/blend_position = Vector2(2.08165e-12, 2.08165e-12)
 parameters/MovementBlend/blend_amount = 1.0
