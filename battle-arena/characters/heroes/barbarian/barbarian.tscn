@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://brn6cw5tr1mxb"]
+[gd_scene load_steps=27 format=3 uid="uid://brn6cw5tr1mxb"]
 
 [ext_resource type="PackedScene" uid="uid://d26br4f45m27g" path="res://characters/character.tscn" id="1_6uqpy"]
 [ext_resource type="Script" path="res://characters/heroes/barbarian/barbarian.gd" id="2_6pbkp"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://cwn0cy54tbtor" path="res://characters/heroes/barbarian/skills/spinning.tscn" id="16_j6fet"]
 [ext_resource type="PackedScene" uid="uid://423mth77u25c" path="res://characters/heroes/barbarian/skills/drink.tscn" id="16_qo7fb"]
 [ext_resource type="Script" path="res://processors/energy.gd" id="17_6fxxn"]
+[ext_resource type="PackedScene" uid="uid://bob5haniot34k" path="res://characters/heroes/barbarian/skills/jump.tscn" id="18_4cbep"]
 
 [sub_resource type="Resource" id="Resource_221r4"]
 script = ExtResource("4_h87is")
@@ -107,11 +108,12 @@ script = ExtResource("10_otvns")
 script = ExtResource("10_otvns")
 
 [node name="Spinning" parent="Skills/ThirdAttack" index="0" instance=ExtResource("16_j6fet")]
-offset = Vector3(0, 0, 0)
 
 [node name="Drink" parent="Skills/ThirdAttack" index="1" instance=ExtResource("16_qo7fb")]
 
 [node name="Block" parent="Skills" index="3" instance=ExtResource("9_2nipq")]
+
+[node name="Dodge" parent="Skills" index="4" instance=ExtResource("18_4cbep")]
 
 [node name="Skin" type="Node" parent="Processors" index="4" node_paths=PackedStringArray("skin", "move_speed", "attack_speed")]
 script = ExtResource("6_5y8y2")
@@ -154,5 +156,7 @@ input_source = SubResource("Resource_86j2e")
 [connection signal="activated" from="Skills/ThirdAttack/Drink" to="Skin" method="play_drink"]
 [connection signal="activated" from="Skills/Block" to="HUD" method="on_skill_activated"]
 [connection signal="activated" from="Skills/Block" to="Skin" method="play_taunt"]
+[connection signal="activated" from="Skills/Dodge" to="HUD" method="on_skill_activated"]
+[connection signal="activated" from="Skills/Dodge" to="Skin" method="play_jump"]
 [connection signal="on_damage" from="HitBox" to="Skills/Block" method="on_damage"]
 [connection signal="on_damage" from="HitBox" to="Processors/Energy" method="on_damage"]

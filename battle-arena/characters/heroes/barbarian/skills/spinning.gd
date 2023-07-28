@@ -5,7 +5,6 @@ extends "res://skills/chanelling_skill.gd"
 @export var damage: float
 @export_range(0.01, 2, 0.01) var time_between_hits: float
 @export var radius: float = 2
-@export var offset: Vector3
 @export var energy_cost: float
 
 
@@ -47,7 +46,7 @@ func _try_hit_area() -> void:
     params.collide_with_bodies = false
     params.collide_with_areas = true
     params.collision_mask = _collision_mask
-    params.transform = owner.transform.translated_local(offset)
+    params.transform = owner.transform
     
     var result: = space_state.intersect_shape(params)
     

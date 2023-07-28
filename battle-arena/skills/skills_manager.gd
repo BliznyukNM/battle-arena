@@ -34,6 +34,14 @@ func activate_block(pressed: bool) -> void:
     _activate_skill(block, pressed)
 
 
+func activate_dodge(pressed: bool) -> void:
+    _activate_skill(dodge, pressed)
+
+
+func activate_ultimate(pressed: bool) -> void:
+    _activate_skill(ultimate, pressed)
+
+
 func cancel_skill() -> void:
     if not _last_used_skill or _last_used_skill.execution.is_stopped(): return
     _last_used_skill.cancel()

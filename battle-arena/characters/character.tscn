@@ -123,5 +123,7 @@ input_source = SubResource("Resource_mgice")
 [connection signal="on_basic_attack" from="Input" to="Skills" method="activate_basic_attack"]
 [connection signal="on_block" from="Input" to="Skills" method="activate_block"]
 [connection signal="on_cancel" from="Input" to="Skills" method="cancel_skill"]
+[connection signal="on_dodge" from="Input" to="Skills" method="activate_dodge"]
 [connection signal="on_secondary_attack" from="Input" to="Skills" method="activate_secondary_attack"]
 [connection signal="on_third_attack" from="Input" to="Skills" method="activate_third_attack"]
+[connection signal="on_ultimate" from="Input" to="Skills" method="activate_ultimate"]

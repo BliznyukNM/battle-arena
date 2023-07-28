@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bob5haniot34k"]
+
+[ext_resource type="PackedScene" uid="uid://76ddkyhgdvp" path="res://skills/base_skill.tscn" id="1_kn7hx"]
+[ext_resource type="Script" path="res://characters/heroes/barbarian/skills/jump.gd" id="2_algej"]
+
+[node name="Jump" instance=ExtResource("1_kn7hx")]
+script = ExtResource("2_algej")
+damage = 15.0
+max_range = 8.0
+radius = 3.0
+
+[node name="Execution" parent="." index="0"]
+base_time = 0.9
+
+[node name="Cooldown" parent="." index="1"]
+base_time = 1.0

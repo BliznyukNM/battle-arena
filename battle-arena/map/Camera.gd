@@ -14,5 +14,7 @@ extends Camera3D
 func _process(delta: float) -> void:
     if not target: return
     
+    var y: = position.y
     var shift: Vector3 = (target.input.look_at_point - target.position).limit_length(max_distance)
     position = lerp(position, target.position + shift / 2 + offset, delta * lerp_speed)
+    position.y = y
