@@ -5,6 +5,8 @@ extends Node
 
 
 func _process(delta: float) -> void:
+    if owner.input.look_at_point == Vector3.ZERO: return
+    
     var new_basis: Basis = Basis.looking_at(owner.position - owner.input.look_at_point)
     var weight = delta * rotation_speed.current_value
     owner.transform.basis = lerp(owner.transform.basis, new_basis, clampf(weight, 0, 1))

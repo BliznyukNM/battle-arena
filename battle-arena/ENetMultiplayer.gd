@@ -7,7 +7,7 @@ var port: int:
     get: return ProjectSettings.get_setting("application/run/port", 7350)
 
 
-var monk #: = preload("res://characters/monk/character_monk_a.tscn")
+@export var selected_hero: PackedScene
 
 
 func _ready() -> void:
@@ -23,6 +23,7 @@ func start(is_server: bool) -> void:
     multiplayer.peer_disconnected.connect(self._on_peer_disconnected)
     
     $MultiplayerSpawner.spawned.connect(self._on_spawned)
+    $MultiplayerSpawner.spawn_function = _spawn_hero
     
     var peer: = ENetMultiplayerPeer.new()
     if is_server: peer.create_server(port)
@@ -32,8 +33,12 @@ func start(is_server: bool) -> void:
 
 
 func _on_spawned(node: Node) -> void:
+    node.input.set_process(false)
+    
     if node.player_id == multiplayer.get_unique_id():
         %Camera.target = node
+        node.input.input_source = load("res://input/user_input.gd").new()
+        node.input.set_process(true)
 
 
 func _on_server_disconnected() -> void:
@@ -49,15 +54,17 @@ func _on_peer_connected(id: int) -> void:
     
     if not multiplayer.is_server(): return
     
-    var index = $MultiplayerSpawner.get_child_count()
-    
-    var monk_instance = monk.instantiate()
-    monk_instance.name = str(id)
-    monk_instance.player_id = id
-    monk_instance.team = index
-    monk_instance.position = %SpawnPoints.get_child(index).global_position
-    
-    $MultiplayerSpawner.add_child(monk_instance)
+    $MultiplayerSpawner.spawn(id)
+
+
+func _spawn_hero(id) -> Node:
+    var hero_instance = selected_hero.instantiate()
+    hero_instance.name = str(id)
+    hero_instance.player_id = id
+    hero_instance.set_multiplayer_authority(id, true)
+    #hero_instance.team = index
+    #hero_instance.position = %SpawnPoints.get_child(index).global_position
+    return hero_instance
 
 
 func _on_peer_disconnected(id: int) -> void:

@@ -19,6 +19,14 @@ signal on_cancel()
 @export var look_at_point: Vector3
 
 
+func _enter_tree() -> void:
+    set_multiplayer_authority(owner.player_id)
+
+
+func _ready() -> void:
+    set_process(is_multiplayer_authority())
+
+
 func _process(delta: float) -> void:
     move_direction = input_source.get_move_direction()
     look_at_point = input_source.get_look_at_point()
