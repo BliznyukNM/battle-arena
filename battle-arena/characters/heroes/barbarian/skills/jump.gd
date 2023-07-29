@@ -11,16 +11,23 @@ var _target_position: Vector3
 
 func activate(pressed: bool) -> void:
     if not pressed: return
+    if not execution.is_stopped(): return
     super.activate(pressed)
 
 
 func _on_activate(pressed: bool) -> void:
     super._on_activate(pressed)
     
+    owner.transform.basis = Basis.looking_at(owner.position - owner.input.look_at_point)
+    owner.rotation.x = 0.0
+    owner.rotation.z = 0.0
+    
     _target_position = owner.position + (owner.input.look_at_point - owner.position).limit_length(max_range)
+    var time = execution.wait_time
     var tween = create_tween()
-    tween.tween_property(owner, "position", _target_position + Vector3.UP * 4, execution.wait_time * 0.8).set_trans(Tween.TRANS_SINE)
-    tween.tween_property(owner, "position", _target_position, execution.wait_time * 0.3).set_trans(Tween.TRANS_EXPO)
+    tween.tween_property(owner, "position", _target_position + Vector3.UP * 4, time * 0.6) \
+        .set_trans(Tween.TRANS_SINE).set_delay(time * 0.2).set_ease(Tween.EASE_OUT)
+    tween.tween_property(owner, "position", _target_position, time * 0.3).set_trans(Tween.TRANS_EXPO)
 
 
 func cancel() -> void:

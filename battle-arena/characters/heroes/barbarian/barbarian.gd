@@ -7,6 +7,10 @@ var is_recalling: bool
 var _thrown_axe
 
 
+func _ready() -> void:
+    on_pickup_axe()
+
+
 func on_throw_axe(axe) -> void:
     _thrown_axe = axe
     

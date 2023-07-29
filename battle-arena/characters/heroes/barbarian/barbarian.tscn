@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://brn6cw5tr1mxb"]
+[gd_scene load_steps=29 format=3 uid="uid://brn6cw5tr1mxb"]
 
 [ext_resource type="PackedScene" uid="uid://d26br4f45m27g" path="res://characters/character.tscn" id="1_6uqpy"]
 [ext_resource type="Script" path="res://characters/heroes/barbarian/barbarian.gd" id="2_6pbkp"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://status_effects/effects/slowdown.gd" id="4_h87is"]
 [ext_resource type="Script" path="res://status_effects/effects/invulnerability.gd" id="5_5sv1s"]
 [ext_resource type="Script" path="res://characters/heroes/barbarian/processors/skin.gd" id="6_5y8y2"]
+[ext_resource type="Script" path="res://status_effects/effects/modify_stat.gd" id="7_l2lwc"]
 [ext_resource type="PackedScene" uid="uid://d1dskurwvvtkl" path="res://characters/heroes/barbarian/skills/block.tscn" id="9_2nipq"]
 [ext_resource type="Script" path="res://input/input_source.gd" id="9_shd64"]
 [ext_resource type="PackedScene" uid="uid://bp7f6dgygfoa" path="res://characters/heroes/barbarian/skills/kick_a.tscn" id="10_3sw4o"]
@@ -33,6 +34,12 @@ amount = 20
 
 [sub_resource type="Resource" id="Resource_lfolj"]
 script = ExtResource("5_5sv1s")
+
+[sub_resource type="Resource" id="Resource_1b4si"]
+script = ExtResource("7_l2lwc")
+stat_name = "RotationSpeed"
+percentage = -100.0
+flat = 0.0
 
 [sub_resource type="Resource" id="Resource_86j2e"]
 script = ExtResource("9_shd64")
@@ -64,13 +71,17 @@ has_min_value = true
 script = ExtResource("3_hhx1p")
 condition = "owner.skills.basic_attack.execution.time_left > 0.0"
 effects = Array[Resource("res://status_effects/effects/base_effect.gd")]([SubResource("Resource_221r4")])
-default_condition = null
 
 [node name="Blocking" type="Node" parent="Modifiers" index="1"]
 script = ExtResource("3_hhx1p")
 condition = "not owner.skills.block.execution.is_stopped()"
 effects = Array[Resource("res://status_effects/effects/base_effect.gd")]([SubResource("Resource_dhhgg"), SubResource("Resource_lfolj")])
-default_condition = null
+
+[node name="BlockRotation" type="Node" parent="Modifiers" index="2"]
+script = ExtResource("3_hhx1p")
+condition = "owner.skills.third_attack.current_index == 0 and not owner.skills.third_attack.execution.is_stopped() or not owner.skills.dodge.execution.is_stopped()"
+effects = Array[Resource("res://status_effects/effects/base_effect.gd")]([SubResource("Resource_1b4si")])
+default_condition = false
 
 [node name="BasicAttack" type="Node" parent="Skills" index="0"]
 script = ExtResource("10_otvns")

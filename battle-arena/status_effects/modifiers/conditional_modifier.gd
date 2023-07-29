@@ -19,5 +19,5 @@ func _process(delta: float) -> void:
     if _parsing_result != OK:
         _current_condition = default_condition
     else:
-        var new_condition = _condition_expression.execute([], self, false, true)
+        var new_condition = _condition_expression.execute([], self, true, true)
         _current_condition = default_condition if _condition_expression.has_execute_failed() else new_condition

@@ -833,7 +833,7 @@ animation = &"Unarmed_Idle"
 animation = &"Use_Item"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_8ynhc"]
-graph_offset = Vector2(168.565, 851.139)
+graph_offset = Vector2(161.565, 978.139)
 nodes/ArmedState/node = SubResource("AnimationNodeTransition_oc5vl")
 nodes/ArmedState/position = Vector2(-300, 1280)
 nodes/AttackSpeed/node = SubResource("AnimationNodeTimeScale_hmea8")
@@ -1233,7 +1233,7 @@ bones/47/rotation = Quaternion(-0.5, 0.5, 0.5, 0.5)
 bones/47/scale = Vector3(1, 1, 1)
 
 [node name="1H_Axe_Offhand" type="BoneAttachment3D" parent="Rig/Skeleton3D"]
-transform = Transform3D(0.16532, 0.712268, 0.68216, 0.260302, 0.635639, -0.726776, -0.951267, 0.297719, -0.080321, 0.436352, 0.807324, 0.472498)
+transform = Transform3D(0.140931, 0.721332, 0.678098, 0.234581, 0.6411, -0.730727, -0.961826, 0.262051, -0.0788593, 0.438633, 0.814906, 0.47015)
 bone_name = "1H_Axe_Offhand"
 bone_idx = 9
 
@@ -1243,7 +1243,7 @@ mesh = ExtResource("1_v6qb8")
 skeleton = NodePath("")
 
 [node name="Barbarian_Round_Shield" type="BoneAttachment3D" parent="Rig/Skeleton3D"]
-transform = Transform3D(0.165322, 0.712268, 0.68216, 0.260305, 0.635639, -0.726776, -0.951267, 0.297722, -0.0803218, 0.531082, 0.683671, 0.455125)
+transform = Transform3D(0.140933, 0.721332, 0.678099, 0.234583, 0.6411, -0.730726, -0.961825, 0.262054, -0.0788601, 0.532583, 0.690549, 0.453587)
 bone_name = "Barbarian_Round_Shield"
 bone_idx = 10
 
@@ -1253,7 +1253,7 @@ mesh = ExtResource("2_mqe0v")
 skeleton = NodePath("")
 
 [node name="1H_Axe" type="BoneAttachment3D" parent="Rig/Skeleton3D"]
-transform = Transform3D(-0.067511, 0.910877, 0.407116, 0.682729, 0.339728, -0.646889, -0.727545, 0.234278, -0.644819, -0.130075, 0.67002, 0.467411)
+transform = Transform3D(-0.0849598, 0.917509, 0.388533, 0.663479, 0.343013, -0.664934, -0.743355, 0.201291, -0.637891, -0.138562, 0.673853, 0.482145)
 bone_name = "1H_Axe"
 bone_idx = 16
 
@@ -1263,7 +1263,7 @@ mesh = ExtResource("3_f7yoj")
 skeleton = NodePath("")
 
 [node name="2H_Axe" type="BoneAttachment3D" parent="Rig/Skeleton3D"]
-transform = Transform3D(-0.067511, 0.910877, 0.407116, 0.682729, 0.339728, -0.646889, -0.727545, 0.234278, -0.644819, -0.130075, 0.67002, 0.467411)
+transform = Transform3D(-0.0849598, 0.917509, 0.388533, 0.663479, 0.343013, -0.664934, -0.743355, 0.201291, -0.637891, -0.138562, 0.673853, 0.482145)
 bone_name = "2H_Axe"
 bone_idx = 17
 
@@ -1272,7 +1272,7 @@ mesh = ExtResource("4_qxc28")
 skeleton = NodePath("")
 
 [node name="Mug" type="BoneAttachment3D" parent="Rig/Skeleton3D"]
-transform = Transform3D(-0.067511, 0.910877, 0.407116, 0.682729, 0.339728, -0.646889, -0.727545, 0.234278, -0.644819, -0.154368, 0.448186, 0.674619)
+transform = Transform3D(-0.0849598, 0.917509, 0.388533, 0.663479, 0.343013, -0.664934, -0.743355, 0.201291, -0.637891, -0.157935, 0.457645, 0.69572)
 bone_name = "Mug"
 bone_idx = 18
 
@@ -1282,7 +1282,7 @@ mesh = ExtResource("5_nvb0g")
 skeleton = NodePath("")
 
 [node name="Barbarian_Hat" type="BoneAttachment3D" parent="Rig/Skeleton3D"]
-transform = Transform3D(0.99972, -1.40144e-09, 0.0236466, 1.39341e-09, 1, 3.55686e-10, -0.0236466, -3.22637e-10, 0.99972, -7.55727e-09, 1.19282, -1.39052e-07)
+transform = Transform3D(0.99972, -1.40144e-09, 0.0236466, 1.39341e-09, 1, 3.55686e-10, -0.0236466, -3.22637e-10, 0.99972, -7.55727e-09, 1.18607, -1.39052e-07)
 bone_name = "Barbarian_Hat"
 bone_idx = 20
 
@@ -1291,7 +1291,7 @@ mesh = ExtResource("6_28tjb")
 skeleton = NodePath("")
 
 [node name="Barbarian_Cape" type="BoneAttachment3D" parent="Rig/Skeleton3D"]
-transform = Transform3D(0.996275, -5.14962e-09, 0.0862353, 5.13043e-09, 1, 4.44077e-10, -0.0862353, 1.8939e-15, 0.996275, -1.91641e-06, 1.19282, 2.59001e-08)
+transform = Transform3D(0.996275, -5.14962e-09, 0.0862353, 5.13043e-09, 1, 4.44077e-10, -0.0862353, 1.8939e-15, 0.996275, -1.91641e-06, 1.18607, 2.59001e-08)
 bone_name = "Barbarian_Cape"
 bone_idx = 21
 
@@ -1340,7 +1340,7 @@ parameters/AttackSpeed/scale = 1.0
 parameters/AttackType/current_state = "punch_a"
 parameters/AttackType/transition_request = ""
 parameters/AttackType/current_index = 2
-parameters/JumpSpeed/scale = 2.0
+parameters/JumpSpeed/scale = 1.5
 parameters/MoveSpeed/scale = 1.0
 parameters/Movement/blend_position = Vector2(2.08165e-12, 2.08165e-12)
 parameters/MovementBlend/blend_amount = 1.0
