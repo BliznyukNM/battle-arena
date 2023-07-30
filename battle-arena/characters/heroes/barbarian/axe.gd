@@ -9,14 +9,12 @@ var _is_recalling: bool
 
 func _ready() -> void:
     animation.play("rotating", -1, 2.0)
-    monitoring = true
 
 
 func recall() -> void:
     _is_recalling = true
     _is_travelling = false
     animation.play("rotating", -1, -2.0)
-    monitoring = true
 
 
 func _process(delta: float) -> void:
@@ -31,7 +29,6 @@ func _process(delta: float) -> void:
 func _on_finish_travel() -> void:
     _is_travelling = false
     animation.play("floor_stuck")
-    monitoring = false
 
 
 func _on_area_entered(area: Area3D) -> void:

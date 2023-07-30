@@ -25,10 +25,12 @@ func _process(delta: float) -> void:
 
 
 func _on_finish_travel() -> void:
+    if not is_multiplayer_authority(): return
     queue_free()
 
 
 func _on_area_entered(area: Area3D) -> void:
+    if not is_multiplayer_authority(): return
     if not area is HitBox: return
-    area.on_damage.emit(damage)
+    area.apply_damage.rpc(damage)
     _on_finish_travel()

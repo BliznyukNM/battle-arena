@@ -6,43 +6,6 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_y4j1l"]
 radius = 0.8043
 
-[sub_resource type="Animation" id="Animation_8ydus"]
-resource_name = "rotating"
-length = 0.4
-loop_mode = 1
-step = 0.05
-tracks/0/type = "rotation_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Root")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.1, 1, 0.707107, 7.66647e-20, -7.66647e-20, 0.707107, 0.2, 1, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12, 0.3, 1, -0.707, 2.08165e-12, 2.08165e-12, 0.707, 0.4, 1, 0, 0, 0, 1)
-tracks/1/type = "position_3d"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Root")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0)
-
-[sub_resource type="Animation" id="Animation_dngsa"]
-resource_name = "obstacle_stuck"
-tracks/0/type = "rotation_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Root")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0.383, 2.08165e-12, 2.08165e-12, 0.924)
-tracks/1/type = "position_3d"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Root")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0)
-
 [sub_resource type="Animation" id="Animation_ololx"]
 resource_name = "RESET"
 tracks/0/type = "position_3d"
@@ -76,6 +39,43 @@ tracks/1/path = NodePath("Root")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, 2.08165e-12, -0.55, 2.08165e-12)
+
+[sub_resource type="Animation" id="Animation_dngsa"]
+resource_name = "obstacle_stuck"
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.383, 2.08165e-12, 2.08165e-12, 0.924)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Root")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_8ydus"]
+resource_name = "rotating"
+length = 0.4
+loop_mode = 1
+step = 0.05
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.1, 1, 0.707107, 7.66647e-20, -7.66647e-20, 0.707107, 0.2, 1, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12, 0.3, 1, -0.707, 2.08165e-12, 2.08165e-12, 0.707, 0.4, 1, 0, 0, 0, 1)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Root")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8qj0m"]
 _data = {

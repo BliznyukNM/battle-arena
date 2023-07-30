@@ -11,7 +11,7 @@ var _energy_stat: NumberStat:
 
 func activate(pressed: bool) -> void:
     if not pressed: return
-    if _energy_stat.current_value < energy_cost: return
+    if not is_equal_approx(energy_cost, 0.0) and _energy_stat.current_value < energy_cost: return
     _energy_stat.current_value -= energy_cost
     super.activate(pressed)
 

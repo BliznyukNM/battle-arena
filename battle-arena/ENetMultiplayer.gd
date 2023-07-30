@@ -27,7 +27,7 @@ func start(is_server: bool) -> void:
     
     var peer: = ENetMultiplayerPeer.new()
     if is_server: peer.create_server(port)
-    else: peer.create_client(host, port, 0, 128, 128)
+    else: peer.create_client(host, port)
     
     multiplayer.multiplayer_peer = peer
 
@@ -52,7 +52,8 @@ func _on_peer_connected(id: int) -> void:
     if not multiplayer.is_server(): return
     var params: = {
         "id" = id,
-        "position" = [Vector3(-5, 0, 0), Vector3(5, 0, 0)][$HeroSpawner.get_child_count()]
+        "position" = [Vector3(-5, 0, 0), Vector3(5, 0, 0)][$HeroSpawner.get_child_count()],
+        "team" = $HeroSpawner.get_child_count() + 1
     }
     $HeroSpawner.spawn(params)
 
@@ -62,7 +63,7 @@ func _spawn_hero(params: Dictionary) -> Node:
     hero_instance.name = str(params.id)
     hero_instance.player_id = params.id
     hero_instance.get_node("Input").set_multiplayer_authority(params.id)
-    hero_instance.collision_layer = 1 << $HeroSpawner.get_child_count() # TODO: temporary
+    hero_instance.collision_layer = 1 << params.team # TODO: temporary
     hero_instance.position = params.position
     return hero_instance
 

@@ -15,7 +15,8 @@ var _energy_stat: NumberStat:
 
 func _on_activate(pressed: bool) -> void:
     if execution.is_stopped():
-        if _energy_stat.current_value < energy_cost: return
+        if not is_equal_approx(energy_cost, 0.0) and _energy_stat.current_value < energy_cost:
+            return
         _energy_stat.current_value -= energy_cost
         
         var modifier: BaseModifier = spinning_modifier.instantiate()

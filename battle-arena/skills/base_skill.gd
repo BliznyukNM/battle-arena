@@ -24,6 +24,8 @@ func _ready() -> void:
     execution.timeout.connect(finish)
 
 
+## Try to activate skill. Here should be only checks for activating, actual logic
+## is going to be executed in _on_activate
 func activate(pressed: bool) -> void:
     if not is_multiplayer_authority(): return
     if not cooldown.is_stopped(): return

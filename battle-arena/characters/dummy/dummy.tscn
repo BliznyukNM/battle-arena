@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://bewvugtopdfvv" path="res://characters/dummy/skin.tscn" id="2_yhkrm"]
 
 [node name="Dummy" instance=ExtResource("1_twlvs")]
-collision_layer = 2
 
 [node name="Health" parent="Stats" index="0"]
 max_value = 150.0
