@@ -7,8 +7,7 @@ extends "res://characters/projectile.gd"
 var _is_recalling: bool
 
 
-func shoot(direction: Vector3) -> void:
-    super.shoot(direction)
+func _ready() -> void:
     animation.play("rotating", -1, 2.0)
     monitoring = true
 
@@ -36,12 +35,13 @@ func _on_finish_travel() -> void:
 
 
 func _on_area_entered(area: Area3D) -> void:
+    if not is_multiplayer_authority(): return
+    
     if _is_travelling or _is_recalling:
         if area.collision_layer != collision_layer and area is HitBox:
-            area.on_damage.emit(damage)
+            area.apply_damage.rpc(damage)
     if area is HitBox and area.owner == owner:
-        owner.on_pickup_axe()
-        queue_free()
+        owner.on_pickup_axe.rpc()
 
 
 func _on_obstacle_hit(obstacle: Node3D) -> void:

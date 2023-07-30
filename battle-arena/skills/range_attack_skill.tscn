@@ -5,7 +5,7 @@
 
 [node name="RangeAttack" instance=ExtResource("1_mmles")]
 script = ExtResource("2_seuh6")
-projectile = null
 spawn_point = Vector3(0, 0, 0)
 
-[node name="Container" type="Node" parent="." index="2"]
+[node name="Container" type="MultiplayerSpawner" parent="." index="2"]
+spawn_path = NodePath(".")

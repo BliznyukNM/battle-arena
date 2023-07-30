@@ -6,12 +6,8 @@ func activate(pressed: bool) -> void:
     super.activate(pressed)
 
 
-func _get_projectile() -> CollisionObject3D:
-    var projectile_instance: = super._get_projectile()
+func _spawn_projectile(transform: Transform3D) -> Node:
+    var projectile_instance: = super._spawn_projectile(transform)
     projectile_instance.collision_mask = projectile_instance.collision_mask | owner.collision_layer
-    return projectile_instance
-
-
-func _on_shoot(projectile_instance: CollisionObject3D) -> void:
-    super._on_shoot(projectile_instance)
     owner.on_throw_axe(projectile_instance)
+    return projectile_instance

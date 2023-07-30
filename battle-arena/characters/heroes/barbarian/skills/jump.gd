@@ -34,8 +34,8 @@ func cancel() -> void:
     pass
 
 
-func finish() -> void:
-    super.finish()
+func _on_finish() -> void:
+    super._on_finish()
     _try_hit_area()
 
 
@@ -56,6 +56,6 @@ func _try_hit_area() -> void:
     
     for hit in result:
         if hit.collider is HitBox:
-            hit.collider.on_damage.emit(damage)
+            hit.collider.apply_damage.rpc(damage)
     
     PhysicsServer3D.free_rid(shape_rid)

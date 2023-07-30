@@ -4,7 +4,7 @@ extends "res://characters/character.gd"
 var is_recalling: bool
 
 
-var _thrown_axe
+var _thrown_axe: Node
 
 
 func _ready() -> void:
@@ -21,13 +21,16 @@ func on_throw_axe(axe) -> void:
     skin.update_stance("hands")
 
 
+@rpc("reliable", "call_local")
 func on_recall_axe() -> void:
     assert(_thrown_axe)
     _thrown_axe.recall()
     is_recalling = true
 
 
+@rpc("reliable", "call_local")
 func on_pickup_axe() -> void:
+    if _thrown_axe: _thrown_axe.queue_free()
     _thrown_axe = null
     
     skills.basic_attack.select(0)

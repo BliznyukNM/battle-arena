@@ -6,14 +6,11 @@ extends Area3D
 @export var max_travel_distance: float = 100
 
 
-var _is_travelling: bool
-var _direction: Vector3
+var _is_travelling: bool = true
 var _travelled_distance: float
 
 
-func shoot(direction: Vector3) -> void:
-    _direction = direction.normalized()
-    _is_travelling = true
+@onready var _direction: Vector3 = transform.basis.z
 
 
 func _process(delta: float) -> void:

@@ -19,7 +19,7 @@ const RAYCAST_PER_ANGLE = 5.0
 
 func _ready() -> void:
     super._ready()
-    _setup_shape()
+    if is_multiplayer_authority(): _setup_shape()
 
 
 func _setup_shape() -> void:
@@ -40,12 +40,15 @@ func cancel() -> void:
     super.cancel()
 
 
-func _on_activate(pressed: bool) -> void:
+func activate(pressed: bool) -> void:
     if not pressed: return
-    if not execution.is_stopped(): return
-    
+    super.activate(pressed)
+
+
+func _on_activate(pressed: bool) -> void:
     super._on_activate(pressed)
     
+    if not is_multiplayer_authority(): return
     var tween: = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
     tween.tween_callback(_try_hit_shape).set_delay(hit_time * speed)
 
@@ -67,7 +70,7 @@ func _try_hit_shape() -> void:
     
     for hit in result:
         if hit.collider is HitBox:
-            hit.collider.on_damage.emit(damage)
+            hit.collider.apply_damage.rpc(damage)
             any_hits = true
     
     if any_hits and energy_stat: energy_stat.current_value += energy_generation

@@ -22,12 +22,14 @@ func _ready() -> void:
 
 
 func activate(pressed: bool) -> void:
+    if not is_multiplayer_authority(): return
     _skill_scheduled = pressed
     var is_fully_reset: = _current_skill_number == 0 and execution.is_stopped() and cooldown.is_stopped()
     if pressed and is_fully_reset: _trigger_skill_sequence()
 
 
 func finish() -> void:
+    if not is_multiplayer_authority(): return
     if execution.is_stopped(): return
     _skill_scheduled = false
     _current_skill_number = 0
@@ -35,6 +37,7 @@ func finish() -> void:
 
 
 func cancel() -> void:
+    if not is_multiplayer_authority(): return
     if execution.is_stopped(): return
     _skill_scheduled = false
     _current_skill_number = 0

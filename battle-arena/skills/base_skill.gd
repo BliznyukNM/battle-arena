@@ -25,22 +25,36 @@ func _ready() -> void:
 
 
 func activate(pressed: bool) -> void:
+    if not is_multiplayer_authority(): return
     if not cooldown.is_stopped(): return
-    _on_activate(pressed)
+    _on_activate.rpc(pressed)
 
 
+@rpc("reliable", "call_local")
 func _on_activate(pressed: bool) -> void:
     execution.activate(speed)
     activated.emit(self)
 
 
 func cancel() -> void:
+    if not is_multiplayer_authority(): return
+    _on_cancel.rpc()
+
+
+@rpc("reliable", "call_local")
+func _on_cancel() -> void:
     _stop_execution()
     cancelled.emit(self)
     cooldown.start(0.5)
 
 
 func finish() -> void:
+    if not is_multiplayer_authority(): return
+    _on_finish.rpc()
+
+
+@rpc("reliable", "call_local")
+func _on_finish() -> void:
     _stop_execution()
     cooldown.activate()
 

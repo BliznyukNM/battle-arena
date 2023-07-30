@@ -7,7 +7,7 @@ var port: int:
     get: return ProjectSettings.get_setting("application/run/port", 7350)
 
 
-@export var selected_hero: PackedScene
+@export var selected_hero: int
 
 
 func _ready() -> void:
@@ -22,8 +22,8 @@ func start(is_server: bool) -> void:
     multiplayer.peer_connected.connect(self._on_peer_connected)
     multiplayer.peer_disconnected.connect(self._on_peer_disconnected)
     
-    $MultiplayerSpawner.spawned.connect(self._on_spawned)
-    $MultiplayerSpawner.spawn_function = _spawn_hero
+    $HeroSpawner.spawned.connect(self._on_spawned)
+    $HeroSpawner.spawn_function = _spawn_hero
     
     var peer: = ENetMultiplayerPeer.new()
     if is_server: peer.create_server(port)
@@ -52,17 +52,17 @@ func _on_peer_connected(id: int) -> void:
     if not multiplayer.is_server(): return
     var params: = {
         "id" = id,
-        "position" = [Vector3(-5, 0, 0), Vector3(5, 0, 0)][$MultiplayerSpawner.get_child_count()]
+        "position" = [Vector3(-5, 0, 0), Vector3(5, 0, 0)][$HeroSpawner.get_child_count()]
     }
-    $MultiplayerSpawner.spawn(params)
+    $HeroSpawner.spawn(params)
 
 
 func _spawn_hero(params: Dictionary) -> Node:
-    var hero_instance = selected_hero.instantiate()
+    var hero_instance = load($HeroSpawner.get_spawnable_scene(selected_hero)).instantiate()
     hero_instance.name = str(params.id)
     hero_instance.player_id = params.id
     hero_instance.get_node("Input").set_multiplayer_authority(params.id)
-    hero_instance.collision_layer = 1 << $MultiplayerSpawner.get_child_count() # TODO: temporary
+    hero_instance.collision_layer = 1 << $HeroSpawner.get_child_count() # TODO: temporary
     hero_instance.position = params.position
     return hero_instance
 
@@ -70,8 +70,8 @@ func _spawn_hero(params: Dictionary) -> Node:
 func _on_peer_disconnected(id: int) -> void:
     print("Client disconnected: %d" % id)
     
-    if not $MultiplayerSpawner.has_node(str(id)): return
-    $MultiplayerSpawner.get_node(str(id)).queue_free()
+    if not $HeroSpawner.has_node(str(id)): return
+    $HeroSpawner.get_node(str(id)).queue_free()
 
 
 func _on_connection_failed() -> void:

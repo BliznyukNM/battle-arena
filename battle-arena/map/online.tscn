@@ -1,17 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5pbkpjmxk30b"]
+[gd_scene load_steps=4 format=3 uid="uid://c5pbkpjmxk30b"]
 
 [ext_resource type="PackedScene" uid="uid://flt4bdecd0xj" path="res://map/map.tscn" id="1_3ki23"]
 [ext_resource type="Script" path="res://ENetMultiplayer.gd" id="2_0wyig"]
-[ext_resource type="PackedScene" uid="uid://brn6cw5tr1mxb" path="res://characters/heroes/barbarian/barbarian.tscn" id="3_tfvda"]
 [ext_resource type="PackedScene" uid="uid://vs53g10noy3c" path="res://characters/dummy/dummy.tscn" id="4_opuqx"]
 
 [node name="Map" instance=ExtResource("1_3ki23")]
 
 [node name="ENetMultiplayer" type="Node" parent="." index="4"]
 script = ExtResource("2_0wyig")
-selected_hero = ExtResource("3_tfvda")
 
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="ENetMultiplayer" index="0"]
+[node name="HeroSpawner" type="MultiplayerSpawner" parent="ENetMultiplayer" index="0"]
 _spawnable_scenes = PackedStringArray("res://characters/heroes/barbarian/barbarian.tscn")
 spawn_path = NodePath(".")
 spawn_limit = 2
