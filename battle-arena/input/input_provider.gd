@@ -19,10 +19,6 @@ signal on_cancel()
 @export var look_at_point: Vector3
 
 
-func _enter_tree() -> void:
-    set_multiplayer_authority(owner.player_id)
-
-
 func _ready() -> void:
     set_process(is_multiplayer_authority())
 
@@ -41,13 +37,25 @@ func _process(delta: float) -> void:
 
 
 func _process_actions(action: String) -> void:
+    if multiplayer.is_server():
+        _process_actions_locally(action)
+        return
+    
     if input_source.call("is_%s_just_pressed" % action):
-        _on_action_triggered.rpc("on_%s" % action, true)
+        _on_action_triggered.rpc_id(1, "on_%s" % action, true)
     elif input_source.call("is_%s_just_released" % action):
-        _on_action_triggered.rpc("on_%s" % action, false)
+        _on_action_triggered.rpc_id(1, "on_%s" % action, false)
 
 
-@rpc("reliable", "call_local")
+func _process_actions_locally(action: String) -> void:
+    if input_source.call("is_%s_just_pressed" % action):
+        _on_action_triggered("on_%s" % action, true)
+    elif input_source.call("is_%s_just_released" % action):
+        _on_action_triggered("on_%s" % action, false)
+
+
+# TODO: Fix local mode
+@rpc("reliable", "call_remote")
 func _on_action_triggered(signal_name: String, pressed: bool) -> void:
     emit_signal(signal_name, pressed)
 

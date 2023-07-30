@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://brn6cw5tr1mxb"]
+[gd_scene load_steps=27 format=3 uid="uid://brn6cw5tr1mxb"]
 
 [ext_resource type="PackedScene" uid="uid://d26br4f45m27g" path="res://characters/character.tscn" id="1_6uqpy"]
 [ext_resource type="Script" path="res://characters/heroes/barbarian/barbarian.gd" id="2_6pbkp"]
@@ -13,7 +13,6 @@
 [ext_resource type="Script" path="res://characters/heroes/barbarian/processors/skin.gd" id="6_5y8y2"]
 [ext_resource type="Script" path="res://status_effects/effects/modify_stat.gd" id="7_l2lwc"]
 [ext_resource type="PackedScene" uid="uid://d1dskurwvvtkl" path="res://characters/heroes/barbarian/skills/block.tscn" id="9_2nipq"]
-[ext_resource type="Script" path="res://input/input_source.gd" id="9_shd64"]
 [ext_resource type="PackedScene" uid="uid://bp7f6dgygfoa" path="res://characters/heroes/barbarian/skills/kick_a.tscn" id="10_3sw4o"]
 [ext_resource type="PackedScene" uid="uid://ci811lsyijdqv" path="res://characters/heroes/barbarian/skills/axe_throw.tscn" id="10_i2xy0"]
 [ext_resource type="Script" path="res://skills/skill_transition.gd" id="10_otvns"]
@@ -40,27 +39,6 @@ script = ExtResource("7_l2lwc")
 stat_name = "RotationSpeed"
 percentage = -100.0
 flat = 0.0
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_jr2p6"]
-properties/0/path = NodePath(".:position")
-properties/0/spawn = true
-properties/0/sync = true
-properties/0/watch = false
-properties/1/path = NodePath("Input:move_direction")
-properties/1/spawn = false
-properties/1/sync = true
-properties/1/watch = false
-properties/2/path = NodePath("Input:look_at_point")
-properties/2/spawn = false
-properties/2/sync = true
-properties/2/watch = false
-properties/3/path = NodePath(".:player_id")
-properties/3/spawn = true
-properties/3/sync = true
-properties/3/watch = false
-
-[sub_resource type="Resource" id="Resource_86j2e"]
-script = ExtResource("9_shd64")
 
 [node name="Barbarian" instance=ExtResource("1_6uqpy")]
 script = ExtResource("2_6pbkp")
@@ -158,10 +136,6 @@ energy = NodePath("../../Stats/Energy")
 [node name="HUD" parent="." index="6" node_paths=PackedStringArray("energy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.81294, 0)
 energy = NodePath("../Stats/Energy")
-
-[node name="Input" parent="." index="7"]
-replication_config = SubResource("SceneReplicationConfig_jr2p6")
-input_source = SubResource("Resource_86j2e")
 
 [node name="Skin" parent="." index="8" instance=ExtResource("2_lwxa8")]
 

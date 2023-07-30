@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d26br4f45m27g"]
+[gd_scene load_steps=19 format=3 uid="uid://d26br4f45m27g"]
 
 [ext_resource type="Script" path="res://characters/character.gd" id="1_8kwiu"]
 [ext_resource type="Script" path="res://stats/stats_manager.gd" id="2_3n7xj"]
@@ -19,6 +19,24 @@
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_vwbuv"]
 radius = 0.4
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_woxwi"]
+properties/0/path = NodePath(".:player_id")
+properties/0/spawn = true
+properties/0/sync = false
+properties/0/watch = false
+properties/1/path = NodePath(".:position")
+properties/1/spawn = true
+properties/1/sync = true
+properties/1/watch = false
+properties/2/path = NodePath("Input:move_direction")
+properties/2/spawn = true
+properties/2/sync = true
+properties/2/watch = false
+properties/3/path = NodePath("Input:look_at_point")
+properties/3/spawn = true
+properties/3/sync = true
+properties/3/watch = false
 
 [sub_resource type="Resource" id="Resource_mgice"]
 script = ExtResource("14_ovw2o")
@@ -115,6 +133,7 @@ health = NodePath("../Stats/Health")
 name_tag = NodePath("../Stats/Name")
 
 [node name="Input" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_woxwi")
 script = ExtResource("2_fj6tx")
 input_source = SubResource("Resource_mgice")
 

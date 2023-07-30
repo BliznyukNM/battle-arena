@@ -27,18 +27,15 @@ func start(is_server: bool) -> void:
     
     var peer: = ENetMultiplayerPeer.new()
     if is_server: peer.create_server(port)
-    else: peer.create_client(host, port)
+    else: peer.create_client(host, port, 0, 128, 128)
     
     multiplayer.multiplayer_peer = peer
 
 
 func _on_spawned(node: Node) -> void:
-    node.input.set_process(false)
-    
     if node.player_id == multiplayer.get_unique_id():
         %Camera.target = node
         node.input.input_source = load("res://input/user_input.gd").new()
-        node.input.set_process(true)
 
 
 func _on_server_disconnected() -> void:
@@ -53,17 +50,20 @@ func _on_peer_connected(id: int) -> void:
     print("Client connected: %d" % id)
     
     if not multiplayer.is_server(): return
-    
-    $MultiplayerSpawner.spawn(id)
+    var params: = {
+        "id" = id,
+        "position" = [Vector3(-5, 0, 0), Vector3(5, 0, 0)][$MultiplayerSpawner.get_child_count()]
+    }
+    $MultiplayerSpawner.spawn(params)
 
 
-func _spawn_hero(id) -> Node:
+func _spawn_hero(params: Dictionary) -> Node:
     var hero_instance = selected_hero.instantiate()
-    hero_instance.name = str(id)
-    hero_instance.player_id = id
-    hero_instance.set_multiplayer_authority(id, true)
-    #hero_instance.team = index
-    #hero_instance.position = %SpawnPoints.get_child(index).global_position
+    hero_instance.name = str(params.id)
+    hero_instance.player_id = params.id
+    hero_instance.get_node("Input").set_multiplayer_authority(params.id)
+    hero_instance.collision_layer = 1 << $MultiplayerSpawner.get_child_count() # TODO: temporary
+    hero_instance.position = params.position
     return hero_instance
 
 

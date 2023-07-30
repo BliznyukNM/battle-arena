@@ -1,13 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5pbkpjmxk30b"]
+[gd_scene load_steps=5 format=3 uid="uid://c5pbkpjmxk30b"]
 
 [ext_resource type="PackedScene" uid="uid://flt4bdecd0xj" path="res://map/map.tscn" id="1_3ki23"]
 [ext_resource type="Script" path="res://ENetMultiplayer.gd" id="2_0wyig"]
 [ext_resource type="PackedScene" uid="uid://brn6cw5tr1mxb" path="res://characters/heroes/barbarian/barbarian.tscn" id="3_tfvda"]
+[ext_resource type="PackedScene" uid="uid://vs53g10noy3c" path="res://characters/dummy/dummy.tscn" id="4_opuqx"]
 
 [node name="Map" instance=ExtResource("1_3ki23")]
-
-[node name="Camera" parent="." index="1"]
-unique_name_in_owner = true
 
 [node name="ENetMultiplayer" type="Node" parent="." index="4"]
 script = ExtResource("2_0wyig")
@@ -17,3 +15,9 @@ selected_hero = ExtResource("3_tfvda")
 _spawnable_scenes = PackedStringArray("res://characters/heroes/barbarian/barbarian.tscn")
 spawn_path = NodePath(".")
 spawn_limit = 2
+
+[node name="Dummy" parent="." index="5" instance=ExtResource("4_opuqx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.49696, 0.100001, -3.27744)
+
+[node name="Dummy2" parent="." index="6" instance=ExtResource("4_opuqx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3579, 0.1, -3.40055)

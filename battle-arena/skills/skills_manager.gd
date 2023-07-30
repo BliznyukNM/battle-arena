@@ -14,32 +14,31 @@ var _last_used_skill
 
 
 func _ready() -> void:
-    for skill in get_children():
-        _skills.append(skill)
+    _skills = [basic_attack, secondary_attack, third_attack, block, dodge, ultimate]
 
 
 func activate_basic_attack(pressed: bool) -> void:
-    _activate_skill(basic_attack, pressed)
+    _activate_skill.rpc(0, pressed)
 
 
 func activate_secondary_attack(pressed: bool) -> void:
-    _activate_skill(secondary_attack, pressed)
+    _activate_skill.rpc(1, pressed)
 
 
 func activate_third_attack(pressed: bool) -> void:
-    _activate_skill(third_attack, pressed)
+    _activate_skill.rpc(2, pressed)
 
 
 func activate_block(pressed: bool) -> void:
-    _activate_skill(block, pressed)
+    _activate_skill.rpc(3, pressed)
 
 
 func activate_dodge(pressed: bool) -> void:
-    _activate_skill(dodge, pressed)
+    _activate_skill.rpc(4, pressed)
 
 
 func activate_ultimate(pressed: bool) -> void:
-    _activate_skill(ultimate, pressed)
+    _activate_skill.rpc(5, pressed)
 
 
 func cancel_skill() -> void:
@@ -47,7 +46,9 @@ func cancel_skill() -> void:
     _last_used_skill.cancel()
 
 
-func _activate_skill(skill, pressed: bool) -> void:
+@rpc("reliable", "call_local")
+func _activate_skill(index: int, pressed: bool) -> void:
+    var skill = _skills[index]
     if _last_used_skill and _last_used_skill != skill and not _last_used_skill.execution.is_stopped(): return
     _last_used_skill = skill
     skill.activate(pressed)
