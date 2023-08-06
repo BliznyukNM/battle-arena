@@ -87,7 +87,7 @@ _data = {
 
 [node name="Axe" type="Area3D"]
 script = ExtResource("1_tvqmv")
-damage = 10
+damage = 20
 speed = 18.0
 max_travel_distance = 15.0
 

@@ -35,6 +35,7 @@ func start(is_server: bool) -> void:
 func _on_spawned(node: Node) -> void:
     if node.player_id == multiplayer.get_unique_id():
         %Camera.target = node
+        %GUI.target = node
         node.input.input_source = load("res://input/user_input.gd").new()
 
 
@@ -55,6 +56,7 @@ func _on_peer_connected(id: int) -> void:
         "position" = [Vector3(-5, 0, 0), Vector3(5, 0, 0)][$HeroSpawner.get_child_count()],
         "team" = $HeroSpawner.get_child_count() + 1
     }
+    
     $HeroSpawner.spawn(params)
 
 
