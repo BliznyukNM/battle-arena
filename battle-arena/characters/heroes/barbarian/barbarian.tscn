@@ -53,10 +53,10 @@ max_value = 500.0
 has_max_value = true
 max_value = 10.0
 
-[node name="Name" parent="Stats" index="6"]
+[node name="Name" parent="Stats" index="5"]
 current_value = "Barbarian"
 
-[node name="Energy" type="Node" parent="Stats" index="7"]
+[node name="Energy" type="Node" parent="Stats" index="6"]
 script = ExtResource("3_l5iug")
 has_max_value = true
 max_value = 100.0

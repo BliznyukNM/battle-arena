@@ -80,12 +80,6 @@ max_value = 5.0
 has_min_value = true
 base_value = 1.0
 
-[node name="SkillProgress" type="Node" parent="Stats"]
-script = ExtResource("3_018qh")
-has_max_value = true
-max_value = 1.0
-has_min_value = true
-
 [node name="Name" type="Node" parent="Stats"]
 script = ExtResource("4_u52ko")
 current_value = "Character"

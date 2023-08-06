@@ -6,3 +6,4 @@ extends Node3D
 
 func _ready() -> void:
     barbarian.input.input_source = load("res://input/user_input.gd").new()
+    $GUI.target = barbarian

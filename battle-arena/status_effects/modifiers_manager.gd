@@ -1,4 +1,4 @@
-extends Node
+class_name ModifierManager extends Node
 
 
 var _modifiers: Dictionary
