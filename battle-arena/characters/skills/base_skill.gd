@@ -8,8 +8,8 @@ signal activated(skill: BaseSkill)
 signal cancelled(skill: BaseSkill)
 
 
-@onready var cooldown: SkillTimer = $Cooldown
-@onready var execution: SkillTimer = $Execution
+var cooldown: SkillTimer: get = _get_cooldown
+var execution: SkillTimer: get = _get_execution
 
 
 var _collision_mask: int
@@ -22,6 +22,14 @@ var speed: float:
 func _ready() -> void:
     _collision_mask = owner.collision_mask & (~owner.collision_layer)
     execution.timeout.connect(finish)
+
+
+func _get_cooldown() -> SkillTimer:
+    return $Cooldown
+
+
+func _get_execution() -> SkillTimer:
+    return $Execution
 
 
 ## Try to activate skill. Here should be only checks for activating, actual logic

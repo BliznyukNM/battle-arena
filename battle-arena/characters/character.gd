@@ -6,7 +6,7 @@ extends CharacterBody3D
 
 @onready var stats: StatManager = get_node_or_null("Stats")
 @onready var modifiers: ModifierManager = get_node_or_null("Modifiers")
-@onready var skills: = get_node_or_null("Skills")
+@onready var skills: SkillManager = get_node_or_null("Skills")
 @onready var skin: = get_node_or_null("Skin")
 @onready var input: = get_node_or_null("Input")
 @onready var hit_box: HitBox = get_node_or_null("HitBox")

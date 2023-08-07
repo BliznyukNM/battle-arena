@@ -1,24 +1,21 @@
 ## Handles triggering sequence of skills. Works only with 'pressed' state
-extends Node
+extends BaseSkill
 
 
-var _skills: Array
 var _current_skill_number: int
 var _skill_scheduled: bool
 
 
 var current_skill:
-    get: return _skills[_current_skill_number]
-var cooldown: Timer:
-    get: return current_skill.cooldown
-var execution: Timer:
-    get: return current_skill.execution
+    get: return get_child(_current_skill_number)
 
 
-func _ready() -> void:
-    for child in get_children():
-        var skill = child
-        _skills.append(skill)
+func _get_cooldown() -> SkillTimer:
+    return current_skill.cooldown
+
+
+func _get_execution() -> SkillTimer:
+    return current_skill.execution
 
 
 func activate(pressed: bool) -> void:
@@ -54,5 +51,5 @@ func _trigger_skill_sequence() -> void:
         if not current_skill.execution.is_stopped():
             await current_skill.execution.timeout
 
-        _current_skill_number = (_current_skill_number + 1) % _skills.size()
+        _current_skill_number = (_current_skill_number + 1) % get_child_count()
     _current_skill_number = 0

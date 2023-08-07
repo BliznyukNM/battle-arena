@@ -1,12 +1,12 @@
-extends Node
+class_name SkillManager extends Node
 
 
-@onready var basic_attack: = get_node_or_null("BasicAttack")
-@onready var secondary_attack: = get_node_or_null("SecondaryAttack")
-@onready var third_attack: = get_node_or_null("ThirdAttack")
-@onready var block: = get_node_or_null("Block")
-@onready var dodge: = get_node_or_null("Dodge")
-@onready var ultimate: = get_node_or_null("Ultimate")
+@onready var basic_attack: BaseSkill = get_node_or_null("BasicAttack")
+@onready var secondary_attack: BaseSkill = get_node_or_null("SecondaryAttack")
+@onready var third_attack: BaseSkill = get_node_or_null("ThirdAttack")
+@onready var block: BaseSkill = get_node_or_null("Block")
+@onready var dodge: BaseSkill = get_node_or_null("Dodge")
+@onready var ultimate: BaseSkill = get_node_or_null("Ultimate")
 
 
 var _skills: Array

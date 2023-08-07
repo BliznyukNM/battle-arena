@@ -1,5 +1,6 @@
 extends BaseSkill
 
+
 @export var damage: int
 @export var hit_time: float
 
