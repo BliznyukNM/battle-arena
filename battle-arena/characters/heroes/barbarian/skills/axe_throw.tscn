@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ci811lsyijdqv"]
 
-[ext_resource type="PackedScene" uid="uid://dt7dp8amhbd5b" path="res://skills/range_attack_skill.tscn" id="1_ojjvj"]
+[ext_resource type="PackedScene" uid="uid://dt7dp8amhbd5b" path="res://characters/skills/range_attack_skill.tscn" id="1_ojjvj"]
 [ext_resource type="Script" path="res://characters/heroes/barbarian/skills/axe_throw.gd" id="2_vnyhn"]
 
 [node name="AxeThrow" instance=ExtResource("1_ojjvj")]

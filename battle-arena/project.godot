@@ -25,14 +25,18 @@ gdscript/warnings/int_as_enum_without_cast=0
 
 [display]
 
-window/size/viewport_width=1600
-window/size/viewport_height=800
+window/size/viewport_width=2048
+window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/gut/plugin.cfg")
+
+[gui]
+
+theme/custom="res://lobby/themes/default.tres"
 
 [importer_defaults]
 

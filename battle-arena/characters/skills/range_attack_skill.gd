@@ -1,4 +1,4 @@
-extends "res://skills/base_skill.gd"
+extends "res://characters/skills/base_skill.gd"
 
 
 @export var spawn_point: Vector3

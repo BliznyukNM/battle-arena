@@ -1,4 +1,4 @@
-extends "res://skills/chanelling_skill.gd"
+extends "res://characters/skills/chanelling_skill.gd"
 
 
 @export_range(0.1, 10, 0.1, "or_greater", "suffix:sec") var rage_length: float = 1.0

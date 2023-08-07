@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://di3gecnsy5fv3"]
 
-[ext_resource type="PackedScene" uid="uid://76ddkyhgdvp" path="res://skills/base_skill.tscn" id="1_88kqx"]
-[ext_resource type="Script" path="res://skills/base_melee_attack_skill.gd" id="2_5mqrw"]
+[ext_resource type="PackedScene" uid="uid://76ddkyhgdvp" path="res://characters/skills/base_skill.tscn" id="1_88kqx"]
+[ext_resource type="Script" path="res://characters/skills/base_melee_attack_skill.gd" id="2_5mqrw"]
 
 [node name="BaseMeleeAttackSkill" instance=ExtResource("1_88kqx")]
 script = ExtResource("2_5mqrw")

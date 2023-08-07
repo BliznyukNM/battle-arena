@@ -1,4 +1,4 @@
-extends "res://skills/range_attack_skill.gd"
+extends "res://characters/skills/range_attack_skill.gd"
 
 
 func activate(pressed: bool) -> void:

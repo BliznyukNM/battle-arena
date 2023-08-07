@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c1dfj25hhq1cq"]
 
-[ext_resource type="PackedScene" uid="uid://di3gecnsy5fv3" path="res://skills/base_melee_attack_skill.tscn" id="1_04k1w"]
+[ext_resource type="PackedScene" uid="uid://di3gecnsy5fv3" path="res://characters/skills/base_melee_attack_skill.tscn" id="1_04k1w"]
 
 [node name="KickB" instance=ExtResource("1_04k1w")]
 damage = 5

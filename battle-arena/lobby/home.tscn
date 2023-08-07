@@ -1,0 +1,99 @@
+[gd_scene load_steps=7 format=3 uid="uid://e08246dckwg4"]
+
+[ext_resource type="Theme" uid="uid://bj84mbcru2nxg" path="res://lobby/themes/default.tres" id="1_6fdaq"]
+[ext_resource type="Script" path="res://lobby/home.gd" id="2_xijd1"]
+[ext_resource type="Texture2D" uid="uid://boq8haowh7bkl" path="res://assets/art/rnM08T.png" id="2_yv2kc"]
+[ext_resource type="Texture2D" uid="uid://dr27x7wojlrdu" path="res://assets/art/vCA8QE.png" id="3_58q14"]
+
+[sub_resource type="Gradient" id="Gradient_3cyam"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.982, 1, 0.46, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lr4ag"]
+gradient = SubResource("Gradient_3cyam")
+width = 1
+height = 1
+fill_from = Vector2(0.132479, 0.145299)
+fill_to = Vector2(0.713675, 0.641026)
+
+[node name="Home" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_6fdaq")
+script = ExtResource("2_xijd1")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_lr4ag")
+
+[node name="PlayOffline" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -671.0
+offset_top = -284.0
+offset_right = -79.0
+offset_bottom = 284.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"MatchTypeButton"
+icon = ExtResource("2_yv2kc")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="PlayOffline"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Play Offline"
+horizontal_alignment = 1
+
+[node name="PlayOnline" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 75.0
+offset_top = -284.0
+offset_right = 667.0
+offset_bottom = 284.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"MatchTypeButton"
+disabled = true
+icon = ExtResource("3_58q14")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="PlayOnline"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Play Online"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="PlayOffline" to="." method="_on_play_offline"]

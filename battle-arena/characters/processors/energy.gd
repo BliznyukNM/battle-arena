@@ -4,8 +4,8 @@ extends Node
 @export var energy: NumberStat
 
 
-const ON_HIT_ENERGY: = 5
+const DAMAGE_TO_ENERGY: = 0.1
 
 
 func on_damage(damage: float) -> void:
-    energy.current_value += ON_HIT_ENERGY
+    energy.current_value += damage * DAMAGE_TO_ENERGY

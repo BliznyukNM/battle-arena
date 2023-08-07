@@ -1,0 +1,77 @@
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://bj84mbcru2nxg"]
+
+[ext_resource type="Texture2D" uid="uid://dahbrapcpld4x" path="res://assets/ui/green_button_pressed.atlastex" id="1_a1myh"]
+[ext_resource type="Texture2D" uid="uid://bemhpj5nsf5on" path="res://assets/ui/green_button_focused.atlastex" id="1_gmqbn"]
+[ext_resource type="Texture2D" uid="uid://bgccuk80a62px" path="res://assets/ui/grey_input.atlastex" id="1_nm5kr"]
+[ext_resource type="Texture2D" uid="uid://bk7cwjrakn07s" path="res://assets/ui/green_button.atlastex" id="1_umlqg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bnexw"]
+texture = ExtResource("1_a1myh")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b3efu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_apftr"]
+texture = ExtResource("1_gmqbn")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0n7tm"]
+texture = ExtResource("1_umlqg")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oevhi"]
+texture = ExtResource("1_a1myh")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q7uww"]
+texture = ExtResource("1_nm5kr")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_134ew"]
+texture = ExtResource("1_nm5kr")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+modulate_color = Color(0.94902, 0.94902, 0.94902, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1l67j"]
+texture = ExtResource("1_nm5kr")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+modulate_color = Color(0.54902, 0.54902, 0.54902, 1)
+
+[resource]
+GreenButton/base_type = &"Button"
+GreenButton/colors/font_color = Color(0.819608, 1, 0.780392, 1)
+GreenButton/styles/disabled = SubResource("StyleBoxTexture_bnexw")
+GreenButton/styles/focus = SubResource("StyleBoxEmpty_b3efu")
+GreenButton/styles/hover = SubResource("StyleBoxTexture_apftr")
+GreenButton/styles/normal = SubResource("StyleBoxTexture_0n7tm")
+GreenButton/styles/pressed = SubResource("StyleBoxTexture_oevhi")
+LineEdit/colors/caret_color = Color(0.509804, 0.509804, 0.509804, 1)
+LineEdit/colors/font_color = Color(0, 0, 0, 1)
+LineEdit/colors/font_placeholder_color = Color(0, 0, 0, 0.6)
+LineEdit/colors/font_uneditable_color = Color(0, 0, 0, 0.501961)
+LineEdit/styles/focus = SubResource("StyleBoxTexture_q7uww")
+LineEdit/styles/normal = SubResource("StyleBoxTexture_134ew")
+LineEdit/styles/read_only = SubResource("StyleBoxTexture_1l67j")
+MatchTypeButton/base_type = &"Button"
+RedButton/base_type = &"Button"

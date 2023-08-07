@@ -1,7 +1,7 @@
 extends GutTest
 
 
-var stat_mananger_script: = load("res://stats/stats_manager.gd")
+var stat_mananger_script: = load("res://characters/stats/stats_manager.gd")
 var stat_manager: Node
 
 

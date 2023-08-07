@@ -1,4 +1,4 @@
-extends "res://skills/chanelling_skill.gd"
+extends "res://characters/skills/chanelling_skill.gd"
 
 
 @export var spinning_modifier: PackedScene

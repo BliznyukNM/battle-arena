@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://bs6m5j1v06l5l"]
 
-[ext_resource type="StyleBox" uid="uid://devdhjl8yjik1" path="res://hud/health_background.stylebox" id="1_ior5a"]
-[ext_resource type="StyleBox" uid="uid://hjcubt1iadqw" path="res://hud/health_fill.stylebox" id="2_2t6jf"]
-[ext_resource type="StyleBox" uid="uid://bxjgtdo5iyp1j" path="res://hud/energy_fill.stylebox" id="3_eidsd"]
-[ext_resource type="Script" path="res://hud/progress_bar.gd" id="3_j1f8r"]
-[ext_resource type="StyleBox" uid="uid://csn4pekn2r26y" path="res://hud/progress_fill.stylebox" id="3_ygy35"]
+[ext_resource type="StyleBox" uid="uid://devdhjl8yjik1" path="res://characters/hud/health_background.stylebox" id="1_ior5a"]
+[ext_resource type="StyleBox" uid="uid://hjcubt1iadqw" path="res://characters/hud/health_fill.stylebox" id="2_2t6jf"]
+[ext_resource type="StyleBox" uid="uid://bxjgtdo5iyp1j" path="res://characters/hud/energy_fill.stylebox" id="3_eidsd"]
+[ext_resource type="Script" path="res://characters/hud/progress_bar.gd" id="3_j1f8r"]
+[ext_resource type="StyleBox" uid="uid://csn4pekn2r26y" path="res://characters/hud/progress_fill.stylebox" id="3_ygy35"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cwn0cy54tbtor"]
 
-[ext_resource type="PackedScene" uid="uid://che4gvvalmv58" path="res://skills/chanelling_skill.tscn" id="1_iseug"]
+[ext_resource type="PackedScene" uid="uid://che4gvvalmv58" path="res://characters/skills/chanelling_skill.tscn" id="1_iseug"]
 [ext_resource type="Script" path="res://characters/heroes/barbarian/skills/spinning.gd" id="2_iu522"]
 [ext_resource type="PackedScene" uid="uid://3llurpohxl61" path="res://characters/heroes/barbarian/modifiers/spinning.tscn" id="3_ipj88"]
 

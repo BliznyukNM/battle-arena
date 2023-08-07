@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://chrefq00p1nw0"]
 
-[ext_resource type="PackedScene" uid="uid://dt7dp8amhbd5b" path="res://skills/range_attack_skill.tscn" id="1_oy01m"]
+[ext_resource type="PackedScene" uid="uid://dt7dp8amhbd5b" path="res://characters/skills/range_attack_skill.tscn" id="1_oy01m"]
 
 [node name="Shoot" instance=ExtResource("1_oy01m")]
 spawn_point = Vector3(2.08165e-12, 1, 1)

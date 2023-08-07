@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://7xkefn5xpy47"]
 
-[ext_resource type="Script" path="res://hud/HUD.gd" id="1_pla10"]
-[ext_resource type="PackedScene" uid="uid://bs6m5j1v06l5l" path="res://hud/hud_ui.tscn" id="2_3r1ed"]
+[ext_resource type="Script" path="res://characters/hud/HUD.gd" id="1_pla10"]
+[ext_resource type="PackedScene" uid="uid://bs6m5j1v06l5l" path="res://characters/hud/hud_ui.tscn" id="2_3r1ed"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_t8itw"]
 viewport_path = NodePath("SubViewport")

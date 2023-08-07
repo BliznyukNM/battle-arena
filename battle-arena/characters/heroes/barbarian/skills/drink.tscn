@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://423mth77u25c"]
 
-[ext_resource type="PackedScene" uid="uid://76ddkyhgdvp" path="res://skills/base_skill.tscn" id="1_ajeji"]
+[ext_resource type="PackedScene" uid="uid://76ddkyhgdvp" path="res://characters/skills/base_skill.tscn" id="1_ajeji"]
 [ext_resource type="Script" path="res://characters/heroes/barbarian/skills/drink.gd" id="2_he5iv"]
 
 [node name="Drink" instance=ExtResource("1_ajeji")]

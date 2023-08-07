@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cq3ieognt8p8y"]
 
-[ext_resource type="PackedScene" uid="uid://di3gecnsy5fv3" path="res://skills/base_melee_attack_skill.tscn" id="1_j7no7"]
+[ext_resource type="PackedScene" uid="uid://di3gecnsy5fv3" path="res://characters/skills/base_melee_attack_skill.tscn" id="1_j7no7"]
 
 [node name="Slice" instance=ExtResource("1_j7no7")]
 damage = 12
