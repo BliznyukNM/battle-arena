@@ -1,5 +1,5 @@
 class_name BaseEffect extends Resource
 
 
-func trigger(owner) -> void: pass
-func clear(owner) -> void: pass
+func trigger(owner: Node) -> void: pass
+func clear(owner: Node) -> void: pass

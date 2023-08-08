@@ -1,4 +1,4 @@
-extends BaseSkill
+class_name SkillTransition extends BaseSkill
 
 
 @export_range(0, 4, 1, "or_greater") var current_index: int = 0
@@ -9,6 +9,10 @@ var _last_pressed: bool
 
 var current_skill:
     get: return get_child(current_index)
+
+
+func _ready() -> void:
+    pass
 
 
 func _get_cooldown() -> SkillTimer:

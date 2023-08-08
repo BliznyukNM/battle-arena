@@ -4,6 +4,9 @@ class_name BaseSkill extends Node
 @export var skill_speed: NumberStat
 
 
+var enabled: bool = true
+
+
 signal activated(skill: BaseSkill)
 signal cancelled(skill: BaseSkill)
 
@@ -35,6 +38,7 @@ func _get_execution() -> SkillTimer:
 ## Try to activate skill. Here should be only checks for activating, actual logic
 ## is going to be executed in _on_activate
 func activate(pressed: bool) -> void:
+    if not enabled: return
     if not is_multiplayer_authority(): return
     if not cooldown.is_stopped(): return
     _on_activate.rpc(pressed)

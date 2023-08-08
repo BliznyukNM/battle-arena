@@ -1,5 +1,5 @@
 ## Handles triggering sequence of skills. Works only with 'pressed' state
-extends BaseSkill
+class_name SkillSequence extends BaseSkill
 
 
 var _current_skill_number: int
@@ -8,6 +8,10 @@ var _skill_scheduled: bool
 
 var current_skill:
     get: return get_child(_current_skill_number)
+
+
+func _ready() -> void:
+    pass
 
 
 func _get_cooldown() -> SkillTimer:

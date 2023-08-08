@@ -1,0 +1,26 @@
+[gd_scene load_steps=8 format=3 uid="uid://d2p1pxs624tn4"]
+
+[ext_resource type="Script" path="res://characters/status_effects/modifiers/conditional_modifier.gd" id="1_qn57q"]
+[ext_resource type="Script" path="res://characters/heroes/barbarian/modifiers/effects/dual_stance.gd" id="2_x6iuu"]
+[ext_resource type="Script" path="res://characters/status_effects/effects/attack_speed.gd" id="3_3qmft"]
+[ext_resource type="Script" path="res://characters/status_effects/effects/modify_stat.gd" id="4_jt4pf"]
+
+[sub_resource type="Resource" id="Resource_yyw1a"]
+resource_name = "DualStance"
+script = ExtResource("2_x6iuu")
+
+[sub_resource type="Resource" id="Resource_q3nyh"]
+script = ExtResource("3_3qmft")
+amount = 100
+
+[sub_resource type="Resource" id="Resource_qwn4t"]
+script = ExtResource("4_jt4pf")
+stat_name = "MovementSpeed"
+percentage = 80.0
+flat = 0.0
+
+[node name="Fury" type="Node"]
+script = ExtResource("1_qn57q")
+condition = "not owner.skills.ultimate.execution.is_stopped()"
+effects = Array[Resource("res://characters/status_effects/effects/base_effect.gd")]([SubResource("Resource_yyw1a"), SubResource("Resource_q3nyh"), SubResource("Resource_qwn4t")])
+default_condition = false

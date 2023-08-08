@@ -2,12 +2,17 @@ extends Node3D
 
 
 @onready var animationTree: AnimationTree = $AnimationTree
-@onready var axe: = $"Rig/Skeleton3D/2H_Axe/2H_Axe"
+
+@onready var big_axe: = $"Rig/Skeleton3D/2H_Axe/2H_Axe"
+@onready var left_axe: = $"Rig/Skeleton3D/1H_Axe_Offhand/1H_Axe_Offhand"
+@onready var right_axe: = $"Rig/Skeleton3D/1H_Axe/1H_Axe"
 @onready var mug: = $"Rig/Skeleton3D/Mug/Mug"
 
 
 func update_stance(stance: String) -> void:
-    axe.visible = stance == "axe"
+    big_axe.visible = stance == "axe"
+    left_axe.visible = stance == "dual"
+    right_axe.visible = stance == "dual"
     animationTree.set("parameters/ArmedState/transition_request", stance)
 
 
@@ -37,6 +42,14 @@ func play_kick_a(skill: BaseSkill) -> void:
 
 func play_kick_b(skill: BaseSkill) -> void:
     _trigger_attack("punch_b")
+
+
+func play_dual_chop(skill: BaseSkill) -> void:
+    _trigger_attack("dual_chop")
+
+
+func play_dual_slice(skill: BaseSkill) -> void:
+    _trigger_attack("dual_slice")
 
 
 func stop_attack(skill: BaseSkill) -> void:
@@ -84,13 +97,3 @@ func _trigger_attack(attack_name: String) -> void:
     animationTree.set("parameters/AttackType/transition_request", attack_name);
     animationTree.set("parameters/PlayAttack/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT)
     animationTree.set("parameters/PlayAttack/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-
-
-"""
-func trigger_jump() -> void:
-    animationTree.set("parameters/PlayJump/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-
-
-func trigger_spin() -> void:
-    animationTree.set("parameters/PlaySpin/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-"""
