@@ -27,37 +27,47 @@ grow_vertical = 0
 
 [node name="BaseSkill" parent="BottomHUD" instance=ExtResource("1_57j3n")]
 layout_mode = 1
-offset_left = -284.0
-offset_right = -210.0
+offset_left = -260.0
+offset_top = -24.5
+offset_right = -186.0
+offset_bottom = 27.5
 text = "LMB"
 
 [node name="SecondarySkill" parent="BottomHUD" instance=ExtResource("1_57j3n")]
 layout_mode = 1
-offset_left = -180.0
-offset_right = -103.0
+offset_left = -156.0
+offset_top = -24.5
+offset_right = -79.0
+offset_bottom = 27.5
 text = "RMB"
 
 [node name="BlockSkill" parent="BottomHUD" instance=ExtResource("1_57j3n")]
 layout_mode = 1
-offset_left = -92.0
-offset_right = -15.0
+offset_left = -68.0
+offset_top = -24.5
+offset_right = 9.0
+offset_bottom = 27.5
 
 [node name="ThirdSkill" parent="BottomHUD" instance=ExtResource("1_57j3n")]
 layout_mode = 1
-offset_left = -11.0
-offset_right = 66.0
+offset_left = 13.0
+offset_top = -24.5
+offset_right = 90.0
+offset_bottom = 27.5
 text = "E"
 
 [node name="DodgeSkill" parent="BottomHUD" instance=ExtResource("1_57j3n")]
 layout_mode = 1
-offset_left = 79.0
-offset_right = 177.0
+offset_left = 103.0
+offset_top = -24.5
+offset_right = 201.0
+offset_bottom = 27.5
 text = "Space"
 
 [node name="UltimateSkill" parent="BottomHUD" instance=ExtResource("1_57j3n")]
 layout_mode = 1
-offset_left = 203.0
+offset_left = 212.0
 offset_top = -25.5
-offset_right = 249.0
+offset_right = 258.0
 offset_bottom = 26.5
 text = "R"

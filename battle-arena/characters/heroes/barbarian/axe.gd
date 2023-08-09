@@ -24,6 +24,7 @@ func _process(delta: float) -> void:
     var distance: = speed * delta
     var direction: Vector3 = (owner.global_position - position).normalized()
     position += direction * distance
+    look_at(position + direction)
 
 
 func _on_finish_travel() -> void:
