@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://brn6cw5tr1mxb"]
+[gd_scene load_steps=32 format=3 uid="uid://brn6cw5tr1mxb"]
 
 [ext_resource type="PackedScene" uid="uid://d26br4f45m27g" path="res://characters/character.tscn" id="1_6uqpy"]
 [ext_resource type="Script" path="res://characters/heroes/barbarian/barbarian.gd" id="2_6pbkp"]
@@ -19,9 +19,12 @@
 [ext_resource type="Script" path="res://characters/skills/skill_transition.gd" id="10_otvns"]
 [ext_resource type="PackedScene" uid="uid://dyxib0cnjsx2l" path="res://characters/heroes/barbarian/skills/axe_recall.tscn" id="11_jsp2i"]
 [ext_resource type="PackedScene" uid="uid://c1dfj25hhq1cq" path="res://characters/heroes/barbarian/skills/kick_b.tscn" id="11_tvqbx"]
+[ext_resource type="PackedScene" uid="uid://ckyt0uno5pcpt" path="res://characters/heroes/barbarian/skills/dual_chop.tscn" id="15_kthaa"]
 [ext_resource type="PackedScene" uid="uid://cwn0cy54tbtor" path="res://characters/heroes/barbarian/skills/spinning.tscn" id="16_j6fet"]
 [ext_resource type="PackedScene" uid="uid://423mth77u25c" path="res://characters/heroes/barbarian/skills/drink.tscn" id="16_qo7fb"]
+[ext_resource type="PackedScene" uid="uid://oburmakxw5m6" path="res://characters/heroes/barbarian/skills/dual_slice.tscn" id="16_r01mu"]
 [ext_resource type="PackedScene" uid="uid://bob5haniot34k" path="res://characters/heroes/barbarian/skills/jump.tscn" id="18_4cbep"]
+[ext_resource type="PackedScene" uid="uid://b0v3b0rjaanwm" path="res://characters/heroes/barbarian/skills/fury.tscn" id="21_62el3"]
 [ext_resource type="Script" path="res://characters/processors/energy.gd" id="21_kdalp"]
 
 [sub_resource type="Resource" id="Resource_221r4"]
@@ -93,29 +96,39 @@ script = ExtResource("3_hhx1p")
 condition = "owner.current_stance == 0"
 effects = Array[Resource("res://characters/status_effects/effects/base_effect.gd")]([SubResource("Resource_6by3s")])
 
-[node name="BasicAttack" type="Node" parent="Skills" index="0"]
+[node name="BasicAttack" type="Node" parent="Skills" index="0" node_paths=PackedStringArray("skill_speed")]
 script = ExtResource("10_otvns")
+skill_speed = NodePath("../../Stats/AttackSpeed")
 
-[node name="AxeSlash" type="Node" parent="Skills/BasicAttack" index="0"]
+[node name="Axe" type="Node" parent="Skills/BasicAttack" index="0"]
 script = ExtResource("3_pngyg")
 
-[node name="Chop" parent="Skills/BasicAttack/AxeSlash" index="0" node_paths=PackedStringArray("energy_stat", "skill_speed") instance=ExtResource("3_fur47")]
+[node name="Chop" parent="Skills/BasicAttack/Axe" index="0" node_paths=PackedStringArray("energy_stat", "skill_speed") instance=ExtResource("3_fur47")]
 energy_stat = NodePath("../../../../Stats/Energy")
 skill_speed = NodePath("../../../../Stats/AttackSpeed")
 
-[node name="Slice" parent="Skills/BasicAttack/AxeSlash" index="1" node_paths=PackedStringArray("energy_stat", "skill_speed") instance=ExtResource("4_bcofc")]
+[node name="Slice" parent="Skills/BasicAttack/Axe" index="1" node_paths=PackedStringArray("energy_stat", "skill_speed") instance=ExtResource("4_bcofc")]
 energy_stat = NodePath("../../../../Stats/Energy")
 skill_speed = NodePath("../../../../Stats/AttackSpeed")
 
-[node name="Kicks" type="Node" parent="Skills/BasicAttack" index="1"]
+[node name="Hands" type="Node" parent="Skills/BasicAttack" index="1"]
 script = ExtResource("3_pngyg")
 
-[node name="KickA" parent="Skills/BasicAttack/Kicks" index="0" node_paths=PackedStringArray("energy_stat", "skill_speed") instance=ExtResource("10_3sw4o")]
+[node name="KickA" parent="Skills/BasicAttack/Hands" index="0" node_paths=PackedStringArray("energy_stat", "skill_speed") instance=ExtResource("10_3sw4o")]
 energy_stat = NodePath("../../../../Stats/Energy")
 skill_speed = NodePath("../../../../Stats/AttackSpeed")
 
-[node name="KickB" parent="Skills/BasicAttack/Kicks" index="1" node_paths=PackedStringArray("energy_stat", "skill_speed") instance=ExtResource("11_tvqbx")]
+[node name="KickB" parent="Skills/BasicAttack/Hands" index="1" node_paths=PackedStringArray("energy_stat", "skill_speed") instance=ExtResource("11_tvqbx")]
 energy_stat = NodePath("../../../../Stats/Energy")
+skill_speed = NodePath("../../../../Stats/AttackSpeed")
+
+[node name="Dual" type="Node" parent="Skills/BasicAttack" index="2"]
+script = ExtResource("3_pngyg")
+
+[node name="DualChop" parent="Skills/BasicAttack/Dual" index="0" node_paths=PackedStringArray("skill_speed") instance=ExtResource("15_kthaa")]
+skill_speed = NodePath("../../../../Stats/AttackSpeed")
+
+[node name="DualSlice" parent="Skills/BasicAttack/Dual" index="1" node_paths=PackedStringArray("skill_speed") instance=ExtResource("16_r01mu")]
 skill_speed = NodePath("../../../../Stats/AttackSpeed")
 
 [node name="SecondaryAttack" type="Node" parent="Skills" index="1"]
@@ -136,6 +149,10 @@ script = ExtResource("10_otvns")
 
 [node name="Dodge" parent="Skills" index="4" instance=ExtResource("18_4cbep")]
 
+[node name="Ultimate" parent="Skills" index="5" node_paths=PackedStringArray("energy_stat") instance=ExtResource("21_62el3")]
+energy_cost = 0.0
+energy_stat = NodePath("../../Stats/Energy")
+
 [node name="Skin" type="Node" parent="Processors" index="4" node_paths=PackedStringArray("skin", "move_speed", "attack_speed")]
 script = ExtResource("6_5y8y2")
 skin = NodePath("../../Skin")
@@ -153,18 +170,22 @@ energy = NodePath("../Stats/Energy")
 
 [node name="Skin" parent="." index="8" instance=ExtResource("2_lwxa8")]
 
-[connection signal="activated" from="Skills/BasicAttack/AxeSlash/Chop" to="HUD" method="on_skill_activated"]
-[connection signal="activated" from="Skills/BasicAttack/AxeSlash/Chop" to="Skin" method="play_chop"]
-[connection signal="cancelled" from="Skills/BasicAttack/AxeSlash/Chop" to="Skin" method="stop_attack"]
-[connection signal="activated" from="Skills/BasicAttack/AxeSlash/Slice" to="HUD" method="on_skill_activated"]
-[connection signal="activated" from="Skills/BasicAttack/AxeSlash/Slice" to="Skin" method="play_slice"]
-[connection signal="cancelled" from="Skills/BasicAttack/AxeSlash/Slice" to="Skin" method="stop_attack"]
-[connection signal="activated" from="Skills/BasicAttack/Kicks/KickA" to="HUD" method="on_skill_activated"]
-[connection signal="activated" from="Skills/BasicAttack/Kicks/KickA" to="Skin" method="play_kick_a"]
-[connection signal="cancelled" from="Skills/BasicAttack/Kicks/KickA" to="Skin" method="stop_attack"]
-[connection signal="activated" from="Skills/BasicAttack/Kicks/KickB" to="HUD" method="on_skill_activated"]
-[connection signal="activated" from="Skills/BasicAttack/Kicks/KickB" to="Skin" method="play_kick_b"]
-[connection signal="cancelled" from="Skills/BasicAttack/Kicks/KickB" to="Skin" method="stop_attack"]
+[connection signal="activated" from="Skills/BasicAttack/Axe/Chop" to="HUD" method="on_skill_activated"]
+[connection signal="activated" from="Skills/BasicAttack/Axe/Chop" to="Skin" method="play_chop"]
+[connection signal="cancelled" from="Skills/BasicAttack/Axe/Chop" to="Skin" method="stop_attack"]
+[connection signal="activated" from="Skills/BasicAttack/Axe/Slice" to="HUD" method="on_skill_activated"]
+[connection signal="activated" from="Skills/BasicAttack/Axe/Slice" to="Skin" method="play_slice"]
+[connection signal="cancelled" from="Skills/BasicAttack/Axe/Slice" to="Skin" method="stop_attack"]
+[connection signal="activated" from="Skills/BasicAttack/Hands/KickA" to="HUD" method="on_skill_activated"]
+[connection signal="activated" from="Skills/BasicAttack/Hands/KickA" to="Skin" method="play_kick_a"]
+[connection signal="cancelled" from="Skills/BasicAttack/Hands/KickA" to="Skin" method="stop_attack"]
+[connection signal="activated" from="Skills/BasicAttack/Hands/KickB" to="HUD" method="on_skill_activated"]
+[connection signal="activated" from="Skills/BasicAttack/Hands/KickB" to="Skin" method="play_kick_b"]
+[connection signal="cancelled" from="Skills/BasicAttack/Hands/KickB" to="Skin" method="stop_attack"]
+[connection signal="activated" from="Skills/BasicAttack/Dual/DualChop" to="HUD" method="on_skill_activated"]
+[connection signal="activated" from="Skills/BasicAttack/Dual/DualChop" to="Skin" method="play_dual_chop"]
+[connection signal="activated" from="Skills/BasicAttack/Dual/DualSlice" to="HUD" method="on_skill_activated"]
+[connection signal="activated" from="Skills/BasicAttack/Dual/DualSlice" to="Skin" method="play_dual_slice"]
 [connection signal="activated" from="Skills/SecondaryAttack/AxeThrow" to="HUD" method="on_skill_activated"]
 [connection signal="activated" from="Skills/SecondaryAttack/AxeThrow" to="Skin" method="play_throw"]
 [connection signal="activated" from="Skills/SecondaryAttack/AxeRecall" to="HUD" method="on_skill_activated"]
@@ -176,5 +197,6 @@ energy = NodePath("../Stats/Energy")
 [connection signal="activated" from="Skills/Block" to="Skin" method="play_taunt"]
 [connection signal="activated" from="Skills/Dodge" to="HUD" method="on_skill_activated"]
 [connection signal="activated" from="Skills/Dodge" to="Skin" method="play_jump"]
+[connection signal="activated" from="Skills/Ultimate" to="HUD" method="on_skill_activated"]
 [connection signal="on_damage" from="HitBox" to="Skills/Block" method="on_damage"]
 [connection signal="on_damage" from="HitBox" to="Processors/Energy" method="on_damage"]

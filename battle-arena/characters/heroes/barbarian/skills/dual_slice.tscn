@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://oburmakxw5m6"]
+
+[ext_resource type="PackedScene" uid="uid://di3gecnsy5fv3" path="res://characters/skills/base_melee_attack_skill.tscn" id="1_8pmic"]
+
+[node name="DualSlice" instance=ExtResource("1_8pmic")]
+damage = 12
+hit_time = 0.4
+hit_range = 3.0
+area = 80.0
+energy_generation = 0.0
+
+[node name="Execution" parent="." index="0"]
+base_time = 1.3

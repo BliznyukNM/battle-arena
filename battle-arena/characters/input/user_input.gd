@@ -47,6 +47,14 @@ func is_dodge_just_released() -> bool:
     return Input.is_action_just_released("character.attack.dodge")
 
 
+func is_ultimate_just_pressed() -> bool:
+    return Input.is_action_just_pressed("character.attack.ultimate")
+
+
+func is_ultimate_just_released() -> bool:
+    return Input.is_action_just_released("character.attack.ultimate")
+
+
 #func is_cancel_just_pressed() -> bool:
 #    return Input.is_action_just_pressed("character.attack.cancel")
 

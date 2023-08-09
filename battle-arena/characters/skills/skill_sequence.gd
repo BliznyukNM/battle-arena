@@ -23,6 +23,7 @@ func _get_execution() -> SkillTimer:
 
 
 func activate(pressed: bool) -> void:
+    if not enabled: return
     if not is_multiplayer_authority(): return
     _skill_scheduled = pressed
     var is_fully_reset: = _current_skill_number == 0 and execution.is_stopped() and cooldown.is_stopped()

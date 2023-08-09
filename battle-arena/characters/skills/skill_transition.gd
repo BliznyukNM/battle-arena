@@ -32,6 +32,7 @@ func select(index: int) -> void:
 
 
 func activate(pressed: bool) -> void:
+    if not enabled: return
     _last_pressed = pressed
     current_skill.activate(pressed)
 

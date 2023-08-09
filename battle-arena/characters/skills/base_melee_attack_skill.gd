@@ -50,8 +50,13 @@ func _on_activate(pressed: bool) -> void:
     super._on_activate(pressed)
     
     if not is_multiplayer_authority(): return
+    _create_hit_tween()
+
+
+func _create_hit_tween() -> Tween:
     var tween: = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
     tween.tween_callback(_try_hit_shape).set_delay(hit_time * speed)
+    return tween
 
 
 func _try_hit_shape() -> void:

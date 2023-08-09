@@ -32,6 +32,7 @@ func _process(delta: float) -> void:
     _process_actions("third_attack")
     _process_actions("block")
     _process_actions("dodge")
+    _process_actions("ultimate")
     
     if input_source.is_cancel_just_pressed(): on_cancel.emit()
 

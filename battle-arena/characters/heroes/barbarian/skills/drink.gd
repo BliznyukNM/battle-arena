@@ -12,14 +12,18 @@ var _energy_stat: NumberStat:
 func activate(pressed: bool) -> void:
     if not pressed: return
     if not is_equal_approx(energy_cost, 0.0) and _energy_stat.current_value < energy_cost: return
-    _energy_stat.current_value -= energy_cost
     super.activate(pressed)
+
+
+func _on_activate(pressed: bool) -> void:
+    super._on_activate(pressed)
+    _energy_stat.current_value -= energy_cost
 
 
 func cancel() -> void:
     pass
 
 
-func finish() -> void:
-    super.finish()
+func _on_finish() -> void:
+    super._on_finish()
     owner.hit_box.on_heal.emit(heal)
