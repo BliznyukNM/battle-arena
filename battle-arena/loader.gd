@@ -1,11 +1,12 @@
 extends Node
 
 
-enum Mode { Local, Client, Server }
+enum Mode { Local, Client, Server, Home }
 
 
 @onready var offline_map: = preload("res://map/offline.tscn")
 @onready var online_map: = preload("res://map/online.tscn")
+@onready var home: = preload("res://lobby/home.tscn")
 
 
 var _launched: bool
@@ -14,8 +15,8 @@ var _ip_regex: = RegEx.create_from_string("^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)\\
 
 func _ready() -> void:
     var args: = OS.get_cmdline_user_args()
-    var i = 0
-    while i < args.size():
+    
+    for i in args.size():
         match args[i]:
             "--server":
                 _try_start(Mode.Server)
@@ -26,14 +27,17 @@ func _ready() -> void:
             "--ip":
                 i += 1
                 _change_ip(args[i])
-        i += 1
+
+
+func start_home() -> void:
+    _try_start(Mode.Home)
 
 
 func _try_start(mode: Mode) -> void:
     if _launched:
-        printerr("Cannot call --server with other launching arguments.")
+        printerr("Cannot call %s with other launching arguments." % mode)
         return
-                    
+    
     _launched = true
     _start.call_deferred(mode)
 
@@ -51,3 +55,5 @@ func _start(mode: Mode) -> void:
         Mode.Client, Mode.Server:
             get_tree().change_scene_to_packed(online_map)
             ProjectSettings.set_setting("application/run/server", mode == Mode.Server)
+        Mode.Home:
+            get_tree().change_scene_to_packed(home)

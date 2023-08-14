@@ -62,7 +62,7 @@ anchor_bottom = 1.0
 offset_top = -23.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Play Offline"
+text = "Playground"
 horizontal_alignment = 1
 
 [node name="PlayOnline" type="Button" parent="."]
@@ -79,7 +79,6 @@ offset_bottom = 284.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"MatchTypeButton"
-disabled = true
 icon = ExtResource("3_58q14")
 icon_alignment = 1
 expand_icon = true
@@ -93,7 +92,7 @@ anchor_bottom = 1.0
 offset_top = -23.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Play Online"
+text = "PvP"
 horizontal_alignment = 1
 
 [connection signal="pressed" from="PlayOffline" to="." method="_on_play_offline"]

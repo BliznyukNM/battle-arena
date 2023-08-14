@@ -1,6 +1,9 @@
 extends Control
 
 
+@onready var loader: = $Loader
+
+
 var _config: = ConfigFile.new()
 
 
@@ -11,7 +14,7 @@ func _ready() -> void:
 func on_login_pressed() -> void:
     if $Nickname.text.is_empty(): return
     _save_nickname()
-    _load_home()
+    loader.start_home()
 
 
 func _restore_login() -> void:
@@ -23,10 +26,3 @@ func _restore_login() -> void:
 func _save_nickname() -> void:
     _config.set_value("auth", "login", $Nickname.text)
     _config.save("user://local.ini")
-
-
-func _load_home() -> void:
-    var home: Node = load("res://lobby/home.tscn").instantiate()
-    get_tree().root.add_child(home)
-    get_tree().root.remove_child(self)
-    queue_free()
