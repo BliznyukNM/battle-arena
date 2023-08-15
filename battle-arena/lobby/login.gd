@@ -13,8 +13,9 @@ func _ready() -> void:
 
 func on_login_pressed() -> void:
     if $Nickname.text.is_empty(): return
-    _save_nickname()
-    loader.start_home()
+    _save_username()
+    var result: = await Matchmaking.authenticate($Nickname.text)
+    if result: loader.start_home()
 
 
 func _restore_login() -> void:
@@ -23,6 +24,6 @@ func _restore_login() -> void:
     $Nickname.text = _config.get_value("auth", "login", "")
 
 
-func _save_nickname() -> void:
+func _save_username() -> void:
     _config.set_value("auth", "login", $Nickname.text)
     _config.save("user://local.ini")

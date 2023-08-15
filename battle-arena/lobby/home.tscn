@@ -95,4 +95,17 @@ grow_vertical = 0
 text = "PvP"
 horizontal_alignment = 1
 
+[node name="Username" type="Label" parent="."]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 27.0
+offset_right = 637.0
+offset_bottom = 104.0
+theme = ExtResource("1_6fdaq")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 44
+text = "
+"
+
 [connection signal="pressed" from="PlayOffline" to="." method="_on_play_offline"]
+[connection signal="pressed" from="PlayOnline" to="." method="_on_play_online"]

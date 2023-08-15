@@ -5,6 +5,13 @@ var offline_map: = preload("res://map/offline.tscn")
 var online_map: = preload("res://map/online.tscn")
 
 
+@onready var username: = $Username
+
+
+func _ready() -> void:
+    username.text = await Matchmaking.get_username()
+
+
 func _on_play_offline() -> void:
     _load_map(offline_map)
 
