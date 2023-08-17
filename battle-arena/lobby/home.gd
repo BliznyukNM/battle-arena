@@ -12,7 +12,7 @@ var online_map: = preload("res://map/online.tscn")
 
 func _ready() -> void:
     Matchmaking.match_found.connect(_on_match_found)
-    username.text = await Matchmaking.get_username()
+    if Matchmaking.is_authenticated: username.text = await Matchmaking.get_username()
 
 
 func _on_match_found() -> void:

@@ -23,6 +23,10 @@ var server_key: String:
     get: return ProjectSettings.get_setting("application/run/server_key", "defaultkey")
 
 
+var is_authenticated: bool:
+    get: return _session != null
+
+
 func _ready() -> void:
     _bridge.match_joined.connect(func(): match_found.emit())
     _bridge.match_join_error.connect(func(error): assert(false, error))
