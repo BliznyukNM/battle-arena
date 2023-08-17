@@ -95,17 +95,36 @@ grow_vertical = 0
 text = "PvP"
 horizontal_alignment = 1
 
-[node name="Username" type="Label" parent="."]
+[node name="Cancel" type="Button" parent="PlayOnline"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -42.0
+offset_right = 111.0
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"GreenButton"
+theme_override_font_sizes/font_size = 32
+text = "Cancel"
+
+[node name="Username" type="LineEdit" parent="."]
 layout_mode = 0
-offset_left = 34.0
-offset_top = 27.0
-offset_right = 637.0
-offset_bottom = 104.0
-theme = ExtResource("1_6fdaq")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 44
-text = "
-"
+offset_left = 46.0
+offset_top = 37.0
+offset_right = 461.0
+offset_bottom = 99.0
+theme_override_font_sizes/font_size = 36
+placeholder_text = "Username"
+alignment = 1
 
 [connection signal="pressed" from="PlayOffline" to="." method="_on_play_offline"]
 [connection signal="pressed" from="PlayOnline" to="." method="_on_play_online"]
+[connection signal="pressed" from="PlayOnline/Cancel" to="." method="_on_cancel_matchmaking"]
+[connection signal="focus_exited" from="Username" to="." method="_on_change_username"]
+[connection signal="text_submitted" from="Username" to="." method="_on_change_username"]

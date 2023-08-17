@@ -11,11 +11,10 @@ var port: int:
 
 
 func _ready() -> void:
-    var is_server = ProjectSettings.get_setting("application/run/server", false)
-    start(is_server)
+    start()
 
 
-func start(is_server: bool) -> void:
+func start() -> void:
     multiplayer.connected_to_server.connect(self._on_connected_to_server)
     multiplayer.connection_failed.connect(self._on_connection_failed)
     multiplayer.server_disconnected.connect(self._on_server_disconnected)
@@ -25,18 +24,18 @@ func start(is_server: bool) -> void:
     $HeroSpawner.spawned.connect(self._on_spawned)
     $HeroSpawner.spawn_function = _spawn_hero
     
-    var peer: = ENetMultiplayerPeer.new()
-    if is_server: peer.create_server(port)
-    else: peer.create_client(host, port)
+    if not multiplayer.is_server(): return
     
-    multiplayer.multiplayer_peer = peer
+    for peer in multiplayer.get_peers():
+        _on_peer_connected(peer)
+    _on_peer_connected(multiplayer.get_unique_id())
 
 
 func _on_spawned(node: Node) -> void:
     if node.player_id == multiplayer.get_unique_id():
         %Camera.target = node
         %GUI.target = node
-        node.input.input_source = load("res://input/user_input.gd").new()
+        node.input.input_source = load("res://characters/input/user_input.gd").new()
 
 
 func _on_server_disconnected() -> void:
@@ -57,7 +56,8 @@ func _on_peer_connected(id: int) -> void:
         "team" = $HeroSpawner.get_child_count() + 1
     }
     
-    $HeroSpawner.spawn(params)
+    var hero: Node = $HeroSpawner.spawn(params)
+    _on_spawned(hero)
 
 
 func _spawn_hero(params: Dictionary) -> Node:
@@ -79,7 +79,3 @@ func _on_peer_disconnected(id: int) -> void:
 
 func _on_connection_failed() -> void:
     print("Failed connecting to server :(")
-
-
-func _exit_tree() -> void:
-    multiplayer.multiplayer_peer.close()
