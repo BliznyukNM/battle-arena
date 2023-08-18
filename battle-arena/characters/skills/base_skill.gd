@@ -77,3 +77,8 @@ func _stop_execution() -> void:
     if execution.is_stopped(): return
     execution.stop()
     execution.timeout.emit()
+
+
+func reset() -> void:
+    execution.stop()
+    cooldown.stop()

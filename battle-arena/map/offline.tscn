@@ -1,23 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://boulj8buo8ukk"]
+[gd_scene load_steps=5 format=3 uid="uid://boulj8buo8ukk"]
 
 [ext_resource type="PackedScene" uid="uid://flt4bdecd0xj" path="res://map/map.tscn" id="1_j7vok"]
 [ext_resource type="Script" path="res://map/offline.gd" id="2_0d8ho"]
-[ext_resource type="PackedScene" uid="uid://brn6cw5tr1mxb" path="res://characters/heroes/barbarian/barbarian.tscn" id="4_c2t6k"]
 [ext_resource type="PackedScene" uid="uid://vs53g10noy3c" path="res://characters/dummy/dummy.tscn" id="4_si2op"]
 [ext_resource type="PackedScene" uid="uid://cnvhuy5i7x6e" path="res://characters/dummy/shooting_dummy.tscn" id="5_p0eoc"]
 
-[node name="Map" node_paths=PackedStringArray("barbarian") instance=ExtResource("1_j7vok")]
+[node name="Map" instance=ExtResource("1_j7vok")]
 script = ExtResource("2_0d8ho")
-barbarian = NodePath("Barbarian")
 
-[node name="Camera" parent="." index="1" node_paths=PackedStringArray("target")]
-target = NodePath("../Barbarian")
+[node name="Camera" parent="." index="1"]
 lerp_speed = 3.0
 max_distance = 8.0
-
-[node name="Barbarian" parent="." index="5" instance=ExtResource("4_c2t6k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.01597, 0, -3.52847)
-collision_layer = 2
 
 [node name="IdleDummy" parent="." index="6" instance=ExtResource("4_si2op")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5241, -9.53674e-07, -3.41823)

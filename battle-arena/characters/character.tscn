@@ -21,22 +21,18 @@
 radius = 0.4
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_woxwi"]
-properties/0/path = NodePath(".:player_id")
+properties/0/path = NodePath(".:position")
 properties/0/spawn = true
-properties/0/sync = false
+properties/0/sync = true
 properties/0/watch = false
-properties/1/path = NodePath(".:position")
+properties/1/path = NodePath("Input:move_direction")
 properties/1/spawn = true
 properties/1/sync = true
 properties/1/watch = false
-properties/2/path = NodePath("Input:move_direction")
+properties/2/path = NodePath("Input:look_at_point")
 properties/2/spawn = true
 properties/2/sync = true
 properties/2/watch = false
-properties/3/path = NodePath("Input:look_at_point")
-properties/3/spawn = true
-properties/3/sync = true
-properties/3/watch = false
 
 [sub_resource type="Resource" id="Resource_mgice"]
 script = ExtResource("14_ovw2o")
@@ -91,6 +87,7 @@ script = ExtResource("3_687mx")
 script = ExtResource("7_nutv6")
 
 [node name="Processors" type="Node" parent="."]
+process_mode = 1
 
 [node name="Damage" type="Node" parent="Processors" node_paths=PackedStringArray("health", "shield")]
 script = ExtResource("9_q665c")
@@ -131,6 +128,7 @@ replication_config = SubResource("SceneReplicationConfig_woxwi")
 script = ExtResource("2_fj6tx")
 input_source = SubResource("Resource_mgice")
 
+[connection signal="changed" from="Stats/Health" to="." method="_on_health_changed"]
 [connection signal="on_damage" from="HitBox" to="Processors/Damage" method="apply"]
 [connection signal="on_heal" from="HitBox" to="Processors/Heal" method="apply"]
 [connection signal="on_basic_attack" from="Input" to="Skills" method="activate_basic_attack"]

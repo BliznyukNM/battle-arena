@@ -14,3 +14,4 @@ func _update_hud():
     $BottomHUD/ThirdSkill.register(target.skills.third_attack)
     $BottomHUD/DodgeSkill.register(target.skills.dodge)
     $BottomHUD/UltimateSkill.register(target.skills.ultimate)
+    $ID.text = "ID: %d" % target.player_id

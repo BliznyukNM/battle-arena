@@ -36,3 +36,7 @@ func remove_effect(effect: BaseEffect) -> void:
     if not effects.has(effect): return
     if _current_condition: effect.clear(owner)
     effects.erase(effect)
+
+
+func reset() -> void:
+    _initialize()

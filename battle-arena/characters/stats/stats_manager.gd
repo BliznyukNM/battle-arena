@@ -29,3 +29,9 @@ func get_stat(stat_name: String) -> BaseStat:
 
 func has_stat(stat_name: String) -> bool:
     return _stats.has(stat_name)
+
+
+func reset() -> void:
+    for stat_name in _stats:
+        var stat: BaseStat = _stats[stat_name]
+        stat.reset()

@@ -16,7 +16,8 @@ func _ready() -> void:
 
 
 func _on_match_found() -> void:
-    _load_map(online_map)
+    var map: = _load_map(online_map)
+    map.multiplayer.multiplayer_peer = Matchmaking.multiplayer.multiplayer_peer
 
 
 func _on_play_offline() -> void:
@@ -31,14 +32,16 @@ func _on_play_online() -> void:
 
 func _on_cancel_matchmaking() -> void:
     Matchmaking.leave_match()
-    _on_match_found()
+    play_online_button.disabled = false
+    cance_matchmaking_button.visible = false
 
 
-func _load_map(map_scene: PackedScene) -> void:
+func _load_map(map_scene: PackedScene) -> Node:
     var map: Node = map_scene.instantiate()
     get_tree().root.add_child(map)
     get_tree().root.remove_child(self)
     queue_free()
+    return map
 
 
 func _on_change_username() -> void:

@@ -23,11 +23,13 @@ func _ready() -> void:
 
 
 func _update_move_speed(old_value: float, new_value: float) -> void:
+    if not is_processing(): return
     var move_speed_normalized: float = new_value / move_speed.base_value
     skin.update_move_speed(max(move_speed_normalized, 1.0))
 
 
 func _update_attack_speed(old_value: float, new_value: float) -> void:
+    if not is_processing(): return
     skin.update_attack_speed(new_value)
 
 

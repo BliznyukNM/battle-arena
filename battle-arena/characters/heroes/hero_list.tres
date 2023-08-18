@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CharacterList" load_steps=3 format=3 uid="uid://cipq6q6x1a3kv"]
+
+[ext_resource type="PackedScene" uid="uid://brn6cw5tr1mxb" path="res://characters/heroes/barbarian/barbarian.tscn" id="1_mjr0f"]
+[ext_resource type="Script" path="res://characters/character_list.gd" id="2_q4aob"]
+
+[resource]
+script = ExtResource("2_q4aob")
+characters = Array[PackedScene]([ExtResource("1_mjr0f")])

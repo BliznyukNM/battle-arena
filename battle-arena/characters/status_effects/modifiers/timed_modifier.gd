@@ -20,3 +20,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
     super._process(delta)
     if time >= 0: _current_time -= delta
+
+
+func reset() -> void:
+    queue_free()

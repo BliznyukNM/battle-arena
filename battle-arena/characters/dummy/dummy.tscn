@@ -9,7 +9,7 @@
 max_value = 150.0
 base_value = 150.0
 
-[node name="Name" parent="Stats" index="6"]
+[node name="Name" parent="Stats" index="5"]
 current_value = "Dummy"
 
 [node name="Movement" parent="Processors" index="2"]

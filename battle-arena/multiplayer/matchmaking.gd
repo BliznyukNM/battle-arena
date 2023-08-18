@@ -1,7 +1,7 @@
 extends Node
 
 
-signal match_found()
+signal match_found
 
 
 @onready var _client: = Nakama.create_client(server_key, ip, port, scheme, \
@@ -28,7 +28,7 @@ var is_authenticated: bool:
 
 
 func _ready() -> void:
-    _bridge.match_joined.connect(func(): match_found.emit())
+    _bridge.match_joined.connect(_on_match_joined)
     _bridge.match_join_error.connect(func(error): assert(false, error))
 
 
@@ -45,7 +45,7 @@ func authenticate(id, username: String = '', create_account: bool = false) -> bo
     var connected: NakamaAsyncResult = await _socket.connect_async(_session)
     assert(not connected.is_exception(), "Cannot create socket: %s" % connected)
     
-    get_tree().root.multiplayer.multiplayer_peer = _bridge.multiplayer_peer
+    multiplayer.multiplayer_peer = _bridge.multiplayer_peer
     
     return not connected.is_exception()
 
@@ -64,6 +64,10 @@ func find_match() -> void:
 
 func leave_match() -> void:
     _bridge.leave()
+
+
+func _on_match_joined() -> void:
+    match_found.emit()
 
 
 func _exit_tree() -> void:

@@ -1,9 +1,19 @@
 extends Node3D
 
 
-@export var barbarian: Node
+var port: int:
+    get: return ProjectSettings.get_setting("application/run/port", 7350)
 
 
 func _ready() -> void:
-    barbarian.input.input_source = load("res://characters/input/user_input.gd").new()
-    $GUI.target = barbarian
+    var peer: = ENetMultiplayerPeer.new()
+    peer.create_server(port)
+    multiplayer.multiplayer_peer = peer
+    
+    var params: = {
+        "id" = multiplayer.get_unique_id(),
+        "character" = 0
+    }
+    
+    var character = %TeamA.spawn(params)
+    %TeamA.on_spawned(character)

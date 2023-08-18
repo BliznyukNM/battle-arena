@@ -25,3 +25,9 @@ func remove_modifier(modifier: BaseModifier) -> void:
     _modifiers.erase(modifier.name)
     remove_child(modifier)
     modifier.queue_free()
+
+
+func reset() -> void:
+    for modifier_name in _modifiers:
+        var modifier: BaseModifier = _modifiers[modifier_name]
+        modifier.reset()

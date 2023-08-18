@@ -21,3 +21,7 @@ func _process(delta: float) -> void:
     else:
         var new_condition = _condition_expression.execute([], self, true, true)
         _current_condition = default_condition if _condition_expression.has_execute_failed() else new_condition
+
+
+func reset() -> void:
+    pass

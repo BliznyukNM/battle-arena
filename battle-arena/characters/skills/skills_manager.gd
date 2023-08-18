@@ -52,3 +52,9 @@ func _activate_skill(index: int, pressed: bool) -> void:
     if _last_used_skill and _last_used_skill != skill and not _last_used_skill.execution.is_stopped(): return
     _last_used_skill = skill
     skill.activate(pressed)
+
+
+func reset() -> void:
+    for skill in _skills:
+        if not skill: continue
+        skill.reset()

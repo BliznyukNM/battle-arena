@@ -22,8 +22,10 @@ func _on_activate(pressed: bool) -> void:
         var modifier: BaseModifier = spinning_modifier.instantiate()
         modifier.name = "StopRotation"
         owner.modifiers.add_modifier(modifier)
-        _tween = create_tween().set_loops((int)(execution.wait_time / time_between_hits))
-        _tween.tween_callback(_try_hit_area).set_delay(time_between_hits)
+        
+        if multiplayer.is_server():
+            _tween = create_tween().set_loops((int)(execution.wait_time / time_between_hits))
+            _tween.tween_callback(_try_hit_area).set_delay(time_between_hits)
 
     super._on_activate(pressed)
 
