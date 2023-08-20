@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://ncsywlau34bo"]
+
+[ext_resource type="Texture2D" uid="uid://6ama134xcyfe" path="res://assets/ui/white_circle.atlastex" id="1_ojihd"]
+[ext_resource type="Script" path="res://map/arena/round_circle.gd" id="2_b13ss"]
+[ext_resource type="Texture2D" uid="uid://dc5oc7ag1mm2t" path="res://assets/ui/blue_circle.atlastex" id="3_d4t1d"]
+
+[node name="Round" type="TextureRect"]
+texture = ExtResource("1_ojihd")
+script = ExtResource("2_b13ss")
+empty_texture = ExtResource("1_ojihd")
+full_texture = ExtResource("3_d4t1d")

@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://ki2w45y3gl7u"]
+
+[ext_resource type="PackedScene" uid="uid://c5pbkpjmxk30b" path="res://map/online.tscn" id="1_1kk3c"]
+[ext_resource type="Script" path="res://map/arena/arena.gd" id="2_kq1re"]
+[ext_resource type="PackedScene" uid="uid://ncsywlau34bo" path="res://map/arena/round_circle_blue.tscn" id="2_th1ke"]
+[ext_resource type="PackedScene" uid="uid://d1x12hlek5d7f" path="res://map/arena/round_circle_red.tscn" id="3_oscxi"]
+
+[node name="Arena1" instance=ExtResource("1_1kk3c")]
+script = ExtResource("2_kq1re")
+
+[node name="Rounds" type="Node" parent="." index="7"]
+
+[node name="RoundHUD" type="Control" parent="Rounds" index="0"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -513.0
+offset_right = 513.0
+offset_bottom = 58.0
+grow_horizontal = 2
+
+[node name="TeamA" type="HBoxContainer" parent="Rounds/RoundHUD" index="0"]
+layout_direction = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+offset_right = -20.0
+offset_bottom = 36.0
+grow_horizontal = 2
+
+[node name="Round1" parent="Rounds/RoundHUD/TeamA" index="0" instance=ExtResource("2_th1ke")]
+layout_mode = 2
+
+[node name="Round2" parent="Rounds/RoundHUD/TeamA" index="1" instance=ExtResource("2_th1ke")]
+layout_mode = 2
+
+[node name="Round3" parent="Rounds/RoundHUD/TeamA" index="2" instance=ExtResource("2_th1ke")]
+layout_mode = 2
+
+[node name="TeamB" type="HBoxContainer" parent="Rounds/RoundHUD" index="1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+offset_left = 20.0
+grow_horizontal = 2
+
+[node name="Round1" parent="Rounds/RoundHUD/TeamB" index="0" instance=ExtResource("3_oscxi")]
+layout_mode = 2
+
+[node name="Round2" parent="Rounds/RoundHUD/TeamB" index="1" instance=ExtResource("3_oscxi")]
+layout_mode = 2
+
+[node name="Round3" parent="Rounds/RoundHUD/TeamB" index="2" instance=ExtResource("3_oscxi")]
+layout_mode = 2

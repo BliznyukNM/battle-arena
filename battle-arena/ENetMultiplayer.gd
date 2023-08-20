@@ -21,6 +21,14 @@ func _ready() -> void:
     _on_peer_connected(multiplayer.get_unique_id())
 
 
+func _exit_tree() -> void:
+    multiplayer.connected_to_server.disconnect(self._on_connected_to_server)
+    multiplayer.connection_failed.disconnect(self._on_connection_failed)
+    multiplayer.server_disconnected.disconnect(self._on_server_disconnected)
+    multiplayer.peer_connected.disconnect(self._on_peer_connected)
+    multiplayer.peer_disconnected.disconnect(self._on_peer_disconnected)
+
+
 func _on_server_disconnected() -> void:
     print("Server disconnected")
 
@@ -40,11 +48,11 @@ func _on_peer_connected(id: int) -> void:
     }
     
     var team: = _get_priority_team()
-    var hero: Node = team.spawn(params)
-    team.on_spawned(hero)
+    var hero: = team.spawn(params)
+    team.spawned.emit(hero)
 
 
-func _get_priority_team() -> Node:
+func _get_priority_team() -> MultiplayerSpawner:
     var team_a_count: int = %TeamA.count
     var team_b_count: int = %TeamB.count
     

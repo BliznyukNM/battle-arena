@@ -7,7 +7,7 @@ var target: Node:
         _update_hud.call_deferred()
 
 
-func _update_hud():
+func _update_hud() -> void:
     $BottomHUD/BaseSkill.register(target.skills.basic_attack)
     $BottomHUD/SecondarySkill.register(target.skills.secondary_attack)
     $BottomHUD/BlockSkill.register(target.skills.block)

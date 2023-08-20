@@ -2,7 +2,7 @@ extends Control
 
 
 var offline_map: = preload("res://map/offline.tscn")
-var online_map: = preload("res://map/online.tscn")
+var online_map: = preload("res://map/arena/arena_1.tscn")
 
 
 @onready var username: = $Username
@@ -16,8 +16,7 @@ func _ready() -> void:
 
 
 func _on_match_found() -> void:
-    var map: = _load_map(online_map)
-    map.multiplayer.multiplayer_peer = Matchmaking.multiplayer.multiplayer_peer
+    _load_map(online_map)
 
 
 func _on_play_offline() -> void:
@@ -36,12 +35,11 @@ func _on_cancel_matchmaking() -> void:
     cance_matchmaking_button.visible = false
 
 
-func _load_map(map_scene: PackedScene) -> Node:
+func _load_map(map_scene: PackedScene) -> void:
     var map: Node = map_scene.instantiate()
     get_tree().root.add_child(map)
     get_tree().root.remove_child(self)
     queue_free()
-    return map
 
 
 func _on_change_username() -> void:

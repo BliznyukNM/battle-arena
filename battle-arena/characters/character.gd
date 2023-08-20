@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 
-signal on_dead(character)
+signal on_dead()
 
 
 @export var player_id: int
@@ -16,8 +16,13 @@ signal on_dead(character)
 @onready var hit_box: HitBox = get_node_or_null("HitBox")
 
 
+var is_alive: bool:
+    get: return stats.get_stat("Health").current_value > 0.0
+
+
 func _on_health_changed(old_value: float, new_value: float) -> void:
-    if new_value <= 0.0: on_dead.emit(self)
+    if is_equal_approx(new_value, 0.0) or new_value < 0.0:
+        on_dead.emit()
 
 
 func reset() -> void:

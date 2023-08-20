@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1x12hlek5d7f"]
+
+[ext_resource type="PackedScene" uid="uid://ncsywlau34bo" path="res://map/arena/round_circle_blue.tscn" id="1_dqpou"]
+[ext_resource type="Texture2D" uid="uid://bxd5aii5umheu" path="res://assets/ui/red_circle.atlastex" id="2_404hp"]
+
+[node name="Round" instance=ExtResource("1_dqpou")]
+full_texture = ExtResource("2_404hp")

@@ -5,11 +5,15 @@ extends MultiplayerSpawner
 @export var hero_list: CharacterList
 
 
-@onready var root: = $Root
+@onready var root: = get_node(spawn_path)
 
 
 var count: int:
     get: return root.get_child_count()
+
+
+func get_spawned() -> Array:
+    return root.get_children()
 
 
 func _ready() -> void:
@@ -36,3 +40,10 @@ func on_spawned(character: Node) -> void:
     %Camera.target = character
     %GUI.target = character
     character.input.input_source = load("res://characters/input/user_input.gd").new()
+
+
+@rpc("reliable", "call_local")
+func reset() -> void:
+    for character in root.get_children():
+        character.reset()
+        character.position = $PositionA.position # TODO: temporary

@@ -37,10 +37,9 @@ var current_value: float:
     set(value):
         var old_value: = current_value
         flat_modifier += value - old_value
-        if current_value != old_value: changed.emit(old_value, current_value)
 
 
 func reset() -> void:
-    flat_modifier = 0
-    percentual_modifier = 0
+    self.flat_modifier = 0
+    self.percentual_modifier = 0
         
