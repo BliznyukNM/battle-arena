@@ -16,6 +16,10 @@ func get_spawned() -> Array:
     return root.get_children()
 
 
+func are_all_dead() -> bool:
+    return get_spawned().all(func(hero): return not hero.is_alive)
+
+
 func _ready() -> void:
     spawn_function = _spawn
     spawned.connect(on_spawned)

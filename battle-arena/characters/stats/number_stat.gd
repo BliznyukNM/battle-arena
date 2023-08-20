@@ -40,6 +40,8 @@ var current_value: float:
 
 
 func reset() -> void:
-    self.flat_modifier = 0
-    self.percentual_modifier = 0
+    var old_value: = current_value
+    flat_modifier = 0
+    percentual_modifier = 0
+    changed.emit(old_value, current_value)
         
