@@ -1257,7 +1257,7 @@ bones/47/rotation = Quaternion(-0.5, 0.5, 0.5, 0.5)
 bones/47/scale = Vector3(1, 1, 1)
 
 [node name="1H_Axe_Offhand" type="BoneAttachment3D" parent="Rig/Skeleton3D"]
-transform = Transform3D(0.134396, 0.723661, 0.676942, 0.227593, 0.642336, -0.73185, -0.964436, 0.252425, -0.0783731, 0.439247, 0.816891, 0.469445)
+transform = Transform3D(0.185846, 0.704183, 0.685264, 0.281492, 0.630026, -0.72376, -0.941393, 0.327405, -0.0811335, 0.434408, 0.800776, 0.474087)
 bone_name = "1H_Axe_Offhand"
 bone_idx = 9
 
@@ -1267,7 +1267,7 @@ mesh = ExtResource("1_v6qb8")
 skeleton = NodePath("")
 
 [node name="Barbarian_Round_Shield" type="BoneAttachment3D" parent="Rig/Skeleton3D"]
-transform = Transform3D(0.134397, 0.723661, 0.676943, 0.227595, 0.642336, -0.73185, -0.964435, 0.252428, -0.0783739, 0.532978, 0.692338, 0.453114)
+transform = Transform3D(0.185848, 0.704182, 0.685264, 0.281494, 0.630025, -0.723759, -0.941393, 0.327407, -0.0811343, 0.529754, 0.677685, 0.456104)
 bone_name = "Barbarian_Round_Shield"
 bone_idx = 10
 
@@ -1277,7 +1277,7 @@ mesh = ExtResource("2_mqe0v")
 skeleton = NodePath("")
 
 [node name="1H_Axe" type="BoneAttachment3D" parent="Rig/Skeleton3D"]
-transform = Transform3D(-0.0896106, 0.919169, 0.383532, 0.658231, 0.343652, -0.669801, -0.747462, 0.192432, -0.635822, -0.140886, 0.674951, 0.486053)
+transform = Transform3D(-0.0527585, 0.904757, 0.422645, 0.698515, 0.335897, -0.631862, -0.713647, 0.261888, -0.649709, -0.123134, 0.667137, 0.454825)
 bone_name = "1H_Axe"
 bone_idx = 16
 
@@ -1287,7 +1287,7 @@ mesh = ExtResource("3_f7yoj")
 skeleton = NodePath("")
 
 [node name="2H_Axe" type="BoneAttachment3D" parent="Rig/Skeleton3D"]
-transform = Transform3D(-0.0896106, 0.919169, 0.383532, 0.658231, 0.343652, -0.669801, -0.747462, 0.192432, -0.635822, -0.140886, 0.674951, 0.486053)
+transform = Transform3D(-0.0527585, 0.904757, 0.422645, 0.698515, 0.335897, -0.631862, -0.713647, 0.261888, -0.649709, -0.123134, 0.667137, 0.454825)
 bone_name = "2H_Axe"
 bone_idx = 17
 
@@ -1296,7 +1296,7 @@ mesh = ExtResource("4_qxc28")
 skeleton = NodePath("")
 
 [node name="Mug" type="BoneAttachment3D" parent="Rig/Skeleton3D"]
-transform = Transform3D(-0.0896106, 0.919169, 0.383532, 0.658231, 0.343652, -0.669801, -0.747462, 0.192432, -0.635822, -0.158942, 0.460289, 0.701295)
+transform = Transform3D(-0.0527585, 0.904757, 0.422645, 0.698515, 0.335897, -0.631862, -0.713647, 0.261888, -0.649709, -0.151561, 0.440746, 0.656504)
 bone_name = "Mug"
 bone_idx = 18
 
@@ -1306,7 +1306,7 @@ mesh = ExtResource("5_nvb0g")
 skeleton = NodePath("")
 
 [node name="Barbarian_Hat" type="BoneAttachment3D" parent="Rig/Skeleton3D"]
-transform = Transform3D(0.99972, -1.40144e-09, 0.0236466, 1.39341e-09, 1, 3.55686e-10, -0.0236466, -3.22637e-10, 0.99972, -7.55727e-09, 1.18426, -1.39052e-07)
+transform = Transform3D(0.99972, -1.40144e-09, 0.0236466, 1.39341e-09, 1, 3.55686e-10, -0.0236466, -3.22637e-10, 0.99972, -7.55727e-09, 1.19849, -1.39052e-07)
 bone_name = "Barbarian_Hat"
 bone_idx = 20
 
@@ -1315,7 +1315,7 @@ mesh = ExtResource("6_28tjb")
 skeleton = NodePath("")
 
 [node name="Barbarian_Cape" type="BoneAttachment3D" parent="Rig/Skeleton3D"]
-transform = Transform3D(0.996275, -5.14962e-09, 0.0862353, 5.13043e-09, 1, 4.44077e-10, -0.0862353, 1.8939e-15, 0.996275, -1.91641e-06, 1.18426, 2.59001e-08)
+transform = Transform3D(0.996275, -5.14962e-09, 0.0862353, 5.13043e-09, 1, 4.44077e-10, -0.0862353, 1.8939e-15, 0.996275, -1.91641e-06, 1.19849, 2.59001e-08)
 bone_name = "Barbarian_Cape"
 bone_idx = 21
 

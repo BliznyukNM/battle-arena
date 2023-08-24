@@ -12,10 +12,10 @@ script = ExtResource("2_0d8ho")
 lerp_speed = 3.0
 max_distance = 8.0
 
-[node name="IdleDummy" parent="." index="6" instance=ExtResource("4_si2op")]
+[node name="IdleDummy" parent="." index="7" instance=ExtResource("4_si2op")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5241, -9.53674e-07, -3.41823)
 collision_layer = 4
 
-[node name="ShootingDummy" parent="." index="7" instance=ExtResource("5_p0eoc")]
+[node name="ShootingDummy" parent="." index="8" instance=ExtResource("5_p0eoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.12878, 0, -10.7085)
 collision_layer = 4

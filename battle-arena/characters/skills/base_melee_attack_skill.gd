@@ -1,8 +1,7 @@
 extends BaseSkill
 
 
-@export var damage: int
-@export var hit_time: float
+@export_range(0, 100, 1, "or_greater") var damage: float
 
 @export var hit_range: float = 1.0
 @export_range(0, 360, RAYCAST_PER_ANGLE, "degrees") var area: float
@@ -12,7 +11,7 @@ extends BaseSkill
 @export var energy_stat: NumberStat
 
 
-var _shape: ConvexPolygonShape3D
+var _shape: Shape3D
 
 
 const RAYCAST_PER_ANGLE = 5.0
@@ -24,21 +23,22 @@ func _ready() -> void:
 
 
 func _setup_shape() -> void:
+    if is_zero_approx(area):
+        _shape = SeparationRayShape3D.new()
+        _shape.length = hit_range
+        return
+    
     var points: = PackedVector3Array([Vector3.ZERO])
     var forward: Vector3 = owner.global_transform.basis.z * hit_range
-    
     var angle_step: = 0.0
-    while angle_step <= area / 2.0 and angle_step > -180.0 and angle_step <= 180.0:
+        
+    while angle_step <= area / 2.0:
         points.append(forward.rotated(Vector3.UP, deg_to_rad(angle_step)))
-        angle_step = -angle_step + (0.0 if angle_step > 0 else RAYCAST_PER_ANGLE)
-    
+        points.append(forward.rotated(Vector3.UP, deg_to_rad(-angle_step)))
+        angle_step += RAYCAST_PER_ANGLE
+        
     _shape = ConvexPolygonShape3D.new()
     _shape.points = points
-
-
-func cancel() -> void:
-    if execution.wait_time - execution.time_left > hit_time * speed: return
-    super.cancel()
 
 
 func activate(pressed: bool) -> void:
@@ -46,22 +46,13 @@ func activate(pressed: bool) -> void:
     super.activate(pressed)
 
 
-func _on_activate(pressed: bool) -> void:
-    super._on_activate(pressed)
-    
+func _on_execute() -> void:
+    await super._on_execute()
     if not is_multiplayer_authority(): return
-    _create_hit_tween()
-
-
-func _create_hit_tween() -> Tween:
-    var tween: = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-    tween.tween_callback(_try_hit_shape).set_delay(hit_time * speed)
-    return tween
+    _try_hit_shape()
 
 
 func _try_hit_shape() -> void:
-    if execution.is_stopped(): return
-    
     var space_state: PhysicsDirectSpaceState3D = owner.get_world_3d().direct_space_state
     
     var params = PhysicsShapeQueryParameters3D.new()

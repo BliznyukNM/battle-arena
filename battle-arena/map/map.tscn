@@ -1,16 +1,41 @@
-[gd_scene load_steps=7 format=3 uid="uid://flt4bdecd0xj"]
+[gd_scene load_steps=13 format=3 uid="uid://flt4bdecd0xj"]
 
 [ext_resource type="MeshLibrary" uid="uid://bjja43ocp6hvr" path="res://map/dungeon.meshlib" id="1_p1vss"]
 [ext_resource type="Script" path="res://map/Camera.gd" id="2_fe6qu"]
 [ext_resource type="PackedScene" uid="uid://cfqs7tnlielrb" path="res://ui/gui.tscn" id="3_lap5g"]
 [ext_resource type="Script" path="res://map/spawner.gd" id="4_44ugc"]
 [ext_resource type="Resource" uid="uid://cipq6q6x1a3kv" path="res://characters/heroes/hero_list.tres" id="5_47638"]
+[ext_resource type="Script" path="res://vfx/skill_helpers.gd" id="6_nsib8"]
+[ext_resource type="Texture2D" uid="uid://c4x7fgar64qj6" path="res://assets/vfx/circle_01.png" id="6_uk4bs"]
 
 [sub_resource type="Environment" id="Environment_r4cc4"]
 ssao_enabled = true
 sdfgi_enabled = true
+glow_enabled = true
 volumetric_fog_density = 0.0238
 volumetric_fog_length = 1024.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_56bia"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 2, 2, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_8dnhn"]
+material = SubResource("StandardMaterial3D_56bia")
+size = Vector2(0.2, 1)
+orientation = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kr4lx"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 2, 2, 1)
+albedo_texture = ExtResource("6_uk4bs")
+
+[sub_resource type="QuadMesh" id="QuadMesh_j44gf"]
+material = SubResource("StandardMaterial3D_kr4lx")
+size = Vector2(2.75, 2.75)
+orientation = 1
 
 [node name="Map" type="Node3D"]
 
@@ -77,3 +102,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3611, 0, -0.664275)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.127, 0, 0.858209)
 
 [node name="Root" type="Node" parent="Spawner/TeamB"]
+
+[node name="SkillHelpers" type="Node" parent="."]
+script = ExtResource("6_nsib8")
+
+[node name="Line" type="MeshInstance3D" parent="SkillHelpers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.07191, 0.207583, -0.45141)
+mesh = SubResource("QuadMesh_8dnhn")
+
+[node name="Circle" type="MeshInstance3D" parent="SkillHelpers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.387214, 0.2, -0.33196)
+mesh = SubResource("QuadMesh_j44gf")
