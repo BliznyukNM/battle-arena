@@ -19,7 +19,7 @@ mono_crash.*.json
 
 .cookie
 
-battle-arena/addons/nakama
+battle-arena/addons/com.heroiclabs.nakama
 battle-arena/addons/gut
 
 battle-arena/.gut_editor_config.json
