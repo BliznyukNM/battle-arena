@@ -195,7 +195,10 @@ energy = NodePath("../Stats/Energy")
 [connection signal="activated" from="Skills/Block" to="HUD" method="on_skill_activated"]
 [connection signal="activated" from="Skills/Block" to="Skin" method="play_taunt"]
 [connection signal="activated" from="Skills/Dodge" to="HUD" method="on_skill_activated"]
+[connection signal="activated" from="Skills/Dodge" to="Previews/AreaPreview" method="start"]
 [connection signal="activated" from="Skills/Dodge" to="Skin" method="play_jump"]
 [connection signal="activated" from="Skills/Ultimate" to="HUD" method="on_skill_activated"]
 [connection signal="on_damage" from="HitBox" to="Skills/Block" method="on_damage"]
 [connection signal="on_damage" from="HitBox" to="Processors/Energy" method="on_damage"]
+
+[editable path="Previews"]

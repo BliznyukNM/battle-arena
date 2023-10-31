@@ -6,7 +6,7 @@ extends BaseSkill
 @export var radius: float = 2
 
 
-var _target_position: Vector3
+var target_position: Vector3
 
 
 func activate(pressed: bool) -> void:
@@ -16,18 +16,19 @@ func activate(pressed: bool) -> void:
 
 
 func _on_activate(pressed: bool) -> void:
+    target_position = owner.position + (owner.input.look_at_point - owner.position).limit_length(max_range)
+    
     super._on_activate(pressed)
     
     owner.transform.basis = Basis.looking_at(owner.position - owner.input.look_at_point)
     owner.rotation.x = 0.0
     owner.rotation.z = 0.0
     
-    _target_position = owner.position + (owner.input.look_at_point - owner.position).limit_length(max_range)
     var time = execution.wait_time
     var tween = create_tween()
-    tween.tween_property(owner, "position", _target_position + Vector3.UP * 4, time * 0.6) \
+    tween.tween_property(owner, "position", target_position + Vector3.UP * 4, time * 0.6) \
         .set_trans(Tween.TRANS_SINE).set_delay(time * 0.2).set_ease(Tween.EASE_OUT)
-    tween.tween_property(owner, "position", _target_position, time * 0.3).set_trans(Tween.TRANS_EXPO)
+    tween.tween_property(owner, "position", target_position, time * 0.3).set_trans(Tween.TRANS_EXPO)
 
 
 func cancel() -> void:
