@@ -1,11 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://ci811lsyijdqv"]
+[gd_scene load_steps=6 format=3 uid="uid://ci811lsyijdqv"]
 
 [ext_resource type="PackedScene" uid="uid://dt7dp8amhbd5b" path="res://characters/skills/range_attack_skill.tscn" id="1_ojjvj"]
 [ext_resource type="Script" path="res://characters/heroes/barbarian/skills/axe_throw.gd" id="2_vnyhn"]
+[ext_resource type="Script" path="res://characters/skills/preview/arrow_preview.gd" id="3_efq38"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sw0bv"]
+shading_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_rcg2y"]
 
 [node name="AxeThrow" instance=ExtResource("1_ojjvj")]
 script = ExtResource("2_vnyhn")
 spawn_point = Vector3(2.08165e-12, 1, 1.5)
+damage = 12.0
+projectile_speed = 20.0
+distance = 15.0
+radius = 0.82
 
 [node name="Execution" parent="." index="0"]
 base_time = 0.6
@@ -16,3 +26,10 @@ base_time = 0.5
 [node name="Container" parent="." index="2"]
 _spawnable_scenes = PackedStringArray("res://characters/heroes/barbarian/axe.tscn")
 spawn_limit = 1
+
+[node name="ArrowPreview" type="Node3D" parent="." index="3"]
+script = ExtResource("3_efq38")
+
+[node name="View" type="MeshInstance3D" parent="ArrowPreview" index="0"]
+material_override = SubResource("StandardMaterial3D_sw0bv")
+mesh = SubResource("ArrayMesh_rcg2y")

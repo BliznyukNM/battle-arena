@@ -8,6 +8,7 @@ var _is_recalling: bool
 
 
 func _ready() -> void:
+    super._ready()
     animation.play("rotating", -1, 2.0)
 
 
@@ -38,7 +39,7 @@ func _on_area_entered(area: Area3D) -> void:
     if _is_travelling or _is_recalling:
         if area.collision_layer != collision_layer and area is HitBox:
             area.apply_damage.rpc(damage)
-    if area is HitBox and area.owner == owner:
+    if not _is_travelling and area is HitBox and area.owner == owner:
         owner.on_pickup_axe.rpc()
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d26br4f45m27g"]
+[gd_scene load_steps=22 format=3 uid="uid://d26br4f45m27g"]
 
 [ext_resource type="Script" path="res://characters/character.gd" id="1_8kwiu"]
 [ext_resource type="Script" path="res://characters/stats/stats_manager.gd" id="2_3n7xj"]
@@ -14,11 +14,19 @@
 [ext_resource type="Script" path="res://characters/processors/rotation.gd" id="11_747v1"]
 [ext_resource type="PackedScene" uid="uid://7xkefn5xpy47" path="res://characters/hud/hud.tscn" id="12_4f13d"]
 [ext_resource type="Script" path="res://characters/input/input_source.gd" id="14_ovw2o"]
+[ext_resource type="Script" path="res://characters/skills/preview/arrow_preview.gd" id="15_opks2"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_47r4a"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_vwbuv"]
 radius = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n1qgf"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 0.905882, 0.862745, 0.513726)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_bwvdw"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_woxwi"]
 properties/0/path = NodePath(".:position")
@@ -63,8 +71,10 @@ base_value = 5.0
 
 [node name="RotationSpeed" type="Node" parent="Stats"]
 script = ExtResource("3_018qh")
+has_max_value = true
+max_value = 100.0
 has_min_value = true
-base_value = 10.0
+base_value = 100.0
 
 [node name="AttackSpeed" type="Node" parent="Stats"]
 script = ExtResource("3_018qh")
@@ -119,6 +129,16 @@ shape = SubResource("CylinderShape3D_vwbuv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.07557, 0)
 health = NodePath("../Stats/Health")
 name_tag = NodePath("../Stats/Name")
+
+[node name="Previews" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.107669, 0)
+
+[node name="ArrowPreview" type="Node3D" parent="Previews"]
+script = ExtResource("15_opks2")
+
+[node name="View" type="MeshInstance3D" parent="Previews/ArrowPreview"]
+material_override = SubResource("StandardMaterial3D_n1qgf")
+mesh = SubResource("ArrayMesh_bwvdw")
 
 [node name="Input" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_woxwi")

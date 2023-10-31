@@ -4,6 +4,10 @@
 
 [node name="Shoot" instance=ExtResource("1_oy01m")]
 spawn_point = Vector3(2.08165e-12, 1, 1)
+damage = 8.0
+projectile_speed = 5.0
+distance = 8.0
+radius = 0.3
 
 [node name="Execution" parent="." index="0"]
 base_time = 0.5

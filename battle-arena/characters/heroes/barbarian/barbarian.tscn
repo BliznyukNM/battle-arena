@@ -54,15 +54,11 @@ flat = 0.0
 script = ExtResource("2_6pbkp")
 
 [node name="Health" parent="Stats" index="0"]
-max_value = 50.0
-base_value = 50.0
+max_value = 500.0
+base_value = 500.0
 
 [node name="Shield" parent="Stats" index="1"]
 max_value = 500.0
-
-[node name="RotationSpeed" parent="Stats" index="3"]
-has_max_value = true
-max_value = 10.0
 
 [node name="Name" parent="Stats" index="5"]
 current_value = "Barbarian"
@@ -145,6 +141,7 @@ script = ExtResource("10_otvns")
 energy_cost = 2.08165e-12
 
 [node name="Drink" parent="Skills/ThirdAttack" index="1" instance=ExtResource("16_qo7fb")]
+energy_cost = 2.08165e-12
 
 [node name="Block" parent="Skills" index="3" instance=ExtResource("9_2nipq")]
 
@@ -169,7 +166,7 @@ energy = NodePath("../../Stats/Energy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.81294, 0)
 energy = NodePath("../Stats/Energy")
 
-[node name="Skin" parent="." index="8" instance=ExtResource("2_lwxa8")]
+[node name="Skin" parent="." index="9" instance=ExtResource("2_lwxa8")]
 
 [connection signal="activated" from="Skills/BasicAttack/Axe/Chop" to="HUD" method="on_skill_activated"]
 [connection signal="activated" from="Skills/BasicAttack/Axe/Chop" to="Skin" method="play_chop"]
@@ -188,6 +185,7 @@ energy = NodePath("../Stats/Energy")
 [connection signal="activated" from="Skills/BasicAttack/Dual/DualSlice" to="HUD" method="on_skill_activated"]
 [connection signal="activated" from="Skills/BasicAttack/Dual/DualSlice" to="Skin" method="play_dual_slice"]
 [connection signal="activated" from="Skills/SecondaryAttack/AxeThrow" to="HUD" method="on_skill_activated"]
+[connection signal="activated" from="Skills/SecondaryAttack/AxeThrow" to="Previews/ArrowPreview" method="start"]
 [connection signal="activated" from="Skills/SecondaryAttack/AxeThrow" to="Skin" method="play_throw"]
 [connection signal="activated" from="Skills/SecondaryAttack/AxeRecall" to="HUD" method="on_skill_activated"]
 [connection signal="activated" from="Skills/ThirdAttack/Spinning" to="HUD" method="on_skill_activated"]

@@ -11,7 +11,7 @@ script = ExtResource("3_ufj45")
 
 [node name="BasicAttack" parent="Skills" index="0" instance=ExtResource("2_352qu")]
 
-[node name="Input" parent="." index="7"]
+[node name="Input" parent="." index="9"]
 input_source = SubResource("Resource_40mm0")
 
 [connection signal="activated" from="Skills/BasicAttack" to="HUD" method="on_skill_activated"]

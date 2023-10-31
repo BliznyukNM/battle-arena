@@ -1,9 +1,10 @@
 extends Area3D
 
 
-@export var damage: int
-@export var speed: float = 5
-@export var max_travel_distance: float = 100
+var damage: int
+var speed: float
+var max_travel_distance: float
+var radius: float
 
 
 var _is_travelling: bool = true
@@ -11,6 +12,11 @@ var _travelled_distance: float
 
 
 @onready var _direction: Vector3 = transform.basis.z
+@onready var _collision: CollisionShape3D = $Collision
+
+
+func _ready() -> void:
+    _collision.scale = Vector3.ONE * radius
 
 
 func _process(delta: float) -> void:

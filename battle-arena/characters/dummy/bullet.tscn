@@ -13,13 +13,11 @@ radius = 0.15
 
 [node name="Bullet" type="Area3D"]
 script = ExtResource("1_bw3ca")
-damage = 10
-max_travel_distance = 10.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_ykawq")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_ub5lp")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
