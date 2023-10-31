@@ -142,6 +142,7 @@ script = ExtResource("10_otvns")
 script = ExtResource("10_otvns")
 
 [node name="Spinning" parent="Skills/ThirdAttack" index="0" instance=ExtResource("16_j6fet")]
+energy_cost = 2.08165e-12
 
 [node name="Drink" parent="Skills/ThirdAttack" index="1" instance=ExtResource("16_qo7fb")]
 
@@ -150,6 +151,7 @@ script = ExtResource("10_otvns")
 [node name="Dodge" parent="Skills" index="4" instance=ExtResource("18_4cbep")]
 
 [node name="Ultimate" parent="Skills" index="5" node_paths=PackedStringArray("energy_stat") instance=ExtResource("21_62el3")]
+energy_cost = 0.0
 energy_stat = NodePath("../../Stats/Energy")
 
 [node name="Skin" type="Node" parent="Processors" index="4" node_paths=PackedStringArray("skin", "move_speed", "attack_speed")]
