@@ -25,7 +25,8 @@ func after_all() -> void:
 
 
 func test_base_skill() -> void:
-    var base_skill: BaseSkill = load("res://skills/base_skill.tscn").instantiate()
+    var base_skill: BaseSkill = load("res://characters/skills/base_skill.tscn").instantiate()
+    base_skill.tree_entered.connect(func(): base_skill.owner = character)
     character.skills.add_child(base_skill)
     
     watch_signals(base_skill)
@@ -45,7 +46,7 @@ func test_base_skill() -> void:
 
 
 func _get_basic_melee_skill(hit_range: float, area: float) -> BaseSkill:
-    var basic_melee: BaseSkill = load("res://skills/base_melee_attack_skill.tscn").instantiate()
+    var basic_melee: BaseSkill = load("res://characters/skills/base_melee_attack_skill.tscn").instantiate()
     basic_melee.hit_range = hit_range
     basic_melee.area = area
     basic_melee.setup(character)

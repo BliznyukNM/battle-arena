@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://d25vmsj2p5dq5"]
 
-[ext_resource type="PackedScene" uid="uid://b3qs2xsrlw5fb" path="res://characters/character.tscn" id="1_fvn2d"]
-[ext_resource type="Script" path="res://skills/skill_sequence.gd" id="2_ye3mo"]
-[ext_resource type="PackedScene" uid="uid://di3gecnsy5fv3" path="res://skills/base_melee_attack_skill.tscn" id="3_f3ea2"]
+[ext_resource type="PackedScene" uid="uid://d26br4f45m27g" path="res://characters/character.tscn" id="1_fvn2d"]
+[ext_resource type="Script" path="res://characters/skills/skill_sequence.gd" id="2_ye3mo"]
+[ext_resource type="PackedScene" uid="uid://di3gecnsy5fv3" path="res://characters/skills/base_melee_attack_skill.tscn" id="3_f3ea2"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_lq1o0"]
 
