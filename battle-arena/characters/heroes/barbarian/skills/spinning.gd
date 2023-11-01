@@ -31,7 +31,7 @@ func _on_activate(pressed: bool) -> void:
 
 
 func _on_finish() -> void:
-    _tween.kill()
+    if _tween: _tween.kill()
     super._on_finish()
     owner.modifiers.remove_modifier_by_name("StopRotation")
 

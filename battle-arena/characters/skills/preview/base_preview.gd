@@ -12,6 +12,8 @@ func _ready() -> void:
 
 
 func start(skill: BaseSkill) -> void:
+    if skill.owner.player_id != multiplayer.get_unique_id(): return
+    
     _skill = skill
     _view.mesh = _construct_mesh(skill)
     skill.execution.timeout.connect(finish, CONNECT_ONE_SHOT)
