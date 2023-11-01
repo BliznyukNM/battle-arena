@@ -31,6 +31,10 @@ func _on_activate(pressed: bool) -> void:
     tween.tween_property(owner, "position", target_position, time * 0.3).set_trans(Tween.TRANS_EXPO)
 
 
+func _calculate_target_position() -> void:
+    pass
+
+
 func cancel() -> void:
     pass
 
