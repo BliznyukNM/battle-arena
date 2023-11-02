@@ -14,7 +14,7 @@ var _current_condition: bool:
 
 func _ready() -> void:
     tree_exiting.connect(func(): self._current_condition = false)
-    _initialize()
+    _initialize.call_deferred()
 
 
 func _initialize() -> void:

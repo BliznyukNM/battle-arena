@@ -1,18 +1,38 @@
-[gd_scene load_steps=9 format=3 uid="uid://dbjutw8fckxjl"]
+[gd_scene load_steps=13 format=3 uid="uid://dbjutw8fckxjl"]
 
 [ext_resource type="PackedScene" uid="uid://d26br4f45m27g" path="res://characters/character.tscn" id="1_gfvhh"]
 [ext_resource type="PackedScene" uid="uid://bu0t01nod6qgi" path="res://characters/heroes/ranger/skills/base_range_attack.tscn" id="2_2cs3i"]
+[ext_resource type="Script" path="res://characters/status_effects/modifiers/conditional_modifier.gd" id="2_327xy"]
 [ext_resource type="Script" path="res://characters/skills/skill_sequence.gd" id="2_ascv0"]
 [ext_resource type="Script" path="res://characters/heroes/ranger/processors/skin.gd" id="2_frijp"]
 [ext_resource type="PackedScene" uid="uid://bpq0bn5oy13jl" path="res://characters/heroes/ranger/skin.tscn" id="2_plqqr"]
+[ext_resource type="Script" path="res://characters/status_effects/effects/slowdown.gd" id="3_i85lt"]
 [ext_resource type="PackedScene" uid="uid://diru0s8mag8bo" path="res://characters/heroes/ranger/skills/charge_arrow.tscn" id="4_7ta2r"]
 [ext_resource type="PackedScene" uid="uid://3vrp21ttxxej" path="res://characters/heroes/ranger/skills/invisibility.tscn" id="5_hhkuk"]
 [ext_resource type="Script" path="res://characters/processors/clear_modifiers.gd" id="7_2y3fc"]
+
+[sub_resource type="Resource" id="Resource_avmrn"]
+script = ExtResource("3_i85lt")
+amount = 60
+
+[sub_resource type="Resource" id="Resource_skoh5"]
+script = ExtResource("3_i85lt")
+amount = 100
 
 [node name="Character" instance=ExtResource("1_gfvhh")]
 
 [node name="AttackSpeed" parent="Stats" index="4"]
 base_value = 0.8
+
+[node name="SlowdownOnAttack" type="Node" parent="Modifiers" index="0"]
+script = ExtResource("2_327xy")
+condition = "owner.skills.basic_attack.execution.time_left > 0.0"
+effects = Array[Resource("res://characters/status_effects/effects/base_effect.gd")]([SubResource("Resource_avmrn")])
+
+[node name="StopOnChargeAttack" type="Node" parent="Modifiers" index="1"]
+script = ExtResource("2_327xy")
+condition = "owner.skills.secondary_attack.execution.time_left > 0.0"
+effects = Array[Resource("res://characters/status_effects/effects/base_effect.gd")]([SubResource("Resource_skoh5")])
 
 [node name="BasicAttack" type="Node" parent="Skills" index="0"]
 script = ExtResource("2_ascv0")

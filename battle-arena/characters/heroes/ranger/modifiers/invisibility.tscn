@@ -16,7 +16,7 @@ modifier_name = "Invisibility"
 [sub_resource type="Resource" id="Resource_hlv4h"]
 script = ExtResource("4_uxrvy")
 stat_name = "MovementSpeed"
-percentage = 20.0
+percentage = 50.0
 flat = 0.0
 
 [node name="Invisibility" type="Node"]
