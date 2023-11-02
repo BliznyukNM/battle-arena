@@ -12,8 +12,5 @@ radius = 1.0
 [node name="Execution" parent="." index="0"]
 base_time = 0.4
 
-[node name="Cooldown" parent="." index="1"]
-base_time = 0.5
-
 [node name="Container" parent="." index="2"]
 _spawnable_scenes = PackedStringArray("res://characters/heroes/ranger/arrow.tscn")

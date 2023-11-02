@@ -2,13 +2,21 @@ extends "res://characters/skills/base_skill.gd"
 
 
 @export var spawn_point: Vector3
-@export var damage: float
+@export var damage: float:
+    get = _get_damage
 @export var projectile_speed: float
-@export var distance: float
+@export var distance: float:
+    get = _get_distance
 @export var radius: float
 
 
 @onready var container: MultiplayerSpawner = $Container
+
+
+func _get_distance() -> float:
+    return distance
+func _get_damage() -> float:
+    return damage
 
 
 func _ready() -> void:
