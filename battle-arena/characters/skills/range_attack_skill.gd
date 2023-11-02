@@ -19,6 +19,7 @@ func _ready() -> void:
 
 func activate(pressed: bool) -> void:
     if not pressed: return
+    if not execution.is_stopped(): return
     super.activate(pressed)
 
 

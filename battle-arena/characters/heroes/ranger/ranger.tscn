@@ -1,10 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbjutw8fckxjl"]
+[gd_scene load_steps=6 format=3 uid="uid://dbjutw8fckxjl"]
 
 [ext_resource type="PackedScene" uid="uid://d26br4f45m27g" path="res://characters/character.tscn" id="1_gfvhh"]
+[ext_resource type="PackedScene" uid="uid://bu0t01nod6qgi" path="res://characters/heroes/ranger/skills/base_range_attack.tscn" id="2_2cs3i"]
+[ext_resource type="Script" path="res://characters/skills/skill_sequence.gd" id="2_ascv0"]
 [ext_resource type="Script" path="res://characters/heroes/ranger/processors/skin.gd" id="2_frijp"]
 [ext_resource type="PackedScene" uid="uid://bpq0bn5oy13jl" path="res://characters/heroes/ranger/skin.tscn" id="2_plqqr"]
 
 [node name="Character" instance=ExtResource("1_gfvhh")]
+
+[node name="BasicAttack" type="Node" parent="Skills" index="0"]
+script = ExtResource("2_ascv0")
+
+[node name="Shot" parent="Skills/BasicAttack" index="0" node_paths=PackedStringArray("skill_speed") instance=ExtResource("2_2cs3i")]
+skill_speed = NodePath("../../../Stats/AttackSpeed")
 
 [node name="Skin" type="Node" parent="Processors" index="4" node_paths=PackedStringArray("skin", "move_speed", "attack_speed")]
 script = ExtResource("2_frijp")
@@ -14,3 +22,6 @@ attack_speed = NodePath("../../Stats/AttackSpeed")
 interpolation = 10.0
 
 [node name="Skin" parent="." index="9" instance=ExtResource("2_plqqr")]
+
+[connection signal="activated" from="Skills/BasicAttack/Shot" to="HUD" method="on_skill_activated"]
+[connection signal="activated" from="Skills/BasicAttack/Shot" to="Skin" method="play_shoot"]
