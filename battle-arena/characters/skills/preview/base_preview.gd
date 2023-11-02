@@ -5,6 +5,7 @@ extends Node3D
 
 
 var _skill: BaseSkill
+var _distance: float
 
 
 func _ready() -> void:
@@ -15,6 +16,7 @@ func start(skill: BaseSkill) -> void:
     if skill.owner.player_id != multiplayer.get_unique_id(): return
     
     _skill = skill
+    _distance = skill.distance
     _view.mesh = _construct_mesh(skill)
     skill.execution.timeout.connect(finish, CONNECT_ONE_SHOT)
     set_process(true)
@@ -33,8 +35,13 @@ func _construct_mesh(skill: BaseSkill) -> Mesh:
 
 func _process(delta: float) -> void:
     var target_position = _skill.get("target_position")
+    
     if not target_position:
         rotation = _skill.owner.rotation
         position = _skill.owner.position
     else:
         position = target_position
+    
+    var distance: float = _skill.distance
+    if not is_equal_approx(distance, _distance):
+        _view.mesh = _construct_mesh(_skill)

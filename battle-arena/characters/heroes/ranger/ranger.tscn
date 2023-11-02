@@ -9,6 +9,9 @@
 
 [node name="Character" instance=ExtResource("1_gfvhh")]
 
+[node name="AttackSpeed" parent="Stats" index="4"]
+base_value = 0.8
+
 [node name="BasicAttack" type="Node" parent="Skills" index="0"]
 script = ExtResource("2_ascv0")
 
@@ -29,4 +32,7 @@ interpolation = 10.0
 [connection signal="activated" from="Skills/BasicAttack/Shot" to="HUD" method="on_skill_activated"]
 [connection signal="activated" from="Skills/BasicAttack/Shot" to="Skin" method="play_shoot"]
 [connection signal="activated" from="Skills/SecondaryAttack" to="HUD" method="on_skill_activated"]
+[connection signal="activated" from="Skills/SecondaryAttack" to="Previews/ArrowPreview" method="start"]
 [connection signal="activated" from="Skills/SecondaryAttack" to="Skin" method="play_charge_shot"]
+
+[editable path="Previews"]
