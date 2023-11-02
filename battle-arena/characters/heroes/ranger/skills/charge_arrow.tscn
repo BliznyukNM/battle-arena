@@ -13,5 +13,8 @@ projectile_speed = 18.0
 distance = 5.0
 radius = 1.0
 
+[node name="Cooldown" parent="." index="1"]
+base_time = 5.0
+
 [node name="Container" parent="." index="2"]
 _spawnable_scenes = PackedStringArray("res://characters/heroes/ranger/arrow.tscn")

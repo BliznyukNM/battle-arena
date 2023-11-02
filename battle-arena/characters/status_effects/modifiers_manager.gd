@@ -16,6 +16,12 @@ func add_modifier(modifier: BaseModifier) -> void:
     modifier.owner = owner
 
 
+func get_modifier(modifier_name: String) -> BaseModifier:
+    if _modifiers.has(modifier_name):
+        return _modifiers[modifier_name]
+    else: return null
+
+
 func remove_modifier_by_name(modifier_name: String) -> void:
     remove_modifier(_modifiers.get(modifier_name))
 

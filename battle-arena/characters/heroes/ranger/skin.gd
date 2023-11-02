@@ -1,6 +1,10 @@
 extends Node3D
 
 
+@export var material: Material
+@export var invisibility_color: Color
+
+
 @onready var animationTree: AnimationTree = $AnimationTree
 
 
@@ -22,3 +26,11 @@ func play_shoot(skill: BaseSkill) -> void:
 
 func play_charge_shot(skill: BaseSkill) -> void:
     animationTree.set("parameters/PlayChargeShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+
+
+func activate_invisibility() -> void:
+    material.albedo_color = invisibility_color
+
+
+func deactivate_invisibility() -> void:
+    material.albedo_color = Color.WHITE

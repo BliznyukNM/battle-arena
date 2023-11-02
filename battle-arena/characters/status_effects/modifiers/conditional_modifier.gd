@@ -13,6 +13,8 @@ func _ready() -> void:
     _condition_expression = Expression.new()
     _parsing_result = _condition_expression.parse(condition)
     assert(_parsing_result == OK)
+    _process(0)
+    super._ready()
 
 
 func _process(delta: float) -> void:

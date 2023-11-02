@@ -4,6 +4,8 @@
 
 [resource]
 resource_name = "rogue_texture"
-cull_mode = 2
+transparency = 4
+blend_mode = 1
+depth_draw_mode = 1
 albedo_texture = ExtResource("1_n25vm")
 roughness = 0.5

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://3vrp21ttxxej"]
+
+[ext_resource type="PackedScene" uid="uid://cq3ndi0b3xe16" path="res://characters/skills/apply_modifiers_skill.tscn" id="1_txi7k"]
+[ext_resource type="PackedScene" uid="uid://yf22lxhqicwi" path="res://characters/heroes/ranger/modifiers/invisibility.tscn" id="2_c61r1"]
+
+[node name="Invisibility" instance=ExtResource("1_txi7k")]
+modifiers = Array[PackedScene]([ExtResource("2_c61r1")])
+
+[node name="Execution" parent="." index="0"]
+base_time = 0.1
+
+[node name="Cooldown" parent="." index="1"]
+base_time = 10.0

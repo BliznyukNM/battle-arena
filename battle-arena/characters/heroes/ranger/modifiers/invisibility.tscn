@@ -1,0 +1,25 @@
+[gd_scene load_steps=8 format=3 uid="uid://yf22lxhqicwi"]
+
+[ext_resource type="Script" path="res://characters/status_effects/modifiers/timed_modifier.gd" id="1_68l3r"]
+[ext_resource type="Script" path="res://characters/heroes/ranger/modifiers/effects/skin_invisibility.gd" id="2_sfc0d"]
+[ext_resource type="Script" path="res://characters/status_effects/effects/show_progress.gd" id="3_na52h"]
+[ext_resource type="Script" path="res://characters/status_effects/effects/modify_stat.gd" id="4_uxrvy"]
+
+[sub_resource type="Resource" id="Resource_c8a5n"]
+resource_name = "Skin Invisibility"
+script = ExtResource("2_sfc0d")
+
+[sub_resource type="Resource" id="Resource_qwspx"]
+script = ExtResource("3_na52h")
+modifier_name = "Invisibility"
+
+[sub_resource type="Resource" id="Resource_hlv4h"]
+script = ExtResource("4_uxrvy")
+stat_name = "MovementSpeed"
+percentage = 20.0
+flat = 0.0
+
+[node name="Invisibility" type="Node"]
+script = ExtResource("1_68l3r")
+time = 4.0
+effects = Array[Resource("res://characters/status_effects/effects/base_effect.gd")]([SubResource("Resource_c8a5n"), SubResource("Resource_qwspx"), SubResource("Resource_hlv4h")])
