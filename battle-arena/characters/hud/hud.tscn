@@ -12,10 +12,13 @@ script = ExtResource("1_pla10")
 [node name="View" type="Sprite3D" parent="."]
 transform = Transform3D(0.342, 0, 0, 0, 0.342, 0, 0, 0, 0.342, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 billboard = 1
+no_depth_test = true
 texture = SubResource("ViewportTexture_t8itw")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
+handle_input_locally = false
+gui_disable_input = true
 size = Vector2i(512, 128)
 render_target_update_mode = 4
 
