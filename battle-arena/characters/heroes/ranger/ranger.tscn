@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dbjutw8fckxjl"]
+[gd_scene load_steps=14 format=3 uid="uid://dbjutw8fckxjl"]
 
 [ext_resource type="PackedScene" uid="uid://d26br4f45m27g" path="res://characters/character.tscn" id="1_gfvhh"]
 [ext_resource type="PackedScene" uid="uid://bu0t01nod6qgi" path="res://characters/heroes/ranger/skills/base_range_attack.tscn" id="2_2cs3i"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://characters/status_effects/effects/slowdown.gd" id="3_i85lt"]
 [ext_resource type="PackedScene" uid="uid://diru0s8mag8bo" path="res://characters/heroes/ranger/skills/charge_arrow.tscn" id="4_7ta2r"]
 [ext_resource type="PackedScene" uid="uid://3vrp21ttxxej" path="res://characters/heroes/ranger/skills/invisibility.tscn" id="5_hhkuk"]
+[ext_resource type="PackedScene" uid="uid://b36uqcakmeluf" path="res://characters/heroes/ranger/skills/trap.tscn" id="7_0pagd"]
 [ext_resource type="Script" path="res://characters/processors/clear_modifiers.gd" id="7_2y3fc"]
 
 [sub_resource type="Resource" id="Resource_avmrn"]
@@ -42,7 +43,9 @@ skill_speed = NodePath("../../../Stats/AttackSpeed")
 
 [node name="SecondaryAttack" parent="Skills" index="1" instance=ExtResource("4_7ta2r")]
 
-[node name="Block" parent="Skills" index="2" instance=ExtResource("5_hhkuk")]
+[node name="ThirdAttack" parent="Skills" index="2" instance=ExtResource("7_0pagd")]
+
+[node name="Block" parent="Skills" index="3" instance=ExtResource("5_hhkuk")]
 
 [node name="Skin" type="Node" parent="Processors" index="4" node_paths=PackedStringArray("skin", "move_speed", "attack_speed")]
 script = ExtResource("2_frijp")
@@ -53,7 +56,7 @@ interpolation = 10.0
 
 [node name="ClearModifiers" type="Node" parent="Processors" index="5" node_paths=PackedStringArray("skills")]
 script = ExtResource("7_2y3fc")
-skills = [NodePath("../../Skills/BasicAttack/Shot"), NodePath("../../Skills/SecondaryAttack")]
+skills = [NodePath("../../Skills/BasicAttack/Shot"), NodePath("../../Skills/SecondaryAttack"), NodePath("../../Skills/ThirdAttack")]
 modifiers = Array[String](["Invisibility"])
 
 [node name="Skin" parent="." index="9" instance=ExtResource("2_plqqr")]
@@ -63,5 +66,7 @@ modifiers = Array[String](["Invisibility"])
 [connection signal="activated" from="Skills/SecondaryAttack" to="HUD" method="on_skill_activated"]
 [connection signal="activated" from="Skills/SecondaryAttack" to="Previews/ArrowPreview" method="start"]
 [connection signal="activated" from="Skills/SecondaryAttack" to="Skin" method="play_charge_shot"]
+[connection signal="activated" from="Skills/ThirdAttack" to="HUD" method="on_skill_activated"]
+[connection signal="activated" from="Skills/ThirdAttack" to="Previews/AreaPreview" method="start"]
 
 [editable path="Previews"]

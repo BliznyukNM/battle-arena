@@ -44,7 +44,7 @@ func _on_peer_connected(id: int) -> void:
     
     var params: = {
         "id" = id,
-        "character" = 0 # TODO: temp
+        "character" = 1 # TODO: temp
     }
     
     var team: = _get_priority_team()

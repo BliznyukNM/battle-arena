@@ -5,6 +5,11 @@ extends Node
 
 
 func _process(delta: float) -> void:
+    var root_modifier: bool = owner.modifiers.has_modifier("Root")
+    var stun_modifier: bool = owner.modifiers.has_modifier("Stun")
+    
+    if root_modifier or stun_modifier: return
+    
     var movement: Vector2 = owner.input.move_direction
     var velocity: = Vector3(movement.x, 0.0, movement.y)
     if velocity.length_squared() > 1: velocity = velocity.normalized()

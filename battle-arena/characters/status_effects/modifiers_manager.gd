@@ -23,6 +23,10 @@ func get_modifier(modifier_name: String) -> BaseModifier:
     else: return null
 
 
+func has_modifier(modifier_name: String) -> bool:
+    return _modifiers.has(modifier_name)
+
+
 func remove_modifier_by_name(modifier_name: String) -> void:
     var modifier = _modifiers.get(modifier_name)
     remove_modifier(modifier)
