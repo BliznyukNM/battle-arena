@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://yf22lxhqicwi" path="res://characters/heroes/ranger/modifiers/invisibility.tscn" id="2_c61r1"]
 
 [node name="Invisibility" instance=ExtResource("1_txi7k")]
+energy_cost = 25.0
 modifiers = Array[PackedScene]([ExtResource("2_c61r1")])
 
 [node name="Execution" parent="." index="0"]
