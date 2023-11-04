@@ -47,7 +47,7 @@ flat = 0.0
 [sub_resource type="Resource" id="Resource_6by3s"]
 script = ExtResource("7_l2lwc")
 stat_name = "MovementSpeed"
-percentage = 15.0
+percentage = 45.0
 flat = 0.0
 
 [node name="Barbarian" instance=ExtResource("1_6uqpy")]
@@ -99,23 +99,19 @@ skill_speed = NodePath("../../Stats/AttackSpeed")
 [node name="Axe" type="Node" parent="Skills/BasicAttack" index="0"]
 script = ExtResource("3_pngyg")
 
-[node name="Chop" parent="Skills/BasicAttack/Axe" index="0" node_paths=PackedStringArray("energy_stat", "skill_speed") instance=ExtResource("3_fur47")]
-energy_stat = NodePath("../../../../Stats/Energy")
+[node name="Chop" parent="Skills/BasicAttack/Axe" index="0" node_paths=PackedStringArray("skill_speed") instance=ExtResource("3_fur47")]
 skill_speed = NodePath("../../../../Stats/AttackSpeed")
 
-[node name="Slice" parent="Skills/BasicAttack/Axe" index="1" node_paths=PackedStringArray("energy_stat", "skill_speed") instance=ExtResource("4_bcofc")]
-energy_stat = NodePath("../../../../Stats/Energy")
+[node name="Slice" parent="Skills/BasicAttack/Axe" index="1" node_paths=PackedStringArray("skill_speed") instance=ExtResource("4_bcofc")]
 skill_speed = NodePath("../../../../Stats/AttackSpeed")
 
 [node name="Hands" type="Node" parent="Skills/BasicAttack" index="1"]
 script = ExtResource("3_pngyg")
 
-[node name="KickA" parent="Skills/BasicAttack/Hands" index="0" node_paths=PackedStringArray("energy_stat", "skill_speed") instance=ExtResource("10_3sw4o")]
-energy_stat = NodePath("../../../../Stats/Energy")
+[node name="KickA" parent="Skills/BasicAttack/Hands" index="0" node_paths=PackedStringArray("skill_speed") instance=ExtResource("10_3sw4o")]
 skill_speed = NodePath("../../../../Stats/AttackSpeed")
 
-[node name="KickB" parent="Skills/BasicAttack/Hands" index="1" node_paths=PackedStringArray("energy_stat", "skill_speed") instance=ExtResource("11_tvqbx")]
-energy_stat = NodePath("../../../../Stats/Energy")
+[node name="KickB" parent="Skills/BasicAttack/Hands" index="1" node_paths=PackedStringArray("skill_speed") instance=ExtResource("11_tvqbx")]
 skill_speed = NodePath("../../../../Stats/AttackSpeed")
 
 [node name="Dual" type="Node" parent="Skills/BasicAttack" index="2"]
@@ -138,27 +134,25 @@ script = ExtResource("10_otvns")
 script = ExtResource("10_otvns")
 
 [node name="Spinning" parent="Skills/ThirdAttack" index="0" instance=ExtResource("16_j6fet")]
-energy_cost = 2.08165e-12
 
 [node name="Drink" parent="Skills/ThirdAttack" index="1" instance=ExtResource("16_qo7fb")]
-energy_cost = 2.08165e-12
 
 [node name="Block" parent="Skills" index="3" instance=ExtResource("9_2nipq")]
 
 [node name="Dodge" parent="Skills" index="4" instance=ExtResource("18_4cbep")]
 
 [node name="Ultimate" parent="Skills" index="5" node_paths=PackedStringArray("energy_stat") instance=ExtResource("21_62el3")]
-energy_cost = 0.0
 energy_stat = NodePath("../../Stats/Energy")
 
-[node name="Skin" type="Node" parent="Processors" index="4" node_paths=PackedStringArray("skin", "move_speed", "attack_speed")]
+[node name="Skin" type="Node" parent="Processors" index="5" node_paths=PackedStringArray("skin", "move_speed", "attack_speed")]
 script = ExtResource("6_5y8y2")
 skin = NodePath("../../Skin")
 move_speed = NodePath("../../Stats/MovementSpeed")
 attack_speed = NodePath("../../Stats/AttackSpeed")
 interpolation = 10.0
 
-[node name="Energy" type="Node" parent="Processors" index="5" node_paths=PackedStringArray("energy")]
+[node name="EnergyProcessor" type="Node" parent="Processors" index="6" node_paths=PackedStringArray("energy")]
+unique_name_in_owner = true
 script = ExtResource("21_kdalp")
 energy = NodePath("../../Stats/Energy")
 
@@ -188,7 +182,6 @@ energy = NodePath("../Stats/Energy")
 [connection signal="activated" from="Skills/SecondaryAttack/AxeThrow" to="Previews/ArrowPreview" method="start"]
 [connection signal="activated" from="Skills/SecondaryAttack/AxeThrow" to="Skin" method="play_throw"]
 [connection signal="activated" from="Skills/SecondaryAttack/AxeRecall" to="HUD" method="on_skill_activated"]
-[connection signal="activated" from="Skills/ThirdAttack/Spinning" to="HUD" method="on_skill_activated"]
 [connection signal="activated" from="Skills/ThirdAttack/Spinning" to="Skin" method="play_spin"]
 [connection signal="activated" from="Skills/ThirdAttack/Drink" to="HUD" method="on_skill_activated"]
 [connection signal="activated" from="Skills/ThirdAttack/Drink" to="Skin" method="play_drink"]
@@ -199,6 +192,6 @@ energy = NodePath("../Stats/Energy")
 [connection signal="activated" from="Skills/Dodge" to="Skin" method="play_jump"]
 [connection signal="activated" from="Skills/Ultimate" to="HUD" method="on_skill_activated"]
 [connection signal="on_damage" from="HitBox" to="Skills/Block" method="on_damage"]
-[connection signal="on_damage" from="HitBox" to="Processors/Energy" method="on_damage"]
+[connection signal="on_damage" from="HitBox" to="Processors/EnergyProcessor" method="on_damage"]
 
 [editable path="Previews"]

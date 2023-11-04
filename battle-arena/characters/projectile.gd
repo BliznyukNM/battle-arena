@@ -39,4 +39,6 @@ func _on_area_entered(area: Area3D) -> void:
     if not is_multiplayer_authority(): return
     if not area is HitBox: return
     area.apply_damage.rpc(damage)
+    var energy_processor = owner.get_node_or_null("%EnergyProcessor")
+    if energy_processor: energy_processor.on_damage.rpc(damage)
     _on_finish_travel()

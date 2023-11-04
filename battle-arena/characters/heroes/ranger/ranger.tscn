@@ -26,6 +26,10 @@ amount = 100
 
 [node name="Character" instance=ExtResource("1_gfvhh")]
 
+[node name="Health" parent="Stats" index="0"]
+max_value = 500.0
+base_value = 500.0
+
 [node name="MovementSpeed" parent="Stats" index="2"]
 base_value = 4.0
 
@@ -65,7 +69,8 @@ energy_stat = NodePath("../../Stats/Energy")
 [node name="Dodge" parent="Skills" index="4" instance=ExtResource("9_vmnp0")]
 dash_time = 0.3
 
-[node name="Ultimate" parent="Skills" index="5" instance=ExtResource("10_qjbdi")]
+[node name="Ultimate" parent="Skills" index="5" node_paths=PackedStringArray("energy_stat") instance=ExtResource("10_qjbdi")]
+energy_stat = NodePath("../../Stats/Energy")
 
 [node name="Skin" type="Node" parent="Processors" index="5" node_paths=PackedStringArray("skin", "move_speed", "attack_speed")]
 script = ExtResource("2_frijp")
@@ -79,9 +84,13 @@ script = ExtResource("7_2y3fc")
 skills = [NodePath("../../Skills/BasicAttack/Shot"), NodePath("../../Skills/SecondaryAttack"), NodePath("../../Skills/Block"), NodePath("../../Skills/Dodge")]
 modifiers = Array[String](["Invisibility"])
 
-[node name="Energy" type="Node" parent="Processors" index="7" node_paths=PackedStringArray("energy")]
+[node name="EnergyProcessor" type="Node" parent="Processors" index="7" node_paths=PackedStringArray("energy")]
+unique_name_in_owner = true
 script = ExtResource("14_bghrj")
 energy = NodePath("../../Stats/Energy")
+
+[node name="HUD" parent="." index="6" node_paths=PackedStringArray("energy")]
+energy = NodePath("../Stats/Energy")
 
 [node name="Skin" parent="." index="9" instance=ExtResource("2_plqqr")]
 

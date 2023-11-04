@@ -12,7 +12,7 @@ func _ready() -> void:
     
     var params: = {
         "id" = multiplayer.get_unique_id(),
-        "character" = 1
+        "character" = 0
     }
     
     var character = %TeamA.spawn(params)

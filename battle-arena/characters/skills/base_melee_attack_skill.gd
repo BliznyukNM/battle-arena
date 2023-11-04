@@ -8,9 +8,6 @@ extends BaseSkill
 @export_range(0, 360, RAYCAST_PER_ANGLE, "degrees") var area: float
 @export var offset: = Vector3(0, 0, 0)
 
-@export var energy_generation: float
-@export var energy_stat: NumberStat
-
 
 var _shape: ConvexPolygonShape3D
 
@@ -79,9 +76,4 @@ func _try_hit_shape() -> void:
             hit.collider.apply_damage.rpc(damage)
             any_hits = true
     
-    if any_hits: _on_successful_hit.rpc()
-
-
-@rpc("reliable", "call_local")
-func _on_successful_hit() -> void:
-    if energy_stat: energy_stat.current_value += energy_generation
+    if any_hits: %EnergyProcessor.on_damage.rpc(damage)

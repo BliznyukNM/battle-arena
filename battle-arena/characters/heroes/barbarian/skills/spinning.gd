@@ -19,8 +19,8 @@ func _on_activate(pressed: bool) -> void:
             return
         _energy_stat.current_value -= energy_cost
         
-        var modifier: BaseModifier = spinning_modifier.instantiate()
-        modifier.name = "StopRotation"
+        var modifier: TimedModifier = spinning_modifier.instantiate()
+        modifier.time = execution.base_time
         owner.modifiers.add_modifier(modifier)
         
         if multiplayer.is_server():
@@ -34,7 +34,7 @@ func _on_activate(pressed: bool) -> void:
 func _on_finish() -> void:
     if _tween: _tween.kill()
     super._on_finish()
-    owner.modifiers.remove_modifier_by_name("StopRotation")
+    owner.modifiers.remove_modifier_by_name("Spinning")
 
 
 func _try_hit_area() -> void:
