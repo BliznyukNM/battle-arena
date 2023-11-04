@@ -68,5 +68,6 @@ modifiers = Array[String](["Invisibility"])
 [connection signal="activated" from="Skills/SecondaryAttack" to="Skin" method="play_charge_shot"]
 [connection signal="activated" from="Skills/ThirdAttack" to="HUD" method="on_skill_activated"]
 [connection signal="activated" from="Skills/ThirdAttack" to="Previews/AreaPreview" method="start"]
+[connection signal="activated" from="Skills/ThirdAttack" to="Skin" method="play_throw"]
 
 [editable path="Previews"]

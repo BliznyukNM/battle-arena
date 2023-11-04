@@ -1,18 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://fuwljo3j30u5"]
+[gd_scene load_steps=5 format=3 uid="uid://fuwljo3j30u5"]
 
 [ext_resource type="Script" path="res://characters/heroes/ranger/trap.gd" id="1_je8jk"]
 [ext_resource type="PackedScene" uid="uid://cem7pidwspvo0" path="res://characters/heroes/ranger/modifiers/trap_root.tscn" id="2_4pms0"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q8ev7"]
-transparency = 1
-albedo_color = Color(0.870588, 0, 0, 0.219608)
-
-[sub_resource type="TorusMesh" id="TorusMesh_bn4db"]
-material = SubResource("StandardMaterial3D_q8ev7")
-inner_radius = 0.2
-outer_radius = 0.5
-rings = 32
-ring_segments = 16
+[ext_resource type="ArrayMesh" uid="uid://drsk0itqb5q0l" path="res://assets/characters/heroes/ranger/meshes/bear_trap.res" id="3_qg3j2"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_hhxo2"]
 height = 0.3
@@ -23,8 +13,8 @@ script = ExtResource("1_je8jk")
 modifier = ExtResource("2_4pms0")
 
 [node name="View" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.170102, 0)
-mesh = SubResource("TorusMesh_bn4db")
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.170102, 0)
+mesh = ExtResource("3_qg3j2")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.174946, 0)

@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cydkurtrp0qma"]
+
+[ext_resource type="Script" path="res://characters/projectile.gd" id="1_ng5ca"]
+[ext_resource type="ArrayMesh" uid="uid://dhogy4oi6u4sf" path="res://assets/characters/heroes/ranger/meshes/arrow_Cylinder_007.res" id="2_vto66"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h4g8v"]
+albedo_color = Color(1.8, 0.481, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ml1j8"]
+size = Vector3(0.194336, 0.125, 1.22949)
+
+[node name="ChargedArrow" type="Area3D"]
+script = ExtResource("1_ng5ca")
+
+[node name="View" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, -6.55671e-08, 1.5, 0, -1.5, -6.55671e-08, 0, 0, 0)
+mesh = ExtResource("2_vto66")
+surface_material_override/0 = SubResource("StandardMaterial3D_h4g8v")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ml1j8")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

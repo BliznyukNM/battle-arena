@@ -17,4 +17,4 @@ radius = 1.0
 base_time = 5.0
 
 [node name="Container" parent="." index="2"]
-_spawnable_scenes = PackedStringArray("res://characters/heroes/ranger/arrow.tscn")
+_spawnable_scenes = PackedStringArray("res://characters/heroes/ranger/charged_arrow.tscn")
