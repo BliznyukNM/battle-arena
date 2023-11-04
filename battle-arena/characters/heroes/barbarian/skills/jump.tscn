@@ -6,7 +6,7 @@
 [node name="Jump" instance=ExtResource("1_kn7hx")]
 script = ExtResource("2_algej")
 damage = 15.0
-max_range = 12.0
+distance = 12.0
 radius = 3.0
 
 [node name="Execution" parent="." index="0"]

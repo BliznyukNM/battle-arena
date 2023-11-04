@@ -2,7 +2,7 @@ extends BaseSkill
 
 
 @export var damage: float
-@export var max_range: float = 6
+@export var distance: float = 6
 @export var radius: float = 2
 
 
@@ -16,7 +16,7 @@ func activate(pressed: bool) -> void:
 
 
 func _on_activate(pressed: bool) -> void:
-    target_position = owner.position + (owner.input.look_at_point - owner.position).limit_length(max_range)
+    target_position = owner.position + (owner.input.look_at_point - owner.position).limit_length(distance)
     
     super._on_activate(pressed)
     
