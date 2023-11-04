@@ -14,6 +14,7 @@ signal on_dead()
 @onready var skin: = get_node_or_null("Skin")
 @onready var input: = get_node_or_null("Input")
 @onready var hit_box: HitBox = get_node_or_null("HitBox")
+@onready var hud: = get_node_or_null("HUD")
 
 
 var is_alive: bool:

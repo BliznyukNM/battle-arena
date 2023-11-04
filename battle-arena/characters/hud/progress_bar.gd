@@ -5,18 +5,17 @@ var _skill: BaseSkill
 
 
 func _ready() -> void:
-    _clear_skill()
+    _clear()
 
 
 func register_skill(skill: BaseSkill) -> void:
     _skill = skill
-    _skill.execution.timeout.connect(_clear_skill, CONNECT_ONE_SHOT)
+    _skill.execution.timeout.connect(_clear, CONNECT_ONE_SHOT)
     value = 0
-    
     visible = true
 
 
-func _clear_skill() -> void:
+func _clear() -> void:
     _skill = null
     visible = false
 

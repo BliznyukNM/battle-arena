@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://d26br4f45m27g"]
+[gd_scene load_steps=21 format=3 uid="uid://d26br4f45m27g"]
 
 [ext_resource type="Script" path="res://characters/character.gd" id="1_8kwiu"]
 [ext_resource type="Script" path="res://characters/stats/stats_manager.gd" id="2_3n7xj"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://characters/processors/heal.gd" id="9_urlqi"]
 [ext_resource type="Script" path="res://characters/processors/movement.gd" id="10_hj0il"]
 [ext_resource type="Script" path="res://characters/processors/rotation.gd" id="11_747v1"]
+[ext_resource type="Script" path="res://characters/processors/visibility.gd" id="11_mq5k8"]
 [ext_resource type="PackedScene" uid="uid://7xkefn5xpy47" path="res://characters/hud/hud.tscn" id="12_4f13d"]
 [ext_resource type="PackedScene" uid="uid://cnpyc3trrywtx" path="res://characters/skills/preview/previews.tscn" id="13_oo27p"]
 [ext_resource type="Script" path="res://characters/input/input_source.gd" id="14_ovw2o"]
@@ -106,6 +107,9 @@ movement_speed = NodePath("../../Stats/MovementSpeed")
 script = ExtResource("11_747v1")
 rotation_speed = NodePath("../../Stats/RotationSpeed")
 
+[node name="Visibility" type="Node" parent="Processors"]
+script = ExtResource("11_mq5k8")
+
 [node name="HitBox" type="Area3D" parent="."]
 monitoring = false
 script = ExtResource("2_nshhg")
@@ -119,7 +123,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
 shape = SubResource("CylinderShape3D_vwbuv")
 
 [node name="HUD" parent="." node_paths=PackedStringArray("health", "name_tag") instance=ExtResource("12_4f13d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.07557, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4973, 0)
 health = NodePath("../Stats/Health")
 name_tag = NodePath("../Stats/Name")
 

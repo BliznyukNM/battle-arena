@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://bu0t01nod6qgi"]
+
+[ext_resource type="PackedScene" uid="uid://dt7dp8amhbd5b" path="res://characters/skills/range_attack_skill.tscn" id="1_xof2p"]
+
+[node name="RangeAttack" instance=ExtResource("1_xof2p")]
+spawn_point = Vector3(2.08165e-12, 1, 1)
+damage = 10.0
+projectile_speed = 20.0
+distance = 10.0
+radius = 1.0
+
+[node name="Execution" parent="." index="0"]
+base_time = 0.4
+
+[node name="Cooldown" parent="." index="1"]
+base_time = 0.5
+
+[node name="Container" parent="." index="2"]
+_spawnable_scenes = PackedStringArray("res://characters/heroes/ranger/arrow.tscn")

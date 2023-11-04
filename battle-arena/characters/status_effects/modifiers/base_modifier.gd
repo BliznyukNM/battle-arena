@@ -13,12 +13,12 @@ var _current_condition: bool:
 
 
 func _ready() -> void:
+    tree_exiting.connect(func(): self._current_condition = false)
     _initialize.call_deferred()
-    tree_exiting.connect(func(): _current_condition = false)
 
 
 func _initialize() -> void:
-    _current_condition = default_condition
+    self._current_condition = default_condition
 
 
 func _trigger_effects(condition: bool) -> void:

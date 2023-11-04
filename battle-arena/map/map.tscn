@@ -9,6 +9,7 @@
 [sub_resource type="Environment" id="Environment_r4cc4"]
 ssao_enabled = true
 sdfgi_enabled = true
+glow_enabled = true
 volumetric_fog_density = 0.0238
 volumetric_fog_length = 1024.0
 

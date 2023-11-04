@@ -101,4 +101,4 @@ nodes/attackSpeed/position = Vector2(-40, 660)
 nodes/moveSpeed/node = SubResource("AnimationNodeTimeScale_3csqs")
 nodes/moveSpeed/position = Vector2(-260, 1020)
 nodes/output/position = Vector2(400, 600)
-node_connections = [&"output", 0, &"PlayAttack", &"AttackType", 0, &"Chop", &"AttackType", 1, &"Slice", &"AttackType", 2, &"Kick", &"AttackType", 3, &"Punch", &"PlayAttack", 0, &"moveSpeed", &"PlayAttack", 1, &"attackSpeed", &"attackSpeed", 0, &"AttackType", &"moveSpeed", 0, &"Movement"]
+node_connections = [&"AttackType", 0, &"Chop", &"AttackType", 1, &"Slice", &"AttackType", 2, &"Kick", &"AttackType", 3, &"Punch", &"PlayAttack", 0, &"moveSpeed", &"PlayAttack", 1, &"attackSpeed", &"attackSpeed", 0, &"AttackType", &"moveSpeed", 0, &"Movement", &"output", 0, &"PlayAttack"]

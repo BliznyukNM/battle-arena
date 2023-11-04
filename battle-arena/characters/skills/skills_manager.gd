@@ -49,6 +49,7 @@ func cancel_skill() -> void:
 @rpc("reliable", "call_local")
 func _activate_skill(index: int, pressed: bool) -> void:
     var skill = _skills[index]
+    if not skill: return
     if _last_used_skill and _last_used_skill != skill and not _last_used_skill.execution.is_stopped(): return
     _last_used_skill = skill
     skill.activate(pressed)

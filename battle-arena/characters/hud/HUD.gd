@@ -9,6 +9,7 @@ extends Node
 @onready var health_bar: = $SubViewport/HUD/Container/Health
 @onready var energy_bar: = $SubViewport/HUD/Container/Energy
 @onready var progress_bar: = $SubViewport/HUD/Container/ProgressBar
+@onready var effect_progress_bar: = $SubViewport/HUD/Container/EffectProgressBar
 
 @onready var name_label: = $SubViewport/HUD/Container/Name
 @onready var view: = $View
@@ -33,3 +34,7 @@ func _initialize_bar(bar: ProgressBar, stat: NumberStat) -> void:
 
 func on_skill_activated(skill: BaseSkill) -> void:
     progress_bar.register_skill(skill)
+
+
+func on_timed_modifier_started(modifier: TimedModifier) -> void:
+    effect_progress_bar.register_modifier(modifier)

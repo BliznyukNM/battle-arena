@@ -13,8 +13,8 @@ var _current_time: float:
 
 
 func _ready() -> void:
-    super._ready()
     _current_time = time
+    super._ready()
 
 
 func _process(delta: float) -> void:

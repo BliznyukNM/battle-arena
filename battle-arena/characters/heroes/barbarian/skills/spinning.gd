@@ -27,6 +27,7 @@ func _on_activate(pressed: bool) -> void:
             _tween = create_tween().set_loops((int)(execution.wait_time / time_between_hits))
             _tween.tween_callback(_try_hit_area).set_delay(time_between_hits)
 
+    # this will trigger finish function if already in progress
     super._on_activate(pressed)
 
 

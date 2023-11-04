@@ -51,6 +51,7 @@ func _trigger_skill_sequence() -> void:
         if not current_skill.cooldown.is_stopped():
             await current_skill.cooldown.timeout
 
+        if not _skill_scheduled: break
         current_skill.activate(true)
 
         if not current_skill.execution.is_stopped():

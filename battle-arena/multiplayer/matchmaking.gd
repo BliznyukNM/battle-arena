@@ -14,13 +14,13 @@ var _session: NakamaSession
 
 
 var ip: String:
-    get: return ProjectSettings.get_setting("application/run/ip_address", "127.0.0.1")
+    get: return ProjectSettings.get_setting_with_override("application/run/ip_address")
 var port: int:
     get: return ProjectSettings.get_setting("application/run/port", 7350)
 var scheme: String:
     get: return ProjectSettings.get_setting("application/run/network_scheme", "http")
 var server_key: String:
-    get: return ProjectSettings.get_setting("application/run/server_key", "defaultkey")
+    get: return ProjectSettings.get_setting_with_override("application/run/server_key")
 
 
 var is_authenticated: bool:
