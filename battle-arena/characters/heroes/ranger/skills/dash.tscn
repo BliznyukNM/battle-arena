@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://deu4jhtess0ru"]
+
+[ext_resource type="PackedScene" uid="uid://76ddkyhgdvp" path="res://characters/skills/base_skill.tscn" id="1_22n4h"]
+[ext_resource type="Script" path="res://characters/heroes/ranger/skills/dash.gd" id="2_of3g1"]
+
+[node name="Dash" instance=ExtResource("1_22n4h")]
+script = ExtResource("2_of3g1")
+distance = 5.0
+dash_time = 0.15
+
+[node name="Execution" parent="." index="0"]
+base_time = 0.1
+
+[node name="Cooldown" parent="." index="1"]
+base_time = 7.0

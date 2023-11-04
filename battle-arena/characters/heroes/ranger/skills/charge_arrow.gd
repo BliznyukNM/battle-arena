@@ -1,6 +1,8 @@
 extends "res://characters/skills/range_attack_skill.gd"
 
 
+@export_range(0.0, 100.0, 1.0, "suffix:%") var energy_cost: float
+@export var energy_stat: NumberStat
 @export var max_charge_distance: float
 @export var max_charge_damage: float
 
@@ -18,6 +20,9 @@ func _get_damage() -> float:
 
 func activate(pressed: bool) -> void:
     if pressed != execution.is_stopped(): return
+    
+    if energy_stat and not is_equal_approx(energy_cost, 0.0) and energy_stat.current_value < energy_cost:
+        return
     
     if pressed:
         _additional_damage = 0

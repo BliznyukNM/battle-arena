@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://dbjutw8fckxjl"]
+[gd_scene load_steps=17 format=3 uid="uid://dbjutw8fckxjl"]
 
 [ext_resource type="PackedScene" uid="uid://d26br4f45m27g" path="res://characters/character.tscn" id="1_gfvhh"]
 [ext_resource type="PackedScene" uid="uid://bu0t01nod6qgi" path="res://characters/heroes/ranger/skills/base_range_attack.tscn" id="2_2cs3i"]
+[ext_resource type="Script" path="res://characters/stats/number_stat.gd" id="2_8tvmm"]
 [ext_resource type="Script" path="res://characters/status_effects/modifiers/conditional_modifier.gd" id="2_327xy"]
 [ext_resource type="Script" path="res://characters/skills/skill_sequence.gd" id="2_ascv0"]
 [ext_resource type="Script" path="res://characters/heroes/ranger/processors/skin.gd" id="2_frijp"]
@@ -11,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://3vrp21ttxxej" path="res://characters/heroes/ranger/skills/invisibility.tscn" id="5_hhkuk"]
 [ext_resource type="PackedScene" uid="uid://b36uqcakmeluf" path="res://characters/heroes/ranger/skills/trap.tscn" id="7_0pagd"]
 [ext_resource type="Script" path="res://characters/processors/clear_modifiers.gd" id="7_2y3fc"]
+[ext_resource type="PackedScene" uid="uid://deu4jhtess0ru" path="res://characters/heroes/ranger/skills/dash.tscn" id="9_vmnp0"]
+[ext_resource type="PackedScene" uid="uid://08oer10vlnb4" path="res://characters/heroes/ranger/skills/ultimate_arrow.tscn" id="10_qjbdi"]
 
 [sub_resource type="Resource" id="Resource_avmrn"]
 script = ExtResource("3_i85lt")
@@ -22,8 +25,17 @@ amount = 100
 
 [node name="Character" instance=ExtResource("1_gfvhh")]
 
+[node name="MovementSpeed" parent="Stats" index="2"]
+base_value = 4.0
+
 [node name="AttackSpeed" parent="Stats" index="4"]
 base_value = 0.8
+
+[node name="Energy" type="Node" parent="Stats" index="6"]
+script = ExtResource("2_8tvmm")
+has_max_value = true
+max_value = 100.0
+has_min_value = true
 
 [node name="SlowdownOnAttack" type="Node" parent="Modifiers" index="0"]
 script = ExtResource("2_327xy")
@@ -42,10 +54,18 @@ script = ExtResource("2_ascv0")
 skill_speed = NodePath("../../../Stats/AttackSpeed")
 
 [node name="SecondaryAttack" parent="Skills" index="1" instance=ExtResource("4_7ta2r")]
+energy_cost = 0.0
 
-[node name="ThirdAttack" parent="Skills" index="2" instance=ExtResource("7_0pagd")]
+[node name="ThirdAttack" parent="Skills" index="2" instance=ExtResource("5_hhkuk")]
 
-[node name="Block" parent="Skills" index="3" instance=ExtResource("5_hhkuk")]
+[node name="Block" parent="Skills" index="3" instance=ExtResource("7_0pagd")]
+
+[node name="Dodge" parent="Skills" index="4" instance=ExtResource("9_vmnp0")]
+dash_time = 0.3
+
+[node name="Ultimate" parent="Skills" index="5" node_paths=PackedStringArray("energy_stat") instance=ExtResource("10_qjbdi")]
+energy_cost = 0.0
+energy_stat = NodePath("../../Stats/Energy")
 
 [node name="Skin" type="Node" parent="Processors" index="4" node_paths=PackedStringArray("skin", "move_speed", "attack_speed")]
 script = ExtResource("2_frijp")
@@ -56,7 +76,7 @@ interpolation = 10.0
 
 [node name="ClearModifiers" type="Node" parent="Processors" index="5" node_paths=PackedStringArray("skills")]
 script = ExtResource("7_2y3fc")
-skills = [NodePath("../../Skills/BasicAttack/Shot"), NodePath("../../Skills/SecondaryAttack"), NodePath("../../Skills/ThirdAttack")]
+skills = [NodePath("../../Skills/BasicAttack/Shot"), NodePath("../../Skills/SecondaryAttack"), NodePath("../../Skills/Block"), NodePath("../../Skills/Dodge")]
 modifiers = Array[String](["Invisibility"])
 
 [node name="Skin" parent="." index="9" instance=ExtResource("2_plqqr")]
@@ -66,8 +86,11 @@ modifiers = Array[String](["Invisibility"])
 [connection signal="activated" from="Skills/SecondaryAttack" to="HUD" method="on_skill_activated"]
 [connection signal="activated" from="Skills/SecondaryAttack" to="Previews/ArrowPreview" method="start"]
 [connection signal="activated" from="Skills/SecondaryAttack" to="Skin" method="play_charge_shot"]
-[connection signal="activated" from="Skills/ThirdAttack" to="HUD" method="on_skill_activated"]
-[connection signal="activated" from="Skills/ThirdAttack" to="Previews/AreaPreview" method="start"]
-[connection signal="activated" from="Skills/ThirdAttack" to="Skin" method="play_throw"]
+[connection signal="activated" from="Skills/Block" to="HUD" method="on_skill_activated"]
+[connection signal="activated" from="Skills/Block" to="Previews/AreaPreview" method="start"]
+[connection signal="activated" from="Skills/Block" to="Skin" method="play_throw"]
+[connection signal="activated" from="Skills/Ultimate" to="HUD" method="on_skill_activated"]
+[connection signal="activated" from="Skills/Ultimate" to="Previews/ArrowPreview" method="start"]
+[connection signal="activated" from="Skills/Ultimate" to="Skin" method="play_ultimate"]
 
 [editable path="Previews"]
