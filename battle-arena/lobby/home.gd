@@ -37,6 +37,7 @@ func _on_cancel_matchmaking() -> void:
 
 func _load_map(map_scene: PackedScene) -> void:
     var map: Node = map_scene.instantiate()
+    map.selected_hero = $HeroSelector.selected
     get_tree().root.add_child(map)
     get_tree().root.remove_child(self)
     queue_free()

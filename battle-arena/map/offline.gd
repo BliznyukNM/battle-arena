@@ -3,6 +3,7 @@ extends Node3D
 
 var port: int:
     get: return ProjectSettings.get_setting("application/run/port", 7350)
+var selected_hero: int
 
 
 func _ready() -> void:
@@ -12,7 +13,7 @@ func _ready() -> void:
     
     var params: = {
         "id" = multiplayer.get_unique_id(),
-        "character" = 0
+        "character" = selected_hero
     }
     
     var character = %TeamA.spawn(params)

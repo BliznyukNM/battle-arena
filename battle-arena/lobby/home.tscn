@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://e08246dckwg4"]
+[gd_scene load_steps=7 format=3 uid="uid://ckl50i36f2rbm"]
 
 [ext_resource type="Theme" uid="uid://bj84mbcru2nxg" path="res://lobby/themes/default.tres" id="1_6fdaq"]
 [ext_resource type="Script" path="res://lobby/home.gd" id="2_xijd1"]
@@ -122,6 +122,19 @@ offset_bottom = 99.0
 theme_override_font_sizes/font_size = 36
 placeholder_text = "Username"
 alignment = 1
+
+[node name="HeroSelector" type="OptionButton" parent="."]
+layout_mode = 1
+offset_left = 52.0
+offset_top = 123.0
+offset_right = 460.0
+offset_bottom = 179.0
+item_count = 2
+selected = 0
+popup/item_0/text = "Barbarian"
+popup/item_0/id = 0
+popup/item_1/text = "Ranger"
+popup/item_1/id = 1
 
 [connection signal="pressed" from="PlayOffline" to="." method="_on_play_offline"]
 [connection signal="pressed" from="PlayOnline" to="." method="_on_play_online"]

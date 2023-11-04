@@ -44,7 +44,7 @@ func _on_peer_connected(id: int) -> void:
     
     var params: = {
         "id" = id,
-        "character" = 1 # TODO: temp
+        "character" = get_parent().selected_hero # FIXME
     }
     
     var team: = _get_priority_team()
