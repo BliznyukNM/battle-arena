@@ -1,7 +1,7 @@
 extends "res://map/online.gd"
 
 
-@onready var home: = preload("res://lobby/home.tscn")
+@onready var home: = preload("res://lobby/lobby.tscn")
 
 
 const MAX_WINS: = 3
