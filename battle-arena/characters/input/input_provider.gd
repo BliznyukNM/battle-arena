@@ -20,7 +20,10 @@ signal on_cancel()
 
 
 func _ready() -> void:
-    set_process(is_multiplayer_authority())
+    # FIXME: hacky way of waiting for assigning authority by root
+    await owner.get_tree().process_frame
+    var has_authority: = is_multiplayer_authority()
+    set_process(has_authority)
 
 
 func _process(delta: float) -> void:
