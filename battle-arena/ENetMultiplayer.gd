@@ -16,9 +16,7 @@ func _ready() -> void:
     
     if not multiplayer.is_server(): return
     
-    for peer in multiplayer.get_peers():
-        _on_peer_connected(peer)
-    _on_peer_connected(multiplayer.get_unique_id())
+    spawn_hero(multiplayer.get_unique_id(), get_parent().selected_hero) # FIXME
 
 
 func _exit_tree() -> void:
@@ -35,16 +33,18 @@ func _on_server_disconnected() -> void:
 
 func _on_connected_to_server() -> void:
     print("Connected to server!")
+    spawn_hero.rpc_id(0, multiplayer.get_unique_id(), get_parent().selected_hero) # FIXME
 
 
 func _on_peer_connected(id: int) -> void:
     print("Client connected: %d" % id)
-    
-    if not multiplayer.is_server(): return
-    
+
+
+@rpc("any_peer", "reliable")
+func spawn_hero(player_id: int, hero_id: int) -> void:
     var params: = {
-        "id" = id,
-        "character" = get_parent().selected_hero # FIXME
+        "id" = player_id,
+        "character" = hero_id
     }
     
     var team: = _get_priority_team()
