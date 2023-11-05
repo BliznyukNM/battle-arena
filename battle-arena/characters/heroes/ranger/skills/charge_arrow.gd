@@ -37,6 +37,11 @@ func activate(pressed: bool) -> void:
         _stop_execution()
 
 
+func _on_activate(pressed: bool) -> void:
+    super._on_activate(pressed)
+    if energy_stat: energy_stat.current_value -= energy_cost
+
+
 func _on_finish() -> void:
     super._on_finish()
     _tween.kill()

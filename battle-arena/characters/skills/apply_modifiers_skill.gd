@@ -20,3 +20,4 @@ func _on_activate(pressed: bool) -> void:
         var modifier: BaseModifier = modifier_scene.instantiate()
         owner.modifiers.add_modifier(modifier)
     super._on_activate(pressed)
+    if energy_stat: energy_stat.current_value -= energy_cost
