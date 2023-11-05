@@ -1,12 +1,26 @@
 extends Node3D
 
 
+@export var taunt: Material
+@export var charged_2h_axe: Material
+
+
 @onready var animationTree: AnimationTree = $AnimationTree
 
 @onready var big_axe: = $"Rig/Skeleton3D/2H_Axe/2H_Axe"
 @onready var left_axe: = $"Rig/Skeleton3D/1H_Axe_Offhand/1H_Axe_Offhand"
 @onready var right_axe: = $"Rig/Skeleton3D/1H_Axe/1H_Axe"
 @onready var mug: = $"Rig/Skeleton3D/Mug/Mug"
+@onready var body_meshes: Array[MeshInstance3D] = [
+    $Rig/Skeleton3D/Barbarian_ArmLeft,
+    $Rig/Skeleton3D/Barbarian_ArmRight,
+    $Rig/Skeleton3D/Barbarian_Body,
+    $Rig/Skeleton3D/Barbarian_Head,
+    $Rig/Skeleton3D/Barbarian_LegLeft,
+    $Rig/Skeleton3D/Barbarian_LegRight,
+    $Rig/Skeleton3D/Barbarian_Hat/Barbarian_Hat,
+    $Rig/Skeleton3D/Barbarian_Cape/Barbarian_Cape,
+]
 
 
 func update_stance(stance: String) -> void:
@@ -58,11 +72,19 @@ func stop_attack(skill: BaseSkill) -> void:
 
 func play_taunt(skill: BaseSkill) -> void:
     animationTree.set("parameters/PlayTaunt/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+    for mesh in body_meshes: mesh.material_override = taunt
     skill.execution.timeout.connect(_stop_taunt, CONNECT_ONE_SHOT)
 
 
 func _stop_taunt() -> void:
     animationTree.set("parameters/PlayTaunt/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FADE_OUT)
+    for mesh in body_meshes: mesh.material_override = null
+
+
+func show_rage(rage: TimedModifier) -> void:
+    big_axe.material_override = charged_2h_axe
+    await rage.tree_exiting
+    big_axe.material_override = null
 
 
 func play_spin(skill: BaseSkill) -> void:

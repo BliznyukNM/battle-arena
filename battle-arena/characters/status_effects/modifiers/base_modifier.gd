@@ -14,6 +14,7 @@ var _current_condition: bool:
 
 func _ready() -> void:
     tree_exiting.connect(func(): self._current_condition = false)
+    for effect in effects: effect.set_parent(self)
     _initialize.call_deferred()
 
 
