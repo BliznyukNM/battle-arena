@@ -1,0 +1,5 @@
+[[actions]]
+name = "play"
+path = "Battle Arena.app"
+platform = "osx"
+scope = "profile:me"
