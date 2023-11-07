@@ -66,16 +66,13 @@ func _on_itch_request_completed(result: int, response_code: int, headers: Packed
     
     var email: String = "%s@itch.io" % json.user.username
     var password: = Marshalls.utf8_to_base64("%s.%s" % [json.user.username, json.user.id])
-    print("Password: %s" % password)
     var nakama_result = await Matchmaking.authenticate(email, password, json.user.username, true)
     if not nakama_result:
         push_error("Cannot authenticate: %s" % nakama_result)
     
-    print(json)
-    
     nakama_result = await Matchmaking.update_account(json.user.display_name, json.user.cover_url)
     if not nakama_result:
-        push_error("Cannot set avatar: %s" % nakama_result)
+        push_error("Cannot update account: %s" % nakama_result)
     
     loader.start_home()
 

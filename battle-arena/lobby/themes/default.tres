@@ -1,9 +1,11 @@
-[gd_resource type="Theme" load_steps=13 format=3 uid="uid://bj84mbcru2nxg"]
+[gd_resource type="Theme" load_steps=20 format=3 uid="uid://bj84mbcru2nxg"]
 
 [ext_resource type="Texture2D" uid="uid://dahbrapcpld4x" path="res://assets/ui/green_button_pressed.atlastex" id="1_a1myh"]
 [ext_resource type="Texture2D" uid="uid://bemhpj5nsf5on" path="res://assets/ui/green_button_focused.atlastex" id="1_gmqbn"]
 [ext_resource type="Texture2D" uid="uid://bgccuk80a62px" path="res://assets/ui/grey_input.atlastex" id="1_nm5kr"]
 [ext_resource type="Texture2D" uid="uid://bk7cwjrakn07s" path="res://assets/ui/green_button.atlastex" id="1_umlqg"]
+[ext_resource type="Texture2D" uid="uid://co322lddnmt82" path="res://assets/ui/red_button_focused.atlastex" id="5_7kkvo"]
+[ext_resource type="Texture2D" uid="uid://b4sme5s3u2h3e" path="res://assets/ui/red_button_pressed.atlastex" id="6_ajlh6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bnexw"]
 texture = ExtResource("1_a1myh")
@@ -58,6 +60,36 @@ texture_margin_right = 8.0
 texture_margin_bottom = 8.0
 modulate_color = Color(0.54902, 0.54902, 0.54902, 1)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y6u3c"]
+texture = ExtResource("1_a1myh")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0npuh"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_70byb"]
+texture = ExtResource("5_7kkvo")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iumfb"]
+texture = ExtResource("5_7kkvo")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0thos"]
+texture = ExtResource("6_ajlh6")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
 [resource]
 GreenButton/base_type = &"Button"
 GreenButton/colors/font_color = Color(0.819608, 1, 0.780392, 1)
@@ -75,3 +107,9 @@ LineEdit/styles/normal = SubResource("StyleBoxTexture_134ew")
 LineEdit/styles/read_only = SubResource("StyleBoxTexture_1l67j")
 MatchTypeButton/base_type = &"Button"
 RedButton/base_type = &"Button"
+RedButton/colors/font_color = Color(1, 0.85098, 0.85098, 1)
+RedButton/styles/disabled = SubResource("StyleBoxTexture_y6u3c")
+RedButton/styles/focus = SubResource("StyleBoxEmpty_0npuh")
+RedButton/styles/hover = SubResource("StyleBoxTexture_70byb")
+RedButton/styles/normal = SubResource("StyleBoxTexture_iumfb")
+RedButton/styles/pressed = SubResource("StyleBoxTexture_0thos")
