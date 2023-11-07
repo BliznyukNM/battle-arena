@@ -3,3 +3,15 @@ name = "play"
 path = "Battle Arena.app"
 platform = "osx"
 scope = "profile:me"
+
+[[actions]]
+name = "play"
+path = "Battle Arena.x86_64"
+platform = "linux"
+scope = "profile:me"
+
+[[actions]]
+name = "play"
+path = "Battle Arena.exe"
+platform = "windows"
+scope = "profile:me"

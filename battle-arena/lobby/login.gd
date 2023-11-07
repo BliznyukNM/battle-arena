@@ -22,7 +22,7 @@ func on_login_pressed() -> void:
     _save_username()
     _save_uuid()
     
-    var result: = await Matchmaking.authenticate($Nickname.text)
+    var result: = await Matchmaking.authenticate("%s@custom.email" % $Nickname.text, "password")
     if result: loader.start_home()
 
 
@@ -34,7 +34,7 @@ func _on_register_pressed() -> void:
     _save_username()
     _save_uuid()
     
-    var result: = await Matchmaking.authenticate($Nickname.text, $Nickname.text, true)
+    var result: = await Matchmaking.authenticate("%s@custom.email" % $Nickname.text, "password", $Nickname.text, true)
     if result: loader.start_home()
 
 
@@ -63,8 +63,21 @@ func _try_login_itch() -> void:
 func _on_itch_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
     var json = JSON.parse_string(body.get_string_from_utf8())
     $Nickname.text = json.user.username
-    var auth_result: = await Matchmaking.authenticate(json.user.id, json.user.username, true)
-    if auth_result: loader.start_home()
+    
+    var email: String = "%s@itch.io" % json.user.username
+    var password: = Marshalls.utf8_to_base64("%s.%s" % [json.user.username, json.user.id])
+    print("Password: %s" % password)
+    var nakama_result = await Matchmaking.authenticate(email, password, json.user.username, true)
+    if not nakama_result:
+        push_error("Cannot authenticate: %s" % nakama_result)
+    
+    print(json)
+    
+    nakama_result = await Matchmaking.update_account(json.user.display_name, json.user.cover_url)
+    if not nakama_result:
+        push_error("Cannot set avatar: %s" % nakama_result)
+    
+    loader.start_home()
 
 
 func _save_username() -> void:

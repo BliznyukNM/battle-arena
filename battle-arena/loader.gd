@@ -6,7 +6,7 @@ enum Mode { Local, Client, Server, Home }
 
 @onready var offline_map: = preload("res://map/offline.tscn")
 @onready var online_map: = preload("res://map/online.tscn")
-@onready var home: = preload("res://lobby/lobby.tscn")
+@onready var home: = preload("res://lobby/lobby_new.tscn")
 
 
 var _launched: bool

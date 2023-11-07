@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://bbh6e4rwq01lt"]
+
+[ext_resource type="Script" path="res://lobby/lobby.gd" id="1_2sg5c"]
+[ext_resource type="Texture2D" uid="uid://bv34472bbn83h" path="res://assets/ui/white_square.atlastex" id="1_pn7kp"]
+
+[sub_resource type="Gradient" id="Gradient_fgu8t"]
+colors = PackedColorArray(0.92496, 0.94, 0.4888, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ob8gu"]
+gradient = SubResource("Gradient_fgu8t")
+width = 1
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2o10n"]
+size = Vector2(100, 100)
+
+[node name="Lobby" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2sg5c")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_ob8gu")
+
+[node name="PlayerInfo" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -519.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = 151.0
+grow_horizontal = 0
+texture = ExtResource("1_pn7kp")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Name" type="Label" parent="PlayerInfo"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -387.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Nickname"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Avatar" type="TextureRect" parent="PlayerInfo"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_top = 5.0
+offset_right = 139.0
+offset_bottom = -5.0
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_2o10n")
+expand_mode = 2
+stretch_mode = 5
