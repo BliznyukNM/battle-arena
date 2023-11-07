@@ -32,8 +32,8 @@ func _ready() -> void:
     _bridge.match_join_error.connect(func(error): assert(false, error))
 
 
-func authenticate(id, username: String = '', create_account: bool = false) -> bool:
-    _session = await _client.authenticate_email_async("%s@game.io" % id, "password", username, create_account)
+func authenticate(email: String, password: String, username: String = '', create_account: bool = false) -> bool:
+    _session = await _client.authenticate_email_async(email, "password", username, create_account)
     
     # TODO: Save auth token
     
@@ -48,6 +48,15 @@ func authenticate(id, username: String = '', create_account: bool = false) -> bo
     multiplayer.multiplayer_peer = _bridge.multiplayer_peer
     
     return not connected.is_exception()
+
+
+func update_account(display_name = null, avatar_url = null) -> bool:
+    var result = await _client.update_account_async(_session, null, display_name, avatar_url)
+    return not result.is_exception()
+
+
+func get_account(): # -> NakamaAPI.ApiAccount
+    return await _client.get_account_async(_session)
 
 
 func get_username() -> String:

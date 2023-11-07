@@ -3,7 +3,7 @@ extends Node3D
 
 var port: int:
     get: return ProjectSettings.get_setting("application/run/port", 7350)
-var selected_hero: int
+var selected_hero: String
 
 
 func _ready() -> void:

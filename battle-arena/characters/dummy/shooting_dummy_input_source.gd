@@ -1,5 +1,5 @@
 extends InputSource
-
+    
 
 func is_basic_attack_just_pressed() -> bool:
     var basic_attack = _owner.skills.basic_attack

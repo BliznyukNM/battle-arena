@@ -1,30 +1,70 @@
-[gd_scene load_steps=7 format=3 uid="uid://ckm8jbw2wvuk"]
+[gd_scene load_steps=12 format=3 uid="uid://bbh6e4rwq01lt"]
 
 [ext_resource type="Theme" uid="uid://bj84mbcru2nxg" path="res://lobby/themes/default.tres" id="1_6fdaq"]
-[ext_resource type="Script" path="res://lobby/home.gd" id="2_xijd1"]
-[ext_resource type="Texture2D" uid="uid://boq8haowh7bkl" path="res://assets/art/rnM08T.png" id="2_yv2kc"]
-[ext_resource type="Texture2D" uid="uid://dr27x7wojlrdu" path="res://assets/art/vCA8QE.png" id="3_58q14"]
+[ext_resource type="Script" path="res://lobby/lobby.gd" id="1_coknr"]
+[ext_resource type="Texture2D" uid="uid://bv34472bbn83h" path="res://assets/ui/white_square.atlastex" id="2_817em"]
+[ext_resource type="Texture2D" uid="uid://dkeii0cbfx8np" path="res://assets/characters/art/barbarian_icon.atlastex" id="3_r3b5b"]
+[ext_resource type="Texture2D" uid="uid://i6lhw3i678rr" path="res://assets/characters/art/rogue_icon.atlastex" id="4_fy2a8"]
 
-[sub_resource type="Gradient" id="Gradient_3cyam"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.982, 1, 0.46, 1)
+[sub_resource type="Gradient" id="Gradient_fgu8t"]
+colors = PackedColorArray(0.92496, 0.94, 0.4888, 1, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_lr4ag"]
-gradient = SubResource("Gradient_3cyam")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ob8gu"]
+gradient = SubResource("Gradient_fgu8t")
 width = 1
-height = 1
-fill_from = Vector2(0.132479, 0.145299)
-fill_to = Vector2(0.713675, 0.641026)
 
-[node name="Home" type="Control"]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2o10n"]
+size = Vector2(100, 100)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ogaww"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="GDScript" id="GDScript_s5ggv"]
+resource_name = "lobby_preview"
+script/source = "extends TextureRect
+
+
+var skin: Node3D:
+    get: return get_parent().get_node_or_null(\"SubViewport/Skin\")
+
+
+func _on_gui_input(event: InputEvent) -> void:
+    if event is InputEventMouseMotion and event.button_mask == MOUSE_BUTTON_MASK_LEFT:
+        if skin: skin.rotate(Vector3.UP, event.relative.x * 0.01)
+"
+
+[sub_resource type="GDScript" id="GDScript_ppswv"]
+resource_name = "play_online_button"
+script/source = "extends Button
+
+
+func _ready() -> void:
+    disabled = not Matchmaking.is_authenticated
+    pressed.connect(start_matchmaking, CONNECT_ONE_SHOT)
+
+
+func start_matchmaking() -> void:
+    Matchmaking.find_match()
+    text = \"Cancel\"
+    theme_type_variation = \"RedButton\"
+    pressed.connect(cancel_matchmaking, CONNECT_ONE_SHOT)
+
+
+func cancel_matchmaking() -> void:
+    Matchmaking.leave_match()
+    text = \"Play Online\"
+    theme_type_variation = \"GreenButton\"
+    pressed.connect(start_matchmaking, CONNECT_ONE_SHOT)
+"
+
+[node name="Lobby" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_6fdaq")
-script = ExtResource("2_xijd1")
+script = ExtResource("1_coknr")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -33,111 +73,143 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_lr4ag")
+texture = SubResource("GradientTexture1D_ob8gu")
 
-[node name="PlayOffline" type="Button" parent="."]
+[node name="PlayerInfo" type="NinePatchRect" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -671.0
-offset_top = -284.0
-offset_right = -79.0
-offset_bottom = 284.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_type_variation = &"MatchTypeButton"
-icon = ExtResource("2_yv2kc")
-icon_alignment = 1
-expand_icon = true
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -519.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = 151.0
+grow_horizontal = 0
+texture = ExtResource("2_817em")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
 
-[node name="Label" type="Label" parent="PlayOffline"]
+[node name="Name" type="Label" parent="PlayerInfo"]
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 11
+anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -23.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "Playground"
-horizontal_alignment = 1
-
-[node name="PlayOnline" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 75.0
-offset_top = -284.0
-offset_right = 667.0
-offset_bottom = 284.0
-grow_horizontal = 2
+offset_left = -387.0
+grow_horizontal = 0
 grow_vertical = 2
-theme_type_variation = &"MatchTypeButton"
-icon = ExtResource("3_58q14")
-icon_alignment = 1
-expand_icon = true
-
-[node name="Label" type="Label" parent="PlayOnline"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -23.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "PvP"
-horizontal_alignment = 1
-
-[node name="Cancel" type="Button" parent="PlayOnline"]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -110.0
-offset_top = -42.0
-offset_right = 111.0
-offset_bottom = 42.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_type_variation = &"GreenButton"
-theme_override_font_sizes/font_size = 32
-text = "Cancel"
-
-[node name="Username" type="LineEdit" parent="."]
-layout_mode = 0
-offset_left = 46.0
-offset_top = 37.0
-offset_right = 461.0
-offset_bottom = 99.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 36
-placeholder_text = "Username"
+text = "Nickname"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Avatar" type="TextureRect" parent="PlayerInfo"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_top = 5.0
+offset_right = 139.0
+offset_bottom = -5.0
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_2o10n")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1024, 1024)
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.996561, 0.0828604, 0, -0.0828604, 0.996561, 0, 1.54043, 4.51701)
+fov = 45.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport"]
+transform = Transform3D(0.790312, 0.374414, 0.484997, -0.610456, 0.548937, 0.570974, -0.0524525, -0.747317, 0.662394, 0.0578584, 2.65357, 2.58635)
+
+[node name="HeroPreview" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 311.0
+offset_top = -443.0
+offset_right = 1093.0
+offset_bottom = 339.0
+grow_vertical = 2
+texture = SubResource("ViewportTexture_ogaww")
+expand_mode = 2
+stretch_mode = 5
+script = SubResource("GDScript_s5ggv")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 44.0
+offset_top = -296.0
+offset_right = 438.0
+offset_bottom = 296.0
+grow_vertical = 2
+columns = 3
+
+[node name="Barbarian" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Barbarian"
+icon = ExtResource("3_r3b5b")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Ranger" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Ranger"
+icon = ExtResource("4_fy2a8")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -142.0
+offset_right = -48.0
+offset_bottom = 142.0
+grow_horizontal = 0
+grow_vertical = 2
 alignment = 1
 
-[node name="HeroSelector" type="OptionButton" parent="."]
-layout_mode = 1
-offset_left = 52.0
-offset_top = 123.0
-offset_right = 460.0
-offset_bottom = 179.0
-item_count = 2
-selected = 0
-popup/item_0/text = "Barbarian"
-popup/item_0/id = 0
-popup/item_1/text = "Ranger"
-popup/item_1/id = 1
+[node name="Sandbox" type="Button" parent="Buttons"]
+custom_minimum_size = Vector2(2.08165e-12, 80)
+layout_mode = 2
+theme = ExtResource("1_6fdaq")
+theme_type_variation = &"GreenButton"
+theme_override_font_sizes/font_size = 32
+text = "Sandbox"
 
-[connection signal="pressed" from="PlayOffline" to="." method="_on_play_offline"]
-[connection signal="pressed" from="PlayOnline" to="." method="_on_play_online"]
-[connection signal="pressed" from="PlayOnline/Cancel" to="." method="_on_cancel_matchmaking"]
-[connection signal="focus_exited" from="Username" to="." method="_on_change_username"]
-[connection signal="text_submitted" from="Username" to="." method="_on_change_username"]
+[node name="PlayOnline" type="Button" parent="Buttons"]
+custom_minimum_size = Vector2(2.08165e-12, 80)
+layout_mode = 2
+theme = ExtResource("1_6fdaq")
+theme_type_variation = &"GreenButton"
+theme_override_font_sizes/font_size = 32
+text = "Play Online"
+script = SubResource("GDScript_ppswv")
+
+[connection signal="gui_input" from="HeroPreview" to="HeroPreview" method="_on_gui_input"]
+[connection signal="pressed" from="GridContainer/Barbarian" to="." method="select_hero" binds= ["barbarian"]]
+[connection signal="pressed" from="GridContainer/Ranger" to="." method="select_hero" binds= ["ranger"]]
+[connection signal="pressed" from="Buttons/Sandbox" to="." method="start_sandbox"]

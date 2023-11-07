@@ -29,7 +29,7 @@ func _ready() -> void:
 
 
 func _spawn(params) -> Node:
-    var hero_instance = load(get_spawnable_scene(params.character)).instantiate()
+    var hero_instance = load("res://characters/heroes/%s/%s.tscn" % [params.character, params.character]).instantiate()
     hero_instance.name = str(params.id)
     hero_instance.player_id = params.id
     hero_instance.collision_layer = 1 << team_id
