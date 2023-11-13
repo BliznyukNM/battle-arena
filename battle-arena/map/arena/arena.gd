@@ -1,4 +1,4 @@
-extends "res://map/online.gd"
+extends "res://map/map.gd"
 
 
 @onready var home: = preload("res://lobby/lobby.tscn")
@@ -22,8 +22,6 @@ var _teams = [
 
 
 func _ready() -> void:
-    super._ready()
-    
     if not multiplayer.is_server(): return
     
     for team in _teams:

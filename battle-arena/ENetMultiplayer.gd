@@ -1,13 +1,9 @@
 extends Node
 
 
-var host: String:
-    get: return ProjectSettings.get_setting("application/run/ip_address", "127.0.0.1")
-var port: int:
-    get: return ProjectSettings.get_setting("application/run/port", 7350)
-
-
 func _ready() -> void:
+    multiplayer.multiplayer_peer = Matchmaking.multiplayer.multiplayer_peer
+    
     multiplayer.connected_to_server.connect(self._on_connected_to_server)
     multiplayer.connection_failed.connect(self._on_connection_failed)
     multiplayer.server_disconnected.connect(self._on_server_disconnected)
@@ -41,7 +37,7 @@ func _on_peer_connected(id: int) -> void:
 
 
 @rpc("any_peer", "reliable")
-func spawn_hero(player_id: int, hero_id: int) -> void:
+func spawn_hero(player_id: int, hero_id: String) -> void:
     var params: = {
         "id" = player_id,
         "character" = hero_id

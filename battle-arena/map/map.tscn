@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://flt4bdecd0xj"]
+[gd_scene load_steps=9 format=3 uid="uid://flt4bdecd0xj"]
 
+[ext_resource type="Script" path="res://map/map.gd" id="1_jyhhi"]
 [ext_resource type="MeshLibrary" uid="uid://bjja43ocp6hvr" path="res://map/dungeon.meshlib" id="1_p1vss"]
 [ext_resource type="Script" path="res://map/Camera.gd" id="2_fe6qu"]
 [ext_resource type="PackedScene" uid="uid://cfqs7tnlielrb" path="res://ui/gui.tscn" id="3_lap5g"]
 [ext_resource type="Script" path="res://map/spawner.gd" id="4_44ugc"]
 [ext_resource type="Resource" uid="uid://cipq6q6x1a3kv" path="res://characters/heroes/hero_list.tres" id="5_47638"]
+[ext_resource type="Script" path="res://ENetMultiplayer.gd" id="7_ly6bx"]
 
 [sub_resource type="Environment" id="Environment_r4cc4"]
 ssao_enabled = true
@@ -14,6 +16,7 @@ volumetric_fog_density = 0.0238
 volumetric_fog_length = 1024.0
 
 [node name="Map" type="Node3D"]
+script = ExtResource("1_jyhhi")
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("1_p1vss")
@@ -78,3 +81,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3611, 0, -0.664275)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.127, 0, 0.858209)
 
 [node name="Root" type="Node" parent="Spawner/TeamB"]
+
+[node name="Multiplayer" type="Node" parent="."]
+script = ExtResource("7_ly6bx")

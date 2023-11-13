@@ -15,8 +15,8 @@ signal on_cancel()
         input_source = value
         input_source.init(owner)
 
-@export var move_direction: Vector2
-@export var look_at_point: Vector3
+var move_direction: Vector2
+var look_at_point: Vector3
 
 
 func _ready() -> void:
