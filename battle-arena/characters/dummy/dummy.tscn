@@ -24,4 +24,4 @@ script = null
 [node name="Collider" parent="HitBox" index="0"]
 shape = SubResource("CylinderShape3D_o1c17")
 
-[node name="Skin" parent="." index="8" instance=ExtResource("2_yhkrm")]
+[node name="Skin" parent="." index="10" instance=ExtResource("2_yhkrm")]
