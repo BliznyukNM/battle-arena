@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://d26br4f45m27g"]
+[gd_scene load_steps=23 format=3 uid="uid://d26br4f45m27g"]
 
 [ext_resource type="Script" path="res://characters/character.gd" id="1_8kwiu"]
 [ext_resource type="Script" path="res://characters/stats/stats_manager.gd" id="2_3n7xj"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://7xkefn5xpy47" path="res://characters/hud/hud.tscn" id="12_4f13d"]
 [ext_resource type="PackedScene" uid="uid://cnpyc3trrywtx" path="res://characters/skills/preview/previews.tscn" id="13_oo27p"]
 [ext_resource type="Script" path="res://characters/input/input_source.gd" id="14_ovw2o"]
+[ext_resource type="Script" path="res://characters/multiplayer/server_interpolation.gd" id="17_gtpx6"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_47r4a"]
 
@@ -23,18 +24,23 @@
 radius = 0.4
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_woxwi"]
-properties/0/path = NodePath(".:position")
+properties/0/path = NodePath("Input:move_direction")
 properties/0/spawn = true
 properties/0/replication_mode = 1
-properties/1/path = NodePath("Input:move_direction")
+properties/1/path = NodePath("Input:look_at_point")
 properties/1/spawn = true
 properties/1/replication_mode = 1
-properties/2/path = NodePath("Input:look_at_point")
-properties/2/spawn = true
-properties/2/replication_mode = 1
 
 [sub_resource type="Resource" id="Resource_mgice"]
 script = ExtResource("14_ovw2o")
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_aoe4k"]
+properties/0/path = NodePath("ServerInterpolation:server_position")
+properties/0/spawn = false
+properties/0/replication_mode = 1
+properties/1/path = NodePath("ServerInterpolation:server_rotation")
+properties/1/spawn = false
+properties/1/replication_mode = 1
 
 [node name="Character" type="CharacterBody3D"]
 collision_mask = 7
@@ -133,6 +139,11 @@ name_tag = NodePath("../Stats/Name")
 replication_config = SubResource("SceneReplicationConfig_woxwi")
 script = ExtResource("2_fj6tx")
 input_source = SubResource("Resource_mgice")
+
+[node name="ServerInterpolation" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_aoe4k")
+script = ExtResource("17_gtpx6")
+lerp_amount = 8.0
 
 [connection signal="changed" from="Stats/Health" to="." method="_on_health_changed"]
 [connection signal="on_damage" from="HitBox" to="Processors/Damage" method="apply"]

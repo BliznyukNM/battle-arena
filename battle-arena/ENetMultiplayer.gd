@@ -1,8 +1,16 @@
 extends Node
 
 
+const SERVER_ID: = 1
+
+
+var _rtt_time_start: int
+var rtt: float
+
+
 func _ready() -> void:
-    multiplayer.multiplayer_peer = Matchmaking.multiplayer.multiplayer_peer
+    Engine.register_singleton("Multiplayer", self)
+    get_parent().multiplayer.multiplayer_peer = Matchmaking.multiplayer.multiplayer_peer
     
     multiplayer.connected_to_server.connect(self._on_connected_to_server)
     multiplayer.connection_failed.connect(self._on_connection_failed)
@@ -16,6 +24,7 @@ func _ready() -> void:
 
 
 func _exit_tree() -> void:
+    Engine.unregister_singleton("Multiplayer")
     multiplayer.connected_to_server.disconnect(self._on_connected_to_server)
     multiplayer.connection_failed.disconnect(self._on_connection_failed)
     multiplayer.server_disconnected.disconnect(self._on_server_disconnected)
@@ -29,11 +38,20 @@ func _on_server_disconnected() -> void:
 
 func _on_connected_to_server() -> void:
     print("Connected to server!")
-    spawn_hero.rpc_id(0, multiplayer.get_unique_id(), get_parent().selected_hero) # FIXME
+    update_rtt(SERVER_ID)
+    spawn_hero.rpc_id(SERVER_ID, multiplayer.get_unique_id(), get_parent().selected_hero) # FIXME
 
 
 func _on_peer_connected(id: int) -> void:
     print("Client connected: %d" % id)
+
+
+@rpc("any_peer", "reliable")
+func update_rtt(id: int) -> void:
+    if not multiplayer.is_server():
+        rtt = (Time.get_ticks_msec() - _rtt_time_start) / 1000.0
+        _rtt_time_start = Time.get_ticks_msec()
+    update_rtt.rpc_id(id, multiplayer.get_unique_id())
 
 
 @rpc("any_peer", "reliable")
