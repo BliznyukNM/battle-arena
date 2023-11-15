@@ -1,4 +1,4 @@
-extends "res://characters/skills/base_skill.gd"
+extends BaseSkill
 
 
 @export var spawn_point: Vector3
@@ -25,10 +25,9 @@ func _ready() -> void:
     container.spawned.connect(_on_spawn_projectile)
 
 
-func activate(pressed: bool) -> void:
-    if not pressed: return
-    if not execution.is_stopped(): return
-    super.activate(pressed)
+func activate(pressed: bool) -> bool:
+    if not pressed or not execution.is_stopped(): return false
+    return super.activate(pressed)
 
 
 func finish() -> void:
@@ -50,10 +49,6 @@ func _spawn_projectile(transform: Transform3D) -> Node:
     projectile_instance.collision_mask = _collision_mask
     projectile_instance.collision_layer = owner.collision_layer
     projectile_instance.transform = transform
-    
-    projectile_instance.damage = damage
-    projectile_instance.speed = projectile_speed
-    projectile_instance.max_travel_distance = distance - spawn_point.z
-    projectile_instance.radius = radius
+    projectile_instance.skill = self
     
     return projectile_instance

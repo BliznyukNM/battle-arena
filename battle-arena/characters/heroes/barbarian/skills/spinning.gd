@@ -5,20 +5,13 @@ extends "res://characters/skills/chanelling_skill.gd"
 @export var damage: float
 @export_range(0.01, 2, 0.01) var time_between_hits: float
 @export var radius: float = 2
-@export var energy_cost: float
 
 
 var _tween: Tween
-var _energy_stat: NumberStat:
-    get: return owner.stats.get_stat("Energy")
 
 
 func _on_activate(pressed: bool) -> void:
     if execution.is_stopped():
-        if not is_equal_approx(energy_cost, 0.0) and _energy_stat.current_value < energy_cost:
-            return
-        _energy_stat.current_value -= energy_cost
-        
         var modifier: TimedModifier = spinning_modifier.instantiate()
         modifier.time = execution.base_time
         owner.modifiers.add_modifier(modifier)

@@ -1,7 +1,15 @@
 class_name BaseSkill extends Node
 
 
+@export_range(0.0, 100.0, 1.0, "suffix:%") var energy_cost: float
+@export_range(0.0, 100.0, 0.1, "suffix:%") var energy_gain: float
 @export var skill_speed: NumberStat
+
+
+var energy_stat: NumberStat:
+    get:
+        if not energy_stat: energy_stat = owner.stats.get_stat("Energy")
+        return energy_stat
 
 
 var enabled: bool = true
@@ -37,15 +45,19 @@ func _get_execution() -> SkillTimer:
 
 ## Try to activate skill. Here should be only checks for activating, actual logic
 ## is going to be executed in _on_activate
-func activate(pressed: bool) -> void:
-    if not enabled: return
-    if not is_multiplayer_authority(): return
-    if not cooldown.is_stopped(): return
+func activate(pressed: bool) -> bool:
+    if not enabled: return false
+    if not is_multiplayer_authority(): return false
+    if not cooldown.is_stopped(): return false
+    if not is_equal_approx(energy_cost, 0.0) and energy_stat.current_value < energy_cost:
+        return false
     _on_activate.rpc(pressed)
+    return true
 
 
 @rpc("reliable", "call_local")
 func _on_activate(pressed: bool) -> void:
+    if energy_stat: energy_stat.current_value -= energy_cost
     execution.activate(speed)
     activated.emit(self)
 
@@ -77,6 +89,11 @@ func _stop_execution() -> void:
     if execution.is_stopped(): return
     execution.stop()
     execution.timeout.emit()
+
+
+@rpc("reliable", "call_local")
+func gain_energy() -> void:
+    if energy_stat: energy_stat.current_value += energy_gain
 
 
 func reset() -> void:

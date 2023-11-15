@@ -22,12 +22,15 @@ func _get_execution() -> SkillTimer:
     return current_skill.execution
 
 
-func activate(pressed: bool) -> void:
-    if not enabled: return
-    if not is_multiplayer_authority(): return
+func activate(pressed: bool) -> bool:
+    if not enabled: return false
+    if not is_multiplayer_authority(): return false
     _skill_scheduled = pressed
     var is_fully_reset: = _current_skill_number == 0 and execution.is_stopped() and cooldown.is_stopped()
-    if pressed and is_fully_reset: _trigger_skill_sequence()
+    if pressed and is_fully_reset:
+        _trigger_skill_sequence()
+        return true
+    return false
 
 
 func finish() -> void:

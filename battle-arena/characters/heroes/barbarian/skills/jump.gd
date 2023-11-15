@@ -9,10 +9,9 @@ extends BaseSkill
 var target_position: Vector3
 
 
-func activate(pressed: bool) -> void:
-    if not pressed: return
-    if not execution.is_stopped(): return
-    super.activate(pressed)
+func activate(pressed: bool) -> bool:
+    if not pressed or not execution.is_stopped(): return false
+    return super.activate(pressed)
 
 
 func _on_activate(pressed: bool) -> void:
@@ -58,9 +57,13 @@ func _try_hit_area() -> void:
     params.transform = owner.transform
     
     var result: = space_state.intersect_shape(params)
+    var hitboxes_count: = 0
     
     for hit in result:
         if hit.collider is HitBox:
             hit.collider.apply_damage.rpc(damage)
+            hitboxes_count += 1
+    
+    if hitboxes_count > 0: gain_energy()
     
     PhysicsServer3D.free_rid(shape_rid)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dbjutw8fckxjl"]
+[gd_scene load_steps=17 format=3 uid="uid://dbjutw8fckxjl"]
 
 [ext_resource type="PackedScene" uid="uid://d26br4f45m27g" path="res://characters/character.tscn" id="1_gfvhh"]
 [ext_resource type="PackedScene" uid="uid://bu0t01nod6qgi" path="res://characters/heroes/ranger/skills/base_range_attack.tscn" id="2_2cs3i"]
@@ -14,7 +14,6 @@
 [ext_resource type="Script" path="res://characters/processors/clear_modifiers.gd" id="7_2y3fc"]
 [ext_resource type="PackedScene" uid="uid://deu4jhtess0ru" path="res://characters/heroes/ranger/skills/dash.tscn" id="9_vmnp0"]
 [ext_resource type="PackedScene" uid="uid://08oer10vlnb4" path="res://characters/heroes/ranger/skills/ultimate_arrow.tscn" id="10_qjbdi"]
-[ext_resource type="Script" path="res://characters/processors/energy.gd" id="14_bghrj"]
 
 [sub_resource type="Resource" id="Resource_avmrn"]
 script = ExtResource("3_i85lt")
@@ -59,18 +58,17 @@ script = ExtResource("2_ascv0")
 skill_speed = NodePath("../../../Stats/AttackSpeed")
 
 [node name="SecondaryAttack" parent="Skills" index="1" instance=ExtResource("4_7ta2r")]
-energy_cost = 0.0
 
-[node name="ThirdAttack" parent="Skills" index="2" node_paths=PackedStringArray("energy_stat") instance=ExtResource("5_hhkuk")]
-energy_stat = NodePath("../../Stats/Energy")
+[node name="ThirdAttack" parent="Skills" index="2" instance=ExtResource("5_hhkuk")]
 
 [node name="Block" parent="Skills" index="3" instance=ExtResource("7_0pagd")]
+energy_gain = 8.0
 
 [node name="Dodge" parent="Skills" index="4" instance=ExtResource("9_vmnp0")]
 dash_time = 0.3
 
-[node name="Ultimate" parent="Skills" index="5" node_paths=PackedStringArray("energy_stat") instance=ExtResource("10_qjbdi")]
-energy_stat = NodePath("../../Stats/Energy")
+[node name="Ultimate" parent="Skills" index="5" instance=ExtResource("10_qjbdi")]
+energy_gain = 0.0
 
 [node name="Skin" type="Node" parent="Processors" index="5" node_paths=PackedStringArray("skin", "move_speed", "attack_speed")]
 script = ExtResource("2_frijp")
@@ -84,15 +82,10 @@ script = ExtResource("7_2y3fc")
 skills = [NodePath("../../Skills/BasicAttack/Shot"), NodePath("../../Skills/SecondaryAttack"), NodePath("../../Skills/Block"), NodePath("../../Skills/Dodge")]
 modifiers = Array[String](["Invisibility"])
 
-[node name="EnergyProcessor" type="Node" parent="Processors" index="7" node_paths=PackedStringArray("energy")]
-unique_name_in_owner = true
-script = ExtResource("14_bghrj")
-energy = NodePath("../../Stats/Energy")
-
 [node name="HUD" parent="." index="6" node_paths=PackedStringArray("energy")]
 energy = NodePath("../Stats/Energy")
 
-[node name="Skin" parent="." index="9" instance=ExtResource("2_plqqr")]
+[node name="Skin" parent="." index="10" instance=ExtResource("2_plqqr")]
 
 [connection signal="activated" from="Skills/BasicAttack/Shot" to="HUD" method="on_skill_activated"]
 [connection signal="activated" from="Skills/BasicAttack/Shot" to="Skin" method="play_shoot"]

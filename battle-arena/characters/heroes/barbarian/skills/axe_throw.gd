@@ -1,9 +1,9 @@
 extends "res://characters/skills/range_attack_skill.gd"
 
 
-func activate(pressed: bool) -> void:
-    if not execution.is_stopped(): return
-    super.activate(pressed)
+func activate(pressed: bool) -> bool:
+    if not execution.is_stopped(): return false
+    return super.activate(pressed)
 
 
 func _spawn_projectile(transform: Transform3D) -> Node:

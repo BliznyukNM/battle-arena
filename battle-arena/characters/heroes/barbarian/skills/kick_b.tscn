@@ -8,7 +8,7 @@ hit_time = 0.45
 hit_range = 1.5
 area = 20.0
 offset = Vector3(2.08165e-12, 1, 1)
-energy_generation = 4.0
+energy_gain = 6.0
 
 [node name="Execution" parent="." index="0"]
 base_time = 0.7
