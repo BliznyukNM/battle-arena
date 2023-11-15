@@ -160,7 +160,7 @@ energy = NodePath("../../Stats/Energy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.81294, 0)
 energy = NodePath("../Stats/Energy")
 
-[node name="Skin" parent="." index="9" instance=ExtResource("2_lwxa8")]
+[node name="Skin" parent="." index="10" instance=ExtResource("2_lwxa8")]
 
 [connection signal="activated" from="Skills/BasicAttack/Axe/Chop" to="HUD" method="on_skill_activated"]
 [connection signal="activated" from="Skills/BasicAttack/Axe/Chop" to="Skin" method="play_chop"]
