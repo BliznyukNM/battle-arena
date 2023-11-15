@@ -1,0 +1,116 @@
+[gd_resource type="VisualShader" load_steps=10 format=3 uid="uid://xsq1poj32wlc"]
+
+[ext_resource type="Texture2D" uid="uid://pqkiw6mudiuw" path="res://assets/vfx/voronoi.png" id="1_amt4p"]
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_1ayix"]
+default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0)]
+expanded_output_ports = [0]
+op_type = 2
+operator = 2
+
+[sub_resource type="VisualShaderNodeUVPolarCoord" id="VisualShaderNodeUVPolarCoord_rkb7j"]
+output_port_for_preview = 0
+expanded_output_ports = [0]
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_kqmte"]
+output_port_for_preview = 0
+default_input_values = [0, 0.0, 1, 4.0]
+operator = 5
+
+[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_8i3k3"]
+output_port_for_preview = 0
+function = 31
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_ntooo"]
+output_port_for_preview = 0
+default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0)]
+expanded_output_ports = [0]
+op_type = 2
+operator = 2
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_qpsir"]
+expanded_output_ports = [0]
+texture = ExtResource("1_amt4p")
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_8x3dq"]
+input_name = "color"
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_bvt67"]
+output_port_for_preview = 0
+constant = Color(1, 0, 0, 1)
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_disabled, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D tex_frg_8;
+
+
+
+void fragment() {
+// Input:9
+	vec4 n_out9p0 = COLOR;
+
+
+	vec2 n_out3p0;
+// UVPolarCoord:3
+	vec2 n_in3p1 = vec2(0.50000, 0.50000);
+	float n_in3p2 = 1.00000;
+	float n_in3p3 = 1.00000;
+	{
+		vec2 __dir = UV - n_in3p1;
+		float __radius = length(__dir) * 2.0;
+		float __angle = atan(__dir.y, __dir.x) * 1.0 / (PI * 2.0);
+		n_out3p0 = vec2(__radius * n_in3p2, __angle * n_in3p3);
+	}
+
+
+// FloatFunc:5
+	float n_out5p0 = 1.0 - n_out3p0.x;
+
+
+// FloatOp:4
+	float n_in4p1 = 4.00000;
+	float n_out4p0 = pow(n_out5p0, n_in4p1);
+
+
+// Texture2D:8
+	vec4 n_out8p0 = texture(tex_frg_8, UV);
+
+
+// VectorOp:7
+	vec4 n_out7p0 = vec4(n_out4p0) * n_out8p0;
+
+
+// VectorOp:10
+	vec4 n_out10p0 = n_out9p0 * n_out7p0;
+	float n_out10p4 = n_out10p0.a;
+
+
+// Output:0
+	ALBEDO = vec3(n_out10p0.xyz);
+	ALPHA = n_out10p4;
+
+
+}
+"
+modes/cull = 2
+nodes/fragment/0/position = Vector2(840, 140)
+nodes/fragment/3/node = SubResource("VisualShaderNodeUVPolarCoord_rkb7j")
+nodes/fragment/3/position = Vector2(-1940, 160)
+nodes/fragment/4/node = SubResource("VisualShaderNodeFloatOp_kqmte")
+nodes/fragment/4/position = Vector2(-760, 120)
+nodes/fragment/5/node = SubResource("VisualShaderNodeFloatFunc_8i3k3")
+nodes/fragment/5/position = Vector2(-1240, 180)
+nodes/fragment/7/node = SubResource("VisualShaderNodeVectorOp_ntooo")
+nodes/fragment/7/position = Vector2(-300, 20)
+nodes/fragment/8/node = SubResource("VisualShaderNodeTexture_qpsir")
+nodes/fragment/8/position = Vector2(-1900, 1060)
+nodes/fragment/9/node = SubResource("VisualShaderNodeInput_8x3dq")
+nodes/fragment/9/position = Vector2(-440, -340)
+nodes/fragment/10/node = SubResource("VisualShaderNodeVectorOp_1ayix")
+nodes/fragment/10/position = Vector2(220, -360)
+nodes/fragment/connections = PackedInt32Array(3, 0, 5, 0, 5, 0, 4, 0, 4, 0, 7, 0, 8, 0, 7, 1, 9, 0, 10, 0, 7, 0, 10, 1, 10, 0, 0, 0, 10, 4, 0, 1)
+nodes/process/0/position = Vector2(400, 180)
+nodes/process/2/node = SubResource("VisualShaderNodeColorConstant_bvt67")
+nodes/process/2/position = Vector2(-440, 260)

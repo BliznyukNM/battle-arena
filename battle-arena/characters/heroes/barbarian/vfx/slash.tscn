@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://bo4e7x7lmc177"]
+
+[ext_resource type="ArrayMesh" uid="uid://65gp3ltjq22g" path="res://assets/vfx/meshes/slash_Cylinder.res" id="1_gl5ni"]
+[ext_resource type="Shader" uid="uid://xsq1poj32wlc" path="res://characters/heroes/barbarian/vfx/slash.tres" id="1_yipb5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bpxwh"]
+render_priority = 0
+shader = ExtResource("1_yipb5")
+
+[sub_resource type="Curve" id="Curve_geg7m"]
+_data = [Vector2(0, 0.298336), 0.0, 0.0, 0, 0, Vector2(0.50655, 0.757301), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_gl7qm"]
+texture_mode = 1
+curve = SubResource("Curve_geg7m")
+
+[sub_resource type="Curve" id="Curve_wd0bp"]
+min_value = 2.13163e-14
+max_value = 180.0
+_data = [Vector2(0, 60.1885), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_bv7vi"]
+texture_mode = 1
+curve = SubResource("Curve_wd0bp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5as32"]
+particle_flag_rotate_y = true
+angular_velocity_min = 5.0
+angular_velocity_max = 5.0
+angular_velocity_curve = SubResource("CurveTexture_bv7vi")
+orbit_velocity_min = -0.333
+orbit_velocity_max = 1.667
+gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+color = Color(6, 5, 0, 1)
+alpha_curve = SubResource("CurveTexture_gl7qm")
+
+[node name="Slash" type="Node3D"]
+
+[node name="SlashParticles" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.173648, -4.04054e-16, -0.984808, 3.48787e-16, 1, -3.48787e-16, 0.984808, -2.82922e-16, 0.173648, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_bpxwh")
+emitting = false
+amount = 1
+lifetime = 0.25
+one_shot = true
+visibility_aabb = AABB(-2.22133, -1.58518, -1.59735, 4.44267, 3.17036, 3.1947)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_5as32")
+draw_pass_1 = ExtResource("1_gl5ni")
