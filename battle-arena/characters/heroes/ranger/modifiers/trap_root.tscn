@@ -5,9 +5,8 @@
 
 [sub_resource type="Resource" id="Resource_8y700"]
 script = ExtResource("2_xnodu")
-modifier_name = "Root"
 
 [node name="Root" type="Node"]
 script = ExtResource("1_4upo3")
-time = 10.0
+time = 1.2
 effects = Array[Resource("res://characters/status_effects/effects/base_effect.gd")]([SubResource("Resource_8y700")])
