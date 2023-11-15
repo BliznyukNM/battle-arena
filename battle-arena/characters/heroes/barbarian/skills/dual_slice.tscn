@@ -7,7 +7,6 @@ damage = 12
 hit_time = 0.4
 hit_range = 3.0
 area = 80.0
-energy_generation = 0.0
 
 [node name="Execution" parent="." index="0"]
-base_time = 1.3
+base_time = 1.1

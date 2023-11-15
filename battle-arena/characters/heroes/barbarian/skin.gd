@@ -6,6 +6,7 @@ extends Node3D
 
 
 @onready var animationTree: AnimationTree = $AnimationTree
+@onready var slash: GPUParticles3D = $Slash/SlashParticles
 
 @onready var big_axe: = $"Rig/Skeleton3D/2H_Axe/2H_Axe"
 @onready var left_axe: = $"Rig/Skeleton3D/1H_Axe_Offhand/1H_Axe_Offhand"
@@ -40,6 +41,7 @@ func update_move_speed(speed: float) -> void:
 
 func update_attack_speed(speed: float) -> void:
     animationTree.set("parameters/AttackSpeed/scale", speed)
+    slash.speed_scale = speed
 
 
 func play_slice(skill: BaseSkill) -> void:

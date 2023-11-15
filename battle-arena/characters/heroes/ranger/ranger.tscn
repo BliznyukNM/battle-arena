@@ -62,7 +62,6 @@ skill_speed = NodePath("../../../Stats/AttackSpeed")
 [node name="ThirdAttack" parent="Skills" index="2" instance=ExtResource("5_hhkuk")]
 
 [node name="Block" parent="Skills" index="3" instance=ExtResource("7_0pagd")]
-energy_gain = 8.0
 
 [node name="Dodge" parent="Skills" index="4" instance=ExtResource("9_vmnp0")]
 dash_time = 0.3
