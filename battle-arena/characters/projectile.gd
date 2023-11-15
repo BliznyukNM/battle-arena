@@ -1,10 +1,7 @@
 extends Area3D
 
 
-var damage: int
-var speed: float
-var max_travel_distance: float
-var radius: float
+var skill: BaseSkill
 
 
 var _is_travelling: bool = true
@@ -16,17 +13,17 @@ var _travelled_distance: float
 
 
 func _ready() -> void:
-    _collision.scale = Vector3.ONE * radius
+    _collision.scale = Vector3.ONE * skill.radius
 
 
 func _process(delta: float) -> void:
     if not _is_travelling: return
     
-    var distance: = speed * delta
+    var distance: float = skill.projectile_speed * delta
     position += _direction * distance
     _travelled_distance += distance
     
-    if _travelled_distance >= max_travel_distance:
+    if _travelled_distance >= skill.distance:
         _on_finish_travel()
 
 
@@ -38,7 +35,6 @@ func _on_finish_travel() -> void:
 func _on_area_entered(area: Area3D) -> void:
     if not is_multiplayer_authority(): return
     if not area is HitBox: return
-    area.apply_damage.rpc(damage)
-    var energy_processor = owner.get_node_or_null("%EnergyProcessor")
-    if energy_processor: energy_processor.on_damage.rpc(damage)
+    area.apply_damage.rpc(skill.damage)
+    skill.gain_energy.rpc()
     _on_finish_travel()

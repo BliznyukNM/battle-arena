@@ -8,6 +8,7 @@ damage = 10.0
 projectile_speed = 20.0
 distance = 10.0
 radius = 1.0
+energy_gain = 7.0
 
 [node name="Execution" parent="." index="0"]
 base_time = 0.4

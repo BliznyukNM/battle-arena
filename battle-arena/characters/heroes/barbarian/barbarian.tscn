@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://brn6cw5tr1mxb"]
+[gd_scene load_steps=31 format=3 uid="uid://brn6cw5tr1mxb"]
 
 [ext_resource type="PackedScene" uid="uid://d26br4f45m27g" path="res://characters/character.tscn" id="1_6uqpy"]
 [ext_resource type="Script" path="res://characters/heroes/barbarian/barbarian.gd" id="2_6pbkp"]
@@ -25,7 +25,6 @@
 [ext_resource type="PackedScene" uid="uid://oburmakxw5m6" path="res://characters/heroes/barbarian/skills/dual_slice.tscn" id="16_r01mu"]
 [ext_resource type="PackedScene" uid="uid://bob5haniot34k" path="res://characters/heroes/barbarian/skills/jump.tscn" id="18_4cbep"]
 [ext_resource type="PackedScene" uid="uid://b0v3b0rjaanwm" path="res://characters/heroes/barbarian/skills/fury.tscn" id="21_62el3"]
-[ext_resource type="Script" path="res://characters/processors/energy.gd" id="21_kdalp"]
 
 [sub_resource type="Resource" id="Resource_221r4"]
 script = ExtResource("4_h87is")
@@ -151,11 +150,6 @@ move_speed = NodePath("../../Stats/MovementSpeed")
 attack_speed = NodePath("../../Stats/AttackSpeed")
 interpolation = 10.0
 
-[node name="EnergyProcessor" type="Node" parent="Processors" index="6" node_paths=PackedStringArray("energy")]
-unique_name_in_owner = true
-script = ExtResource("21_kdalp")
-energy = NodePath("../../Stats/Energy")
-
 [node name="HUD" parent="." index="6" node_paths=PackedStringArray("energy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.81294, 0)
 energy = NodePath("../Stats/Energy")
@@ -192,6 +186,5 @@ energy = NodePath("../Stats/Energy")
 [connection signal="activated" from="Skills/Dodge" to="Skin" method="play_jump"]
 [connection signal="activated" from="Skills/Ultimate" to="HUD" method="on_skill_activated"]
 [connection signal="on_damage" from="HitBox" to="Skills/Block" method="on_damage"]
-[connection signal="on_damage" from="HitBox" to="Processors/EnergyProcessor" method="on_damage"]
 
 [editable path="Previews"]

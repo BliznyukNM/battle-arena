@@ -12,6 +12,7 @@ damage = 10.0
 projectile_speed = 18.0
 distance = 5.0
 radius = 1.0
+energy_gain = 8.0
 
 [node name="Cooldown" parent="." index="1"]
 base_time = 5.0

@@ -50,4 +50,4 @@ func on_spawned(character: Node) -> void:
 func reset() -> void:
     for character in root.get_children():
         character.reset()
-        character.position = $PositionA.position # TODO: temporary
+        character.position = $PositionA.position # FIXME: temporary

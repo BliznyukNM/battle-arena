@@ -49,10 +49,6 @@ func _spawn_projectile(transform: Transform3D) -> Node:
     projectile_instance.collision_mask = _collision_mask
     projectile_instance.collision_layer = owner.collision_layer
     projectile_instance.transform = transform
-    
-    projectile_instance.damage = damage
-    projectile_instance.speed = projectile_speed
-    projectile_instance.max_travel_distance = distance - spawn_point.z
-    projectile_instance.radius = radius
+    projectile_instance.skill = self
     
     return projectile_instance

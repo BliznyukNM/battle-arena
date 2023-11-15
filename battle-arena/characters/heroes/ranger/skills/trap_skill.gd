@@ -20,7 +20,5 @@ func _spawn_projectile(transform: Transform3D) -> Node:
     projectile_instance.collision_mask = _collision_mask
     projectile_instance.collision_layer = owner.collision_layer
     projectile_instance.transform = Transform3D(Basis.IDENTITY, target_position)
-    
-    projectile_instance.damage = damage
-    
+    projectile_instance.skill = self
     return projectile_instance

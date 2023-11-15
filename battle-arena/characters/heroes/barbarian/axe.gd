@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
     super._process(delta)
     
     if not _is_recalling: return
-    var distance: = speed * delta
+    var distance: float = skill.projectile_speed * delta
     var direction: Vector3 = (owner.global_position - position).normalized()
     position += direction * distance
     look_at(position + direction)
@@ -38,7 +38,8 @@ func _on_area_entered(area: Area3D) -> void:
     
     if _is_travelling or _is_recalling:
         if area.collision_layer != collision_layer and area is HitBox:
-            area.apply_damage.rpc(damage)
+            area.apply_damage.rpc(skill.damage)
+            skill.gain_energy.rpc()
     if not _is_travelling and area is HitBox and area.owner == owner:
         owner.on_pickup_axe.rpc()
 

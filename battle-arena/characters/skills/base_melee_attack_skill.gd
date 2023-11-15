@@ -69,11 +69,11 @@ func _try_hit_shape() -> void:
     params.transform = owner.transform.translated_local(offset)
     
     var result: = space_state.intersect_shape(params)
-    var any_hits: = false
+    var hitbox_count: = 0
     
     for hit in result:
         if hit.collider is HitBox:
             hit.collider.apply_damage.rpc(damage)
-            any_hits = true
+            hitbox_count += 1
     
-    if any_hits: %EnergyProcessor.on_damage.rpc(damage)
+    if hitbox_count > 0: gain_energy()

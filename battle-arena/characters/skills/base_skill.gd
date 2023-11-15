@@ -2,7 +2,7 @@ class_name BaseSkill extends Node
 
 
 @export_range(0.0, 100.0, 1.0, "suffix:%") var energy_cost: float
-@export_range(0.0, 100.0, 0.1, "suffix:%") var energy_recovery: float
+@export_range(0.0, 100.0, 0.1, "suffix:%") var energy_gain: float
 @export var skill_speed: NumberStat
 
 
@@ -89,6 +89,11 @@ func _stop_execution() -> void:
     if execution.is_stopped(): return
     execution.stop()
     execution.timeout.emit()
+
+
+@rpc("reliable", "call_local")
+func gain_energy() -> void:
+    if energy_stat: energy_stat.current_value += energy_gain
 
 
 func reset() -> void:
