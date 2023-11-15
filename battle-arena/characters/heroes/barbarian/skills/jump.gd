@@ -9,10 +9,9 @@ extends BaseSkill
 var target_position: Vector3
 
 
-func activate(pressed: bool) -> void:
-    if not pressed: return
-    if not execution.is_stopped(): return
-    super.activate(pressed)
+func activate(pressed: bool) -> bool:
+    if not pressed or not execution.is_stopped(): return false
+    return super.activate(pressed)
 
 
 func _on_activate(pressed: bool) -> void:

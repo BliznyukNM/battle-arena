@@ -38,9 +38,9 @@ func cancel() -> void:
     super.cancel()
 
 
-func activate(pressed: bool) -> void:
-    if not pressed: return
-    super.activate(pressed)
+func activate(pressed: bool) -> bool:
+    if not pressed: return false
+    return super.activate(pressed)
 
 
 func _on_activate(pressed: bool) -> void:

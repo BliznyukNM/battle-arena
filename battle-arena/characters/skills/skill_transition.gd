@@ -31,10 +31,10 @@ func select(index: int) -> void:
         current_skill.activate(_last_pressed)
 
 
-func activate(pressed: bool) -> void:
-    if not enabled: return
+func activate(pressed: bool) -> bool:
+    if not enabled: return false
     _last_pressed = pressed
-    current_skill.activate(pressed)
+    return current_skill.activate(pressed)
 
 
 func cancel() -> void:

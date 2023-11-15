@@ -1,4 +1,4 @@
-extends "res://characters/skills/base_skill.gd"
+extends BaseSkill
 
 
 @export var spawn_point: Vector3
@@ -25,10 +25,9 @@ func _ready() -> void:
     container.spawned.connect(_on_spawn_projectile)
 
 
-func activate(pressed: bool) -> void:
-    if not pressed: return
-    if not execution.is_stopped(): return
-    super.activate(pressed)
+func activate(pressed: bool) -> bool:
+    if not pressed or not execution.is_stopped(): return false
+    return super.activate(pressed)
 
 
 func finish() -> void:

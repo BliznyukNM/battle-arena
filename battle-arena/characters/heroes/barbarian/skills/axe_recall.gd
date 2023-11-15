@@ -1,9 +1,9 @@
 extends BaseSkill
 
 
-func activate(pressed: bool) -> void:
-    if not pressed or owner.is_recalling: return
-    super.activate(pressed)
+func activate(pressed: bool) -> bool:
+    if not pressed or owner.is_recalling: return false
+    return super.activate(pressed)
 
 
 func _on_activate(pressed: bool) -> void:
