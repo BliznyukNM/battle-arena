@@ -20,20 +20,19 @@ func activate(pressed: bool) -> bool:
     if pressed != execution.is_stopped(): return false
     
     if pressed:
-        if not super.activate(pressed): return false
-            
-        _additional_damage = 0
-        _additional_distance = 0
-        _tween = get_tree().create_tween().set_parallel(true)
-        _tween.tween_property(self, "_additional_distance", max_charge_distance, execution.base_time)
-        _tween.tween_property(self, "_additional_damage", max_charge_damage, execution.base_time)
-        return true
-        
-    elif not execution.is_stopped():
+        return super.activate(pressed)
+    else:
         _stop_execution()
         return true
-        
-    return false
+
+
+func _on_activate(pressed: bool) -> void:
+    _additional_damage = 0
+    _additional_distance = 0
+    _tween = get_tree().create_tween().set_parallel(true)
+    _tween.tween_property(self, "_additional_distance", max_charge_distance, execution.base_time)
+    _tween.tween_property(self, "_additional_damage", max_charge_damage, execution.base_time)
+    super._on_activate(pressed)
 
 
 func _on_finish() -> void:

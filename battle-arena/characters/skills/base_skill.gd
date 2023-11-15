@@ -2,6 +2,7 @@ class_name BaseSkill extends Node
 
 
 @export_range(0.0, 100.0, 1.0, "suffix:%") var energy_cost: float
+@export_range(0.0, 100.0, 0.1, "suffix:%") var energy_recovery: float
 @export var skill_speed: NumberStat
 
 
