@@ -43,24 +43,26 @@ func _on_avatar_request_completed(result: int, response_code: int, headers: Pack
 
 
 func start_sandbox() -> void:
-    _load_map(offline_map)
+    var offline_peer: = OfflineMultiplayerPeer.new()
+    _load_map(offline_map, offline_peer)
 
 
 func start_matchmaking() -> void:
     Matchmaking.find_match()
 
 
-func _load_map(map_path: String) -> void:
+func _load_map(map_path: String, peer: MultiplayerPeer) -> void:
     var map_scene: PackedScene = load(map_path)
     var map: Node = map_scene.instantiate()
     map.selected_hero = _selected_hero
+    map.tree_entered.connect(func(): map.multiplayer.multiplayer_peer = peer, CONNECT_ONE_SHOT)
     get_tree().root.add_child(map)
     get_tree().root.remove_child(self)
     queue_free()
 
 
 func _on_match_found() -> void:
-    _load_map(online_map)
+    _load_map(online_map, multiplayer.multiplayer_peer)
 
 
 func select_hero(id: String) -> void:

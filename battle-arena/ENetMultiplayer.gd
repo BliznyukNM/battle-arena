@@ -10,7 +10,6 @@ var rtt: float
 
 func _ready() -> void:
     Engine.register_singleton("Multiplayer", self)
-    get_parent().multiplayer.multiplayer_peer = Matchmaking.multiplayer.multiplayer_peer
     
     multiplayer.connected_to_server.connect(self._on_connected_to_server)
     multiplayer.connection_failed.connect(self._on_connection_failed)
