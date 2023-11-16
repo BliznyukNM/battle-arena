@@ -62,6 +62,12 @@ func is_ultimate_just_released() -> bool:
 func get_look_at_point() -> Vector3:
     var look_at_point: = Vector3()
     
+    if Input.get_connected_joypads().size() > 0:
+        var look_direction: = _get_look_at_direction()
+        var mouse_position: Vector2 = _owner.get_viewport().get_mouse_position()
+        mouse_position += look_direction * 1000 * _owner.get_process_delta_time()
+        _owner.get_viewport().warp_mouse(mouse_position)
+    
     if _camera:
         var plane: = Plane(Vector3.UP)
         var mouse_position: Vector2 = _owner.get_viewport().get_mouse_position()
@@ -72,6 +78,13 @@ func get_look_at_point() -> Vector3:
         if intersection: look_at_point = intersection
     
     return look_at_point
+
+
+func _get_look_at_direction() -> Vector2:
+    var look_direction: = Vector2()
+    look_direction.x = Input.get_axis("character.look.left", "character.look.right")
+    look_direction.y = Input.get_axis("character.look.up", "character.look.down")
+    return look_direction
 
 
 func get_move_direction() -> Vector2:
