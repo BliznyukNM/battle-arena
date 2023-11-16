@@ -1,9 +1,6 @@
 extends "res://map/map.gd"
 
 
-@onready var home: = preload("res://lobby/lobby.tscn")
-
-
 const MAX_WINS: = 3
 
 
@@ -22,6 +19,10 @@ var _teams = [
 
 
 func _ready() -> void:
+    super._ready()
+    
+    multiplayer.peer_disconnected.connect(_on_peer_disconnected)
+    
     if not multiplayer.is_server(): return
     
     for team in _teams:
@@ -64,6 +65,11 @@ func _check_round_state() -> void:
         team.spawner.reset.rpc()
 
 
+func exit_game() -> void:
+    Matchmaking.leave_match()
+    super.exit_game()
+
+
 @rpc("reliable", "call_local")
 func set_round_won(winners: PackedInt32Array) -> void:
     for i in winners:
@@ -78,6 +84,8 @@ func set_round_won(winners: PackedInt32Array) -> void:
 @rpc("reliable", "call_remote")
 func end_match(winner: int) -> void:
     print("Winner is %s" % _teams[winner].spawner.name)
-    Matchmaking.leave_match()
-    get_tree().change_scene_to_packed(home)
-    
+    exit_game()
+
+
+func _on_peer_disconnected(id: int) -> void:
+    if id == Engine.get_singleton("Multiplayer").SERVER_ID: exit_game()

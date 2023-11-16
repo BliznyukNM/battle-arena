@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://flt4bdecd0xj"]
+[gd_scene load_steps=10 format=3 uid="uid://flt4bdecd0xj"]
 
 [ext_resource type="Script" path="res://map/map.gd" id="1_jyhhi"]
 [ext_resource type="MeshLibrary" uid="uid://bjja43ocp6hvr" path="res://map/dungeon.meshlib" id="1_p1vss"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://map/spawner.gd" id="4_44ugc"]
 [ext_resource type="Resource" uid="uid://cipq6q6x1a3kv" path="res://characters/heroes/hero_list.tres" id="5_47638"]
 [ext_resource type="Script" path="res://ENetMultiplayer.gd" id="7_ly6bx"]
+[ext_resource type="PackedScene" uid="uid://c8hjplt0ocsk7" path="res://map/ui/pause_menu.tscn" id="8_yvmdu"]
 
 [sub_resource type="Environment" id="Environment_r4cc4"]
 ssao_enabled = true
@@ -84,3 +85,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.127, 0, 0.858209)
 
 [node name="Multiplayer" type="Node" parent="."]
 script = ExtResource("7_ly6bx")
+
+[node name="PauseMenu" parent="." instance=ExtResource("8_yvmdu")]

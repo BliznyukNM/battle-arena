@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8hjplt0ocsk7"]
+
+[ext_resource type="Script" path="res://map/ui/pause_menu.gd" id="1_qo2a3"]
+[ext_resource type="Shader" path="res://map/ui/pause_menu.gdshader" id="2_ix4ms"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7jijn"]
+shader = ExtResource("2_ix4ms")
+shader_parameter/blur_amount = 16
+shader_parameter/iterations = 32
+shader_parameter/quality = 4
+
+[node name="PauseMenu" type="CanvasLayer"]
+script = ExtResource("1_qo2a3")
+
+[node name="Blur" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_7jijn")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = -285.0
+offset_right = 210.0
+offset_bottom = 285.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Resume" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"GreenButton"
+theme_override_font_sizes/font_size = 28
+text = "Resume"
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"RedButton"
+theme_override_font_sizes/font_size = 28
+text = "Exit
+"
+
+[connection signal="pressed" from="VBoxContainer/Resume" to="." method="_toggle" binds= [false]]
