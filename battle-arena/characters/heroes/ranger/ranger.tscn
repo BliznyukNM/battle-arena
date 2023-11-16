@@ -67,7 +67,6 @@ skill_speed = NodePath("../../../Stats/AttackSpeed")
 dash_time = 0.3
 
 [node name="Ultimate" parent="Skills" index="5" instance=ExtResource("10_qjbdi")]
-energy_gain = 0.0
 
 [node name="Skin" type="Node" parent="Processors" index="5" node_paths=PackedStringArray("skin", "move_speed", "attack_speed")]
 script = ExtResource("2_frijp")

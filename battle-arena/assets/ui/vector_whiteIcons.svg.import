@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://t3f7rdo0oxef"
-path="res://.godot/imported/UIpack_vector.svg-2b29cac01b347434f8264ee648fbbfc7.ctex"
+uid="uid://6okyekpd3u31"
+path="res://.godot/imported/vector_whiteIcons.svg-f54fcfdf6c678f09a91bde2c2872abe2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/UIpack_vector.svg"
-dest_files=["res://.godot/imported/UIpack_vector.svg-2b29cac01b347434f8264ee648fbbfc7.ctex"]
+source_file="res://assets/ui/vector_whiteIcons.svg"
+dest_files=["res://.godot/imported/vector_whiteIcons.svg-f54fcfdf6c678f09a91bde2c2872abe2.ctex"]
 
 [params]
 
@@ -32,6 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=2.0
+svg/scale=3.0
 editor/scale_with_editor_scale=false
 editor/convert_colors_with_editor_theme=false

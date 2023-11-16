@@ -6,61 +6,65 @@ var _camera: Camera3D:
         if _camera == null: _camera = _owner.get_viewport().get_camera_3d()
         return _camera
 
+var _is_enabled: bool:
+    get: return Input.get_meta("enabled", true)
+
 
 func is_basic_attack_just_pressed() -> bool:
-    return Input.is_action_just_pressed("character.attack.basic")
+    return _is_enabled and Input.is_action_just_pressed("character.attack.basic")
 
 
 func is_basic_attack_just_released() -> bool:
-    return Input.is_action_just_released("character.attack.basic")
+    return _is_enabled and Input.is_action_just_released("character.attack.basic")
 
 
 func is_secondary_attack_just_pressed() -> bool:
-    return Input.is_action_just_pressed("character.attack.strong")
+    return _is_enabled and Input.is_action_just_pressed("character.attack.strong")
 
 
 func is_secondary_attack_just_released() -> bool:
-    return Input.is_action_just_released("character.attack.strong")
+    return _is_enabled and Input.is_action_just_released("character.attack.strong")
 
 
 func is_third_attack_just_pressed() -> bool:
-    return Input.is_action_just_pressed("character.attack.third")
+    return _is_enabled and Input.is_action_just_pressed("character.attack.third")
 
 
 func is_third_attack_just_released() -> bool:
-    return Input.is_action_just_released("character.attack.third")
+    return _is_enabled and Input.is_action_just_released("character.attack.third")
 
 
 func is_block_just_pressed() -> bool:
-    return Input.is_action_just_pressed("character.attack.block")
+    return _is_enabled and Input.is_action_just_pressed("character.attack.block")
 
 
 func is_block_just_released() -> bool:
-    return Input.is_action_just_released("character.attack.block")
+    return _is_enabled and Input.is_action_just_released("character.attack.block")
 
 
 func is_dodge_just_pressed() -> bool:
-    return Input.is_action_just_pressed("character.attack.dodge")
+    return _is_enabled and Input.is_action_just_pressed("character.attack.dodge")
 
 
 func is_dodge_just_released() -> bool:
-    return Input.is_action_just_released("character.attack.dodge")
+    return _is_enabled and Input.is_action_just_released("character.attack.dodge")
 
 
 func is_ultimate_just_pressed() -> bool:
-    return Input.is_action_just_pressed("character.attack.ultimate")
+    return _is_enabled and Input.is_action_just_pressed("character.attack.ultimate")
 
 
 func is_ultimate_just_released() -> bool:
-    return Input.is_action_just_released("character.attack.ultimate")
+    return _is_enabled and Input.is_action_just_released("character.attack.ultimate")
 
 
 #func is_cancel_just_pressed() -> bool:
 #    return Input.is_action_just_pressed("character.attack.cancel")
 
 
+var _look_at_point: Vector3
 func get_look_at_point() -> Vector3:
-    var look_at_point: = Vector3()
+    if not _is_enabled: return _look_at_point
     
     if Input.get_connected_joypads().size() > 0:
         var look_direction: = _get_look_at_direction()
@@ -75,9 +79,9 @@ func get_look_at_point() -> Vector3:
         var normal: = _camera.project_ray_normal(mouse_position)
         var intersection = plane.intersects_ray(origin, normal)
 
-        if intersection: look_at_point = intersection
+        if intersection: _look_at_point = intersection
     
-    return look_at_point
+    return _look_at_point
 
 
 func _get_look_at_direction() -> Vector2:
@@ -88,6 +92,8 @@ func _get_look_at_direction() -> Vector2:
 
 
 func get_move_direction() -> Vector2:
+    if not _is_enabled: return Vector2.ZERO
+    
     var move_direction: = Vector2()
     move_direction.x = Input.get_axis("character.move.left", "character.move.right")
     move_direction.y = Input.get_axis("character.move.up", "character.move.down")
