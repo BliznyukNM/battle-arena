@@ -9,6 +9,10 @@ func _enter_tree() -> void:
     visible = false
 
 
+func _exit_tree() -> void:
+    Input.remove_meta("enabled")
+
+
 func _ready() -> void:
     $VBoxContainer/Exit.pressed.connect(func(): exit_game.emit())
 
