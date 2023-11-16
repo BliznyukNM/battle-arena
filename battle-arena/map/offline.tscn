@@ -8,8 +8,8 @@
 
 [node name="Camera" parent="." index="1"]
 current = true
-lerp_speed = 3.0
-max_distance = 8.0
+lerp_speed = 4.5
+max_distance = Vector2(20, 10)
 
 [node name="IdleDummy" parent="." index="8" instance=ExtResource("4_si2op")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5241, -9.53674e-07, -3.41823)

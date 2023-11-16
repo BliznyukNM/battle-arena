@@ -39,6 +39,7 @@ window/size/viewport_width=2048
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+mouse_cursor/custom_image="res://assets/ui/basic_cursor.tres"
 
 [editor_plugins]
 
