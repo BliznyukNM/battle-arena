@@ -35,7 +35,8 @@ func finish() -> void:
     
     if not is_multiplayer_authority(): return
     
-    var projectile: = container.spawn(owner.transform.translated_local(spawn_point))
+    var projectile_transform: Transform3D = owner.transform.translated_local(spawn_point)
+    var projectile: = container.spawn(projectile_transform)
     _on_spawn_projectile(projectile)
 
 
