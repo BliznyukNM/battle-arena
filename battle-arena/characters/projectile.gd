@@ -8,7 +8,6 @@ var _is_travelling: bool = true
 var _travelled_distance: float
 
 
-@onready var _direction: Vector3 = transform.basis.z
 @onready var _collision: CollisionShape3D = $Collision
 
 
@@ -20,7 +19,7 @@ func _process(delta: float) -> void:
     if not _is_travelling: return
     
     var distance: float = skill.projectile_speed * delta
-    position += _direction * distance
+    position += transform.basis.z * distance
     _travelled_distance += distance
     
     if _travelled_distance >= skill.distance:

@@ -1,19 +1,92 @@
-[gd_scene load_steps=4 format=3 uid="uid://be4w2ieudw2jk"]
+[gd_scene load_steps=17 format=3 uid="uid://be4w2ieudw2jk"]
 
 [ext_resource type="Script" path="res://characters/projectile.gd" id="1_gtc3e"]
-[ext_resource type="ArrayMesh" uid="uid://dhogy4oi6u4sf" path="res://assets/characters/heroes/ranger/meshes/arrow_Cylinder_007.res" id="1_sgoj4"]
+[ext_resource type="ArrayMesh" uid="uid://td3o4y7kn51v" path="res://assets/characters/heroes/ranger/meshes/arrow_head_Cylinder_003.res" id="2_3vxrg"]
+[ext_resource type="Texture2D" uid="uid://ba6uybbs8vgaw" path="res://assets/vfx/gradients/Gradient01.png" id="2_d1b1p"]
+[ext_resource type="Shader" path="res://characters/heroes/ranger/vfx/trail.gdshader" id="3_jvhix"]
+[ext_resource type="Texture2D" uid="uid://drxqa7vvwfbgn" path="res://assets/vfx/trails/StylizedTrail05.png" id="4_i3srd"]
+[ext_resource type="Texture2D" uid="uid://d2s2w82pf875w" path="res://assets/vfx/trails/StylizedTrail06.png" id="5_c23x5"]
+[ext_resource type="Texture2D" uid="uid://3wt8mg7x1ey" path="res://assets/vfx/trails/StylizedTrail02.png" id="5_qeieh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_06rwa"]
+shading_mode = 0
+albedo_color = Color(0.8, 1.6, 0.8, 1)
+albedo_texture = ExtResource("2_d1b1p")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ml1j8"]
 size = Vector3(0.13, 0.125, 0.774)
+
+[sub_resource type="Curve" id="Curve_je38k"]
+_data = [Vector2(0, 0), 0.0270512, 3.81247, 0, 0, Vector2(0.137286, 0.201814), 0.0377788, 0.0377788, 0, 0, Vector2(1, 0), -0.197724, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ycmvp"]
+render_priority = 0
+shader = ExtResource("3_jvhix")
+shader_parameter/albedo = Color(0.501961, 1, 0.501961, 1)
+shader_parameter/tiling = Vector2(1, 1)
+shader_parameter/speed = Vector2(-1, 2.08165e-12)
+shader_parameter/main_texture = ExtResource("4_i3srd")
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_a4btl"]
+material = SubResource("ShaderMaterial_ycmvp")
+shape = 0
+sections = 16
+section_length = 0.1
+curve = SubResource("Curve_je38k")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dkldv"]
+render_priority = 0
+shader = ExtResource("3_jvhix")
+shader_parameter/albedo = Color(0.065, 0.13, 0.065, 1)
+shader_parameter/tiling = Vector2(1, 1)
+shader_parameter/speed = Vector2(-1, 2.08165e-12)
+shader_parameter/main_texture = ExtResource("5_c23x5")
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_pe8rn"]
+material = SubResource("ShaderMaterial_dkldv")
+shape = 0
+sections = 27
+section_length = 0.1
+curve = SubResource("Curve_je38k")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8pd3e"]
+render_priority = 0
+shader = ExtResource("3_jvhix")
+shader_parameter/albedo = Color(0.065, 0.13, 0.065, 1)
+shader_parameter/tiling = Vector2(1, 1)
+shader_parameter/speed = Vector2(-1, 2.08165e-12)
+shader_parameter/main_texture = ExtResource("5_qeieh")
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_hkwf0"]
+material = SubResource("ShaderMaterial_8pd3e")
+shape = 0
+sections = 27
+section_length = 0.1
+curve = SubResource("Curve_je38k")
 
 [node name="Arrow" type="Area3D"]
 script = ExtResource("1_gtc3e")
 
 [node name="View" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-mesh = ExtResource("1_sgoj4")
+transform = Transform3D(-6.55671e-09, 0, -0.15, 0, 0.15, 0, 0.15, 0, -6.55671e-09, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_06rwa")
+cast_shadow = 0
+mesh = ExtResource("2_3vxrg")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_ml1j8")
+
+[node name="Trail" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.00034912, -0.00280992, -0.999996, -1, -9.81223e-07, -0.000349119, 0, 0.999996, -0.00280992, 0, 0, -0.826811)
+mesh = SubResource("RibbonTrailMesh_a4btl")
+
+[node name="Trail2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.00034912, -0.00280992, -0.999996, -1, -9.81223e-07, -0.000349119, 0, 0.999996, -0.00280992, -0.0421472, 0, -1.31253)
+mesh = SubResource("RibbonTrailMesh_pe8rn")
+
+[node name="Trail3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.00034912, -0.00280992, -0.999996, -1, -9.81223e-07, -0.000349119, 0, 0.999996, -0.00280992, 0.0502927, 0.00231194, -1.31253)
+mesh = SubResource("RibbonTrailMesh_hkwf0")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
