@@ -2,7 +2,6 @@ extends MultiplayerSpawner
 
 
 @export_range(1, 2, 1) var team_id = 1
-@export var hero_list: CharacterList
 
 
 @onready var root: = get_node(spawn_path)
@@ -24,8 +23,9 @@ func _ready() -> void:
     spawn_function = _spawn
     spawned.connect(on_spawned)
     
-    for hero in hero_list.characters:
-        add_spawnable_scene(hero.resource_path)
+    const heroes_folder: = "res://characters/heroes"
+    for hero in DirAccess.get_directories_at(heroes_folder):
+        add_spawnable_scene("%s/%s/%s.tscn" % [heroes_folder, hero, hero])
 
 
 func _spawn(params) -> Node:
