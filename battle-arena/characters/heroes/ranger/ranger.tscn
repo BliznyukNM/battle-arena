@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://characters/stats/number_stat.gd" id="2_8tvmm"]
 [ext_resource type="Script" path="res://characters/status_effects/modifiers/conditional_modifier.gd" id="2_327xy"]
 [ext_resource type="Script" path="res://characters/skills/skill_sequence.gd" id="2_ascv0"]
-[ext_resource type="Script" path="res://characters/heroes/ranger/processors/skin.gd" id="2_frijp"]
+[ext_resource type="Script" path="res://characters/processors/skin.gd" id="2_frijp"]
 [ext_resource type="PackedScene" uid="uid://bpq0bn5oy13jl" path="res://characters/heroes/ranger/skin.tscn" id="2_plqqr"]
 [ext_resource type="Script" path="res://characters/status_effects/effects/slowdown.gd" id="3_i85lt"]
 [ext_resource type="PackedScene" uid="uid://diru0s8mag8bo" path="res://characters/heroes/ranger/skills/charge_arrow.tscn" id="4_7ta2r"]

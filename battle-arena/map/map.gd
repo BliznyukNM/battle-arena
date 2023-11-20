@@ -1,7 +1,7 @@
 extends Node3D
 
 
-var selected_hero: String = "ranger" # FIXME
+var selected_hero: String = "druid" # FIXME
 
 
 func _ready() -> void:

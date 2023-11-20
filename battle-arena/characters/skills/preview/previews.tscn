@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cnpyc3trrywtx"]
+[gd_scene load_steps=8 format=3 uid="uid://cnpyc3trrywtx"]
 
 [ext_resource type="Script" path="res://characters/skills/preview/arrow_preview.gd" id="1_hdaum"]
 [ext_resource type="Script" path="res://characters/skills/preview/area_preview.gd" id="2_vdlw4"]
+[ext_resource type="Texture2D" uid="uid://psger3uipvhi" path="res://assets/vfx/circles/Circle005.png" id="3_sartg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n1qgf"]
 transparency = 1
@@ -10,13 +11,14 @@ albedo_color = Color(0, 0.905882, 0.862745, 0.513726)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_bwvdw"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_7ibk7"]
-height = 0.01
+[sub_resource type="QuadMesh" id="QuadMesh_02eos"]
+orientation = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xtm1y"]
 transparency = 1
 shading_mode = 0
 albedo_color = Color(0, 0.905882, 0.862745, 0.513726)
+albedo_texture = ExtResource("3_sartg")
 
 [node name="Previews" type="Node"]
 
@@ -30,8 +32,8 @@ mesh = SubResource("ArrayMesh_bwvdw")
 
 [node name="AreaPreview" type="Node3D" parent="."]
 script = ExtResource("2_vdlw4")
-_mesh = SubResource("CylinderMesh_7ibk7")
+_mesh = SubResource("QuadMesh_02eos")
 
 [node name="View" type="MeshInstance3D" parent="AreaPreview"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.05, 2.08165e-12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.1, 2.08165e-12)
 material_override = SubResource("StandardMaterial3D_xtm1y")

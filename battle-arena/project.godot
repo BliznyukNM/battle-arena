@@ -45,6 +45,14 @@ mouse_cursor/custom_image="res://assets/ui/basic_cursor.tres"
 
 enabled=PackedStringArray("res://addons/gut/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://assets/": "pink",
+"res://characters/": "yellow",
+"res://multiplayer/": "teal"
+}
+
 [gui]
 
 theme/custom="res://lobby/themes/default.tres"
