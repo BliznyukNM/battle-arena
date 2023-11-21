@@ -7,11 +7,6 @@ extends "res://characters/skills/range_attack_skill.gd"
 var target_position: Vector3
 
 
-func _ready() -> void:
-    super._ready()
-    _collision_mask = 0b0001
-
-
 func _on_activate(pressed: bool) -> void:
     var tween: = get_tree().create_tween()
     tween.tween_method(_update_target_position, 0, execution.wait_time, execution.wait_time)

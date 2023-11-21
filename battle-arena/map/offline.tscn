@@ -13,6 +13,9 @@ max_distance = Vector2(20, 10)
 
 [node name="IdleDummy" parent="." index="8" instance=ExtResource("4_si2op")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5241, -9.53674e-07, -3.41823)
+collision_mask = 7
 
 [node name="ShootingDummy" parent="." index="9" instance=ExtResource("5_p0eoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.12878, 0, -10.7085)
+collision_layer = 1
+collision_mask = 7

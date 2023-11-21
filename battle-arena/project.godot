@@ -176,6 +176,7 @@ ui.pause={
 3d_physics/layer_1="Default"
 3d_physics/layer_2="Team_A"
 3d_physics/layer_3="Team_B"
+3d_physics/layer_4="Neutral"
 
 [rendering]
 

@@ -1,7 +1,10 @@
-extends "res://characters/skills/projectiles/projectile.gd"
+extends Area3D
 
 
 @export var height: Curve
+
+
+var skill: BaseSkill
 
 
 var _start_position: Vector3
@@ -18,8 +21,6 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-    if not _is_travelling: return
-    
     _time_passed += delta
     position = _start_position.lerp(_target_position, ease(_time_passed / _time_to_reach, 0.45))
     position.y = _start_position.y * height.sample(_time_passed / _time_to_reach)
@@ -29,12 +30,11 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node3D) -> void:
     if not is_multiplayer_authority(): return
+    if body.has_node("HitBox"): return # FIXME
     _on_finish_travel()
 
 
 func _on_finish_travel() -> void:
-    super._on_finish_travel()
-    
     var space_state: PhysicsDirectSpaceState3D = owner.get_world_3d().direct_space_state
         
     var shape_rid = PhysicsServer3D.sphere_shape_create()
@@ -44,7 +44,7 @@ func _on_finish_travel() -> void:
     params.shape_rid = shape_rid
     params.collide_with_bodies = false
     params.collide_with_areas = true
-    params.collision_mask = owner.collision_layer
+    params.collision_mask = skill.collision_mask
     params.transform = global_transform
     
     var result: = space_state.intersect_shape(params)
@@ -56,6 +56,7 @@ func _on_finish_travel() -> void:
     
     if hitbox_count > 0: skill.gain_energy()
     PhysicsServer3D.free_rid(shape_rid)
+    queue_free()
 
 
 func _process_hit(hitbox: HitBox) -> bool: return false

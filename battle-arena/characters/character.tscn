@@ -43,7 +43,7 @@ properties/1/spawn = false
 properties/1/replication_mode = 1
 
 [node name="Character" type="CharacterBody3D"]
-collision_mask = 7
+collision_mask = 15
 script = ExtResource("1_8kwiu")
 
 [node name="Stats" type="Node" parent="."]

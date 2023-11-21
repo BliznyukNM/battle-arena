@@ -6,7 +6,6 @@
 [node name="Trap" instance=ExtResource("1_5nbm2")]
 script = ExtResource("2_pui31")
 damage = 10.0
-projectile_speed = 0.0
 distance = 10.0
 radius = 1.0
 energy_gain = 8.0

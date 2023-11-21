@@ -49,7 +49,7 @@ func _on_spawn_projectile(projectile: Node) -> void:
 func _spawn_projectile(transform: Transform3D) -> Node:
     var scene: = load(container.get_spawnable_scene(0))
     var projectile_instance: CollisionObject3D = scene.instantiate()
-    projectile_instance.collision_mask = _collision_mask
+    projectile_instance.collision_mask = collision_mask
     projectile_instance.collision_layer = owner.collision_layer
     projectile_instance.transform = transform
     projectile_instance.skill = self

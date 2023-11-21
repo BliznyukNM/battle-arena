@@ -65,7 +65,7 @@ func _try_hit_shape() -> void:
     params.shape_rid = _shape.get_rid()
     params.collide_with_bodies = false
     params.collide_with_areas = true
-    params.collision_mask = _collision_mask
+    params.collision_mask = collision_mask
     params.transform = owner.transform.translated_local(offset)
     
     var result: = space_state.intersect_shape(params)

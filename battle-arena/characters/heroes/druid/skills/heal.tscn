@@ -6,11 +6,11 @@
 [node name="Heal" instance=ExtResource("1_6i28s")]
 script = ExtResource("2_v0yfd")
 heal = 10.0
-damage = 0.0
 projectile_speed = 10.0
 distance = 7.0
 radius = 1.5
 energy_gain = 5.0
+collision_detection_type = 1
 
 [node name="Execution" parent="." index="0"]
 base_time = 0.6

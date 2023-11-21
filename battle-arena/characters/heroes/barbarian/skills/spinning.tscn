@@ -11,6 +11,7 @@ damage = 7.0
 time_between_hits = 0.3
 radius = 2.0
 energy_cost = 25.0
+collision_detection_type = 2
 
 [node name="Execution" parent="." index="0"]
 base_time = 4.0
