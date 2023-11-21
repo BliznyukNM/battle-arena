@@ -125,7 +125,8 @@ skill_speed = NodePath("../../../../Stats/AttackSpeed")
 [node name="SecondaryAttack" type="Node" parent="Skills" index="1"]
 script = ExtResource("10_otvns")
 
-[node name="AxeThrow" parent="Skills/SecondaryAttack" index="0" instance=ExtResource("10_i2xy0")]
+[node name="AxeThrow" parent="Skills/SecondaryAttack" index="0" node_paths=PackedStringArray("spawn_point") instance=ExtResource("10_i2xy0")]
+spawn_point = NodePath("../../../Skin/Rig/Skeleton3D/2H_Axe/ThrowableSpawnPoint")
 
 [node name="AxeRecall" parent="Skills/SecondaryAttack" index="1" instance=ExtResource("11_jsp2i")]
 

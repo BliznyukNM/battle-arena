@@ -11,7 +11,8 @@
 [node name="BasicAttack" type="Node" parent="Skills" index="0"]
 script = ExtResource("2_xu5gq")
 
-[node name="RangeAttack" parent="Skills/BasicAttack" index="0" instance=ExtResource("2_1nh6t")]
+[node name="RangeAttack" parent="Skills/BasicAttack" index="0" node_paths=PackedStringArray("spawn_point") instance=ExtResource("2_1nh6t")]
+spawn_point = NodePath("../../../Skin/Rig/Skeleton3D/Druid_Staff/ProjectileSpawnPoint")
 
 [node name="Skin" type="Node" parent="Processors" index="5" node_paths=PackedStringArray("skin", "move_speed", "attack_speed")]
 script = ExtResource("2_kfggd")

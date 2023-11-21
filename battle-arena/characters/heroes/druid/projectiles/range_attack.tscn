@@ -1,12 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://bamgmvlacg7dk"]
+[gd_scene load_steps=18 format=3 uid="uid://bamgmvlacg7dk"]
 
 [ext_resource type="Script" path="res://characters/projectile.gd" id="1_ksq4y"]
 [ext_resource type="Texture2D" uid="uid://ba6uybbs8vgaw" path="res://assets/vfx/gradients/Gradient01.png" id="2_kkh5t"]
 [ext_resource type="ArrayMesh" uid="uid://td3o4y7kn51v" path="res://assets/characters/heroes/ranger/meshes/arrow_head_Cylinder_003.res" id="3_7j047"]
-[ext_resource type="Shader" path="res://characters/heroes/ranger/vfx/trail.gdshader" id="4_dnj85"]
+[ext_resource type="Shader" path="res://vfx/trail.gdshader" id="4_dnj85"]
 [ext_resource type="Texture2D" uid="uid://drxqa7vvwfbgn" path="res://assets/vfx/trails/StylizedTrail05.png" id="5_qbkf2"]
 [ext_resource type="Texture2D" uid="uid://d2s2w82pf875w" path="res://assets/vfx/trails/StylizedTrail06.png" id="6_7dgev"]
 [ext_resource type="Texture2D" uid="uid://3wt8mg7x1ey" path="res://assets/vfx/trails/StylizedTrail02.png" id="7_ss7tl"]
+[ext_resource type="Script" path="res://vfx/trail_instance_3d.gd" id="8_8pwg4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_06rwa"]
 shading_mode = 0
@@ -80,13 +81,19 @@ shape = SubResource("BoxShape3D_ml1j8")
 [node name="Trail" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.00034912, -0.00280992, -0.999996, -1, -9.81223e-07, -0.000349119, 0, 0.999996, -0.00280992, 0, 0, -0.826811)
 mesh = SubResource("RibbonTrailMesh_a4btl")
+script = ExtResource("8_8pwg4")
+time = 0.2
 
 [node name="Trail2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.00034912, -0.00280992, -0.999996, -1, -9.81223e-07, -0.000349119, 0, 0.999996, -0.00280992, -0.0421472, 0, -1.31253)
 mesh = SubResource("RibbonTrailMesh_pe8rn")
+script = ExtResource("8_8pwg4")
+time = 0.2
 
 [node name="Trail3" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.00034912, -0.00280992, -0.999996, -1, -9.81223e-07, -0.000349119, 0, 0.999996, -0.00280992, 0.0502927, 0.00231194, -1.31253)
 mesh = SubResource("RibbonTrailMesh_hkwf0")
+script = ExtResource("8_8pwg4")
+time = 0.2
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

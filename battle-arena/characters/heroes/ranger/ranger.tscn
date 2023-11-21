@@ -54,19 +54,23 @@ effects = Array[Resource("res://characters/status_effects/effects/base_effect.gd
 [node name="BasicAttack" type="Node" parent="Skills" index="0"]
 script = ExtResource("2_ascv0")
 
-[node name="Shot" parent="Skills/BasicAttack" index="0" node_paths=PackedStringArray("skill_speed") instance=ExtResource("2_2cs3i")]
+[node name="Shot" parent="Skills/BasicAttack" index="0" node_paths=PackedStringArray("spawn_point", "skill_speed") instance=ExtResource("2_2cs3i")]
+spawn_point = NodePath("../../../Skin/Rig/Skeleton3D/2H_Crossbow/ProjectileSpawnPoint")
 skill_speed = NodePath("../../../Stats/AttackSpeed")
 
-[node name="SecondaryAttack" parent="Skills" index="1" instance=ExtResource("4_7ta2r")]
+[node name="SecondaryAttack" parent="Skills" index="1" node_paths=PackedStringArray("spawn_point") instance=ExtResource("4_7ta2r")]
+spawn_point = NodePath("../../Skin/Rig/Skeleton3D/2H_Crossbow/ProjectileSpawnPoint")
 
 [node name="ThirdAttack" parent="Skills" index="2" instance=ExtResource("5_hhkuk")]
 
-[node name="Block" parent="Skills" index="3" instance=ExtResource("7_0pagd")]
+[node name="Block" parent="Skills" index="3" node_paths=PackedStringArray("spawn_point") instance=ExtResource("7_0pagd")]
+spawn_point = NodePath("../../Skin/Rig/Skeleton3D/Throwable/ThrowableSpawnPoint")
 
 [node name="Dodge" parent="Skills" index="4" instance=ExtResource("9_vmnp0")]
 dash_time = 0.3
 
-[node name="Ultimate" parent="Skills" index="5" instance=ExtResource("10_qjbdi")]
+[node name="Ultimate" parent="Skills" index="5" node_paths=PackedStringArray("spawn_point") instance=ExtResource("10_qjbdi")]
+spawn_point = NodePath("../../Skin/Rig/Skeleton3D/2H_Crossbow/ProjectileSpawnPoint")
 
 [node name="Skin" type="Node" parent="Processors" index="5" node_paths=PackedStringArray("skin", "move_speed", "attack_speed")]
 script = ExtResource("2_frijp")
