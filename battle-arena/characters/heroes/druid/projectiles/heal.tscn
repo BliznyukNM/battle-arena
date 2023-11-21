@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cd2wxahlrxs3g"]
+
+[ext_resource type="Script" path="res://characters/heroes/druid/projectiles/heal.gd" id="1_v2nlg"]
+[ext_resource type="PackedScene" uid="uid://btxxd1cuygdbj" path="res://assets/characters/heroes/druid/potions/potion_medium_green.gltf" id="2_6g2hb"]
+
+[sub_resource type="Curve" id="Curve_r0lna"]
+max_value = 2.0
+_data = [Vector2(0, 1), 0.0, 4.2738, 0, 0, Vector2(1, 0), -7.14486, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ml1j8"]
+size = Vector3(0.44, 0.43, 0.394)
+
+[node name="Flask" type="Area3D"]
+script = ExtResource("1_v2nlg")
+height = SubResource("Curve_r0lna")
+
+[node name="potion_medium_green2" parent="." instance=ExtResource("2_6g2hb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.201402, 0)
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11401, 0)
+shape = SubResource("BoxShape3D_ml1j8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

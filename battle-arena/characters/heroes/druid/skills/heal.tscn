@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8w8t5jolkw02"]
+
+[ext_resource type="PackedScene" uid="uid://dt7dp8amhbd5b" path="res://characters/skills/range_attack_skill.tscn" id="1_6i28s"]
+[ext_resource type="Script" path="res://characters/heroes/druid/skills/heal.gd" id="2_v0yfd"]
+
+[node name="Heal" instance=ExtResource("1_6i28s")]
+script = ExtResource("2_v0yfd")
+heal = 10.0
+damage = 0.0
+projectile_speed = 10.0
+distance = 7.0
+radius = 1.5
+energy_gain = 5.0
+
+[node name="Execution" parent="." index="0"]
+base_time = 0.6
+
+[node name="Cooldown" parent="." index="1"]
+base_time = 1.0
+
+[node name="Container" parent="." index="2"]
+_spawnable_scenes = PackedStringArray("res://characters/heroes/druid/projectiles/heal.tscn")

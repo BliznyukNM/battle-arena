@@ -1,15 +1,16 @@
-[gd_scene load_steps=18 format=3 uid="uid://bamgmvlacg7dk"]
+[gd_scene load_steps=15 format=3 uid="uid://bamgmvlacg7dk"]
 
-[ext_resource type="Script" path="res://characters/projectile.gd" id="1_ksq4y"]
+[ext_resource type="Script" path="res://characters/skills/projectiles/projectile.gd" id="1_ksq4y"]
 [ext_resource type="Texture2D" uid="uid://ba6uybbs8vgaw" path="res://assets/vfx/gradients/Gradient01.png" id="2_kkh5t"]
-[ext_resource type="ArrayMesh" uid="uid://td3o4y7kn51v" path="res://assets/characters/heroes/ranger/meshes/arrow_head_Cylinder_003.res" id="3_7j047"]
+[ext_resource type="ArrayMesh" uid="uid://bt72pbtfl23gu" path="res://assets/vfx/meshes/capsule.res" id="3_84vak"]
 [ext_resource type="Shader" path="res://vfx/trail.gdshader" id="4_dnj85"]
-[ext_resource type="Texture2D" uid="uid://drxqa7vvwfbgn" path="res://assets/vfx/trails/StylizedTrail05.png" id="5_qbkf2"]
-[ext_resource type="Texture2D" uid="uid://d2s2w82pf875w" path="res://assets/vfx/trails/StylizedTrail06.png" id="6_7dgev"]
-[ext_resource type="Texture2D" uid="uid://3wt8mg7x1ey" path="res://assets/vfx/trails/StylizedTrail02.png" id="7_ss7tl"]
+[ext_resource type="Texture2D" uid="uid://ui6af21ply8x" path="res://assets/vfx/lines/Line01.PNG" id="5_k2m0g"]
+[ext_resource type="Texture2D" uid="uid://bo1ahsppobpxy" path="res://assets/vfx/trails/StylizedTrail14.png" id="7_h6qkc"]
 [ext_resource type="Script" path="res://vfx/trail_instance_3d.gd" id="8_8pwg4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_06rwa"]
+transparency = 1
+blend_mode = 1
 shading_mode = 0
 albedo_color = Color(0.8, 1.6, 0.8, 1)
 albedo_texture = ExtResource("2_kkh5t")
@@ -17,82 +18,63 @@ albedo_texture = ExtResource("2_kkh5t")
 [sub_resource type="BoxShape3D" id="BoxShape3D_ml1j8"]
 size = Vector3(0.13, 0.125, 0.774)
 
-[sub_resource type="Curve" id="Curve_je38k"]
-_data = [Vector2(0, 0), 0.0270512, 3.81247, 0, 0, Vector2(0.137286, 0.201814), 0.0377788, 0.0377788, 0, 0, Vector2(1, 0), -0.197724, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_er1vt"]
+_data = [Vector2(0, 0.102121), 0.0270512, 0.122698, 0, 0, Vector2(0.162311, 0.284904), 0.0, 0.0, 0, 0, Vector2(1, 0.0572275), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ycmvp"]
-render_priority = 0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e3uyt"]
+render_priority = 1
 shader = ExtResource("4_dnj85")
-shader_parameter/albedo = Color(0.501961, 1, 0.501961, 1)
+shader_parameter/albedo = Color(0.176471, 0.34902, 0.176471, 1)
 shader_parameter/tiling = Vector2(1, 1)
-shader_parameter/speed = Vector2(-1, 2.08165e-12)
-shader_parameter/main_texture = ExtResource("5_qbkf2")
+shader_parameter/speed = Vector2(2.08165e-12, 2.08165e-12)
+shader_parameter/main_texture = ExtResource("5_k2m0g")
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_a4btl"]
-material = SubResource("ShaderMaterial_ycmvp")
+material = SubResource("ShaderMaterial_e3uyt")
 shape = 0
-sections = 16
-section_length = 0.1
-curve = SubResource("Curve_je38k")
+size = 2.0
+sections = 8
+section_segments = 16
+curve = SubResource("Curve_er1vt")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dkldv"]
-render_priority = 0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lq8ou"]
+render_priority = 2
 shader = ExtResource("4_dnj85")
-shader_parameter/albedo = Color(0.065, 0.13, 0.065, 1)
+shader_parameter/albedo = Color(0.8, 1.6, 0.8, 1)
 shader_parameter/tiling = Vector2(1, 1)
 shader_parameter/speed = Vector2(-1, 2.08165e-12)
-shader_parameter/main_texture = ExtResource("6_7dgev")
+shader_parameter/main_texture = ExtResource("7_h6qkc")
 
-[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_pe8rn"]
-material = SubResource("ShaderMaterial_dkldv")
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_nhbc8"]
+material = SubResource("ShaderMaterial_lq8ou")
 shape = 0
-sections = 27
-section_length = 0.1
-curve = SubResource("Curve_je38k")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8pd3e"]
-render_priority = 0
-shader = ExtResource("4_dnj85")
-shader_parameter/albedo = Color(0.065, 0.13, 0.065, 1)
-shader_parameter/tiling = Vector2(1, 1)
-shader_parameter/speed = Vector2(-1, 2.08165e-12)
-shader_parameter/main_texture = ExtResource("7_ss7tl")
-
-[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_hkwf0"]
-material = SubResource("ShaderMaterial_8pd3e")
-shape = 0
-sections = 27
-section_length = 0.1
-curve = SubResource("Curve_je38k")
+size = 2.0
+sections = 8
+section_segments = 32
+curve = SubResource("Curve_er1vt")
 
 [node name="Arrow" type="Area3D"]
 script = ExtResource("1_ksq4y")
 
 [node name="View" type="MeshInstance3D" parent="."]
-transform = Transform3D(-6.55671e-09, 0, -0.15, 0, 0.15, 0, 0.15, 0, -6.55671e-09, 0, 0, 0)
+transform = Transform3D(1, -6.66422e-31, 2.91302e-38, 0, -4.37114e-08, -1, 6.66422e-31, 1, -4.37114e-08, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_06rwa")
 cast_shadow = 0
-mesh = ExtResource("3_7j047")
+mesh = ExtResource("3_84vak")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_ml1j8")
 
 [node name="Trail" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.00034912, -0.00280992, -0.999996, -1, -9.81223e-07, -0.000349119, 0, 0.999996, -0.00280992, 0, 0, -0.826811)
+transform = Transform3D(0.00034912, -0.00280992, -0.999996, -1, -9.81223e-07, -0.000349119, 0, 0.999996, -0.00280992, 0, 0, -0.709722)
 mesh = SubResource("RibbonTrailMesh_a4btl")
 script = ExtResource("8_8pwg4")
 time = 0.2
 
 [node name="Trail2" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.00034912, -0.00280992, -0.999996, -1, -9.81223e-07, -0.000349119, 0, 0.999996, -0.00280992, -0.0421472, 0, -1.31253)
-mesh = SubResource("RibbonTrailMesh_pe8rn")
-script = ExtResource("8_8pwg4")
-time = 0.2
-
-[node name="Trail3" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.00034912, -0.00280992, -0.999996, -1, -9.81223e-07, -0.000349119, 0, 0.999996, -0.00280992, 0.0502927, 0.00231194, -1.31253)
-mesh = SubResource("RibbonTrailMesh_hkwf0")
+transform = Transform3D(0.00034912, -0.00280992, -0.999996, -1, -9.81223e-07, -0.000349119, 0, 0.999996, -0.00280992, -0.0210319, 0, -0.709722)
+mesh = SubResource("RibbonTrailMesh_nhbc8")
 script = ExtResource("8_8pwg4")
 time = 0.2
 

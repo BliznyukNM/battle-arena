@@ -36,7 +36,7 @@ var current_value: float:
         return clamp(base_value * max(1 + percentual_modifier, 0) + flat_modifier, min_value, max_value)
     set(value):
         var old_value: = current_value
-        flat_modifier += value - old_value
+        flat_modifier += clamp(value, min_value, max_value) - old_value
 
 
 func reset() -> void:
