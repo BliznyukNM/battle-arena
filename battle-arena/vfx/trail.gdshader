@@ -28,9 +28,6 @@ void vertex() {
 }
 
 void fragment() {
-    float depth = texture(depth_texture, SCREEN_UV).x;
-    
-    
 	vec2 uv = UV.yx * tiling + speed * TIME;
 	vec4 albedo_tex = texture(main_texture, uv);
 	ALBEDO = albedo.rgb * albedo_tex.rgb;

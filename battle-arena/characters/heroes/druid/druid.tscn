@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://cwfa5mghey1pu"]
+
+[ext_resource type="PackedScene" uid="uid://d26br4f45m27g" path="res://characters/character.tscn" id="1_02rvk"]
+[ext_resource type="PackedScene" uid="uid://uhvywhwarj7l" path="res://characters/heroes/druid/skills/range_attack.tscn" id="2_1nh6t"]
+[ext_resource type="Script" path="res://characters/stats/number_stat.gd" id="2_4fjd6"]
+[ext_resource type="Script" path="res://characters/processors/skin.gd" id="2_kfggd"]
+[ext_resource type="PackedScene" uid="uid://pmr8rtmwrkuf" path="res://characters/heroes/druid/skin.tscn" id="2_twatk"]
+[ext_resource type="Script" path="res://characters/skills/skill_sequence.gd" id="2_xu5gq"]
+[ext_resource type="PackedScene" uid="uid://b8w8t5jolkw02" path="res://characters/heroes/druid/skills/heal.tscn" id="4_j3vbu"]
+
+[node name="Druid" instance=ExtResource("1_02rvk")]
+
+[node name="Health" parent="Stats" index="0"]
+max_value = 140.0
+base_value = 140.0
+
+[node name="Energy" type="Node" parent="Stats" index="6"]
+script = ExtResource("2_4fjd6")
+has_max_value = true
+max_value = 100.0
+has_min_value = true
+
+[node name="BasicAttack" type="Node" parent="Skills" index="0"]
+script = ExtResource("2_xu5gq")
+
+[node name="RangeAttack" parent="Skills/BasicAttack" index="0" node_paths=PackedStringArray("spawn_point", "skill_speed") instance=ExtResource("2_1nh6t")]
+spawn_point = NodePath("../../../Skin/Rig/Skeleton3D/Druid_Staff/ProjectileSpawnPoint")
+skill_speed = NodePath("../../../Stats/AttackSpeed")
+
+[node name="SecondaryAttack" parent="Skills" index="1" node_paths=PackedStringArray("spawn_point") instance=ExtResource("4_j3vbu")]
+spawn_point = NodePath("../../Skin/Rig/Skeleton3D/Druid_HandL/ThrowableSpawnPoint")
+
+[node name="Skin" type="Node" parent="Processors" index="5" node_paths=PackedStringArray("skin", "move_speed", "attack_speed")]
+script = ExtResource("2_kfggd")
+skin = NodePath("../../Skin")
+move_speed = NodePath("../../Stats/MovementSpeed")
+attack_speed = NodePath("../../Stats/AttackSpeed")
+interpolation = 10.0
+
+[node name="HUD" parent="." index="6" node_paths=PackedStringArray("energy")]
+energy = NodePath("../Stats/Energy")
+
+[node name="Skin" parent="." index="10" instance=ExtResource("2_twatk")]
+
+[connection signal="activated" from="Skills/BasicAttack/RangeAttack" to="HUD" method="on_skill_activated"]
+[connection signal="activated" from="Skills/BasicAttack/RangeAttack" to="Skin" method="play_basic_attack"]
+[connection signal="activated" from="Skills/SecondaryAttack" to="HUD" method="on_skill_activated"]
+[connection signal="activated" from="Skills/SecondaryAttack" to="Previews/AreaPreview" method="start"]
+[connection signal="activated" from="Skills/SecondaryAttack" to="Skin" method="play_heal"]

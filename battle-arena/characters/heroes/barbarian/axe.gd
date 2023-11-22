@@ -1,4 +1,4 @@
-extends "res://characters/projectile.gd"
+extends "res://characters/skills/projectiles/projectile.gd"
 
 
 @onready var animation: AnimationPlayer = $AnimationPlayer

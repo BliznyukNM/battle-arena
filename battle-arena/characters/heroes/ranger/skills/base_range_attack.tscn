@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://dt7dp8amhbd5b" path="res://characters/skills/range_attack_skill.tscn" id="1_xof2p"]
 
 [node name="RangeAttack" instance=ExtResource("1_xof2p")]
-spawn_point = Vector3(-0.37, 1, 2)
 damage = 10.0
 projectile_speed = 12.0
 distance = 8.0

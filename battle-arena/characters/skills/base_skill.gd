@@ -4,6 +4,7 @@ class_name BaseSkill extends Node
 @export_range(0.0, 100.0, 1.0, "suffix:%") var energy_cost: float
 @export_range(0.0, 100.0, 0.1, "suffix:%") var energy_gain: float
 @export var skill_speed: NumberStat
+@export_flags("Ally:1", "Enemy:2") var collision_detection_type
 
 
 var energy_stat: NumberStat:
@@ -11,7 +12,7 @@ var energy_stat: NumberStat:
         if not energy_stat: energy_stat = owner.stats.get_stat("Energy")
         return energy_stat
 
-
+var collision_mask: int
 var enabled: bool = true
 
 
@@ -23,15 +24,13 @@ var cooldown: SkillTimer: get = _get_cooldown
 var execution: SkillTimer: get = _get_execution
 
 
-var _collision_mask: int
-
-
 var speed: float:
     get: return 1.0 if not skill_speed else 1.0 / skill_speed.current_value
 
 
 func _ready() -> void:
-    _collision_mask = owner.collision_mask & (~owner.collision_layer)
+    if collision_detection_type & 1 > 0: collision_mask |= owner.collision_mask & owner.collision_layer
+    if collision_detection_type & 2 > 0: collision_mask |= owner.collision_mask & (~owner.collision_layer)
     execution.timeout.connect(finish)
 
 

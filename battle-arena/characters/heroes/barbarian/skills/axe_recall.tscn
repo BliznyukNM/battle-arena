@@ -5,6 +5,7 @@
 
 [node name="AxeRecall" instance=ExtResource("1_uora8")]
 script = ExtResource("2_wvn3e")
+collision_detection_type = 2
 
 [node name="Execution" parent="." index="0"]
 base_time = 0.1

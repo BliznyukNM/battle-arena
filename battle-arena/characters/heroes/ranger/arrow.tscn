@@ -1,9 +1,9 @@
 [gd_scene load_steps=17 format=3 uid="uid://be4w2ieudw2jk"]
 
-[ext_resource type="Script" path="res://characters/projectile.gd" id="1_gtc3e"]
+[ext_resource type="Script" path="res://characters/skills/projectiles/projectile.gd" id="1_gtc3e"]
 [ext_resource type="ArrayMesh" uid="uid://td3o4y7kn51v" path="res://assets/characters/heroes/ranger/meshes/arrow_head_Cylinder_003.res" id="2_3vxrg"]
 [ext_resource type="Texture2D" uid="uid://ba6uybbs8vgaw" path="res://assets/vfx/gradients/Gradient01.png" id="2_d1b1p"]
-[ext_resource type="Shader" path="res://characters/heroes/ranger/vfx/trail.gdshader" id="3_jvhix"]
+[ext_resource type="Shader" path="res://vfx/trail.gdshader" id="3_jvhix"]
 [ext_resource type="Texture2D" uid="uid://drxqa7vvwfbgn" path="res://assets/vfx/trails/StylizedTrail05.png" id="4_i3srd"]
 [ext_resource type="Texture2D" uid="uid://d2s2w82pf875w" path="res://assets/vfx/trails/StylizedTrail06.png" id="5_c23x5"]
 [ext_resource type="Texture2D" uid="uid://3wt8mg7x1ey" path="res://assets/vfx/trails/StylizedTrail02.png" id="5_qeieh"]

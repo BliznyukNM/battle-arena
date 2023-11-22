@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://flt4bdecd0xj"]
+[gd_scene load_steps=9 format=3 uid="uid://flt4bdecd0xj"]
 
 [ext_resource type="Script" path="res://map/map.gd" id="1_jyhhi"]
 [ext_resource type="MeshLibrary" uid="uid://bjja43ocp6hvr" path="res://map/dungeon.meshlib" id="1_p1vss"]
 [ext_resource type="Script" path="res://map/Camera.gd" id="2_fe6qu"]
 [ext_resource type="PackedScene" uid="uid://cfqs7tnlielrb" path="res://ui/gui.tscn" id="3_lap5g"]
 [ext_resource type="Script" path="res://map/spawner.gd" id="4_44ugc"]
-[ext_resource type="Resource" uid="uid://cipq6q6x1a3kv" path="res://characters/heroes/hero_list.tres" id="5_47638"]
 [ext_resource type="Script" path="res://ENetMultiplayer.gd" id="7_ly6bx"]
 [ext_resource type="PackedScene" uid="uid://c8hjplt0ocsk7" path="res://map/ui/pause_menu.tscn" id="8_yvmdu"]
 
@@ -51,7 +50,6 @@ unique_name_in_owner = true
 spawn_path = NodePath("Root")
 spawn_limit = 3
 script = ExtResource("4_44ugc")
-hero_list = ExtResource("5_47638")
 
 [node name="PositionA" type="Node3D" parent="Spawner/TeamA"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7373, 0, -1.36704)
@@ -70,7 +68,6 @@ spawn_path = NodePath("Root")
 spawn_limit = 3
 script = ExtResource("4_44ugc")
 team_id = 2
-hero_list = ExtResource("5_47638")
 
 [node name="PositionA" type="Node3D" parent="Spawner/TeamB"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1535, 0, -1.66145)

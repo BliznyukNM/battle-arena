@@ -1,7 +1,7 @@
 extends BaseSkill
 
 
-@export var spawn_point: Vector3
+@export var spawn_point: Node3D
 @export var damage: float:
     get = _get_damage
 @export var projectile_speed: float
@@ -35,7 +35,9 @@ func finish() -> void:
     
     if not is_multiplayer_authority(): return
     
-    var projectile_transform: Transform3D = owner.transform.translated_local(spawn_point)
+    var projectile_transform: = spawn_point.global_transform
+    var offset: = Vector3(0, 1, 0.5)
+    projectile_transform = projectile_transform.looking_at(owner.input.look_at_point + offset, Vector3.UP, true)
     var projectile: = container.spawn(projectile_transform)
     _on_spawn_projectile(projectile)
 
@@ -47,7 +49,7 @@ func _on_spawn_projectile(projectile: Node) -> void:
 func _spawn_projectile(transform: Transform3D) -> Node:
     var scene: = load(container.get_spawnable_scene(0))
     var projectile_instance: CollisionObject3D = scene.instantiate()
-    projectile_instance.collision_mask = _collision_mask
+    projectile_instance.collision_mask = collision_mask
     projectile_instance.collision_layer = owner.collision_layer
     projectile_instance.transform = transform
     projectile_instance.skill = self

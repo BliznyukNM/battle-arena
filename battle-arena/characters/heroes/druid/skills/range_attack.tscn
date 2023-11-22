@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://uhvywhwarj7l"]
+
+[ext_resource type="PackedScene" uid="uid://dt7dp8amhbd5b" path="res://characters/skills/range_attack_skill.tscn" id="1_ofm6c"]
+
+[node name="RangeAttack" instance=ExtResource("1_ofm6c")]
+damage = 12.0
+projectile_speed = 10.0
+distance = 7.0
+radius = 1.0
+energy_gain = 6.0
+
+[node name="Execution" parent="." index="0"]
+base_time = 0.3
+
+[node name="Cooldown" parent="." index="1"]
+base_time = 0.5
+
+[node name="Container" parent="." index="2"]
+_spawnable_scenes = PackedStringArray("res://characters/heroes/druid/projectiles/range_attack.tscn")

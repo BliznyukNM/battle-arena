@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://caren8rarubvr"]
 
-[ext_resource type="Script" path="res://characters/projectile.gd" id="1_bw3ca"]
+[ext_resource type="Script" path="res://characters/skills/projectiles/projectile.gd" id="1_bw3ca"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_ykawq"]
 radius = 0.1

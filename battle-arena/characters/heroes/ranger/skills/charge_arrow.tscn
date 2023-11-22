@@ -7,7 +7,6 @@
 script = ExtResource("2_dfryr")
 max_charge_distance = 10.0
 max_charge_damage = 20.0
-spawn_point = Vector3(2.08165e-12, 1, 1)
 damage = 10.0
 projectile_speed = 18.0
 distance = 5.0

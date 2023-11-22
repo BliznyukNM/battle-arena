@@ -45,6 +45,14 @@ mouse_cursor/custom_image="res://assets/ui/basic_cursor.tres"
 
 enabled=PackedStringArray("res://addons/gut/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://assets/": "pink",
+"res://characters/": "yellow",
+"res://multiplayer/": "teal"
+}
+
 [gui]
 
 theme/custom="res://lobby/themes/default.tres"
@@ -168,6 +176,7 @@ ui.pause={
 3d_physics/layer_1="Default"
 3d_physics/layer_2="Team_A"
 3d_physics/layer_3="Team_B"
+3d_physics/layer_4="Neutral"
 
 [rendering]
 

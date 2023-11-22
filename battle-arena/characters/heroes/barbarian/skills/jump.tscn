@@ -8,6 +8,7 @@ script = ExtResource("2_algej")
 damage = 15.0
 distance = 12.0
 radius = 3.0
+collision_detection_type = 2
 
 [node name="Execution" parent="." index="0"]
 base_time = 1.3

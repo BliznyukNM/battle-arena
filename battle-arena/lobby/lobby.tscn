@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://bbh6e4rwq01lt"]
+[gd_scene load_steps=13 format=3 uid="uid://bbh6e4rwq01lt"]
 
 [ext_resource type="Theme" uid="uid://bj84mbcru2nxg" path="res://lobby/themes/default.tres" id="1_6fdaq"]
 [ext_resource type="Script" path="res://lobby/lobby.gd" id="1_coknr"]
 [ext_resource type="Texture2D" uid="uid://bv34472bbn83h" path="res://assets/ui/white_square.atlastex" id="2_817em"]
 [ext_resource type="Texture2D" uid="uid://dkeii0cbfx8np" path="res://assets/characters/art/barbarian_icon.atlastex" id="3_r3b5b"]
 [ext_resource type="Texture2D" uid="uid://i6lhw3i678rr" path="res://assets/characters/art/rogue_icon.atlastex" id="4_fy2a8"]
+[ext_resource type="Texture2D" uid="uid://pn1vpyk32rwv" path="res://assets/characters/art/druid_icon.atlastex" id="5_wei8a"]
 
 [sub_resource type="Gradient" id="Gradient_fgu8t"]
 colors = PackedColorArray(0.92496, 0.94, 0.4888, 1, 1, 1, 1, 1)
@@ -135,9 +136,9 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 311.0
+offset_left = 407.0
 offset_top = -443.0
-offset_right = 1093.0
+offset_right = 1189.0
 offset_bottom = 339.0
 grow_vertical = 2
 texture = SubResource("ViewportTexture_ogaww")
@@ -177,6 +178,16 @@ icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
 
+[node name="Druid" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Druid"
+icon = ExtResource("5_wei8a")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
 [node name="Buttons" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 6
@@ -212,4 +223,5 @@ script = SubResource("GDScript_ppswv")
 [connection signal="gui_input" from="HeroPreview" to="HeroPreview" method="_on_gui_input"]
 [connection signal="pressed" from="GridContainer/Barbarian" to="." method="select_hero" binds= ["barbarian"]]
 [connection signal="pressed" from="GridContainer/Ranger" to="." method="select_hero" binds= ["ranger"]]
+[connection signal="pressed" from="GridContainer/Druid" to="." method="select_hero" binds= ["druid"]]
 [connection signal="pressed" from="Buttons/Sandbox" to="." method="start_sandbox"]

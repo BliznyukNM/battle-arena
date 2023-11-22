@@ -5,7 +5,11 @@
 
 [node name="RangeAttack" instance=ExtResource("1_mmles")]
 script = ExtResource("2_seuh6")
-spawn_point = Vector3(0, 0, 0)
+damage = 0.0
+projectile_speed = 0.0
+distance = 0.0
+radius = 0.0
+collision_detection_type = 2
 
 [node name="Container" type="MultiplayerSpawner" parent="." index="2"]
 spawn_path = NodePath(".")
