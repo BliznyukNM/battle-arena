@@ -10,6 +10,10 @@
 
 [node name="Druid" instance=ExtResource("1_02rvk")]
 
+[node name="Health" parent="Stats" index="0"]
+max_value = 140.0
+base_value = 140.0
+
 [node name="Energy" type="Node" parent="Stats" index="6"]
 script = ExtResource("2_4fjd6")
 has_max_value = true

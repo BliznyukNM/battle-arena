@@ -5,7 +5,7 @@
 
 [node name="Heal" instance=ExtResource("1_6i28s")]
 script = ExtResource("2_v0yfd")
-heal = 10.0
+heal = 15.0
 projectile_speed = 10.0
 distance = 7.0
 radius = 1.5
@@ -16,7 +16,7 @@ collision_detection_type = 1
 base_time = 0.6
 
 [node name="Cooldown" parent="." index="1"]
-base_time = 1.0
+base_time = 2.0
 
 [node name="Container" parent="." index="2"]
 _spawnable_scenes = PackedStringArray("res://characters/heroes/druid/projectiles/heal.tscn")
