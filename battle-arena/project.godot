@@ -25,8 +25,8 @@ run/server_key.editor="defaultkey"
 
 [autoload]
 
-Nakama="*res://addons/com.heroiclabs.nakama/Nakama.gd"
 Matchmaking="*res://multiplayer/matchmaking.gd"
+Nakama="*res://addons/nakama/Nakama.gd"
 
 [debug]
 

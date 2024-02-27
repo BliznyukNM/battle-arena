@@ -1,7 +1,7 @@
 #!/bin/sh
 mkdir battle-arena/addons
-ln -s ../../nakama-godot/addons/com.heroiclabs.nakama battle-arena/addons/com.heroiclabs.nakama
-ln -s ../../Gut/addons/gut battle-arena/addons/gut
+ln -s ../../nakama-godot/addons/com.heroiclabs.nakama battle-arena/addons/nakama
+ln -s ../../gd-unit/addons/gdUnit4 battle-arena/addons/gdUnit4
 
 mkdir builds
 mkdir builds/windows
