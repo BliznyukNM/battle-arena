@@ -1,3 +1,6 @@
 [submodule "nakama-godot"]
 	path = nakama-godot
 	url = https://github.com/heroiclabs/nakama-godot.git
+[submodule "gd-unit"]
+	path = gd-unit
+	url = git@github.com:MikeSchulze/gdUnit4.git
