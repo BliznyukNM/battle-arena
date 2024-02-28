@@ -37,8 +37,6 @@ func authenticate(email: String, password: String, username: String = '', create
     
     # TODO: Save auth token
     
-    assert(not _session.is_exception(), "Error while authenticating: %s" % _session)
-    
     if _session.is_exception():
         return false
     

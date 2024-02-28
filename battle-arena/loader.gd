@@ -33,6 +33,10 @@ func start_home() -> void:
     _try_start(Mode.Home)
 
 
+func start_offline() -> void:
+    _try_start(Mode.Local)
+
+
 func _try_start(mode: Mode) -> void:
     if _launched:
         printerr("Cannot call %s with other launching arguments." % mode)

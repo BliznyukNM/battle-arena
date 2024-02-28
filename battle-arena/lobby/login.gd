@@ -24,6 +24,7 @@ func on_login_pressed() -> void:
     
     var result: = await Matchmaking.authenticate("%s@custom.email" % $Nickname.text, "password")
     if result: loader.start_home()
+    else: loader.start_offline()
 
 
 func _on_register_pressed() -> void:
@@ -48,6 +49,9 @@ func _restore() -> void:
 
 func _try_login_itch() -> void:
     var api_key: = OS.get_environment("ITCHIO_API_KEY")
+    if api_key.is_empty(): return
+    
+    $Login.disabled = true
     
     var httpRequest: = HTTPRequest.new()
     add_child(httpRequest)
@@ -56,8 +60,10 @@ func _try_login_itch() -> void:
     var headers: = ["Authorization: %s" % api_key]
     
     var error = httpRequest.request("https://itch.io/api/1/jwt/me", headers, HTTPClient.METHOD_GET)
+    
     if error != OK:
-        push_error("An error occurred in the HTTP request.")
+        push_error("An error occurred in the HTTP request. %d" % error)
+        $Login.disabled = false
 
 
 func _on_itch_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
