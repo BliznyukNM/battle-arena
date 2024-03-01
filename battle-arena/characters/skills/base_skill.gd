@@ -4,7 +4,7 @@ class_name BaseSkill extends Node
 @export_range(0.0, 100.0, 1.0, "suffix:%") var energy_cost: float
 @export_range(0.0, 100.0, 0.1, "suffix:%") var energy_gain: float
 @export var skill_speed: NumberStat
-@export_flags("Ally:1", "Enemy:2") var collision_detection_type
+@export_flags("Ally:1", "Enemy:2") var collision_detection_type: int
 
 
 var energy_stat: NumberStat:
