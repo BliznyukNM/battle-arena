@@ -27,6 +27,7 @@ run/server_key.editor="defaultkey"
 
 Matchmaking="*res://multiplayer/matchmaking.gd"
 Nakama="*res://addons/nakama/Nakama.gd"
+NakamaWebRTC="*res://addons/nakama-webrtc/NakamaWebRTC.gd"
 
 [debug]
 
