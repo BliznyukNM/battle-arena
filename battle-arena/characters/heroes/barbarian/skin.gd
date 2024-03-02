@@ -121,3 +121,7 @@ func _trigger_attack(attack_name: String) -> void:
     animationTree.set("parameters/AttackType/transition_request", attack_name);
     animationTree.set("parameters/PlayAttack/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT)
     animationTree.set("parameters/PlayAttack/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+
+
+func _on_axe_throw_cancelled(skill: BaseSkill) -> void:
+    pass # Replace with function body.
