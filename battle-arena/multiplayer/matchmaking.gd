@@ -7,7 +7,6 @@ signal match_found
 @onready var _client: = Nakama.create_client(server_key, ip, port, scheme, \
     Nakama.DEFAULT_TIMEOUT, NakamaLogger.LOG_LEVEL.INFO)
 @onready var _socket: = Nakama.create_socket_from(_client)
-@onready var _bridge: = NakamaMultiplayerBridge.new(_socket)
 
 
 var _session: NakamaSession
@@ -28,8 +27,9 @@ var is_authenticated: bool:
 
 
 func _ready() -> void:
-    _bridge.match_joined.connect(_on_match_joined)
-    _bridge.match_join_error.connect(func(error): assert(false, error))
+    NakamaWebRTC.max_players = 2
+    NakamaWebRTC.match_ready.connect(_on_match_ready)
+    NakamaWebRTC.error.connect(func(error): assert(false, error))
 
 
 func authenticate(email: String, password: String, username: String = '', create_account: bool = false) -> bool:
@@ -42,8 +42,6 @@ func authenticate(email: String, password: String, username: String = '', create
     
     var connected: NakamaAsyncResult = await _socket.connect_async(_session)
     assert(not connected.is_exception(), "Cannot create socket: %s" % connected)
-    
-    multiplayer.multiplayer_peer = _bridge.multiplayer_peer
     
     return not connected.is_exception()
 
@@ -64,16 +62,14 @@ func get_username() -> String:
 
 
 func find_match() -> void:
-    var ticket: = await _socket.add_matchmaker_async()
-    assert(not ticket.is_exception(), "Matchmaking ticket is exception: %s" % ticket)
-    _bridge.start_matchmaking(ticket)
+    NakamaWebRTC.start_matchmaking(_socket)
 
 
 func leave_match() -> void:
-    _bridge.leave()
+    NakamaWebRTC.leave()
 
 
-func _on_match_joined() -> void:
+func _on_match_ready(players: Dictionary) -> void:
     match_found.emit()
 
 
