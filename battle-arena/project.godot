@@ -19,9 +19,9 @@ run/port=7350
 run/server=false
 run/network_scheme="http"
 run/server_key="defaultkey"
-run/ip_address="51.20.189.206"
-run/ip_address.editor="127.0.0.1"
+run/ip_address="161.35.92.53"
 run/server_key.editor="defaultkey"
+run/ip_address.editor="127.0.0.1"
 
 [autoload]
 
