@@ -2,16 +2,18 @@
 
 [ext_resource type="Script" path="res://characters/skills/projectiles/projectile.gd" id="1_gtc3e"]
 [ext_resource type="ArrayMesh" uid="uid://td3o4y7kn51v" path="res://assets/characters/heroes/ranger/meshes/arrow_head_Cylinder_003.res" id="2_3vxrg"]
-[ext_resource type="Texture2D" uid="uid://ba6uybbs8vgaw" path="res://assets/vfx/gradients/Gradient01.png" id="2_d1b1p"]
 [ext_resource type="Shader" path="res://vfx/trail.gdshader" id="3_jvhix"]
 [ext_resource type="Texture2D" uid="uid://drxqa7vvwfbgn" path="res://assets/vfx/trails/StylizedTrail05.png" id="4_i3srd"]
 [ext_resource type="Texture2D" uid="uid://d2s2w82pf875w" path="res://assets/vfx/trails/StylizedTrail06.png" id="5_c23x5"]
 [ext_resource type="Texture2D" uid="uid://3wt8mg7x1ey" path="res://assets/vfx/trails/StylizedTrail02.png" id="5_qeieh"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_06rwa"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_eg221"]
+load_path = "res://.godot/imported/Gradient01.png-c560b35a3db99c4ea0c3aead5c8fff07.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pdmxh"]
 shading_mode = 0
 albedo_color = Color(0.8, 1.6, 0.8, 1)
-albedo_texture = ExtResource("2_d1b1p")
+albedo_texture = SubResource("CompressedTexture2D_eg221")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ml1j8"]
 size = Vector3(0.13, 0.125, 0.774)
@@ -68,11 +70,11 @@ curve = SubResource("Curve_je38k")
 [node name="Arrow" type="Area3D"]
 script = ExtResource("1_gtc3e")
 
-[node name="View" type="MeshInstance3D" parent="."]
-transform = Transform3D(-6.55671e-09, 0, -0.15, 0, 0.15, 0, 0.15, 0, -6.55671e-09, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_06rwa")
-cast_shadow = 0
+[node name="ArrowHead01" type="MeshInstance3D" parent="."]
+transform = Transform3D(-6.55671e-09, -5.2318e-17, -0.15, 5.2318e-17, 0.15, -5.2318e-17, 0.15, -5.2318e-17, -6.55671e-09, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_pdmxh")
 mesh = ExtResource("2_3vxrg")
+skeleton = NodePath("")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_ml1j8")
