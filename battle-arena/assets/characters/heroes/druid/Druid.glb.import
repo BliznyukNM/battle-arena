@@ -18035,7 +18035,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "lods/normal_split_angle": 25.0,
-"save_to_file/enabled": true,
+"save_to_file/enabled": false,
 "save_to_file/make_streamable": "",
 "save_to_file/path": "res://assets/characters/heroes/druid/meshes/Druid_Cube_13535.res"
 },
@@ -18045,7 +18045,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "lods/normal_split_angle": 25.0,
-"save_to_file/enabled": true,
+"save_to_file/enabled": false,
 "save_to_file/make_streamable": "",
 "save_to_file/path": "res://assets/characters/heroes/druid/meshes/Druid_Cube_13536.res"
 },
@@ -18055,7 +18055,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "lods/normal_split_angle": 25.0,
-"save_to_file/enabled": true,
+"save_to_file/enabled": false,
 "save_to_file/make_streamable": "",
 "save_to_file/path": "res://assets/characters/heroes/druid/meshes/Druid_Cube_13537.res"
 },
@@ -18065,7 +18065,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "lods/normal_split_angle": 25.0,
-"save_to_file/enabled": true,
+"save_to_file/enabled": false,
 "save_to_file/make_streamable": "",
 "save_to_file/path": "res://assets/characters/heroes/druid/meshes/Druid_Cube_13538.res"
 },
@@ -18075,7 +18075,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "lods/normal_split_angle": 25.0,
-"save_to_file/enabled": true,
+"save_to_file/enabled": false,
 "save_to_file/make_streamable": "",
 "save_to_file/path": "res://assets/characters/heroes/druid/meshes/Druid_Cube_13539.res"
 },
@@ -18085,7 +18085,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "lods/normal_split_angle": 25.0,
-"save_to_file/enabled": true,
+"save_to_file/enabled": false,
 "save_to_file/make_streamable": "",
 "save_to_file/path": "res://assets/characters/heroes/druid/meshes/Druid_Cube_13540.res"
 },
@@ -18095,7 +18095,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "lods/normal_split_angle": 25.0,
-"save_to_file/enabled": true,
+"save_to_file/enabled": false,
 "save_to_file/make_streamable": "",
 "save_to_file/path": "res://assets/characters/heroes/druid/meshes/Druid_Cylinder_666.res"
 },
@@ -18105,7 +18105,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "lods/normal_split_angle": 25.0,
-"save_to_file/enabled": true,
+"save_to_file/enabled": false,
 "save_to_file/make_streamable": "",
 "save_to_file/path": "res://assets/characters/heroes/druid/meshes/Druid_PrototypePete_body_399.res"
 }
