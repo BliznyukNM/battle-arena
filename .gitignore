@@ -22,6 +22,7 @@ mono_crash.*.json
 
 battle-arena/addons/nakama
 battle-arena/addons/gdUnit4
+battle-arena/addons/beehave
 
 battle-arena/.gut_editor_config.json
 

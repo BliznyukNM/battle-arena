@@ -28,6 +28,8 @@ run/ip_address.editor="127.0.0.1"
 Matchmaking="*res://multiplayer/matchmaking.gd"
 Nakama="*res://addons/nakama/Nakama.gd"
 NakamaWebRTC="*res://addons/nakama-webrtc/NakamaWebRTC.gd"
+BeehaveGlobalMetrics="*res://addons/beehave/metrics/beehave_global_metrics.gd"
+BeehaveGlobalDebugger="*res://addons/beehave/debug/global_debugger.gd"
 
 [debug]
 
@@ -44,7 +46,7 @@ mouse_cursor/custom_image="res://assets/ui/basic_cursor.tres"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gdUnit4/plugin.cfg")
+enabled=PackedStringArray("res://addons/beehave/plugin.cfg", "res://addons/gdUnit4/plugin.cfg")
 
 [file_customization]
 
