@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://boulj8buo8ukk"]
+[gd_scene load_steps=3 format=3 uid="uid://boulj8buo8ukk"]
 
 [ext_resource type="PackedScene" uid="uid://flt4bdecd0xj" path="res://map/map.tscn" id="1_j7vok"]
+[ext_resource type="PackedScene" uid="uid://vs53g10noy3c" path="res://characters/dummy/dummy.tscn" id="2_cgst3"]
 
 [node name="Map" instance=ExtResource("1_j7vok")]
 
@@ -8,3 +9,6 @@
 current = true
 lerp_speed = 4.5
 max_distance = Vector2(20, 10)
+
+[node name="IdleDummy" parent="." index="8" instance=ExtResource("2_cgst3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.40516, 0, -3.10913)

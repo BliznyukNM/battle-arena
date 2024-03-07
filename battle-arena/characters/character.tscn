@@ -94,10 +94,10 @@ script = ExtResource("3_687mx")
 [node name="Skills" type="Node" parent="."]
 script = ExtResource("7_nutv6")
 
-[node name="Attack" type="Node" parent="Skills" node_paths=PackedStringArray("blackboard", "actor")]
+[node name="BasicAttack" type="Node" parent="Skills" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("7_1li54")
 actor_node_path = NodePath(".")
-blackboard = NodePath("@Node@76562")
+blackboard = NodePath("@Node@17560")
 actor = NodePath(".")
 
 [node name="Processors" type="Node" parent="."]

@@ -1,5 +1,5 @@
 @tool
-@icon("res://addons/beehave/icons/limiter.svg")
+@icon("res://addons/beehave/icons/cooldown.svg")
 extends Leaf
 
 
