@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://b6elb87vt7xgp"]
+[gd_scene load_steps=4 format=3 uid="uid://b6elb87vt7xgp"]
 
 [ext_resource type="Script" path="res://loader.gd" id="1_d3pel"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="2_ecxut"]
+[ext_resource type="PackedScene" uid="uid://c5cf7tg1x0aqg" path="res://characters/heroes/barbarian/skills/basic_attack.tscn" id="3_sbkpn"]
 
 [node name="Start" type="Node"]
 script = ExtResource("1_d3pel")
@@ -86,7 +88,12 @@ context_menu_enabled = false
 virtual_keyboard_enabled = false
 middle_mouse_paste_enabled = false
 
-[connection signal="pressed" from="UI/Online" to="." method="_start" binds= [1]]
-[connection signal="pressed" from="UI/Offline" to="." method="_start" binds= [0]]
-[connection signal="pressed" from="UI/Server" to="." method="_start" binds= [2]]
+[node name="BasicAttack" type="Node" parent="." node_paths=PackedStringArray("blackboard", "actor")]
+script = ExtResource("2_ecxut")
+actor_node_path = NodePath(".")
+blackboard = NodePath("@Node@77672")
+actor = NodePath(".")
+
+[node name="BasicAttack" parent="BasicAttack" instance=ExtResource("3_sbkpn")]
+
 [connection signal="text_changed" from="UI/IP" to="." method="_change_ip"]
