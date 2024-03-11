@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cq3ndi0b3xe16"]
 
-[ext_resource type="PackedScene" uid="uid://76ddkyhgdvp" path="res://characters/skills/base_skill.tscn" id="1_tpykp"]
+[ext_resource type="PackedScene" uid="uid://76ddkyhgdvp" path="res://characters/skills/_old/base_skill.tscn" id="1_tpykp"]
 [ext_resource type="Script" path="res://characters/skills/apply_modifiers_skill.gd" id="2_7vu1h"]
 
 [node name="ApplyModifiers" node_paths=PackedStringArray("modifiers") instance=ExtResource("1_tpykp")]

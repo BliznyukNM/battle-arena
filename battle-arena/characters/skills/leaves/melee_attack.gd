@@ -1,5 +1,5 @@
 @tool
-extends Leaf
+extends ActionLeaf
 
 
 @export var damage: int

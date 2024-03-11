@@ -17,7 +17,7 @@ var successful_index: int = 0
 
 func tick(actor: Node, blackboard: Blackboard) -> int:
     var key_value: Variant = _key_expression.execute([actor], blackboard)
-      
+    
     if _key_expression.has_execute_failed():
         return FAILURE
     

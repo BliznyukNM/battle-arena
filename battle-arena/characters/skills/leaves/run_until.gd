@@ -1,6 +1,6 @@
 @tool
 @icon("res://addons/beehave/icons/until_fail.svg")
-class_name RunUntil extends Leaf
+class_name RunUntil extends ActionLeaf
 
 
 const Utils = preload("res://characters/skills/utils/utils.gd")

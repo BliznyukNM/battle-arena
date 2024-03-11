@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://characters/stats/number_stat.gd" id="3_018qh"]
 [ext_resource type="Script" path="res://characters/status_effects/modifiers_manager.gd" id="3_687mx"]
 [ext_resource type="Script" path="res://characters/stats/tag_stat.gd" id="4_u52ko"]
-[ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="7_1li54"]
+[ext_resource type="Script" path="res://characters/skills/skill.gd" id="7_5rwt1"]
 [ext_resource type="Script" path="res://characters/skills/skills_manager.gd" id="7_nutv6"]
 [ext_resource type="Script" path="res://characters/processors/health.gd" id="9_q665c"]
 [ext_resource type="Script" path="res://characters/processors/heal.gd" id="9_urlqi"]
@@ -95,9 +95,9 @@ script = ExtResource("3_687mx")
 script = ExtResource("7_nutv6")
 
 [node name="BasicAttack" type="Node" parent="Skills" node_paths=PackedStringArray("blackboard", "actor")]
-script = ExtResource("7_1li54")
+script = ExtResource("7_5rwt1")
 actor_node_path = NodePath(".")
-blackboard = NodePath("@Node@17560")
+blackboard = NodePath("@Node@73796")
 actor = NodePath(".")
 
 [node name="Processors" type="Node" parent="."]
