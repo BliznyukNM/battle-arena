@@ -1,20 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dbjutw8fckxjl"]
+[gd_scene load_steps=6 format=3 uid="uid://dbjutw8fckxjl"]
 
 [ext_resource type="PackedScene" uid="uid://d26br4f45m27g" path="res://characters/character.tscn" id="1_gfvhh"]
 [ext_resource type="Script" path="res://characters/stats/number_stat.gd" id="2_8tvmm"]
-[ext_resource type="Script" path="res://characters/status_effects/modifiers/conditional_modifier.gd" id="2_327xy"]
 [ext_resource type="Script" path="res://characters/processors/skin.gd" id="2_frijp"]
-[ext_resource type="Script" path="res://characters/status_effects/effects/slowdown.gd" id="3_i85lt"]
 [ext_resource type="Script" path="res://characters/processors/clear_modifiers.gd" id="7_2y3fc"]
 [ext_resource type="PackedScene" uid="uid://b1jmt46gek5uu" path="res://characters/heroes/ranger/skin.tscn" id="15_xfpo1"]
-
-[sub_resource type="Resource" id="Resource_avmrn"]
-script = ExtResource("3_i85lt")
-amount = 60
-
-[sub_resource type="Resource" id="Resource_skoh5"]
-script = ExtResource("3_i85lt")
-amount = 100
 
 [node name="Character" instance=ExtResource("1_gfvhh")]
 
@@ -34,18 +24,8 @@ has_max_value = true
 max_value = 100.0
 has_min_value = true
 
-[node name="SlowdownOnAttack" type="Node" parent="Modifiers" index="0"]
-script = ExtResource("2_327xy")
-condition = "owner.skills.basic_attack.execution.time_left > 0.0"
-effects = Array[Resource("res://characters/status_effects/effects/base_effect.gd")]([SubResource("Resource_avmrn")])
-
-[node name="StopOnChargeAttack" type="Node" parent="Modifiers" index="1"]
-script = ExtResource("2_327xy")
-condition = "owner.skills.secondary_attack.execution.time_left > 0.0"
-effects = Array[Resource("res://characters/status_effects/effects/base_effect.gd")]([SubResource("Resource_skoh5")])
-
 [node name="BasicAttack" parent="Skills" index="0" node_paths=PackedStringArray("blackboard")]
-blackboard = NodePath("@Node@17566")
+blackboard = NodePath("@Node@34450")
 
 [node name="Skin" type="Node" parent="Processors" index="5" node_paths=PackedStringArray("skin", "move_speed", "attack_speed")]
 script = ExtResource("2_frijp")
@@ -54,10 +34,8 @@ move_speed = NodePath("../../Stats/MovementSpeed")
 attack_speed = NodePath("../../Stats/AttackSpeed")
 interpolation = 10.0
 
-[node name="ClearModifiers" type="Node" parent="Processors" index="6" node_paths=PackedStringArray("skills")]
+[node name="ClearModifiers" type="Node" parent="Processors" index="6"]
 script = ExtResource("7_2y3fc")
-skills = [null, null, null, null]
-modifiers = Array[String](["Invisibility"])
 
 [node name="HUD" parent="." index="6" node_paths=PackedStringArray("energy")]
 energy = NodePath("../Stats/Energy")
