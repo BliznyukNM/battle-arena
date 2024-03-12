@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d26br4f45m27g"]
+[gd_scene load_steps=24 format=3 uid="uid://d26br4f45m27g"]
 
 [ext_resource type="Script" path="res://characters/character.gd" id="1_8kwiu"]
 [ext_resource type="Script" path="res://characters/stats/stats_manager.gd" id="2_3n7xj"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://characters/stats/number_stat.gd" id="3_018qh"]
 [ext_resource type="Script" path="res://characters/status_effects/modifiers_manager.gd" id="3_687mx"]
 [ext_resource type="Script" path="res://characters/stats/tag_stat.gd" id="4_u52ko"]
+[ext_resource type="Script" path="res://characters/skills/skill.gd" id="7_5rwt1"]
 [ext_resource type="Script" path="res://characters/skills/skills_manager.gd" id="7_nutv6"]
 [ext_resource type="Script" path="res://characters/processors/health.gd" id="9_q665c"]
 [ext_resource type="Script" path="res://characters/processors/heal.gd" id="9_urlqi"]
@@ -93,6 +94,12 @@ script = ExtResource("3_687mx")
 [node name="Skills" type="Node" parent="."]
 script = ExtResource("7_nutv6")
 
+[node name="BasicAttack" type="Node" parent="Skills" node_paths=PackedStringArray("blackboard", "actor")]
+script = ExtResource("7_5rwt1")
+actor_node_path = NodePath(".")
+blackboard = NodePath("@Node@17561")
+actor = NodePath(".")
+
 [node name="Processors" type="Node" parent="."]
 process_mode = 1
 
@@ -146,6 +153,7 @@ script = ExtResource("17_gtpx6")
 lerp_amount = 8.0
 
 [connection signal="changed" from="Stats/Health" to="." method="_on_health_changed"]
+[connection signal="show_progress_bar" from="Skills" to="HUD" method="on_skill_activated"]
 [connection signal="on_damage" from="HitBox" to="Processors/Damage" method="apply"]
 [connection signal="on_heal" from="HitBox" to="Processors/Heal" method="apply"]
 [connection signal="on_basic_attack" from="Input" to="Skills" method="activate_basic_attack"]

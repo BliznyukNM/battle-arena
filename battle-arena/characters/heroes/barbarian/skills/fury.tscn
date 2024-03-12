@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b0v3b0rjaanwm"]
 
-[ext_resource type="PackedScene" uid="uid://76ddkyhgdvp" path="res://characters/skills/base_skill.tscn" id="1_lbhkq"]
+[ext_resource type="PackedScene" uid="uid://76ddkyhgdvp" path="res://characters/skills/_old/base_skill.tscn" id="1_lbhkq"]
 [ext_resource type="PackedScene" uid="uid://d2p1pxs624tn4" path="res://characters/heroes/barbarian/modifiers/fury.tscn" id="2_7gv70"]
 
 [sub_resource type="GDScript" id="GDScript_jv1k0"]

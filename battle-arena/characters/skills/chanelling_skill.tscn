@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://che4gvvalmv58"]
 
-[ext_resource type="PackedScene" uid="uid://76ddkyhgdvp" path="res://characters/skills/base_skill.tscn" id="1_2jim6"]
+[ext_resource type="PackedScene" uid="uid://76ddkyhgdvp" path="res://characters/skills/_old/base_skill.tscn" id="1_2jim6"]
 [ext_resource type="Script" path="res://characters/skills/chanelling_skill.gd" id="2_jwfnl"]
 
 [node name="ChanellingSkill" instance=ExtResource("1_2jim6")]

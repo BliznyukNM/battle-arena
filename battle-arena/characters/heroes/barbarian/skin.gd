@@ -44,11 +44,11 @@ func update_attack_speed(speed: float) -> void:
     slash.speed_scale = speed
 
 
-func play_slice(skill: BaseSkill) -> void:
+func play_slice() -> void:
     _trigger_attack("slice")
 
 
-func play_chop(skill: BaseSkill) -> void:
+func play_chop() -> void:
     _trigger_attack("chop")
 
 
