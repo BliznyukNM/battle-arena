@@ -97,7 +97,7 @@ script = ExtResource("7_nutv6")
 [node name="BasicAttack" type="Node" parent="Skills" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("7_5rwt1")
 actor_node_path = NodePath(".")
-blackboard = NodePath("@Node@73796")
+blackboard = NodePath("@Node@17561")
 actor = NodePath(".")
 
 [node name="Processors" type="Node" parent="."]
@@ -153,6 +153,7 @@ script = ExtResource("17_gtpx6")
 lerp_amount = 8.0
 
 [connection signal="changed" from="Stats/Health" to="." method="_on_health_changed"]
+[connection signal="show_progress_bar" from="Skills" to="HUD" method="on_skill_activated"]
 [connection signal="on_damage" from="HitBox" to="Processors/Damage" method="apply"]
 [connection signal="on_heal" from="HitBox" to="Processors/Heal" method="apply"]
 [connection signal="on_basic_attack" from="Input" to="Skills" method="activate_basic_attack"]

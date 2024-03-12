@@ -1,25 +1,22 @@
 extends ProgressBar
 
 
-var _skill: BaseSkill
-
-
 func _ready() -> void:
-    _clear()
+    stop()
 
 
-func register_skill(skill: BaseSkill) -> void:
-    _skill = skill
-    _skill.execution.timeout.connect(_clear, CONNECT_ONE_SHOT)
-    value = 0
+func execute(duration: float) -> void:
     visible = true
+    value = 0
+    max_value = duration
+    set_process(true)
 
 
-func _clear() -> void:
-    _skill = null
+func stop() -> void:
     visible = false
+    set_process(false)
 
 
 func _process(delta: float) -> void:
-    if not _skill: return
-    value = 1 - _skill.execution.time_left / _skill.execution.wait_time
+    value += delta
+    if value >= max_value: stop()
