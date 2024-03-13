@@ -25,7 +25,7 @@ max_value = 100.0
 has_min_value = true
 
 [node name="BasicAttack" parent="Skills" index="0" node_paths=PackedStringArray("blackboard")]
-blackboard = NodePath("@Node@34450")
+blackboard = NodePath("@Node@17564")
 
 [node name="Skin" type="Node" parent="Processors" index="5" node_paths=PackedStringArray("skin", "move_speed", "attack_speed")]
 script = ExtResource("2_frijp")

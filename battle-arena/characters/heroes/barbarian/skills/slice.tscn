@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://characters/skills/leaves/wait.gd" id="4_op52l"]
 [ext_resource type="Script" path="res://characters/skills/leaves/show_progress_bar.gd" id="4_sorfv"]
 [ext_resource type="Script" path="res://characters/skills/leaves/melee_attack.gd" id="4_txxw6"]
-[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/succeeder.gd" id="4_yh0wc"]
+[ext_resource type="Script" path="res://characters/skills/decorators/multiplayer_authority.gd" id="6_7tc4r"]
 
 [node name="Slice" type="Node"]
 script = ExtResource("1_0671m")
@@ -28,10 +28,10 @@ script = ExtResource("4_op52l")
 wait_time = 0.4
 cache_key = "execution"
 
-[node name="AlwaysSucceedDecorator" type="Node" parent="."]
-script = ExtResource("4_yh0wc")
+[node name="Authority" type="Node" parent="."]
+script = ExtResource("6_7tc4r")
 
-[node name="Attack" type="Node" parent="AlwaysSucceedDecorator"]
+[node name="Attack" type="Node" parent="Authority"]
 script = ExtResource("4_txxw6")
 damage = 12
 hit_range = 3.0
