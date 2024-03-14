@@ -9,6 +9,7 @@ var _is_recalling: bool
 
 func _ready() -> void:
     super._ready()
+    owner.on_throw_axe(self)
     animation.play("rotating", -1, 2.0)
 
 

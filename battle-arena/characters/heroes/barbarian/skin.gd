@@ -24,6 +24,8 @@ extends Node3D
 ]
 
 
+## Update stance of Barbarian
+## Type of stances: axe, dual, hands
 func update_stance(stance: String) -> void:
     big_axe.visible = stance == "axe"
     left_axe.visible = stance == "dual"

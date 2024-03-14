@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3ephcvucxxqb"]
+[gd_scene load_steps=10 format=3 uid="uid://b3ephcvucxxqb"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_72vyh"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_i0ygl"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://characters/skills/leaves/wait.gd" id="3_rhf0w"]
 [ext_resource type="Script" path="res://characters/skills/leaves/show_progress_bar.gd" id="4_qqm4j"]
 [ext_resource type="Script" path="res://characters/skills/decorators/spawn/near_actor.gd" id="6_yp6fw"]
+[ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="8_mgavd"]
+[ext_resource type="Script" path="res://characters/heroes/barbarian/skills/leaves/update_stance.gd" id="9_xx5hs"]
 
 [node name="AxeThrow" type="Node"]
 script = ExtResource("1_72vyh")
@@ -28,13 +30,20 @@ script = ExtResource("3_rhf0w")
 wait_time = 0.65
 cache_key = "execution"
 
-[node name="NearActor" type="Node" parent="."]
+[node name="Authority" type="Node" parent="."]
+script = ExtResource("8_mgavd")
+
+[node name="NearActor" type="Node" parent="Authority"]
 script = ExtResource("6_yp6fw")
 offset = Vector3(2.08165e-12, 1, 0.5)
 
-[node name="Throw" type="Node" parent="NearActor"]
+[node name="Throw" type="Node" parent="Authority/NearActor"]
 script = ExtResource("3_85ik3")
 scene_path = "res://characters/heroes/barbarian/axe.tscn"
+
+[node name="UpdateStance" type="Node" parent="."]
+script = ExtResource("9_xx5hs")
+stance = "hands"
 
 [node name="Cooldown" type="Node" parent="."]
 script = ExtResource("3_rhf0w")

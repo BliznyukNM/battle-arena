@@ -99,14 +99,42 @@ script = ExtResource("7_nutv6")
 script = ExtResource("7_5rwt1")
 enabled = false
 actor_node_path = NodePath(".")
-blackboard = NodePath("@Node@80055")
+blackboard = NodePath("@Node@83442")
 actor = NodePath(".")
 
 [node name="SecondAttack" type="Node" parent="Skills" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("7_5rwt1")
 enabled = false
 actor_node_path = NodePath(".")
-blackboard = NodePath("@Node@80056")
+blackboard = NodePath("@Node@83443")
+actor = NodePath(".")
+
+[node name="ThirdAttack" type="Node" parent="Skills" node_paths=PackedStringArray("blackboard", "actor")]
+script = ExtResource("7_5rwt1")
+enabled = false
+actor_node_path = NodePath(".")
+blackboard = NodePath("@Node@83444")
+actor = NodePath(".")
+
+[node name="Dodge" type="Node" parent="Skills" node_paths=PackedStringArray("blackboard", "actor")]
+script = ExtResource("7_5rwt1")
+enabled = false
+actor_node_path = NodePath(".")
+blackboard = NodePath("@Node@83445")
+actor = NodePath(".")
+
+[node name="Block" type="Node" parent="Skills" node_paths=PackedStringArray("blackboard", "actor")]
+script = ExtResource("7_5rwt1")
+enabled = false
+actor_node_path = NodePath(".")
+blackboard = NodePath("@Node@83446")
+actor = NodePath(".")
+
+[node name="Ultimate" type="Node" parent="Skills" node_paths=PackedStringArray("blackboard", "actor")]
+script = ExtResource("7_5rwt1")
+enabled = false
+actor_node_path = NodePath(".")
+blackboard = NodePath("@Node@83447")
 actor = NodePath(".")
 
 [node name="Processors" type="Node" parent="."]
