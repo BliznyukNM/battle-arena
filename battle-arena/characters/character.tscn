@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://d26br4f45m27g"]
+[gd_scene load_steps=26 format=3 uid="uid://d26br4f45m27g"]
 
 [ext_resource type="Script" path="res://characters/character.gd" id="1_8kwiu"]
 [ext_resource type="Script" path="res://characters/stats/stats_manager.gd" id="2_3n7xj"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://characters/stats/tag_stat.gd" id="4_u52ko"]
 [ext_resource type="Script" path="res://characters/skills/skill.gd" id="7_5rwt1"]
 [ext_resource type="Script" path="res://characters/skills/skills_manager.gd" id="7_nutv6"]
+[ext_resource type="Script" path="res://addons/beehave/blackboard.gd" id="8_mordq"]
 [ext_resource type="Script" path="res://characters/processors/health.gd" id="9_q665c"]
 [ext_resource type="Script" path="res://characters/processors/heal.gd" id="9_urlqi"]
 [ext_resource type="Script" path="res://characters/processors/movement.gd" id="10_hj0il"]
@@ -99,43 +100,46 @@ script = ExtResource("7_nutv6")
 script = ExtResource("7_5rwt1")
 enabled = false
 actor_node_path = NodePath(".")
-blackboard = NodePath("@Node@83442")
+blackboard = NodePath("../Blackboard")
 actor = NodePath(".")
 
 [node name="SecondAttack" type="Node" parent="Skills" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("7_5rwt1")
 enabled = false
 actor_node_path = NodePath(".")
-blackboard = NodePath("@Node@83443")
+blackboard = NodePath("../Blackboard")
 actor = NodePath(".")
 
 [node name="ThirdAttack" type="Node" parent="Skills" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("7_5rwt1")
 enabled = false
 actor_node_path = NodePath(".")
-blackboard = NodePath("@Node@83444")
+blackboard = NodePath("../Blackboard")
 actor = NodePath(".")
 
 [node name="Dodge" type="Node" parent="Skills" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("7_5rwt1")
 enabled = false
 actor_node_path = NodePath(".")
-blackboard = NodePath("@Node@83445")
+blackboard = NodePath("../Blackboard")
 actor = NodePath(".")
 
 [node name="Block" type="Node" parent="Skills" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("7_5rwt1")
 enabled = false
 actor_node_path = NodePath(".")
-blackboard = NodePath("@Node@83446")
+blackboard = NodePath("../Blackboard")
 actor = NodePath(".")
 
 [node name="Ultimate" type="Node" parent="Skills" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("7_5rwt1")
 enabled = false
 actor_node_path = NodePath(".")
-blackboard = NodePath("@Node@83447")
+blackboard = NodePath("../Blackboard")
 actor = NodePath(".")
+
+[node name="Blackboard" type="Node" parent="Skills"]
+script = ExtResource("8_mordq")
 
 [node name="Processors" type="Node" parent="."]
 process_mode = 1
