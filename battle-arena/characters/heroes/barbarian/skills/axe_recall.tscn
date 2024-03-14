@@ -1,11 +1,40 @@
-[gd_scene load_steps=3 format=3 uid="uid://dyxib0cnjsx2l"]
+[gd_scene load_steps=6 format=3 uid="uid://chf314yk58jfe"]
 
-[ext_resource type="PackedScene" uid="uid://76ddkyhgdvp" path="res://characters/skills/_old/base_skill.tscn" id="1_uora8"]
-[ext_resource type="Script" path="res://characters/heroes/barbarian/skills/axe_recall.gd" id="2_wvn3e"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_3of15"]
+[ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_4lqjb"]
+[ext_resource type="Script" path="res://characters/heroes/barbarian/skills/leaves/update_stance.gd" id="3_hn1yc"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/leaves/blackboard_erase.gd" id="4_yrxca"]
 
-[node name="AxeRecall" instance=ExtResource("1_uora8")]
-script = ExtResource("2_wvn3e")
-collision_detection_type = 2
+[sub_resource type="GDScript" id="GDScript_t4mqt"]
+resource_name = "axe_recall"
+script/source = "@tool
+extends ActionLeaf
 
-[node name="Execution" parent="." index="0"]
-base_time = 0.1
+
+func tick(actor: Node, blackboard: Blackboard) -> int:
+    var barbarian = actor.owner
+    barbarian.recall_axe.rpc()
+    return SUCCESS
+"
+
+[node name="AxeRecall" type="Node"]
+script = ExtResource("1_3of15")
+
+[node name="Ready" type="Node" parent="."]
+script = ExtResource("2_4lqjb")
+key = "\"%s_ready\" % actor.name"
+
+[node name="RecallAxe" type="Node" parent="."]
+script = SubResource("GDScript_t4mqt")
+
+[node name="WaitRecall" type="Node" parent="."]
+script = ExtResource("2_4lqjb")
+key = "\"axe_recalled\""
+
+[node name="UpdateStance" type="Node" parent="."]
+script = ExtResource("3_hn1yc")
+stance = "axe"
+
+[node name="CleanRecallKey" type="Node" parent="."]
+script = ExtResource("4_yrxca")
+key = "\"axe_recalled\""

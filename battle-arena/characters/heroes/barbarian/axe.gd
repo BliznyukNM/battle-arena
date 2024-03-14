@@ -9,6 +9,9 @@ var _is_recalling: bool
 
 func _ready() -> void:
     super._ready()
+    collision_layer = owner.collision_layer
+    collision_mask = owner.collision_mask | owner.collision_layer
+    owner.on_throw_axe(self)
     animation.play("rotating", -1, 2.0)
 
 
@@ -22,9 +25,9 @@ func _process(delta: float) -> void:
     super._process(delta)
     
     if not _is_recalling: return
-    var distance: float = skill.projectile_speed * delta
+    var frame_distance: float = speed * delta # TODO: skill.projectile_speed * delta
     var direction: Vector3 = (owner.global_position - position).normalized()
-    position += direction * distance
+    position += direction * frame_distance
     look_at(position + direction)
 
 
@@ -38,8 +41,8 @@ func _on_area_entered(area: Area3D) -> void:
     
     if _is_travelling or _is_recalling:
         if area.collision_layer != collision_layer and area is HitBox:
-            area.apply_damage.rpc(skill.damage)
-            skill.gain_energy.rpc()
+            area.apply_damage.rpc(damage) #TODO: skill.damage)
+            # TODO: skill.gain_energy.rpc()
     if not _is_travelling and area is HitBox and area.owner == owner:
         owner.on_pickup_axe.rpc()
 
