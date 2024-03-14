@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://d26br4f45m27g"]
+[gd_scene load_steps=25 format=3 uid="uid://d26br4f45m27g"]
 
 [ext_resource type="Script" path="res://characters/character.gd" id="1_8kwiu"]
 [ext_resource type="Script" path="res://characters/stats/stats_manager.gd" id="2_3n7xj"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://7xkefn5xpy47" path="res://characters/hud/hud.tscn" id="12_4f13d"]
 [ext_resource type="PackedScene" uid="uid://cnpyc3trrywtx" path="res://characters/skills/preview/previews.tscn" id="13_oo27p"]
 [ext_resource type="Script" path="res://characters/input/input_source.gd" id="14_ovw2o"]
+[ext_resource type="Script" path="res://characters/multiplayer/spawner.gd" id="16_nsvoy"]
 [ext_resource type="Script" path="res://characters/multiplayer/server_interpolation.gd" id="17_gtpx6"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_47r4a"]
@@ -96,8 +97,16 @@ script = ExtResource("7_nutv6")
 
 [node name="BasicAttack" type="Node" parent="Skills" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("7_5rwt1")
+enabled = false
 actor_node_path = NodePath(".")
-blackboard = NodePath("@Node@17561")
+blackboard = NodePath("@Node@63334")
+actor = NodePath(".")
+
+[node name="SecondAttack" type="Node" parent="Skills" node_paths=PackedStringArray("blackboard", "actor")]
+script = ExtResource("7_5rwt1")
+enabled = false
+actor_node_path = NodePath(".")
+blackboard = NodePath("@Node@63335")
 actor = NodePath(".")
 
 [node name="Processors" type="Node" parent="."]
@@ -141,6 +150,10 @@ health = NodePath("../Stats/Health")
 name_tag = NodePath("../Stats/Name")
 
 [node name="Previews" parent="." instance=ExtResource("13_oo27p")]
+
+[node name="LocalSpawner" type="MultiplayerSpawner" parent="."]
+spawn_path = NodePath(".")
+script = ExtResource("16_nsvoy")
 
 [node name="Input" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_woxwi")

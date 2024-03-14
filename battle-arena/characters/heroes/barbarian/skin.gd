@@ -98,9 +98,8 @@ func _stop_spin() -> void:
     animationTree.set("parameters/PlaySpinning/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FADE_OUT)
 
 
-func play_throw(skill: BaseSkill) -> void:
+func play_throw() -> void:
     animationTree.set("parameters/PlayThrow/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-    skill.execution.timeout.connect(_stop_throw, CONNECT_ONE_SHOT)
 
 
 func _stop_throw() -> void:

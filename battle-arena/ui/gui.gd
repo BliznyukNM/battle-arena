@@ -9,7 +9,7 @@ var target: Node:
 
 func _update_hud() -> void:
     $BottomHUD/BaseSkill.register(target.skills.basic_attack)
-    $BottomHUD/SecondarySkill.register(target.skills.secondary_attack)
+    $BottomHUD/SecondarySkill.register(target.skills.second_attack)
     $BottomHUD/BlockSkill.register(target.skills.block)
     $BottomHUD/ThirdSkill.register(target.skills.third_attack)
     $BottomHUD/DodgeSkill.register(target.skills.dodge)

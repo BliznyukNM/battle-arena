@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://characters/skills/leaves/wait.gd" id="4_op52l"]
 [ext_resource type="Script" path="res://characters/skills/leaves/show_progress_bar.gd" id="4_sorfv"]
 [ext_resource type="Script" path="res://characters/skills/leaves/melee_attack.gd" id="4_txxw6"]
-[ext_resource type="Script" path="res://characters/skills/decorators/multiplayer_authority.gd" id="6_7tc4r"]
+[ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="6_abbfg"]
 
 [node name="Slice" type="Node"]
 script = ExtResource("1_0671m")
@@ -29,7 +29,7 @@ wait_time = 0.4
 cache_key = "execution"
 
 [node name="Authority" type="Node" parent="."]
-script = ExtResource("6_7tc4r")
+script = ExtResource("6_abbfg")
 
 [node name="Attack" type="Node" parent="Authority"]
 script = ExtResource("4_txxw6")

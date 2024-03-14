@@ -5,7 +5,7 @@ signal show_progress_bar(duration: float)
 
 
 @onready var basic_attack: BeehaveTree = get_node_or_null("BasicAttack")
-@onready var secondary_attack: BaseSkill = get_node_or_null("SecondaryAttack")
+@onready var second_attack: BeehaveTree = get_node_or_null("SecondAttack")
 @onready var third_attack: BaseSkill = get_node_or_null("ThirdAttack")
 @onready var block: BaseSkill = get_node_or_null("Block")
 @onready var dodge: BaseSkill = get_node_or_null("Dodge")
@@ -17,7 +17,7 @@ var _last_used_skill
 
 
 func _ready() -> void:
-    _skills = [basic_attack, secondary_attack, third_attack, block, dodge, ultimate]
+    _skills = [basic_attack, second_attack, third_attack, block, dodge, ultimate]
 
 
 func activate_basic_attack(pressed: bool) -> void:
@@ -53,8 +53,7 @@ func cancel_skill() -> void:
 func _activate_skill(index: int, pressed: bool) -> void:
     var skill = _skills[index]
     if not skill: return
-    # if _last_used_skill and _last_used_skill != skill and not _last_used_skill.execution.is_stopped(): return
-    # _last_used_skill = skill
+    
     var key: String = "%s_ready" % skill.name
     if pressed: skill.blackboard.set_value(key, true)
     else: skill.blackboard.erase_value(key)
