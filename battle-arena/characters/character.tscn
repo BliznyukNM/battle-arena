@@ -99,14 +99,14 @@ script = ExtResource("7_nutv6")
 script = ExtResource("7_5rwt1")
 enabled = false
 actor_node_path = NodePath(".")
-blackboard = NodePath("@Node@63334")
+blackboard = NodePath("@Node@80055")
 actor = NodePath(".")
 
 [node name="SecondAttack" type="Node" parent="Skills" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("7_5rwt1")
 enabled = false
 actor_node_path = NodePath(".")
-blackboard = NodePath("@Node@63335")
+blackboard = NodePath("@Node@80056")
 actor = NodePath(".")
 
 [node name="Processors" type="Node" parent="."]
