@@ -3,7 +3,7 @@
 	url = https://github.com/heroiclabs/nakama-godot.git
 [submodule "gd-unit"]
 	path = gd-unit
-	url = git@github.com:MikeSchulze/gdUnit4.git
+	url = https://github.com/MikeSchulze/gdUnit4.git 
 [submodule "beehave"]
 	path = beehave
 	url = https://github.com/bitbrain/beehave.git
