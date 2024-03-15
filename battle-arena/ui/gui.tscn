@@ -1,7 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfqs7tnlielrb"]
+[gd_scene load_steps=15 format=3 uid="uid://cfqs7tnlielrb"]
 
-[ext_resource type="PackedScene" uid="uid://cndg2kkppsmgt" path="res://ui/skill_ui.tscn" id="1_57j3n"]
 [ext_resource type="Script" path="res://ui/gui.gd" id="1_h8wmn"]
+[ext_resource type="Texture2D" uid="uid://05363gpp8joh" path="res://assets/ui/free-paladin-pixel-art-skill-icons/PNG/Icon1.png" id="2_esb6y"]
+[ext_resource type="Script" path="res://ui/skill_ui.gd" id="3_h6dnr"]
+[ext_resource type="Texture2D" uid="uid://dr1ht670hlqd" path="res://assets/ui/free-paladin-pixel-art-skill-icons/PNG/Icon2.png" id="4_5a21k"]
+[ext_resource type="Texture2D" uid="uid://chcu0sl46yfom" path="res://assets/ui/kenney_input-prompts/Keyboard & Mouse/Vector/mouse_left_outline.svg" id="4_uurqp"]
+[ext_resource type="Texture2D" uid="uid://dl31fkxo1fdbx" path="res://assets/ui/kenney_input-prompts/Keyboard & Mouse/Vector/mouse_right_outline.svg" id="6_3e34k"]
+[ext_resource type="Texture2D" uid="uid://c454q01kpy5t5" path="res://assets/ui/free-paladin-pixel-art-skill-icons/PNG/Icon4.png" id="6_udxxo"]
+[ext_resource type="Texture2D" uid="uid://dq2ujvfvq6gv2" path="res://assets/ui/free-paladin-pixel-art-skill-icons/PNG/Icon3.png" id="8_b4dpv"]
+[ext_resource type="Texture2D" uid="uid://kibffkrt38ve" path="res://assets/ui/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_space_icon_outline.svg" id="8_llbca"]
+[ext_resource type="Texture2D" uid="uid://dobms1itgt5ha" path="res://assets/ui/kenney_input-prompts/Keyboard & Mouse/Default/keyboard_q_outline.png" id="10_0knnn"]
+[ext_resource type="Texture2D" uid="uid://1jt3d8yp56f2" path="res://assets/ui/free-paladin-pixel-art-skill-icons/PNG/Icon6.png" id="10_6lq8q"]
+[ext_resource type="Texture2D" uid="uid://bn15taxwqcfss" path="res://assets/ui/free-paladin-pixel-art-skill-icons/PNG/Icon7.png" id="12_8ethy"]
+[ext_resource type="Texture2D" uid="uid://cm8w7nsqso5xf" path="res://assets/ui/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_r_outline.svg" id="13_r3chp"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_c1vra"]
+load_path = "res://.godot/imported/keyboard_e_outline.svg-033f4d57fc18c60a8555330e9cb02de2.ctex"
 
 [node name="GUI" type="Control"]
 layout_mode = 3
@@ -12,65 +26,125 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_h8wmn")
 
-[node name="BottomHUD" type="Control" parent="."]
+[node name="BottomHUD" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -409.0
-offset_top = -101.0
-offset_right = 409.0
-grow_horizontal = 2
-grow_vertical = 0
+offset_left = 654.0
+offset_top = 971.0
+offset_right = 1472.0
+offset_bottom = 1072.0
 
-[node name="BaseSkill" parent="BottomHUD" instance=ExtResource("1_57j3n")]
-layout_mode = 1
-offset_left = -260.0
-offset_top = -24.5
-offset_right = -186.0
-offset_bottom = 27.5
-text = "LMB"
+[node name="LMB_button" type="Sprite2D" parent="BottomHUD"]
+position = Vector2(100, 50)
+scale = Vector2(3, 3)
+texture = ExtResource("2_esb6y")
+script = ExtResource("3_h6dnr")
 
-[node name="SecondarySkill" parent="BottomHUD" instance=ExtResource("1_57j3n")]
-layout_mode = 1
-offset_left = -156.0
-offset_top = -24.5
-offset_right = -79.0
-offset_bottom = 27.5
-text = "RMB"
+[node name="Cooldown" type="Label" parent="BottomHUD/LMB_button"]
+offset_left = -20.3333
+offset_top = -66.0
+offset_right = 19.6667
+offset_bottom = -43.0
+text = "0.00"
+horizontal_alignment = 1
 
-[node name="BlockSkill" parent="BottomHUD" instance=ExtResource("1_57j3n")]
-layout_mode = 1
-offset_left = -68.0
-offset_top = -24.5
-offset_right = 9.0
-offset_bottom = 27.5
+[node name="LMB" type="Sprite2D" parent="BottomHUD/LMB_button"]
+position = Vector2(2.08165e-12, -32)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_uurqp")
 
-[node name="ThirdSkill" parent="BottomHUD" instance=ExtResource("1_57j3n")]
-layout_mode = 1
-offset_left = 13.0
-offset_top = -24.5
-offset_right = 90.0
-offset_bottom = 27.5
-text = "E"
+[node name="RMB_button" type="Sprite2D" parent="BottomHUD"]
+texture_filter = 1
+position = Vector2(220, 50)
+scale = Vector2(3, 3)
+texture = ExtResource("4_5a21k")
 
-[node name="DodgeSkill" parent="BottomHUD" instance=ExtResource("1_57j3n")]
-layout_mode = 1
-offset_left = 103.0
-offset_top = -24.5
-offset_right = 201.0
-offset_bottom = 27.5
-text = "Space"
+[node name="Label" type="Label" parent="BottomHUD/RMB_button"]
+offset_left = -19.6667
+offset_top = -65.6667
+offset_right = 20.3333
+offset_bottom = -42.6667
+text = "0.00"
+horizontal_alignment = 1
 
-[node name="UltimateSkill" parent="BottomHUD" instance=ExtResource("1_57j3n")]
-layout_mode = 1
-offset_left = 212.0
-offset_top = -25.5
-offset_right = 258.0
-offset_bottom = 26.5
-text = "R"
+[node name="RMB" type="Sprite2D" parent="BottomHUD/RMB_button"]
+position = Vector2(2.08165e-12, -32)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_3e34k")
+
+[node name="Space_button" type="Sprite2D" parent="BottomHUD"]
+texture_filter = 1
+position = Vector2(340, 50)
+scale = Vector2(3, 3)
+texture = ExtResource("6_udxxo")
+
+[node name="Label" type="Label" parent="BottomHUD/Space_button"]
+offset_left = -20.0
+offset_top = -65.6667
+offset_right = 20.0
+offset_bottom = -42.6667
+text = "0.00"
+horizontal_alignment = 1
+
+[node name="Space" type="Sprite2D" parent="BottomHUD/Space_button"]
+position = Vector2(2.08165e-12, -32)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_llbca")
+
+[node name="Q_button" type="Sprite2D" parent="BottomHUD"]
+texture_filter = 1
+position = Vector2(460, 50)
+scale = Vector2(3, 3)
+texture = ExtResource("8_b4dpv")
+
+[node name="Label" type="Label" parent="BottomHUD/Q_button"]
+offset_left = -20.0
+offset_top = -66.3333
+offset_right = 20.0
+offset_bottom = -43.3333
+text = "0.00"
+horizontal_alignment = 1
+
+[node name="Q" type="Sprite2D" parent="BottomHUD/Q_button"]
+position = Vector2(2.08165e-12, -32)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_0knnn")
+
+[node name="E_button" type="Sprite2D" parent="BottomHUD"]
+texture_filter = 1
+position = Vector2(580, 50)
+scale = Vector2(3, 3)
+texture = ExtResource("10_6lq8q")
+
+[node name="Label" type="Label" parent="BottomHUD/E_button"]
+offset_left = -20.6667
+offset_top = -66.0
+offset_right = 19.3333
+offset_bottom = -43.0
+text = "0.00"
+horizontal_alignment = 1
+
+[node name="E" type="Sprite2D" parent="BottomHUD/E_button"]
+position = Vector2(2.08165e-12, -32)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("CompressedTexture2D_c1vra")
+
+[node name="R_button" type="Sprite2D" parent="BottomHUD"]
+position = Vector2(700, 50)
+scale = Vector2(3, 3)
+texture = ExtResource("12_8ethy")
+
+[node name="Label" type="Label" parent="BottomHUD/R_button"]
+offset_left = -19.6667
+offset_top = -65.6667
+offset_right = 20.3333
+offset_bottom = -42.6667
+text = "0.00"
+horizontal_alignment = 1
+
+[node name="R" type="Sprite2D" parent="BottomHUD/R_button"]
+position = Vector2(2.08165e-12, -32)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("13_r3chp")
 
 [node name="ID" type="Label" parent="."]
 layout_mode = 1

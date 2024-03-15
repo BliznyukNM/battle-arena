@@ -1,4 +1,4 @@
-extends Label
+extends Node
 
 
 @onready var cooldown: Label = $Cooldown
@@ -8,7 +8,7 @@ var _skill
 
 
 func register(skill) -> void:
-    _skill = skill
+	_skill = skill
 
 
 func _process(delta: float) -> void:
