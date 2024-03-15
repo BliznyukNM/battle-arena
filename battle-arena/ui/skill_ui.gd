@@ -1,4 +1,4 @@
-extends Node
+extends Sprite2D
 
 
 @onready var cooldown: Label = $Cooldown
@@ -7,8 +7,10 @@ extends Node
 var _skill
 
 
+
 func register(skill) -> void:
 	_skill = skill
+	texture = skill.icon
 
 
 func _process(delta: float) -> void:

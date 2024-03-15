@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cndg2kkppsmgt"]
+[gd_scene load_steps=3 format=3 uid="uid://cndg2kkppsmgt"]
 
 [ext_resource type="Script" path="res://ui/skill_ui.gd" id="1_6fycn"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_23stk"]
+load_path = "res://.godot/imported/keyboard_q_outline.svg-5f18e8d0e932ab85db7b7d61d5207437.ctex"
 
 [node name="Skill" type="Label"]
 anchors_preset = 8
@@ -33,3 +36,8 @@ offset_bottom = 1.0
 grow_horizontal = 2
 text = "0.00"
 horizontal_alignment = 1
+
+[node name="KeyboardQOutline" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(90, 36)
+texture = SubResource("CompressedTexture2D_23stk")
