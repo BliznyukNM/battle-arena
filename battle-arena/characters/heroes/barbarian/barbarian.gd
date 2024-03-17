@@ -4,7 +4,6 @@ class_name Barbarian extends "res://characters/character.gd"
 enum Stance { HANDS = 0, AXE = 1, DUAL = 2 }
 
 
-var current_stance: Stance = Stance.AXE
 var is_recalling: bool
 var thrown_axe: Node
 
@@ -22,7 +21,9 @@ func recall_axe() -> void:
 
 @rpc("reliable", "call_local")
 func on_pickup_axe() -> void:
-    if thrown_axe: thrown_axe.queue_free()
+    if thrown_axe and is_multiplayer_authority(): thrown_axe.queue_free()
     thrown_axe = null
     is_recalling = false
     skills.blackboard.set_value("axe_recalled", true)
+    skills.blackboard.set_value("skill_name", "axe")
+    skin.update_stance("axe")
