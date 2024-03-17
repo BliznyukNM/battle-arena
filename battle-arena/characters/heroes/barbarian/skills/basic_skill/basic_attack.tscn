@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5cf7tg1x0aqg"]
+
+[ext_resource type="Script" path="res://characters/skills/composites/selector_name.gd" id="1_bk455"]
+[ext_resource type="PackedScene" uid="uid://cekhxq5m1ngt6" path="res://characters/heroes/barbarian/skills/basic_skill/axe_attack.tscn" id="2_sn1xc"]
+[ext_resource type="PackedScene" uid="uid://chwsp2lly4s5e" path="res://characters/heroes/barbarian/skills/basic_skill/bare_hands_attack.tscn" id="3_48sog"]
+
+[node name="BasicAttack" type="Node"]
+script = ExtResource("1_bk455")
+key = "\"skill_name\""
+
+[node name="Axe" parent="." instance=ExtResource("2_sn1xc")]
+
+[node name="Hands" parent="." instance=ExtResource("3_48sog")]

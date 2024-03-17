@@ -54,19 +54,19 @@ func play_chop() -> void:
     _trigger_attack("chop")
 
 
-func play_kick_a(skill: BaseSkill) -> void:
+func play_kick_a() -> void:
     _trigger_attack("punch_a")
 
 
-func play_kick_b(skill: BaseSkill) -> void:
+func play_kick_b() -> void:
     _trigger_attack("punch_b")
 
 
-func play_dual_chop(skill: BaseSkill) -> void:
+func play_dual_chop() -> void:
     _trigger_attack("dual_chop")
 
 
-func play_dual_slice(skill: BaseSkill) -> void:
+func play_dual_slice() -> void:
     _trigger_attack("dual_slice")
 
 
