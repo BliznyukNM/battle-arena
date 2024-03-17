@@ -7,7 +7,7 @@ func activate(pressed: bool) -> bool:
 
 
 func _spawn_projectile(transform: Transform3D) -> Node:
-    var projectile_instance: = super._spawn_projectile(transform)
+    var projectile_instance: = super(transform)
     projectile_instance.collision_mask = projectile_instance.collision_mask | owner.collision_layer
     owner.on_throw_axe(projectile_instance)
     return projectile_instance
