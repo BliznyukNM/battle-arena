@@ -56,6 +56,10 @@ folder_colors={
 "res://multiplayer/": "teal"
 }
 
+[gdunit4]
+
+settings/common/update_notification_enabled=false
+
 [gui]
 
 theme/custom="res://lobby/themes/default.tres"
