@@ -9,8 +9,8 @@ var _skill
 
 
 func register(skill) -> void:
-	_skill = skill
-	texture = skill.icon
+    _skill = skill
+    texture = skill.icon
 
 
 func _process(delta: float) -> void:
@@ -21,3 +21,4 @@ func _process(delta: float) -> void:
     
     var enabled: bool = _skill.enabled and is_zero_approx(_skill.cooldown) and is_zero_approx(_skill.execution)
     add_theme_color_override("font_color", Color.WHITE if enabled else Color.GRAY)
+
