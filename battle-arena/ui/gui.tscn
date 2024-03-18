@@ -1,16 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://cfqs7tnlielrb"]
+[gd_scene load_steps=9 format=3 uid="uid://cfqs7tnlielrb"]
 
 [ext_resource type="Script" path="res://ui/gui.gd" id="1_h8wmn"]
-[ext_resource type="Texture2D" uid="uid://05363gpp8joh" path="res://assets/ui/icons/Icon1.png" id="2_tfja5"]
 [ext_resource type="Script" path="res://ui/skill_ui.gd" id="3_h6dnr"]
 [ext_resource type="Texture2D" uid="uid://chcu0sl46yfom" path="res://assets/ui/kenney_input-prompts/Keyboard & Mouse/Vector/mouse_left_outline.svg" id="4_uurqp"]
-[ext_resource type="Texture2D" uid="uid://dr1ht670hlqd" path="res://assets/ui/icons/Icon2.png" id="5_8fcsg"]
 [ext_resource type="Texture2D" uid="uid://dl31fkxo1fdbx" path="res://assets/ui/kenney_input-prompts/Keyboard & Mouse/Vector/mouse_right_outline.svg" id="6_3e34k"]
-[ext_resource type="Texture2D" uid="uid://c454q01kpy5t5" path="res://assets/ui/icons/Icon4.png" id="7_urp2j"]
 [ext_resource type="Texture2D" uid="uid://kibffkrt38ve" path="res://assets/ui/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_space_icon_outline.svg" id="8_llbca"]
-[ext_resource type="Texture2D" uid="uid://dq2ujvfvq6gv2" path="res://assets/ui/icons/Icon3.png" id="9_5py1x"]
-[ext_resource type="Texture2D" uid="uid://1jt3d8yp56f2" path="res://assets/ui/icons/Icon6.png" id="10_xrbku"]
-[ext_resource type="Texture2D" uid="uid://bn15taxwqcfss" path="res://assets/ui/icons/Icon7.png" id="11_px0lw"]
 [ext_resource type="Texture2D" uid="uid://cm8w7nsqso5xf" path="res://assets/ui/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_r_outline.svg" id="13_r3chp"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nggo3"]
@@ -38,7 +32,6 @@ offset_bottom = 1072.0
 [node name="LMB_button" type="Sprite2D" parent="BottomHUD"]
 position = Vector2(100, 50)
 scale = Vector2(3, 3)
-texture = ExtResource("2_tfja5")
 script = ExtResource("3_h6dnr")
 
 [node name="Cooldown" type="Label" parent="BottomHUD/LMB_button"]
@@ -58,7 +51,6 @@ texture = ExtResource("4_uurqp")
 texture_filter = 1
 position = Vector2(220, 50)
 scale = Vector2(3, 3)
-texture = ExtResource("5_8fcsg")
 script = ExtResource("3_h6dnr")
 
 [node name="Cooldown" type="Label" parent="BottomHUD/RMB_button"]
@@ -78,7 +70,6 @@ texture = ExtResource("6_3e34k")
 texture_filter = 1
 position = Vector2(340, 50)
 scale = Vector2(3, 3)
-texture = ExtResource("7_urp2j")
 script = ExtResource("3_h6dnr")
 
 [node name="Cooldown" type="Label" parent="BottomHUD/Space_button"]
@@ -98,7 +89,6 @@ texture = ExtResource("8_llbca")
 texture_filter = 1
 position = Vector2(460, 50)
 scale = Vector2(3, 3)
-texture = ExtResource("9_5py1x")
 script = ExtResource("3_h6dnr")
 
 [node name="Cooldown" type="Label" parent="BottomHUD/Q_button"]
@@ -118,7 +108,6 @@ texture = SubResource("CompressedTexture2D_nggo3")
 texture_filter = 1
 position = Vector2(580, 50)
 scale = Vector2(3, 3)
-texture = ExtResource("10_xrbku")
 script = ExtResource("3_h6dnr")
 
 [node name="Cooldown" type="Label" parent="BottomHUD/E_button"]
@@ -137,7 +126,6 @@ texture = SubResource("CompressedTexture2D_c1vra")
 [node name="R_button" type="Sprite2D" parent="BottomHUD"]
 position = Vector2(700, 50)
 scale = Vector2(3, 3)
-texture = ExtResource("11_px0lw")
 script = ExtResource("3_h6dnr")
 
 [node name="Cooldown" type="Label" parent="BottomHUD/R_button"]
