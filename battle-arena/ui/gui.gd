@@ -8,10 +8,10 @@ var target: Node:
 
 
 func _update_hud() -> void:
-    $BottomHUD/BaseSkill.register(target.skills.basic_attack)
-    $BottomHUD/SecondarySkill.register(target.skills.second_attack)
-    $BottomHUD/BlockSkill.register(target.skills.block)
-    $BottomHUD/ThirdSkill.register(target.skills.third_attack)
-    $BottomHUD/DodgeSkill.register(target.skills.dodge)
-    $BottomHUD/UltimateSkill.register(target.skills.ultimate)
+    $BottomHUD/LMB_button.register(target.skills.basic_attack)
+    $BottomHUD/RMB_button.register(target.skills.second_attack)
+    $BottomHUD/Space_button.register(target.skills.third_attack)
+    $BottomHUD/Q_button.register(target.skills.block)
+    $BottomHUD/E_button.register(target.skills.dodge)
+    $BottomHUD/R_button.register(target.skills.ultimate)
     $ID.text = "ID: %d" % target.player_id

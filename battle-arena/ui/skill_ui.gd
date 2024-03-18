@@ -1,4 +1,4 @@
-extends Label
+extends Sprite2D
 
 
 @onready var cooldown: Label = $Cooldown
@@ -7,8 +7,10 @@ extends Label
 var _skill
 
 
+
 func register(skill) -> void:
     _skill = skill
+    texture = skill.icon
 
 
 func _process(delta: float) -> void:
@@ -17,5 +19,5 @@ func _process(delta: float) -> void:
     cooldown.visible = _skill.cooldown > 0.0
     cooldown.text = "%1.2f" % _skill.cooldown
     
-    var enabled: bool = _skill.enabled and _skill.cooldown <= 0.0
-    add_theme_color_override("font_color", Color.WHITE if enabled else Color.GRAY) 
+    #var enabled: bool = _skill.enabled and _skill.cooldown <= 0.0
+    #add_theme_color_override("font_color", Color.WHITE if enabled else Color.GRAY) 
