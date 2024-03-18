@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://chwsp2lly4s5e"]
+
+[ext_resource type="Script" path="res://characters/skills/composites/conditional_sequence.gd" id="1_yy0xw"]
+[ext_resource type="PackedScene" uid="uid://codpxetuqfpwh" path="res://characters/heroes/barbarian/skills/basic_skill/kick_a.tscn" id="2_ealqn"]
+[ext_resource type="PackedScene" uid="uid://bway5lctbi3vx" path="res://characters/heroes/barbarian/skills/basic_skill/kick_b.tscn" id="3_mj23j"]
+
+[node name="BareHands" type="Node"]
+script = ExtResource("1_yy0xw")
+key = "\"%s_ready\" % actor.name"
+
+[node name="KickA" parent="." instance=ExtResource("2_ealqn")]
+
+[node name="KickB" parent="." instance=ExtResource("3_mj23j")]

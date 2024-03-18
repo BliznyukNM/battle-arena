@@ -29,7 +29,7 @@ var is_authenticated: bool:
 func _ready() -> void:
     NakamaWebRTC.max_players = 2
     NakamaWebRTC.match_ready.connect(_on_match_ready)
-    NakamaWebRTC.error.connect(func(error): assert(false, error))
+    NakamaWebRTC.error.connect(func(error): push_error(error))
 
 
 func authenticate(email: String, password: String, username: String = '', create_account: bool = false) -> bool:

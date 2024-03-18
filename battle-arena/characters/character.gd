@@ -1,4 +1,4 @@
-extends CharacterBody3D
+class_name Character extends CharacterBody3D
 
 
 signal on_dead()
@@ -15,6 +15,7 @@ signal on_dead()
 @onready var input: = get_node_or_null("Input")
 @onready var hit_box: HitBox = get_node_or_null("HitBox")
 @onready var hud: = get_node_or_null("HUD")
+@onready var spawner: MultiplayerSpawner = get_node_or_null("LocalSpawner")
 
 
 var is_alive: bool:

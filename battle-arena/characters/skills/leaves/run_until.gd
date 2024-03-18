@@ -8,6 +8,7 @@ const Utils = preload("res://characters/skills/utils/utils.gd")
 
 ## Expression representing a blackboard key.
 @export_placeholder(Utils.EXPRESSION_PLACEHOLDER) var key: String = ""
+@export var blackboard_name: String = Blackboard.DEFAULT
 
 @onready var _key_expression: Expression = Utils.parse_expression(key, ["actor"])
 

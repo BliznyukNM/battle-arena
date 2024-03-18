@@ -58,7 +58,7 @@ func _process_actions_locally(action: String) -> void:
         _on_action_triggered("on_%s" % action, false)
 
 
-# TODO: Fix local mode
+# TODO: Fix local mode <- don't remember what's this thing
 @rpc("reliable", "call_remote")
 func _on_action_triggered(signal_name: String, pressed: bool) -> void:
     emit_signal(signal_name, pressed)

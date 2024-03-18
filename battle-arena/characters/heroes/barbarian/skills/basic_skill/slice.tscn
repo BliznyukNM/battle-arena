@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cq3ieognt8p8y"]
+[gd_scene load_steps=9 format=3 uid="uid://cq3ieognt8p8y"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_0671m"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_8456q"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://characters/skills/leaves/show_progress_bar.gd" id="4_sorfv"]
 [ext_resource type="Script" path="res://characters/skills/leaves/melee_attack.gd" id="4_txxw6"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/decorators/succeeder.gd" id="4_yh0wc"]
+[ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="6_abbfg"]
 
 [node name="Slice" type="Node"]
 script = ExtResource("1_0671m")
@@ -28,10 +29,13 @@ script = ExtResource("4_op52l")
 wait_time = 0.4
 cache_key = "execution"
 
-[node name="AlwaysSucceedDecorator" type="Node" parent="."]
+[node name="AlwaysSucceed" type="Node" parent="."]
 script = ExtResource("4_yh0wc")
 
-[node name="Attack" type="Node" parent="AlwaysSucceedDecorator"]
+[node name="Authority" type="Node" parent="AlwaysSucceed"]
+script = ExtResource("6_abbfg")
+
+[node name="Attack" type="Node" parent="AlwaysSucceed/Authority"]
 script = ExtResource("4_txxw6")
 damage = 12
 hit_range = 3.0

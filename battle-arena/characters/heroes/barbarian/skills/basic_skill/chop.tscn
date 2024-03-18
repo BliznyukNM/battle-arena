@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://dduw5yupkf46b"]
+
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_pr8rg"]
+[ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_yqrv3"]
+[ext_resource type="Script" path="res://characters/skills/leaves/play_animation.gd" id="3_oh0r4"]
+[ext_resource type="Script" path="res://characters/skills/leaves/show_progress_bar.gd" id="4_w4khx"]
+[ext_resource type="Script" path="res://characters/skills/leaves/wait.gd" id="5_uyjv7"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/succeeder.gd" id="6_wc2qt"]
+[ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="7_m373t"]
+[ext_resource type="Script" path="res://characters/skills/leaves/melee_attack.gd" id="8_17a63"]
+
+[node name="Chop" type="Node"]
+script = ExtResource("1_pr8rg")
+
+[node name="Ready" type="Node" parent="."]
+script = ExtResource("2_yqrv3")
+key = "\"%s_ready\" % actor.name"
+
+[node name="PlayAnimation" type="Node" parent="."]
+script = ExtResource("3_oh0r4")
+animation_name = "chop"
+
+[node name="ShowProgressBar" type="Node" parent="."]
+script = ExtResource("4_w4khx")
+duration = 0.8
+
+[node name="ExecutionWait" type="Node" parent="."]
+script = ExtResource("5_uyjv7")
+wait_time = 0.5
+cache_key = "execution"
+
+[node name="AlwaysSucceed" type="Node" parent="."]
+script = ExtResource("6_wc2qt")
+
+[node name="Authority" type="Node" parent="AlwaysSucceed"]
+script = ExtResource("7_m373t")
+
+[node name="Attack" type="Node" parent="AlwaysSucceed/Authority"]
+script = ExtResource("8_17a63")
+damage = 10
+hit_range = 3.0
+area = 40.0
+offset = Vector3(2.08165e-12, 1, 2.08165e-12)
+collision_type = 1
+
+[node name="Cooldown" type="Node" parent="."]
+script = ExtResource("5_uyjv7")
+wait_time = 0.45
+cache_key = "cooldown"

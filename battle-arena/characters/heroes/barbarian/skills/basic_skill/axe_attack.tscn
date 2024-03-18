@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://cekhxq5m1ngt6"]
+
+[ext_resource type="Script" path="res://characters/skills/composites/conditional_sequence.gd" id="1_g4dpn"]
+[ext_resource type="PackedScene" uid="uid://dduw5yupkf46b" path="res://characters/heroes/barbarian/skills/basic_skill/chop.tscn" id="2_bm4sy"]
+[ext_resource type="PackedScene" uid="uid://cq3ieognt8p8y" path="res://characters/heroes/barbarian/skills/basic_skill/slice.tscn" id="3_1hwvg"]
+
+[node name="Axe" type="Node"]
+script = ExtResource("1_g4dpn")
+key = "\"%s_ready\" % actor.name"
+
+[node name="Chop" parent="." instance=ExtResource("2_bm4sy")]
+
+[node name="Slice" parent="." instance=ExtResource("3_1hwvg")]
