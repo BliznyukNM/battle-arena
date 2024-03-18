@@ -61,7 +61,7 @@ scale = Vector2(3, 3)
 texture = ExtResource("5_8fcsg")
 script = ExtResource("3_h6dnr")
 
-[node name="Label" type="Label" parent="BottomHUD/RMB_button"]
+[node name="Cooldown" type="Label" parent="BottomHUD/RMB_button"]
 offset_left = -19.6667
 offset_top = -65.6667
 offset_right = 20.3333
@@ -81,7 +81,7 @@ scale = Vector2(3, 3)
 texture = ExtResource("7_urp2j")
 script = ExtResource("3_h6dnr")
 
-[node name="Label" type="Label" parent="BottomHUD/Space_button"]
+[node name="Cooldown" type="Label" parent="BottomHUD/Space_button"]
 offset_left = -20.0
 offset_top = -65.6667
 offset_right = 20.0
@@ -101,7 +101,7 @@ scale = Vector2(3, 3)
 texture = ExtResource("9_5py1x")
 script = ExtResource("3_h6dnr")
 
-[node name="Label" type="Label" parent="BottomHUD/Q_button"]
+[node name="Cooldown" type="Label" parent="BottomHUD/Q_button"]
 offset_left = -20.0
 offset_top = -66.3333
 offset_right = 20.0
@@ -121,7 +121,7 @@ scale = Vector2(3, 3)
 texture = ExtResource("10_xrbku")
 script = ExtResource("3_h6dnr")
 
-[node name="Label" type="Label" parent="BottomHUD/E_button"]
+[node name="Cooldown" type="Label" parent="BottomHUD/E_button"]
 offset_left = -20.6667
 offset_top = -66.0
 offset_right = 19.3333
@@ -140,7 +140,7 @@ scale = Vector2(3, 3)
 texture = ExtResource("11_px0lw")
 script = ExtResource("3_h6dnr")
 
-[node name="Label" type="Label" parent="BottomHUD/R_button"]
+[node name="Cooldown" type="Label" parent="BottomHUD/R_button"]
 offset_left = -19.6667
 offset_top = -65.6667
 offset_right = 20.3333
