@@ -44,6 +44,9 @@ properties/0/replication_mode = 1
 properties/1/path = NodePath("ServerInterpolation:server_rotation")
 properties/1/spawn = false
 properties/1/replication_mode = 1
+properties/2/path = NodePath("Blackboard:blackboard")
+properties/2/spawn = true
+properties/2/replication_mode = 2
 
 [node name="Character" type="CharacterBody3D"]
 collision_mask = 15
@@ -100,46 +103,43 @@ script = ExtResource("7_nutv6")
 script = ExtResource("7_5rwt1")
 enabled = false
 actor_node_path = NodePath(".")
-blackboard = NodePath("../Blackboard")
+blackboard = NodePath("../../Blackboard")
 actor = NodePath(".")
 
 [node name="SecondAttack" type="Node" parent="Skills" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("7_5rwt1")
 enabled = false
 actor_node_path = NodePath(".")
-blackboard = NodePath("../Blackboard")
+blackboard = NodePath("../../Blackboard")
 actor = NodePath(".")
 
 [node name="ThirdAttack" type="Node" parent="Skills" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("7_5rwt1")
 enabled = false
 actor_node_path = NodePath(".")
-blackboard = NodePath("../Blackboard")
+blackboard = NodePath("../../Blackboard")
 actor = NodePath(".")
 
 [node name="Dodge" type="Node" parent="Skills" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("7_5rwt1")
 enabled = false
 actor_node_path = NodePath(".")
-blackboard = NodePath("../Blackboard")
+blackboard = NodePath("../../Blackboard")
 actor = NodePath(".")
 
 [node name="Block" type="Node" parent="Skills" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("7_5rwt1")
 enabled = false
 actor_node_path = NodePath(".")
-blackboard = NodePath("../Blackboard")
+blackboard = NodePath("../../Blackboard")
 actor = NodePath(".")
 
 [node name="Ultimate" type="Node" parent="Skills" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("7_5rwt1")
 enabled = false
 actor_node_path = NodePath(".")
-blackboard = NodePath("../Blackboard")
+blackboard = NodePath("../../Blackboard")
 actor = NodePath(".")
-
-[node name="Blackboard" type="Node" parent="Skills"]
-script = ExtResource("8_mordq")
 
 [node name="Processors" type="Node" parent="."]
 process_mode = 1
@@ -163,6 +163,9 @@ rotation_speed = NodePath("../../Stats/RotationSpeed")
 
 [node name="Visibility" type="Node" parent="Processors"]
 script = ExtResource("11_mq5k8")
+
+[node name="Blackboard" type="Node" parent="."]
+script = ExtResource("8_mordq")
 
 [node name="HitBox" type="Area3D" parent="."]
 monitoring = false

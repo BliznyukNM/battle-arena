@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dduw5yupkf46b"]
+[gd_scene load_steps=10 format=3 uid="uid://dduw5yupkf46b"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_pr8rg"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_yqrv3"]
 [ext_resource type="Script" path="res://characters/skills/leaves/play_animation.gd" id="3_oh0r4"]
+[ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/local_player.gd" id="4_2mxtc"]
 [ext_resource type="Script" path="res://characters/skills/leaves/show_progress_bar.gd" id="4_w4khx"]
 [ext_resource type="Script" path="res://characters/skills/leaves/wait.gd" id="5_uyjv7"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/decorators/succeeder.gd" id="6_wc2qt"]
@@ -20,7 +21,10 @@ key = "\"%s_ready\" % actor.name"
 script = ExtResource("3_oh0r4")
 animation_name = "chop"
 
-[node name="ShowProgressBar" type="Node" parent="."]
+[node name="LocalPlayer" type="Node" parent="."]
+script = ExtResource("4_2mxtc")
+
+[node name="ShowProgressBar" type="Node" parent="LocalPlayer"]
 script = ExtResource("4_w4khx")
 duration = 0.8
 

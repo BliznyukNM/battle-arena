@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cq3ieognt8p8y"]
+[gd_scene load_steps=10 format=3 uid="uid://cq3ieognt8p8y"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_0671m"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_8456q"]
 [ext_resource type="Script" path="res://characters/skills/leaves/play_animation.gd" id="3_oa23g"]
+[ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/local_player.gd" id="4_8cwy3"]
 [ext_resource type="Script" path="res://characters/skills/leaves/wait.gd" id="4_op52l"]
 [ext_resource type="Script" path="res://characters/skills/leaves/show_progress_bar.gd" id="4_sorfv"]
 [ext_resource type="Script" path="res://characters/skills/leaves/melee_attack.gd" id="4_txxw6"]
@@ -20,7 +21,10 @@ key = "\"%s_ready\" % actor.name"
 script = ExtResource("3_oa23g")
 animation_name = "slice"
 
-[node name="ShowProgressBar" type="Node" parent="."]
+[node name="LocalPlayer" type="Node" parent="."]
+script = ExtResource("4_8cwy3")
+
+[node name="ShowProgressBar" type="Node" parent="LocalPlayer"]
 script = ExtResource("4_sorfv")
 duration = 0.8
 

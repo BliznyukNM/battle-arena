@@ -10,7 +10,6 @@ signal show_progress_bar(duration: float)
 @onready var block: BeehaveTree = get_node_or_null("Block")
 @onready var dodge: BeehaveTree = get_node_or_null("Dodge")
 @onready var ultimate: BeehaveTree = get_node_or_null("Ultimate")
-@onready var blackboard: Blackboard = $Blackboard
 
 
 var _skills: Array
