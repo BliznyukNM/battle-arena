@@ -23,7 +23,7 @@ func update_attack_speed(speed: float) -> void:
     animationTree.set("parameters/AttackSpeed/scale", speed)
 
 
-func play_shoot(skill: BaseSkill) -> void:
+func play_shoot() -> void:
     animationTree.set("parameters/PlayShoot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 
 

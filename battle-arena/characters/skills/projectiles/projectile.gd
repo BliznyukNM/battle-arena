@@ -16,7 +16,8 @@ var _travelled_distance: float
 
 func _ready() -> void:
     _collision.scale = Vector3.ONE * radius # TODO: * skill.radius
-
+    collision_layer = owner.collision_layer
+    collision_mask = owner.collision_mask | owner.collision_layer
 
 func _process(delta: float) -> void:
     if not _is_travelling: return

@@ -102,6 +102,10 @@ curve = SubResource("Curve_je38k")
 
 [node name="Arrow" type="Area3D"]
 script = ExtResource("1_gtc3e")
+radius = 1.0
+speed = 20.0
+distance = 8.0
+damage = 15
 
 [node name="ArrowHead01" type="MeshInstance3D" parent="."]
 transform = Transform3D(-6.55671e-09, -5.2318e-17, -0.15, 5.2318e-17, 0.15, -5.2318e-17, 0.15, -5.2318e-17, -6.55671e-09, 0, 0, 0)
