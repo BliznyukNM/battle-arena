@@ -1,18 +1,41 @@
-[gd_scene load_steps=2 format=3 uid="uid://chrefq00p1nw0"]
+[gd_scene load_steps=8 format=3 uid="uid://84qi1twdooc0"]
 
-[ext_resource type="PackedScene" uid="uid://dt7dp8amhbd5b" path="res://characters/skills/range_attack_skill.tscn" id="1_oy01m"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_q5vp1"]
+[ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_mjxu6"]
+[ext_resource type="Script" path="res://characters/skills/leaves/show_progress_bar.gd" id="5_ebbq3"]
+[ext_resource type="Script" path="res://characters/skills/leaves/wait.gd" id="6_2qc4w"]
+[ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="7_26txg"]
+[ext_resource type="Script" path="res://characters/skills/decorators/spawn/near_actor.gd" id="8_n6hv4"]
+[ext_resource type="Script" path="res://characters/skills/leaves/spawn.gd" id="9_j3cic"]
 
-[node name="Shoot" instance=ExtResource("1_oy01m")]
-damage = 8.0
-projectile_speed = 5.0
-distance = 8.0
-radius = 0.3
+[node name="Shoot" type="Node"]
+script = ExtResource("1_q5vp1")
 
-[node name="Execution" parent="." index="0"]
-base_time = 0.5
+[node name="Ready" type="Node" parent="."]
+script = ExtResource("2_mjxu6")
+key = "\"%s_ready\" % actor.name"
 
-[node name="Cooldown" parent="." index="1"]
-base_time = 2.5
+[node name="ShowProgressBar" type="Node" parent="."]
+script = ExtResource("5_ebbq3")
+duration = 0.8
 
-[node name="Container" parent="." index="2"]
-_spawnable_scenes = PackedStringArray("res://characters/dummy/bullet.tscn")
+[node name="ExecutionWait" type="Node" parent="."]
+script = ExtResource("6_2qc4w")
+wait_time = 0.65
+cache_key = "execution"
+
+[node name="Authority" type="Node" parent="."]
+script = ExtResource("7_26txg")
+
+[node name="NearActor" type="Node" parent="Authority"]
+script = ExtResource("8_n6hv4")
+offset = Vector3(2.08165e-12, 1, 1.5)
+
+[node name="Shoot" type="Node" parent="Authority/NearActor"]
+script = ExtResource("9_j3cic")
+scene_path = "res://characters/dummy/bullet.tscn"
+
+[node name="Cooldown" type="Node" parent="."]
+script = ExtResource("6_2qc4w")
+wait_time = 0.5
+cache_key = "cooldown"

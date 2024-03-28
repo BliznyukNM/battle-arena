@@ -3,7 +3,7 @@ extends InputSource
 
 func is_basic_attack_just_pressed() -> bool:
     var basic_attack = _owner.skills.basic_attack
-    return basic_attack.execution.is_stopped() and basic_attack.cooldown.is_stopped()
+    return is_zero_approx(basic_attack.execution) and is_zero_approx(basic_attack.cooldown)
 
 
 func get_look_at_point() -> Vector3:

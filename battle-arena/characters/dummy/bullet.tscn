@@ -13,6 +13,10 @@ radius = 0.15
 
 [node name="Bullet" type="Area3D"]
 script = ExtResource("1_bw3ca")
+radius = 1.0
+speed = 6.0
+distance = 8.0
+damage = 10
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_ykawq")

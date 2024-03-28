@@ -1,18 +1,19 @@
 [gd_scene load_steps=4 format=3 uid="uid://cnvhuy5i7x6e"]
 
 [ext_resource type="PackedScene" uid="uid://vs53g10noy3c" path="res://characters/dummy/dummy.tscn" id="1_u6odu"]
-[ext_resource type="PackedScene" uid="uid://chrefq00p1nw0" path="res://characters/dummy/skills/shoot.tscn" id="2_352qu"]
+[ext_resource type="PackedScene" uid="uid://84qi1twdooc0" path="res://characters/dummy/skills/shoot.tscn" id="2_352qu"]
 [ext_resource type="Resource" uid="uid://cuhgji6u425ug" path="res://characters/dummy/shooting_dummy_input_source.tres" id="3_38jmu"]
 
 [node name="ShootingDummy" instance=ExtResource("1_u6odu")]
 
-[node name="BasicAttack" parent="Skills" index="0" node_paths=PackedStringArray("spawn_point") instance=ExtResource("2_352qu")]
-spawn_point = NodePath("../../Skin/ProjectileSpawnPoint")
+[node name="BasicAttack" parent="Skills" index="0" node_paths=PackedStringArray("blackboard")]
+enabled = true
+blackboard = NodePath("@Node@61200")
 
-[node name="Input" parent="." index="8"]
+[node name="Shoot" parent="Skills/BasicAttack" index="0" instance=ExtResource("2_352qu")]
+
+[node name="LocalSpawner" parent="." index="8"]
+_spawnable_scenes = PackedStringArray("res://characters/dummy/bullet.tscn")
+
+[node name="Input" parent="." index="9"]
 input_source = ExtResource("3_38jmu")
-
-[node name="ProjectileSpawnPoint" type="Node3D" parent="Skin" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.882874, 0.643343)
-
-[connection signal="activated" from="Skills/BasicAttack" to="HUD" method="on_skill_activated"]
