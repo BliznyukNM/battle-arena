@@ -55,8 +55,7 @@ func _activate_skill(index: int, pressed: bool) -> void:
     if not skill: return
     
     var key: String = "%s_ready" % skill.name
-    if pressed: skill.blackboard.set_value(key, true)
-    else: skill.blackboard.erase_value(key)
+    skill.blackboard.set_value(key, pressed)
 
 
 func reset() -> void:

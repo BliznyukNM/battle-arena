@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b52wq4f1ubfm3"]
+[gd_scene load_steps=11 format=3 uid="uid://b52wq4f1ubfm3"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_m11w8"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_aptpa"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="5_a61af"]
 [ext_resource type="Script" path="res://characters/skills/decorators/until_hit.gd" id="6_67an1"]
 [ext_resource type="Script" path="res://characters/skills/leaves/modifiers/add_modifier.gd" id="6_n2fgy"]
+[ext_resource type="Script" path="res://characters/skills/decorators/cancellable.gd" id="7_valut"]
 [ext_resource type="Script" path="res://characters/skills/leaves/modifiers/remove_modifier.gd" id="9_chgd5"]
 
 [node name="Taunt" type="Node"]
@@ -24,15 +25,19 @@ animation_name = "taunt"
 [node name="ApplyWithAuthority" type="Node" parent="."]
 script = ExtResource("5_a61af")
 
-[node name="UntilHit" type="Node" parent="ApplyWithAuthority"]
-script = ExtResource("6_67an1")
-
-[node name="AddTauntModifier" type="Node" parent="ApplyWithAuthority/UntilHit"]
+[node name="AddTauntModifier" type="Node" parent="ApplyWithAuthority"]
 script = ExtResource("6_n2fgy")
 modifier_name = "Taunt"
 scene_path = "res://characters/heroes/barbarian/modifiers/taunt.tscn"
 
-[node name="ExecutionWait" type="Node" parent="."]
+[node name="UntilHit" type="Node" parent="."]
+script = ExtResource("6_67an1")
+
+[node name="Cancellable" type="Node" parent="UntilHit"]
+script = ExtResource("7_valut")
+key = "\"%s_ready\" % actor.name"
+
+[node name="ExecutionWait" type="Node" parent="UntilHit/Cancellable"]
 script = ExtResource("3_optkk")
 wait_time = 1.5
 cache_key = "execution"

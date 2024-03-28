@@ -15,6 +15,7 @@ script = ExtResource("1_0671m")
 
 [node name="Ready" type="Node" parent="."]
 script = ExtResource("2_8456q")
+consume_key = false
 key = "\"%s_ready\" % actor.name"
 
 [node name="PlayAnimation" type="Node" parent="."]
