@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=3 uid="uid://b52wq4f1ubfm3"]
+
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_m11w8"]
+[ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_aptpa"]
+[ext_resource type="Script" path="res://characters/skills/leaves/play_animation.gd" id="3_cccs0"]
+[ext_resource type="Script" path="res://characters/skills/leaves/wait.gd" id="3_optkk"]
+[ext_resource type="Script" path="res://characters/skills/leaves/stop_animation.gd" id="4_fokt2"]
+[ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="5_a61af"]
+[ext_resource type="Script" path="res://characters/skills/decorators/until_hit.gd" id="6_67an1"]
+[ext_resource type="Script" path="res://characters/skills/leaves/modifiers/add_modifier.gd" id="6_n2fgy"]
+[ext_resource type="Script" path="res://characters/skills/leaves/modifiers/remove_modifier.gd" id="9_chgd5"]
+
+[node name="Taunt" type="Node"]
+script = ExtResource("1_m11w8")
+
+[node name="RunUntil" type="Node" parent="."]
+script = ExtResource("2_aptpa")
+key = "\"%s_ready\" % actor.name"
+
+[node name="PlayAnimation" type="Node" parent="."]
+script = ExtResource("3_cccs0")
+animation_name = "taunt"
+
+[node name="ApplyWithAuthority" type="Node" parent="."]
+script = ExtResource("5_a61af")
+
+[node name="UntilHit" type="Node" parent="ApplyWithAuthority"]
+script = ExtResource("6_67an1")
+
+[node name="AddTauntModifier" type="Node" parent="ApplyWithAuthority/UntilHit"]
+script = ExtResource("6_n2fgy")
+modifier_name = "Taunt"
+scene_path = "res://characters/heroes/barbarian/modifiers/taunt.tscn"
+
+[node name="ExecutionWait" type="Node" parent="."]
+script = ExtResource("3_optkk")
+wait_time = 1.5
+cache_key = "execution"
+
+[node name="CleanWithAuthority" type="Node" parent="."]
+script = ExtResource("5_a61af")
+
+[node name="RemoveTauntModifier" type="Node" parent="CleanWithAuthority"]
+script = ExtResource("9_chgd5")
+modifier_name = "Taunt"
+
+[node name="StopAnimation" type="Node" parent="."]
+script = ExtResource("4_fokt2")
+animation_name = "taunt"
+
+[node name="Cooldown" type="Node" parent="."]
+script = ExtResource("3_optkk")
+wait_time = 5.0
+cache_key = "cooldown"

@@ -8,4 +8,4 @@ extends ActionLeaf
 func before_run(actor: Node, blackboard: Blackboard) -> void:
     super(actor, blackboard)
     var character = actor.owner
-    character.skin.call("play_%s" % animation_name)
+    character.skin.call("stop_%s" % animation_name)
