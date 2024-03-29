@@ -26,7 +26,12 @@ animation_name = "kick_b"
 [node name="LocalPlayer" type="Node" parent="."]
 script = ExtResource("4_cs5au")
 
-[node name="ShowProgressBar" type="Node" parent="LocalPlayer"]
+[node name="AttackSpeedScale" type="Node" parent="LocalPlayer"]
+script = ExtResource("6_m7job")
+stat_name = "AttackSpeed"
+inverted = true
+
+[node name="ShowProgressBar" type="Node" parent="LocalPlayer/AttackSpeedScale"]
 script = ExtResource("4_3q3lc")
 duration = 0.8
 

@@ -63,41 +63,41 @@ _spawnable_scenes = PackedStringArray("res://characters/heroes/barbarian/axe.tsc
 [node name="Skin" parent="." index="11" instance=ExtResource("2_lwxa8")]
 
 [node name="Skeleton3D" parent="Skin/Rig" index="0"]
-bones/1/position = Vector3(0, 0.383348, 0)
-bones/4/rotation = Quaternion(-0.583858, -0.246813, -0.725075, 0.269183)
-bones/5/rotation = Quaternion(2.89573e-08, -4.1988e-08, -0.579892, 0.814694)
-bones/7/rotation = Quaternion(-0.17299, -0.68639, -0.0524241, 0.704411)
-bones/11/rotation = Quaternion(-0.254343, 0.36396, 0.833524, 0.328755)
-bones/12/rotation = Quaternion(1.86803e-08, 5.83265e-08, 0.555842, 0.831288)
-bones/14/rotation = Quaternion(-0.25258, 0.208337, -0.0907989, 0.940508)
-bones/22/rotation = Quaternion(0.992518, 0.0831316, 0.0760657, 0.0470151)
-bones/23/rotation = Quaternion(0.289631, 6.51426e-08, -2.03425e-07, 0.957139)
-bones/24/rotation = Quaternion(-0.566447, -0.206228, 0.0584218, 0.795735)
-bones/26/rotation = Quaternion(0.995197, -0.0310593, 0.0307812, 0.087578)
-bones/27/rotation = Quaternion(0.347479, -6.23285e-08, 2.41159e-07, 0.937688)
-bones/28/rotation = Quaternion(-0.598151, 0.113876, -0.0148911, 0.793112)
-bones/45/position = Vector3(0.520841, 0.784197, -0.0576374)
-bones/47/position = Vector3(-0.510844, 0.784196, 0.0597369)
+bones/1/position = Vector3(0, 0.368231, 0)
+bones/4/rotation = Quaternion(-0.594317, -0.243032, -0.7079, 0.294278)
+bones/5/rotation = Quaternion(5.69212e-09, -2.91386e-08, -0.625479, 0.780241)
+bones/7/rotation = Quaternion(-0.135975, -0.708409, -0.0536325, 0.690501)
+bones/11/rotation = Quaternion(-0.262813, 0.402337, 0.818368, 0.315165)
+bones/12/rotation = Quaternion(2.17776e-08, 5.76341e-08, 0.521544, 0.853224)
+bones/14/rotation = Quaternion(-0.281829, 0.180358, -0.0481146, 0.941131)
+bones/22/rotation = Quaternion(0.98935, 0.0838184, 0.0788919, 0.0890948)
+bones/23/rotation = Quaternion(0.400425, 5.64297e-08, -2.71473e-07, 0.91633)
+bones/24/rotation = Quaternion(-0.624872, -0.200423, 0.0779343, 0.750528)
+bones/26/rotation = Quaternion(0.991162, -0.0335157, 0.0297454, 0.124861)
+bones/27/rotation = Quaternion(0.444001, -5.87731e-08, 3.12204e-07, 0.896026)
+bones/28/rotation = Quaternion(-0.65063, 0.112354, -0.0239287, 0.750656)
+bones/45/position = Vector3(0.520841, 0.77148, -0.0576374)
+bones/47/position = Vector3(-0.510844, 0.77148, 0.0597369)
 
 [node name="1H_Axe_Offhand" parent="Skin/Rig/Skeleton3D" index="0"]
-transform = Transform3D(0.167975, 0.711246, 0.682578, 0.263067, 0.634965, -0.72637, -0.950041, 0.301576, -0.0804476, 0.436104, 0.806483, 0.472724)
+transform = Transform3D(0.113662, 0.730778, 0.673086, 0.205163, 0.64561, -0.735591, -0.972104, 0.221701, -0.0765469, 0.441179, 0.823017, 0.466986)
 
 [node name="Barbarian_Round_Shield" parent="Skin/Rig/Skeleton3D" index="1"]
-transform = Transform3D(0.167976, 0.711245, 0.682578, 0.26307, 0.634965, -0.72637, -0.95004, 0.301579, -0.0804484, 0.530916, 0.682904, 0.455268)
+transform = Transform3D(0.113664, 0.730777, 0.673086, 0.205165, 0.64561, -0.735591, -0.972104, 0.221704, -0.0765477, 0.534194, 0.697827, 0.451441)
 
 [node name="1H_Axe" parent="Skin/Rig/Skeleton3D" index="2"]
-transform = Transform3D(-0.0656041, 0.910113, 0.409132, 0.684791, 0.339287, -0.644937, -0.725778, 0.23786, -0.645497, -0.129168, 0.669626, 0.465792)
+transform = Transform3D(-0.105475, 0.924192, 0.367074, 0.641428, 0.345306, -0.685079, -0.759897, 0.163193, -0.629224, -0.148379, 0.678609, 0.498244)
 
 [node name="2H_Axe" parent="Skin/Rig/Skeleton3D" index="3"]
-transform = Transform3D(-0.0656041, 0.910113, 0.409132, 0.684791, 0.339287, -0.644937, -0.725778, 0.23786, -0.645497, -0.129168, 0.669626, 0.465792)
+transform = Transform3D(-0.105475, 0.924192, 0.367074, 0.641428, 0.345306, -0.685079, -0.759897, 0.163193, -0.629224, -0.148379, 0.678609, 0.498244)
 
 [node name="Mug" parent="Skin/Rig/Skeleton3D" index="4"]
-transform = Transform3D(-0.0656041, 0.910113, 0.409132, 0.684791, 0.339287, -0.644937, -0.725778, 0.23786, -0.645497, -0.153996, 0.447194, 0.672294)
+transform = Transform3D(-0.105475, 0.924192, 0.367074, 0.641428, 0.345306, -0.685079, -0.759897, 0.163193, -0.629224, -0.161912, 0.468916, 0.718656)
 
 [node name="Barbarian_Hat" parent="Skin/Rig/Skeleton3D" index="5"]
-transform = Transform3D(0.99972, -1.40143e-09, 0.0236466, 1.39341e-09, 1, 3.55686e-10, -0.0236466, -3.22637e-10, 0.99972, -7.55726e-09, 1.19356, -1.39052e-07)
+transform = Transform3D(0.99972, -1.40143e-09, 0.0236466, 1.39341e-09, 1, 3.55686e-10, -0.0236466, -3.22637e-10, 0.99972, -7.55726e-09, 1.17844, -1.39052e-07)
 
 [node name="Barbarian_Cape" parent="Skin/Rig/Skeleton3D" index="6"]
-transform = Transform3D(0.996275, -5.14962e-09, 0.0862353, 5.13043e-09, 1, 4.44077e-10, -0.0862353, 1.8939e-15, 0.996275, -1.91641e-06, 1.19356, 2.59003e-08)
+transform = Transform3D(0.996275, -5.14962e-09, 0.0862353, 5.13043e-09, 1, 4.44077e-10, -0.0862353, 1.8939e-15, 0.996275, -1.91641e-06, 1.17844, 2.59003e-08)
 
 [editable path="Skin"]

@@ -26,7 +26,12 @@ animation_name = "slice"
 [node name="LocalPlayer" type="Node" parent="."]
 script = ExtResource("4_8cwy3")
 
-[node name="ShowProgressBar" type="Node" parent="LocalPlayer"]
+[node name="AttackSpeedScale" type="Node" parent="LocalPlayer"]
+script = ExtResource("10_rjqpx")
+stat_name = "AttackSpeed"
+inverted = true
+
+[node name="ShowProgressBar" type="Node" parent="LocalPlayer/AttackSpeedScale"]
 script = ExtResource("4_sorfv")
 duration = 0.8
 

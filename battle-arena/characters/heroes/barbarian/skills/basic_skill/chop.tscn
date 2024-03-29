@@ -26,7 +26,12 @@ animation_name = "chop"
 [node name="LocalPlayer" type="Node" parent="."]
 script = ExtResource("4_2mxtc")
 
-[node name="ShowProgressBar" type="Node" parent="LocalPlayer"]
+[node name="AttackSpeedScale" type="Node" parent="LocalPlayer"]
+script = ExtResource("6_7huxs")
+stat_name = "AttackSpeed"
+inverted = true
+
+[node name="ShowProgressBar" type="Node" parent="LocalPlayer/AttackSpeedScale"]
 script = ExtResource("4_w4khx")
 duration = 0.8
 

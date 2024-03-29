@@ -26,7 +26,12 @@ animation_name = "kick_a"
 [node name="LocalPlayer" type="Node" parent="."]
 script = ExtResource("4_7c3v0")
 
-[node name="ShowProgressBar" type="Node" parent="LocalPlayer"]
+[node name="AttackSpeedScale" type="Node" parent="LocalPlayer"]
+script = ExtResource("6_n0g4l")
+stat_name = "AttackSpeed"
+inverted = true
+
+[node name="ShowProgressBar" type="Node" parent="LocalPlayer/AttackSpeedScale"]
 script = ExtResource("4_8fh4u")
 duration = 0.8
 
