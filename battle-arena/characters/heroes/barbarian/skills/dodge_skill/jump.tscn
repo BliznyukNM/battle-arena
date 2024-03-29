@@ -1,0 +1,50 @@
+[gd_scene load_steps=10 format=3 uid="uid://cawu7vbk3beow"]
+
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_0wt6i"]
+[ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_sldcl"]
+[ext_resource type="Script" path="res://characters/skills/leaves/play_animation.gd" id="3_kba6b"]
+[ext_resource type="Script" path="res://characters/heroes/barbarian/skills/dodge_skill/jump.gd" id="4_cicil"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/succeeder.gd" id="5_kyi04"]
+[ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="7_km2gl"]
+[ext_resource type="Script" path="res://characters/skills/leaves/melee_attack.gd" id="7_m7w3y"]
+[ext_resource type="Script" path="res://characters/skills/leaves/wait.gd" id="10_vnu0x"]
+[ext_resource type="Script" path="res://characters/skills/leaves/stop_animation.gd" id="12_5u706"]
+
+[node name="Jump" type="Node"]
+script = ExtResource("1_0wt6i")
+
+[node name="RunUntil" type="Node" parent="."]
+script = ExtResource("2_sldcl")
+key = "\"%s_ready\" % actor.name"
+
+[node name="PlayAnimation" type="Node" parent="."]
+script = ExtResource("3_kba6b")
+animation_name = "jump"
+
+[node name="Jump" type="Node" parent="."]
+script = ExtResource("4_cicil")
+distance = 10.0
+time = 1.2
+
+[node name="AlwaysSucceed" type="Node" parent="."]
+script = ExtResource("5_kyi04")
+
+[node name="Authority" type="Node" parent="AlwaysSucceed"]
+script = ExtResource("7_km2gl")
+
+[node name="Attack" type="Node" parent="AlwaysSucceed/Authority"]
+script = ExtResource("7_m7w3y")
+damage = 20
+hit_range = 2.0
+area = 360.0
+offset = Vector3(2.08165e-12, 1, 2.08165e-12)
+collision_type = 1
+
+[node name="StopAnimation" type="Node" parent="."]
+script = ExtResource("12_5u706")
+animation_name = "taunt"
+
+[node name="Cooldown" type="Node" parent="."]
+script = ExtResource("10_vnu0x")
+wait_time = 5.0
+cache_key = "cooldown"

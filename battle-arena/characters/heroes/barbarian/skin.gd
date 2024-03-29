@@ -114,7 +114,7 @@ func play_drink(skill: BaseSkill) -> void:
     skill.execution.timeout.connect(func(): mug.visible = false, CONNECT_ONE_SHOT)
 
 
-func play_jump(skill: BaseSkill) -> void:
+func play_jump() -> void:
     animationTree.set("parameters/PlayJump/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 
 
