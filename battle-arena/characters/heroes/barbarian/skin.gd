@@ -91,12 +91,11 @@ func show_rage(rage: TimedModifier) -> void:
     big_axe.material_override = null
 
 
-func play_spin(skill: BaseSkill) -> void:
+func play_spin() -> void:
     animationTree.set("parameters/PlaySpinning/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-    skill.execution.timeout.connect(_stop_spin, CONNECT_ONE_SHOT)
 
 
-func _stop_spin() -> void:
+func stop_spin() -> void:
     animationTree.set("parameters/PlaySpinning/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FADE_OUT)
 
 
@@ -108,10 +107,9 @@ func _stop_throw() -> void:
     animationTree.set("parameters/PlayThrow/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FADE_OUT)
 
 
-func play_drink(skill: BaseSkill) -> void:
+func play_drink() -> void:
     mug.visible = true
     animationTree.set("parameters/PlayDrink/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-    skill.execution.timeout.connect(func(): mug.visible = false, CONNECT_ONE_SHOT)
 
 
 func play_jump() -> void:
@@ -122,7 +120,3 @@ func _trigger_attack(attack_name: String) -> void:
     animationTree.set("parameters/AttackType/transition_request", attack_name);
     animationTree.set("parameters/PlayAttack/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT)
     animationTree.set("parameters/PlayAttack/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-
-
-func _on_axe_throw_cancelled(skill: BaseSkill) -> void:
-    pass # Replace with function body.

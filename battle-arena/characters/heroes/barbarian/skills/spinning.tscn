@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://che4gvvalmv58" path="res://characters/skills/chanelling_skill.tscn" id="1_iseug"]
 [ext_resource type="Script" path="res://characters/heroes/barbarian/skills/spinning.gd" id="2_iu522"]
-[ext_resource type="PackedScene" uid="uid://3llurpohxl61" path="res://characters/heroes/barbarian/modifiers/spinning.tscn" id="3_ipj88"]
+[ext_resource type="PackedScene" uid="uid://3llurpohxl61" path="res://characters/heroes/barbarian/modifiers/whirl.tscn" id="3_ipj88"]
 
 [node name="Spinning" instance=ExtResource("1_iseug")]
 script = ExtResource("2_iu522")
