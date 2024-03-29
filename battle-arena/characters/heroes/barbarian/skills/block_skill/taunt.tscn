@@ -30,7 +30,7 @@ script = ExtResource("5_a61af")
 [node name="AddTauntModifier" type="Node" parent="ApplyWithAuthority"]
 script = ExtResource("6_n2fgy")
 modifier_name = "Taunt"
-scene_path = "res://characters/heroes/barbarian/modifiers/taunt.tscn"
+scene_path = "res://characters/heroes/barbarian/skills/block_skill/taunt_modifier.tscn"
 
 [node name="Taunting" type="Node" parent="."]
 script = ExtResource("6_bocnx")
@@ -60,7 +60,7 @@ script = ExtResource("5_a61af")
 [node name="AddRageModifier" type="Node" parent="Taunting/Sequence/ApplyWithAuthority"]
 script = ExtResource("6_n2fgy")
 modifier_name = "Rage"
-scene_path = "res://characters/heroes/barbarian/modifiers/rage.tscn"
+scene_path = "res://characters/heroes/barbarian/skills/block_skill/rage_modifier.tscn"
 
 [node name="CleanWithAuthority" type="Node" parent="."]
 script = ExtResource("5_a61af")

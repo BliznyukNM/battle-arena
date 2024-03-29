@@ -18,11 +18,12 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
     if _key_expression.has_execute_failed():
         return FAILURE
     
-    var child_name: String = blackboard.get_value(key_value, get_child(0).name)
+    var child_index: int = blackboard.get_value(key_value, 0)
     
-    for c in get_children():
-        if not c.name.matchn(child_name):
-            continue
+    for i in get_child_count():
+        if i != child_index: continue
+        
+        var c = get_child(i)
 
         if c != running_child:
             c.before_run(actor, blackboard)

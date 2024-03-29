@@ -29,7 +29,7 @@ script = ExtResource("6_rthxc")
 [node name="AddWhirlModifier" type="Node" parent="ApplyWithAuthority"]
 script = ExtResource("5_gugwk")
 modifier_name = "Whirl"
-scene_path = "res://characters/heroes/barbarian/modifiers/whirl.tscn"
+scene_path = "res://characters/heroes/barbarian/skills/third_skill/whirl_modifier.tscn"
 
 [node name="Cancellable" type="Node" parent="."]
 script = ExtResource("4_nfeeu")

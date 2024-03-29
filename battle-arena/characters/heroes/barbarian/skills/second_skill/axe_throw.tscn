@@ -47,7 +47,7 @@ scene_path = "res://characters/heroes/barbarian/axe.tscn"
 
 [node name="UpdateStance" type="Node" parent="."]
 script = ExtResource("9_xx5hs")
-stance = "hands"
+stance = 1
 
 [node name="Cooldown" type="Node" parent="."]
 script = ExtResource("3_rhf0w")

@@ -7,7 +7,7 @@
 
 [node name="BasicAttack" type="Node"]
 script = ExtResource("1_bk455")
-key = "\"skill_name\""
+key = "\"skill_index\""
 
 [node name="Axe" parent="." instance=ExtResource("2_sn1xc")]
 script = ExtResource("3_m42jw")

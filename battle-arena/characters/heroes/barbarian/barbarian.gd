@@ -26,5 +26,5 @@ func on_pickup_axe() -> void:
     is_recalling = false
     
     blackboard.set_value("axe_recalled", true)
-    blackboard.set_value("skill_name", "axe")
+    blackboard.set_value("skill_index", 0)
     skin.update_stance("axe")

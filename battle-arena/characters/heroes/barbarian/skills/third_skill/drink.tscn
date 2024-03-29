@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://ca4ujh11eea7q"]
+
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_43ddf"]
+[ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_xkygi"]
+[ext_resource type="Script" path="res://characters/skills/leaves/play_animation.gd" id="3_7o2fx"]
+[ext_resource type="Script" path="res://characters/skills/leaves/wait.gd" id="9_52uy8"]
+
+[node name="Drink" type="Node"]
+script = ExtResource("1_43ddf")
+
+[node name="RunUntil" type="Node" parent="."]
+script = ExtResource("2_xkygi")
+key = "\"%s_ready\" % actor.name"
+
+[node name="PlayAnimation" type="Node" parent="."]
+script = ExtResource("3_7o2fx")
+animation_name = "drink"
+
+[node name="ExecutionWait" type="Node" parent="."]
+script = ExtResource("9_52uy8")
+wait_time = 1.0
+cache_key = "execution"
+
+[node name="Cooldown" type="Node" parent="."]
+script = ExtResource("9_52uy8")
+wait_time = 5.0
+cache_key = "cooldown"

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://loader.gd" id="1_d3pel"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="2_ecxut"]
-[ext_resource type="PackedScene" uid="uid://c5cf7tg1x0aqg" path="res://characters/heroes/barbarian/skills/basic_skill/basic_attack.tscn" id="3_sbkpn"]
+[ext_resource type="PackedScene" uid="uid://c5cf7tg1x0aqg" path="res://characters/heroes/barbarian/skills/basic_skill/basic_skill.tscn" id="3_sbkpn"]
 
 [node name="Start" type="Node"]
 script = ExtResource("1_d3pel")

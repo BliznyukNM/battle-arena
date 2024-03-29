@@ -110,6 +110,7 @@ func _stop_throw() -> void:
 func play_drink() -> void:
     mug.visible = true
     animationTree.set("parameters/PlayDrink/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+    animationTree.animation_finished.connect(func(anim): mug.visible = false, CONNECT_ONE_SHOT)
 
 
 func play_jump() -> void:

@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://cla3pej420s8h"]
+
+[ext_resource type="Script" path="res://characters/skills/composites/selector_name.gd" id="1_xk1ny"]
+[ext_resource type="PackedScene" uid="uid://cubw8we7gbnjx" path="res://characters/heroes/barbarian/skills/third_skill/whirl.tscn" id="2_xrtkk"]
+[ext_resource type="PackedScene" uid="uid://ca4ujh11eea7q" path="res://characters/heroes/barbarian/skills/third_skill/drink.tscn" id="3_7tsk7"]
+
+[node name="ThirdSkill" type="Node"]
+script = ExtResource("1_xk1ny")
+key = "\"skill_index\""
+
+[node name="Whirl" parent="." instance=ExtResource("2_xrtkk")]
+
+[node name="Drink" parent="." instance=ExtResource("3_7tsk7")]
