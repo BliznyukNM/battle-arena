@@ -1,14 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://cubw8we7gbnjx"]
+[gd_scene load_steps=12 format=3 uid="uid://cubw8we7gbnjx"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_nmp7m"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_u0ny2"]
 [ext_resource type="Script" path="res://characters/skills/leaves/play_animation.gd" id="3_5cigl"]
 [ext_resource type="Script" path="res://characters/skills/decorators/time_repeat.gd" id="4_icejg"]
 [ext_resource type="Script" path="res://characters/skills/decorators/cancellable.gd" id="4_nfeeu"]
+[ext_resource type="Script" path="res://characters/skills/leaves/modifiers/add_modifier.gd" id="5_gugwk"]
 [ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="6_rthxc"]
 [ext_resource type="Script" path="res://characters/skills/leaves/melee_attack.gd" id="7_a5cog"]
 [ext_resource type="Script" path="res://characters/skills/leaves/stop_animation.gd" id="8_dmbmt"]
 [ext_resource type="Script" path="res://characters/skills/leaves/wait.gd" id="9_uy0dn"]
+[ext_resource type="Script" path="res://characters/skills/leaves/modifiers/remove_modifier.gd" id="10_epktq"]
 
 [node name="Whirl" type="Node"]
 script = ExtResource("1_nmp7m")
@@ -20,6 +22,14 @@ key = "\"%s_ready\" % actor.name"
 [node name="PlayAnimation" type="Node" parent="."]
 script = ExtResource("3_5cigl")
 animation_name = "spin"
+
+[node name="ApplyWithAuthority" type="Node" parent="."]
+script = ExtResource("6_rthxc")
+
+[node name="AddWhirlModifier" type="Node" parent="ApplyWithAuthority"]
+script = ExtResource("5_gugwk")
+modifier_name = "Whirl"
+scene_path = "res://characters/heroes/barbarian/modifiers/whirl.tscn"
 
 [node name="Cancellable" type="Node" parent="."]
 script = ExtResource("4_nfeeu")
@@ -48,6 +58,13 @@ collision_type = 1
 script = ExtResource("9_uy0dn")
 wait_time = 0.25
 cache_key = "delay"
+
+[node name="CleanWithAuthority" type="Node" parent="."]
+script = ExtResource("6_rthxc")
+
+[node name="RemoveWhirlModifier" type="Node" parent="CleanWithAuthority"]
+script = ExtResource("10_epktq")
+modifier_name = "Whirl"
 
 [node name="StopAnimation" type="Node" parent="."]
 script = ExtResource("8_dmbmt")
