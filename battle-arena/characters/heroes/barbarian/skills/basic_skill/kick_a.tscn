@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://codpxetuqfpwh"]
+[gd_scene load_steps=11 format=3 uid="uid://codpxetuqfpwh"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_aso46"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_m202i"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://characters/skills/leaves/show_progress_bar.gd" id="4_8fh4u"]
 [ext_resource type="Script" path="res://characters/skills/leaves/wait.gd" id="5_dll31"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/decorators/succeeder.gd" id="6_lfswt"]
+[ext_resource type="Script" path="res://characters/skills/decorators/stat_scale.gd" id="6_n0g4l"]
 [ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="7_dh64k"]
 [ext_resource type="Script" path="res://characters/skills/leaves/melee_attack.gd" id="8_ki26s"]
 
@@ -15,6 +16,7 @@ script = ExtResource("1_aso46")
 
 [node name="Ready" type="Node" parent="."]
 script = ExtResource("2_m202i")
+consume_key = false
 key = "\"%s_ready\" % actor.name"
 
 [node name="PlayAnimation" type="Node" parent="."]
@@ -28,7 +30,12 @@ script = ExtResource("4_7c3v0")
 script = ExtResource("4_8fh4u")
 duration = 0.8
 
-[node name="ExecutionWait" type="Node" parent="."]
+[node name="ExecutionAttackSpeedScale" type="Node" parent="."]
+script = ExtResource("6_n0g4l")
+stat_name = "AttackSpeed"
+inverted = true
+
+[node name="ExecutionWait" type="Node" parent="ExecutionAttackSpeedScale"]
 script = ExtResource("5_dll31")
 wait_time = 0.5
 cache_key = "execution"
@@ -47,7 +54,12 @@ area = 30.0
 offset = Vector3(2.08165e-12, 1, 2.08165e-12)
 collision_type = 1
 
-[node name="Cooldown" type="Node" parent="."]
+[node name="CooldownAttackSpeedScale" type="Node" parent="."]
+script = ExtResource("6_n0g4l")
+stat_name = "AttackSpeed"
+inverted = true
+
+[node name="Cooldown" type="Node" parent="CooldownAttackSpeedScale"]
 script = ExtResource("5_dll31")
 wait_time = 0.45
 cache_key = "cooldown"

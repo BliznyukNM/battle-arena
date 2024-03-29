@@ -29,7 +29,7 @@ func _update_move_speed(old_value: float, new_value: float) -> void:
 
 
 func _update_attack_speed(old_value: float, new_value: float) -> void:
-    if not is_processing(): return                                                              
+    if not is_processing(): return
     skin.update_attack_speed(new_value)
 
 

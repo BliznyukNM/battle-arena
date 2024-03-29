@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bway5lctbi3vx"]
+[gd_scene load_steps=11 format=3 uid="uid://bway5lctbi3vx"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_3icxv"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_ypv1d"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/local_player.gd" id="4_cs5au"]
 [ext_resource type="Script" path="res://characters/skills/leaves/wait.gd" id="5_hngic"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/decorators/succeeder.gd" id="6_cs4ym"]
+[ext_resource type="Script" path="res://characters/skills/decorators/stat_scale.gd" id="6_m7job"]
 [ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="7_giw4a"]
 [ext_resource type="Script" path="res://characters/skills/leaves/melee_attack.gd" id="8_akigw"]
 
@@ -15,6 +16,7 @@ script = ExtResource("1_3icxv")
 
 [node name="Ready" type="Node" parent="."]
 script = ExtResource("2_ypv1d")
+consume_key = false
 key = "\"%s_ready\" % actor.name"
 
 [node name="PlayAnimation" type="Node" parent="."]
@@ -28,7 +30,12 @@ script = ExtResource("4_cs5au")
 script = ExtResource("4_3q3lc")
 duration = 0.8
 
-[node name="ExecutionWait" type="Node" parent="."]
+[node name="ExecutionAttackSpeedScale" type="Node" parent="."]
+script = ExtResource("6_m7job")
+stat_name = "AttackSpeed"
+inverted = true
+
+[node name="ExecutionWait" type="Node" parent="ExecutionAttackSpeedScale"]
 script = ExtResource("5_hngic")
 wait_time = 0.5
 cache_key = "execution"
@@ -47,7 +54,12 @@ area = 30.0
 offset = Vector3(2.08165e-12, 1, 2.08165e-12)
 collision_type = 1
 
-[node name="Cooldown" type="Node" parent="."]
+[node name="CooldownAttackSpeedScale" type="Node" parent="."]
+script = ExtResource("6_m7job")
+stat_name = "AttackSpeed"
+inverted = true
+
+[node name="Cooldown" type="Node" parent="CooldownAttackSpeedScale"]
 script = ExtResource("5_hngic")
 wait_time = 0.45
 cache_key = "cooldown"

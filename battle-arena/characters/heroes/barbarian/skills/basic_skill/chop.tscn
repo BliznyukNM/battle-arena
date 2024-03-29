@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dduw5yupkf46b"]
+[gd_scene load_steps=11 format=3 uid="uid://dduw5yupkf46b"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_pr8rg"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_yqrv3"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/local_player.gd" id="4_2mxtc"]
 [ext_resource type="Script" path="res://characters/skills/leaves/show_progress_bar.gd" id="4_w4khx"]
 [ext_resource type="Script" path="res://characters/skills/leaves/wait.gd" id="5_uyjv7"]
+[ext_resource type="Script" path="res://characters/skills/decorators/stat_scale.gd" id="6_7huxs"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/decorators/succeeder.gd" id="6_wc2qt"]
 [ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="7_m373t"]
 [ext_resource type="Script" path="res://characters/skills/leaves/melee_attack.gd" id="8_17a63"]
@@ -29,7 +30,12 @@ script = ExtResource("4_2mxtc")
 script = ExtResource("4_w4khx")
 duration = 0.8
 
-[node name="ExecutionWait" type="Node" parent="."]
+[node name="ExecutionAttackSpeedScale" type="Node" parent="."]
+script = ExtResource("6_7huxs")
+stat_name = "AttackSpeed"
+inverted = true
+
+[node name="ExecutionWait" type="Node" parent="ExecutionAttackSpeedScale"]
 script = ExtResource("5_uyjv7")
 wait_time = 0.5
 cache_key = "execution"
@@ -48,7 +54,12 @@ area = 40.0
 offset = Vector3(2.08165e-12, 1, 2.08165e-12)
 collision_type = 1
 
-[node name="Cooldown" type="Node" parent="."]
+[node name="CooldownAttackSpeedScale" type="Node" parent="."]
+script = ExtResource("6_7huxs")
+stat_name = "AttackSpeed"
+inverted = true
+
+[node name="Cooldown" type="Node" parent="CooldownAttackSpeedScale"]
 script = ExtResource("5_uyjv7")
 wait_time = 0.45
 cache_key = "cooldown"

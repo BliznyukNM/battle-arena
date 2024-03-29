@@ -8,7 +8,7 @@
 
 [node name="BasicAttack" parent="Skills" index="0" node_paths=PackedStringArray("blackboard")]
 enabled = true
-blackboard = NodePath("@Node@61200")
+blackboard = NodePath("@Node@83307")
 
 [node name="Shoot" parent="Skills/BasicAttack" index="0" instance=ExtResource("2_352qu")]
 
