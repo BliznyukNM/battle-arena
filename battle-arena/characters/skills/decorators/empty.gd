@@ -28,3 +28,8 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
         _:
             push_error("This should be unreachable")
             return -1
+
+
+func _get_leaf(node: Node) -> Leaf:
+    if node is Leaf: return node
+    return _get_leaf(node.get_child(0))

@@ -24,6 +24,7 @@ func on_pickup_axe() -> void:
     if thrown_axe and is_multiplayer_authority(): thrown_axe.queue_free()
     thrown_axe = null
     is_recalling = false
-    skills.blackboard.set_value("axe_recalled", true)
-    skills.blackboard.set_value("skill_name", "axe")
+    
+    blackboard.set_value("axe_recalled", true)
+    blackboard.set_value("skill_name", "axe")
     skin.update_stance("axe")

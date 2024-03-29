@@ -2,17 +2,15 @@
 extends ActionLeaf
 
 
+@export var modifier_name: String
 @export_file("*.tscn") var scene_path: String
-
-
-var spawn_transform: Transform3D
 
 
 func tick(actor: Node, blackboard: Blackboard) -> int:
     var character: Character = actor.owner
-    character.spawner.spawn({
+    character.modifiers.add_modifier({
         "path": scene_path,
-        "transform": spawn_transform,
+        "name": modifier_name
     })
     return SUCCESS
 
@@ -39,5 +37,5 @@ func _add_autoload_scene() -> void:
     var character: = Utils.get_character(get_parent())
     if not character: return
     
-    var spawner: MultiplayerSpawner = character.get_node("LocalSpawner")
+    var spawner: MultiplayerSpawner = character.get_node("Modifiers/Spawner")
     Utils.try_add_scene(spawner, scene_path)

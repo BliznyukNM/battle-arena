@@ -10,6 +10,6 @@ func _spawn(data: Dictionary) -> Node:
     assert(scene)
     
     var instance: = scene.instantiate()
-    instance.transform = data.transform
+    if data.has("transform"): instance.transform = data.transform
     instance.tree_entered.connect(func(): instance.owner = owner)
     return instance

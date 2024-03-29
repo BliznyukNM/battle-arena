@@ -74,13 +74,13 @@ func stop_attack(skill: BaseSkill) -> void:
     animationTree.set("parameters/PlayAttack/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT)
 
 
-func play_taunt(skill: BaseSkill) -> void:
+func play_taunt() -> void:
     animationTree.set("parameters/PlayTaunt/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
     for mesh in body_meshes: mesh.material_override = taunt
-    skill.execution.timeout.connect(_stop_taunt, CONNECT_ONE_SHOT)
+    # skill.execution.timeout.connect(_stop_taunt, CONNECT_ONE_SHOT)
 
 
-func _stop_taunt() -> void:
+func stop_taunt() -> void:
     animationTree.set("parameters/PlayTaunt/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FADE_OUT)
     for mesh in body_meshes: mesh.material_override = null
 

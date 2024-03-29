@@ -21,4 +21,5 @@ method_name = "show_rage"
 
 [node name="Rage" type="Node"]
 script = ExtResource("1_45ms5")
+time = 4.0
 effects = Array[Resource("res://characters/status_effects/effects/base_effect.gd")]([SubResource("Resource_nd14g"), SubResource("Resource_wpo74"), SubResource("Resource_ypxym")])

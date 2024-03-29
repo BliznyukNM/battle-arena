@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://d26br4f45m27g"]
+[gd_scene load_steps=25 format=3 uid="uid://d26br4f45m27g"]
 
 [ext_resource type="Script" path="res://characters/character.gd" id="1_8kwiu"]
 [ext_resource type="Script" path="res://characters/stats/stats_manager.gd" id="2_3n7xj"]
@@ -16,7 +16,6 @@
 [ext_resource type="Script" path="res://characters/processors/rotation.gd" id="11_747v1"]
 [ext_resource type="Script" path="res://characters/processors/visibility.gd" id="11_mq5k8"]
 [ext_resource type="PackedScene" uid="uid://7xkefn5xpy47" path="res://characters/hud/hud.tscn" id="12_4f13d"]
-[ext_resource type="PackedScene" uid="uid://cnpyc3trrywtx" path="res://characters/skills/preview/previews.tscn" id="13_oo27p"]
 [ext_resource type="Script" path="res://characters/input/input_source.gd" id="14_ovw2o"]
 [ext_resource type="Script" path="res://characters/multiplayer/spawner.gd" id="16_nsvoy"]
 [ext_resource type="Script" path="res://characters/multiplayer/server_interpolation.gd" id="17_gtpx6"]
@@ -44,6 +43,9 @@ properties/0/replication_mode = 1
 properties/1/path = NodePath("ServerInterpolation:server_rotation")
 properties/1/spawn = false
 properties/1/replication_mode = 1
+properties/2/path = NodePath("Blackboard:blackboard")
+properties/2/spawn = true
+properties/2/replication_mode = 2
 
 [node name="Character" type="CharacterBody3D"]
 collision_mask = 15
@@ -93,6 +95,12 @@ current_value = "Character"
 [node name="Modifiers" type="Node" parent="."]
 script = ExtResource("3_687mx")
 
+[node name="Spawner" type="MultiplayerSpawner" parent="Modifiers"]
+spawn_path = NodePath(".")
+script = ExtResource("16_nsvoy")
+
+[node name="Synchroniser" type="Node" parent="Modifiers"]
+
 [node name="Skills" type="Node" parent="."]
 script = ExtResource("7_nutv6")
 
@@ -100,46 +108,43 @@ script = ExtResource("7_nutv6")
 script = ExtResource("7_5rwt1")
 enabled = false
 actor_node_path = NodePath(".")
-blackboard = NodePath("../Blackboard")
+blackboard = NodePath("../../Blackboard")
 actor = NodePath(".")
 
 [node name="SecondAttack" type="Node" parent="Skills" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("7_5rwt1")
 enabled = false
 actor_node_path = NodePath(".")
-blackboard = NodePath("../Blackboard")
+blackboard = NodePath("../../Blackboard")
 actor = NodePath(".")
 
 [node name="ThirdAttack" type="Node" parent="Skills" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("7_5rwt1")
 enabled = false
 actor_node_path = NodePath(".")
-blackboard = NodePath("../Blackboard")
+blackboard = NodePath("../../Blackboard")
 actor = NodePath(".")
 
 [node name="Dodge" type="Node" parent="Skills" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("7_5rwt1")
 enabled = false
 actor_node_path = NodePath(".")
-blackboard = NodePath("../Blackboard")
+blackboard = NodePath("../../Blackboard")
 actor = NodePath(".")
 
 [node name="Block" type="Node" parent="Skills" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("7_5rwt1")
 enabled = false
 actor_node_path = NodePath(".")
-blackboard = NodePath("../Blackboard")
+blackboard = NodePath("../../Blackboard")
 actor = NodePath(".")
 
 [node name="Ultimate" type="Node" parent="Skills" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("7_5rwt1")
 enabled = false
 actor_node_path = NodePath(".")
-blackboard = NodePath("../Blackboard")
+blackboard = NodePath("../../Blackboard")
 actor = NodePath(".")
-
-[node name="Blackboard" type="Node" parent="Skills"]
-script = ExtResource("8_mordq")
 
 [node name="Processors" type="Node" parent="."]
 process_mode = 1
@@ -164,6 +169,9 @@ rotation_speed = NodePath("../../Stats/RotationSpeed")
 [node name="Visibility" type="Node" parent="Processors"]
 script = ExtResource("11_mq5k8")
 
+[node name="Blackboard" type="Node" parent="."]
+script = ExtResource("8_mordq")
+
 [node name="HitBox" type="Area3D" parent="."]
 monitoring = false
 script = ExtResource("2_nshhg")
@@ -180,8 +188,6 @@ shape = SubResource("CylinderShape3D_vwbuv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4973, 0)
 health = NodePath("../Stats/Health")
 name_tag = NodePath("../Stats/Name")
-
-[node name="Previews" parent="." instance=ExtResource("13_oo27p")]
 
 [node name="LocalSpawner" type="MultiplayerSpawner" parent="."]
 spawn_path = NodePath(".")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b3ephcvucxxqb"]
+[gd_scene load_steps=11 format=3 uid="uid://b3ephcvucxxqb"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_72vyh"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_i0ygl"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://characters/skills/leaves/spawn.gd" id="3_85ik3"]
 [ext_resource type="Script" path="res://characters/skills/leaves/wait.gd" id="3_rhf0w"]
 [ext_resource type="Script" path="res://characters/skills/leaves/show_progress_bar.gd" id="4_qqm4j"]
+[ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/local_player.gd" id="4_xgibn"]
 [ext_resource type="Script" path="res://characters/skills/decorators/spawn/near_actor.gd" id="6_yp6fw"]
 [ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="8_mgavd"]
 [ext_resource type="Script" path="res://characters/heroes/barbarian/skills/leaves/update_stance.gd" id="9_xx5hs"]
@@ -21,7 +22,10 @@ key = "\"%s_ready\" % actor.name"
 script = ExtResource("3_3l352")
 animation_name = "throw"
 
-[node name="ShowProgressBar" type="Node" parent="."]
+[node name="LocalPlayer" type="Node" parent="."]
+script = ExtResource("4_xgibn")
+
+[node name="ShowProgressBar" type="Node" parent="LocalPlayer"]
 script = ExtResource("4_qqm4j")
 duration = 0.8
 

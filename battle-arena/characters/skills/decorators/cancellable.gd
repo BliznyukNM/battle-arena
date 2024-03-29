@@ -1,11 +1,8 @@
 @tool
-@icon("res://addons/beehave/icons/until_fail.svg")
-class_name RunUntil extends ActionLeaf
+extends EmptyDecorator
 
 
-@export var consume_key: bool = true
-
-## Expression representing a blackboard key.
+@export_enum("SUCCESS", "FAILURE") var result: int
 @export_placeholder(Utils.EXPRESSION_PLACEHOLDER) var key: String = ""
 @export var blackboard_name: String = Blackboard.DEFAULT
 
@@ -22,7 +19,4 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
     if _key_expression.has_execute_failed():
         return FAILURE
     
-    var result: bool = blackboard.get_value(key_value, false)
-    if result and consume_key: blackboard.erase_value(key_value)
-    
-    return SUCCESS if result else RUNNING
+    return SUCCESS if blackboard.get_value(key_value, false) else super(actor, blackboard)
