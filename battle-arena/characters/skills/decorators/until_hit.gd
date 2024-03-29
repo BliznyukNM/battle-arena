@@ -16,6 +16,7 @@ func before_run(actor: Node, blackboard: Blackboard) -> void:
 
 func tick(actor: Node, blackboard: Blackboard) -> int:
     if not _is_damaged: return super(actor, blackboard)
+    interrupt(actor, blackboard)
     return result
 
 

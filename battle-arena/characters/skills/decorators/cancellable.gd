@@ -19,4 +19,8 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
     if _key_expression.has_execute_failed():
         return FAILURE
     
-    return SUCCESS if blackboard.get_value(key_value, false) else super(actor, blackboard)
+    var value: bool = blackboard.get_value(key_value, false)
+    if not value: return super(actor, blackboard)
+    
+    interrupt(actor, blackboard)
+    return result
