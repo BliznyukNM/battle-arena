@@ -91,12 +91,11 @@ func show_rage(rage: TimedModifier) -> void:
     big_axe.material_override = null
 
 
-func play_spin(skill: BaseSkill) -> void:
+func play_spin() -> void:
     animationTree.set("parameters/PlaySpinning/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-    skill.execution.timeout.connect(_stop_spin, CONNECT_ONE_SHOT)
 
 
-func _stop_spin() -> void:
+func stop_spin() -> void:
     animationTree.set("parameters/PlaySpinning/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FADE_OUT)
 
 
