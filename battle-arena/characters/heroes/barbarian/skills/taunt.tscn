@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b52wq4f1ubfm3"]
+[gd_scene load_steps=13 format=3 uid="uid://b52wq4f1ubfm3"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_m11w8"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_aptpa"]
@@ -7,7 +7,9 @@
 [ext_resource type="Script" path="res://characters/skills/leaves/stop_animation.gd" id="4_fokt2"]
 [ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="5_a61af"]
 [ext_resource type="Script" path="res://characters/skills/decorators/until_hit.gd" id="6_67an1"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/succeeder.gd" id="6_bocnx"]
 [ext_resource type="Script" path="res://characters/skills/leaves/modifiers/add_modifier.gd" id="6_n2fgy"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/inverter.gd" id="7_fhvb6"]
 [ext_resource type="Script" path="res://characters/skills/decorators/cancellable.gd" id="7_valut"]
 [ext_resource type="Script" path="res://characters/skills/leaves/modifiers/remove_modifier.gd" id="9_chgd5"]
 
@@ -30,17 +32,35 @@ script = ExtResource("6_n2fgy")
 modifier_name = "Taunt"
 scene_path = "res://characters/heroes/barbarian/modifiers/taunt.tscn"
 
-[node name="UntilHit" type="Node" parent="."]
-script = ExtResource("6_67an1")
+[node name="Taunting" type="Node" parent="."]
+script = ExtResource("6_bocnx")
 
-[node name="Cancellable" type="Node" parent="UntilHit"]
+[node name="Sequence" type="Node" parent="Taunting"]
+script = ExtResource("1_m11w8")
+
+[node name="Inverted" type="Node" parent="Taunting/Sequence"]
+script = ExtResource("7_fhvb6")
+
+[node name="UntilHit" type="Node" parent="Taunting/Sequence/Inverted"]
+script = ExtResource("6_67an1")
+result = 1
+
+[node name="Cancellable" type="Node" parent="Taunting/Sequence/Inverted/UntilHit"]
 script = ExtResource("7_valut")
 key = "\"%s_ready\" % actor.name"
 
-[node name="ExecutionWait" type="Node" parent="UntilHit/Cancellable"]
+[node name="ExecutionWait" type="Node" parent="Taunting/Sequence/Inverted/UntilHit/Cancellable"]
 script = ExtResource("3_optkk")
 wait_time = 1.5
 cache_key = "execution"
+
+[node name="ApplyWithAuthority" type="Node" parent="Taunting/Sequence"]
+script = ExtResource("5_a61af")
+
+[node name="AddRageModifier" type="Node" parent="Taunting/Sequence/ApplyWithAuthority"]
+script = ExtResource("6_n2fgy")
+modifier_name = "Rage"
+scene_path = "res://characters/heroes/barbarian/modifiers/rage.tscn"
 
 [node name="CleanWithAuthority" type="Node" parent="."]
 script = ExtResource("5_a61af")
