@@ -1,0 +1,63 @@
+[gd_scene load_steps=13 format=3 uid="uid://cctpv6apqpbf3"]
+
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_xb0m5"]
+[ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_3ipih"]
+[ext_resource type="Script" path="res://characters/skills/leaves/play_animation.gd" id="3_brpm6"]
+[ext_resource type="Script" path="res://characters/skills/leaves/progress_bar/show_progress_bar.gd" id="4_mu66b"]
+[ext_resource type="Script" path="res://characters/skills/leaves/wait.gd" id="5_he8x8"]
+[ext_resource type="Script" path="res://characters/heroes/ranger/skills/second_skill/charge_arrow.gd" id="6_nguw5"]
+[ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="6_o1lqj"]
+[ext_resource type="Script" path="res://characters/skills/leaves/stop_animation.gd" id="6_pm40d"]
+[ext_resource type="Script" path="res://characters/skills/decorators/spawn/near_actor.gd" id="7_jr1lu"]
+[ext_resource type="Script" path="res://characters/skills/leaves/progress_bar/hide_progress_bar.gd" id="8_4ah3b"]
+[ext_resource type="Script" path="res://characters/skills/decorators/stop_when.gd" id="9_ikvvp"]
+[ext_resource type="Script" path="res://characters/heroes/ranger/skills/second_skill/spawn_charged_arrow.gd" id="10_64mhk"]
+
+[node name="ChargedArrow" type="Node"]
+script = ExtResource("1_xb0m5")
+
+[node name="Ready" type="Node" parent="."]
+script = ExtResource("2_3ipih")
+key = "\"%s_ready\" % actor.name"
+
+[node name="PlayAnimation" type="Node" parent="."]
+script = ExtResource("3_brpm6")
+animation_name = "charged_shot"
+
+[node name="ShowProgressBar" type="Node" parent="."]
+script = ExtResource("4_mu66b")
+duration = 1.3
+
+[node name="RunUntilHold" type="Node" parent="."]
+script = ExtResource("9_ikvvp")
+key = "\"%s_ready\" % actor.name"
+expected_value = "false"
+
+[node name="ExecutionWait" type="Node" parent="RunUntilHold"]
+script = ExtResource("6_nguw5")
+initial_percentage = 40.0
+wait_time = 1.3
+cache_key = "execution"
+
+[node name="StopAnimation" type="Node" parent="."]
+script = ExtResource("6_pm40d")
+animation_name = "charged_shot"
+
+[node name="HideProgressBar" type="Node" parent="."]
+script = ExtResource("8_4ah3b")
+
+[node name="Authority" type="Node" parent="."]
+script = ExtResource("6_o1lqj")
+
+[node name="NearActor" type="Node" parent="Authority"]
+script = ExtResource("7_jr1lu")
+offset = Vector3(2.08165e-12, 1, 1)
+
+[node name="Shoot" type="Node" parent="Authority/NearActor"]
+script = ExtResource("10_64mhk")
+scene_path = "res://characters/heroes/ranger/charged_arrow.tscn"
+
+[node name="Cooldown" type="Node" parent="."]
+script = ExtResource("5_he8x8")
+wait_time = 0.5
+cache_key = "cooldown"

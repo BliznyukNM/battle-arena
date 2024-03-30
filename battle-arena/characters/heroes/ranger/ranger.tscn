@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dbjutw8fckxjl"]
+[gd_scene load_steps=8 format=3 uid="uid://dbjutw8fckxjl"]
 
 [ext_resource type="PackedScene" uid="uid://d26br4f45m27g" path="res://characters/character.tscn" id="1_gfvhh"]
 [ext_resource type="Script" path="res://characters/stats/number_stat.gd" id="2_8tvmm"]
 [ext_resource type="Script" path="res://characters/processors/skin.gd" id="2_frijp"]
 [ext_resource type="PackedScene" uid="uid://b4uuy5qmtdakt" path="res://characters/heroes/ranger/skills/basic_skill/basic_attack.tscn" id="3_snr75"]
+[ext_resource type="PackedScene" uid="uid://cctpv6apqpbf3" path="res://characters/heroes/ranger/skills/second_skill/charged_arrow.tscn" id="4_w4xwx"]
 [ext_resource type="Script" path="res://characters/processors/clear_modifiers.gd" id="7_2y3fc"]
 [ext_resource type="PackedScene" uid="uid://b1jmt46gek5uu" path="res://characters/heroes/ranger/skin.tscn" id="15_xfpo1"]
 
@@ -30,6 +31,11 @@ enabled = true
 
 [node name="BasicAttack" parent="Skills/BasicAttack" index="0" instance=ExtResource("3_snr75")]
 
+[node name="SecondAttack" parent="Skills" index="1"]
+enabled = true
+
+[node name="ChargedArrow" parent="Skills/SecondAttack" index="0" instance=ExtResource("4_w4xwx")]
+
 [node name="Skin" type="Node" parent="Processors" index="5" node_paths=PackedStringArray("skin", "move_speed", "attack_speed")]
 script = ExtResource("2_frijp")
 skin = NodePath("../../Skin")
@@ -40,12 +46,10 @@ interpolation = 10.0
 [node name="ClearModifiers" type="Node" parent="Processors" index="6"]
 script = ExtResource("7_2y3fc")
 
-[node name="HUD" parent="." index="6" node_paths=PackedStringArray("energy")]
+[node name="HUD" parent="." index="7" node_paths=PackedStringArray("energy")]
 energy = NodePath("../Stats/Energy")
 
 [node name="LocalSpawner" parent="." index="8"]
-_spawnable_scenes = PackedStringArray("res://characters/heroes/ranger/arrow.tscn")
+_spawnable_scenes = PackedStringArray("res://characters/heroes/ranger/arrow.tscn", "res://characters/heroes/ranger/charged_arrow.tscn")
 
 [node name="Skin" parent="." index="10" instance=ExtResource("15_xfpo1")]
-
-[editable path="Previews"]

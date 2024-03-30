@@ -9,6 +9,7 @@ var _is_recalling: bool
 
 func _ready() -> void:
     super._ready()
+    collision_mask = owner.collision_mask | owner.collision_layer
     owner.on_throw_axe(self)
     animation.play("rotating", -1, 2.0)
 

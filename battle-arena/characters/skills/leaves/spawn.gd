@@ -10,11 +10,15 @@ var spawn_transform: Transform3D
 
 func tick(actor: Node, blackboard: Blackboard) -> int:
     var character: Character = actor.owner
-    character.spawner.spawn({
+    _spawn(character)
+    return SUCCESS
+
+
+func _spawn(character: Character) -> Node:
+    return character.spawner.spawn({
         "path": scene_path,
         "transform": spawn_transform,
     })
-    return SUCCESS
 
 
 """

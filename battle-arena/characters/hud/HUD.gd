@@ -32,8 +32,12 @@ func _initialize_bar(bar: ProgressBar, stat: NumberStat) -> void:
     stat.changed.connect(func(old, new): bar.value = new)
 
 
-func on_skill_activated(duration: float) -> void:
+func show_progress_bar(duration: float) -> void:
     progress_bar.execute(duration)
+
+
+func hide_progress_bar() -> void:
+    progress_bar.stop()
 
 
 func on_timed_modifier_started(modifier: TimedModifier) -> void:
