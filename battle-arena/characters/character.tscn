@@ -204,7 +204,6 @@ script = ExtResource("17_gtpx6")
 lerp_amount = 8.0
 
 [connection signal="changed" from="Stats/Health" to="." method="_on_health_changed"]
-[connection signal="show_progress_bar" from="Skills" to="HUD" method="on_skill_activated"]
 [connection signal="on_damage" from="HitBox" to="Processors/Damage" method="apply"]
 [connection signal="on_heal" from="HitBox" to="Processors/Heal" method="apply"]
 [connection signal="on_basic_attack" from="Input" to="Skills" method="activate_basic_attack"]

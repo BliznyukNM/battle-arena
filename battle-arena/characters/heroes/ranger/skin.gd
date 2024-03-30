@@ -27,10 +27,14 @@ func play_shoot() -> void:
     animationTree.set("parameters/PlayShoot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 
 
-func play_charge_shot() -> void:
+func play_charged_shot() -> void:
     animationTree.set("parameters/PlayChargeShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-    weapon.material_override = charged_weapon
-    # skill.execution.timeout.connect(func(): weapon.material_override = null, CONNECT_ONE_SHOT)
+    # weapon.material_override = charged_weapon
+    # animationTree.animation_finished.connect(func(anim): weapon.material_override = null, CONNECT_ONE_SHOT)
+
+
+func stop_charged_shot() -> void:
+    animationTree.set("parameters/PlayChargeShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FADE_OUT)
 
 
 func play_throw() -> void:

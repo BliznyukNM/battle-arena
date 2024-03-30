@@ -1,9 +1,6 @@
 class_name SkillManager extends Node
 
 
-signal show_progress_bar(duration: float)
-
-
 @onready var basic_attack: BeehaveTree = get_node_or_null("BasicAttack")
 @onready var second_attack: BeehaveTree = get_node_or_null("SecondAttack")
 @onready var third_attack: BeehaveTree = get_node_or_null("ThirdAttack")
