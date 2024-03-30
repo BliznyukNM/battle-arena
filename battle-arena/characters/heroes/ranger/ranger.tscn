@@ -40,12 +40,10 @@ interpolation = 10.0
 [node name="ClearModifiers" type="Node" parent="Processors" index="6"]
 script = ExtResource("7_2y3fc")
 
-[node name="HUD" parent="." index="6" node_paths=PackedStringArray("energy")]
+[node name="HUD" parent="." index="7" node_paths=PackedStringArray("energy")]
 energy = NodePath("../Stats/Energy")
 
 [node name="LocalSpawner" parent="." index="8"]
 _spawnable_scenes = PackedStringArray("res://characters/heroes/ranger/arrow.tscn")
 
 [node name="Skin" parent="." index="10" instance=ExtResource("15_xfpo1")]
-
-[editable path="Previews"]

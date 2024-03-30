@@ -14,6 +14,7 @@ script = ExtResource("1_yrwee")
 
 [node name="Ready" type="Node" parent="."]
 script = ExtResource("2_cjbpa")
+consume_key = false
 key = "\"%s_ready\" % actor.name"
 
 [node name="PlayAnimation" type="Node" parent="."]
@@ -34,7 +35,7 @@ script = ExtResource("6_uxhe2")
 
 [node name="NearActor" type="Node" parent="Authority"]
 script = ExtResource("7_y24g6")
-offset = Vector3(2.08165e-12, 1, 1.5)
+offset = Vector3(2.08165e-12, 1, 1)
 
 [node name="Throw" type="Node" parent="Authority/NearActor"]
 script = ExtResource("8_0e61x")
