@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dbjutw8fckxjl"]
+[gd_scene load_steps=9 format=3 uid="uid://dbjutw8fckxjl"]
 
 [ext_resource type="PackedScene" uid="uid://d26br4f45m27g" path="res://characters/character.tscn" id="1_gfvhh"]
 [ext_resource type="Script" path="res://characters/stats/number_stat.gd" id="2_8tvmm"]
 [ext_resource type="Script" path="res://characters/processors/skin.gd" id="2_frijp"]
 [ext_resource type="PackedScene" uid="uid://b4uuy5qmtdakt" path="res://characters/heroes/ranger/skills/basic_skill/basic_attack.tscn" id="3_snr75"]
 [ext_resource type="PackedScene" uid="uid://cctpv6apqpbf3" path="res://characters/heroes/ranger/skills/second_skill/charged_arrow.tscn" id="4_w4xwx"]
+[ext_resource type="PackedScene" uid="uid://b4cex7rajpu6b" path="res://characters/heroes/ranger/skills/block/invisibility.tscn" id="5_dxdtl"]
 [ext_resource type="Script" path="res://characters/processors/clear_modifiers.gd" id="7_2y3fc"]
 [ext_resource type="PackedScene" uid="uid://b1jmt46gek5uu" path="res://characters/heroes/ranger/skin.tscn" id="15_xfpo1"]
 
@@ -26,6 +27,9 @@ has_max_value = true
 max_value = 100.0
 has_min_value = true
 
+[node name="Spawner" parent="Modifiers" index="0"]
+_spawnable_scenes = PackedStringArray("res://characters/heroes/ranger/skills/block/invisibility_modifier.tscn")
+
 [node name="BasicAttack" parent="Skills" index="0"]
 enabled = true
 
@@ -35,6 +39,11 @@ enabled = true
 enabled = true
 
 [node name="ChargedArrow" parent="Skills/SecondAttack" index="0" instance=ExtResource("4_w4xwx")]
+
+[node name="Block" parent="Skills" index="4"]
+enabled = true
+
+[node name="Invisibility" parent="Skills/Block" index="0" instance=ExtResource("5_dxdtl")]
 
 [node name="Skin" type="Node" parent="Processors" index="5" node_paths=PackedStringArray("skin", "move_speed", "attack_speed")]
 script = ExtResource("2_frijp")

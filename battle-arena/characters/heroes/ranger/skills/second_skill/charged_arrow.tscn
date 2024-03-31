@@ -26,7 +26,7 @@ animation_name = "charged_shot"
 
 [node name="ShowProgressBar" type="Node" parent="."]
 script = ExtResource("4_mu66b")
-duration = 1.3
+duration = 1.4
 
 [node name="RunUntilHold" type="Node" parent="."]
 script = ExtResource("9_ikvvp")
