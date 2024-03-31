@@ -11,8 +11,7 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
     var stat: NumberStat = character.stats.get_stat(stat_name)
     
     if stat:
-        var leaf: = _get_leaf(get_child(0))
-        assert("scale" in leaf) # TODO: move to warnings in Godot Editor
-        leaf.scale = stat.current_value if not inverted else 1 / stat.current_value
+        var scale: = stat.current_value if not inverted else 1 / stat.current_value
+        blackboard.set_value("scale", scale, owner.name)
 
     return super(actor, blackboard)
