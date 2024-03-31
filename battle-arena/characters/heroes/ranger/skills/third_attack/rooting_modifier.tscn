@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=3 uid="uid://cem7pidwspvo0"]
+
+[ext_resource type="Script" path="res://characters/status_effects/modifiers/timed_modifier.gd" id="1_j4fia"]
+[ext_resource type="Script" path="res://characters/status_effects/effects/show_progress.gd" id="2_p0vo2"]
+[ext_resource type="Script" path="res://characters/status_effects/effects/modify_stat.gd" id="3_s413j"]
+
+[sub_resource type="Resource" id="Resource_8y700"]
+script = ExtResource("2_p0vo2")
+
+[sub_resource type="Resource" id="Resource_tx7c4"]
+script = ExtResource("3_s413j")
+stat_name = "MovementSpeed"
+percentage = -100.0
+flat = 0.0
+
+[node name="Root" type="Node"]
+script = ExtResource("1_j4fia")
+time = 1.2
+effects = Array[Resource("res://characters/status_effects/effects/base_effect.gd")]([SubResource("Resource_8y700"), SubResource("Resource_tx7c4")])

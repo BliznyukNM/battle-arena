@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://fuwljo3j30u5"]
 
 [ext_resource type="Script" path="res://characters/heroes/ranger/trap.gd" id="1_je8jk"]
-[ext_resource type="PackedScene" uid="uid://cem7pidwspvo0" path="res://characters/heroes/ranger/modifiers/trap_root.tscn" id="2_4pms0"]
+[ext_resource type="PackedScene" uid="uid://cem7pidwspvo0" path="res://characters/heroes/ranger/skills/third_attack/rooting_modifier.tscn" id="2_4pms0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2xa5l"]
 resource_name = "Grey"

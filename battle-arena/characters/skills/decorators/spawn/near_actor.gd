@@ -6,10 +6,13 @@ extends EmptyDecorator
 
 
 func tick(actor: Node, blackboard: Blackboard) -> int:
-    var leaf = _get_leaf(get_child(0))
     var character = actor.owner
     
     var spawn_transform: Transform3D = character.transform
     spawn_transform = spawn_transform.translated_local(offset)
-    leaf.spawn_transform = spawn_transform
+    
+    var options = blackboard.get_value("options", {}, owner.name)
+    options.transform = spawn_transform
+    blackboard.set_value("options", options, owner.name)
+    
     return super(actor, blackboard)

@@ -2,13 +2,15 @@
 extends ActionLeaf
 
 
-@export var distance: float
 @export var time: float
 
 
 func before_run(actor: Node, blackboard: Blackboard) -> void:
+    var options: Dictionary = blackboard.get_value("options", {}, owner.name)
     var character = actor.owner
-    var target_position = character.position + (character.input.look_at_point - character.position).limit_length(distance)
+    # var target_position = character.position + (character.input.look_at_point - character.position).limit_length(distance)
+    var target_transform: Transform3D = options.get("transform", character.transform)
+    var target_position: = target_transform.origin
     
     character.transform.basis = Basis.looking_at(character.position - character.input.look_at_point)
     character.rotation.x = 0.0

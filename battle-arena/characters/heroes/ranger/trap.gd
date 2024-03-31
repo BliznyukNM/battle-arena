@@ -19,6 +19,5 @@ func _on_area_entered(area: Area3D) -> void:
     
     area.apply_modifier.rpc(modifier.resource_path)
     area.apply_damage.rpc(skill.damage)
-    skill.gain_energy.rpc()
     
     queue_free()

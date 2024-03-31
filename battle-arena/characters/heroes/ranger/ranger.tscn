@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dbjutw8fckxjl"]
+[gd_scene load_steps=10 format=3 uid="uid://dbjutw8fckxjl"]
 
 [ext_resource type="PackedScene" uid="uid://d26br4f45m27g" path="res://characters/character.tscn" id="1_gfvhh"]
 [ext_resource type="Script" path="res://characters/stats/number_stat.gd" id="2_8tvmm"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b4uuy5qmtdakt" path="res://characters/heroes/ranger/skills/basic_skill/basic_attack.tscn" id="3_snr75"]
 [ext_resource type="PackedScene" uid="uid://cctpv6apqpbf3" path="res://characters/heroes/ranger/skills/second_skill/charged_arrow.tscn" id="4_w4xwx"]
 [ext_resource type="PackedScene" uid="uid://b4cex7rajpu6b" path="res://characters/heroes/ranger/skills/block/invisibility.tscn" id="5_dxdtl"]
+[ext_resource type="PackedScene" uid="uid://dq41ki74uct3s" path="res://characters/heroes/ranger/skills/third_attack/place_trap.tscn" id="5_fjucc"]
 [ext_resource type="Script" path="res://characters/processors/clear_modifiers.gd" id="7_2y3fc"]
 [ext_resource type="PackedScene" uid="uid://b1jmt46gek5uu" path="res://characters/heroes/ranger/skin.tscn" id="15_xfpo1"]
 
@@ -40,6 +41,11 @@ enabled = true
 
 [node name="ChargedArrow" parent="Skills/SecondAttack" index="0" instance=ExtResource("4_w4xwx")]
 
+[node name="ThirdAttack" parent="Skills" index="2"]
+enabled = true
+
+[node name="PlaceTrap" parent="Skills/ThirdAttack" index="0" instance=ExtResource("5_fjucc")]
+
 [node name="Block" parent="Skills" index="4"]
 enabled = true
 
@@ -59,6 +65,6 @@ script = ExtResource("7_2y3fc")
 energy = NodePath("../Stats/Energy")
 
 [node name="LocalSpawner" parent="." index="8"]
-_spawnable_scenes = PackedStringArray("res://characters/heroes/ranger/arrow.tscn", "res://characters/heroes/ranger/charged_arrow.tscn")
+_spawnable_scenes = PackedStringArray("res://characters/heroes/ranger/arrow.tscn", "res://characters/heroes/ranger/charged_arrow.tscn", "res://characters/heroes/ranger/skills/third_attack/trap.tscn")
 
 [node name="Skin" parent="." index="10" instance=ExtResource("15_xfpo1")]
