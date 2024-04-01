@@ -24,6 +24,7 @@ animation_name = "jump"
 [node name="MousePosition" type="Node" parent="."]
 script = ExtResource("4_ways6")
 max_distance = 10.0
+key_name = null
 
 [node name="Jump" type="Node" parent="MousePosition"]
 script = ExtResource("4_cicil")

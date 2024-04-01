@@ -2,15 +2,20 @@ extends Area3D
 
 
 @export var lifetime: float = 5
+@export var damage: int
 @export var modifier: PackedScene
 
 
-var skill: BaseSkill
-
-
 func _ready() -> void:
+    collision_layer = owner.collision_layer
+    collision_mask = owner.collision_mask ^ owner.collision_layer
+    
     var tween: = get_tree().create_tween()
     tween.tween_callback(func(): queue_free()).set_delay(lifetime)
+
+
+func init(options: Dictionary) -> void:
+    pass
 
 
 func _on_area_entered(area: Area3D) -> void:
@@ -18,6 +23,6 @@ func _on_area_entered(area: Area3D) -> void:
     if not area is HitBox: return
     
     area.apply_modifier.rpc(modifier.resource_path)
-    area.apply_damage.rpc(skill.damage)
+    area.apply_damage.rpc(damage)
     
     queue_free()

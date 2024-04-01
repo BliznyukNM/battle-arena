@@ -12,4 +12,5 @@ func _spawn(data: Dictionary) -> Node:
     var instance: = scene.instantiate()
     if data.has("transform"): instance.transform = data.transform
     instance.tree_entered.connect(func(): instance.owner = owner)
+    if instance.has_method("init"): instance.init(data)
     return instance

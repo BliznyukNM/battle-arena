@@ -65,6 +65,6 @@ script = ExtResource("7_2y3fc")
 energy = NodePath("../Stats/Energy")
 
 [node name="LocalSpawner" parent="." index="8"]
-_spawnable_scenes = PackedStringArray("res://characters/heroes/ranger/arrow.tscn", "res://characters/heroes/ranger/charged_arrow.tscn", "res://characters/heroes/ranger/skills/third_attack/trap.tscn")
+_spawnable_scenes = PackedStringArray("res://characters/heroes/ranger/arrow.tscn", "res://characters/heroes/ranger/charged_arrow.tscn", "res://characters/heroes/ranger/skills/third_attack/trap_bomb.tscn", "res://characters/heroes/ranger/skills/third_attack/trap.tscn")
 
 [node name="Skin" parent="." index="10" instance=ExtResource("15_xfpo1")]

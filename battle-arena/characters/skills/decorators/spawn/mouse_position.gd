@@ -3,6 +3,7 @@ extends EmptyDecorator
 
 
 @export var max_distance: float
+@export var key_name: String = "transform"
 
 
 func tick(actor: Node, blackboard: Blackboard) -> int:
@@ -11,6 +12,6 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
     var transform = Transform3D.IDENTITY.translated(position)
     
     var options = blackboard.get_value("options", {}, owner.name)
-    options.transform = transform
+    options[key_name] = transform
     blackboard.set_value("options", options, owner.name)
     return super(actor, blackboard)

@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dq41ki74uct3s"]
+[gd_scene load_steps=9 format=3 uid="uid://dq41ki74uct3s"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_mn3mk"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_qko06"]
 [ext_resource type="Script" path="res://characters/skills/leaves/play_animation.gd" id="3_wdxmb"]
 [ext_resource type="Script" path="res://characters/skills/leaves/wait.gd" id="5_enxgj"]
 [ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="6_6vo1j"]
+[ext_resource type="Script" path="res://characters/skills/decorators/spawn/near_actor.gd" id="6_aiehe"]
 [ext_resource type="Script" path="res://characters/skills/decorators/spawn/mouse_position.gd" id="6_exsuq"]
 [ext_resource type="Script" path="res://characters/skills/leaves/spawn.gd" id="8_4r8ud"]
 
@@ -22,21 +23,26 @@ animation_name = "throw"
 
 [node name="ExecutionWait" type="Node" parent="."]
 script = ExtResource("5_enxgj")
-wait_time = 0.3
+wait_time = 0.8
 cache_key = "execution"
 
 [node name="Authority" type="Node" parent="."]
 script = ExtResource("6_6vo1j")
 
-[node name="MousePosition" type="Node" parent="Authority"]
-script = ExtResource("6_exsuq")
-max_distance = 6.0
+[node name="NearActor" type="Node" parent="Authority"]
+script = ExtResource("6_aiehe")
+offset = Vector3(2.08165e-12, 1, 0.5)
 
-[node name="Throw" type="Node" parent="Authority/MousePosition"]
+[node name="MousePositionTarget" type="Node" parent="Authority/NearActor"]
+script = ExtResource("6_exsuq")
+max_distance = 8.0
+key_name = "target"
+
+[node name="Throw" type="Node" parent="Authority/NearActor/MousePositionTarget"]
 script = ExtResource("8_4r8ud")
-scene_path = "res://characters/heroes/ranger/skills/third_attack/trap.tscn"
+scene_path = "res://characters/heroes/ranger/skills/third_attack/trap_bomb.tscn"
 
 [node name="Cooldown" type="Node" parent="."]
 script = ExtResource("5_enxgj")
-wait_time = 0.5
+wait_time = 1.0
 cache_key = "cooldown"
