@@ -4,7 +4,7 @@ extends "res://characters/skills/projectiles/projectile.gd"
 @onready var animation: AnimationPlayer = $AnimationPlayer
 
 
-var _is_recalling: bool
+var is_recalling: bool
 
 
 func _ready() -> void:
@@ -15,7 +15,7 @@ func _ready() -> void:
 
 
 func recall() -> void:
-    _is_recalling = true
+    is_recalling = true
     _is_travelling = false
     animation.play("rotating", -1, -2.0)
 
@@ -23,7 +23,7 @@ func recall() -> void:
 func _process(delta: float) -> void:
     super._process(delta)
     
-    if not _is_recalling: return
+    if not is_recalling: return
     var frame_distance: float = speed * delta # TODO: skill.projectile_speed * delta
     var direction: Vector3 = (owner.global_position - position).normalized()
     position += direction * frame_distance
@@ -38,11 +38,11 @@ func _on_finish_travel() -> void:
 func _on_area_entered(area: Area3D) -> void:
     if not is_multiplayer_authority(): return
     
-    if _is_travelling or _is_recalling:
+    if _is_travelling or is_recalling:
         if area.collision_layer != collision_layer and area is HitBox:
             area.apply_damage.rpc(damage) #TODO: skill.damage)
             # TODO: skill.gain_energy.rpc()
-    if not _is_travelling and area is HitBox and area.owner == owner:
+    if is_recalling and area is HitBox and area.owner == owner:
         owner.on_pickup_axe.rpc()
 
 

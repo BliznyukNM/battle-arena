@@ -49,6 +49,11 @@ scene_path = "res://characters/heroes/barbarian/axe.tscn"
 script = ExtResource("9_xx5hs")
 stance = 1
 
+[node name="WaitRecall" type="Node" parent="."]
+script = ExtResource("2_i0ygl")
+consume_key = false
+key = "\"axe_recalled\""
+
 [node name="Cooldown" type="Node" parent="."]
 script = ExtResource("3_rhf0w")
 wait_time = 0.5

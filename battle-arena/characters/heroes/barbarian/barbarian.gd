@@ -4,7 +4,8 @@ extends Character
 enum Stance { HANDS = 0, AXE = 1, DUAL = 2 }
 
 
-var is_recalling: bool
+var is_recalling: bool:
+    get: return false if not thrown_axe else thrown_axe.is_recalling
 var thrown_axe: Node
 
 
@@ -23,7 +24,6 @@ func recall_axe() -> void:
 func on_pickup_axe() -> void:
     if thrown_axe and is_multiplayer_authority(): thrown_axe.queue_free()
     thrown_axe = null
-    is_recalling = false
     
     blackboard.set_value("axe_recalled", true)
     blackboard.set_value("skill_index", 0)
