@@ -5,6 +5,9 @@ signal on_damage(value: float)
 signal on_heal(value: float)
 
 
+var Utils = preload("res://characters/multiplayer/utils.gd")
+
+
 func _ready() -> void:
     collision_layer = owner.collision_layer
 
@@ -21,7 +24,6 @@ func apply_heal(value: float) -> void:
 
 @rpc("reliable", "call_local")
 func apply_modifier(modifier_path: String) -> void:
-    var modifier_scene: = load(modifier_path)
-    assert(modifier_scene, "Cannot find %s modifier" % modifier_path)
-    var modifier: BaseModifier = modifier_scene.instantiate()
-    owner.modifiers.add_modifier(modifier)
+    Utils.try_add_scene(owner.modifiers.spawner, modifier_path)
+    if not is_multiplayer_authority(): return
+    owner.modifiers.add_modifier({ "path": modifier_path })

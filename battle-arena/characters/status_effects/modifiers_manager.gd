@@ -6,7 +6,7 @@ class_name ModifierManager extends Node
 
 func add_modifier(data: Dictionary) -> BaseModifier:
     var modifier = spawner.spawn(data)
-    modifier.name = data.name
+    # modifier.name = data.name
     return modifier
 
 
