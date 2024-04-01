@@ -91,7 +91,7 @@ middle_mouse_paste_enabled = false
 [node name="BasicAttack" type="Node" parent="." node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("2_ecxut")
 actor_node_path = NodePath(".")
-blackboard = NodePath("@Node@17561")
+blackboard = NodePath("@Node@19316")
 actor = NodePath(".")
 
 [node name="BasicAttack" parent="BasicAttack" instance=ExtResource("3_sbkpn")]

@@ -179,6 +179,7 @@ vertical_icon_alignment = 0
 expand_icon = true
 
 [node name="Druid" type="Button" parent="GridContainer"]
+visible = false
 custom_minimum_size = Vector2(2.08165e-12, 150)
 layout_mode = 2
 size_flags_horizontal = 3

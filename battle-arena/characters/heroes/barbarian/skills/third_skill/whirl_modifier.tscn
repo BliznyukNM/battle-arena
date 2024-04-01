@@ -15,6 +15,6 @@ stat_name = "RotationSpeed"
 percentage = -100.0
 flat = 0.0
 
-[node name="Spinning" type="Node"]
+[node name="Whirl" type="Node"]
 script = ExtResource("1_u87ht")
 effects = Array[Resource("res://characters/status_effects/effects/base_effect.gd")]([SubResource("Resource_ekvqh"), SubResource("Resource_hbxxl")])
