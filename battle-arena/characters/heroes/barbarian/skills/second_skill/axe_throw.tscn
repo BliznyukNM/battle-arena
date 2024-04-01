@@ -51,7 +51,6 @@ stance = 1
 
 [node name="WaitRecall" type="Node" parent="."]
 script = ExtResource("2_i0ygl")
-consume_key = false
 key = "\"axe_recalled\""
 
 [node name="Cooldown" type="Node" parent="."]
