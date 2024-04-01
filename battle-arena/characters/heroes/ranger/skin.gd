@@ -49,6 +49,10 @@ func play_ultimate() -> void:
     #    CONNECT_ONE_SHOT)
 
 
+func play_dash() -> void:
+    animationTree.set("parameters/PlayDash/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+
+
 func play_invisibility() -> void:
     for mesh in body_meshes: mesh.material_override = invisible
 
