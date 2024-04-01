@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dbjutw8fckxjl"]
+[gd_scene load_steps=11 format=3 uid="uid://dbjutw8fckxjl"]
 
 [ext_resource type="PackedScene" uid="uid://d26br4f45m27g" path="res://characters/character.tscn" id="1_gfvhh"]
 [ext_resource type="Script" path="res://characters/stats/number_stat.gd" id="2_8tvmm"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cctpv6apqpbf3" path="res://characters/heroes/ranger/skills/second_skill/charged_arrow.tscn" id="4_w4xwx"]
 [ext_resource type="PackedScene" uid="uid://b4cex7rajpu6b" path="res://characters/heroes/ranger/skills/block/invisibility.tscn" id="5_dxdtl"]
 [ext_resource type="PackedScene" uid="uid://dq41ki74uct3s" path="res://characters/heroes/ranger/skills/third_attack/place_trap.tscn" id="5_fjucc"]
+[ext_resource type="PackedScene" uid="uid://b540vu8yrvv3b" path="res://characters/heroes/ranger/skills/dodge/dash.tscn" id="6_ubfej"]
 [ext_resource type="Script" path="res://characters/processors/clear_modifiers.gd" id="7_2y3fc"]
 [ext_resource type="PackedScene" uid="uid://b1jmt46gek5uu" path="res://characters/heroes/ranger/skin.tscn" id="15_xfpo1"]
 
@@ -45,6 +46,11 @@ enabled = true
 enabled = true
 
 [node name="PlaceTrap" parent="Skills/ThirdAttack" index="0" instance=ExtResource("5_fjucc")]
+
+[node name="Dodge" parent="Skills" index="3"]
+enabled = true
+
+[node name="Dash" parent="Skills/Dodge" index="0" instance=ExtResource("6_ubfej")]
 
 [node name="Block" parent="Skills" index="4"]
 enabled = true

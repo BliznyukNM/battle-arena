@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://b540vu8yrvv3b"]
+
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_ixadx"]
+[ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_e8lfw"]
+[ext_resource type="Script" path="res://characters/skills/leaves/play_animation.gd" id="3_me4sf"]
+[ext_resource type="Script" path="res://characters/skills/decorators/spawn/mouse_position.gd" id="4_nl5nw"]
+[ext_resource type="Script" path="res://characters/heroes/ranger/skills/dodge/dash.gd" id="5_3u8he"]
+[ext_resource type="Script" path="res://characters/skills/leaves/wait.gd" id="6_m6pcf"]
+
+[node name="Dash" type="Node"]
+script = ExtResource("1_ixadx")
+
+[node name="RunUntil" type="Node" parent="."]
+script = ExtResource("2_e8lfw")
+key = "\"%s_ready\" % actor.name"
+
+[node name="PlayAnimation" type="Node" parent="."]
+script = ExtResource("3_me4sf")
+animation_name = "dash"
+
+[node name="MousePosition" type="Node" parent="."]
+script = ExtResource("4_nl5nw")
+max_distance = 5.0
+
+[node name="Dash" type="Node" parent="MousePosition"]
+script = ExtResource("5_3u8he")
+time = 0.35
+
+[node name="Cooldown" type="Node" parent="."]
+script = ExtResource("6_m6pcf")
+wait_time = 5.0
+cache_key = "cooldown"
