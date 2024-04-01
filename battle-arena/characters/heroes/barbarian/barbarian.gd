@@ -1,4 +1,4 @@
-class_name Barbarian extends "res://characters/character.gd"
+extends Character
 
 
 enum Stance { HANDS = 0, AXE = 1, DUAL = 2 }

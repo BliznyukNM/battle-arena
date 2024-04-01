@@ -18,4 +18,4 @@ var root_name: String:
     get:
         var running_action: BeehaveNode = blackboard.get_value("running_action", null, str(actor.get_instance_id()))
         if not running_action: return ""
-        return running_action.get_parent().name
+        return running_action.owner.name

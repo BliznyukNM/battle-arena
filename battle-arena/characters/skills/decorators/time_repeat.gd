@@ -25,3 +25,8 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
     else:
         after_run(actor, blackboard)
         return result
+
+
+func interrupt(actor: Node, blackboard: Blackboard) -> void:
+    super(actor, blackboard)
+    blackboard.erase_value(cache_key, owner.name)

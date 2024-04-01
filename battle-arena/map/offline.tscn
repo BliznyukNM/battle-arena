@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://boulj8buo8ukk"]
+[gd_scene load_steps=3 format=3 uid="uid://boulj8buo8ukk"]
 
 [ext_resource type="PackedScene" uid="uid://flt4bdecd0xj" path="res://map/map.tscn" id="1_j7vok"]
 [ext_resource type="PackedScene" uid="uid://vs53g10noy3c" path="res://characters/dummy/dummy.tscn" id="2_cgst3"]
-[ext_resource type="PackedScene" uid="uid://cnvhuy5i7x6e" path="res://characters/dummy/shooting_dummy.tscn" id="3_q2hfq"]
 
 [node name="Map" instance=ExtResource("1_j7vok")]
 
@@ -16,9 +15,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.40516, 0, -3.10913)
 
 [node name="IdleDummy2" parent="." index="9" instance=ExtResource("2_cgst3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.33085, 0, -3.10913)
-
-[node name="ShootingDummy1" parent="." index="10" instance=ExtResource("3_q2hfq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.80196, 9.53674e-07, -10.2986)
-
-[node name="ShootingDummy2" parent="." index="11" instance=ExtResource("3_q2hfq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.57644, 0, -10.5668)

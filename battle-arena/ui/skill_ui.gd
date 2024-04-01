@@ -14,8 +14,8 @@ func register(skill) -> void:
 func _process(delta: float) -> void:
     if not _skill: return
     
-    cooldown.visible = _skill.cooldown > 0.0
+    cooldown.visible = not is_zero_approx(_skill.cooldown)
     cooldown.text = "%1.2f" % _skill.cooldown
     
-    var enabled: bool = _skill.enabled and _skill.cooldown <= 0.0
+    var enabled: bool = _skill.enabled and is_zero_approx(_skill.cooldown) and is_zero_approx(_skill.execution)
     add_theme_color_override("font_color", Color.WHITE if enabled else Color.GRAY) 

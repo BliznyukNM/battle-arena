@@ -21,7 +21,7 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
     if _key_expression.has_execute_failed():
         return FAILURE
     
-    var condition: bool = blackboard.has_value(key_value)
+    var condition: bool = blackboard.get_value(key_value, false)
     
     for c in get_children():
 
