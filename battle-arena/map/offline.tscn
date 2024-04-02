@@ -6,11 +6,10 @@
 [ext_resource type="Script" path="res://map/sandbox.gd" id="2_vllfr"]
 [ext_resource type="PackedScene" uid="uid://cnvhuy5i7x6e" path="res://characters/dummy/shooting_dummy.tscn" id="3_q2hfq"]
 
-[node name="Map2" instance=ExtResource("1_j7vok")]
+[node name="Map" instance=ExtResource("1_j7vok")]
 script = ExtResource("2_vllfr")
 
 [node name="Camera" parent="." index="1"]
-current = true
 lerp_speed = 4.5
 max_distance = Vector2(20, 10)
 

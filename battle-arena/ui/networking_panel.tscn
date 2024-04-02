@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://tpm3x0ho62j0"]
+
+[ext_resource type="Script" path="res://ui/networking_panel.gd" id="1_ieq27"]
+
+[node name="NetworkingPanel" type="VBoxContainer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -437.0
+offset_bottom = 161.0
+grow_horizontal = 0
+script = ExtResource("1_ieq27")
+
+[node name="RTT" type="Label" parent="."]
+layout_mode = 2
+text = "RTT"
+horizontal_alignment = 2
