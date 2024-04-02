@@ -4,14 +4,14 @@ extends "res://map/map.gd"
 const MAX_WINS: = 3
 
 
-var _teams = [
+@onready var _teams = [
     {
-        spawner = %TeamA,
+        spawner = $Spawner/TeamA,
         round_hud = "Rounds/RoundHUD/TeamA",
         wins = 0,
     },
     {
-        spawner = %TeamB,
+        spawner = $Spawner/TeamB,
         round_hud = "Rounds/RoundHUD/TeamB",
         wins = 0,
     }
