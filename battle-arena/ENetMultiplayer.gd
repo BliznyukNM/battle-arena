@@ -19,7 +19,8 @@ func _ready() -> void:
     
     if not multiplayer.is_server(): return
     
-    spawn_hero(multiplayer.get_unique_id(), get_parent().selected_hero) # FIXME
+    await owner.ready
+    owner.spawn_hero(multiplayer.get_unique_id(), owner.selected_hero) # FIXME
 
 
 func _exit_tree() -> void:
@@ -38,7 +39,7 @@ func _on_server_disconnected() -> void:
 func _on_connected_to_server() -> void:
     print("Connected to server!")
     update_rtt(SERVER_ID)
-    spawn_hero.rpc_id(SERVER_ID, multiplayer.get_unique_id(), get_parent().selected_hero) # FIXME
+    owner.spawn_hero.rpc_id(SERVER_ID, multiplayer.get_unique_id(), owner.selected_hero) # FIXME
 
 
 func _on_peer_connected(id: int) -> void:
@@ -51,18 +52,6 @@ func update_rtt(id: int) -> void:
         rtt = (Time.get_ticks_msec() - _rtt_time_start) / 1000.0
         _rtt_time_start = Time.get_ticks_msec()
     update_rtt.rpc_id(id, multiplayer.get_unique_id())
-
-
-@rpc("any_peer", "reliable")
-func spawn_hero(player_id: int, hero_id: String) -> void:
-    var params: = {
-        "id" = player_id,
-        "character" = hero_id
-    }
-    
-    var team: = _get_priority_team()
-    var hero: = team.spawn(params)
-    team.spawned.emit(hero)
 
 
 func _get_priority_team() -> MultiplayerSpawner:
