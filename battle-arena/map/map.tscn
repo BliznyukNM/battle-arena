@@ -46,7 +46,6 @@ unique_name_in_owner = true
 [node name="Spawner" type="Node" parent="."]
 
 [node name="TeamA" type="MultiplayerSpawner" parent="Spawner"]
-unique_name_in_owner = true
 spawn_path = NodePath("Root")
 spawn_limit = 3
 script = ExtResource("4_44ugc")
@@ -63,7 +62,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7619, 0, 0.851758)
 [node name="Root" type="Node" parent="Spawner/TeamA"]
 
 [node name="TeamB" type="MultiplayerSpawner" parent="Spawner"]
-unique_name_in_owner = true
 spawn_path = NodePath("Root")
 spawn_limit = 3
 script = ExtResource("4_44ugc")

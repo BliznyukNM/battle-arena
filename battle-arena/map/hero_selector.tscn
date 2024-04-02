@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwhc1p7a507eo"]
+
+[ext_resource type="Texture2D" uid="uid://dkeii0cbfx8np" path="res://assets/characters/art/barbarian_icon.atlastex" id="1_ibpa8"]
+[ext_resource type="Script" path="res://map/ui/hero_selector.gd" id="1_lxhjs"]
+[ext_resource type="Texture2D" uid="uid://i6lhw3i678rr" path="res://assets/characters/art/rogue_icon.atlastex" id="2_3rjbh"]
+
+[node name="HeroSelector" type="Control"]
+layout_mode = 3
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -212.0
+offset_right = 312.0
+offset_bottom = 212.0
+grow_vertical = 2
+script = ExtResource("1_lxhjs")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 39.0
+offset_top = -75.0
+offset_right = 243.0
+offset_bottom = 75.0
+grow_vertical = 2
+columns = 3
+
+[node name="Barbarian" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("1_ibpa8")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Ranger" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("2_3rjbh")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[connection signal="pressed" from="GridContainer/Barbarian" to="." method="on_hero_clicked" binds= ["barbarian"]]
+[connection signal="pressed" from="GridContainer/Ranger" to="." method="on_hero_clicked" binds= ["ranger"]]

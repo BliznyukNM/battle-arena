@@ -178,6 +178,10 @@ ui.pause={
 ]
 }
 
+[internationalization]
+
+locale/translation_remaps={}
+
 [layer_names]
 
 3d_physics/layer_1="Default"
