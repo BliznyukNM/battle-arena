@@ -9,6 +9,9 @@ class_name SkillManager extends Node
 @onready var ultimate: BeehaveTree = get_node_or_null("Ultimate")
 
 
+var enabled: bool = true
+
+
 var _skills: Array
 var _last_used_skill
 
@@ -18,30 +21,37 @@ func _ready() -> void:
 
 
 func activate_basic_attack(pressed: bool) -> void:
+    if not enabled: return
     _activate_skill.rpc(0, pressed)
 
 
 func activate_secondary_attack(pressed: bool) -> void:
+    if not enabled: return
     _activate_skill.rpc(1, pressed)
 
 
 func activate_third_attack(pressed: bool) -> void:
+    if not enabled: return
     _activate_skill.rpc(2, pressed)
 
 
 func activate_block(pressed: bool) -> void:
+    if not enabled: return
     _activate_skill.rpc(3, pressed)
 
 
 func activate_dodge(pressed: bool) -> void:
+    if not enabled: return
     _activate_skill.rpc(4, pressed)
 
 
 func activate_ultimate(pressed: bool) -> void:
+    if not enabled: return
     _activate_skill.rpc(5, pressed)
 
 
 func cancel_skill() -> void:
+    if not enabled: return
     if not _last_used_skill or is_zero_approx(_last_used_skill.execution): return
     _last_used_skill.cancel()
 
@@ -61,3 +71,4 @@ func reset() -> void:
     for skill in _skills:
         if not skill: continue
         skill.reset()
+    enabled = true

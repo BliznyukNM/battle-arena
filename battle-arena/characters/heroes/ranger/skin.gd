@@ -1,4 +1,4 @@
-extends Node3D
+extends "res://characters/skin.gd"
 
 
 @export var body_meshes: Array[MeshInstance3D]
@@ -6,9 +6,6 @@ extends Node3D
 @export var invisible: Material
 @export var charged_weapon: Material
 @export var ultimate: Material
-
-
-@onready var animationTree: AnimationTree = $AnimationTree
 
 
 func update_move_direction(direction: Vector2) -> void:

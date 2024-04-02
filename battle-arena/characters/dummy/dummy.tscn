@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://vs53g10noy3c"]
+[gd_scene load_steps=5 format=3 uid="uid://vs53g10noy3c"]
 
 [ext_resource type="PackedScene" uid="uid://d26br4f45m27g" path="res://characters/character.tscn" id="1_twlvs"]
+[ext_resource type="Script" path="res://characters/dummy/processors/respawn.gd" id="2_kryg1"]
 [ext_resource type="PackedScene" uid="uid://bewvugtopdfvv" path="res://characters/dummy/skin.tscn" id="2_yhkrm"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_o1c17"]
@@ -17,7 +18,7 @@ base_value = 150.0
 current_value = "Dummy"
 
 [node name="BasicAttack" parent="Skills" index="0" node_paths=PackedStringArray("blackboard")]
-blackboard = NodePath("@Node@17572")
+blackboard = NodePath("@Node@20327")
 
 [node name="Movement" parent="Processors" index="2"]
 script = null
@@ -25,7 +26,13 @@ script = null
 [node name="Rotation" parent="Processors" index="3"]
 script = null
 
+[node name="Respawn" type="Node" parent="Processors" index="5"]
+script = ExtResource("2_kryg1")
+delay = 2.0
+
 [node name="Collider" parent="HitBox" index="0"]
 shape = SubResource("CylinderShape3D_o1c17")
 
 [node name="Skin" parent="." index="10" instance=ExtResource("2_yhkrm")]
+
+[connection signal="on_dead" from="." to="Processors/Respawn" method="respawn"]
