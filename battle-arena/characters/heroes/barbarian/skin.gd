@@ -1,11 +1,9 @@
-extends Node3D
+extends "res://characters/skin.gd"
 
 
 @export var taunt: Material
 @export var charged_2h_axe: Material
 
-
-@onready var animationTree: AnimationTree = $AnimationTree
 @onready var slash: GPUParticles3D = $Slash/SlashParticles
 
 @onready var big_axe: = $"Rig/Skeleton3D/2H_Axe/2H_Axe"

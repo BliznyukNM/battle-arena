@@ -23,6 +23,19 @@ var is_alive: bool:
     get: return stats.get_stat("Health").current_value > 0.0
 
 
+func _ready() -> void:
+    reset()
+    on_dead.connect(_on_death)
+
+
+func _on_death() -> void:
+    skills.enabled = false
+    skin.play_death()
+    hud.visible = false
+    
+    for processor in processors.get_children(): processor.set_process(false)
+
+
 func _on_health_changed(old_value: float, new_value: float) -> void:
     if is_equal_approx(new_value, 0.0) or new_value < 0.0:
         on_dead.emit()
@@ -32,3 +45,7 @@ func reset() -> void:
     stats.reset()
     modifiers.reset()
     skills.reset()
+    
+    skin.play_spawn()
+    hud.visible = true
+    for processor in processors.get_children(): processor.set_process(true)

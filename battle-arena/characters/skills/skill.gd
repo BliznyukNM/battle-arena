@@ -19,3 +19,7 @@ var root_name: String:
         var running_action: BeehaveNode = blackboard.get_value("running_action", null, str(actor.get_instance_id()))
         if not running_action: return ""
         return running_action.owner.name
+
+
+func reset() -> void:
+    blackboard.blackboard.clear()

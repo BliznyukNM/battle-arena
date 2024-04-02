@@ -1,7 +1,79 @@
-[gd_scene load_steps=2 format=3 uid="uid://bewvugtopdfvv"]
+[gd_scene load_steps=15 format=3 uid="uid://bewvugtopdfvv"]
 
 [ext_resource type="PackedScene" uid="uid://dg33gxxx0jsgk" path="res://assets/dummy/trainingdummy_a.gltf.glb" id="1_gr2dw"]
+[ext_resource type="Script" path="res://characters/skin.gd" id="1_sfmex"]
+[ext_resource type="AnimationLibrary" uid="uid://7eb7ecdpy66l" path="res://assets/dummy/animations/global.res" id="2_ujyum"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_y561w"]
+animation = &"dead"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_awl4e"]
+animation = &"death"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fto08"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nwyfo"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_porth"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_te5xs"]
+states/End/position = Vector2(649, 123)
+states/Start/position = Vector2(183, 123)
+states/dead/node = SubResource("AnimationNodeAnimation_y561w")
+states/dead/position = Vector2(482, 123)
+states/death/node = SubResource("AnimationNodeAnimation_awl4e")
+states/death/position = Vector2(334, 123)
+transitions = ["Start", "death", SubResource("AnimationNodeStateMachineTransition_fto08"), "death", "dead", SubResource("AnimationNodeStateMachineTransition_nwyfo"), "dead", "End", SubResource("AnimationNodeStateMachineTransition_porth")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wrvrw"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_psdf6"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_2lb3f"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p5o1v"]
+animation = &"spawn"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_qvbgl"]
+graph_offset = Vector2(-1214.74, 11.5972)
+nodes/Death/node = SubResource("AnimationNodeStateMachine_te5xs")
+nodes/Death/position = Vector2(-60, 380)
+nodes/IdleAnim/node = SubResource("AnimationNodeAnimation_wrvrw")
+nodes/IdleAnim/position = Vector2(-320, 140)
+nodes/PlayDeath/node = SubResource("AnimationNodeOneShot_psdf6")
+nodes/PlayDeath/position = Vector2(140, 120)
+nodes/PlaySpawn/node = SubResource("AnimationNodeOneShot_2lb3f")
+nodes/PlaySpawn/position = Vector2(-60, 120)
+nodes/SpawnAnim/node = SubResource("AnimationNodeAnimation_p5o1v")
+nodes/SpawnAnim/position = Vector2(-260, 300)
+nodes/output/position = Vector2(420, 140)
+node_connections = [&"PlayDeath", 0, &"PlaySpawn", &"PlayDeath", 1, &"Death", &"PlaySpawn", 0, &"IdleAnim", &"PlaySpawn", 1, &"SpawnAnim", &"output", 0, &"PlayDeath"]
 
 [node name="Skin" type="Node3D"]
+script = ExtResource("1_sfmex")
 
 [node name="View" parent="." instance=ExtResource("1_gr2dw")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": ExtResource("2_ujyum")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": ExtResource("2_ujyum")
+}
+tree_root = SubResource("AnimationNodeBlendTree_qvbgl")
+anim_player = NodePath("../AnimationPlayer")
+parameters/PlayDeath/active = false
+parameters/PlayDeath/internal_active = false
+parameters/PlayDeath/request = 0
+parameters/PlaySpawn/active = false
+parameters/PlaySpawn/internal_active = false
+parameters/PlaySpawn/request = 0
