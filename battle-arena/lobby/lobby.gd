@@ -54,7 +54,7 @@ func start_matchmaking() -> void:
 func _load_map(map_path: String, peer: MultiplayerPeer) -> void:
     var map_scene: PackedScene = load(map_path)
     var map: Node = map_scene.instantiate()
-    map.selected_hero = _selected_hero
+    map.selected_hero = _selected_hero # FIXME
     map.tree_entered.connect(func(): map.multiplayer.multiplayer_peer = peer, CONNECT_ONE_SHOT)
     get_tree().root.add_child(map)
     get_tree().root.remove_child(self)

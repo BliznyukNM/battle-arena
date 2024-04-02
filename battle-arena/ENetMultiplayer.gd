@@ -20,7 +20,7 @@ func _ready() -> void:
     if not multiplayer.is_server(): return
     
     await owner.ready
-    owner.spawn_hero(multiplayer.get_unique_id(), owner.selected_hero) # FIXME
+    owner.spawn_hero(multiplayer.get_unique_id(), owner.selected_hero)
 
 
 func _exit_tree() -> void:
