@@ -1,9 +1,6 @@
 extends "res://characters/skills/projectiles/projectile.gd"
 
 
-@export_range(0, 100, 1) var energy_gain: int
-
-
 @onready var animation: AnimationPlayer = $AnimationPlayer
 
 
