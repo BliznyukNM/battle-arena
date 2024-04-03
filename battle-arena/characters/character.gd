@@ -41,6 +41,12 @@ func _on_health_changed(old_value: float, new_value: float) -> void:
         on_dead.emit()
 
 
+@rpc("authority", "call_local", "reliable")
+func gain_energy(amount: int) -> void:
+    var energy_stat: NumberStat = stats.get_stat("Energy")
+    energy_stat.current_value += amount
+
+
 func reset() -> void:
     stats.reset()
     modifiers.reset()

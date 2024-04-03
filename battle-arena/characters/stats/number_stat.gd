@@ -39,6 +39,13 @@ var current_value: float:
         flat_modifier += clamp(value, min_value, max_value) - old_value
 
 
+@rpc("authority", "call_local", "reliable")
+func apply_changes(percentage: float, flat: float, current: float) -> void:
+    percentual_modifier += percentage
+    flat_modifier += flat
+    current_value += current
+
+
 func reset() -> void:
     var old_value: = current_value
     flat_modifier = 0

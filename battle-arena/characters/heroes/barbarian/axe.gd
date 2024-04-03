@@ -40,8 +40,8 @@ func _on_area_entered(area: Area3D) -> void:
     
     if _is_travelling or is_recalling:
         if area.collision_layer != collision_layer and area is HitBox:
-            area.apply_damage.rpc(damage) #TODO: skill.damage)
-            # TODO: skill.gain_energy.rpc()
+            area.apply_damage.rpc(damage)
+            owner.gain_energy.rpc(energy_gain)
     if is_recalling and area is HitBox and area.owner == owner:
         owner.on_pickup_axe.rpc()
 

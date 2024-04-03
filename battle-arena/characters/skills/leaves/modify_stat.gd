@@ -13,7 +13,6 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
     var stat: NumberStat = character.stats.get_stat(stat_name)
     if not stat: return FAILURE
     
-    stat.percentual_modifier += percentage * 0.01
-    stat.flat_modifier += flat
-    stat.current_value += current
+    stat.apply_changes.rpc(percentage * 0.01, flat, current)
     return SUCCESS
+    

@@ -9,4 +9,5 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
     var arrow = _spawn(character, options)
     arrow.distance *= charged_value
     arrow.damage *= charged_value
+    arrow.energy_gain *= charged_value
     return SUCCESS

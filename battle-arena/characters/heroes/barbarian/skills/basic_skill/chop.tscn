@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dduw5yupkf46b"]
+[gd_scene load_steps=12 format=3 uid="uid://dduw5yupkf46b"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_pr8rg"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_yqrv3"]
@@ -7,9 +7,10 @@
 [ext_resource type="Script" path="res://characters/skills/leaves/progress_bar/show_progress_bar.gd" id="4_w4khx"]
 [ext_resource type="Script" path="res://characters/skills/leaves/wait.gd" id="5_uyjv7"]
 [ext_resource type="Script" path="res://characters/skills/decorators/stat_scale.gd" id="6_7huxs"]
-[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/succeeder.gd" id="6_wc2qt"]
 [ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="7_m373t"]
 [ext_resource type="Script" path="res://characters/skills/leaves/melee_attack.gd" id="8_17a63"]
+[ext_resource type="Script" path="res://characters/skills/composites/sequence_reactive.gd" id="11_mquxu"]
+[ext_resource type="Script" path="res://characters/skills/leaves/modify_stat.gd" id="12_lpu53"]
 
 [node name="Chop" type="Node"]
 script = ExtResource("1_pr8rg")
@@ -45,19 +46,24 @@ script = ExtResource("5_uyjv7")
 wait_time = 0.5
 cache_key = "execution"
 
-[node name="AlwaysSucceed" type="Node" parent="."]
-script = ExtResource("6_wc2qt")
-
-[node name="Authority" type="Node" parent="AlwaysSucceed"]
+[node name="Authority" type="Node" parent="."]
 script = ExtResource("7_m373t")
 
-[node name="Attack" type="Node" parent="AlwaysSucceed/Authority"]
+[node name="AttackSequence" type="Node" parent="Authority"]
+script = ExtResource("11_mquxu")
+
+[node name="Attack" type="Node" parent="Authority/AttackSequence"]
 script = ExtResource("8_17a63")
 damage = 10
 hit_range = 3.0
 area = 40.0
 offset = Vector3(2.08165e-12, 1, 2.08165e-12)
 collision_type = 1
+
+[node name="GainEnergy" type="Node" parent="Authority/AttackSequence"]
+script = ExtResource("12_lpu53")
+stat_name = "Energy"
+current = 5.0
 
 [node name="CooldownAttackSpeedScale" type="Node" parent="."]
 script = ExtResource("6_7huxs")
