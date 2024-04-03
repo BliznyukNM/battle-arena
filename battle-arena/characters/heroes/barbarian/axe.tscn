@@ -121,6 +121,7 @@ _data = {
 
 [node name="Axe" type="Area3D"]
 script = ExtResource("1_tvqmv")
+energy_gain = 5
 radius = 1.0
 speed = 20.0
 distance = 12.0
