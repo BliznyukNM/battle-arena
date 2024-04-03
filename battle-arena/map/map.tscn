@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://flt4bdecd0xj"]
+[gd_scene load_steps=10 format=3 uid="uid://flt4bdecd0xj"]
 
 [ext_resource type="Script" path="res://map/map.gd" id="1_jyhhi"]
 [ext_resource type="MeshLibrary" uid="uid://bjja43ocp6hvr" path="res://map/dungeon.meshlib" id="1_p1vss"]
 [ext_resource type="Script" path="res://map/Camera.gd" id="2_fe6qu"]
 [ext_resource type="PackedScene" uid="uid://cfqs7tnlielrb" path="res://ui/gui.tscn" id="3_lap5g"]
 [ext_resource type="Script" path="res://map/spawner.gd" id="4_44ugc"]
+[ext_resource type="PackedScene" uid="uid://tpm3x0ho62j0" path="res://ui/networking_panel.tscn" id="5_kegpn"]
 [ext_resource type="Script" path="res://ENetMultiplayer.gd" id="7_ly6bx"]
 [ext_resource type="PackedScene" uid="uid://c8hjplt0ocsk7" path="res://map/ui/pause_menu.tscn" id="8_yvmdu"]
 
@@ -30,6 +31,7 @@ data = {
 [node name="Camera" type="Camera3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, -6.5054e-16, 1.7492e-16, 1.7492e-16, 0.501511, 0.865151, -6.5054e-16, -0.865151, 0.501511, 2.08165e-12, 13.384, 6.6)
+current = true
 script = ExtResource("2_fe6qu")
 offset = Vector3(2.08165e-12, 13.384, 6.6)
 
@@ -42,6 +44,8 @@ environment = SubResource("Environment_r4cc4")
 
 [node name="GUI" parent="." instance=ExtResource("3_lap5g")]
 unique_name_in_owner = true
+
+[node name="NetworkingPanel" parent="." instance=ExtResource("5_kegpn")]
 
 [node name="Spawner" type="Node" parent="."]
 

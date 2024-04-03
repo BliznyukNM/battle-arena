@@ -4,8 +4,7 @@ extends MultiplayerSynchronizer
 @export var lerp_amount: float = 5
 
 
-var server_position: Vector3
-var server_rotation: Vector3
+var server_transform: Transform3D
 
 
 var Multiplayer:
@@ -16,11 +15,9 @@ var Multiplayer:
 
 func _process(delta: float) -> void:
     if multiplayer.is_server():
-        server_position = owner.position
-        server_rotation = owner.rotation
+        server_transform = owner.transform
     else:
-        var target_position: Vector3 = server_position + owner.velocity * Multiplayer.rtt / 2.0
-        var distance: = target_position.distance_squared_to(owner.position)
-        if distance >= 1.0:
-            owner.position = owner.position.move_toward(target_position, min(lerp_amount * distance * delta, 1.0))
-        owner.rotation = owner.rotation.move_toward(server_rotation, min(lerp_amount * delta, 1.0))
+        const epsilon_distance: = 0.5
+        var distance_sqr: float = server_transform.origin.distance_squared_to(owner.transform.origin) - epsilon_distance
+        #if distance_sqr > 4.0: owner.transform = server_transform
+        owner.transform = owner.transform.interpolate_with(server_transform, clampf(distance_sqr * (1 + Multiplayer.rtt) * delta, 0.0, 1.0))

@@ -19,25 +19,21 @@ var move_direction: Vector2
 var look_at_point: Vector3
 
 
-func _ready() -> void:
-    # FIXME: hacky way of waiting for assigning authority by root
-    await owner.get_tree().process_frame
-    var has_authority: = is_multiplayer_authority()
-    set_process(has_authority)
-
-
 func _process(delta: float) -> void:
-    move_direction = input_source.get_move_direction()
-    look_at_point = input_source.get_look_at_point()
+    if is_multiplayer_authority():
+        move_direction = input_source.get_move_direction()
+        look_at_point = input_source.get_look_at_point()
+        
+        _process_actions("basic_attack")
+        _process_actions("secondary_attack")
+        _process_actions("third_attack")
+        _process_actions("block")
+        _process_actions("dodge")
+        _process_actions("ultimate")
+    else:
+        move_direction = move_direction.move_toward(Vector2.ZERO, delta)
     
-    _process_actions("basic_attack")
-    _process_actions("secondary_attack")
-    _process_actions("third_attack")
-    _process_actions("block")
-    _process_actions("dodge")
-    _process_actions("ultimate")
-    
-    if input_source.is_cancel_just_pressed(): on_cancel.emit()
+    # if input_source.is_cancel_just_pressed(): on_cancel.emit()
 
 
 func _process_actions(action: String) -> void:
@@ -45,6 +41,10 @@ func _process_actions(action: String) -> void:
         _process_actions_locally(action)
         return
     
+    _process_actions_remotely(action)
+
+
+func _process_actions_remotely(action: String) -> void:
     if input_source.call("is_%s_just_pressed" % action):
         _on_action_triggered.rpc_id(1, "on_%s" % action, true)
     elif input_source.call("is_%s_just_released" % action):

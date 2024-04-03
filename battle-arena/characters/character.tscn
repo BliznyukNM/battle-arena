@@ -37,12 +37,9 @@ properties/1/replication_mode = 1
 script = ExtResource("14_ovw2o")
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_aoe4k"]
-properties/0/path = NodePath("ServerInterpolation:server_position")
-properties/0/spawn = false
+properties/0/path = NodePath("ClientInterpolation:server_transform")
+properties/0/spawn = true
 properties/0/replication_mode = 1
-properties/1/path = NodePath("ServerInterpolation:server_rotation")
-properties/1/spawn = false
-properties/1/replication_mode = 1
 
 [node name="Character" type="CharacterBody3D"]
 collision_mask = 15
@@ -76,7 +73,7 @@ script = ExtResource("3_018qh")
 has_max_value = true
 max_value = 100.0
 has_min_value = true
-base_value = 100.0
+base_value = 15.0
 
 [node name="AttackSpeed" type="Node" parent="Stats"]
 script = ExtResource("3_018qh")
@@ -195,7 +192,7 @@ replication_config = SubResource("SceneReplicationConfig_woxwi")
 script = ExtResource("2_fj6tx")
 input_source = SubResource("Resource_mgice")
 
-[node name="ServerInterpolation" type="MultiplayerSynchronizer" parent="."]
+[node name="ClientInterpolation" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_aoe4k")
 script = ExtResource("17_gtpx6")
 lerp_amount = 8.0
