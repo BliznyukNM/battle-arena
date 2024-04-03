@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dr1ht670hlqd"
-path="res://.godot/imported/Icon2.png-72c4444d76816c099c098651810a45a5.ctex"
+uid="uid://dfcmdlge7n8rd"
+path="res://.godot/imported/Hands.png-c35d61dbc91b246e75878cb3d47ae4ba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/icons/Icon2.png"
-dest_files=["res://.godot/imported/Icon2.png-72c4444d76816c099c098651810a45a5.ctex"]
+source_file="res://assets/ui/icons/barbarian/Hands.png"
+dest_files=["res://.godot/imported/Hands.png-c35d61dbc91b246e75878cb3d47ae4ba.ctex"]
 
 [params]
 

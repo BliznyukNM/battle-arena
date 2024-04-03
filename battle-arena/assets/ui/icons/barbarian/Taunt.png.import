@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1jt3d8yp56f2"
-path="res://.godot/imported/Icon6.png-9ff42710d1a0cf57e77d6dfd85ff4ba5.ctex"
+uid="uid://8cynie08kmw1"
+path="res://.godot/imported/Taunt.png-ef3cdc378bb42c51afaee4eb6a92ead0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/icons/Icon6.png"
-dest_files=["res://.godot/imported/Icon6.png-9ff42710d1a0cf57e77d6dfd85ff4ba5.ctex"]
+source_file="res://assets/ui/icons/barbarian/Taunt.png"
+dest_files=["res://.godot/imported/Taunt.png-ef3cdc378bb42c51afaee4eb6a92ead0.ctex"]
 
 [params]
 
