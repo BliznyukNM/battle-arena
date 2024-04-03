@@ -10,7 +10,8 @@ var _skill
 
 func register(skill) -> void:
     _skill = skill
-    texture = skill.icon
+    texture = Icons.get_icon(skill.root_name)
+    
 
 
 func _process(delta: float) -> void:
