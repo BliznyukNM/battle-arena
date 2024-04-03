@@ -73,7 +73,7 @@ script = ExtResource("3_018qh")
 has_max_value = true
 max_value = 100.0
 has_min_value = true
-base_value = 100.0
+base_value = 15.0
 
 [node name="AttackSpeed" type="Node" parent="Stats"]
 script = ExtResource("3_018qh")

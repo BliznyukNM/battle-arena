@@ -76,9 +76,10 @@ func _on_itch_request_completed(result: int, response_code: int, headers: Packed
     if not nakama_result:
         push_error("Cannot authenticate: %s" % nakama_result)
     
-    nakama_result = await Matchmaking.update_account(json.user.display_name, json.user.cover_url)
-    if not nakama_result:
-        push_error("Cannot update account: %s" % nakama_result)
+    if json.user.has("display_name"):
+        nakama_result = await Matchmaking.update_account(json.user.display_name, json.user.cover_url)
+        if not nakama_result:
+            push_error("Cannot update account: %s" % nakama_result)
     
     loader.start_home()
 
