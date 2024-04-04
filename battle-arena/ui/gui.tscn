@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfqs7tnlielrb"]
+[gd_scene load_steps=8 format=3 uid="uid://cfqs7tnlielrb"]
 
-[ext_resource type="PackedScene" uid="uid://cndg2kkppsmgt" path="res://ui/skill_ui.tscn" id="1_57j3n"]
 [ext_resource type="Script" path="res://ui/gui.gd" id="1_h8wmn"]
+[ext_resource type="PackedScene" uid="uid://cndg2kkppsmgt" path="res://ui/skill_ui.tscn" id="2_lu0da"]
+[ext_resource type="Texture2D" uid="uid://chcu0sl46yfom" path="res://assets/ui/kenney_input-prompts/Keyboard & Mouse/Vector/mouse_left_outline.svg" id="4_uurqp"]
+[ext_resource type="Texture2D" uid="uid://cjq6oow844tct" path="res://assets/ui/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_q_outline.svg" id="5_8nt8t"]
+[ext_resource type="Texture2D" uid="uid://dl31fkxo1fdbx" path="res://assets/ui/kenney_input-prompts/Keyboard & Mouse/Vector/mouse_right_outline.svg" id="6_3e34k"]
+[ext_resource type="Texture2D" uid="uid://6euj1faob0ps" path="res://assets/ui/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_e_outline.svg" id="6_s03ad"]
+[ext_resource type="Texture2D" uid="uid://kibffkrt38ve" path="res://assets/ui/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_space_icon_outline.svg" id="8_llbca"]
 
 [node name="GUI" type="Control"]
 layout_mode = 3
@@ -12,7 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_h8wmn")
 
-[node name="BottomHUD" type="Control" parent="."]
+[node name="BottomHUD" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -24,53 +29,41 @@ offset_top = -101.0
 offset_right = 409.0
 grow_horizontal = 2
 grow_vertical = 0
+alignment = 1
 
-[node name="BaseSkill" parent="BottomHUD" instance=ExtResource("1_57j3n")]
-layout_mode = 1
-offset_left = -260.0
-offset_top = -24.5
-offset_right = -186.0
-offset_bottom = 27.5
-text = "LMB"
+[node name="LMB_button" parent="BottomHUD" instance=ExtResource("2_lu0da")]
+layout_mode = 2
 
-[node name="SecondarySkill" parent="BottomHUD" instance=ExtResource("1_57j3n")]
-layout_mode = 1
-offset_left = -156.0
-offset_top = -24.5
-offset_right = -79.0
-offset_bottom = 27.5
-text = "RMB"
+[node name="KeyboardQOutline" parent="BottomHUD/LMB_button" index="1"]
+texture = ExtResource("4_uurqp")
 
-[node name="BlockSkill" parent="BottomHUD" instance=ExtResource("1_57j3n")]
-layout_mode = 1
-offset_left = -68.0
-offset_top = -24.5
-offset_right = 9.0
-offset_bottom = 27.5
+[node name="RMB_button" parent="BottomHUD" instance=ExtResource("2_lu0da")]
+layout_mode = 2
 
-[node name="ThirdSkill" parent="BottomHUD" instance=ExtResource("1_57j3n")]
-layout_mode = 1
-offset_left = 13.0
-offset_top = -24.5
-offset_right = 90.0
-offset_bottom = 27.5
-text = "E"
+[node name="KeyboardQOutline" parent="BottomHUD/RMB_button" index="1"]
+texture = ExtResource("6_3e34k")
 
-[node name="DodgeSkill" parent="BottomHUD" instance=ExtResource("1_57j3n")]
-layout_mode = 1
-offset_left = 103.0
-offset_top = -24.5
-offset_right = 201.0
-offset_bottom = 27.5
-text = "Space"
+[node name="Q_button" parent="BottomHUD" instance=ExtResource("2_lu0da")]
+layout_mode = 2
 
-[node name="UltimateSkill" parent="BottomHUD" instance=ExtResource("1_57j3n")]
-layout_mode = 1
-offset_left = 212.0
-offset_top = -25.5
-offset_right = 258.0
-offset_bottom = 26.5
-text = "R"
+[node name="KeyboardQOutline" parent="BottomHUD/Q_button" index="1"]
+texture = ExtResource("5_8nt8t")
+
+[node name="E_button" parent="BottomHUD" instance=ExtResource("2_lu0da")]
+layout_mode = 2
+
+[node name="KeyboardQOutline" parent="BottomHUD/E_button" index="1"]
+texture = ExtResource("6_s03ad")
+
+[node name="Space_button" parent="BottomHUD" instance=ExtResource("2_lu0da")]
+layout_mode = 2
+
+[node name="KeyboardQOutline" parent="BottomHUD/Space_button" index="1"]
+texture = ExtResource("8_llbca")
+
+[node name="R_button" parent="BottomHUD" instance=ExtResource("2_lu0da")]
+visible = false
+layout_mode = 2
 
 [node name="ID" type="Label" parent="."]
 layout_mode = 1
@@ -83,3 +76,10 @@ offset_right = 62.0
 offset_bottom = -13.0
 grow_vertical = 0
 text = "0000000000000"
+
+[editable path="BottomHUD/LMB_button"]
+[editable path="BottomHUD/RMB_button"]
+[editable path="BottomHUD/Q_button"]
+[editable path="BottomHUD/E_button"]
+[editable path="BottomHUD/Space_button"]
+[editable path="BottomHUD/R_button"]
