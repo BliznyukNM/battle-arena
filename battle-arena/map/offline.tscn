@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://boulj8buo8ukk"]
+[gd_scene load_steps=7 format=3 uid="uid://boulj8buo8ukk"]
 
 [ext_resource type="PackedScene" uid="uid://flt4bdecd0xj" path="res://map/map.tscn" id="1_j7vok"]
 [ext_resource type="PackedScene" uid="uid://bwhc1p7a507eo" path="res://map/hero_selector.tscn" id="2_62l75"]
 [ext_resource type="PackedScene" uid="uid://vs53g10noy3c" path="res://characters/dummy/dummy.tscn" id="2_cgst3"]
 [ext_resource type="Script" path="res://map/sandbox.gd" id="2_vllfr"]
 [ext_resource type="PackedScene" uid="uid://cnvhuy5i7x6e" path="res://characters/dummy/shooting_dummy.tscn" id="3_q2hfq"]
+[ext_resource type="PackedScene" uid="uid://c60emmieo7mjj" path="res://map/collectables/energy_orb.tscn" id="6_gip28"]
 
 [node name="Map" instance=ExtResource("1_j7vok")]
 script = ExtResource("2_vllfr")
@@ -26,5 +27,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.80196, 9.53674e-07, -10.29
 
 [node name="ShootingDummy2" parent="." index="12" instance=ExtResource("3_q2hfq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.57644, 0, -10.5668)
+
+[node name="EnergyOrb" parent="." index="14" instance=ExtResource("6_gip28")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49841, 0.742736, -0.486423)
+value = 10.0
 
 [connection signal="select_hero" from="HeroSelector" to="." method="select_hero"]
