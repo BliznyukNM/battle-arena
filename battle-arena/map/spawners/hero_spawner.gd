@@ -1,3 +1,4 @@
+@tool
 extends MultiplayerSpawner
 
 
@@ -19,13 +20,18 @@ func are_all_dead() -> bool:
     return get_spawned().all(func(hero): return not hero.is_alive)
 
 
+const Utils = preload("res://utils/spawner.gd")
+
+
 func _ready() -> void:
+    if Engine.is_editor_hint():
+        const heroes_folder: = "res://characters/heroes"
+        for hero in DirAccess.get_directories_at(heroes_folder):
+            Utils.try_add_scene(self, "%s/%s/%s.tscn" % [heroes_folder, hero, hero])
+        return
+    
     spawn_function = _spawn
     spawned.connect(on_spawned)
-    
-    const heroes_folder: = "res://characters/heroes"
-    for hero in DirAccess.get_directories_at(heroes_folder):
-        add_spawnable_scene("%s/%s/%s.tscn" % [heroes_folder, hero, hero])
 
 
 func _spawn(params) -> Node:

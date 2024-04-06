@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://vs53g10noy3c" path="res://characters/dummy/dummy.tscn" id="2_cgst3"]
 [ext_resource type="Script" path="res://map/sandbox.gd" id="2_vllfr"]
 [ext_resource type="PackedScene" uid="uid://cnvhuy5i7x6e" path="res://characters/dummy/shooting_dummy.tscn" id="3_q2hfq"]
-[ext_resource type="PackedScene" uid="uid://c60emmieo7mjj" path="res://map/collectables/energy_orb.tscn" id="6_gip28"]
+[ext_resource type="Script" path="res://map/spawners/collectable_spawner.gd" id="6_u4iqx"]
 
 [node name="Map" instance=ExtResource("1_j7vok")]
 script = ExtResource("2_vllfr")
@@ -15,6 +15,12 @@ lerp_speed = 4.5
 max_distance = Vector2(20, 10)
 
 [node name="HeroSelector" parent="." index="5" instance=ExtResource("2_62l75")]
+
+[node name="TeamA" parent="Spawner" index="0"]
+_spawnable_scenes = PackedStringArray("res://characters/heroes/barbarian/barbarian.tscn", "res://characters/heroes/druid/druid.tscn", "res://characters/heroes/ranger/ranger.tscn")
+
+[node name="TeamB" parent="Spawner" index="1"]
+_spawnable_scenes = PackedStringArray("res://characters/heroes/barbarian/barbarian.tscn", "res://characters/heroes/druid/druid.tscn", "res://characters/heroes/ranger/ranger.tscn")
 
 [node name="IdleDummy1" parent="." index="9" instance=ExtResource("2_cgst3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.40516, 0, -3.10913)
@@ -28,8 +34,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.80196, 9.53674e-07, -10.29
 [node name="ShootingDummy2" parent="." index="12" instance=ExtResource("3_q2hfq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.57644, 0, -10.5668)
 
-[node name="EnergyOrb" parent="." index="14" instance=ExtResource("6_gip28")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49841, 0.742736, -0.486423)
-value = 10.0
+[node name="EnergyOrbSpawner" type="MultiplayerSpawner" parent="." index="14"]
+_spawnable_scenes = PackedStringArray("res://map/collectables/energy_orb.tscn")
+spawn_path = NodePath("Position")
+spawn_limit = 1
+script = ExtResource("6_u4iqx")
+collectable_scene_path = "res://map/collectables/energy_orb.tscn"
+
+[node name="Position" type="Node3D" parent="EnergyOrbSpawner" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.460332, 0, -0.487315)
 
 [connection signal="select_hero" from="HeroSelector" to="." method="select_hero"]
