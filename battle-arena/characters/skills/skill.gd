@@ -1,7 +1,6 @@
 @tool
 extends BeehaveTree
 
-@export var icon : Texture2D
 
 var execution: float:
     get: return blackboard.get_value("execution", 0.0, self.root_name)
