@@ -40,6 +40,6 @@ func _on_finish_travel() -> void:
 func _on_area_entered(area: Area3D) -> void:
     if not is_multiplayer_authority(): return
     if not area is HitBox: return
-    area.apply_damage.rpc(damage)
-    owner.gain_energy.rpc(energy_gain)
+    if not is_zero_approx(damage): area.apply_damage.rpc(damage)
+    if not is_zero_approx(energy_gain): owner.gain_energy.rpc(energy_gain)
     _on_finish_travel()
