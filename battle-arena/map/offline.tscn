@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://boulj8buo8ukk"]
+[gd_scene load_steps=8 format=3 uid="uid://boulj8buo8ukk"]
 
 [ext_resource type="PackedScene" uid="uid://flt4bdecd0xj" path="res://map/map.tscn" id="1_j7vok"]
 [ext_resource type="PackedScene" uid="uid://bwhc1p7a507eo" path="res://map/hero_selector.tscn" id="2_62l75"]
 [ext_resource type="PackedScene" uid="uid://vs53g10noy3c" path="res://characters/dummy/dummy.tscn" id="2_cgst3"]
 [ext_resource type="Script" path="res://map/sandbox.gd" id="2_vllfr"]
 [ext_resource type="PackedScene" uid="uid://cnvhuy5i7x6e" path="res://characters/dummy/shooting_dummy.tscn" id="3_q2hfq"]
+[ext_resource type="Script" path="res://map/spawners/collectable_spawner.gd" id="6_u4iqx"]
+[ext_resource type="Script" path="res://map/spawners/spawn_position.gd" id="7_dkqw6"]
 
 [node name="Map" instance=ExtResource("1_j7vok")]
 script = ExtResource("2_vllfr")
@@ -15,16 +17,53 @@ max_distance = Vector2(20, 10)
 
 [node name="HeroSelector" parent="." index="5" instance=ExtResource("2_62l75")]
 
-[node name="IdleDummy1" parent="." index="9" instance=ExtResource("2_cgst3")]
+[node name="TeamA" parent="Spawner" index="0"]
+_spawnable_scenes = PackedStringArray("res://characters/heroes/barbarian/barbarian.tscn", "res://characters/heroes/druid/druid.tscn", "res://characters/heroes/ranger/ranger.tscn")
+
+[node name="TeamB" parent="Spawner" index="1"]
+_spawnable_scenes = PackedStringArray("res://characters/heroes/barbarian/barbarian.tscn", "res://characters/heroes/druid/druid.tscn", "res://characters/heroes/ranger/ranger.tscn")
+
+[node name="Dummies" type="Node" parent="." index="10"]
+
+[node name="IdleDummy1" parent="Dummies" index="0" instance=ExtResource("2_cgst3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.40516, 0, -3.10913)
 
-[node name="IdleDummy2" parent="." index="10" instance=ExtResource("2_cgst3")]
+[node name="IdleDummy2" parent="Dummies" index="1" instance=ExtResource("2_cgst3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.33085, 0, -3.10913)
 
-[node name="ShootingDummy1" parent="." index="11" instance=ExtResource("3_q2hfq")]
+[node name="ShootingDummy1" parent="Dummies" index="2" instance=ExtResource("3_q2hfq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.80196, 9.53674e-07, -10.2986)
 
-[node name="ShootingDummy2" parent="." index="12" instance=ExtResource("3_q2hfq")]
+[node name="ShootingDummy2" parent="Dummies" index="3" instance=ExtResource("3_q2hfq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.57644, 0, -10.5668)
+
+[node name="CollectablesSpawner" type="MultiplayerSpawner" parent="." index="11"]
+_spawnable_scenes = PackedStringArray("res://map/collectables/energy_orb.tscn")
+spawn_path = NodePath(".")
+script = ExtResource("6_u4iqx")
+
+[node name="EnergyOrb1" type="Node3D" parent="CollectablesSpawner" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0215, 0, -3.83024)
+script = ExtResource("7_dkqw6")
+scene_path = "res://map/collectables/energy_orb.tscn"
+respawn_time = 10.0
+
+[node name="EnergyOrb2" type="Node3D" parent="CollectablesSpawner" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0215, 0, 2.26018)
+script = ExtResource("7_dkqw6")
+scene_path = "res://map/collectables/energy_orb.tscn"
+respawn_time = 10.0
+
+[node name="EnergyOrb3" type="Node3D" parent="CollectablesSpawner" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.22435, 0, -3.83024)
+script = ExtResource("7_dkqw6")
+scene_path = "res://map/collectables/energy_orb.tscn"
+respawn_time = 10.0
+
+[node name="EnergyOrb4" type="Node3D" parent="CollectablesSpawner" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.22435, 0, 2.26018)
+script = ExtResource("7_dkqw6")
+scene_path = "res://map/collectables/energy_orb.tscn"
+respawn_time = 10.0
 
 [connection signal="select_hero" from="HeroSelector" to="." method="select_hero"]

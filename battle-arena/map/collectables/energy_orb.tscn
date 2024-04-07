@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://c60emmieo7mjj"]
+
+[ext_resource type="Script" path="res://map/collectables/energy_orb.gd" id="1_p73tv"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6nvfh"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_c62jw"]
+radius = 0.15
+height = 0.3
+
+[node name="EnergyOrb" type="Area3D"]
+collision_layer = 0
+collision_mask = 6
+script = ExtResource("1_p73tv")
+value = 5.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.489186, 0)
+shape = SubResource("SphereShape3D_6nvfh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.489186, 0)
+mesh = SubResource("SphereMesh_c62jw")
+
+[connection signal="body_entered" from="." to="." method="_on_pickup"]
