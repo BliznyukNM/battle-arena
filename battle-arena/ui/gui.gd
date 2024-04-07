@@ -3,6 +3,8 @@ extends Control
 var target: Character:
     set(value):
         target = value
+        _update_hud()
+
         
 func _update_hud() -> void:
     $BottomHUD/LMB_button.register(target.skills.basic_attack)
@@ -12,9 +14,3 @@ func _update_hud() -> void:
     $BottomHUD/Space_button.register(target.skills.dodge)
     $BottomHUD/R_button.register(target.skills.ultimate)
     $ID.text = "ID: %d" % target.player_id
-
-
-func _process(_delta: float) -> void:
-    if not target: return
-    _update_hud.call_deferred()
-        
