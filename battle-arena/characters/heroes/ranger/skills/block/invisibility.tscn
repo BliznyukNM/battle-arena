@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://b4cex7rajpu6b"]
 
-[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_j41q4"]
+[ext_resource type="Script" path="res://characters/skills/composites/sequence.gd" id="1_irop8"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_om10m"]
 [ext_resource type="Script" path="res://characters/skills/leaves/play_animation.gd" id="3_b68ay"]
 [ext_resource type="Script" path="res://characters/skills/leaves/progress_bar/show_progress_bar.gd" id="4_f7jmk"]
@@ -13,7 +13,8 @@
 [ext_resource type="Script" path="res://characters/skills/leaves/wait.gd" id="12_fxfsf"]
 
 [node name="Invisibility" type="Node"]
-script = ExtResource("1_j41q4")
+script = ExtResource("1_irop8")
+reset_on_interrupt = false
 
 [node name="Ready" type="Node" parent="."]
 script = ExtResource("2_om10m")
@@ -25,7 +26,7 @@ animation_name = "invisibility"
 
 [node name="ShowProgressBar" type="Node" parent="."]
 script = ExtResource("4_f7jmk")
-duration = 2.0
+duration = 5.0
 
 [node name="ApplyWithAuthority" type="Node" parent="."]
 script = ExtResource("5_6cgkh")
@@ -41,7 +42,7 @@ key = "\"%s_ready\" % actor.name"
 
 [node name="ExecutionWait" type="Node" parent="Cancellable"]
 script = ExtResource("12_fxfsf")
-wait_time = 2.0
+wait_time = 5.0
 cache_key = "execution"
 
 [node name="CleanWithAuthority" type="Node" parent="."]
@@ -60,5 +61,5 @@ script = ExtResource("8_q1ot8")
 
 [node name="Cooldown" type="Node" parent="."]
 script = ExtResource("12_fxfsf")
-wait_time = 0.5
+wait_time = 9.0
 cache_key = "cooldown"
