@@ -16,8 +16,8 @@
 [node name="Character" instance=ExtResource("1_gfvhh")]
 
 [node name="Health" parent="Stats" index="0"]
-max_value = 200.0
-base_value = 200.0
+max_value = 250.0
+base_value = 250.0
 
 [node name="MovementSpeed" parent="Stats" index="2"]
 base_value = 3.5

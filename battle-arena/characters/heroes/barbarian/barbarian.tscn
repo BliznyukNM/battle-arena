@@ -17,8 +17,8 @@
 script = ExtResource("2_6pbkp")
 
 [node name="Health" parent="Stats" index="0"]
-max_value = 250.0
-base_value = 250.0
+max_value = 300.0
+base_value = 300.0
 
 [node name="Shield" parent="Stats" index="1"]
 max_value = 500.0

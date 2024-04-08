@@ -38,7 +38,7 @@ key = "\"%s_ready\" % actor.name"
 
 [node name="Repeatable" type="Node" parent="Cancellable"]
 script = ExtResource("4_icejg")
-time = 4.0
+time = 3.0
 cache_key = "execution"
 
 [node name="Sequence" type="Node" parent="Cancellable/Repeatable"]
