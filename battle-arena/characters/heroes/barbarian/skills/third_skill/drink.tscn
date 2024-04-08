@@ -19,13 +19,12 @@ animation_name = "drink"
 
 [node name="ExecutionWait" type="Node" parent="."]
 script = ExtResource("9_52uy8")
-wait_time = 1.0
 cache_key = "execution"
 
 [node name="Heal" type="Node" parent="."]
 script = ExtResource("5_c0ddx")
 stat_name = "Health"
-current = 50.0
+current = 25.0
 
 [node name="Cooldown" type="Node" parent="."]
 script = ExtResource("9_52uy8")

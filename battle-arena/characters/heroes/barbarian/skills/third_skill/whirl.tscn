@@ -38,7 +38,7 @@ key = "\"%s_ready\" % actor.name"
 
 [node name="Repeatable" type="Node" parent="Cancellable"]
 script = ExtResource("4_icejg")
-time = 3.0
+time = 4.0
 cache_key = "execution"
 
 [node name="Sequence" type="Node" parent="Cancellable/Repeatable"]
@@ -60,7 +60,7 @@ collision_type = 1
 
 [node name="ExecutionWait" type="Node" parent="Cancellable/Repeatable/Sequence"]
 script = ExtResource("9_uy0dn")
-wait_time = 0.25
+wait_time = 0.2
 cache_key = "delay"
 
 [node name="CleanWithAuthority" type="Node" parent="."]

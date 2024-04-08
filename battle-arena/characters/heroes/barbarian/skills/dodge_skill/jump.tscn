@@ -24,7 +24,6 @@ animation_name = "jump"
 [node name="MousePosition" type="Node" parent="."]
 script = ExtResource("4_ways6")
 max_distance = 10.0
-key_name = null
 
 [node name="Jump" type="Node" parent="MousePosition"]
 script = ExtResource("4_cicil")
@@ -39,12 +38,12 @@ script = ExtResource("7_km2gl")
 [node name="Attack" type="Node" parent="AlwaysSucceed/Authority"]
 script = ExtResource("7_m7w3y")
 damage = 20
-hit_range = 2.0
+hit_range = 3.5
 area = 360.0
 offset = Vector3(2.08165e-12, 1, 2.08165e-12)
 collision_type = 1
 
 [node name="Cooldown" type="Node" parent="."]
 script = ExtResource("10_vnu0x")
-wait_time = 5.0
+wait_time = 7.0
 cache_key = "cooldown"

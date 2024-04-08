@@ -26,5 +26,5 @@ func _spawn(params) -> Node:
     var collectable: = collectable_scene.instantiate()
     collectable.position = params.position
     var spawn_node: = get_node(params.spawn_node)
-    collectable.tree_exited.connect(spawn_node.trigger_respawn, CONNECT_ONE_SHOT)
+    collectable.picked_up.connect(spawn_node.trigger_respawn, CONNECT_ONE_SHOT)
     return collectable

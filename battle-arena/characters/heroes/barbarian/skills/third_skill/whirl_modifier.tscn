@@ -6,7 +6,7 @@
 [sub_resource type="Resource" id="Resource_ekvqh"]
 script = ExtResource("2_efmyc")
 stat_name = "MovementSpeed"
-percentage = 25.0
+percentage = 40.0
 flat = 0.0
 
 [sub_resource type="Resource" id="Resource_hbxxl"]
