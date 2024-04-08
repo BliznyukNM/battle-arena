@@ -52,7 +52,6 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
     for hit in result:
         if hit.collider is HitBox:
             hit.collider.apply_damage.rpc(damage)
-            print("%s receives %d damage" % [hit.collider.owner.name, damage])
             hitbox_count += 1
     
     return SUCCESS if hitbox_count > 0 else FAILURE
