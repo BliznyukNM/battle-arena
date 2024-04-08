@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4uuy5qmtdakt"]
+[gd_scene load_steps=10 format=3 uid="uid://b4uuy5qmtdakt"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_yrwee"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_cjbpa"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="6_uxhe2"]
 [ext_resource type="Script" path="res://characters/skills/decorators/spawn/near_actor.gd" id="7_y24g6"]
 [ext_resource type="Script" path="res://characters/skills/leaves/spawn.gd" id="8_0e61x"]
+[ext_resource type="Script" path="res://characters/heroes/ranger/skills/leaves/interrupt_invisibility.gd" id="9_mpohx"]
 
 [node name="BasicAttack" type="Node"]
 script = ExtResource("1_yrwee")
@@ -23,23 +24,29 @@ animation_name = "shoot"
 
 [node name="ShowProgressBar" type="Node" parent="."]
 script = ExtResource("4_3q1sh")
-duration = 0.8
+duration = 0.5
 
 [node name="ExecutionWait" type="Node" parent="."]
 script = ExtResource("5_mupk7")
-wait_time = 0.65
+wait_time = 0.32
 cache_key = "execution"
 
 [node name="Authority" type="Node" parent="."]
 script = ExtResource("6_uxhe2")
 
-[node name="NearActor" type="Node" parent="Authority"]
+[node name="Sequence" type="Node" parent="Authority"]
+script = ExtResource("1_yrwee")
+
+[node name="NearActor" type="Node" parent="Authority/Sequence"]
 script = ExtResource("7_y24g6")
 offset = Vector3(2.08165e-12, 1, 1)
 
-[node name="Throw" type="Node" parent="Authority/NearActor"]
+[node name="Throw" type="Node" parent="Authority/Sequence/NearActor"]
 script = ExtResource("8_0e61x")
 scene_path = "res://characters/heroes/ranger/arrow.tscn"
+
+[node name="InterruptInvisibility" type="Node" parent="Authority/Sequence"]
+script = ExtResource("9_mpohx")
 
 [node name="Cooldown" type="Node" parent="."]
 script = ExtResource("5_mupk7")

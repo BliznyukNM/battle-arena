@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://brn6cw5tr1mxb"]
+[gd_scene load_steps=13 format=3 uid="uid://brn6cw5tr1mxb"]
 
 [ext_resource type="PackedScene" uid="uid://d26br4f45m27g" path="res://characters/character.tscn" id="1_6uqpy"]
 [ext_resource type="Script" path="res://characters/heroes/barbarian/barbarian.gd" id="2_6pbkp"]
 [ext_resource type="PackedScene" uid="uid://bhcwmbvmeavxw" path="res://characters/heroes/barbarian/skin.tscn" id="2_lwxa8"]
 [ext_resource type="Script" path="res://characters/stats/number_stat.gd" id="3_l5iug"]
+[ext_resource type="PackedScene" uid="uid://b7hiftft325ce" path="res://characters/heroes/barbarian/modifiers/slow_on_attack.tscn" id="4_cwsdf"]
 [ext_resource type="PackedScene" uid="uid://ja43sf4jseel" path="res://characters/heroes/barbarian/skills/second_skill/second_skill.tscn" id="5_2hxsx"]
+[ext_resource type="PackedScene" uid="uid://d0vml28qm10fl" path="res://characters/heroes/barbarian/modifiers/slow_on_throw.tscn" id="5_dgl7s"]
 [ext_resource type="Script" path="res://characters/heroes/barbarian/processors/skin.gd" id="6_5y8y2"]
 [ext_resource type="PackedScene" uid="uid://cawu7vbk3beow" path="res://characters/heroes/barbarian/skills/dodge_skill/jump.tscn" id="6_8bd58"]
 [ext_resource type="PackedScene" uid="uid://cla3pej420s8h" path="res://characters/heroes/barbarian/skills/third_skill/third_skill.tscn" id="6_g0x80"]
@@ -15,11 +17,14 @@
 script = ExtResource("2_6pbkp")
 
 [node name="Health" parent="Stats" index="0"]
-max_value = 500.0
-base_value = 500.0
+max_value = 250.0
+base_value = 250.0
 
 [node name="Shield" parent="Stats" index="1"]
 max_value = 500.0
+
+[node name="MovementSpeed" parent="Stats" index="2"]
+base_value = 4.0
 
 [node name="Name" parent="Stats" index="5"]
 current_value = "Barbarian"
@@ -31,7 +36,11 @@ max_value = 100.0
 has_min_value = true
 
 [node name="Spawner" parent="Modifiers" index="0"]
-_spawnable_scenes = PackedStringArray("res://characters/heroes/barbarian/skills/third_skill/whirl_modifier.tscn", "res://characters/heroes/barbarian/skills/block_skill/taunt_modifier.tscn", "res://characters/heroes/barbarian/skills/block_skill/rage_modifier.tscn")
+_spawnable_scenes = PackedStringArray("res://characters/heroes/barbarian/skills/third_skill/whirl_modifier.tscn", "res://characters/heroes/barbarian/skills/block_skill/taunt_modifier.tscn", "res://characters/heroes/barbarian/skills/block_skill/rage_modifier.tscn", "res://characters/heroes/barbarian/modifiers/slow_on_attack.tscn", "res://characters/heroes/barbarian/modifiers/slow_on_throw.tscn")
+
+[node name="SlowOnAttack" parent="Modifiers/Spawner" index="0" instance=ExtResource("4_cwsdf")]
+
+[node name="SlowOnThrow" parent="Modifiers/Spawner" index="1" instance=ExtResource("5_dgl7s")]
 
 [node name="BasicAttack" parent="Skills" index="0"]
 enabled = true

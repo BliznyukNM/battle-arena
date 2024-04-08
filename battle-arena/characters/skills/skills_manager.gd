@@ -60,7 +60,8 @@ func cancel_skill() -> void:
 func _activate_skill(index: int, pressed: bool) -> void:
     var skill = _skills[index]
     if not skill or not skill.enabled: return
-    if _last_used_skill and _last_used_skill != skill and not is_zero_approx(_last_used_skill.execution): return
+    if _last_used_skill and _last_used_skill != skill and \
+        not _last_used_skill.interruptable and not is_zero_approx(_last_used_skill.execution): return
     
     _last_used_skill = skill
     var key: String = "%s_ready" % skill.name

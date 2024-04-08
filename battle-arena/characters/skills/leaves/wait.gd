@@ -46,7 +46,7 @@ func _update_time(actor: Node, blackboard: Blackboard) -> void:
 
 func interrupt(actor: Node, blackboard: Blackboard) -> void:
     super(actor, blackboard)
-    blackboard.erase_value(cache_key, owner.name)
     var tween: Tween = blackboard.get_value("tween", null, owner.name)
     tween.kill()
     blackboard.erase_value("tween", owner.name)
+    blackboard.erase_value(cache_key, owner.name)

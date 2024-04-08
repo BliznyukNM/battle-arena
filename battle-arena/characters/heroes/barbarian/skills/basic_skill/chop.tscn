@@ -39,7 +39,6 @@ duration = 0.8
 [node name="ExecutionAttackSpeedScale" type="Node" parent="."]
 script = ExtResource("6_7huxs")
 stat_name = "AttackSpeed"
-inverted = true
 
 [node name="ExecutionWait" type="Node" parent="ExecutionAttackSpeedScale"]
 script = ExtResource("5_uyjv7")
@@ -55,7 +54,7 @@ script = ExtResource("11_mquxu")
 [node name="Attack" type="Node" parent="Authority/AttackSequence"]
 script = ExtResource("8_17a63")
 damage = 10
-hit_range = 3.0
+hit_range = 2.0
 area = 40.0
 offset = Vector3(2.08165e-12, 1, 2.08165e-12)
 collision_type = 1
@@ -68,9 +67,8 @@ current = 5.0
 [node name="CooldownAttackSpeedScale" type="Node" parent="."]
 script = ExtResource("6_7huxs")
 stat_name = "AttackSpeed"
-inverted = true
 
 [node name="Cooldown" type="Node" parent="CooldownAttackSpeedScale"]
 script = ExtResource("5_uyjv7")
-wait_time = 0.45
+wait_time = 0.5
 cache_key = "cooldown"

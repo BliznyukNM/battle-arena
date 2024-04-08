@@ -44,5 +44,5 @@ scene_path = "res://characters/heroes/ranger/skills/third_attack/trap_bomb.tscn"
 
 [node name="Cooldown" type="Node" parent="."]
 script = ExtResource("5_enxgj")
-wait_time = 1.0
+wait_time = 9.0
 cache_key = "cooldown"

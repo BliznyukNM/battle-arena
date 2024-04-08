@@ -15,7 +15,6 @@ func _ready() -> void:
 
 func trigger_respawn() -> void:
     var tween = create_tween()
-    if not tween: return
     
     var params = {
         "path": scene_path,

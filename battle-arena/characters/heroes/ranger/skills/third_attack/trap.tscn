@@ -44,7 +44,7 @@ shadow_mesh = SubResource("ArrayMesh_ngfuw")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_hhxo2"]
 height = 0.3
-radius = 0.8
+radius = 1.94803
 
 [node name="Trap" type="Area3D"]
 script = ExtResource("1_je8jk")
@@ -52,7 +52,7 @@ damage = 10
 modifier = ExtResource("2_4pms0")
 
 [node name="BearTrap_Open" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.08165e-12, 0.17, 2.08165e-12)
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 2.08165e-12, 0.17, 2.08165e-12)
 mesh = SubResource("ArrayMesh_u8xrk")
 skeleton = NodePath("")
 
