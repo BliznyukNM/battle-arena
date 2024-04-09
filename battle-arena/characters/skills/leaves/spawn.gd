@@ -5,9 +5,6 @@ extends ActionLeaf
 @export_file("*.tscn") var scene_path: String
 
 
-var spawn_transform: Transform3D
-
-
 func tick(actor: Node, blackboard: Blackboard) -> int:
     var character: Character = actor.owner
     var options: Dictionary = blackboard.get_value("options", {}, owner.name)

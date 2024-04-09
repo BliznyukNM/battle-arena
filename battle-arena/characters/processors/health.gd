@@ -2,7 +2,7 @@ extends Node
 
 
 @export var health: NumberStat
-@export var shield: NumberStat
+@export var barrier: NumberStat
 
 
 var invulnerable: BaseStat:
@@ -14,10 +14,10 @@ var invulnerable: BaseStat:
 func apply(source: Character, value: float) -> void:
     if invulnerable: return
     
-    if shield:
-        var shield_old_value = shield.current_value
-        shield.current_value -= value
-        value -= shield_old_value
+    if barrier:
+        var barrier_old_value = barrier.current_value
+        barrier.current_value -= value
+        value -= barrier_old_value
     
     if value <= 0: return
     

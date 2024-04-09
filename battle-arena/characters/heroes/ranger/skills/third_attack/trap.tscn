@@ -48,7 +48,8 @@ radius = 1.94803
 
 [node name="Trap" type="Area3D"]
 script = ExtResource("1_je8jk")
-damage = 10
+lifetime = 6.0
+damage = 20
 modifier = ExtResource("2_4pms0")
 
 [node name="BearTrap_Open" type="MeshInstance3D" parent="."]

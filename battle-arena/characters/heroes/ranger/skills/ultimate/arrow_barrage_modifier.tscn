@@ -9,12 +9,12 @@ stat_name = "MovementSpeed"
 percentage = -100.0
 flat = 0.0
 
-[sub_resource type="Resource" id="Resource_m7omb"]
+[sub_resource type="Resource" id="Resource_w0uuq"]
 script = ExtResource("2_ylbo6")
-stat_name = "RotationSpeed"
-percentage = -80.0
-flat = 0.0
+stat_name = "Barrier"
+percentage = 0.0
+flat = 100.0
 
 [node name="ArrowBarrageModifier" type="Node"]
 script = ExtResource("1_fx8oh")
-effects = Array[Resource("res://characters/status_effects/effects/base_effect.gd")]([SubResource("Resource_uctg2"), SubResource("Resource_m7omb")])
+effects = Array[Resource("res://characters/status_effects/effects/base_effect.gd")]([SubResource("Resource_uctg2"), SubResource("Resource_w0uuq")])

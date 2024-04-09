@@ -30,4 +30,6 @@ func remove_modifier(modifier: BaseModifier) -> void:
 
 
 func reset() -> void:
-    for modifier in spawner.get_children(): modifier.reset()
+    if not is_multiplayer_authority(): return
+    for modifier in spawner.get_children(): remove_modifier(modifier)
+    spawner.reset()

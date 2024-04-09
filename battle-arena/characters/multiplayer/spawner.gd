@@ -6,7 +6,9 @@ extends MultiplayerSpawner
 
 func _ready() -> void:
     spawn_function = _spawn
-    
+
+
+func reset() -> void:
     if not is_multiplayer_authority(): return
     for scene in spawn_on_ready: spawn({"path": scene})
 

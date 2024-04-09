@@ -25,5 +25,5 @@ func after_run(actor: Node, blackboard: Blackboard) -> void:
     character.hit_box.on_damage.disconnect(_on_damage)
 
 
-func _on_damage(_value: float) -> void:
+func _on_damage(source: Character, _value: float) -> void:
     _is_damaged = true

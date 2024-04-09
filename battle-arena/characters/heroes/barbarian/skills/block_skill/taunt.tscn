@@ -51,6 +51,7 @@ key = "\"%s_ready\" % actor.name"
 
 [node name="ExecutionWait" type="Node" parent="Taunting/Sequence/Inverted/UntilHit/Cancellable"]
 script = ExtResource("3_optkk")
+wait_time = 2.0
 cache_key = "execution"
 
 [node name="ApplyWithAuthority" type="Node" parent="Taunting/Sequence"]

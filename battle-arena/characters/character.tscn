@@ -55,10 +55,10 @@ max_value = 100.0
 has_min_value = true
 base_value = 100.0
 
-[node name="Shield" type="Node" parent="Stats"]
+[node name="Barrier" type="Node" parent="Stats"]
 script = ExtResource("3_018qh")
 has_max_value = true
-max_value = 100.0
+max_value = 500.0
 has_min_value = true
 
 [node name="MovementSpeed" type="Node" parent="Stats"]
@@ -143,10 +143,10 @@ actor = NodePath(".")
 [node name="Processors" type="Node" parent="."]
 process_mode = 1
 
-[node name="Damage" type="Node" parent="Processors" node_paths=PackedStringArray("health", "shield")]
+[node name="Damage" type="Node" parent="Processors" node_paths=PackedStringArray("health", "barrier")]
 script = ExtResource("9_q665c")
 health = NodePath("../../Stats/Health")
-shield = NodePath("../../Stats/Shield")
+barrier = NodePath("../../Stats/Barrier")
 
 [node name="Heal" type="Node" parent="Processors" node_paths=PackedStringArray("health")]
 script = ExtResource("9_urlqi")
@@ -178,9 +178,10 @@ shape = SubResource("CylinderShape3D_47r4a")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
 shape = SubResource("CylinderShape3D_vwbuv")
 
-[node name="HUD" parent="." node_paths=PackedStringArray("health", "name_tag") instance=ExtResource("12_4f13d")]
+[node name="HUD" parent="." node_paths=PackedStringArray("health", "barrier", "name_tag") instance=ExtResource("12_4f13d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4973, 0)
 health = NodePath("../Stats/Health")
+barrier = NodePath("../Stats/Barrier")
 name_tag = NodePath("../Stats/Name")
 
 [node name="LocalSpawner" type="MultiplayerSpawner" parent="."]

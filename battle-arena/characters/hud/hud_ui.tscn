@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bs6m5j1v06l5l"]
+[gd_scene load_steps=10 format=3 uid="uid://bs6m5j1v06l5l"]
 
 [ext_resource type="StyleBox" uid="uid://devdhjl8yjik1" path="res://characters/hud/health_background.stylebox" id="1_ior5a"]
 [ext_resource type="StyleBox" uid="uid://dad6r5qfh231s" path="res://characters/hud/effect_progress_fill.stylebox" id="1_o1c2b"]
@@ -7,6 +7,8 @@
 [ext_resource type="StyleBox" uid="uid://bxjgtdo5iyp1j" path="res://characters/hud/energy_fill.stylebox" id="3_eidsd"]
 [ext_resource type="Script" path="res://characters/hud/progress_bar.gd" id="3_j1f8r"]
 [ext_resource type="StyleBox" uid="uid://csn4pekn2r26y" path="res://characters/hud/progress_fill.stylebox" id="3_ygy35"]
+[ext_resource type="StyleBox" uid="uid://d3jhljxj8oewv" path="res://characters/hud/shield_background.stylebox" id="5_a6moc"]
+[ext_resource type="StyleBox" uid="uid://cgigqvdgn1hy2" path="res://characters/hud/shield_fill.stylebox" id="5_bnodi"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -89,6 +91,22 @@ size_flags_horizontal = 4
 theme_override_styles/background = ExtResource("1_ior5a")
 theme_override_styles/fill = ExtResource("2_2t6jf")
 value = 50.0
+show_percentage = false
+
+[node name="Barrier" type="ProgressBar" parent="Container"]
+custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -4.0
+offset_top = 75.0
+offset_right = 5.0
+offset_bottom = 99.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_styles/background = ExtResource("5_a6moc")
+theme_override_styles/fill = ExtResource("5_bnodi")
+value = 30.0
 show_percentage = false
 
 [node name="Energy" type="ProgressBar" parent="Container"]

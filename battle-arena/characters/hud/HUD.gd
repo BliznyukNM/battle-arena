@@ -2,11 +2,13 @@ extends Node
 
 
 @export var health: NumberStat
+@export var barrier: NumberStat
 @export var energy: NumberStat
 @export var name_tag: TagStat
 
 
 @onready var health_bar: = $SubViewport/HUD/Container/Health
+@onready var barrier_bar: = $SubViewport/HUD/Container/Barrier
 @onready var energy_bar: = $SubViewport/HUD/Container/Energy
 @onready var progress_bar: = $SubViewport/HUD/Container/ProgressBar
 @onready var effect_progress_bar: = $SubViewport/HUD/Container/EffectProgressBar
@@ -19,6 +21,7 @@ extends Node
 func _ready() -> void:
     _initialize_bar(health_bar, health)
     _initialize_bar(energy_bar, energy)
+    _initialize_bar(barrier_bar, barrier)
     if name_tag: name_label.text = name_tag.current_value
     else: name_label.visible = false
 

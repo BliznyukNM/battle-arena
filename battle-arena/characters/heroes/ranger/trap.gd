@@ -23,6 +23,6 @@ func _on_area_entered(area: Area3D) -> void:
     if not area is HitBox: return
     
     area.apply_modifier.rpc(modifier.resource_path)
-    area.apply_damage.rpc(damage)
+    area.process_damage(owner, damage)
     
     queue_free()

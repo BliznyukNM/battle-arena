@@ -32,6 +32,7 @@ func apply_heal(value: float) -> void:
 
 @rpc("reliable", "call_local")
 func apply_modifier(modifier_path: String) -> void:
+    if not "modifiers" in owner: return
     Utils.try_add_scene(owner.modifiers.spawner, modifier_path)
     if not is_multiplayer_authority(): return
     owner.modifiers.add_modifier({ "path": modifier_path })
