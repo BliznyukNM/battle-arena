@@ -28,6 +28,9 @@ func _process(delta: float) -> void:
     var direction: Vector3 = (owner.global_position - position).normalized()
     position += direction * frame_distance
     look_at(position + direction)
+    
+    if not is_multiplayer_authority(): return
+    if position.distance_squared_to(owner.position) < 0.1: owner.on_pickup_axe.rpc()
 
 
 func _on_finish_travel() -> void:

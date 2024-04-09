@@ -35,6 +35,7 @@ func _process(delta: float) -> void:
 
 
 func _on_ground_entered(body: Node3D) -> void:
+    if not is_multiplayer_authority(): return
     if not body is GridMap: return
     var spawn_transform: = transform.translated_local(Vector3(0.0, -0.3, 0.0))
     owner.spawner.spawn({"path": trap_scene, "transform": spawn_transform})

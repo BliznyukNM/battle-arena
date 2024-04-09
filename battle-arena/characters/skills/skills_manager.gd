@@ -13,7 +13,7 @@ var enabled: bool = true
 
 
 var _skills: Array
-var _last_used_skill
+var last_used_skill
 
 
 func _ready() -> void:
@@ -52,18 +52,14 @@ func activate_ultimate(pressed: bool) -> void:
 
 func cancel_skill() -> void:
     if not enabled: return
-    if not _last_used_skill or is_zero_approx(_last_used_skill.execution): return
-    _last_used_skill.cancel()
+    if not last_used_skill or is_zero_approx(last_used_skill.execution): return
+    last_used_skill.cancel()
 
 
 @rpc("reliable", "call_local")
 func _activate_skill(index: int, pressed: bool) -> void:
     var skill = _skills[index]
     if not skill or not skill.enabled: return
-    if _last_used_skill and _last_used_skill != skill and \
-        not _last_used_skill.interruptable and not is_zero_approx(_last_used_skill.execution): return
-    
-    _last_used_skill = skill
     var key: String = "%s_ready" % skill.name
     skill.blackboard.set_value(key, pressed)
 

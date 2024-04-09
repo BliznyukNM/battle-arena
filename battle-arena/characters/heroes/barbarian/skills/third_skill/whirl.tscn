@@ -1,7 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://cubw8we7gbnjx"]
+[gd_scene load_steps=14 format=3 uid="uid://cubw8we7gbnjx"]
 
-[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_nmp7m"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_u0ny2"]
+[ext_resource type="Script" path="res://characters/skills/leaves/wait_executing_skill.gd" id="3_0vmgm"]
 [ext_resource type="Script" path="res://characters/skills/leaves/play_animation.gd" id="3_5cigl"]
 [ext_resource type="Script" path="res://characters/skills/decorators/time_repeat.gd" id="4_icejg"]
 [ext_resource type="Script" path="res://characters/skills/decorators/cancellable.gd" id="4_nfeeu"]
@@ -9,16 +9,21 @@
 [ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="6_rthxc"]
 [ext_resource type="Script" path="res://characters/skills/leaves/melee_attack.gd" id="7_a5cog"]
 [ext_resource type="Script" path="res://characters/skills/leaves/stop_animation.gd" id="8_dmbmt"]
+[ext_resource type="Script" path="res://characters/skills/composites/sequence.gd" id="8_qp73v"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/decorators/succeeder.gd" id="9_nyuvp"]
 [ext_resource type="Script" path="res://characters/skills/leaves/wait.gd" id="9_uy0dn"]
 [ext_resource type="Script" path="res://characters/skills/leaves/modifiers/remove_modifier.gd" id="10_epktq"]
 
 [node name="Whirl" type="Node"]
-script = ExtResource("1_nmp7m")
+script = ExtResource("8_qp73v")
+reset_on_interrupt = false
 
 [node name="RunUntil" type="Node" parent="."]
 script = ExtResource("2_u0ny2")
 key = "\"%s_ready\" % actor.name"
+
+[node name="WaitExecutingSkill" type="Node" parent="."]
+script = ExtResource("3_0vmgm")
 
 [node name="PlayAnimation" type="Node" parent="."]
 script = ExtResource("3_5cigl")
@@ -42,7 +47,8 @@ time = 3.0
 cache_key = "execution"
 
 [node name="Sequence" type="Node" parent="Cancellable/Repeatable"]
-script = ExtResource("1_nmp7m")
+script = ExtResource("8_qp73v")
+return_on_finish = false
 
 [node name="AlwaysSucceed" type="Node" parent="Cancellable/Repeatable/Sequence"]
 script = ExtResource("9_nyuvp")

@@ -5,6 +5,8 @@ extends BeehaveTree
 @export var interruptable: bool
 
 
+var pressed: bool
+
 var execution: float:
     get: return blackboard.get_value("execution", 0.0, self.root_name)
 
@@ -25,4 +27,10 @@ var root_name: String:
 
 
 func reset() -> void:
+    interrupt()
+    
+    # FIXME hack to clean all things after
+    # interrupt nodes will start and set their values
+    await get_tree().process_frame 
     blackboard.blackboard.clear()
+    blackboard._data.clear()

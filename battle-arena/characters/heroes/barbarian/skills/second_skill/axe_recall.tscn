@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://chf314yk58jfe"]
+[gd_scene load_steps=6 format=3 uid="uid://chf314yk58jfe"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_gfv4b"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_s770j"]
+[ext_resource type="Script" path="res://characters/skills/leaves/wait_executing_skill.gd" id="3_0qs0c"]
 [ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="3_ayrqe"]
 [ext_resource type="Script" path="res://characters/heroes/barbarian/skills/second_skill/axe_recall.gd" id="4_j4ycb"]
 
@@ -11,6 +12,9 @@ script = ExtResource("1_gfv4b")
 [node name="Ready" type="Node" parent="."]
 script = ExtResource("2_s770j")
 key = "\"%s_ready\" % actor.name"
+
+[node name="WaitExecutingSkill" type="Node" parent="."]
+script = ExtResource("3_0qs0c")
 
 [node name="Authority" type="Node" parent="."]
 script = ExtResource("3_ayrqe")

@@ -9,6 +9,7 @@ signal picked_up
 
 func apply_bonuses(character: Character) -> void:
     if not character: return
+    if not is_multiplayer_authority(): return
     
     var energy_stat: NumberStat = character.stats.get_stat("Energy")
     if not energy_stat: return

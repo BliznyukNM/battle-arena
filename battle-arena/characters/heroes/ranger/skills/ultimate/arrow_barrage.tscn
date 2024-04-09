@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://dim1boifaol1b"]
+[gd_scene load_steps=16 format=3 uid="uid://dim1boifaol1b"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_y6fsy"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_wssh3"]
 [ext_resource type="Script" path="res://characters/skills/leaves/play_animation.gd" id="3_5nwcn"]
+[ext_resource type="Script" path="res://characters/skills/leaves/wait_executing_skill.gd" id="3_6tnuf"]
 [ext_resource type="Script" path="res://characters/skills/leaves/consume_energy.gd" id="4_7cjb0"]
 [ext_resource type="Script" path="res://characters/skills/leaves/progress_bar/show_progress_bar.gd" id="4_wici4"]
 [ext_resource type="Script" path="res://characters/skills/leaves/wait.gd" id="5_o1ruv"]
@@ -22,8 +23,12 @@ script = ExtResource("1_y6fsy")
 script = ExtResource("2_wssh3")
 key = "\"%s_ready\" % actor.name"
 
+[node name="WaitExecutingSkill" type="Node" parent="."]
+script = ExtResource("3_6tnuf")
+
 [node name="ConsumeEnergy" type="Node" parent="."]
 script = ExtResource("4_7cjb0")
+energy_amount = 100
 
 [node name="ShowProgressBar" type="Node" parent="."]
 script = ExtResource("4_wici4")

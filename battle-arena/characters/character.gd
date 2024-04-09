@@ -48,9 +48,9 @@ func gain_energy(amount: int) -> void:
 
 
 func reset() -> void:
-    stats.reset()
     modifiers.reset()
     skills.reset()
+    stats.reset()
     
     skin.play_spawn()
     hud.visible = true

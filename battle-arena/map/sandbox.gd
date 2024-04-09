@@ -1,6 +1,22 @@
 extends "res://map/map.gd"
 
 
+func _ready() -> void:
+    super()
+    
+    for team in [team_a, team_b]:
+        team.spawned.connect(_register_hero)
+
+
+func _register_hero(hero: Node) -> void:
+    hero.on_dead.connect(_respawn)
+
+
+func _respawn() -> void:
+    for team in [team_a, team_b]:
+        team.reset()
+
+
 func select_hero(hero_name: String) -> void:
     selected_hero = hero_name
     

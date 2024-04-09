@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://b4cex7rajpu6b"]
+[gd_scene load_steps=13 format=3 uid="uid://b4cex7rajpu6b"]
 
 [ext_resource type="Script" path="res://characters/skills/composites/sequence.gd" id="1_irop8"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_om10m"]
 [ext_resource type="Script" path="res://characters/skills/leaves/play_animation.gd" id="3_b68ay"]
+[ext_resource type="Script" path="res://characters/skills/leaves/wait_executing_skill.gd" id="3_e0vx0"]
 [ext_resource type="Script" path="res://characters/skills/leaves/progress_bar/show_progress_bar.gd" id="4_f7jmk"]
 [ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="5_6cgkh"]
 [ext_resource type="Script" path="res://characters/skills/decorators/cancellable.gd" id="5_cu6iy"]
@@ -12,13 +13,16 @@
 [ext_resource type="Script" path="res://characters/skills/leaves/modifiers/remove_modifier.gd" id="9_xdbxj"]
 [ext_resource type="Script" path="res://characters/skills/leaves/wait.gd" id="12_fxfsf"]
 
-[node name="Invisibility" type="Node"]
+[node name="Invisibility" type="Node" node_paths=PackedStringArray("finally_node")]
 script = ExtResource("1_irop8")
-reset_on_interrupt = false
+finally_node = NodePath("CleanWithAuthority")
 
 [node name="Ready" type="Node" parent="."]
 script = ExtResource("2_om10m")
 key = "\"%s_ready\" % actor.name"
+
+[node name="WaitExecutingSkill" type="Node" parent="."]
+script = ExtResource("3_e0vx0")
 
 [node name="PlayAnimation" type="Node" parent="."]
 script = ExtResource("3_b68ay")

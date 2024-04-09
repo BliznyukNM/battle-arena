@@ -123,8 +123,8 @@ _data = {
 script = ExtResource("1_tvqmv")
 radius = 1.0
 speed = 26.0
-distance = 8.0
-damage = 15
+distance = 10.0
+damage = 17
 energy_gain = 5
 
 [node name="Root" type="Node3D" parent="."]

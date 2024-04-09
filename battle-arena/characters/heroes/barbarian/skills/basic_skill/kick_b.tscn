@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://bway5lctbi3vx"]
+[gd_scene load_steps=13 format=3 uid="uid://bway5lctbi3vx"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_3icxv"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_ypv1d"]
+[ext_resource type="Script" path="res://characters/skills/leaves/wait_executing_skill.gd" id="3_daj5g"]
 [ext_resource type="Script" path="res://characters/skills/leaves/play_animation.gd" id="3_j1ed6"]
 [ext_resource type="Script" path="res://characters/skills/leaves/progress_bar/show_progress_bar.gd" id="4_3q3lc"]
 [ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/local_player.gd" id="4_cs5au"]
@@ -19,6 +20,9 @@ script = ExtResource("1_3icxv")
 script = ExtResource("2_ypv1d")
 consume_key = false
 key = "\"%s_ready\" % actor.name"
+
+[node name="WaitExecutingSkill" type="Node" parent="."]
+script = ExtResource("3_daj5g")
 
 [node name="PlayAnimation" type="Node" parent="."]
 script = ExtResource("3_j1ed6")
