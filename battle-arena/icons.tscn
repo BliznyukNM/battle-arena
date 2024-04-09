@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bdqu88np68lmh"]
+[gd_scene load_steps=17 format=3 uid="uid://bdqu88np68lmh"]
 
 [ext_resource type="Script" path="res://icons.gd" id="1_5422o"]
 [ext_resource type="Texture2D" uid="uid://knq7nxjwphfr" path="res://assets/ui/icons/barbarian/BasicAttack.png" id="2_3mlo4"]
@@ -15,10 +15,12 @@
 [ext_resource type="Texture2D" uid="uid://ddaesii00rm48" path="res://assets/ui/icons/ranger/dash.png" id="13_onala"]
 [ext_resource type="Texture2D" uid="uid://cwx3hpme7lwpp" path="res://assets/ui/icons/ranger/Invisibility.png" id="14_bl7ri"]
 [ext_resource type="Texture2D" uid="uid://diltsux557yd2" path="res://assets/ui/icons/barbarian/Berserk.png" id="15_jyrlt"]
+[ext_resource type="Texture2D" uid="uid://ctys7eb5517vc" path="res://assets/ui/icons/ranger/arrow_barrage.png" id="16_6ahmv"]
 
 [node name="Icons" type="Node"]
 script = ExtResource("1_5422o")
 mapping = {
+"ArrowBarrage": ExtResource("16_6ahmv"),
 "AxeRecall": ExtResource("4_ixvpw"),
 "AxeThrow": ExtResource("3_arxfo"),
 "BasicAttack": ExtResource("10_nwdge"),

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dbjutw8fckxjl"]
+[gd_scene load_steps=14 format=3 uid="uid://dbjutw8fckxjl"]
 
 [ext_resource type="PackedScene" uid="uid://d26br4f45m27g" path="res://characters/character.tscn" id="1_gfvhh"]
 [ext_resource type="Script" path="res://characters/stats/number_stat.gd" id="2_8tvmm"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dq41ki74uct3s" path="res://characters/heroes/ranger/skills/third_attack/place_trap.tscn" id="5_fjucc"]
 [ext_resource type="PackedScene" uid="uid://b540vu8yrvv3b" path="res://characters/heroes/ranger/skills/dodge/dash.tscn" id="6_ubfej"]
 [ext_resource type="Script" path="res://characters/processors/clear_modifiers.gd" id="7_2y3fc"]
+[ext_resource type="PackedScene" uid="uid://dim1boifaol1b" path="res://characters/heroes/ranger/skills/ultimate/arrow_barrage.tscn" id="10_v7q6f"]
 [ext_resource type="PackedScene" uid="uid://b1jmt46gek5uu" path="res://characters/heroes/ranger/skin.tscn" id="15_xfpo1"]
 
 [node name="Character" instance=ExtResource("1_gfvhh")]
@@ -64,6 +65,11 @@ enabled = true
 
 [node name="Invisibility" parent="Skills/Block" index="0" instance=ExtResource("5_dxdtl")]
 
+[node name="Ultimate" parent="Skills" index="5"]
+enabled = true
+
+[node name="ArrowBarrage" parent="Skills/Ultimate" index="0" instance=ExtResource("10_v7q6f")]
+
 [node name="Skin" type="Node" parent="Processors" index="5" node_paths=PackedStringArray("skin", "move_speed", "attack_speed")]
 script = ExtResource("2_frijp")
 skin = NodePath("../../Skin")
@@ -78,6 +84,6 @@ script = ExtResource("7_2y3fc")
 energy = NodePath("../Stats/Energy")
 
 [node name="LocalSpawner" parent="." index="8"]
-_spawnable_scenes = PackedStringArray("res://characters/heroes/ranger/arrow.tscn", "res://characters/heroes/ranger/charged_arrow.tscn", "res://characters/heroes/ranger/skills/third_attack/trap_bomb.tscn", "res://characters/heroes/ranger/skills/third_attack/trap.tscn")
+_spawnable_scenes = PackedStringArray("res://characters/heroes/ranger/arrow.tscn", "res://characters/heroes/ranger/charged_arrow.tscn", "res://characters/heroes/ranger/skills/third_attack/trap_bomb.tscn", "res://characters/heroes/ranger/skills/third_attack/trap.tscn", "res://characters/heroes/ranger/skills/ultimate/ultimate_arrow.tscn")
 
 [node name="Skin" parent="." index="10" instance=ExtResource("15_xfpo1")]
