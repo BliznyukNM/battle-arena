@@ -13,15 +13,8 @@ script = ExtResource("2_vllfr")
 
 [node name="Camera" parent="." index="1"]
 lerp_speed = 4.5
-max_distance = Vector2(20, 15)
 
 [node name="HeroSelector" parent="." index="5" instance=ExtResource("2_62l75")]
-
-[node name="TeamA" parent="Spawner" index="0"]
-_spawnable_scenes = PackedStringArray("res://characters/heroes/barbarian/barbarian.tscn", "res://characters/heroes/druid/druid.tscn", "res://characters/heroes/ranger/ranger.tscn")
-
-[node name="TeamB" parent="Spawner" index="1"]
-_spawnable_scenes = PackedStringArray("res://characters/heroes/barbarian/barbarian.tscn", "res://characters/heroes/druid/druid.tscn", "res://characters/heroes/ranger/ranger.tscn")
 
 [node name="Dummies" type="Node" parent="." index="10"]
 
