@@ -31,19 +31,6 @@ func update_stance(stance: String) -> void:
     animationTree.set("parameters/ArmedState/transition_request", stance)
 
 
-func update_move_direction(direction: Vector2) -> void:
-    animationTree.set("parameters/Movement/blend_position", direction)
-
-
-func update_move_speed(speed: float) -> void:
-    animationTree.set("parameters/MoveSpeed/scale", speed)
-
-
-func update_attack_speed(speed: float) -> void:
-    animationTree.set("parameters/AttackSpeed/scale", speed)
-    slash.speed_scale = speed
-
-
 func play_slice() -> void:
     _trigger_attack("slice")
 
@@ -101,7 +88,7 @@ func play_throw() -> void:
     animationTree.set("parameters/PlayThrow/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 
 
-func _stop_throw() -> void:
+func stop_throw() -> void:
     animationTree.set("parameters/PlayThrow/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FADE_OUT)
 
 

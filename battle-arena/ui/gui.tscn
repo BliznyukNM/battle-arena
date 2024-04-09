@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cfqs7tnlielrb"]
+[gd_scene load_steps=9 format=3 uid="uid://cfqs7tnlielrb"]
 
 [ext_resource type="Script" path="res://ui/gui.gd" id="1_h8wmn"]
 [ext_resource type="PackedScene" uid="uid://cndg2kkppsmgt" path="res://ui/skill_ui.tscn" id="2_lu0da"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cjq6oow844tct" path="res://assets/ui/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_q_outline.svg" id="5_8nt8t"]
 [ext_resource type="Texture2D" uid="uid://dl31fkxo1fdbx" path="res://assets/ui/kenney_input-prompts/Keyboard & Mouse/Vector/mouse_right_outline.svg" id="6_3e34k"]
 [ext_resource type="Texture2D" uid="uid://6euj1faob0ps" path="res://assets/ui/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_e_outline.svg" id="6_s03ad"]
+[ext_resource type="Texture2D" uid="uid://cm8w7nsqso5xf" path="res://assets/ui/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_r_outline.svg" id="8_66pcn"]
 [ext_resource type="Texture2D" uid="uid://kibffkrt38ve" path="res://assets/ui/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_space_icon_outline.svg" id="8_llbca"]
 
 [node name="GUI" type="Control"]
@@ -62,8 +63,10 @@ layout_mode = 2
 texture = ExtResource("8_llbca")
 
 [node name="R_button" parent="BottomHUD" instance=ExtResource("2_lu0da")]
-visible = false
 layout_mode = 2
+
+[node name="KeyboardQOutline" parent="BottomHUD/R_button" index="1"]
+texture = ExtResource("8_66pcn")
 
 [node name="ID" type="Label" parent="."]
 layout_mode = 1
