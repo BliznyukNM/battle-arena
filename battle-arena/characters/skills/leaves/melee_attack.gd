@@ -51,7 +51,7 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
     
     for hit in result:
         if hit.collider is HitBox:
-            hit.collider.apply_damage.rpc(damage)
-            hitbox_count += 1
+            hit.collider.process_damage(character, damage)
+            if hit.collider.generate_energy: hitbox_count += 1
     
     return SUCCESS if hitbox_count > 0 else FAILURE
