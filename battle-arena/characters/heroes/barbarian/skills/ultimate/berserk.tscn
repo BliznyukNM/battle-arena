@@ -1,8 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://d11d4wcjof6yw"]
+[gd_scene load_steps=14 format=3 uid="uid://d11d4wcjof6yw"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_xeg7b"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_8u3cf"]
-[ext_resource type="Script" path="res://characters/skills/decorators/has_energy.gd" id="2_kbe87"]
 [ext_resource type="Script" path="res://characters/skills/leaves/consume_energy.gd" id="3_llxsb"]
 [ext_resource type="Script" path="res://characters/skills/leaves/play_animation.gd" id="3_v6eeq"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/decorators/succeeder.gd" id="6_2t8b3"]
@@ -22,18 +21,13 @@ script = ExtResource("1_xeg7b")
 script = ExtResource("2_8u3cf")
 key = "\"%s_ready\" % actor.name"
 
-[node name="HasEnergy" type="Node" parent="."]
-script = ExtResource("2_kbe87")
-energy_amount = 100
-fail_result = 1
-
-[node name="PlayThrow" type="Node" parent="HasEnergy"]
-script = ExtResource("3_v6eeq")
-animation_name = "throw"
-
 [node name="ConsumeEnergy" type="Node" parent="."]
 script = ExtResource("3_llxsb")
 energy_amount = 100
+
+[node name="PlayThrow" type="Node" parent="."]
+script = ExtResource("3_v6eeq")
+animation_name = "throw"
 
 [node name="Wait" type="Node" parent="."]
 script = ExtResource("9_e8d7b")

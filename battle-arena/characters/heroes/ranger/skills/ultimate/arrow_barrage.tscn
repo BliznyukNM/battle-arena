@@ -1,0 +1,87 @@
+[gd_scene load_steps=14 format=3 uid="uid://dim1boifaol1b"]
+
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_y6fsy"]
+[ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_wssh3"]
+[ext_resource type="Script" path="res://characters/skills/leaves/play_animation.gd" id="3_5nwcn"]
+[ext_resource type="Script" path="res://characters/skills/leaves/consume_energy.gd" id="4_7cjb0"]
+[ext_resource type="Script" path="res://characters/skills/leaves/progress_bar/show_progress_bar.gd" id="4_wici4"]
+[ext_resource type="Script" path="res://characters/skills/leaves/wait.gd" id="5_o1ruv"]
+[ext_resource type="Script" path="res://characters/skills/leaves/modifiers/add_modifier.gd" id="5_vvyw8"]
+[ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="6_68vu2"]
+[ext_resource type="Script" path="res://characters/skills/decorators/time_repeat.gd" id="6_ku6f2"]
+[ext_resource type="Script" path="res://characters/skills/decorators/spawn/near_actor.gd" id="7_tgjgx"]
+[ext_resource type="Script" path="res://characters/heroes/ranger/skills/second_skill/spawn_charged_arrow.gd" id="8_01eph"]
+[ext_resource type="Script" path="res://characters/heroes/ranger/skills/leaves/interrupt_invisibility.gd" id="9_sk0sd"]
+[ext_resource type="Script" path="res://characters/skills/leaves/modifiers/remove_modifier.gd" id="12_b18bg"]
+
+[node name="ArrowBarrage" type="Node"]
+script = ExtResource("1_y6fsy")
+
+[node name="Ready" type="Node" parent="."]
+script = ExtResource("2_wssh3")
+key = "\"%s_ready\" % actor.name"
+
+[node name="ConsumeEnergy" type="Node" parent="."]
+script = ExtResource("4_7cjb0")
+energy_amount = 100
+
+[node name="ShowProgressBar" type="Node" parent="."]
+script = ExtResource("4_wici4")
+duration = 0.7
+
+[node name="Wait" type="Node" parent="."]
+script = ExtResource("5_o1ruv")
+wait_time = 0.7
+cache_key = "execution"
+
+[node name="ShowProgressBar2" type="Node" parent="."]
+script = ExtResource("4_wici4")
+duration = 5.5
+
+[node name="InterruptInvisibility" type="Node" parent="."]
+script = ExtResource("9_sk0sd")
+
+[node name="AddModifier" type="Node" parent="."]
+script = ExtResource("5_vvyw8")
+modifier_name = "ArrowBarrageModifier"
+scene_path = "res://characters/heroes/ranger/skills/ultimate/arrow_barrage_modifier.tscn"
+
+[node name="Time" type="Node" parent="."]
+script = ExtResource("6_ku6f2")
+time = 5.0
+cache_key = "execution"
+
+[node name="Sequence" type="Node" parent="Time"]
+script = ExtResource("1_y6fsy")
+
+[node name="PlayAnimation" type="Node" parent="Time/Sequence"]
+script = ExtResource("3_5nwcn")
+animation_name = "shoot"
+
+[node name="Authority" type="Node" parent="Time/Sequence"]
+script = ExtResource("6_68vu2")
+
+[node name="Sequence" type="Node" parent="Time/Sequence/Authority"]
+script = ExtResource("1_y6fsy")
+
+[node name="NearActor" type="Node" parent="Time/Sequence/Authority/Sequence"]
+script = ExtResource("7_tgjgx")
+offset = Vector3(2.08165e-12, 1, 1)
+
+[node name="Shoot" type="Node" parent="Time/Sequence/Authority/Sequence/NearActor"]
+script = ExtResource("8_01eph")
+scene_path = "res://characters/heroes/ranger/skills/ultimate/ultimate_arrow.tscn"
+
+[node name="Wait" type="Node" parent="Time/Sequence"]
+script = ExtResource("5_o1ruv")
+wait_time = 0.25
+cache_key = "wait"
+
+[node name="RemoveModifier" type="Node" parent="."]
+script = ExtResource("12_b18bg")
+modifier_name = "ArrowBarrageModifier"
+
+[node name="Cooldown" type="Node" parent="."]
+script = ExtResource("5_o1ruv")
+wait_time = 15.0
+cache_key = "cooldown"
