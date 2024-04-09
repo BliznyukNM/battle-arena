@@ -1,9 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://d11d4wcjof6yw"]
+[gd_scene load_steps=15 format=3 uid="uid://d11d4wcjof6yw"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_xeg7b"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_8u3cf"]
+[ext_resource type="Script" path="res://characters/skills/decorators/has_energy.gd" id="2_kbe87"]
 [ext_resource type="Script" path="res://characters/skills/leaves/consume_energy.gd" id="3_llxsb"]
+[ext_resource type="Script" path="res://characters/skills/leaves/play_animation.gd" id="3_v6eeq"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/succeeder.gd" id="6_2t8b3"]
+[ext_resource type="Script" path="res://characters/skills/decorators/spawn/near_actor.gd" id="6_juegk"]
+[ext_resource type="Script" path="res://characters/skills/leaves/spawn.gd" id="7_ab8v1"]
+[ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="7_u5jqy"]
+[ext_resource type="Script" path="res://characters/skills/leaves/melee_attack.gd" id="8_vbhjd"]
+[ext_resource type="Script" path="res://characters/heroes/barbarian/skills/leaves/update_stance.gd" id="9_bs4lo"]
 [ext_resource type="Script" path="res://characters/skills/leaves/wait.gd" id="9_e8d7b"]
+[ext_resource type="Script" path="res://characters/heroes/barbarian/skills/second_skill/axe_recall.gd" id="10_5no05"]
+[ext_resource type="Script" path="res://characters/heroes/barbarian/skills/ultimate/dash_to_axe.gd" id="12_2ex85"]
 
 [node name="Berserk" type="Node"]
 script = ExtResource("1_xeg7b")
@@ -12,9 +22,70 @@ script = ExtResource("1_xeg7b")
 script = ExtResource("2_8u3cf")
 key = "\"%s_ready\" % actor.name"
 
+[node name="HasEnergy" type="Node" parent="."]
+script = ExtResource("2_kbe87")
+energy_amount = 100
+fail_result = 1
+
+[node name="PlayThrow" type="Node" parent="HasEnergy"]
+script = ExtResource("3_v6eeq")
+animation_name = "throw"
+
 [node name="ConsumeEnergy" type="Node" parent="."]
 script = ExtResource("3_llxsb")
 energy_amount = 100
+
+[node name="Wait" type="Node" parent="."]
+script = ExtResource("9_e8d7b")
+wait_time = 0.65
+cache_key = "execution"
+
+[node name="Authority" type="Node" parent="."]
+script = ExtResource("7_u5jqy")
+
+[node name="NearActor" type="Node" parent="Authority"]
+script = ExtResource("6_juegk")
+offset = Vector3(2.08165e-12, 1, 0.5)
+
+[node name="Throw" type="Node" parent="Authority/NearActor"]
+script = ExtResource("7_ab8v1")
+scene_path = "res://characters/heroes/barbarian/skills/ultimate/axe.tscn"
+
+[node name="UpdateStance" type="Node" parent="."]
+script = ExtResource("9_bs4lo")
+stance = 1
+
+[node name="Wait2" type="Node" parent="."]
+script = ExtResource("9_e8d7b")
+wait_time = 0.5
+
+[node name="Authority2" type="Node" parent="."]
+script = ExtResource("7_u5jqy")
+
+[node name="RecallAxe" type="Node" parent="Authority2"]
+script = ExtResource("10_5no05")
+
+[node name="PlaySlice" type="Node" parent="."]
+script = ExtResource("3_v6eeq")
+animation_name = "slice"
+
+[node name="DashToAxe" type="Node" parent="."]
+script = ExtResource("12_2ex85")
+time = 0.4
+
+[node name="Authority3" type="Node" parent="."]
+script = ExtResource("7_u5jqy")
+
+[node name="AlwaysSucceed" type="Node" parent="Authority3"]
+script = ExtResource("6_2t8b3")
+
+[node name="Attack" type="Node" parent="Authority3/AlwaysSucceed"]
+script = ExtResource("8_vbhjd")
+damage = 50
+hit_range = 3.0
+area = 120.0
+offset = Vector3(2.08165e-12, 1, 2.08165e-12)
+collision_type = 1
 
 [node name="Cooldown" type="Node" parent="."]
 script = ExtResource("9_e8d7b")

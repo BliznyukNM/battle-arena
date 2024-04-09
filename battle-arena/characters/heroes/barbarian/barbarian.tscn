@@ -35,6 +35,7 @@ script = ExtResource("3_l5iug")
 has_max_value = true
 max_value = 100.0
 has_min_value = true
+base_value = 100.0
 
 [node name="Spawner" parent="Modifiers" index="0"]
 _spawnable_scenes = PackedStringArray("res://characters/heroes/barbarian/skills/third_skill/whirl_modifier.tscn", "res://characters/heroes/barbarian/skills/block_skill/taunt_modifier.tscn", "res://characters/heroes/barbarian/skills/block_skill/rage_modifier.tscn", "res://characters/heroes/barbarian/modifiers/slow_on_attack.tscn", "res://characters/heroes/barbarian/modifiers/slow_on_throw.tscn")
@@ -85,6 +86,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.81294, 0)
 energy = NodePath("../Stats/Energy")
 
 [node name="LocalSpawner" parent="." index="8"]
-_spawnable_scenes = PackedStringArray("res://characters/heroes/barbarian/axe.tscn")
+_spawnable_scenes = PackedStringArray("res://characters/heroes/barbarian/axe.tscn", "res://characters/heroes/barbarian/skills/ultimate/axe.tscn")
 
 [node name="Skin" parent="." index="11" instance=ExtResource("2_lwxa8")]
