@@ -11,6 +11,7 @@ signal respawn(params)
 
 
 func _ready() -> void:
+    if not is_multiplayer_authority(): return
     trigger_respawn(0.0 if immediate_initial_spawn else respawn_time)
 
 

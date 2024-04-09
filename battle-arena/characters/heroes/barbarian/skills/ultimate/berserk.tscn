@@ -21,7 +21,10 @@ script = ExtResource("1_xeg7b")
 script = ExtResource("2_8u3cf")
 key = "\"%s_ready\" % actor.name"
 
-[node name="ConsumeEnergy" type="Node" parent="."]
+[node name="Authority4" type="Node" parent="."]
+script = ExtResource("7_u5jqy")
+
+[node name="ConsumeEnergy" type="Node" parent="Authority4"]
 script = ExtResource("3_llxsb")
 energy_amount = 100
 

@@ -1,8 +1,14 @@
 extends MultiplayerSpawner
 
 
+@export var spawn_on_ready: Array[String]
+
+
 func _ready() -> void:
     spawn_function = _spawn
+    
+    if not is_multiplayer_authority(): return
+    for scene in spawn_on_ready: spawn({"path": scene})
 
 
 func _spawn(data: Dictionary) -> Node:

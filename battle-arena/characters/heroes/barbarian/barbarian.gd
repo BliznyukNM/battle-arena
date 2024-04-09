@@ -10,6 +10,7 @@ var thrown_axe: Node
 
 
 func on_throw_axe(axe) -> void:
+    if thrown_axe: thrown_axe.queue_free()
     thrown_axe = axe
 
 
