@@ -35,7 +35,6 @@ script = ExtResource("3_l5iug")
 has_max_value = true
 max_value = 100.0
 has_min_value = true
-base_value = 100.0
 
 [node name="Spawner" parent="Modifiers" index="0"]
 _spawnable_scenes = PackedStringArray("res://characters/heroes/barbarian/skills/third_skill/whirl_modifier.tscn", "res://characters/heroes/barbarian/skills/block_skill/taunt_modifier.tscn", "res://characters/heroes/barbarian/skills/block_skill/rage_modifier.tscn", "res://characters/heroes/barbarian/modifiers/slow_on_attack.tscn", "res://characters/heroes/barbarian/modifiers/slow_on_throw.tscn")
