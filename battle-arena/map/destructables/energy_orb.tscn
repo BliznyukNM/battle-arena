@@ -1,0 +1,77 @@
+[gd_scene load_steps=12 format=3 uid="uid://cabpihx8fqike"]
+
+[ext_resource type="Script" path="res://map/destructables/energy_orb.gd" id="1_t5t8o"]
+[ext_resource type="PackedScene" uid="uid://7xkefn5xpy47" path="res://characters/hud/hud.tscn" id="2_ayw3y"]
+[ext_resource type="Script" path="res://characters/hit_box.gd" id="3_w6mos"]
+[ext_resource type="Script" path="res://characters/processors/health.gd" id="4_06eae"]
+[ext_resource type="Script" path="res://map/destructables/energy_orb_processor.gd" id="5_doiln"]
+[ext_resource type="Script" path="res://characters/stats/number_stat.gd" id="5_e8nn2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wt2gb"]
+shading_mode = 0
+albedo_color = Color(4, 0.5, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_c62jw"]
+material = SubResource("StandardMaterial3D_wt2gb")
+radius = 0.6
+height = 1.2
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_u2qep"]
+viewport_path = NodePath("HUD/SubViewport")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6nvfh"]
+radius = 0.685039
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fdk16"]
+radius = 0.3
+
+[node name="EnergyOrb" type="StaticBody3D"]
+collision_mask = 7
+script = ExtResource("1_t5t8o")
+energy_amount = 50
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.876181, 0)
+mesh = SubResource("SphereMesh_c62jw")
+
+[node name="HUD" parent="." node_paths=PackedStringArray("health") instance=ExtResource("2_ayw3y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.98341, 0)
+health = NodePath("../HealthStat")
+
+[node name="View" parent="HUD" index="0"]
+texture = SubResource("ViewportTexture_u2qep")
+
+[node name="SubViewport" parent="HUD" index="1"]
+size = Vector2i(350, 128)
+
+[node name="HitBox" type="Area3D" parent="."]
+script = ExtResource("3_w6mos")
+generate_energy = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.842699, 0)
+shape = SubResource("SphereShape3D_6nvfh")
+
+[node name="HealthProcessor" type="Node" parent="." node_paths=PackedStringArray("health")]
+script = ExtResource("4_06eae")
+health = NodePath("../HealthStat")
+
+[node name="DeathProcessor" type="Node" parent="." node_paths=PackedStringArray("health_stat")]
+script = ExtResource("5_doiln")
+health_stat = NodePath("../HealthStat")
+
+[node name="HealthStat" type="Node" parent="."]
+script = ExtResource("5_e8nn2")
+has_max_value = true
+max_value = 100.0
+has_min_value = true
+base_value = 100.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.850642, 0)
+shape = SubResource("SphereShape3D_fdk16")
+
+[connection signal="on_damage" from="HitBox" to="HealthProcessor" method="apply"]
+[connection signal="on_damage" from="HitBox" to="DeathProcessor" method="on_damage"]
+
+[editable path="HUD"]

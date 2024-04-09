@@ -15,7 +15,7 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_right = 512.0
+offset_right = 272.0
 offset_bottom = 160.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -78,14 +78,11 @@ name_label = NodePath("../Name")
 effect_name_label = NodePath("../EffectName")
 
 [node name="Health" type="ProgressBar" parent="Container"]
-custom_minimum_size = Vector2(300, 2.08165e-12)
+custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -250.0
-offset_top = 74.0
-offset_right = 250.0
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 80.0
 offset_bottom = 94.0
 grow_horizontal = 2
 size_flags_horizontal = 4
@@ -96,13 +93,10 @@ show_percentage = false
 
 [node name="Energy" type="ProgressBar" parent="Container"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -250.0
-offset_top = 101.0
-offset_right = 250.0
-offset_bottom = 114.0
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 100.0
+offset_bottom = 110.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 theme_override_styles/fill = ExtResource("3_eidsd")
@@ -111,15 +105,11 @@ rounded = true
 show_percentage = false
 
 [node name="ProgressBar" type="ProgressBar" parent="Container"]
-custom_minimum_size = Vector2(300, 7)
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -250.0
-offset_top = 118.0
-offset_right = 250.0
-offset_bottom = 125.0
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 113.0
+offset_bottom = 120.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 theme_override_styles/fill = ExtResource("3_ygy35")

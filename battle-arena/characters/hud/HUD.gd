@@ -19,7 +19,8 @@ extends Node
 func _ready() -> void:
     _initialize_bar(health_bar, health)
     _initialize_bar(energy_bar, energy)
-    name_label.text = name_tag.current_value
+    if name_tag: name_label.text = name_tag.current_value
+    else: name_label.visible = false
 
 
 func _initialize_bar(bar: ProgressBar, stat: NumberStat) -> void:

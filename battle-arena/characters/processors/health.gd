@@ -6,10 +6,12 @@ extends Node
 
 
 var invulnerable: BaseStat:
-    get: return owner.stats.get_stat("Invulnerable")
+    get:
+        if not "stats" in owner: return null
+        return owner.stats.get_stat("Invulnerable")
 
 
-func apply(value: float) -> void:
+func apply(source: Character, value: float) -> void:
     if invulnerable: return
     
     if shield:
