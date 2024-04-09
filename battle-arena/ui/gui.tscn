@@ -35,37 +35,37 @@ alignment = 1
 [node name="LMB_button" parent="BottomHUD" instance=ExtResource("2_lu0da")]
 layout_mode = 2
 
-[node name="KeyboardQOutline" parent="BottomHUD/LMB_button" index="1"]
+[node name="KeyboardQOutline" parent="BottomHUD/LMB_button" index="2"]
 texture = ExtResource("4_uurqp")
 
 [node name="RMB_button" parent="BottomHUD" instance=ExtResource("2_lu0da")]
 layout_mode = 2
 
-[node name="KeyboardQOutline" parent="BottomHUD/RMB_button" index="1"]
+[node name="KeyboardQOutline" parent="BottomHUD/RMB_button" index="2"]
 texture = ExtResource("6_3e34k")
 
 [node name="Q_button" parent="BottomHUD" instance=ExtResource("2_lu0da")]
 layout_mode = 2
 
-[node name="KeyboardQOutline" parent="BottomHUD/Q_button" index="1"]
+[node name="KeyboardQOutline" parent="BottomHUD/Q_button" index="2"]
 texture = ExtResource("5_8nt8t")
 
 [node name="E_button" parent="BottomHUD" instance=ExtResource("2_lu0da")]
 layout_mode = 2
 
-[node name="KeyboardQOutline" parent="BottomHUD/E_button" index="1"]
+[node name="KeyboardQOutline" parent="BottomHUD/E_button" index="2"]
 texture = ExtResource("6_s03ad")
 
 [node name="Space_button" parent="BottomHUD" instance=ExtResource("2_lu0da")]
 layout_mode = 2
 
-[node name="KeyboardQOutline" parent="BottomHUD/Space_button" index="1"]
+[node name="KeyboardQOutline" parent="BottomHUD/Space_button" index="2"]
 texture = ExtResource("8_llbca")
 
 [node name="R_button" parent="BottomHUD" instance=ExtResource("2_lu0da")]
 layout_mode = 2
 
-[node name="KeyboardQOutline" parent="BottomHUD/R_button" index="1"]
+[node name="KeyboardQOutline" parent="BottomHUD/R_button" index="2"]
 texture = ExtResource("8_66pcn")
 
 [node name="ID" type="Label" parent="."]

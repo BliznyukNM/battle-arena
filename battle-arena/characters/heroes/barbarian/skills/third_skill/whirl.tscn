@@ -14,9 +14,9 @@
 [ext_resource type="Script" path="res://characters/skills/leaves/wait.gd" id="9_uy0dn"]
 [ext_resource type="Script" path="res://characters/skills/leaves/modifiers/remove_modifier.gd" id="10_epktq"]
 
-[node name="Whirl" type="Node"]
+[node name="Whirl" type="Node" node_paths=PackedStringArray("finally_node")]
 script = ExtResource("8_qp73v")
-reset_on_interrupt = false
+finally_node = NodePath("CleanWithAuthority")
 
 [node name="RunUntil" type="Node" parent="."]
 script = ExtResource("2_u0ny2")
@@ -46,8 +46,9 @@ script = ExtResource("4_icejg")
 time = 3.0
 cache_key = "execution"
 
-[node name="Sequence" type="Node" parent="Cancellable/Repeatable"]
+[node name="Sequence" type="Node" parent="Cancellable/Repeatable" node_paths=PackedStringArray("finally_node")]
 script = ExtResource("8_qp73v")
+finally_node = NodePath("ExecutionWait")
 return_on_finish = false
 
 [node name="AlwaysSucceed" type="Node" parent="Cancellable/Repeatable/Sequence"]

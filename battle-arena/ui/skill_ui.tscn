@@ -1,10 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://cndg2kkppsmgt"]
+[gd_scene load_steps=7 format=3 uid="uid://cndg2kkppsmgt"]
 
 [ext_resource type="Texture2D" uid="uid://o1csbrjvoa4s" path="res://assets/ui/icons/barbarian/Throw.png" id="1_3a4j1"]
 [ext_resource type="Script" path="res://ui/skill_ui.gd" id="1_6fycn"]
 [ext_resource type="Texture2D" uid="uid://b7ibp7hwlq7dw" path="res://assets/ui/kenney_input-prompts/Keyboard & Mouse/Vector/mouse_left.svg" id="3_5ogpq"]
+[ext_resource type="Texture2D" uid="uid://cxfbudiiy8wkj" path="res://assets/ui/kenney_input-prompts/Generic/Vector/generic_button_square.svg" id="3_s6h4c"]
+
+[sub_resource type="Shader" id="Shader_marnv"]
+code = "shader_type canvas_item;
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	// Called for every pixel the material is visible on.
+    float x = UV.x * 2.0 - 1.0;
+    float y = UV.y * 2.0 - 1.0;
+    if (x * x + y * y > 1.0)
+        COLOR = vec4(0);
+}
+
+//void light() {
+	// Called for every pixel for every light affecting the CanvasItem.
+	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gcpmm"]
+shader = SubResource("Shader_marnv")
 
 [node name="Skill" type="TextureRect"]
+material = SubResource("ShaderMaterial_gcpmm")
 custom_minimum_size = Vector2(100, 100)
 anchors_preset = 8
 anchor_left = 0.5
@@ -29,24 +55,45 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -29.0
-offset_top = -111.0
+offset_top = 26.0
 offset_right = 30.0
-offset_bottom = -69.0
+offset_bottom = 68.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 30
 text = "0.00"
 horizontal_alignment = 1
 
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -17.0
+offset_top = -32.0
+offset_right = 17.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_s6h4c")
+expand_mode = 2
+stretch_mode = 5
+
 [node name="KeyboardQOutline" type="TextureRect" parent="."]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 7
 anchor_left = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-offset_left = -34.0
-offset_top = -66.0
-offset_right = 30.0
-offset_bottom = -2.0
+anchor_bottom = 1.0
+offset_left = -15.0
+offset_top = -30.0
+offset_right = 15.0
 grow_horizontal = 2
+grow_vertical = 0
 texture = ExtResource("3_5ogpq")
 expand_mode = 2
+stretch_mode = 5
