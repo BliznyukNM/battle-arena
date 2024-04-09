@@ -34,6 +34,7 @@ transform = Transform3D(1, -6.5054e-16, 1.7492e-16, 1.7492e-16, 0.501511, 0.8651
 current = true
 script = ExtResource("2_fe6qu")
 offset = Vector3(2.08165e-12, 13.384, 6.6)
+max_distance = Vector2(20, 15)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.598382, -0.797899, -0.0727711, 0.573897, 0.363463, 0.733851, -0.559089, -0.480886, 0.675402, 0, 7.27725, 0)
@@ -50,6 +51,7 @@ unique_name_in_owner = true
 [node name="Spawner" type="Node" parent="."]
 
 [node name="TeamA" type="MultiplayerSpawner" parent="Spawner"]
+_spawnable_scenes = PackedStringArray("res://characters/heroes/barbarian/barbarian.tscn", "res://characters/heroes/druid/druid.tscn", "res://characters/heroes/ranger/ranger.tscn")
 spawn_path = NodePath("Root")
 spawn_limit = 3
 script = ExtResource("4_44ugc")
@@ -66,6 +68,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7619, 0, 0.851758)
 [node name="Root" type="Node" parent="Spawner/TeamA"]
 
 [node name="TeamB" type="MultiplayerSpawner" parent="Spawner"]
+_spawnable_scenes = PackedStringArray("res://characters/heroes/barbarian/barbarian.tscn", "res://characters/heroes/druid/druid.tscn", "res://characters/heroes/ranger/ranger.tscn")
 spawn_path = NodePath("Root")
 spawn_limit = 3
 script = ExtResource("4_44ugc")
