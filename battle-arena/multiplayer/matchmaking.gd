@@ -27,7 +27,7 @@ var is_authenticated: bool:
 
 
 func _ready() -> void:
-    var stun_url: String = ProjectSettings.get_setting("application/networking/stun", "stun:stun.l.google.com:19302")
+    var stun_url: String = ProjectSettings.get_setting_with_override("application/networking/stun")
     NakamaWebRTC.ice_servers = [{ "urls": [stun_url] }]
     NakamaWebRTC.max_players = 2
     NakamaWebRTC.match_ready.connect(_on_match_ready)

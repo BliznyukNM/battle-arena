@@ -1,4 +1,4 @@
-extends "res://characters/heroes/skin.gd"
+extends "res://characters/skin.gd"
 
 
 func play_basic_attack(skill: BaseSkill) -> void:

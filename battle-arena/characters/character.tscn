@@ -32,6 +32,9 @@ properties/0/replication_mode = 1
 properties/1/path = NodePath("Input:look_at_point")
 properties/1/spawn = true
 properties/1/replication_mode = 1
+properties/2/path = NodePath("Input:input_mask")
+properties/2/spawn = true
+properties/2/replication_mode = 1
 
 [sub_resource type="Resource" id="Resource_mgice"]
 script = ExtResource("14_ovw2o")
