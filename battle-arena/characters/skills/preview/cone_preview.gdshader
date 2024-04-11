@@ -1,6 +1,7 @@
 shader_type spatial;
 
 
+uniform vec4 color : source_color;
 uniform sampler2D fillTexture;
 uniform float angle;
 
@@ -14,6 +15,7 @@ mat2 tex_rotate(float _angle){
 void fragment() {
     vec2 uv = -(UV * 2. - 1.) * tex_rotate(-radians(angle / 2.0));
     vec4 tex = texture(fillTexture, UV * uvScale + (vec2(1, 1) - uvScale) / 2.0);
+    tex *= color;
     
     if (atan(uv.x, uv.y) + PI > radians(angle)) {
 		ALPHA = 0.0;

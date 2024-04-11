@@ -33,6 +33,7 @@ script = ExtResource("3_6tnuf")
 
 [node name="ConsumeEnergy" type="Node" parent="."]
 script = ExtResource("4_7cjb0")
+energy_amount = 100
 
 [node name="WithOptions" type="Node" parent="."]
 script = ExtResource("5_clrqb")
@@ -86,7 +87,7 @@ key = "\"%s_ready\" % actor.name"
 
 [node name="Time" type="Node" parent="WithOptions/Sequence/Cancellable"]
 script = ExtResource("6_ku6f2")
-time = 3.0
+time = 2.5
 cache_key = "execution"
 
 [node name="Sequence" type="Node" parent="WithOptions/Sequence/Cancellable/Time"]

@@ -7,6 +7,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b8tk4"]
 render_priority = 0
 shader = ExtResource("2_x2vwy")
+shader_parameter/color = Color(0, 0.905882, 0.862745, 0.513726)
 shader_parameter/angle = 60.0
 shader_parameter/uvScale = Vector2(0.76, 0.76)
 shader_parameter/fillTexture = ExtResource("3_jv2fw")
