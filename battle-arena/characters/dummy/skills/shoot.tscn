@@ -13,6 +13,7 @@ script = ExtResource("1_q5vp1")
 
 [node name="Ready" type="Node" parent="."]
 script = ExtResource("2_mjxu6")
+consume_key = false
 key = "\"%s_ready\" % actor.name"
 
 [node name="ShowProgressBar" type="Node" parent="."]
