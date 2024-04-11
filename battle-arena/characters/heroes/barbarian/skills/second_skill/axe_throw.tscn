@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_72vyh"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_i0ygl"]
 [ext_resource type="Script" path="res://characters/skills/leaves/play_animation.gd" id="3_3l352"]
-[ext_resource type="Script" path="res://characters/skills/leaves/spawn.gd" id="3_85ik3"]
 [ext_resource type="Script" path="res://characters/skills/leaves/wait.gd" id="3_rhf0w"]
 [ext_resource type="Script" path="res://characters/skills/leaves/wait_executing_skill.gd" id="3_y05h0"]
 [ext_resource type="Script" path="res://characters/skills/leaves/progress_bar/show_progress_bar.gd" id="4_qqm4j"]
@@ -14,6 +13,7 @@
 [ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="8_mgavd"]
 [ext_resource type="PackedScene" uid="uid://thap1nms50rw" path="res://characters/skills/preview/arrow_preview.tscn" id="9_ulbmb"]
 [ext_resource type="Script" path="res://characters/heroes/barbarian/skills/leaves/update_stance.gd" id="9_xx5hs"]
+[ext_resource type="Script" path="res://characters/skills/leaves/spawners/spawn_projectile.gd" id="13_8d1hr"]
 [ext_resource type="Script" path="res://characters/skills/leaves/previews/close_preview.gd" id="14_k67yn"]
 
 [node name="AxeThrow" type="Node"]
@@ -33,7 +33,9 @@ animation_name = "throw"
 [node name="WithOptions" type="Node" parent="."]
 script = ExtResource("5_ax043")
 custom_options = {
+"damage": 17,
 "distance": 10.0,
+"energy_gain": 5,
 "radius": 1.0
 }
 
@@ -59,15 +61,15 @@ script = ExtResource("3_rhf0w")
 wait_time = 0.65
 cache_key = "execution"
 
-[node name="Authority" type="Node" parent="."]
+[node name="Authority" type="Node" parent="WithOptions/Sequence"]
 script = ExtResource("8_mgavd")
 
-[node name="NearActor" type="Node" parent="Authority"]
+[node name="NearActor" type="Node" parent="WithOptions/Sequence/Authority"]
 script = ExtResource("6_yp6fw")
 offset = Vector3(2.08165e-12, 1, 0.5)
 
-[node name="Throw" type="Node" parent="Authority/NearActor"]
-script = ExtResource("3_85ik3")
+[node name="Throw" type="Node" parent="WithOptions/Sequence/Authority/NearActor"]
+script = ExtResource("13_8d1hr")
 scene_path = "res://characters/heroes/barbarian/axe.tscn"
 
 [node name="LocalClean" type="Node" parent="."]

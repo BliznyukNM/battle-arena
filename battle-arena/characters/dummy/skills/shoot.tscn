@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://characters/skills/leaves/wait.gd" id="6_2qc4w"]
 [ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="7_26txg"]
 [ext_resource type="Script" path="res://characters/skills/decorators/spawn/near_actor.gd" id="8_n6hv4"]
-[ext_resource type="Script" path="res://characters/skills/leaves/spawn.gd" id="9_j3cic"]
+[ext_resource type="Script" path="res://characters/skills/leaves/spawners/spawn.gd" id="9_j3cic"]
 
 [node name="Shoot" type="Node"]
 script = ExtResource("1_q5vp1")

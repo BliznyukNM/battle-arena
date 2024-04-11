@@ -1,5 +1,5 @@
 @tool
-extends "res://characters/skills/leaves/spawn.gd"
+extends "res://characters/skills/leaves/spawners/spawn.gd"
 
 
 func tick(actor: Node, blackboard: Blackboard) -> int:

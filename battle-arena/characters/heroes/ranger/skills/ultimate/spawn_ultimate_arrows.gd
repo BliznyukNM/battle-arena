@@ -1,5 +1,5 @@
 @tool
-extends "res://characters/skills/leaves/spawn.gd"
+extends "res://characters/skills/leaves/spawners/spawn_projectile.gd"
 
 
 @export_range(1, 11, 2) var arrow_count: int = 1

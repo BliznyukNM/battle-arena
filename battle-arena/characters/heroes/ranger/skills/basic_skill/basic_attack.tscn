@@ -1,14 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://b4uuy5qmtdakt"]
+[gd_scene load_steps=13 format=3 uid="uid://b4uuy5qmtdakt"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_yrwee"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_cjbpa"]
 [ext_resource type="Script" path="res://characters/skills/leaves/play_animation.gd" id="3_5ewbo"]
 [ext_resource type="Script" path="res://characters/skills/leaves/progress_bar/show_progress_bar.gd" id="4_3q1sh"]
 [ext_resource type="Script" path="res://characters/skills/leaves/wait_executing_skill.gd" id="4_05fcf"]
+[ext_resource type="Script" path="res://characters/skills/decorators/with_options.gd" id="5_2ptcg"]
 [ext_resource type="Script" path="res://characters/skills/leaves/wait.gd" id="5_mupk7"]
+[ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/local_player.gd" id="6_7utbv"]
 [ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="6_uxhe2"]
 [ext_resource type="Script" path="res://characters/skills/decorators/spawn/near_actor.gd" id="7_y24g6"]
-[ext_resource type="Script" path="res://characters/skills/leaves/spawn.gd" id="8_0e61x"]
+[ext_resource type="Script" path="res://characters/skills/leaves/spawners/spawn.gd" id="8_0e61x"]
 [ext_resource type="Script" path="res://characters/heroes/ranger/skills/leaves/interrupt_invisibility.gd" id="9_mpohx"]
 
 [node name="BasicAttack" type="Node"]
@@ -26,30 +28,45 @@ script = ExtResource("4_05fcf")
 script = ExtResource("3_5ewbo")
 animation_name = "shoot"
 
-[node name="ShowProgressBar" type="Node" parent="."]
+[node name="WithOptions" type="Node" parent="."]
+script = ExtResource("5_2ptcg")
+custom_options = {
+"damage": 18,
+"distance": 12.0,
+"energy_gain": 5,
+"radius": 1.0
+}
+
+[node name="Sequence" type="Node" parent="WithOptions"]
+script = ExtResource("1_yrwee")
+
+[node name="LocalPlayer" type="Node" parent="WithOptions/Sequence"]
+script = ExtResource("6_7utbv")
+
+[node name="ShowProgressBar" type="Node" parent="WithOptions/Sequence/LocalPlayer"]
 script = ExtResource("4_3q1sh")
 duration = 0.5
 
-[node name="ExecutionWait" type="Node" parent="."]
+[node name="ExecutionWait" type="Node" parent="WithOptions/Sequence"]
 script = ExtResource("5_mupk7")
 wait_time = 0.32
 cache_key = "execution"
 
-[node name="Authority" type="Node" parent="."]
+[node name="Authority" type="Node" parent="WithOptions/Sequence"]
 script = ExtResource("6_uxhe2")
 
-[node name="Sequence" type="Node" parent="Authority"]
+[node name="Sequence" type="Node" parent="WithOptions/Sequence/Authority"]
 script = ExtResource("1_yrwee")
 
-[node name="NearActor" type="Node" parent="Authority/Sequence"]
+[node name="NearActor" type="Node" parent="WithOptions/Sequence/Authority/Sequence"]
 script = ExtResource("7_y24g6")
 offset = Vector3(2.08165e-12, 1, 1)
 
-[node name="Throw" type="Node" parent="Authority/Sequence/NearActor"]
+[node name="Shoot" type="Node" parent="WithOptions/Sequence/Authority/Sequence/NearActor"]
 script = ExtResource("8_0e61x")
 scene_path = "res://characters/heroes/ranger/arrow.tscn"
 
-[node name="InterruptInvisibility" type="Node" parent="Authority/Sequence"]
+[node name="InterruptInvisibility" type="Node" parent="WithOptions/Sequence/Authority/Sequence"]
 script = ExtResource("9_mpohx")
 
 [node name="Cooldown" type="Node" parent="."]
