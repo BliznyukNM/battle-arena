@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cawu7vbk3beow"]
+[gd_scene load_steps=17 format=3 uid="uid://cawu7vbk3beow"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_0wt6i"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_sldcl"]
@@ -7,9 +7,15 @@
 [ext_resource type="Script" path="res://characters/heroes/barbarian/skills/dodge_skill/jump.gd" id="4_cicil"]
 [ext_resource type="Script" path="res://characters/skills/decorators/spawn/mouse_position.gd" id="4_ways6"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/decorators/succeeder.gd" id="5_kyi04"]
+[ext_resource type="Script" path="res://characters/skills/decorators/with_options.gd" id="6_ifj7s"]
+[ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/local_player.gd" id="7_1pkf0"]
 [ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="7_km2gl"]
 [ext_resource type="Script" path="res://characters/skills/leaves/melee_attack.gd" id="7_m7w3y"]
+[ext_resource type="Script" path="res://characters/skills/leaves/previews/show_preview.gd" id="8_hqtrp"]
+[ext_resource type="Script" path="res://characters/skills/leaves/progress_bar/show_progress_bar.gd" id="8_hysin"]
+[ext_resource type="PackedScene" uid="uid://dgafatw1fw86s" path="res://characters/skills/preview/area_preview.tscn" id="9_nwt1v"]
 [ext_resource type="Script" path="res://characters/skills/leaves/wait.gd" id="10_vnu0x"]
+[ext_resource type="Script" path="res://characters/skills/leaves/previews/close_preview.gd" id="12_oyr1j"]
 
 [node name="Jump" type="Node"]
 script = ExtResource("1_0wt6i")
@@ -25,11 +31,49 @@ script = ExtResource("3_r85f0")
 script = ExtResource("3_kba6b")
 animation_name = "jump"
 
-[node name="MousePosition" type="Node" parent="."]
+[node name="MousePositionTarget" type="Node" parent="."]
 script = ExtResource("4_ways6")
 max_distance = 10.0
+key_name = "target"
 
-[node name="Jump" type="Node" parent="MousePosition"]
+[node name="Sequence" type="Node" parent="MousePositionTarget"]
+script = ExtResource("1_0wt6i")
+
+[node name="WithOptions" type="Node" parent="MousePositionTarget/Sequence"]
+script = ExtResource("6_ifj7s")
+custom_options = {
+"radius": 3.0
+}
+
+[node name="Sequence" type="Node" parent="MousePositionTarget/Sequence/WithOptions"]
+script = ExtResource("1_0wt6i")
+
+[node name="LocalPlayer" type="Node" parent="MousePositionTarget/Sequence/WithOptions/Sequence"]
+script = ExtResource("7_1pkf0")
+
+[node name="Sequence" type="Node" parent="MousePositionTarget/Sequence/WithOptions/Sequence/LocalPlayer"]
+script = ExtResource("1_0wt6i")
+
+[node name="ShowProgressBar" type="Node" parent="MousePositionTarget/Sequence/WithOptions/Sequence/LocalPlayer/Sequence"]
+script = ExtResource("8_hysin")
+duration = 0.15
+
+[node name="ShowPreview" type="Node" parent="MousePositionTarget/Sequence/WithOptions/Sequence/LocalPlayer/Sequence"]
+script = ExtResource("8_hqtrp")
+preview_scene = ExtResource("9_nwt1v")
+
+[node name="ExecutionWait" type="Node" parent="MousePositionTarget/Sequence/WithOptions/Sequence"]
+script = ExtResource("10_vnu0x")
+wait_time = 0.15
+cache_key = "execution"
+
+[node name="LocalClean" type="Node" parent="MousePositionTarget/Sequence/WithOptions/Sequence"]
+script = ExtResource("7_1pkf0")
+
+[node name="ClosePreview" type="Node" parent="MousePositionTarget/Sequence/WithOptions/Sequence/LocalClean"]
+script = ExtResource("12_oyr1j")
+
+[node name="Jump" type="Node" parent="MousePositionTarget/Sequence"]
 script = ExtResource("4_cicil")
 time = 1.2
 
