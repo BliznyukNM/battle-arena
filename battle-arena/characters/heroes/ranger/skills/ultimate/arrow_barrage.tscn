@@ -73,13 +73,16 @@ script = ExtResource("20_x0xgq")
 script = ExtResource("4_wici4")
 duration = 3.0
 
-[node name="InterruptInvisibility" type="Node" parent="WithOptions/Sequence"]
-script = ExtResource("9_sk0sd")
+[node name="Authority" type="Node" parent="WithOptions/Sequence"]
+script = ExtResource("6_68vu2")
 
-[node name="AddModifier" type="Node" parent="WithOptions/Sequence"]
+[node name="AddModifier" type="Node" parent="WithOptions/Sequence/Authority"]
 script = ExtResource("5_vvyw8")
 modifier_name = "ArrowBarrageModifier"
 scene_path = "res://characters/heroes/ranger/skills/ultimate/arrow_barrage_modifier.tscn"
+
+[node name="InterruptInvisibility" type="Node" parent="WithOptions/Sequence"]
+script = ExtResource("9_sk0sd")
 
 [node name="Cancellable" type="Node" parent="WithOptions/Sequence"]
 script = ExtResource("9_64420")
@@ -115,7 +118,10 @@ script = ExtResource("5_o1ruv")
 wait_time = 0.25
 cache_key = "wait"
 
-[node name="RemoveModifier" type="Node" parent="."]
+[node name="Authority" type="Node" parent="."]
+script = ExtResource("6_68vu2")
+
+[node name="RemoveModifier" type="Node" parent="Authority"]
 script = ExtResource("12_b18bg")
 modifier_name = "ArrowBarrageModifier"
 
