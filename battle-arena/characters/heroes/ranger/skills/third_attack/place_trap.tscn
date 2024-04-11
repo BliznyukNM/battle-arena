@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://characters/skills/decorators/spawn/mouse_position.gd" id="6_exsuq"]
 [ext_resource type="Script" path="res://characters/skills/leaves/progress_bar/show_progress_bar.gd" id="6_xuxjh"]
 [ext_resource type="Script" path="res://characters/skills/decorators/with_options.gd" id="7_k7s0n"]
-[ext_resource type="Script" path="res://characters/skills/leaves/spawn.gd" id="8_4r8ud"]
+[ext_resource type="Script" path="res://characters/skills/leaves/spawners/spawn.gd" id="8_4r8ud"]
 [ext_resource type="Script" path="res://characters/skills/leaves/previews/show_preview.gd" id="8_5jkou"]
 [ext_resource type="PackedScene" uid="uid://dgafatw1fw86s" path="res://characters/skills/preview/area_preview.tscn" id="9_x7a1k"]
 [ext_resource type="Script" path="res://characters/skills/leaves/previews/close_preview.gd" id="15_umurt"]
@@ -64,19 +64,14 @@ script = ExtResource("5_enxgj")
 wait_time = 0.8
 cache_key = "execution"
 
-[node name="Authority" type="Node" parent="."]
+[node name="Authority" type="Node" parent="MousePositionTarget/WithOptions/Sequence"]
 script = ExtResource("6_6vo1j")
 
-[node name="NearActor" type="Node" parent="Authority"]
+[node name="NearActor" type="Node" parent="MousePositionTarget/WithOptions/Sequence/Authority"]
 script = ExtResource("6_aiehe")
 offset = Vector3(2.08165e-12, 1, 0.5)
 
-[node name="MousePositionTarget" type="Node" parent="Authority/NearActor"]
-script = ExtResource("6_exsuq")
-max_distance = 8.0
-key_name = "target"
-
-[node name="Throw" type="Node" parent="Authority/NearActor/MousePositionTarget"]
+[node name="Throw" type="Node" parent="MousePositionTarget/WithOptions/Sequence/Authority/NearActor"]
 script = ExtResource("8_4r8ud")
 scene_path = "res://characters/heroes/ranger/skills/third_attack/trap_bomb.tscn"
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dim1boifaol1b"]
+[gd_scene load_steps=17 format=3 uid="uid://dim1boifaol1b"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_y6fsy"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_wssh3"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://characters/skills/leaves/wait_executing_skill.gd" id="3_6tnuf"]
 [ext_resource type="Script" path="res://characters/skills/leaves/consume_energy.gd" id="4_7cjb0"]
 [ext_resource type="Script" path="res://characters/skills/leaves/progress_bar/show_progress_bar.gd" id="4_wici4"]
+[ext_resource type="Script" path="res://characters/skills/decorators/with_options.gd" id="5_clrqb"]
 [ext_resource type="Script" path="res://characters/skills/leaves/wait.gd" id="5_o1ruv"]
 [ext_resource type="Script" path="res://characters/skills/leaves/modifiers/add_modifier.gd" id="5_vvyw8"]
 [ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="6_68vu2"]
@@ -30,60 +31,68 @@ script = ExtResource("3_6tnuf")
 script = ExtResource("4_7cjb0")
 energy_amount = 100
 
-[node name="ShowProgressBar" type="Node" parent="."]
+[node name="WithOptions" type="Node" parent="."]
+script = ExtResource("5_clrqb")
+custom_options = {
+"damage": 7,
+"distance": 12.0,
+"radius": 1.0
+}
+
+[node name="Sequence" type="Node" parent="WithOptions"]
+script = ExtResource("1_y6fsy")
+
+[node name="ShowProgressBar" type="Node" parent="WithOptions/Sequence"]
 script = ExtResource("4_wici4")
 duration = 0.7
 
-[node name="Wait" type="Node" parent="."]
+[node name="Wait" type="Node" parent="WithOptions/Sequence"]
 script = ExtResource("5_o1ruv")
 wait_time = 0.7
 cache_key = "execution"
 
-[node name="ShowProgressBar2" type="Node" parent="."]
+[node name="ShowProgressBar2" type="Node" parent="WithOptions/Sequence"]
 script = ExtResource("4_wici4")
 duration = 5.5
 
-[node name="InterruptInvisibility" type="Node" parent="."]
+[node name="InterruptInvisibility" type="Node" parent="WithOptions/Sequence"]
 script = ExtResource("9_sk0sd")
 
-[node name="AddModifier" type="Node" parent="."]
+[node name="AddModifier" type="Node" parent="WithOptions/Sequence"]
 script = ExtResource("5_vvyw8")
 modifier_name = "ArrowBarrageModifier"
 scene_path = "res://characters/heroes/ranger/skills/ultimate/arrow_barrage_modifier.tscn"
 
-[node name="Cancellable" type="Node" parent="."]
+[node name="Cancellable" type="Node" parent="WithOptions/Sequence"]
 script = ExtResource("9_64420")
 key = "\"%s_ready\" % actor.name"
 
-[node name="Time" type="Node" parent="Cancellable"]
+[node name="Time" type="Node" parent="WithOptions/Sequence/Cancellable"]
 script = ExtResource("6_ku6f2")
 time = 3.0
 cache_key = "execution"
 
-[node name="Sequence" type="Node" parent="Cancellable/Time"]
+[node name="Sequence" type="Node" parent="WithOptions/Sequence/Cancellable/Time"]
 script = ExtResource("1_y6fsy")
 
-[node name="PlayAnimation" type="Node" parent="Cancellable/Time/Sequence"]
+[node name="PlayAnimation" type="Node" parent="WithOptions/Sequence/Cancellable/Time/Sequence"]
 script = ExtResource("3_5nwcn")
 animation_name = "shoot"
 
-[node name="Authority" type="Node" parent="Cancellable/Time/Sequence"]
+[node name="Authority" type="Node" parent="WithOptions/Sequence/Cancellable/Time/Sequence"]
 script = ExtResource("6_68vu2")
 
-[node name="Sequence" type="Node" parent="Cancellable/Time/Sequence/Authority"]
-script = ExtResource("1_y6fsy")
-
-[node name="NearActor" type="Node" parent="Cancellable/Time/Sequence/Authority/Sequence"]
+[node name="NearActor" type="Node" parent="WithOptions/Sequence/Cancellable/Time/Sequence/Authority"]
 script = ExtResource("7_tgjgx")
 offset = Vector3(2.08165e-12, 1, 1)
 
-[node name="Shoot" type="Node" parent="Cancellable/Time/Sequence/Authority/Sequence/NearActor"]
+[node name="Shoot" type="Node" parent="WithOptions/Sequence/Cancellable/Time/Sequence/Authority/NearActor"]
 script = ExtResource("13_hwsji")
 arrow_count = 3
 angle = 15.0
 scene_path = "res://characters/heroes/ranger/skills/ultimate/ultimate_arrow.tscn"
 
-[node name="Wait" type="Node" parent="Cancellable/Time/Sequence"]
+[node name="Wait" type="Node" parent="WithOptions/Sequence/Cancellable/Time/Sequence"]
 script = ExtResource("5_o1ruv")
 wait_time = 0.25
 cache_key = "wait"
