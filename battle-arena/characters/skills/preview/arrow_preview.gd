@@ -1,11 +1,13 @@
 extends "res://characters/skills/preview/base_preview.gd"
 
 
-func _construct_mesh(distance: float, radius: float) -> Mesh:
+func _construct_mesh() -> Mesh:
     const tip_offset: = 0.8
     const start_offset: = 0.7
     # const min_width: = 0.1
     
+    var options = _get_options.call()
+    var distance: float = options.get("distance", 0.0)
     distance = max(distance, tip_offset + start_offset)
     # var width: float = max(skill.radius, min_width)
     var width: = 0.4
