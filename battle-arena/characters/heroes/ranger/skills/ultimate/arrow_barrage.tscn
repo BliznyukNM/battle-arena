@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dim1boifaol1b"]
+[gd_scene load_steps=21 format=3 uid="uid://dim1boifaol1b"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_y6fsy"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_wssh3"]
@@ -11,11 +11,15 @@
 [ext_resource type="Script" path="res://characters/skills/leaves/modifiers/add_modifier.gd" id="5_vvyw8"]
 [ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="6_68vu2"]
 [ext_resource type="Script" path="res://characters/skills/decorators/time_repeat.gd" id="6_ku6f2"]
+[ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/local_player.gd" id="6_penfv"]
+[ext_resource type="Script" path="res://characters/skills/leaves/previews/show_preview.gd" id="7_bdh37"]
 [ext_resource type="Script" path="res://characters/skills/decorators/spawn/near_actor.gd" id="7_tgjgx"]
+[ext_resource type="PackedScene" uid="uid://ca4y2n74n51xv" path="res://characters/skills/preview/cone_preview.tscn" id="8_1nblr"]
 [ext_resource type="Script" path="res://characters/skills/decorators/cancellable.gd" id="9_64420"]
 [ext_resource type="Script" path="res://characters/heroes/ranger/skills/leaves/interrupt_invisibility.gd" id="9_sk0sd"]
 [ext_resource type="Script" path="res://characters/skills/leaves/modifiers/remove_modifier.gd" id="12_b18bg"]
 [ext_resource type="Script" path="res://characters/heroes/ranger/skills/ultimate/spawn_ultimate_arrows.gd" id="13_hwsji"]
+[ext_resource type="Script" path="res://characters/skills/leaves/previews/close_preview.gd" id="20_x0xgq"]
 
 [node name="ArrowBarrage" type="Node"]
 script = ExtResource("1_y6fsy")
@@ -29,11 +33,11 @@ script = ExtResource("3_6tnuf")
 
 [node name="ConsumeEnergy" type="Node" parent="."]
 script = ExtResource("4_7cjb0")
-energy_amount = 100
 
 [node name="WithOptions" type="Node" parent="."]
 script = ExtResource("5_clrqb")
 custom_options = {
+"angle": 30,
 "damage": 7,
 "distance": 12.0,
 "radius": 1.0
@@ -41,6 +45,13 @@ custom_options = {
 
 [node name="Sequence" type="Node" parent="WithOptions"]
 script = ExtResource("1_y6fsy")
+
+[node name="LocalPlayer" type="Node" parent="WithOptions/Sequence"]
+script = ExtResource("6_penfv")
+
+[node name="ShowPreview" type="Node" parent="WithOptions/Sequence/LocalPlayer"]
+script = ExtResource("7_bdh37")
+preview_scene = ExtResource("8_1nblr")
 
 [node name="ShowProgressBar" type="Node" parent="WithOptions/Sequence"]
 script = ExtResource("4_wici4")
@@ -51,9 +62,15 @@ script = ExtResource("5_o1ruv")
 wait_time = 0.7
 cache_key = "execution"
 
+[node name="LocalClean" type="Node" parent="WithOptions/Sequence"]
+script = ExtResource("6_penfv")
+
+[node name="ClosePreview" type="Node" parent="WithOptions/Sequence/LocalClean"]
+script = ExtResource("20_x0xgq")
+
 [node name="ShowProgressBar2" type="Node" parent="WithOptions/Sequence"]
 script = ExtResource("4_wici4")
-duration = 5.5
+duration = 3.0
 
 [node name="InterruptInvisibility" type="Node" parent="WithOptions/Sequence"]
 script = ExtResource("9_sk0sd")
