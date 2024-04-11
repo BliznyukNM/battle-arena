@@ -11,7 +11,7 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
     var spawn_transform: Transform3D = character.transform
     spawn_transform = spawn_transform.translated_local(offset)
     
-    var options = blackboard.get_value("options", {}, owner.name)
+    var options: Dictionary = blackboard.get_value("options", {}, owner.name)
     options.transform = spawn_transform
     blackboard.set_value("options", options, owner.name)
     

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cctpv6apqpbf3"]
+[gd_scene load_steps=16 format=3 uid="uid://cctpv6apqpbf3"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_xb0m5"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_3ipih"]
@@ -6,10 +6,15 @@
 [ext_resource type="Script" path="res://characters/skills/leaves/wait_executing_skill.gd" id="3_roqph"]
 [ext_resource type="Script" path="res://characters/skills/leaves/progress_bar/show_progress_bar.gd" id="4_mu66b"]
 [ext_resource type="Script" path="res://characters/skills/leaves/wait.gd" id="5_he8x8"]
+[ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/local_player.gd" id="5_i2o3s"]
 [ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="6_o1lqj"]
+[ext_resource type="Script" path="res://characters/skills/leaves/previews/show_preview.gd" id="6_spmbj"]
+[ext_resource type="Script" path="res://characters/skills/decorators/with_options.gd" id="7_62g7w"]
 [ext_resource type="Script" path="res://characters/skills/decorators/spawn/near_actor.gd" id="7_jr1lu"]
 [ext_resource type="Script" path="res://characters/heroes/ranger/skills/leaves/interrupt_invisibility.gd" id="9_r8m1n"]
+[ext_resource type="PackedScene" uid="uid://thap1nms50rw" path="res://characters/skills/preview/arrow_preview.tscn" id="9_tdjm8"]
 [ext_resource type="Script" path="res://characters/heroes/ranger/skills/second_skill/spawn_charged_arrow.gd" id="10_64mhk"]
+[ext_resource type="Script" path="res://characters/skills/leaves/previews/close_preview.gd" id="15_is2i4"]
 
 [node name="ChargedArrow" type="Node"]
 script = ExtResource("1_xb0m5")
@@ -25,9 +30,26 @@ script = ExtResource("3_roqph")
 script = ExtResource("3_brpm6")
 animation_name = "charged_shot"
 
-[node name="ShowProgressBar" type="Node" parent="."]
+[node name="LocalPlayer" type="Node" parent="."]
+script = ExtResource("5_i2o3s")
+
+[node name="Sequence" type="Node" parent="LocalPlayer"]
+script = ExtResource("1_xb0m5")
+
+[node name="ShowProgressBar" type="Node" parent="LocalPlayer/Sequence"]
 script = ExtResource("4_mu66b")
 duration = 1.4
+
+[node name="WithOptions" type="Node" parent="LocalPlayer/Sequence"]
+script = ExtResource("7_62g7w")
+custom_options = {
+"distance": 18.0,
+"radius": 1.0
+}
+
+[node name="ShowPreview" type="Node" parent="LocalPlayer/Sequence/WithOptions"]
+script = ExtResource("6_spmbj")
+preview_scene = ExtResource("9_tdjm8")
 
 [node name="ExecutionWait" type="Node" parent="."]
 script = ExtResource("5_he8x8")
@@ -50,6 +72,12 @@ scene_path = "res://characters/heroes/ranger/charged_arrow.tscn"
 
 [node name="InterruptInvisibility" type="Node" parent="Authority/Sequence"]
 script = ExtResource("9_r8m1n")
+
+[node name="LocalClean" type="Node" parent="."]
+script = ExtResource("5_i2o3s")
+
+[node name="ClosePreview" type="Node" parent="LocalClean"]
+script = ExtResource("15_is2i4")
 
 [node name="Cooldown" type="Node" parent="."]
 script = ExtResource("5_he8x8")

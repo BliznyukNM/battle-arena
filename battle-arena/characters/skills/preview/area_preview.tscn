@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgafatw1fw86s"]
+
+[ext_resource type="Script" path="res://characters/skills/preview/area_preview.gd" id="1_tdnh8"]
+[ext_resource type="Texture2D" uid="uid://psger3uipvhi" path="res://assets/vfx/circles/Circle005.png" id="2_dfn56"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_02eos"]
+orientation = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xtm1y"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 0.905882, 0.862745, 0.513726)
+albedo_texture = ExtResource("2_dfn56")
+
+[node name="Preview" type="Node3D"]
+script = ExtResource("1_tdnh8")
+_mesh = SubResource("QuadMesh_02eos")
+
+[node name="View" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.1, 2.08165e-12)
+material_override = SubResource("StandardMaterial3D_xtm1y")
