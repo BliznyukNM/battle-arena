@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d11d4wcjof6yw"]
+[gd_scene load_steps=21 format=3 uid="uid://d11d4wcjof6yw"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_xeg7b"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_8u3cf"]
@@ -6,14 +6,20 @@
 [ext_resource type="Script" path="res://characters/skills/leaves/consume_energy.gd" id="3_llxsb"]
 [ext_resource type="Script" path="res://characters/skills/leaves/play_animation.gd" id="3_v6eeq"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/decorators/succeeder.gd" id="6_2t8b3"]
+[ext_resource type="Script" path="res://characters/skills/decorators/with_options.gd" id="6_3tx2s"]
 [ext_resource type="Script" path="res://characters/skills/decorators/spawn/near_actor.gd" id="6_juegk"]
-[ext_resource type="Script" path="res://characters/skills/leaves/spawners/spawn.gd" id="7_ab8v1"]
+[ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/local_player.gd" id="7_mgbae"]
 [ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="7_u5jqy"]
+[ext_resource type="Script" path="res://characters/skills/leaves/progress_bar/show_progress_bar.gd" id="8_py51g"]
 [ext_resource type="Script" path="res://characters/skills/leaves/melee_attack.gd" id="8_vbhjd"]
 [ext_resource type="Script" path="res://characters/heroes/barbarian/skills/leaves/update_stance.gd" id="9_bs4lo"]
 [ext_resource type="Script" path="res://characters/skills/leaves/wait.gd" id="9_e8d7b"]
+[ext_resource type="Script" path="res://characters/skills/leaves/previews/show_preview.gd" id="9_l1wd4"]
 [ext_resource type="Script" path="res://characters/heroes/barbarian/skills/second_skill/axe_recall.gd" id="10_5no05"]
+[ext_resource type="PackedScene" uid="uid://thap1nms50rw" path="res://characters/skills/preview/arrow_preview.tscn" id="10_68krb"]
 [ext_resource type="Script" path="res://characters/heroes/barbarian/skills/ultimate/dash_to_axe.gd" id="12_2ex85"]
+[ext_resource type="Script" path="res://characters/skills/leaves/spawners/spawn_projectile.gd" id="12_87xlh"]
+[ext_resource type="Script" path="res://characters/skills/leaves/previews/close_preview.gd" id="15_tpr30"]
 
 [node name="Berserk" type="Node"]
 script = ExtResource("1_xeg7b")
@@ -25,38 +31,69 @@ key = "\"%s_ready\" % actor.name"
 [node name="WaitExecutingSkill" type="Node" parent="."]
 script = ExtResource("3_a4xr4")
 
-[node name="Authority4" type="Node" parent="."]
+[node name="Authority" type="Node" parent="."]
 script = ExtResource("7_u5jqy")
 
-[node name="ConsumeEnergy" type="Node" parent="Authority4"]
+[node name="ConsumeEnergy" type="Node" parent="Authority"]
 script = ExtResource("3_llxsb")
 energy_amount = 100
 
-[node name="PlayThrow" type="Node" parent="."]
+[node name="WithOptions" type="Node" parent="."]
+script = ExtResource("6_3tx2s")
+custom_options = {
+"damage": 30,
+"distance": 15.0,
+"radius": 1.0
+}
+
+[node name="Sequence" type="Node" parent="WithOptions"]
+script = ExtResource("1_xeg7b")
+
+[node name="LocalPlayer" type="Node" parent="WithOptions/Sequence"]
+script = ExtResource("7_mgbae")
+
+[node name="Sequence" type="Node" parent="WithOptions/Sequence/LocalPlayer"]
+script = ExtResource("1_xeg7b")
+
+[node name="ShowProgressBar" type="Node" parent="WithOptions/Sequence/LocalPlayer/Sequence"]
+script = ExtResource("8_py51g")
+duration = 0.5
+
+[node name="ShowPreview" type="Node" parent="WithOptions/Sequence/LocalPlayer/Sequence"]
+script = ExtResource("9_l1wd4")
+preview_scene = ExtResource("10_68krb")
+
+[node name="PlayThrow" type="Node" parent="WithOptions/Sequence"]
 script = ExtResource("3_v6eeq")
 animation_name = "throw"
 
-[node name="Wait" type="Node" parent="."]
+[node name="Wait" type="Node" parent="WithOptions/Sequence"]
 script = ExtResource("9_e8d7b")
 wait_time = 0.65
 cache_key = "execution"
 
-[node name="Authority" type="Node" parent="."]
+[node name="Authority" type="Node" parent="WithOptions/Sequence"]
 script = ExtResource("7_u5jqy")
 
-[node name="NearActor" type="Node" parent="Authority"]
+[node name="NearActor" type="Node" parent="WithOptions/Sequence/Authority"]
 script = ExtResource("6_juegk")
 offset = Vector3(2.08165e-12, 1, 0.5)
 
-[node name="Throw" type="Node" parent="Authority/NearActor"]
-script = ExtResource("7_ab8v1")
+[node name="Throw" type="Node" parent="WithOptions/Sequence/Authority/NearActor"]
+script = ExtResource("12_87xlh")
 scene_path = "res://characters/heroes/barbarian/skills/ultimate/axe.tscn"
+
+[node name="LocalClean" type="Node" parent="."]
+script = ExtResource("7_mgbae")
+
+[node name="ClosePreview" type="Node" parent="LocalClean"]
+script = ExtResource("15_tpr30")
 
 [node name="UpdateStance" type="Node" parent="."]
 script = ExtResource("9_bs4lo")
 stance = 1
 
-[node name="Wait2" type="Node" parent="."]
+[node name="Wait" type="Node" parent="."]
 script = ExtResource("9_e8d7b")
 wait_time = 0.5
 
