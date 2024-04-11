@@ -40,6 +40,8 @@ enum InputMapping {
 func _process_input_mask(old_mask: int, new_mask: int) -> void:
     var xor_mask = old_mask ^ new_mask
     
+    if xor_mask == 0: return
+    
     if xor_mask & InputMapping.BASIC_ATTACK:
         on_basic_attack.emit(new_mask & InputMapping.BASIC_ATTACK > 0)
     if xor_mask & InputMapping.SECOND_ATTACK:
