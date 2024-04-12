@@ -35,12 +35,13 @@ func _ready() -> void:
 
 
 func _spawn(params) -> Node:
-    var hero_instance = load("res://characters/heroes/%s/%s.tscn" % [params.character, params.character]).instantiate()
+    var hero_instance: Node = load("res://characters/heroes/%s/%s.tscn" % [params.character, params.character]).instantiate()
     hero_instance.name = str(params.id)
     hero_instance.player_id = params.id
     hero_instance.collision_layer = 1 << team_id
-    hero_instance.position = $PositionA.position # TODO: temporary
+    hero_instance.position = [$PositionA, $PositionB, $PositionC].pick_random().position
     hero_instance.get_node("Input").set_multiplayer_authority(params.id)
+    hero_instance.tree_entered.connect(func(): hero_instance.owner = owner)
     return hero_instance
 
 
