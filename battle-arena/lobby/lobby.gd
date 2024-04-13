@@ -19,25 +19,31 @@ func _ready() -> void:
     _semaphore.post()
     select_hero("barbarian") # FIXME
     
-    if not Matchmaking.is_authenticated: return
+    # if not Matchmaking.is_authenticated: return
     Matchmaking.match_found.connect(_on_match_found)
     
-    var account: NakamaAPI.ApiAccount = await Matchmaking.get_account()
-    var user: NakamaAPI.ApiUser = account.user
-    player_name_label.text = user.display_name
+    # var account: NakamaAPI.ApiAccount = await Matchmaking.get_account()
+    # var user: NakamaAPI.ApiUser = account.user
+    var profile = await Matchmaking.get_profile()
+    player_name_label.text = profile.username
     
-    if user.avatar_url.is_empty(): return
+    if profile.picture_url.is_empty(): return
     
     var httpRequest: = HTTPRequest.new()
     add_child(httpRequest)
     httpRequest.request_completed.connect(_on_avatar_request_completed)
-    httpRequest.request(user.avatar_url)
+    httpRequest.request(profile.picture_url)
 
 
 func _on_avatar_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
     var image: = Image.new()
-    if image.load_jpg_from_buffer(body) != OK:
-        push_error("Cannot load avatar")
+    
+    if "Content-Type: image/png" in headers:
+        if image.load_png_from_buffer(body) != OK:
+            push_error("Cannot load avatar")
+            return
+    else:
+        return
     
     player_avatar.texture = ImageTexture.create_from_image(image)
 

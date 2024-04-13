@@ -40,7 +40,7 @@ script/source = "extends Button
 
 
 func _ready() -> void:
-    disabled = not Matchmaking.is_authenticated
+#    disabled = not Matchmaking.is_authenticated
     pressed.connect(start_matchmaking, CONNECT_ONE_SHOT)
 
 
