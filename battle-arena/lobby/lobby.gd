@@ -25,6 +25,8 @@ func _ready() -> void:
     # var account: NakamaAPI.ApiAccount = await Matchmaking.get_account()
     # var user: NakamaAPI.ApiUser = account.user
     var profile = await Matchmaking.get_profile()
+    if not profile: return
+    
     player_name_label.text = profile.username
     
     if profile.picture_url.is_empty(): return

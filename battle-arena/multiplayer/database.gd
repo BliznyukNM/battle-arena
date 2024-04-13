@@ -28,10 +28,12 @@ static func setup_mapper(mapper: W4RMMapper) -> void:
 ## If the table already exists, it will be dropped first and recreated from
 ## scratch.
 static func run_static(sdk: W4Client) -> void:
-    setup_mapper(sdk.mapper)
+    #setup_mapper(sdk.mapper)
     # var okay = await sdk.mapper.init_db({"create": false, "drop_data": true, "cascade": true})
-    var okay = await sdk.mapper.init_db()
-    print("Created DB: %s" % okay)
+    #var okay = await sdk.mapper.init_db()
+    var lobby = await sdk.matchmaker.get_lobby("010a9110-d97d-43ab-bfdf-0ecafa629f6a").async()
+    print(lobby.is_error())
+    #print("Created DB: %s" % okay)
 
 
 ######################### DATABASE HELPERS ####################################

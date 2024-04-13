@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bbh6e4rwq01lt"]
+[gd_scene load_steps=14 format=3 uid="uid://bbh6e4rwq01lt"]
 
 [ext_resource type="Theme" uid="uid://bj84mbcru2nxg" path="res://lobby/themes/default.tres" id="1_6fdaq"]
 [ext_resource type="Script" path="res://lobby/lobby.gd" id="1_coknr"]
@@ -56,6 +56,34 @@ func cancel_matchmaking() -> void:
     text = \"Play Online\"
     theme_type_variation = \"GreenButton\"
     pressed.connect(start_matchmaking, CONNECT_ONE_SHOT)
+"
+
+[sub_resource type="GDScript" id="GDScript_wd074"]
+resource_name = "delete_lobby"
+script/source = "extends Button
+
+
+@onready var lobby_id: = $TextEdit
+
+
+const W4Matchmaker = preload(\"res://addons/w4gd/matchmaker/matchmaker.gd\")
+
+
+func delete_lobby() -> void:
+    var result = await W4GD.matchmaker.get_lobby(lobby_id.text).async()
+    
+    if result.is_error():
+        print(\"ERROR: \", result.message)
+        return
+
+    var lobby: W4Matchmaker.Lobby = result.get_data()
+    print(lobby.creator_id)
+    lobby.state = W4GD.matchmaker.LobbyState.DONE
+
+    result = await lobby.save().async()
+    if result.is_error():
+       print(\"ERROR: \", result.message)
+       return
 "
 
 [node name="Lobby" type="Control"]
@@ -221,8 +249,33 @@ theme_override_font_sizes/font_size = 32
 text = "Play Online"
 script = SubResource("GDScript_ppswv")
 
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 89.0
+offset_top = -98.0
+offset_right = 289.0
+offset_bottom = -58.0
+grow_vertical = 0
+text = "DELETE LOBBY"
+script = SubResource("GDScript_wd074")
+
+[node name="TextEdit" type="TextEdit" parent="Button"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -46.0
+offset_top = -130.0
+offset_right = 252.0
+offset_bottom = -54.0
+grow_vertical = 0
+
 [connection signal="gui_input" from="HeroPreview" to="HeroPreview" method="_on_gui_input"]
 [connection signal="pressed" from="GridContainer/Barbarian" to="." method="select_hero" binds= ["barbarian"]]
 [connection signal="pressed" from="GridContainer/Ranger" to="." method="select_hero" binds= ["ranger"]]
 [connection signal="pressed" from="GridContainer/Druid" to="." method="select_hero" binds= ["druid"]]
 [connection signal="pressed" from="Buttons/Sandbox" to="." method="start_sandbox"]
+[connection signal="pressed" from="Button" to="Button" method="delete_lobby"]

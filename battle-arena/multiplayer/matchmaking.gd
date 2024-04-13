@@ -30,11 +30,10 @@ var server_key: String:
 
 
 func _ready() -> void:
-    #var stun_url: String = ProjectSettings.get_setting_with_override("application/networking/stun")
-    #NakamaWebRTC.ice_servers = [{ "urls": [stun_url] }]
-    #NakamaWebRTC.max_players = 2
-    #NakamaWebRTC.match_ready.connect(_on_match_ready)
-    #NakamaWebRTC.error.connect(func(error): push_error(error))
+    var stun_url: String = ProjectSettings.get_setting_with_override("application/networking/stun")
+    var ice_servers := [{"urls": [stun_url]}]
+
+    W4GD.matchmaker.set_webrtc_ice_servers(ice_servers)
     Database.setup_mapper(W4GD.mapper)
     
 
@@ -75,17 +74,47 @@ func get_profile() -> Database.Profile:
     #return account.user.username
 
 
+const W4Matchmaker = preload("res://addons/w4gd/matchmaker/matchmaker.gd")
+var matchmaker_ticket: W4Matchmaker.MatchmakerTicket
+
+
 func find_match() -> void:
-    # NakamaWebRTC.start_matchmaking(_socket)
-    pass
+    if matchmaker_ticket:
+        push_error("Cannot create more then one matchmaker ticket!")
+        return
+    
+    var result = await W4GD.matchmaker.join_matchmaker_queue({
+        # Arbitrary properties used to group players together.
+        player_count = 2,
+        network_type = "webrtc",
+    }).async()
+    if result.is_error():
+        print("ERROR: ", result.message)
+        return
+
+    matchmaker_ticket = result.get_data()
+    matchmaker_ticket.matched.connect(self._on_matchmaker_matched, CONNECT_ONE_SHOT)
 
 
 func leave_match() -> void:
-    # NakamaWebRTC.leave()
-    pass
+    if matchmaker_ticket == null:
+        return
+
+    await W4GD.matchmaker.leave_matchmaker_queue(matchmaker_ticket).async()
+    matchmaker_ticket = null
 
 
-func _on_match_ready(players: Dictionary) -> void:
+func _on_matchmaker_matched(lobby_id: String) -> void:
+    leave_match()
+    
+    var result = await W4GD.matchmaker.get_lobby(lobby_id).async()
+    if result.is_error():
+        print("ERROR: ", result.message)
+        return
+
+    var lobby: W4Matchmaker.Lobby = result.get_data()
+
+    print("Matched into lobby with ID: ", lobby.id)
     match_found.emit()
 
 
