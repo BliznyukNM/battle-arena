@@ -6,12 +6,15 @@
 [ext_resource type="Texture2D" uid="uid://d2s2w82pf875w" path="res://assets/vfx/trails/StylizedTrail06.png" id="5_c23x5"]
 [ext_resource type="Texture2D" uid="uid://3wt8mg7x1ey" path="res://assets/vfx/trails/StylizedTrail02.png" id="5_qeieh"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ml1j8"]
+size = Vector3(0.28418, 0.238037, 0.774)
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_50jr8"]
 load_path = "res://.godot/imported/Gradient01.png-c560b35a3db99c4ea0c3aead5c8fff07.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pdmxh"]
 shading_mode = 0
-albedo_color = Color(0.8, 1.6, 0.8, 1)
+albedo_color = Color(0, 0, 0, 1)
 albedo_texture = SubResource("CompressedTexture2D_50jr8")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7tb12"]
@@ -48,11 +51,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_r8ami")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ml1j8"]
-size = Vector3(0.28418, 0.238037, 0.774)
-
 [sub_resource type="Curve" id="Curve_blyqh"]
-_data = [Vector2(0, 0), 0.0270512, 3.81247, 0, 0, Vector2(0.137286, 0.201814), 0.0377788, 0.0377788, 0, 0, Vector2(1, 0), -0.197724, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0270512, 17.6542, 0, 0, Vector2(0.133333, 1), 0.0377788, 0.0377788, 0, 0, Vector2(1, 0), -0.197724, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_25chp"]
@@ -108,18 +108,18 @@ distance = 12.0
 damage = 18
 energy_gain = 5
 
-[node name="ArrowHead01" type="MeshInstance3D" parent="."]
-transform = Transform3D(-6.55671e-09, -5.2318e-17, -0.15, 5.2318e-17, 0.15, -5.2318e-17, 0.15, -5.2318e-17, -6.55671e-09, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_pdmxh")
-mesh = SubResource("ArrayMesh_kfwtp")
-skeleton = NodePath("")
-
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.191437)
 shape = SubResource("BoxShape3D_ml1j8")
 
+[node name="ArrowHead01" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.31134e-08, -1.04636e-16, -0.3, 1.04636e-16, 0.3, -1.04636e-16, 0.3, -1.04636e-16, -1.31134e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_pdmxh")
+mesh = SubResource("ArrayMesh_kfwtp")
+skeleton = NodePath("")
+
 [node name="Trail" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.00034912, -0.00280992, -0.999996, -1, -9.81223e-07, -0.000349119, 0, 0.999996, -0.00280992, 0, 0, -0.826811)
+transform = Transform3D(0.00034912, -0.00280992, -0.999996, -1, -9.81223e-07, -0.000349119, 0, 0.999996, -0.00280992, 0, 0, -0.51635)
 mesh = SubResource("RibbonTrailMesh_a4btl")
 
 [node name="Trail2" type="MeshInstance3D" parent="."]
