@@ -120,7 +120,7 @@ min_value = 2.13163e-14
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 2.13163e-14), -2.79944, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_y4c1m"]
+[sub_resource type="CurveTexture" id="CurveTexture_4rwdo"]
 curve = SubResource("Curve_0bp2p")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mcacy"]
@@ -130,16 +130,16 @@ emission_sphere_radius = 1.0
 gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
 radial_accel_min = 30.0
 radial_accel_max = 30.0
-radial_accel_curve = SubResource("CurveTexture_y4c1m")
+radial_accel_curve = SubResource("CurveTexture_4rwdo")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xte81"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uhak8"]
 transparency = 1
 shading_mode = 0
 albedo_color = Color(0.8, 1.6, 0.8, 1)
 albedo_texture = ExtResource("6_imiqh")
 
 [sub_resource type="QuadMesh" id="QuadMesh_ivu06"]
-material = SubResource("StandardMaterial3D_xte81")
+material = SubResource("StandardMaterial3D_uhak8")
 size = Vector2(0.1, 0.2)
 
 [sub_resource type="Curve" id="Curve_cf2jf"]

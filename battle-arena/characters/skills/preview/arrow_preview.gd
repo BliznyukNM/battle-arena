@@ -24,7 +24,7 @@ func _construct_mesh() -> Mesh:
     indices.append_array([2, 4, 3])
     indices.append_array([2, 3, 1])
     
-    const uv_border = 0.27
+    const uv_border = 0.1
     var uvs: = PackedVector2Array()
     uvs.push_back(Vector2(0.5, 0.0))
     uvs.push_back(Vector2(1.0 - uv_border, tip_offset / distance))
