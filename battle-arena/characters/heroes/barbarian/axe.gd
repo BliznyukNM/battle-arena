@@ -45,6 +45,7 @@ func _on_area_entered(area: Area3D) -> void:
             if is_multiplayer_authority():
                 area.process_damage(owner, damage)
                 if area.generate_energy: owner.gain_energy.rpc(energy_gain)
+            if _hit_vfx: _hit_vfx.play_hit(area)
     if is_recalling and area is HitBox and area.owner == owner:
         if is_multiplayer_authority(): owner.on_pickup_axe.rpc()
 
