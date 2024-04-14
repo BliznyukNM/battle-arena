@@ -1,7 +1,90 @@
-[gd_scene load_steps=11 format=3 uid="uid://c413rb5v027xl"]
+[gd_scene load_steps=21 format=3 uid="uid://c413rb5v027xl"]
 
 [ext_resource type="Script" path="res://characters/heroes/barbarian/axe.gd" id="1_tvqmv"]
 [ext_resource type="Material" uid="uid://jsrj0tg2ovs4" path="res://assets/characters/heroes/barbarian/barbarian_texture.tres" id="2_xdyhu"]
+[ext_resource type="Texture2D" uid="uid://ds65jyxbyu6b7" path="res://assets/vfx/kenney_particle_pack/trace_04.png" id="3_b86xp"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_y4j1l"]
+
+[sub_resource type="Animation" id="Animation_ololx"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("View/Root")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("View/Root")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_04g1b"]
+resource_name = "floor_stuck"
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("View/Root")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.887, 2.08165e-12, 2.08165e-12, 0.462)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("View/Root")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 2.08165e-12, -0.55, 2.08165e-12)
+
+[sub_resource type="Animation" id="Animation_dngsa"]
+resource_name = "obstacle_stuck"
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("View/Root")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.383, 2.08165e-12, 2.08165e-12, 0.924)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("View/Root")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_8ydus"]
+resource_name = "rotating"
+length = 0.4
+loop_mode = 1
+step = 0.05
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("View/Root")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.1, 1, 0.707107, 7.66647e-20, -7.66647e-20, 0.707107, 0.2, 1, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12, 0.3, 1, -0.707, 2.08165e-12, 2.08165e-12, 0.707, 0.4, 1, 0, 0, 0, 1)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("View/Root")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8qj0m"]
+_data = {
+"RESET": SubResource("Animation_ololx"),
+"floor_stuck": SubResource("Animation_04g1b"),
+"obstacle_stuck": SubResource("Animation_dngsa"),
+"rotating": SubResource("Animation_8ydus")
+}
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_uskba"]
 _surfaces = [{
@@ -37,86 +120,70 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_uskba")
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_y4j1l"]
+[sub_resource type="GDScript" id="GDScript_b5ccm"]
+resource_name = "hit_vfx"
+script/source = "extends Node3D
 
-[sub_resource type="Animation" id="Animation_ololx"]
-resource_name = "RESET"
-length = 0.001
-tracks/0/type = "position_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Root")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
-tracks/1/type = "rotation_3d"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Root")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
 
-[sub_resource type="Animation" id="Animation_04g1b"]
-resource_name = "floor_stuck"
-tracks/0/type = "rotation_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Root")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0.887, 2.08165e-12, 2.08165e-12, 0.462)
-tracks/1/type = "position_3d"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Root")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 2.08165e-12, -0.55, 2.08165e-12)
+@export var muzzle_scene: PackedScene
 
-[sub_resource type="Animation" id="Animation_dngsa"]
-resource_name = "obstacle_stuck"
-tracks/0/type = "rotation_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Root")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0.383, 2.08165e-12, 2.08165e-12, 0.924)
-tracks/1/type = "position_3d"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Root")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0)
 
-[sub_resource type="Animation" id="Animation_8ydus"]
-resource_name = "rotating"
-length = 0.4
-loop_mode = 1
-step = 0.05
-tracks/0/type = "rotation_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Root")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.1, 1, 0.707107, 7.66647e-20, -7.66647e-20, 0.707107, 0.2, 1, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12, 0.3, 1, -0.707, 2.08165e-12, 2.08165e-12, 0.707, 0.4, 1, 0, 0, 0, 1)
-tracks/1/type = "position_3d"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Root")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+func play_hit(target: Node3D) -> void:
+    var instance: GPUParticles3D = muzzle_scene.instantiate()
+    $Root.add_child(instance)
+    instance.emitting = true
+    instance.finished.connect(instance.queue_free)
+    instance.global_transform = target.global_transform
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_8qj0m"]
-_data = {
-"RESET": SubResource("Animation_ololx"),
-"floor_stuck": SubResource("Animation_04g1b"),
-"obstacle_stuck": SubResource("Animation_dngsa"),
-"rotating": SubResource("Animation_8ydus")
+
+func play_finish() -> void:
+    $Explode.emitting = true
+"
+
+[sub_resource type="Curve" id="Curve_o56fa"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.18875, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_sn6y6"]
+curve = SubResource("Curve_o56fa")
+
+[sub_resource type="Curve" id="Curve_73flx"]
+max_value = 3.0
+_data = [Vector2(0, 0.0119185), 0.0, 9.64574, 0, 0, Vector2(0.997101, 3), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_td6ha"]
+curve = SubResource("Curve_73flx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ob5va"]
+gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+scale_curve = SubResource("CurveTexture_td6ha")
+color = Color(0.8, 1.6, 0.8, 1)
+alpha_curve = SubResource("CurveTexture_sn6y6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5kocw"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+no_depth_test = true
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_b86xp")
+
+[sub_resource type="QuadMesh" id="QuadMesh_jq2p4"]
+material = SubResource("StandardMaterial3D_5kocw")
+
+[sub_resource type="PackedScene" id="PackedScene_khqsi"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("Muzzle", "emitting", "amount", "one_shot", "fixed_fps", "process_material", "draw_pass_1", "GPUParticles3D"),
+"node_count": 1,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 7, 0, -1, 6, 1, 0, 2, 1, 3, 2, 4, 3, 5, 4, 6, 5, 0),
+"variants": [false, 1, true, 60, SubResource("ParticleProcessMaterial_ob5va"), SubResource("QuadMesh_jq2p4")],
+"version": 3
 }
 
 [node name="Axe" type="Area3D"]
@@ -127,13 +194,6 @@ distance = 10.0
 damage = 17
 energy_gain = 5
 
-[node name="Root" type="Node3D" parent="."]
-
-[node name="2H_Axe" type="MeshInstance3D" parent="Root"]
-transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, 0, -0.344754, 0)
-mesh = SubResource("ArrayMesh_ccfrh")
-skeleton = NodePath("")
-
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_y4j1l")
 
@@ -141,6 +201,19 @@ shape = SubResource("SphereShape3D_y4j1l")
 libraries = {
 "": SubResource("AnimationLibrary_8qj0m")
 }
+
+[node name="View" type="Node3D" parent="."]
+
+[node name="Root" type="Node3D" parent="View"]
+
+[node name="2H_Axe" type="MeshInstance3D" parent="View/Root"]
+transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, 0, -0.344754, 0)
+mesh = SubResource("ArrayMesh_ccfrh")
+skeleton = NodePath("")
+
+[node name="HitVFX" type="Node3D" parent="."]
+script = SubResource("GDScript_b5ccm")
+muzzle_scene = SubResource("PackedScene_khqsi")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_obstacle_hit"]

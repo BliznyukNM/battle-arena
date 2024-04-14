@@ -39,14 +39,14 @@ func _on_finish_travel() -> void:
 
 
 func _on_area_entered(area: Area3D) -> void:
-    if not is_multiplayer_authority(): return
     
     if _is_travelling or is_recalling:
         if area.collision_layer != collision_layer and area is HitBox:
-            area.process_damage(owner, damage)
-            if area.generate_energy: owner.gain_energy.rpc(energy_gain)
+            if is_multiplayer_authority():
+                area.process_damage(owner, damage)
+                if area.generate_energy: owner.gain_energy.rpc(energy_gain)
     if is_recalling and area is HitBox and area.owner == owner:
-        owner.on_pickup_axe.rpc()
+        if is_multiplayer_authority(): owner.on_pickup_axe.rpc()
 
 
 func _on_obstacle_hit(obstacle: Node3D) -> void:
