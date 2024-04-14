@@ -1,10 +1,11 @@
-[gd_scene load_steps=130 format=3 uid="uid://b1jmt46gek5uu"]
+[gd_scene load_steps=144 format=3 uid="uid://b1jmt46gek5uu"]
 
 [ext_resource type="PackedScene" uid="uid://bocx62bl7xwow" path="res://assets/characters/heroes/ranger/Rogue_Hooded.glb" id="1_2ksd8"]
 [ext_resource type="Script" path="res://characters/heroes/ranger/skin.gd" id="2_23mfw"]
-[ext_resource type="Texture2D" uid="uid://da3adlvmfe47h" path="res://assets/vfx/circles/Circle001.png" id="2_ug5i1"]
+[ext_resource type="Texture2D" uid="uid://byavl4pj0mmwm" path="res://assets/vfx/kenney_particle_pack/trace_01.png" id="3_6nu1c"]
+[ext_resource type="Texture2D" uid="uid://cyjr5firq106i" path="res://assets/vfx/kenney_particle_pack/trace_02.png" id="3_igevj"]
 [ext_resource type="AnimationLibrary" uid="uid://lfe5m3k7a7fy" path="res://characters/heroes/ranger/animations/ranger.res" id="4_baww2"]
-[ext_resource type="Texture2D" uid="uid://3m0ujn6u8omb" path="res://assets/vfx/kenney_particle_pack/star_07.png" id="4_j4p1r"]
+[ext_resource type="Texture2D" uid="uid://q846pxsnl5x1" path="res://assets/vfx/kenney_particle_pack/star_01.png" id="4_d3s3n"]
 [ext_resource type="Texture2D" uid="uid://uqqt321aikgn" path="res://assets/characters/heroes/ranger/rogue_texture.png" id="4_tyl36"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iamgc"]
@@ -22,34 +23,35 @@ shading_mode = 0
 albedo_color = Color(1.8, 0, 0, 1)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_avebx"]
-emission_shape_scale = Vector3(0.5, 0.5, 0.5)
+emission_shape_scale = Vector3(0.7, 0.7, 0.7)
 emission_shape = 2
 emission_sphere_radius = 1.0
 gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
 radial_accel_min = -20.0
 radial_accel_max = -10.0
+color = Color(0.8, 1.6, 0.8, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dj6kk"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f53sl"]
 transparency = 1
 shading_mode = 0
-albedo_color = Color(0.8, 1.6, 0.8, 1)
-albedo_texture = ExtResource("2_ug5i1")
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_igevj")
 
-[sub_resource type="QuadMesh" id="QuadMesh_lxfyg"]
-material = SubResource("StandardMaterial3D_dj6kk")
-size = Vector2(0.1, 0.2)
+[sub_resource type="QuadMesh" id="QuadMesh_583e6"]
+material = SubResource("StandardMaterial3D_f53sl")
+size = Vector2(0.6, 0.3)
 
-[sub_resource type="Curve" id="Curve_8nt81"]
+[sub_resource type="Curve" id="Curve_ttae1"]
 max_value = 3.0
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.496094, 3), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.164476, 0, 0, Vector2(0.501449, 3), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_vb4dt"]
-curve = SubResource("Curve_8nt81")
+[sub_resource type="CurveTexture" id="CurveTexture_c05g0"]
+curve = SubResource("Curve_ttae1")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8c4re"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ynw0o"]
 gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
-scale_curve = SubResource("CurveTexture_vb4dt")
+scale_curve = SubResource("CurveTexture_c05g0")
 color = Color(0.8, 1.6, 0.8, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j0ino"]
@@ -58,10 +60,54 @@ blend_mode = 1
 no_depth_test = true
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("4_j4p1r")
+albedo_texture = ExtResource("4_d3s3n")
 
 [sub_resource type="QuadMesh" id="QuadMesh_jjiqo"]
 material = SubResource("StandardMaterial3D_j0ino")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jjupp"]
+emission_shape = 2
+emission_sphere_radius = 1.0
+direction = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+spread = 0.0
+gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+radial_accel_min = -20.0
+radial_accel_max = -20.0
+color = Color(0.8, 1.6, 0.8, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dj6kk"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_6nu1c")
+
+[sub_resource type="QuadMesh" id="QuadMesh_b8exa"]
+material = SubResource("StandardMaterial3D_dj6kk")
+size = Vector2(0.5, 0.5)
+
+[sub_resource type="Curve" id="Curve_dfjmk"]
+max_value = 3.0
+_data = [Vector2(0, 0.440911), 0.0, 0.162819, 0, 0, Vector2(1, 3), 7.33076, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_7g5bd"]
+curve = SubResource("Curve_dfjmk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gdjum"]
+gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+scale_curve = SubResource("CurveTexture_7g5bd")
+color = Color(0.8, 1.6, 0.8, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nd7qq"]
+transparency = 1
+blend_mode = 1
+no_depth_test = true
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_d3s3n")
+
+[sub_resource type="QuadMesh" id="QuadMesh_s1jw4"]
+material = SubResource("StandardMaterial3D_nd7qq")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bdox7"]
 resource_name = "rogue_texture"
@@ -30792,8 +30838,31 @@ _data = {
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_hmea8"]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3m3k2"]
-animation = &"2H_Ranged_Shoot"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j83lr"]
+animation = &"ranger/aim_charged_shot"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f147o"]
+animation = &"ranger/charged_shot"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3jii2"]
+xfade_time = 0.15
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sjrtx"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_behan"]
+xfade_time = 0.15
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_bq03n"]
+states/ranger_aim_charged_shot/node = SubResource("AnimationNodeAnimation_j83lr")
+states/ranger_aim_charged_shot/position = Vector2(408, 100)
+states/ranger_charged_shot/node = SubResource("AnimationNodeAnimation_f147o")
+states/ranger_charged_shot/position = Vector2(682, 100)
+transitions = ["Start", "ranger_aim_charged_shot", SubResource("AnimationNodeStateMachineTransition_3jii2"), "ranger_aim_charged_shot", "ranger_charged_shot", SubResource("AnimationNodeStateMachineTransition_sjrtx"), "ranger_charged_shot", "End", SubResource("AnimationNodeStateMachineTransition_behan")]
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_trn56"]
 
@@ -30843,7 +30912,7 @@ filters = ["Rig/Skeleton3D/1H_Crossbow/1H_Crossbow:visible", "Rig/Skeleton3D/2H_
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_876bk"]
 filter_enabled = true
-filters = ["Rig/Skeleton3D:chest", "Rig/Skeleton3D:hand.l", "Rig/Skeleton3D:hand.r", "Rig/Skeleton3D:handslot.l", "Rig/Skeleton3D:handslot.r", "Rig/Skeleton3D:head", "Rig/Skeleton3D:hips", "Rig/Skeleton3D:lowerarm.l", "Rig/Skeleton3D:lowerarm.r", "Rig/Skeleton3D:root", "Rig/Skeleton3D:spine", "Rig/Skeleton3D:upperarm.l", "Rig/Skeleton3D:upperarm.r"]
+filters = ["Rig/Skeleton3D/2H_Crossbow/VFX/Charge/Charge:emitting", "Rig/Skeleton3D/2H_Crossbow/VFX/Charge/Muzzle:emitting", "Rig/Skeleton3D:chest", "Rig/Skeleton3D:hand.l", "Rig/Skeleton3D:hand.r", "Rig/Skeleton3D:handslot.l", "Rig/Skeleton3D:handslot.r", "Rig/Skeleton3D:head", "Rig/Skeleton3D:hips", "Rig/Skeleton3D:lowerarm.l", "Rig/Skeleton3D:lowerarm.r", "Rig/Skeleton3D:root", "Rig/Skeleton3D:spine", "Rig/Skeleton3D:upperarm.l", "Rig/Skeleton3D:upperarm.r"]
 fadein_time = 0.15
 fadeout_time = 0.15
 
@@ -30856,7 +30925,7 @@ fadeout_time = 0.1
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_55wul"]
 filter_enabled = true
-filters = ["Rig/Skeleton3D/2H_Crossbow/Charge:emitting", "Rig/Skeleton3D/2H_Crossbow/GPUParticles3D:emitting", "Rig/Skeleton3D/2H_Crossbow/Muzzle:emitting", "Rig/Skeleton3D:chest", "Rig/Skeleton3D:hand.l", "Rig/Skeleton3D:hand.r", "Rig/Skeleton3D:handslot.l", "Rig/Skeleton3D:handslot.r", "Rig/Skeleton3D:head", "Rig/Skeleton3D:hips", "Rig/Skeleton3D:lowerarm.l", "Rig/Skeleton3D:lowerarm.r", "Rig/Skeleton3D:root", "Rig/Skeleton3D:spine", "Rig/Skeleton3D:upperarm.l", "Rig/Skeleton3D:upperarm.r"]
+filters = ["Rig/Skeleton3D/2H_Crossbow/Charge:emitting", "Rig/Skeleton3D/2H_Crossbow/GPUParticles3D:emitting", "Rig/Skeleton3D/2H_Crossbow/Muzzle:emitting", "Rig/Skeleton3D/2H_Crossbow/VFX/Basic/Charge:emitting", "Rig/Skeleton3D/2H_Crossbow/VFX/Basic/Muzzle:emitting", "Rig/Skeleton3D:chest", "Rig/Skeleton3D:hand.l", "Rig/Skeleton3D:hand.r", "Rig/Skeleton3D:handslot.l", "Rig/Skeleton3D:handslot.r", "Rig/Skeleton3D:head", "Rig/Skeleton3D:hips", "Rig/Skeleton3D:lowerarm.l", "Rig/Skeleton3D:lowerarm.r", "Rig/Skeleton3D:root", "Rig/Skeleton3D:spine", "Rig/Skeleton3D:upperarm.l", "Rig/Skeleton3D:upperarm.r"]
 sync = true
 fadein_time = 0.15
 fadeout_time = 0.05
@@ -30914,11 +30983,11 @@ animation = &"ranger/throw"
 animation = &"2H_Ranged_Shoot"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_lqq2h"]
-graph_offset = Vector2(-1079.03, 1206.62)
+graph_offset = Vector2(-676.801, 1157.81)
 nodes/AttackSpeed/node = SubResource("AnimationNodeTimeScale_hmea8")
 nodes/AttackSpeed/position = Vector2(200, 1500)
-nodes/ChargeShot/node = SubResource("AnimationNodeAnimation_3m3k2")
-nodes/ChargeShot/position = Vector2(20, 1760)
+nodes/ChargeShot/node = SubResource("AnimationNodeStateMachine_bq03n")
+nodes/ChargeShot/position = Vector2(80, 1740)
 nodes/ChargeShotTimeScale/node = SubResource("AnimationNodeTimeScale_trn56")
 nodes/ChargeShotTimeScale/position = Vector2(320, 1680)
 nodes/DodgeAnim/node = SubResource("AnimationNodeAnimation_vga8n")
@@ -30972,31 +31041,31 @@ ultimate = SubResource("StandardMaterial3D_ctdsp")
 
 [node name="Skeleton3D" parent="Rig" index="0"]
 bones/0/rotation = Quaternion(0, 1.19209e-07, 0, 1)
-bones/1/position = Vector3(0, 0.373465, 0)
+bones/1/position = Vector3(0, 0.368683, 0)
 bones/1/rotation = Quaternion(-1.11123e-10, 0.0431578, 2.57241e-09, 0.999068)
 bones/2/rotation = Quaternion(0, 7.10543e-15, 0, 1)
 bones/4/position = Vector3(0.237825, 0.134132, 0.0707304)
-bones/4/rotation = Quaternion(-0.532072, -0.389739, -0.75161, -0.00920346)
-bones/5/rotation = Quaternion(1.46797e-08, -4.52521e-08, -0.708148, 0.706064)
-bones/7/rotation = Quaternion(-0.336877, 0.351244, -0.306684, 0.817977)
+bones/4/rotation = Quaternion(-0.532638, -0.389661, -0.751238, -0.0101153)
+bones/5/rotation = Quaternion(1.55381e-08, -5.60893e-08, -0.705338, 0.708871)
+bones/7/rotation = Quaternion(-0.336007, 0.356623, -0.311059, 0.814348)
 bones/8/position = Vector3(8.34815e-10, 0.0961251, -0.0575001)
 bones/8/rotation = Quaternion(1.60975e-09, 1.60975e-09, -0.707107, 0.707107)
 bones/10/position = Vector3(-0.205704, 0.134132, -0.0728219)
-bones/10/rotation = Quaternion(-0.633766, 0.276406, 0.485132, 0.535339)
-bones/11/rotation = Quaternion(3.96193e-08, 4.35916e-08, 0.773595, 0.633681)
-bones/13/rotation = Quaternion(-0.211591, 0.526633, 0.30626, 0.764259)
+bones/10/rotation = Quaternion(-0.631005, 0.267886, 0.500202, 0.529025)
+bones/11/rotation = Quaternion(2.82835e-08, 2.81419e-08, 0.767218, 0.641387)
+bones/13/rotation = Quaternion(-0.205192, 0.513429, 0.316465, 0.770803)
 bones/14/position = Vector3(-1.5736e-08, 0.0961251, -0.0575)
 bones/14/rotation = Quaternion(0.0182482, 0.0177895, 0.707211, 0.706543)
 bones/19/rotation = Quaternion(-5.8061e-11, -0.0313416, -1.88013e-09, 0.999509)
 bones/21/position = Vector3(0.170945, 0.113587, 1.39233e-08)
-bones/21/rotation = Quaternion(0.990515, 0.0834193, 0.0780487, 0.0763496)
-bones/22/rotation = Quaternion(0.366704, 6.285e-08, -2.55023e-07, 0.930338)
-bones/23/rotation = Quaternion(-0.606646, -0.2025, 0.0715984, 0.765408)
+bones/21/rotation = Quaternion(0.9894, 0.0837992, 0.0788584, 0.0885859)
+bones/22/rotation = Quaternion(0.399076, 5.76398e-08, -2.68937e-07, 0.916918)
+bones/23/rotation = Quaternion(-0.623642, -0.200572, 0.0774997, 0.751555)
 bones/24/rotation = Quaternion(-3.04797e-08, 0.920355, -0.391084, 6.94849e-08)
 bones/25/position = Vector3(-0.170945, 0.113587, 1.39233e-08)
-bones/25/rotation = Quaternion(0.992572, -0.0326979, 0.0300765, 0.113256)
-bones/26/rotation = Quaternion(0.413869, -6.01305e-08, 2.87629e-07, 0.910337)
-bones/27/rotation = Quaternion(-0.633816, 0.112937, -0.0209452, 0.764907)
+bones/25/rotation = Quaternion(0.991221, -0.0334819, 0.0297589, 0.124394)
+bones/26/rotation = Quaternion(0.442787, -5.82245e-08, 3.10713e-07, 0.896627)
+bones/27/rotation = Quaternion(-0.649487, 0.112397, -0.0237231, 0.751646)
 bones/28/rotation = Quaternion(3.04797e-08, 0.920355, -0.391084, -6.94849e-08)
 bones/29/position = Vector3(0.170945, 0.29231, 0.575812)
 bones/29/rotation = Quaternion(0.707107, -2.29302e-07, -4.60551e-08, 0.707107)
@@ -31020,29 +31089,33 @@ bones/40/position = Vector3(-6.31128e-09, 0.16565, 1.36608e-09)
 bones/41/rotation = Quaternion(1, 4.44086e-16, 1.94707e-07, 6.91739e-22)
 bones/43/position = Vector3(0.453507, 1.10676, -0.588859)
 bones/43/rotation = Quaternion(-0.707107, -7.27951e-08, -7.27951e-08, 0.707107)
-bones/44/position = Vector3(0.520841, 0.77837, -0.0576374)
+bones/44/position = Vector3(0.520841, 0.770558, -0.0576374)
 bones/44/rotation = Quaternion(0.794627, -1.47148e-07, 0.607098, -5.02923e-08)
 bones/45/position = Vector3(-0.453507, 1.10676, -0.58886)
 bones/45/rotation = Quaternion(-0.707107, -7.27951e-08, -7.27951e-08, 0.707107)
-bones/46/position = Vector3(-0.510844, 0.77837, 0.0597369)
+bones/46/position = Vector3(-0.510844, 0.770558, 0.0597369)
 bones/46/rotation = Quaternion(-0.758253, -1.89432e-07, 0.651961, -1.86264e-08)
 
 [node name="Knife_Offhand" parent="Rig/Skeleton3D" index="0"]
-transform = Transform3D(0.948251, -0.31335, -0.0512991, 0.021745, -0.0970955, 0.995037, -0.316776, -0.94466, -0.0852574, 0.143834, 0.987882, 0.498224)
+transform = Transform3D(0.948208, -0.312626, -0.0562618, 0.023896, -0.106414, 0.994034, -0.316748, -0.943896, -0.0934326, 0.1455, 0.981645, 0.500188)
 
 [node name="Knife_Offhand" parent="Rig/Skeleton3D/Knife_Offhand" index="0"]
 visible = false
 
 [node name="1H_Crossbow" parent="Rig/Skeleton3D" index="1"]
-transform = Transform3D(0.847415, -0.0561179, 0.527955, -0.00400226, 0.993694, 0.112046, -0.530914, -0.0970626, 0.841847, -0.425909, 0.955275, 0.156978)
+transform = Transform3D(0.847356, -0.0611045, 0.527497, -0.00442522, 0.99251, 0.122079, -0.531006, -0.105779, 0.840739, -0.424681, 0.936886, 0.15864)
 
 [node name="1H_Crossbow" parent="Rig/Skeleton3D/1H_Crossbow" index="0"]
 visible = false
 
 [node name="2H_Crossbow" parent="Rig/Skeleton3D" index="2"]
-transform = Transform3D(0.847415, -0.0561179, 0.527955, -0.00400226, 0.993694, 0.112046, -0.530914, -0.0970626, 0.841847, -0.425909, 0.955275, 0.156978)
+transform = Transform3D(0.847356, -0.0611045, 0.527497, -0.00442522, 0.99251, 0.122079, -0.531006, -0.105779, 0.840739, -0.424681, 0.936886, 0.15864)
 
-[node name="Charge" type="GPUParticles3D" parent="Rig/Skeleton3D/2H_Crossbow" index="1"]
+[node name="VFX" type="Node3D" parent="Rig/Skeleton3D/2H_Crossbow" index="1"]
+
+[node name="Basic" type="Node3D" parent="Rig/Skeleton3D/2H_Crossbow/VFX" index="0"]
+
+[node name="Charge" type="GPUParticles3D" parent="Rig/Skeleton3D/2H_Crossbow/VFX/Basic" index="0"]
 transform = Transform3D(0.847266, -0.00277361, -0.531163, -0.015299, 0.999444, -0.0296233, 0.53095, 0.0332254, 0.846753, 0.0410539, 0.103389, 1.17743)
 emitting = false
 amount = 12
@@ -31052,32 +31125,56 @@ visibility_aabb = AABB(-1.32101, -1.1481, -1.12079, 2.64202, 2.29621, 2.24159)
 local_coords = true
 transform_align = 3
 process_material = SubResource("ParticleProcessMaterial_avebx")
-draw_pass_1 = SubResource("QuadMesh_lxfyg")
+draw_pass_1 = SubResource("QuadMesh_583e6")
 
-[node name="Muzzle" type="GPUParticles3D" parent="Rig/Skeleton3D/2H_Crossbow" index="2"]
-transform = Transform3D(1, 4.12975e-10, 2.50942e-08, -7.14834e-09, 1, 9.07602e-09, -1.56102e-08, 1.3322e-09, 1, 5.96046e-08, 0.0977955, 1.1887)
+[node name="Muzzle" type="GPUParticles3D" parent="Rig/Skeleton3D/2H_Crossbow/VFX/Basic" index="1"]
+transform = Transform3D(1, 1.44821e-10, 2.37858e-08, -9.08648e-09, 1, 4.19299e-09, -1.7537e-09, 2.51433e-09, 1, 1.19209e-07, 0.0977953, 1.1887)
 emitting = false
 amount = 1
 lifetime = 0.2
 one_shot = true
 transform_align = 3
-process_material = SubResource("ParticleProcessMaterial_8c4re")
+process_material = SubResource("ParticleProcessMaterial_ynw0o")
 draw_pass_1 = SubResource("QuadMesh_jjiqo")
 
+[node name="Charge" type="Node3D" parent="Rig/Skeleton3D/2H_Crossbow/VFX" index="1"]
+
+[node name="Charge" type="GPUParticles3D" parent="Rig/Skeleton3D/2H_Crossbow/VFX/Charge" index="0"]
+transform = Transform3D(0.847266, -0.00277361, -0.531163, -0.015299, 0.999444, -0.0296233, 0.53095, 0.0332254, 0.846753, 0.0410539, 0.103389, 1.17743)
+emitting = false
+amount = 12
+lifetime = 0.2
+visibility_aabb = AABB(-1.32101, -1.1481, -1.12079, 2.64202, 2.29621, 2.24159)
+local_coords = true
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_jjupp")
+draw_pass_1 = SubResource("QuadMesh_b8exa")
+
+[node name="Muzzle" type="GPUParticles3D" parent="Rig/Skeleton3D/2H_Crossbow/VFX/Charge" index="1"]
+transform = Transform3D(1, 1.44821e-10, 2.37858e-08, -9.08648e-09, 1, 4.19299e-09, -1.7537e-09, 2.51433e-09, 1, 1.19209e-07, 0.0977953, 1.1887)
+emitting = false
+amount = 1
+lifetime = 1.2
+one_shot = true
+local_coords = true
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_gdjum")
+draw_pass_1 = SubResource("QuadMesh_s1jw4")
+
 [node name="Knife" parent="Rig/Skeleton3D" index="3"]
-transform = Transform3D(-0.527955, -0.0561177, 0.847415, -0.112046, 0.993694, -0.00400256, -0.841847, -0.0970628, -0.530914, -0.371251, 0.977291, 0.244054)
+transform = Transform3D(-0.527497, -0.0611043, 0.847356, -0.122079, 0.99251, -0.00442551, -0.840739, -0.105779, -0.531006, -0.370123, 0.95994, 0.245509)
 
 [node name="Knife" parent="Rig/Skeleton3D/Knife" index="0"]
 visible = false
 
 [node name="Throwable" parent="Rig/Skeleton3D" index="4"]
-transform = Transform3D(-0.527955, -0.0561179, 0.847415, -0.112046, 0.993694, -0.00400244, -0.841847, -0.0970628, -0.530914, -0.381366, 1.1564, 0.226559)
+transform = Transform3D(-0.527497, -0.0611045, 0.847356, -0.122079, 0.99251, -0.00442539, -0.840739, -0.105779, -0.531006, -0.381137, 1.13884, 0.226443)
 
 [node name="Throwable" parent="Rig/Skeleton3D/Throwable" index="0"]
 visible = false
 
 [node name="Rogue_Cape" parent="Rig/Skeleton3D" index="5"]
-transform = Transform3D(0.996275, -5.14962e-09, 0.0862354, 5.13044e-09, 1, 4.44078e-10, -0.0862354, 1.47756e-15, 0.996275, -4.17227e-09, 1.18368, 1.19714e-15)
+transform = Transform3D(0.996275, -5.14962e-09, 0.0862354, 5.13044e-09, 1, 4.44078e-10, -0.0862354, 1.47756e-15, 0.996275, -4.17227e-09, 1.17889, 1.19714e-15)
 
 [node name="Rogue_Cape" parent="Rig/Skeleton3D/Rogue_Cape" index="0"]
 transform = Transform3D(1, -4.18693e-16, 2.04007e-09, 1.67175e-16, 1, 2.88023e-17, -2.4273e-10, 2.02582e-17, 1, 0, 0, 0)
@@ -31097,7 +31194,7 @@ libraries = {
 tree_root = SubResource("AnimationNodeBlendTree_lqq2h")
 anim_player = NodePath("../AnimationPlayer")
 parameters/AttackSpeed/scale = 1.0
-parameters/ChargeShotTimeScale/scale = 0.8
+parameters/ChargeShotTimeScale/scale = 1.0
 parameters/MoveSpeed/scale = 1.0
 parameters/Movement/blend_position = Vector2(2.08165e-12, 2.08165e-12)
 parameters/MovementBlend/blend_amount = 1.0

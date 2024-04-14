@@ -24,12 +24,20 @@ func _construct_mesh() -> Mesh:
     indices.append_array([2, 4, 3])
     indices.append_array([2, 3, 1])
     
+    var uvs: = PackedVector2Array()
+    uvs.append(Vector2(0.5, 0.0))
+    uvs.append(Vector2(1.0, 0.0))
+    uvs.append(Vector2(0.0, 0.0))
+    uvs.append(Vector2(1.0, 1.0))
+    uvs.append(Vector2(0.0, 1.0))
+    
     var mesh: = ArrayMesh.new()
     var mesh_data: = []
     mesh_data.resize(Mesh.ARRAY_MAX)
     
     mesh_data[Mesh.ARRAY_VERTEX] = vertices
     mesh_data[Mesh.ARRAY_INDEX] = indices
+    mesh_data[Mesh.ARRAY_TEX_UV] = uvs
     
     mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, mesh_data)
     
