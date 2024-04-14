@@ -11,7 +11,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_j30r4"]
 size = Vector3(0.28418, 0.238037, 0.774)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_50jr8"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ykkic"]
 load_path = "res://.godot/imported/Gradient01.png-c560b35a3db99c4ea0c3aead5c8fff07.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p1wv0"]
@@ -20,7 +20,7 @@ blend_mode = 1
 no_depth_test = true
 shading_mode = 0
 albedo_color = Color(0.8, 1.6, 0.8, 1)
-albedo_texture = SubResource("CompressedTexture2D_50jr8")
+albedo_texture = SubResource("CompressedTexture2D_ykkic")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cf4fu"]
 blend_mode = 1
@@ -44,11 +44,11 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="Curve" id="Curve_jvewp"]
+[sub_resource type="Curve" id="Curve_qvllj"]
 _data = [Vector2(0, 0), 0.0270512, 17.6542, 0, 0, Vector2(0.133333, 1), 0.0377788, 0.0377788, 0, 0, Vector2(1, 0), -0.197724, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sqbvb"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tslne"]
 render_priority = 0
 shader = ExtResource("2_64h7w")
 shader_parameter/albedo = Color(0.501961, 1, 0.501961, 1)
@@ -57,18 +57,18 @@ shader_parameter/speed = Vector2(-1, 2.08165e-12)
 shader_parameter/main_texture = ExtResource("3_4tj2t")
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_7n8sh"]
-material = SubResource("ShaderMaterial_sqbvb")
+material = SubResource("ShaderMaterial_tslne")
 shape = 0
 size = 1.5
 sections = 16
 section_length = 0.15
-curve = SubResource("Curve_jvewp")
+curve = SubResource("Curve_qvllj")
 
-[sub_resource type="Curve" id="Curve_6b5cx"]
+[sub_resource type="Curve" id="Curve_yuv8t"]
 _data = [Vector2(0, 0), 0.0270512, 17.6542, 0, 0, Vector2(0.133333, 1), 0.0377788, 0.0377788, 0, 0, Vector2(1, 0), -0.197724, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ay4k0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_500pc"]
 render_priority = 0
 shader = ExtResource("2_64h7w")
 shader_parameter/albedo = Color(0.065, 0.13, 0.065, 1)
@@ -77,17 +77,17 @@ shader_parameter/speed = Vector2(-1, 2.08165e-12)
 shader_parameter/main_texture = ExtResource("4_a6doh")
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_lcksf"]
-material = SubResource("ShaderMaterial_ay4k0")
+material = SubResource("ShaderMaterial_500pc")
 shape = 0
 sections = 27
 section_length = 0.1
-curve = SubResource("Curve_6b5cx")
+curve = SubResource("Curve_yuv8t")
 
-[sub_resource type="Curve" id="Curve_figxe"]
+[sub_resource type="Curve" id="Curve_y4xin"]
 _data = [Vector2(0, 0), 0.0270512, 17.6542, 0, 0, Vector2(0.133333, 1), 0.0377788, 0.0377788, 0, 0, Vector2(1, 0), -0.197724, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nvuca"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oe304"]
 render_priority = 0
 shader = ExtResource("2_64h7w")
 shader_parameter/albedo = Color(0.065, 0.13, 0.065, 1)
@@ -96,11 +96,11 @@ shader_parameter/speed = Vector2(-1, 2.08165e-12)
 shader_parameter/main_texture = ExtResource("5_vrmpy")
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_knh6r"]
-material = SubResource("ShaderMaterial_nvuca")
+material = SubResource("ShaderMaterial_oe304")
 shape = 0
 sections = 27
 section_length = 0.1
-curve = SubResource("Curve_figxe")
+curve = SubResource("Curve_y4xin")
 
 [sub_resource type="GDScript" id="GDScript_xrkj0"]
 resource_name = "hit_vfx"
@@ -120,7 +120,7 @@ min_value = 2.13163e-14
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 2.13163e-14), -2.79944, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_ujlgh"]
+[sub_resource type="CurveTexture" id="CurveTexture_y4c1m"]
 curve = SubResource("Curve_0bp2p")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mcacy"]
@@ -130,23 +130,23 @@ emission_sphere_radius = 1.0
 gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
 radial_accel_min = 30.0
 radial_accel_max = 30.0
-radial_accel_curve = SubResource("CurveTexture_ujlgh")
+radial_accel_curve = SubResource("CurveTexture_y4c1m")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wachv"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xte81"]
 transparency = 1
 shading_mode = 0
 albedo_color = Color(0.8, 1.6, 0.8, 1)
 albedo_texture = ExtResource("6_imiqh")
 
 [sub_resource type="QuadMesh" id="QuadMesh_ivu06"]
-material = SubResource("StandardMaterial3D_wachv")
+material = SubResource("StandardMaterial3D_xte81")
 size = Vector2(0.1, 0.2)
 
 [sub_resource type="Curve" id="Curve_cf2jf"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.18875, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_1bq3y"]
+[sub_resource type="CurveTexture" id="CurveTexture_s2gcq"]
 curve = SubResource("Curve_cf2jf")
 
 [sub_resource type="Curve" id="Curve_na7bw"]
@@ -154,16 +154,16 @@ max_value = 3.0
 _data = [Vector2(0, 0.0119185), 0.0, 9.64574, 0, 0, Vector2(0.997101, 3), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_4buoy"]
+[sub_resource type="CurveTexture" id="CurveTexture_idqg7"]
 curve = SubResource("Curve_na7bw")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5oink"]
 gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
-scale_curve = SubResource("CurveTexture_4buoy")
+scale_curve = SubResource("CurveTexture_idqg7")
 color = Color(0.8, 1.6, 0.8, 1)
-alpha_curve = SubResource("CurveTexture_1bq3y")
+alpha_curve = SubResource("CurveTexture_s2gcq")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f37tv"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i6pl0"]
 transparency = 1
 blend_mode = 1
 no_depth_test = true
@@ -172,7 +172,7 @@ vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("7_lkx1s")
 
 [sub_resource type="QuadMesh" id="QuadMesh_duetf"]
-material = SubResource("StandardMaterial3D_f37tv")
+material = SubResource("StandardMaterial3D_i6pl0")
 
 [node name="ChargedArrow" type="Area3D"]
 script = ExtResource("1_ng5ca")

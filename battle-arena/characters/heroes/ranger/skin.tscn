@@ -31097,19 +31097,19 @@ bones/46/position = Vector3(-0.510844, 0.775437, 0.0597369)
 bones/46/rotation = Quaternion(-0.758253, -1.89432e-07, 0.651961, -1.86264e-08)
 
 [node name="Knife_Offhand" parent="Rig/Skeleton3D" index="0"]
-transform = Transform3D(0.948399, -0.314046, -0.043737, 0.0185277, -0.0828151, 0.996392, -0.316535, -0.945788, -0.0727234, 0.140989, 0.986513, 0.493885)
+transform = Transform3D(0.948399, -0.314046, -0.0437376, 0.0185286, -0.0828149, 0.996392, -0.316535, -0.945788, -0.0727229, 0.140989, 0.986513, 0.493885)
 
 [node name="Knife_Offhand" parent="Rig/Skeleton3D/Knife_Offhand" index="0"]
 visible = false
 
 [node name="1H_Crossbow" parent="Rig/Skeleton3D" index="1"]
-transform = Transform3D(0.847289, -0.0484161, 0.52892, -0.00397955, 0.99523, 0.0974756, -0.531116, -0.0846948, 0.843054, -0.42879, 0.956875, 0.153379)
+transform = Transform3D(0.847288, -0.0484154, 0.528921, -0.00397959, 0.99523, 0.0974745, -0.531117, -0.0846939, 0.843054, -0.42879, 0.956875, 0.153379)
 
 [node name="1H_Crossbow" parent="Rig/Skeleton3D/1H_Crossbow" index="0"]
 visible = false
 
 [node name="2H_Crossbow" parent="Rig/Skeleton3D" index="2"]
-transform = Transform3D(0.847289, -0.0484161, 0.52892, -0.00397955, 0.99523, 0.0974756, -0.531116, -0.0846948, 0.843054, -0.42879, 0.956875, 0.153379)
+transform = Transform3D(0.847288, -0.0484154, 0.528921, -0.00397959, 0.99523, 0.0974745, -0.531117, -0.0846939, 0.843054, -0.42879, 0.956875, 0.153379)
 
 [node name="VFX" type="Node3D" parent="Rig/Skeleton3D/2H_Crossbow" index="1"]
 
@@ -31162,13 +31162,13 @@ process_material = SubResource("ParticleProcessMaterial_gdjum")
 draw_pass_1 = SubResource("QuadMesh_s1jw4")
 
 [node name="Knife" parent="Rig/Skeleton3D" index="3"]
-transform = Transform3D(-0.52892, -0.0484159, 0.847289, -0.0974757, 0.995229, -0.00397985, -0.843054, -0.0846951, -0.531116, -0.373951, 0.977382, 0.240709)
+transform = Transform3D(-0.528921, -0.0484153, 0.847288, -0.0974746, 0.99523, -0.00397989, -0.843054, -0.0846941, -0.531117, -0.373951, 0.977383, 0.240709)
 
 [node name="Knife" parent="Rig/Skeleton3D/Knife" index="0"]
 visible = false
 
 [node name="Throwable" parent="Rig/Skeleton3D" index="4"]
-transform = Transform3D(-0.52892, -0.048416, 0.847289, -0.0974757, 0.995229, -0.00397973, -0.843054, -0.0846951, -0.531116, -0.382678, 1.15677, 0.225443)
+transform = Transform3D(-0.528921, -0.0484154, 0.847288, -0.0974747, 0.99523, -0.00397977, -0.843054, -0.0846941, -0.531117, -0.382678, 1.15677, 0.225443)
 
 [node name="Throwable" parent="Rig/Skeleton3D/Throwable" index="0"]
 visible = false
