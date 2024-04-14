@@ -1,33 +1,42 @@
-[gd_scene load_steps=5 format=3 uid="uid://thap1nms50rw"]
+[gd_scene load_steps=6 format=3 uid="uid://thap1nms50rw"]
 
 [ext_resource type="Script" path="res://characters/skills/preview/arrow_preview.gd" id="1_miipd"]
+[ext_resource type="Texture2D" uid="uid://bs38hr7h733ft" path="res://assets/vfx/trails/StylizedTrail11.png" id="2_wpcbx"]
 
 [sub_resource type="Shader" id="Shader_gpudk"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable's StandardMaterial3D.
 
 shader_type spatial;
-render_mode unshaded;
+render_mode unshaded, depth_test_disabled;
+
 uniform vec4 albedo : source_color;
+uniform sampler2D albedo_texture;
+uniform bool flip_uv;
+uniform vec2 uv_tiling = vec2(1, 1);
 
 
 void fragment() {
-	vec2 base_uv = UV;
-	ALBEDO = albedo.rgb;
-	ALPHA = albedo.a;
+    vec2 uv = UV * uv_tiling;
+    if (flip_uv) uv = vec2(uv.y, uv.x);
+    vec4 tex = texture(albedo_texture, uv);
+    ALBEDO = albedo.rgb * tex.rgb;
+    ALPHA = albedo.a * tex.a;
 }
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hfato"]
-render_priority = 0
+render_priority = 1
 shader = SubResource("Shader_gpudk")
-shader_parameter/albedo = Color(0, 0.909804, 0.862745, 0.329412)
+shader_parameter/albedo = Color(0.4, 0.8, 0.4, 1)
+shader_parameter/flip_uv = true
+shader_parameter/uv_tiling = Vector2(1, 10)
+shader_parameter/albedo_texture = ExtResource("2_wpcbx")
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_t3y3m"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_0adrp"]
 
 [node name="Preview" type="Node3D"]
 script = ExtResource("1_miipd")
 
 [node name="View" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.05, 2.08165e-12)
 material_override = SubResource("ShaderMaterial_hfato")
-mesh = SubResource("ArrayMesh_t3y3m")
+mesh = SubResource("ArrayMesh_0adrp")
