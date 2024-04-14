@@ -13,6 +13,8 @@ var _travelled_distance: float
 
 
 @onready var _collision: CollisionShape3D = $Collision
+@onready var _hit_vfx = get_node_or_null("HitVFX")
+@onready var _view: Node3D = get_node_or_null("View") # FIXME all projectiles must have view
 
 
 func _ready() -> void:
@@ -33,13 +35,21 @@ func _process(delta: float) -> void:
 
 
 func _on_finish_travel() -> void:
+    if _hit_vfx:
+        _hit_vfx.play_finish()
+        if _view: _view.visible = false
+        set_deferred("monitoring", false)
+        set_process(false)
+        await get_tree().create_timer(0.4).timeout
+
     if not is_multiplayer_authority(): return
     queue_free()
 
 
 func _on_area_entered(area: Area3D) -> void:
-    if not is_multiplayer_authority(): return
     if not area is HitBox: return
+    if _hit_vfx: _hit_vfx.play_hit()
+    _on_finish_travel()
+    if not is_multiplayer_authority(): return
     if not is_zero_approx(damage): area.process_damage(owner, damage)
     if not is_zero_approx(energy_gain) and area.generate_energy: owner.gain_energy.rpc(energy_gain)
-    _on_finish_travel()
