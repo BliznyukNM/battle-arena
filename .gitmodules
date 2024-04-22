@@ -7,3 +7,6 @@
 [submodule "beehave"]
 	path = beehave
 	url = https://github.com/bitbrain/beehave.git
+[submodule "w4gd"]
+	path = w4gd
+	url = https://gitlab.com/W4Games/sdk/w4gd.git

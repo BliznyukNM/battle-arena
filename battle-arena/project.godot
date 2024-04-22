@@ -33,6 +33,7 @@ NakamaWebRTC="*res://addons/nakama-webrtc/NakamaWebRTC.gd"
 BeehaveGlobalMetrics="*res://addons/beehave/metrics/beehave_global_metrics.gd"
 BeehaveGlobalDebugger="*res://addons/beehave/debug/global_debugger.gd"
 Icons="*res://icons.tscn"
+W4GD="*res://addons/w4gd/w4gd.gd"
 
 [debug]
 
@@ -50,7 +51,7 @@ mouse_cursor/custom_image="res://assets/ui/basic_cursor.tres"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/beehave/plugin.cfg", "res://addons/gdUnit4/plugin.cfg")
+enabled=PackedStringArray("res://addons/beehave/plugin.cfg", "res://addons/gdUnit4/plugin.cfg", "res://addons/w4gd/plugin/plugin.cfg")
 
 [file_customization]
 
@@ -196,3 +197,9 @@ locale/translation_remaps={}
 [rendering]
 
 textures/vram_compression/import_s3tc_bptc=true
+
+[w4games]
+
+w4rm/url="https://battle-arena.beta-01.w4games.cloud"
+w4rm/key="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MzU2ODYwMDAsImlhdCI6MTY0MDk5MTYwMCwicm9sZSI6ImFub24ifQ.K4yUnrhBD095nKOE-a3o6dignwL8xmneJMR41JV4X4o"
+game_server/enabled=true

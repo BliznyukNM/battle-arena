@@ -22,8 +22,8 @@ func on_login_pressed() -> void:
     _save_username()
     _save_uuid()
     
-    var result: = await Matchmaking.authenticate("%s@custom.email" % $Nickname.text, "password")
-    if result: loader.start_home()
+    var result = await Matchmaking.login("%s@custom.email" % $Nickname.text, "password")
+    if not result.is_error(): loader.start_home()
     else: loader.start_offline()
 
 
@@ -35,8 +35,9 @@ func _on_register_pressed() -> void:
     _save_username()
     _save_uuid()
     
-    var result: = await Matchmaking.authenticate("%s@custom.email" % $Nickname.text, "password", $Nickname.text, true)
-    if result: loader.start_home()
+    var result = await Matchmaking.signup("%s@custom.email" % $Nickname.text, "password", \
+        $Nickname.text, "https://itch.io/static/images/frog-red.png")
+    if not result.is_error(): loader.start_home()
 
 
 func _restore() -> void:
@@ -72,14 +73,15 @@ func _on_itch_request_completed(result: int, response_code: int, headers: Packed
     
     var email: String = "%s@itch.io" % json.user.username
     var password: = Marshalls.utf8_to_base64("%s.%s" % [json.user.username, json.user.id])
-    var nakama_result = await Matchmaking.authenticate(email, password, json.user.username, true)
-    if not nakama_result:
-        push_error("Cannot authenticate: %s" % nakama_result)
+    var login_result = await Matchmaking.login(email, password)
+    if login_result.is_error():
+        login_result = await Matchmaking.signup(email, password, json.user.username)
+        if login_result.is_error(): push_error("Cannot authenticate: %s" % login_result)
     
-    if json.user.has("display_name"):
-        nakama_result = await Matchmaking.update_account(json.user.display_name, json.user.cover_url)
-        if not nakama_result:
-            push_error("Cannot update account: %s" % nakama_result)
+    #if json.user.has("display_name"):
+        #nakama_result = await Matchmaking.update_account(json.user.display_name, json.user.cover_url)
+        #if not nakama_result:
+            #push_error("Cannot update account: %s" % nakama_result)
     
     loader.start_home()
 
