@@ -1,7 +1,7 @@
 extends MultiplayerSpawner
 
 
-@export var spawn_on_ready: Array[String]
+@export var spawn_on_reset: Array[String]
 
 
 func _ready() -> void:
@@ -10,7 +10,8 @@ func _ready() -> void:
 
 func reset() -> void:
     if not is_multiplayer_authority(): return
-    for scene in spawn_on_ready: spawn({"path": scene})
+    for child in get_node(spawn_path).get_children(): child.queue_free()
+    for scene in spawn_on_reset: spawn({"path": scene})
 
 
 func _spawn(data: Dictionary) -> Node:

@@ -17,38 +17,18 @@ const MIN_VALUE: = -MAX_VALUE
 @export var base_value: float
 
 
-var flat_modifier: float:
-    set(value):
-        var old_value: = current_value
-        flat_modifier = value
-        if current_value != old_value: changed.emit(old_value, current_value)
+@onready var current_value: float = base_value:
+    set = set_current_value,
+    get = get_current_value
 
 
-var percentual_modifier: float:
-    set(value):
-        var old_value: = current_value
-        percentual_modifier = value
-        if current_value != old_value: changed.emit(old_value, current_value)
+@rpc("call_local")
+func set_current_value(new_value: float) -> void:
+    var old_value = current_value
+    current_value = clamp(new_value, min_value, max_value)
+    if not is_equal_approx(old_value, current_value): changed.emit(old_value, current_value)
 
 
-var current_value: float:
-    get:
-        return clamp(base_value * max(1 + percentual_modifier, 0) + flat_modifier, min_value, max_value)
-    set(value):
-        var old_value: = current_value
-        flat_modifier += clamp(value, min_value, max_value) - old_value
-
-
-@rpc("authority", "call_local", "reliable")
-func apply_changes(percentage: float, flat: float, current: float) -> void:
-    percentual_modifier += percentage
-    flat_modifier += flat
-    current_value += current
-
-
-func reset() -> void:
-    var old_value: = current_value
-    flat_modifier = 0
-    percentual_modifier = 0
-    changed.emit(old_value, current_value)
-        
+func get_current_value() -> float:
+    var bonus = 0.0 if not modifiers else modifiers.get_bonus(self)
+    return current_value + bonus

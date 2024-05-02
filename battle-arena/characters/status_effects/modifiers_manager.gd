@@ -4,6 +4,12 @@ class_name ModifierManager extends Node
 @onready var spawner: MultiplayerSpawner = $Spawner
 
 
+func get_bonus(stat: NumberStat) -> float:
+    var bonus: = 0.0
+    for modifier in spawner.get_children(): bonus += modifier.get_bonus(stat)
+    return bonus
+
+
 func add_modifier(data: Dictionary) -> BaseModifier:
     var modifier = spawner.spawn(data)
     # modifier.name = data.name

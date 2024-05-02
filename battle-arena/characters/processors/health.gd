@@ -5,10 +5,11 @@ extends Node
 @export var barrier: NumberStat
 
 
-var invulnerable: BaseStat:
-    get:
-        if not "stats" in owner: return null
-        return owner.stats.get_stat("Invulnerable")
+var invulnerable: bool:
+    get: # FIXME
+        # if not "stats" in owner: return null
+        # return owner.stats.get_stat("Invulnerable")
+        return false
 
 
 func apply(source: Character, value: float) -> void:

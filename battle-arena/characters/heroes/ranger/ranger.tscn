@@ -16,15 +16,8 @@
 
 [node name="Health" parent="Stats" index="0"]
 max_value = 250.0
-base_value = 250.0
 
-[node name="MovementSpeed" parent="Stats" index="2"]
-base_value = 3.5
-
-[node name="AttackSpeed" parent="Stats" index="4"]
-base_value = 0.8
-
-[node name="Energy" type="Node" parent="Stats" index="6"]
+[node name="Energy" type="Node" parent="Stats" index="5"]
 script = ExtResource("2_8tvmm")
 has_max_value = true
 max_value = 100.0
@@ -32,7 +25,6 @@ has_min_value = true
 
 [node name="Spawner" parent="Modifiers" index="0"]
 _spawnable_scenes = PackedStringArray("res://characters/heroes/ranger/skills/block/invisibility_modifier.tscn", "res://characters/heroes/ranger/modifiers/slow_on_attack.tscn", "res://characters/heroes/ranger/modifiers/slow_on_charge.tscn", "res://characters/heroes/ranger/skills/ultimate/arrow_barrage_modifier.tscn")
-spawn_on_ready = Array[String](["res://characters/heroes/ranger/modifiers/slow_on_charge.tscn", "res://characters/heroes/ranger/modifiers/slow_on_attack.tscn"])
 
 [node name="BasicAttack" parent="Skills" index="0"]
 enabled = true

@@ -9,7 +9,6 @@ var _parsing_result: int
 
 
 func _ready() -> void:
-    owner = get_parent().owner
     _condition_expression = Expression.new()
     _parsing_result = _condition_expression.parse(condition)
     assert(_parsing_result == OK)
@@ -24,5 +23,4 @@ func _process(delta: float) -> void:
         _current_condition = default_condition if _condition_expression.has_execute_failed() else new_condition
 
 
-func reset() -> void:
-    pass
+func reset() -> void: pass
