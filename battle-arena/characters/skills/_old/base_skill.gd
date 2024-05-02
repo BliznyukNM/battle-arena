@@ -9,7 +9,7 @@ class_name BaseSkill extends Node
 
 var energy_stat: NumberStat:
     get:
-        if not energy_stat: energy_stat = owner.stats.get_stat("Energy")
+        if not energy_stat: energy_stat = owner.stats.get_number_stat("Energy")
         return energy_stat
 
 var collision_mask: int

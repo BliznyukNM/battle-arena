@@ -9,6 +9,7 @@ radius = 0.8
 
 [node name="Dummy" instance=ExtResource("1_twlvs")]
 collision_layer = 8
+player_id = 0
 
 [node name="Health" parent="Stats" index="0"]
 max_value = 150.0

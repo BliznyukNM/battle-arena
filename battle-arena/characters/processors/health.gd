@@ -6,10 +6,9 @@ extends Node
 
 
 var invulnerable: bool:
-    get: # FIXME
-        # if not "stats" in owner: return null
-        # return owner.stats.get_stat("Invulnerable")
-        return false
+    get:
+        if not "modifiers" in owner: return false
+        return owner.modifiers.has_effect("Invulnerability")
 
 
 func apply(source: Character, value: float) -> void:

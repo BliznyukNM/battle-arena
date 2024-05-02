@@ -1,13 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://eq45bchesouq"]
+[gd_scene load_steps=7 format=3 uid="uid://eq45bchesouq"]
 
 [ext_resource type="Script" path="res://characters/status_effects/modifiers/timed_modifier.gd" id="1_45ms5"]
-[ext_resource type="Script" path="res://characters/status_effects/effects/attack_speed.gd" id="2_72rt4"]
 [ext_resource type="Script" path="res://characters/status_effects/effects/modify_stat.gd" id="3_vypot"]
 [ext_resource type="Script" path="res://characters/status_effects/effects/skin_callback.gd" id="4_yv8hd"]
 
 [sub_resource type="Resource" id="Resource_nd14g"]
-script = ExtResource("2_72rt4")
-amount = 100
+script = ExtResource("3_vypot")
+stat_name = "AttackSpeed"
+percentage = 50.0
+flat = 0.0
 
 [sub_resource type="Resource" id="Resource_wpo74"]
 script = ExtResource("3_vypot")
@@ -17,7 +18,7 @@ flat = 0.0
 
 [sub_resource type="Resource" id="Resource_ypxym"]
 script = ExtResource("4_yv8hd")
-method_name = "show_rage"
+method_name = "rage"
 
 [node name="Rage" type="Node"]
 script = ExtResource("1_45ms5")

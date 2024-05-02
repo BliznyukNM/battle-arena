@@ -24,6 +24,12 @@ func has_modifier(modifier_name: String) -> bool:
     return spawner.has_node(modifier_name)
 
 
+func has_effect(effect_name: String) -> bool:
+    for modifier in spawner.get_children():
+        if modifier.has_effect(effect_name): return true
+    return false
+
+
 func remove_modifier_by_name(modifier_name: String) -> void:
     var modifier: = get_modifier(modifier_name)
     if not modifier: return

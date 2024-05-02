@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
     
     var movement: Vector2 = owner.input.move_direction
     
-    if multiplayer.is_server(): movement *= 1 + Multiplayer.rtt
+    if is_multiplayer_authority(): movement *= 1 + Multiplayer.rtt
     
     var velocity: = Vector3(movement.x, 0.0, movement.y)
     if velocity.length_squared() > 1: velocity = velocity.normalized()

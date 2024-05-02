@@ -8,4 +8,4 @@ class_name EffectModifyNumberStat extends BaseEffect
 
 func get_bonus(stat: NumberStat) -> float:
     if stat.name != stat_name: return 0.0
-    return stat.value * percentage * 0.01 + flat
+    return stat.base_value * percentage * 0.01 + flat

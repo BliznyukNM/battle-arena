@@ -66,7 +66,7 @@ collision_type = 1
 [node name="GainEnergy" type="Node" parent="Authority/AttackSequence"]
 script = ExtResource("11_j60j0")
 stat_name = "Energy"
-current = 5.0
+flat = 5.0
 
 [node name="CooldownAttackSpeedScale" type="Node" parent="."]
 script = ExtResource("10_rjqpx")

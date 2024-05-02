@@ -20,7 +20,7 @@ signal on_dead()
 
 
 var is_alive: bool:
-    get: return stats.get_stat("Health").current_value > 0.0
+    get: return stats.get_number_stat("Health").current_value > 0.0
 
 
 func _ready() -> void:
