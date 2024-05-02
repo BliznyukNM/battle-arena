@@ -6,21 +6,6 @@ class_name EffectModifyNumberStat extends BaseEffect
 @export var flat: float
 
 
-func trigger(owner) -> void:
-    _apply_stats_modifiers(owner.stats)
-
-
-func clear(owner) -> void:
-    _clear_stats_modifiers(owner.stats)
-
-
-func _apply_stats_modifiers(stats) -> void:
-    var stat: NumberStat = stats.get_stat(stat_name)
-    stat.percentual_modifier += percentage / 100.0
-    stat.flat_modifier += flat
-
-
-func _clear_stats_modifiers(stats) -> void:
-    var stat: NumberStat = stats.get_stat(stat_name)
-    stat.percentual_modifier -= percentage / 100.0
-    stat.flat_modifier -= flat
+func get_bonus(stat: NumberStat) -> float:
+    if stat.name != stat_name: return 0.0
+    return stat.value * percentage * 0.01 + flat

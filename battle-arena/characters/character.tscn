@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://d26br4f45m27g"]
+[gd_scene load_steps=24 format=3 uid="uid://d26br4f45m27g"]
 
 [ext_resource type="Script" path="res://characters/character.gd" id="1_8kwiu"]
 [ext_resource type="Script" path="res://characters/stats/stats_manager.gd" id="2_3n7xj"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://characters/hit_box.gd" id="2_nshhg"]
 [ext_resource type="Script" path="res://characters/stats/number_stat.gd" id="3_018qh"]
 [ext_resource type="Script" path="res://characters/status_effects/modifiers_manager.gd" id="3_687mx"]
-[ext_resource type="Script" path="res://characters/stats/tag_stat.gd" id="4_u52ko"]
 [ext_resource type="Script" path="res://characters/skills/skill.gd" id="7_5rwt1"]
 [ext_resource type="Script" path="res://characters/skills/skills_manager.gd" id="7_nutv6"]
 [ext_resource type="Script" path="res://addons/beehave/blackboard.gd" id="8_mordq"]
@@ -47,6 +46,7 @@ properties/0/replication_mode = 1
 [node name="Character" type="CharacterBody3D"]
 collision_mask = 15
 script = ExtResource("1_8kwiu")
+player_id = null
 
 [node name="Stats" type="Node" parent="."]
 script = ExtResource("2_3n7xj")
@@ -76,7 +76,7 @@ script = ExtResource("3_018qh")
 has_max_value = true
 max_value = 100.0
 has_min_value = true
-base_value = 15.0
+base_value = 20.0
 
 [node name="AttackSpeed" type="Node" parent="Stats"]
 script = ExtResource("3_018qh")
@@ -84,10 +84,6 @@ has_max_value = true
 max_value = 5.0
 has_min_value = true
 base_value = 1.0
-
-[node name="Name" type="Node" parent="Stats"]
-script = ExtResource("4_u52ko")
-current_value = "Character"
 
 [node name="Modifiers" type="Node" parent="."]
 script = ExtResource("3_687mx")
@@ -181,11 +177,10 @@ shape = SubResource("CylinderShape3D_47r4a")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
 shape = SubResource("CylinderShape3D_vwbuv")
 
-[node name="HUD" parent="." node_paths=PackedStringArray("health", "barrier", "name_tag") instance=ExtResource("12_4f13d")]
+[node name="HUD" parent="." node_paths=PackedStringArray("health", "barrier") instance=ExtResource("12_4f13d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4973, 0)
 health = NodePath("../Stats/Health")
 barrier = NodePath("../Stats/Barrier")
-name_tag = NodePath("../Stats/Name")
 
 [node name="LocalSpawner" type="MultiplayerSpawner" parent="."]
 spawn_path = NodePath(".")
@@ -201,7 +196,6 @@ replication_config = SubResource("SceneReplicationConfig_aoe4k")
 script = ExtResource("17_gtpx6")
 lerp_amount = 8.0
 
-[connection signal="changed" from="Stats/Health" to="." method="_on_health_changed"]
 [connection signal="on_damage" from="HitBox" to="Processors/Damage" method="apply"]
 [connection signal="on_heal" from="HitBox" to="Processors/Heal" method="apply"]
 [connection signal="on_basic_attack" from="Input" to="Skills" method="activate_basic_attack"]

@@ -7,6 +7,7 @@ var _parent: BaseModifier
 func set_parent(parent: BaseModifier) -> void:
     _parent = parent
     
-    
-func trigger(owner: Node) -> void: pass
+
+func process(owner: Node) -> void: pass
+func apply(owner: Node) -> void: pass
 func clear(owner: Node) -> void: pass

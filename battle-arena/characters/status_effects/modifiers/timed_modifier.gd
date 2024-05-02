@@ -22,5 +22,4 @@ func _process(delta: float) -> void:
     if time >= 0: _current_time -= delta
 
 
-func reset() -> void:
-    queue_free()
+func reset() -> void: queue_free()

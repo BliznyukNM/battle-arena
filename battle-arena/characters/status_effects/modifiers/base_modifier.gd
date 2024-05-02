@@ -5,39 +5,23 @@ class_name BaseModifier extends Node
 @export var default_condition: bool = true
 
 
-var _current_condition: bool:
-    set(value):
-        var old_value: = _current_condition
-        _current_condition = value
-        if old_value != value: _trigger_effects(_current_condition)
+var _current_condition: bool
 
 
-func _ready() -> void:
-    tree_exiting.connect(func(): self._current_condition = false)
-    for effect in effects: effect.set_parent(self)
-    _initialize.call_deferred()
-
-
-func _initialize() -> void:
-    self._current_condition = default_condition
-
-
-func _trigger_effects(condition: bool) -> void:
+func get_bonus(stat: NumberStat) -> float:
+    if not _current_condition: return 0.0
+    
+    var bonus: = 0.0
+    
     for effect in effects:
-        if condition: effect.trigger(owner)
-        else: effect.clear(owner)
+        if not effect is EffectModifyNumberStat: continue
+        bonus += effect.get_bonus(stat)
+    
+    return bonus
 
 
-func add_effect(effect: BaseEffect) -> void:
-    effects.append(effect)
-    if _current_condition: effect.trigger(owner)
-
-
-func remove_effect(effect: BaseEffect) -> void:
-    if not effects.has(effect): return
-    if _current_condition: effect.clear(owner)
-    effects.erase(effect)
+func _ready() -> void: reset()
 
 
 func reset() -> void:
-    _initialize()
+    self._current_condition = default_condition
