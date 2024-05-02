@@ -1,11 +1,11 @@
 class_name BaseEffect extends Resource
 
 
-var _parent: BaseModifier
+var name: String:
+    get = get_effect_name
 
 
-func set_parent(parent: BaseModifier) -> void:
-    _parent = parent
+func get_effect_name() -> String: return ""
     
 
 func process(owner: Node) -> void: pass

@@ -19,6 +19,9 @@ script = ExtResource("2_6pbkp")
 max_value = 300.0
 base_value = 300.0
 
+[node name="MovementSpeed" parent="Stats" index="2"]
+base_value = 4.5
+
 [node name="Energy" type="Node" parent="Stats" index="5"]
 script = ExtResource("3_l5iug")
 has_max_value = true
@@ -27,6 +30,7 @@ has_min_value = true
 
 [node name="Spawner" parent="Modifiers" index="0"]
 _spawnable_scenes = PackedStringArray("res://characters/heroes/barbarian/skills/third_skill/whirl_modifier.tscn", "res://characters/heroes/barbarian/skills/block_skill/taunt_modifier.tscn", "res://characters/heroes/barbarian/skills/block_skill/rage_modifier.tscn", "res://characters/heroes/barbarian/modifiers/slow_on_attack.tscn", "res://characters/heroes/barbarian/modifiers/slow_on_throw.tscn")
+spawn_on_reset = Array[String](["res://characters/heroes/barbarian/modifiers/slow_on_attack.tscn", "res://characters/heroes/barbarian/modifiers/slow_on_throw.tscn"])
 
 [node name="BasicAttack" parent="Skills" index="0"]
 enabled = true

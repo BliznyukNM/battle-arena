@@ -5,7 +5,11 @@ class_name BaseModifier extends Node
 @export var default_condition: bool = true
 
 
-var _current_condition: bool
+var _current_condition: bool:
+    set(value):
+        var old_value: = _current_condition
+        _current_condition = value
+        if old_value != value: _trigger_effects(_current_condition)
 
 
 func get_bonus(stat: NumberStat) -> float:
@@ -20,7 +24,21 @@ func get_bonus(stat: NumberStat) -> float:
     return bonus
 
 
-func _ready() -> void: reset()
+func has_effect(effect_name: String) -> bool:
+    for effect in effects:
+        if effect.name == effect_name: return true
+    return false
+
+
+func _ready() -> void:
+    tree_exiting.connect(func(): self._current_condition = false)
+    reset()
+
+
+func _trigger_effects(condition: bool) -> void:
+    for effect in effects:
+        if condition: effect.apply(owner)
+        else: effect.clear(owner)
 
 
 func reset() -> void:

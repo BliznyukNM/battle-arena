@@ -13,9 +13,13 @@
 [ext_resource type="PackedScene" uid="uid://b1jmt46gek5uu" path="res://characters/heroes/ranger/skin.tscn" id="15_xfpo1"]
 
 [node name="Character" instance=ExtResource("1_gfvhh")]
+player_id = 0
 
 [node name="Health" parent="Stats" index="0"]
 max_value = 250.0
+
+[node name="MovementSpeed" parent="Stats" index="2"]
+base_value = 4.1
 
 [node name="Energy" type="Node" parent="Stats" index="5"]
 script = ExtResource("2_8tvmm")
@@ -25,6 +29,7 @@ has_min_value = true
 
 [node name="Spawner" parent="Modifiers" index="0"]
 _spawnable_scenes = PackedStringArray("res://characters/heroes/ranger/skills/block/invisibility_modifier.tscn", "res://characters/heroes/ranger/modifiers/slow_on_attack.tscn", "res://characters/heroes/ranger/modifiers/slow_on_charge.tscn", "res://characters/heroes/ranger/skills/ultimate/arrow_barrage_modifier.tscn")
+spawn_on_reset = Array[String](["res://characters/heroes/ranger/modifiers/slow_on_attack.tscn", "res://characters/heroes/ranger/modifiers/slow_on_charge.tscn"])
 
 [node name="BasicAttack" parent="Skills" index="0"]
 enabled = true

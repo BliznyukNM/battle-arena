@@ -70,9 +70,11 @@ func stop_taunt() -> void:
     for mesh in body_meshes: mesh.material_override = null
 
 
-func show_rage(rage: TimedModifier) -> void:
+func play_rage() -> void:
     big_axe.material_override = charged_2h_axe
-    await rage.tree_exiting
+
+
+func stop_rage() -> void:
     big_axe.material_override = null
 
 

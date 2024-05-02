@@ -34,6 +34,13 @@ energy_amount = 50
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.876181, 0)
 mesh = SubResource("SphereMesh_c62jw")
 
+[node name="HealthStat" type="Node" parent="."]
+script = ExtResource("5_e8nn2")
+has_max_value = true
+max_value = 100.0
+has_min_value = true
+base_value = 100.0
+
 [node name="HUD" parent="." node_paths=PackedStringArray("health") instance=ExtResource("2_ayw3y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.98341, 0)
 health = NodePath("../HealthStat")
@@ -59,13 +66,6 @@ health = NodePath("../HealthStat")
 [node name="DeathProcessor" type="Node" parent="." node_paths=PackedStringArray("health_stat")]
 script = ExtResource("5_doiln")
 health_stat = NodePath("../HealthStat")
-
-[node name="HealthStat" type="Node" parent="."]
-script = ExtResource("5_e8nn2")
-has_max_value = true
-max_value = 100.0
-has_min_value = true
-base_value = 100.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.850642, 0)

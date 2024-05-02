@@ -32,7 +32,7 @@ script = ExtResource("5_fkbts")
 [node name="Heal" type="Node" parent="Authority"]
 script = ExtResource("5_c0ddx")
 stat_name = "Health"
-current = 25.0
+flat = 20.0
 
 [node name="Cooldown" type="Node" parent="."]
 script = ExtResource("9_52uy8")

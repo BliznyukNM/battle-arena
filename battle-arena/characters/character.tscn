@@ -46,7 +46,6 @@ properties/0/replication_mode = 1
 [node name="Character" type="CharacterBody3D"]
 collision_mask = 15
 script = ExtResource("1_8kwiu")
-player_id = null
 
 [node name="Stats" type="Node" parent="."]
 script = ExtResource("2_3n7xj")
@@ -196,6 +195,7 @@ replication_config = SubResource("SceneReplicationConfig_aoe4k")
 script = ExtResource("17_gtpx6")
 lerp_amount = 8.0
 
+[connection signal="changed" from="Stats/Health" to="." method="_on_health_changed"]
 [connection signal="on_damage" from="HitBox" to="Processors/Damage" method="apply"]
 [connection signal="on_heal" from="HitBox" to="Processors/Heal" method="apply"]
 [connection signal="on_basic_attack" from="Input" to="Skills" method="activate_basic_attack"]

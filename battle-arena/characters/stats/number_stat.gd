@@ -22,7 +22,7 @@ const MIN_VALUE: = -MAX_VALUE
     get = get_current_value
 
 
-@rpc("call_local")
+@rpc("authority", "call_local", "reliable")
 func set_current_value(new_value: float) -> void:
     var old_value = current_value
     current_value = clamp(new_value, min_value, max_value)
@@ -32,3 +32,6 @@ func set_current_value(new_value: float) -> void:
 func get_current_value() -> float:
     var bonus = 0.0 if not modifiers else modifiers.get_bonus(self)
     return current_value + bonus
+
+
+func reset() -> void: current_value = base_value
