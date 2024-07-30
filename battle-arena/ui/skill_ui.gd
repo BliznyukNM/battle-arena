@@ -21,4 +21,3 @@ func _process(delta: float) -> void:
     
     var enabled: bool = _skill.enabled and is_zero_approx(_skill.cooldown)
     modulate = Color.WHITE if enabled else Color.GRAY
-

@@ -20,6 +20,8 @@ var scheme: String:
     get: return ProjectSettings.get_setting("application/run/network_scheme", "http")
 var server_key: String:
     get: return ProjectSettings.get_setting_with_override("application/run/server_key")
+var stun_url: String:
+    get: return ProjectSettings.get_setting_with_override("application/networking/stun")
 
 
 var is_authenticated: bool:
@@ -27,7 +29,6 @@ var is_authenticated: bool:
 
 
 func _ready() -> void:
-    var stun_url: String = ProjectSettings.get_setting_with_override("application/networking/stun")
     NakamaWebRTC.ice_servers = [{ "urls": [stun_url] }]
     NakamaWebRTC.max_players = 2
     NakamaWebRTC.match_ready.connect(_on_match_ready)

@@ -37,8 +37,8 @@ func _ready() -> void:
 
 func _trigger_effects(condition: bool) -> void:
     for effect in effects:
-        if condition: effect.apply(owner)
-        else: effect.clear(owner)
+        if condition: effect.apply(owner, self)
+        else: effect.clear(owner, self)
 
 
 func reset() -> void:

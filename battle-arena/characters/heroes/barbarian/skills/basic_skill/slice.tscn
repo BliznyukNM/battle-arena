@@ -46,7 +46,7 @@ stat_name = "AttackSpeed"
 
 [node name="ExecutionWait" type="Node" parent="ExecutionAttackSpeedScale"]
 script = ExtResource("4_op52l")
-wait_time = 0.5
+wait_time = 0.4
 cache_key = "execution"
 
 [node name="Authority" type="Node" parent="."]

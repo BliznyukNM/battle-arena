@@ -74,5 +74,5 @@ stat_name = "AttackSpeed"
 
 [node name="Cooldown" type="Node" parent="CooldownAttackSpeedScale"]
 script = ExtResource("5_uyjv7")
-wait_time = 0.5
+wait_time = 0.55
 cache_key = "cooldown"
