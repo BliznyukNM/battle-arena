@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://cawu7vbk3beow"]
+[gd_scene load_steps=18 format=3 uid="uid://cawu7vbk3beow"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_0wt6i"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_sldcl"]
+[ext_resource type="Texture2D" uid="uid://i7oifap0glj2" path="res://assets/ui/icons/barbarian/Jump.png" id="2_vq231"]
 [ext_resource type="Script" path="res://characters/skills/leaves/play_animation.gd" id="3_kba6b"]
 [ext_resource type="Script" path="res://characters/skills/leaves/wait_executing_skill.gd" id="3_r85f0"]
 [ext_resource type="Script" path="res://characters/heroes/barbarian/skills/dodge_skill/jump.gd" id="4_cicil"]
@@ -19,6 +20,7 @@
 
 [node name="Jump" type="Node"]
 script = ExtResource("1_0wt6i")
+metadata/icon = ExtResource("2_vq231")
 
 [node name="RunUntil" type="Node" parent="."]
 script = ExtResource("2_sldcl")

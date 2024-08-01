@@ -14,7 +14,7 @@ func register(skill) -> void:
 func _process(delta: float) -> void:
     if not _skill: return
     
-    var icon = Icons.get_icon(_skill.root_name)
+    var icon = _skill.icon
     if icon: texture = icon
     cooldown.visible = not is_zero_approx(_skill.cooldown)
     cooldown.text = "%1.1f" % _skill.cooldown

@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://bway5lctbi3vx"]
+[gd_scene load_steps=14 format=3 uid="uid://bway5lctbi3vx"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_3icxv"]
+[ext_resource type="Texture2D" uid="uid://dfcmdlge7n8rd" path="res://assets/ui/icons/barbarian/Hands.png" id="2_e7kj7"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_ypv1d"]
 [ext_resource type="Script" path="res://characters/skills/leaves/wait_executing_skill.gd" id="3_daj5g"]
 [ext_resource type="Script" path="res://characters/skills/leaves/play_animation.gd" id="3_j1ed6"]
@@ -15,6 +16,7 @@
 
 [node name="KickB" type="Node"]
 script = ExtResource("1_3icxv")
+metadata/icon = ExtResource("2_e7kj7")
 
 [node name="Ready" type="Node" parent="."]
 script = ExtResource("2_ypv1d")

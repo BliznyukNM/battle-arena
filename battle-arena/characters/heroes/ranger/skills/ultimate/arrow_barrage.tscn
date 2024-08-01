@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://dim1boifaol1b"]
+[gd_scene load_steps=22 format=3 uid="uid://dim1boifaol1b"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_y6fsy"]
+[ext_resource type="Texture2D" uid="uid://ctys7eb5517vc" path="res://assets/ui/icons/ranger/arrow_barrage.png" id="2_4qj1s"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_wssh3"]
 [ext_resource type="Script" path="res://characters/skills/leaves/play_animation.gd" id="3_5nwcn"]
 [ext_resource type="Script" path="res://characters/skills/leaves/wait_executing_skill.gd" id="3_6tnuf"]
@@ -23,6 +24,7 @@
 
 [node name="ArrowBarrage" type="Node"]
 script = ExtResource("1_y6fsy")
+metadata/icon = ExtResource("2_4qj1s")
 
 [node name="Ready" type="Node" parent="."]
 script = ExtResource("2_wssh3")

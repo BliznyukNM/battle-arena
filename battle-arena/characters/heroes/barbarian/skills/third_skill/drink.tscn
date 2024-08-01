@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://ca4ujh11eea7q"]
+[gd_scene load_steps=9 format=3 uid="uid://ca4ujh11eea7q"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_43ddf"]
+[ext_resource type="Texture2D" uid="uid://cbbeqpfblkknb" path="res://assets/ui/icons/barbarian/Beer.png" id="2_el05n"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_xkygi"]
 [ext_resource type="Script" path="res://characters/skills/leaves/play_animation.gd" id="3_7o2fx"]
 [ext_resource type="Script" path="res://characters/skills/leaves/wait_executing_skill.gd" id="3_gsrn2"]
@@ -10,6 +11,7 @@
 
 [node name="Drink" type="Node"]
 script = ExtResource("1_43ddf")
+metadata/icon = ExtResource("2_el05n")
 
 [node name="RunUntil" type="Node" parent="."]
 script = ExtResource("2_xkygi")

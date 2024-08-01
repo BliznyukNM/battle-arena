@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://cq3ieognt8p8y"]
+[gd_scene load_steps=14 format=3 uid="uid://cq3ieognt8p8y"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_0671m"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_8456q"]
+[ext_resource type="Texture2D" uid="uid://knq7nxjwphfr" path="res://assets/ui/icons/barbarian/BasicAttack.png" id="2_c8sg5"]
 [ext_resource type="Script" path="res://characters/skills/leaves/wait_executing_skill.gd" id="3_8ybfl"]
 [ext_resource type="Script" path="res://characters/skills/leaves/play_animation.gd" id="3_oa23g"]
 [ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/local_player.gd" id="4_8cwy3"]
@@ -15,6 +16,7 @@
 
 [node name="Slice" type="Node"]
 script = ExtResource("1_0671m")
+metadata/icon = ExtResource("2_c8sg5")
 
 [node name="Ready" type="Node" parent="."]
 script = ExtResource("2_8456q")

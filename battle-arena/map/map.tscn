@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cfqs7tnlielrb" path="res://ui/gui.tscn" id="3_lap5g"]
 [ext_resource type="Script" path="res://map/spawners/hero_spawner.gd" id="4_44ugc"]
 [ext_resource type="PackedScene" uid="uid://tpm3x0ho62j0" path="res://ui/networking_panel.tscn" id="5_kegpn"]
-[ext_resource type="Script" path="res://ENetMultiplayer.gd" id="7_ly6bx"]
+[ext_resource type="Script" path="res://multiplayer/ENetMultiplayer.gd" id="7_ly6bx"]
 [ext_resource type="PackedScene" uid="uid://c8hjplt0ocsk7" path="res://map/ui/pause_menu.tscn" id="8_yvmdu"]
 
 [sub_resource type="Environment" id="Environment_r4cc4"]

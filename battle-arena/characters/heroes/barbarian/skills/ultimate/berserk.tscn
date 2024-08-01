@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://d11d4wcjof6yw"]
+[gd_scene load_steps=22 format=3 uid="uid://d11d4wcjof6yw"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_xeg7b"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_8u3cf"]
+[ext_resource type="Texture2D" uid="uid://diltsux557yd2" path="res://assets/ui/icons/barbarian/Berserk.png" id="2_67sp6"]
 [ext_resource type="Script" path="res://characters/skills/leaves/wait_executing_skill.gd" id="3_a4xr4"]
 [ext_resource type="Script" path="res://characters/skills/leaves/consume_energy.gd" id="3_llxsb"]
 [ext_resource type="Script" path="res://characters/skills/leaves/play_animation.gd" id="3_v6eeq"]
@@ -23,6 +24,7 @@
 
 [node name="Berserk" type="Node"]
 script = ExtResource("1_xeg7b")
+metadata/icon = ExtResource("2_67sp6")
 
 [node name="RunUntil" type="Node" parent="."]
 script = ExtResource("2_8u3cf")

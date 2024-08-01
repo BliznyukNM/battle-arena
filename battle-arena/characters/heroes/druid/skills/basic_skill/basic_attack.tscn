@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://s6iliaoq8brg"]
+[gd_scene load_steps=13 format=3 uid="uid://s6iliaoq8brg"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_mmovo"]
+[ext_resource type="Texture2D" uid="uid://gw3o0dmngwhu" path="res://assets/ui/icons/druid/basic_attack.png" id="2_jofvt"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_m2clw"]
 [ext_resource type="Script" path="res://characters/skills/leaves/wait_executing_skill.gd" id="3_mqwqn"]
 [ext_resource type="Script" path="res://characters/skills/leaves/play_animation.gd" id="4_l7732"]
@@ -14,6 +15,7 @@
 
 [node name="BasicAttack" type="Node"]
 script = ExtResource("1_mmovo")
+metadata/icon = ExtResource("2_jofvt")
 
 [node name="Ready" type="Node" parent="."]
 script = ExtResource("2_m2clw")

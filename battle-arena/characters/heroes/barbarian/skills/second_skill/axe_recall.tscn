@@ -1,13 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://chf314yk58jfe"]
+[gd_scene load_steps=7 format=3 uid="uid://chf314yk58jfe"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_gfv4b"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_s770j"]
+[ext_resource type="Texture2D" uid="uid://co55lvspxu4cm" path="res://assets/ui/icons/barbarian/Recall.png" id="2_xv1gw"]
 [ext_resource type="Script" path="res://characters/skills/leaves/wait_executing_skill.gd" id="3_0qs0c"]
 [ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="3_ayrqe"]
 [ext_resource type="Script" path="res://characters/heroes/barbarian/skills/second_skill/axe_recall.gd" id="4_j4ycb"]
 
 [node name="AxeRecall" type="Node"]
 script = ExtResource("1_gfv4b")
+metadata/icon = ExtResource("2_xv1gw")
 
 [node name="Ready" type="Node" parent="."]
 script = ExtResource("2_s770j")

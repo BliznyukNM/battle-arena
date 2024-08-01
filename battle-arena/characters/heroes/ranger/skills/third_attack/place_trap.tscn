@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://dq41ki74uct3s"]
+[gd_scene load_steps=17 format=3 uid="uid://dq41ki74uct3s"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_mn3mk"]
+[ext_resource type="Texture2D" uid="uid://bso6e4cigjunb" path="res://assets/ui/icons/ranger/trap.png" id="2_isjba"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_qko06"]
 [ext_resource type="Script" path="res://characters/skills/leaves/wait_executing_skill.gd" id="3_q3nrh"]
 [ext_resource type="Script" path="res://characters/skills/leaves/play_animation.gd" id="3_wdxmb"]
@@ -18,6 +19,7 @@
 
 [node name="PlaceTrap" type="Node"]
 script = ExtResource("1_mn3mk")
+metadata/icon = ExtResource("2_isjba")
 
 [node name="Ready" type="Node" parent="."]
 script = ExtResource("2_qko06")

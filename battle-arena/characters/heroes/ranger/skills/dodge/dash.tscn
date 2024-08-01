@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://b540vu8yrvv3b"]
+[gd_scene load_steps=9 format=3 uid="uid://b540vu8yrvv3b"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_ixadx"]
+[ext_resource type="Texture2D" uid="uid://ddaesii00rm48" path="res://assets/ui/icons/ranger/dash.png" id="2_b6u56"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_e8lfw"]
 [ext_resource type="Script" path="res://characters/skills/leaves/wait_executing_skill.gd" id="3_b4306"]
 [ext_resource type="Script" path="res://characters/skills/leaves/play_animation.gd" id="3_me4sf"]
@@ -10,6 +11,7 @@
 
 [node name="Dash" type="Node"]
 script = ExtResource("1_ixadx")
+metadata/icon = ExtResource("2_b6u56")
 
 [node name="RunUntil" type="Node" parent="."]
 script = ExtResource("2_e8lfw")

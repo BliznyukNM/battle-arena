@@ -19,6 +19,12 @@ var title: String:
 var description: String:
     get: return tr("%s_desc" % self.root_name)
 
+var icon: Texture2D:
+    get:
+        var running_action: BeehaveNode = blackboard.get_value("running_action", null, str(actor.get_instance_id()))
+        if not running_action: return null
+        return running_action.owner.get_meta("icon")     
+
 var root_name: String:
     get:
         var running_action: BeehaveNode = blackboard.get_value("running_action", null, str(actor.get_instance_id()))

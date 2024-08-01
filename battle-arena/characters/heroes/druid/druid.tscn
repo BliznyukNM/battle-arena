@@ -20,7 +20,7 @@ has_min_value = true
 
 [node name="BasicAttack" parent="Skills" index="0" node_paths=PackedStringArray("blackboard")]
 enabled = true
-blackboard = NodePath("@Node@83165")
+blackboard = NodePath("@Node@123261")
 
 [node name="BasicAttack" parent="Skills/BasicAttack" index="0" instance=ExtResource("3_mmr2b")]
 
@@ -35,6 +35,6 @@ interpolation = 10.0
 energy = NodePath("../Stats/Energy")
 
 [node name="LocalSpawner" parent="." index="8"]
-_spawnable_scenes = PackedStringArray("res://characters/heroes/ranger/arrow.tscn")
+_spawnable_scenes = PackedStringArray("res://characters/heroes/ranger/arrow.tscn", "res://characters/heroes/druid/projectiles/range_attack.tscn")
 
 [node name="Skin" parent="." index="10" instance=ExtResource("2_twatk")]
