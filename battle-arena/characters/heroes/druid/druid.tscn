@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwfa5mghey1pu"]
+[gd_scene load_steps=6 format=3 uid="uid://cwfa5mghey1pu"]
 
 [ext_resource type="PackedScene" uid="uid://d26br4f45m27g" path="res://characters/character.tscn" id="1_02rvk"]
 [ext_resource type="Script" path="res://characters/stats/number_stat.gd" id="2_4fjd6"]
 [ext_resource type="Script" path="res://characters/processors/skin.gd" id="2_kfggd"]
 [ext_resource type="PackedScene" uid="uid://pmr8rtmwrkuf" path="res://characters/heroes/druid/skin.tscn" id="2_twatk"]
+[ext_resource type="PackedScene" uid="uid://s6iliaoq8brg" path="res://characters/heroes/druid/skills/basic_skill/basic_attack.tscn" id="3_mmr2b"]
 
 [node name="Druid" instance=ExtResource("1_02rvk")]
 
@@ -11,14 +12,17 @@
 max_value = 140.0
 base_value = 140.0
 
-[node name="Energy" type="Node" parent="Stats" index="6"]
+[node name="Energy" type="Node" parent="Stats" index="5"]
 script = ExtResource("2_4fjd6")
 has_max_value = true
 max_value = 100.0
 has_min_value = true
 
 [node name="BasicAttack" parent="Skills" index="0" node_paths=PackedStringArray("blackboard")]
-blackboard = NodePath("@Node@17569")
+enabled = true
+blackboard = NodePath("@Node@83165")
+
+[node name="BasicAttack" parent="Skills/BasicAttack" index="0" instance=ExtResource("3_mmr2b")]
 
 [node name="Skin" type="Node" parent="Processors" index="5" node_paths=PackedStringArray("skin", "move_speed", "attack_speed")]
 script = ExtResource("2_kfggd")
@@ -27,7 +31,10 @@ move_speed = NodePath("../../Stats/MovementSpeed")
 attack_speed = NodePath("../../Stats/AttackSpeed")
 interpolation = 10.0
 
-[node name="HUD" parent="." index="6" node_paths=PackedStringArray("energy")]
+[node name="HUD" parent="." index="7" node_paths=PackedStringArray("energy")]
 energy = NodePath("../Stats/Energy")
+
+[node name="LocalSpawner" parent="." index="8"]
+_spawnable_scenes = PackedStringArray("res://characters/heroes/ranger/arrow.tscn")
 
 [node name="Skin" parent="." index="10" instance=ExtResource("2_twatk")]

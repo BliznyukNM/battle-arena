@@ -22,6 +22,9 @@ base_value = 300.0
 [node name="MovementSpeed" parent="Stats" index="2"]
 base_value = 4.5
 
+[node name="AttackSpeed" parent="Stats" index="4"]
+base_value = 1.1
+
 [node name="Energy" type="Node" parent="Stats" index="5"]
 script = ExtResource("3_l5iug")
 has_max_value = true

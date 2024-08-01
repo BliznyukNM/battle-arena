@@ -1,0 +1,68 @@
+[gd_scene load_steps=12 format=3 uid="uid://s6iliaoq8brg"]
+
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_mmovo"]
+[ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_m2clw"]
+[ext_resource type="Script" path="res://characters/skills/leaves/wait_executing_skill.gd" id="3_mqwqn"]
+[ext_resource type="Script" path="res://characters/skills/leaves/play_animation.gd" id="4_l7732"]
+[ext_resource type="Script" path="res://characters/skills/decorators/with_options.gd" id="5_3pq8s"]
+[ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/local_player.gd" id="6_wr4xl"]
+[ext_resource type="Script" path="res://characters/skills/leaves/progress_bar/show_progress_bar.gd" id="7_5x0sj"]
+[ext_resource type="Script" path="res://characters/skills/leaves/wait.gd" id="8_wee0r"]
+[ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="9_g1l0w"]
+[ext_resource type="Script" path="res://characters/skills/decorators/spawn/near_actor.gd" id="10_tidmm"]
+[ext_resource type="Script" path="res://characters/skills/leaves/spawners/spawn.gd" id="11_wudx0"]
+
+[node name="BasicAttack" type="Node"]
+script = ExtResource("1_mmovo")
+
+[node name="Ready" type="Node" parent="."]
+script = ExtResource("2_m2clw")
+consume_key = false
+key = "\"%s_ready\" % actor.name"
+
+[node name="WaitExecutingSkill" type="Node" parent="."]
+script = ExtResource("3_mqwqn")
+
+[node name="PlayAnimation" type="Node" parent="."]
+script = ExtResource("4_l7732")
+animation_name = "shoot"
+
+[node name="WithOptions" type="Node" parent="."]
+script = ExtResource("5_3pq8s")
+custom_options = {
+"damage": 18,
+"distance": 12.0,
+"energy_gain": 5,
+"radius": 1.0
+}
+
+[node name="Sequence" type="Node" parent="WithOptions"]
+script = ExtResource("1_mmovo")
+
+[node name="LocalPlayer" type="Node" parent="WithOptions/Sequence"]
+script = ExtResource("6_wr4xl")
+
+[node name="ShowProgressBar" type="Node" parent="WithOptions/Sequence/LocalPlayer"]
+script = ExtResource("7_5x0sj")
+duration = 0.5
+
+[node name="ExecutionWait" type="Node" parent="WithOptions/Sequence"]
+script = ExtResource("8_wee0r")
+wait_time = 0.32
+cache_key = "execution"
+
+[node name="Authority" type="Node" parent="WithOptions/Sequence"]
+script = ExtResource("9_g1l0w")
+
+[node name="NearActor" type="Node" parent="WithOptions/Sequence/Authority"]
+script = ExtResource("10_tidmm")
+offset = Vector3(2.08165e-12, 1, 1)
+
+[node name="Shoot" type="Node" parent="WithOptions/Sequence/Authority/NearActor"]
+script = ExtResource("11_wudx0")
+scene_path = "res://characters/heroes/druid/projectiles/range_attack.tscn"
+
+[node name="Cooldown" type="Node" parent="."]
+script = ExtResource("8_wee0r")
+wait_time = 0.5
+cache_key = "cooldown"

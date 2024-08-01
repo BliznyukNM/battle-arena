@@ -31,6 +31,11 @@ func update_stance(stance: String) -> void:
     animationTree.set("parameters/ArmedState/transition_request", stance)
 
 
+func update_attack_speed(speed: float) -> void:
+    super(speed)
+    slash.speed_scale = speed
+
+
 func play_slice() -> void:
     _trigger_attack("slice")
 
@@ -62,7 +67,6 @@ func stop_attack(skill: BaseSkill) -> void:
 func play_taunt() -> void:
     animationTree.set("parameters/PlayTaunt/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
     for mesh in body_meshes: mesh.material_override = taunt
-    # skill.execution.timeout.connect(_stop_taunt, CONNECT_ONE_SHOT)
 
 
 func stop_taunt() -> void:
@@ -105,6 +109,6 @@ func play_jump() -> void:
 
 
 func _trigger_attack(attack_name: String) -> void:
-    animationTree.set("parameters/AttackType/transition_request", attack_name);
-    animationTree.set("parameters/PlayAttack/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT)
+    animationTree.set("parameters/PlayAttack/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FADE_OUT)
+    animationTree.set("parameters/AttackType/transition_request", attack_name)
     animationTree.set("parameters/PlayAttack/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
