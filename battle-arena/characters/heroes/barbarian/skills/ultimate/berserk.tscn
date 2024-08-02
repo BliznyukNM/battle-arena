@@ -116,13 +116,18 @@ time = 0.4
 [node name="Authority3" type="Node" parent="."]
 script = ExtResource("7_u5jqy")
 
-[node name="AlwaysSucceed" type="Node" parent="Authority3"]
+[node name="WithOptions" type="Node" parent="Authority3"]
+script = ExtResource("6_3tx2s")
+custom_options = {
+"radius": 4.0
+}
+
+[node name="AlwaysSucceed" type="Node" parent="Authority3/WithOptions"]
 script = ExtResource("6_2t8b3")
 
-[node name="Attack" type="Node" parent="Authority3/AlwaysSucceed"]
+[node name="Attack" type="Node" parent="Authority3/WithOptions/AlwaysSucceed"]
 script = ExtResource("8_vbhjd")
 damage = 50
-hit_range = 3.0
 area = 120.0
 offset = Vector3(2.08165e-12, 1, 2.08165e-12)
 collision_type = 1

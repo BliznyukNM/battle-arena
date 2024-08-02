@@ -1,0 +1,97 @@
+[gd_scene load_steps=18 format=3 uid="uid://cc3b767j3572y"]
+
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_gwxsq"]
+[ext_resource type="Texture2D" uid="uid://cvrhs0brvxe1b" path="res://assets/ui/icons/druid/heal.png" id="2_5ibrx"]
+[ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="3_xc6yx"]
+[ext_resource type="Script" path="res://characters/skills/leaves/wait_executing_skill.gd" id="4_3fr8o"]
+[ext_resource type="Script" path="res://characters/skills/leaves/play_animation.gd" id="5_6j83x"]
+[ext_resource type="Script" path="res://characters/skills/decorators/with_options.gd" id="6_803qr"]
+[ext_resource type="Script" path="res://characters/skills/decorators/spawn/mouse_position.gd" id="6_br23x"]
+[ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/local_player.gd" id="7_n7y1b"]
+[ext_resource type="Script" path="res://characters/skills/leaves/progress_bar/show_progress_bar.gd" id="8_lgvo3"]
+[ext_resource type="Script" path="res://characters/skills/leaves/wait.gd" id="9_18d7k"]
+[ext_resource type="Script" path="res://characters/skills/leaves/previews/show_preview.gd" id="10_dbdwq"]
+[ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="10_xpuqe"]
+[ext_resource type="PackedScene" uid="uid://dgafatw1fw86s" path="res://characters/skills/preview/area_preview.tscn" id="11_fl5dt"]
+[ext_resource type="Script" path="res://characters/skills/leaves/previews/close_preview.gd" id="13_i0qky"]
+[ext_resource type="Script" path="res://characters/heroes/druid/skills/second_skill/heal.gd" id="14_e30on"]
+[ext_resource type="Script" path="res://characters/skills/composites/sequence_reactive.gd" id="15_3wmq0"]
+[ext_resource type="Script" path="res://characters/skills/leaves/modify_stat.gd" id="16_pta5y"]
+
+[node name="Heal" type="Node"]
+script = ExtResource("1_gwxsq")
+metadata/icon = ExtResource("2_5ibrx")
+
+[node name="Ready" type="Node" parent="."]
+script = ExtResource("3_xc6yx")
+consume_key = false
+key = "\"%s_ready\" % actor.name"
+
+[node name="WaitExecutingSkill" type="Node" parent="."]
+script = ExtResource("4_3fr8o")
+
+[node name="PlayAnimation" type="Node" parent="."]
+script = ExtResource("5_6j83x")
+animation_name = "heal"
+
+[node name="MousePositionTarget" type="Node" parent="."]
+script = ExtResource("6_br23x")
+max_distance = 6.0
+key_name = "target"
+
+[node name="WithOptions" type="Node" parent="MousePositionTarget"]
+script = ExtResource("6_803qr")
+custom_options = {
+"radius": 1.5
+}
+
+[node name="Sequence" type="Node" parent="MousePositionTarget/WithOptions"]
+script = ExtResource("1_gwxsq")
+
+[node name="LocalPlayer" type="Node" parent="MousePositionTarget/WithOptions/Sequence"]
+script = ExtResource("7_n7y1b")
+
+[node name="Sequence" type="Node" parent="MousePositionTarget/WithOptions/Sequence/LocalPlayer"]
+script = ExtResource("1_gwxsq")
+
+[node name="ShowProgressBar" type="Node" parent="MousePositionTarget/WithOptions/Sequence/LocalPlayer/Sequence"]
+script = ExtResource("8_lgvo3")
+duration = 0.5
+
+[node name="ShowPreview" type="Node" parent="MousePositionTarget/WithOptions/Sequence/LocalPlayer/Sequence"]
+script = ExtResource("10_dbdwq")
+preview_scene = ExtResource("11_fl5dt")
+
+[node name="ExecutionWait" type="Node" parent="MousePositionTarget/WithOptions/Sequence"]
+script = ExtResource("9_18d7k")
+wait_time = 0.32
+cache_key = "execution"
+
+[node name="LocalClean" type="Node" parent="MousePositionTarget/WithOptions/Sequence"]
+script = ExtResource("7_n7y1b")
+
+[node name="ClosePreview" type="Node" parent="MousePositionTarget/WithOptions/Sequence/LocalClean"]
+script = ExtResource("13_i0qky")
+
+[node name="Authority" type="Node" parent="MousePositionTarget/WithOptions/Sequence"]
+script = ExtResource("10_xpuqe")
+
+[node name="AttackSequence" type="Node" parent="MousePositionTarget/WithOptions/Sequence/Authority"]
+script = ExtResource("15_3wmq0")
+
+[node name="Heal" type="Node" parent="MousePositionTarget/WithOptions/Sequence/Authority/AttackSequence"]
+script = ExtResource("14_e30on")
+damage = 20
+area = 360.0
+offset = Vector3(0, 1, 0)
+collision_type = 2
+
+[node name="GainEnergy" type="Node" parent="MousePositionTarget/WithOptions/Sequence/Authority/AttackSequence"]
+script = ExtResource("16_pta5y")
+stat_name = "Energy"
+flat = 5.0
+
+[node name="Cooldown" type="Node" parent="."]
+script = ExtResource("9_18d7k")
+wait_time = 2.0
+cache_key = "cooldown"

@@ -26,7 +26,7 @@ static func get_collision_mask(character: CharacterBody3D, collision_type: int) 
     const enemy: = 1 << 0
     const ally: = 1 << 1
     
-    var mask: = default | neutral
-    if collision_type & enemy > 0: mask = mask | character.collision_layer ^ (team_a | team_b)
+    var mask: = default
+    if collision_type & enemy > 0: mask = mask | character.collision_layer ^ (team_a | team_b | neutral)
     if collision_type & ally > 0: mask = mask | character.collision_layer
     return mask

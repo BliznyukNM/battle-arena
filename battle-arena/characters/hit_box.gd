@@ -20,6 +20,11 @@ func process_damage(source: Character, damage: float) -> void:
     on_damage.emit(source, damage)
 
 
+func process_heal(source: Character, heal: float) -> void:
+    apply_heal.rpc(heal)
+    on_heal.emit(source, heal)
+
+
 @rpc("reliable", "call_remote")
 func apply_damage(value: float) -> void:
     on_damage.emit(null, value)

@@ -9,14 +9,13 @@ radius = 0.8
 
 [node name="Dummy" instance=ExtResource("1_twlvs")]
 collision_layer = 8
-player_id = 0
 
 [node name="Health" parent="Stats" index="0"]
 max_value = 150.0
 base_value = 150.0
 
 [node name="BasicAttack" parent="Skills" index="0" node_paths=PackedStringArray("blackboard")]
-blackboard = NodePath("@Node@26579")
+blackboard = NodePath("@Node@20006")
 
 [node name="Movement" parent="Processors" index="2"]
 script = null

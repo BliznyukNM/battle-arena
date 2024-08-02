@@ -15,3 +15,9 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
     options[key_name] = transform
     blackboard.set_value("options", options, owner.name)
     return super(actor, blackboard)
+
+
+func after_run(actor: Node, blackboard: Blackboard) -> void:
+    super(actor, blackboard)
+    var options: Dictionary = blackboard.get_value("options", {}, owner.name)
+    options.erase(key_name)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bway5lctbi3vx"]
+[gd_scene load_steps=15 format=3 uid="uid://bway5lctbi3vx"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_3icxv"]
 [ext_resource type="Texture2D" uid="uid://dfcmdlge7n8rd" path="res://assets/ui/icons/barbarian/Hands.png" id="2_e7kj7"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://characters/skills/leaves/melee_attack.gd" id="8_akigw"]
 [ext_resource type="Script" path="res://characters/skills/composites/sequence_reactive.gd" id="9_dd1k7"]
 [ext_resource type="Script" path="res://characters/skills/leaves/modify_stat.gd" id="11_ovsfw"]
+[ext_resource type="Script" path="res://characters/skills/decorators/with_options.gd" id="11_p5we4"]
 
 [node name="KickB" type="Node"]
 script = ExtResource("1_3icxv")
@@ -55,18 +56,23 @@ cache_key = "execution"
 [node name="Authority" type="Node" parent="."]
 script = ExtResource("7_giw4a")
 
-[node name="AttackSequence" type="Node" parent="Authority"]
+[node name="WithOptions" type="Node" parent="Authority"]
+script = ExtResource("11_p5we4")
+custom_options = {
+"radius": 2.5
+}
+
+[node name="AttackSequence" type="Node" parent="Authority/WithOptions"]
 script = ExtResource("9_dd1k7")
 
-[node name="Attack" type="Node" parent="Authority/AttackSequence"]
+[node name="Attack" type="Node" parent="Authority/WithOptions/AttackSequence"]
 script = ExtResource("8_akigw")
 damage = 10
-hit_range = 2.0
 area = 30.0
 offset = Vector3(2.08165e-12, 1, 2.08165e-12)
 collision_type = 1
 
-[node name="GainEnergy" type="Node" parent="Authority/AttackSequence"]
+[node name="GainEnergy" type="Node" parent="Authority/WithOptions/AttackSequence"]
 script = ExtResource("11_ovsfw")
 stat_name = "Energy"
 flat = 5.0

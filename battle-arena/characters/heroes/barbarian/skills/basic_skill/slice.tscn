@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cq3ieognt8p8y"]
+[gd_scene load_steps=15 format=3 uid="uid://cq3ieognt8p8y"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_0671m"]
 [ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="2_8456q"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="6_abbfg"]
 [ext_resource type="Script" path="res://characters/skills/composites/sequence_reactive.gd" id="9_fj1xr"]
 [ext_resource type="Script" path="res://characters/skills/decorators/stat_scale.gd" id="10_rjqpx"]
+[ext_resource type="Script" path="res://characters/skills/decorators/with_options.gd" id="11_74f5m"]
 [ext_resource type="Script" path="res://characters/skills/leaves/modify_stat.gd" id="11_j60j0"]
 
 [node name="Slice" type="Node"]
@@ -54,18 +55,23 @@ cache_key = "execution"
 [node name="Authority" type="Node" parent="."]
 script = ExtResource("6_abbfg")
 
-[node name="AttackSequence" type="Node" parent="Authority"]
+[node name="WithOptions" type="Node" parent="Authority"]
+script = ExtResource("11_74f5m")
+custom_options = {
+"radius": 3.0
+}
+
+[node name="AttackSequence" type="Node" parent="Authority/WithOptions"]
 script = ExtResource("9_fj1xr")
 
-[node name="Attack" type="Node" parent="Authority/AttackSequence"]
+[node name="Attack" type="Node" parent="Authority/WithOptions/AttackSequence"]
 script = ExtResource("4_txxw6")
 damage = 12
-hit_range = 2.2
 area = 70.0
 offset = Vector3(2.08165e-12, 1, 2.08165e-12)
 collision_type = 1
 
-[node name="GainEnergy" type="Node" parent="Authority/AttackSequence"]
+[node name="GainEnergy" type="Node" parent="Authority/WithOptions/AttackSequence"]
 script = ExtResource("11_j60j0")
 stat_name = "Energy"
 flat = 5.0
