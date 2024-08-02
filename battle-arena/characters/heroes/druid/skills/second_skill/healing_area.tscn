@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c26w6v5e4n3kd"]
+
+[ext_resource type="PackedScene" uid="uid://cufhxa5yj6w46" path="res://assets/vfx/cylinder.glb" id="1_2tn5w"]
+[ext_resource type="Shader" uid="uid://pdciy1j6h578" path="res://assets/vfx/shaders/gradient.tres" id="2_xrjrg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qapy0"]
+render_priority = 0
+shader = ExtResource("2_xrjrg")
+
+[node name="HealingArea" type="Node3D"]
+
+[node name="View" parent="." instance=ExtResource("1_2tn5w")]
+
+[node name="Cylinder" parent="View" index="0"]
+material_override = SubResource("ShaderMaterial_qapy0")
+
+[editable path="View"]

@@ -64,7 +64,7 @@ preview_scene = ExtResource("11_fl5dt")
 
 [node name="ExecutionWait" type="Node" parent="MousePositionTarget/WithOptions/Sequence"]
 script = ExtResource("9_18d7k")
-wait_time = 0.32
+wait_time = 0.8
 cache_key = "execution"
 
 [node name="LocalClean" type="Node" parent="MousePositionTarget/WithOptions/Sequence"]
