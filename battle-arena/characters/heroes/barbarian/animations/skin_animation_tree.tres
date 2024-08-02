@@ -190,7 +190,7 @@ animation = &"Unarmed_Idle"
 animation = &"Use_Item"
 
 [resource]
-graph_offset = Vector2(-1026.46, 463.485)
+graph_offset = Vector2(-1503.52, 723.18)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_h2nbp")
 nodes/Animation/position = Vector2(-810, 2220)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_bth76")

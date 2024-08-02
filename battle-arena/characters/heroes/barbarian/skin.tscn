@@ -31236,37 +31236,37 @@ bones/47/position = Vector3(-0.713182, 1.10676, -8.51573e-08)
 bones/47/rotation = Quaternion(0.5, -0.5, -0.5, -0.5)
 
 [node name="1H_Axe_Offhand" parent="Rig/Skeleton3D" index="0"]
-transform = Transform3D(-0.196181, -0.289787, 0.936768, -0.629963, 0.769347, 0.106067, -0.751437, -0.569322, -0.333488, 0.497549, 1.17114, 0.323056)
+transform = Transform3D(0.151087, 0.717627, 0.67984, 0.245365, 0.638988, -0.729033, -0.957583, 0.276957, -0.0795385, 0.437694, 0.802368, 0.471184)
 
 [node name="1H_Axe_Offhand" parent="Rig/Skeleton3D/1H_Axe_Offhand" index="0"]
 visible = false
 
 [node name="Barbarian_Round_Shield" parent="Rig/Skeleton3D" index="1"]
-transform = Transform3D(-0.196183, -0.289787, 0.936768, -0.629961, 0.769348, 0.106066, -0.751438, -0.56932, -0.333488, 0.6483, 1.17513, 0.280349)
+transform = Transform3D(0.151088, 0.717627, 0.679841, 0.245368, 0.638987, -0.729033, -0.957583, 0.276959, -0.0795393, 0.531976, 0.678309, 0.454272)
 
 [node name="Barbarian_Round_Shield" parent="Rig/Skeleton3D/Barbarian_Round_Shield" index="0"]
 visible = false
 
 [node name="1H_Axe" parent="Rig/Skeleton3D" index="2"]
-transform = Transform3D(-0.349745, 0.0995789, 0.931537, -0.230251, 0.954699, -0.188503, -0.908108, -0.280415, -0.310973, -0.276554, 0.993731, 0.477146)
+transform = Transform3D(-0.077774, 0.914827, 0.396286, 0.671544, 0.34186, -0.657388, -0.73687, 0.214996, -0.640935, -0.134965, 0.662802, 0.476026)
 
 [node name="1H_Axe" parent="Rig/Skeleton3D/1H_Axe" index="0"]
 visible = false
 
 [node name="2H_Axe" parent="Rig/Skeleton3D" index="3"]
-transform = Transform3D(-0.349745, 0.0995789, 0.931537, -0.230251, 0.954699, -0.188503, -0.908108, -0.280415, -0.310973, -0.276554, 0.993731, 0.477146)
+transform = Transform3D(-0.077774, 0.914827, 0.396286, 0.671544, 0.34186, -0.657388, -0.73687, 0.214996, -0.640935, -0.134965, 0.662802, 0.476026)
 
 [node name="Mug" parent="Rig/Skeleton3D" index="4"]
-transform = Transform3D(-0.349745, 0.0995789, 0.931537, -0.230251, 0.954699, -0.188503, -0.908108, -0.280415, -0.310973, -0.176306, 1.01621, 0.763818)
+transform = Transform3D(-0.077774, 0.914827, 0.396286, 0.671544, 0.34186, -0.657388, -0.73687, 0.214996, -0.640935, -0.156366, 0.444225, 0.68698)
 
 [node name="Mug" parent="Rig/Skeleton3D/Mug" index="0"]
 visible = false
 
 [node name="Barbarian_Hat" parent="Rig/Skeleton3D" index="5"]
-transform = Transform3D(0.99972, -1.40145e-09, 0.0236468, 1.39343e-09, 1, 3.55687e-10, -0.0236468, -3.22638e-10, 0.99972, -7.55729e-09, 1.18449, -1.39052e-07)
+transform = Transform3D(0.99972, -1.40145e-09, 0.0236468, 1.39343e-09, 1, 3.55687e-10, -0.0236468, -3.22638e-10, 0.99972, -7.55729e-09, 1.17949, -1.39052e-07)
 
 [node name="Barbarian_Cape" parent="Rig/Skeleton3D" index="6"]
-transform = Transform3D(0.996275, -5.14962e-09, 0.0862354, 5.13044e-09, 1, 4.44078e-10, -0.0862354, 1.47756e-15, 0.996275, -1.91641e-06, 1.18449, 2.59005e-08)
+transform = Transform3D(0.996275, -5.14962e-09, 0.0862354, 5.13044e-09, 1, 4.44078e-10, -0.0862354, 1.47756e-15, 0.996275, -1.91641e-06, 1.17949, 2.59005e-08)
 
 [node name="AnimationPlayer" parent="." index="1"]
 libraries = {
@@ -31278,186 +31278,45 @@ libraries = {
 deterministic = false
 tree_root = ExtResource("4_6v5vk")
 anim_player = NodePath("../AnimationPlayer")
-parameters/current_length = 1.06667
-parameters/current_position = 0.355472
-parameters/current_delta = 0.0166667
-parameters/Animation/current_length = null
-parameters/Animation/current_position = null
-parameters/Animation/current_delta = null
-"parameters/Animation 2/current_length" = null
-"parameters/Animation 2/current_position" = null
-"parameters/Animation 2/current_delta" = null
-parameters/ArmedState/current_length = 0.0
-parameters/ArmedState/current_position = 0.0
-parameters/ArmedState/current_delta = 0.0
-parameters/ArmedState/current_state = ""
+parameters/ArmedState/current_state = "axe"
 parameters/ArmedState/transition_request = ""
-parameters/ArmedState/current_index = -1
-parameters/AttackSpeed/current_length = 1.0
-parameters/AttackSpeed/current_position = 1.0
-parameters/AttackSpeed/current_delta = 1.0
+parameters/ArmedState/current_index = 1
 parameters/AttackSpeed/scale = 1.0
-parameters/AttackType/current_length = ""
-parameters/AttackType/current_position = ""
-parameters/AttackType/current_delta = ""
 parameters/AttackType/current_state = ""
 parameters/AttackType/transition_request = ""
 parameters/AttackType/current_index = -1
-parameters/AxeIdleAnim/current_length = null
-parameters/AxeIdleAnim/current_position = null
-parameters/AxeIdleAnim/current_delta = null
-parameters/ChopAnim/current_length = null
-parameters/ChopAnim/current_position = null
-parameters/ChopAnim/current_delta = null
-parameters/ChopSpeed/current_length = 1.0
-parameters/ChopSpeed/current_position = 1.0
-parameters/ChopSpeed/current_delta = 1.0
 parameters/ChopSpeed/scale = 1.0
-parameters/Death/current_length = false
-parameters/Death/current_position = false
-parameters/Death/current_delta = false
-parameters/Death/Death_A/current_length = null
-parameters/Death/Death_A/current_position = null
-parameters/Death/Death_A/current_delta = null
-parameters/Death/Death_A_Pose/current_length = null
-parameters/Death/Death_A_Pose/current_position = null
-parameters/Death/Death_A_Pose/current_delta = null
-parameters/Death/End/current_length = null
-parameters/Death/End/current_position = null
-parameters/Death/End/current_delta = null
-parameters/Death/Start/current_length = null
-parameters/Death/Start/current_position = null
-parameters/Death/Start/current_delta = null
-parameters/DualIdleAnim/current_length = null
-parameters/DualIdleAnim/current_position = null
-parameters/DualIdleAnim/current_delta = null
-parameters/JumpAnim/current_length = null
-parameters/JumpAnim/current_position = null
-parameters/JumpAnim/current_delta = null
-parameters/JumpSpeed/current_length = 1.0
-parameters/JumpSpeed/current_position = 1.0
-parameters/JumpSpeed/current_delta = 1.0
 parameters/JumpSpeed/scale = 1.0
-parameters/MoveSpeed/current_length = 1.06667
-parameters/MoveSpeed/current_position = 0.355472
-parameters/MoveSpeed/current_delta = 0.0166667
 parameters/MoveSpeed/scale = 1.0
-parameters/Movement/current_length = 1.06667
-parameters/Movement/current_position = 0.355472
-parameters/Movement/current_delta = 0.0166667
 parameters/Movement/blend_position = Vector2(0, 0)
-parameters/Movement/0/current_length = null
-parameters/Movement/0/current_position = null
-parameters/Movement/0/current_delta = null
-parameters/Movement/1/current_length = 0.8
-parameters/Movement/1/current_position = 0.0888604
-parameters/Movement/1/current_delta = 0.0166667
-parameters/Movement/2/current_length = null
-parameters/Movement/2/current_position = null
-parameters/Movement/2/current_delta = null
-parameters/Movement/3/current_length = 1.06667
-parameters/Movement/3/current_position = 0.355472
-parameters/Movement/3/current_delta = 0.0166667
-parameters/Movement/4/current_length = 1.06667
-parameters/Movement/4/current_position = 0.355472
-parameters/Movement/4/current_delta = 0.0166667
-parameters/Movement/5/current_length = null
-parameters/Movement/5/current_position = null
-parameters/Movement/5/current_delta = null
-parameters/MovementBlend/current_length = 1.06667
-parameters/MovementBlend/current_position = 0.355472
-parameters/MovementBlend/current_delta = 0.0166667
 parameters/MovementBlend/blend_amount = 1.0
-parameters/PlayAttack/current_length = 1.06667
-parameters/PlayAttack/current_position = 0.355472
-parameters/PlayAttack/current_delta = 0.0166667
 parameters/PlayAttack/active = false
 parameters/PlayAttack/internal_active = false
 parameters/PlayAttack/request = 0
-parameters/PlayDeath/current_length = 1.06667
-parameters/PlayDeath/current_position = 0.355472
-parameters/PlayDeath/current_delta = 0.0166667
 parameters/PlayDeath/active = false
 parameters/PlayDeath/internal_active = false
 parameters/PlayDeath/request = 0
-parameters/PlayDrink/current_length = 1.06667
-parameters/PlayDrink/current_position = 0.355472
-parameters/PlayDrink/current_delta = 0.0166667
 parameters/PlayDrink/active = false
 parameters/PlayDrink/internal_active = false
 parameters/PlayDrink/request = 0
-parameters/PlayJump/current_length = 1.06667
-parameters/PlayJump/current_position = 0.355472
-parameters/PlayJump/current_delta = 0.0166667
 parameters/PlayJump/active = false
 parameters/PlayJump/internal_active = false
 parameters/PlayJump/request = 0
-parameters/PlaySpawn/current_length = 1.06667
-parameters/PlaySpawn/current_position = 0.355472
-parameters/PlaySpawn/current_delta = 0.0166667
 parameters/PlaySpawn/active = false
 parameters/PlaySpawn/internal_active = false
 parameters/PlaySpawn/request = 0
-parameters/PlaySpinning/current_length = 1.06667
-parameters/PlaySpinning/current_position = 0.355472
-parameters/PlaySpinning/current_delta = 0.0166667
 parameters/PlaySpinning/active = false
 parameters/PlaySpinning/internal_active = false
 parameters/PlaySpinning/request = 0
-parameters/PlayTaunt/current_length = 1.06667
-parameters/PlayTaunt/current_position = 0.355472
-parameters/PlayTaunt/current_delta = 0.0166667
 parameters/PlayTaunt/active = false
 parameters/PlayTaunt/internal_active = false
 parameters/PlayTaunt/request = 0
-parameters/PlayThrow/current_length = 1.06667
-parameters/PlayThrow/current_position = 0.355472
-parameters/PlayThrow/current_delta = 0.0166667
 parameters/PlayThrow/active = false
 parameters/PlayThrow/internal_active = false
 parameters/PlayThrow/request = 0
-parameters/PunchAAnim/current_length = null
-parameters/PunchAAnim/current_position = null
-parameters/PunchAAnim/current_delta = null
-parameters/PunchBAnim/current_length = null
-parameters/PunchBAnim/current_position = null
-parameters/PunchBAnim/current_delta = null
-parameters/SliceAnim/current_length = null
-parameters/SliceAnim/current_position = null
-parameters/SliceAnim/current_delta = null
-parameters/SliceSpeed/current_length = 1.0
-parameters/SliceSpeed/current_position = 1.0
-parameters/SliceSpeed/current_delta = 1.0
 parameters/SliceSpeed/scale = 1.0
-parameters/SpawnAnim/current_length = null
-parameters/SpawnAnim/current_position = null
-parameters/SpawnAnim/current_delta = null
-"parameters/Spinning Anim/current_length" = null
-"parameters/Spinning Anim/current_position" = null
-"parameters/Spinning Anim/current_delta" = null
-parameters/SpinningAnimSpeed/current_length = 1.0
-parameters/SpinningAnimSpeed/current_position = 1.0
-parameters/SpinningAnimSpeed/current_delta = 1.0
 parameters/SpinningAnimSpeed/scale = 1.0
-parameters/TauntAnim/current_length = null
-parameters/TauntAnim/current_position = null
-parameters/TauntAnim/current_delta = null
-parameters/ThrowAnim/current_length = null
-parameters/ThrowAnim/current_position = null
-parameters/ThrowAnim/current_delta = null
-parameters/ThrowSpeed/current_length = 1.0
-parameters/ThrowSpeed/current_position = 1.0
-parameters/ThrowSpeed/current_delta = 1.0
 parameters/ThrowSpeed/scale = 1.0
-parameters/UnarmedIdleAnim/current_length = null
-parameters/UnarmedIdleAnim/current_position = null
-parameters/UnarmedIdleAnim/current_delta = null
-parameters/UseItemAnim/current_length = null
-parameters/UseItemAnim/current_position = null
-parameters/UseItemAnim/current_delta = null
-parameters/output/current_length = 1.06667
-parameters/output/current_position = 0.355472
-parameters/output/current_delta = 0.0166667
 
 [node name="Slash" parent="." index="3" instance=ExtResource("15_ihjux")]
 transform = Transform3D(-1, 7.99153e-15, 8.74228e-08, -3.48787e-16, -1, 8.74228e-08, 8.74228e-08, 8.74228e-08, 1, 0, 0.68629, 0)

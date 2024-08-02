@@ -14,9 +14,9 @@ const RAYCAST_PER_ANGLE = 5.0
 const Utils = preload("res://characters/skills/utils/utils.gd")
 
 
-func _setup_shape(range: float) -> ConvexPolygonShape3D:
+func _setup_shape(radius: float) -> ConvexPolygonShape3D:
     var points: = PackedVector3Array([Vector3.ZERO])
-    var forward: Vector3 = Vector3.BACK * range
+    var forward: Vector3 = Vector3.BACK * radius
     
     var angle_step: = 0.0
     while angle_step <= area / 2.0 and angle_step > -180.0 and angle_step <= 180.0:

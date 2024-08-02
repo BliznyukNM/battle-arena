@@ -1,0 +1,36 @@
+[gd_resource type="VisualShader" load_steps=4 format=3 uid="uid://pdciy1j6h578"]
+
+[sub_resource type="Gradient" id="Gradient_n7cju"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_002s7"]
+gradient = SubResource("Gradient_n7cju")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_qlyck"]
+expanded_output_ports = [0]
+texture = SubResource("GradientTexture2D_002s7")
+texture_type = 1
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx, unshaded;
+
+uniform sampler2D tex_frg_2 : source_color;
+
+
+
+void fragment() {
+// Texture2D:2
+	vec4 n_out2p0 = texture(tex_frg_2, UV);
+	float n_out2p1 = n_out2p0.r;
+
+
+// Output:0
+	ALPHA = n_out2p1;
+
+
+}
+"
+flags/unshaded = true
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_qlyck")
+nodes/fragment/2/position = Vector2(-305.235, 284.69)
+nodes/fragment/connections = PackedInt32Array(2, 1, 0, 1)
