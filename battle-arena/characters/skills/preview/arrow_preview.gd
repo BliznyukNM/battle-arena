@@ -7,10 +7,8 @@ func _construct_mesh() -> Mesh:
     # const min_width: = 0.1
     
     var options = _get_options.call()
-    var distance: float = options.get("distance", 0.0)
-    distance = max(distance, tip_offset + start_offset)
-    # var width: float = max(skill.radius, min_width)
-    var width: = 0.4
+    var distance: float = options.get("distance", tip_offset + start_offset)
+    var width: float = options.get("radius", 1)
     
     var vertices: = PackedVector3Array()
     vertices.push_back(Vector3(0, 0, distance))

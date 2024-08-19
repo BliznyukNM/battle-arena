@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cwfa5mghey1pu"]
+[gd_scene load_steps=8 format=3 uid="uid://cwfa5mghey1pu"]
 
 [ext_resource type="PackedScene" uid="uid://d26br4f45m27g" path="res://characters/character.tscn" id="1_02rvk"]
 [ext_resource type="Script" path="res://characters/stats/number_stat.gd" id="2_4fjd6"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://pmr8rtmwrkuf" path="res://characters/heroes/druid/skin.tscn" id="2_twatk"]
 [ext_resource type="PackedScene" uid="uid://s6iliaoq8brg" path="res://characters/heroes/druid/skills/basic_skill/basic_attack.tscn" id="3_mmr2b"]
 [ext_resource type="PackedScene" uid="uid://cc3b767j3572y" path="res://characters/heroes/druid/skills/second_skill/heal.tscn" id="4_1nbl2"]
+[ext_resource type="PackedScene" uid="uid://bssa525ngpnxt" path="res://characters/heroes/druid/skills/third_skill/roots.tscn" id="5_5u2qr"]
 
 [node name="Druid" instance=ExtResource("1_02rvk")]
 
@@ -21,7 +22,7 @@ has_min_value = true
 
 [node name="BasicAttack" parent="Skills" index="0" node_paths=PackedStringArray("blackboard")]
 enabled = true
-blackboard = NodePath("@Node@21785")
+blackboard = NodePath("@Node@29482")
 
 [node name="BasicAttack" parent="Skills/BasicAttack" index="0" instance=ExtResource("3_mmr2b")]
 
@@ -29,6 +30,11 @@ blackboard = NodePath("@Node@21785")
 enabled = true
 
 [node name="Heal" parent="Skills/SecondAttack" index="0" instance=ExtResource("4_1nbl2")]
+
+[node name="ThirdAttack" parent="Skills" index="2"]
+enabled = true
+
+[node name="ChargedArrow" parent="Skills/ThirdAttack" index="0" instance=ExtResource("5_5u2qr")]
 
 [node name="Skin" type="Node" parent="Processors" index="5" node_paths=PackedStringArray("skin", "move_speed", "attack_speed")]
 script = ExtResource("2_kfggd")
