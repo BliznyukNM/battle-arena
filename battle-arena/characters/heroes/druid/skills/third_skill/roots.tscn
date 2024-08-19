@@ -1,0 +1,71 @@
+[gd_scene load_steps=13 format=3 uid="uid://bssa525ngpnxt"]
+
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_wxjim"]
+[ext_resource type="Texture2D" uid="uid://pepcyqle5abw" path="res://assets/ui/icons/druid/roots.png" id="2_m46ha"]
+[ext_resource type="Script" path="res://characters/skills/leaves/run_until.gd" id="3_m4bc4"]
+[ext_resource type="Script" path="res://characters/skills/leaves/wait_executing_skill.gd" id="4_560yu"]
+[ext_resource type="Script" path="res://characters/skills/leaves/play_animation.gd" id="5_81cxx"]
+[ext_resource type="Script" path="res://characters/skills/decorators/with_options.gd" id="6_qmvyf"]
+[ext_resource type="Script" path="res://characters/skills/decorators/multiplayer/local_player.gd" id="7_ncwvx"]
+[ext_resource type="Script" path="res://characters/skills/leaves/progress_bar/show_progress_bar.gd" id="8_8ipm8"]
+[ext_resource type="Script" path="res://characters/skills/leaves/previews/show_preview.gd" id="9_r2eqo"]
+[ext_resource type="PackedScene" uid="uid://thap1nms50rw" path="res://characters/skills/preview/arrow_preview.tscn" id="10_kulje"]
+[ext_resource type="Script" path="res://characters/skills/leaves/wait.gd" id="11_v623s"]
+[ext_resource type="Script" path="res://characters/skills/leaves/previews/close_preview.gd" id="16_nwm7j"]
+
+[node name="Roots" type="Node"]
+script = ExtResource("1_wxjim")
+metadata/icon = ExtResource("2_m46ha")
+
+[node name="Ready" type="Node" parent="."]
+script = ExtResource("3_m4bc4")
+key = "\"%s_ready\" % actor.name"
+
+[node name="WaitExecutingSkill" type="Node" parent="."]
+script = ExtResource("4_560yu")
+
+[node name="PlayAnimation" type="Node" parent="."]
+script = ExtResource("5_81cxx")
+
+[node name="WithOptions" type="Node" parent="."]
+script = ExtResource("6_qmvyf")
+custom_options = {
+"damage": 40,
+"distance": 13.0,
+"energy_gain": 10,
+"radius": 2.0
+}
+
+[node name="Sequence" type="Node" parent="WithOptions"]
+script = ExtResource("1_wxjim")
+
+[node name="LocalPlayer" type="Node" parent="WithOptions/Sequence"]
+script = ExtResource("7_ncwvx")
+
+[node name="Sequence" type="Node" parent="WithOptions/Sequence/LocalPlayer"]
+script = ExtResource("1_wxjim")
+
+[node name="ShowProgressBar" type="Node" parent="WithOptions/Sequence/LocalPlayer/Sequence"]
+script = ExtResource("8_8ipm8")
+duration = 0.4
+
+[node name="ShowPreview" type="Node" parent="WithOptions/Sequence/LocalPlayer/Sequence"]
+script = ExtResource("9_r2eqo")
+preview_scene = ExtResource("10_kulje")
+
+[node name="ExecutionWait" type="Node" parent="WithOptions/Sequence"]
+script = ExtResource("11_v623s")
+wait_time = 0.4
+cache_key = "execution"
+
+[node name="LocalClean" type="Node" parent="."]
+script = ExtResource("7_ncwvx")
+
+[node name="ClosePreview" type="Node" parent="LocalClean"]
+script = ExtResource("16_nwm7j")
+metadata/icon = null
+
+[node name="Cooldown" type="Node" parent="."]
+script = ExtResource("11_v623s")
+wait_time = 8.0
+cache_key = "cooldown"
