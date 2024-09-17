@@ -20,9 +20,8 @@ has_max_value = true
 max_value = 100.0
 has_min_value = true
 
-[node name="BasicAttack" parent="Skills" index="0" node_paths=PackedStringArray("blackboard")]
+[node name="BasicAttack" parent="Skills" index="0"]
 enabled = true
-blackboard = NodePath("@Node@29482")
 
 [node name="BasicAttack" parent="Skills/BasicAttack" index="0" instance=ExtResource("3_mmr2b")]
 

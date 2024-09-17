@@ -1,12 +1,13 @@
 @tool
-@icon("res://addons/beehave/icons/delayer.svg")
-extends EmptyDecorator
+extends BTDecorator
 
 
 @export_enum("SUCCESS", "FAILURE") var result: int
 @export var time: = 0.0
 @export var cache_key: = "waiting"
 
+
+"""
 
 func before_run(actor: Node, blackboard: Blackboard) -> void:
     blackboard.set_value(cache_key, time, owner.name)
@@ -30,3 +31,4 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 func interrupt(actor: Node, blackboard: Blackboard) -> void:
     super(actor, blackboard)
     blackboard.erase_value(cache_key, owner.name)
+    """

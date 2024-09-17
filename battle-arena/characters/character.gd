@@ -20,38 +20,38 @@ signal on_dead()
 
 
 var is_alive: bool:
-    get: return stats.get_number_stat("Health").current_value > 0.0
+	get: return stats.get_number_stat("Health").current_value > 0.0
 
 
 func _ready() -> void:
-    reset()
-    on_dead.connect(_on_death)
+	reset()
+	on_dead.connect(_on_death)
 
 
 func _on_death() -> void:
-    skills.enabled = false
-    skin.play_death()
-    hud.visible = false
-    
-    for processor in processors.get_children(): processor.set_process(false)
+	skills.enabled = false
+	skin.play_death()
+	hud.visible = false
+	
+	for processor in processors.get_children(): processor.set_process(false)
 
 
 func _on_health_changed(old_value: float, new_value: float) -> void:
-    if is_equal_approx(new_value, 0.0) or new_value < 0.0:
-        on_dead.emit()
+	if is_equal_approx(new_value, 0.0) or new_value < 0.0:
+		on_dead.emit()
 
 
 @rpc("authority", "call_local", "reliable")
 func gain_energy(amount: int) -> void:
-    var energy_stat: NumberStat = stats.get_number_stat("Energy")
-    energy_stat.current_value += amount
+	var energy_stat: NumberStat = stats.get_number_stat("Energy")
+	energy_stat.current_value += amount
 
 
 func reset() -> void:
-    modifiers.reset()
-    skills.reset()
-    stats.reset()
-    
-    skin.play_spawn()
-    hud.visible = true
-    for processor in processors.get_children(): processor.set_process(true)
+	modifiers.reset()
+	skills.reset()
+	stats.reset()
+	
+	skin.play_spawn()
+	hud.visible = true
+	for processor in processors.get_children(): processor.set_process(true)

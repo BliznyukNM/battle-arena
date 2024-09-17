@@ -1,6 +1,7 @@
 @tool
-extends EmptyDecorator
+extends BTDecorator
 
+"""
 
 @export_enum("SUCCESS", "FAILURE") var result: int
 @export_placeholder(Utils.EXPRESSION_PLACEHOLDER) var key: String = ""
@@ -26,3 +27,4 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
     
     interrupt(actor, blackboard)
     return result
+"""

@@ -30,8 +30,6 @@ networking/stun.editor="stun:stun.l.google.com:19302"
 Matchmaking="*res://multiplayer/matchmaking.gd"
 Nakama="*res://addons/nakama/Nakama.gd"
 NakamaWebRTC="*res://addons/nakama-webrtc/NakamaWebRTC.gd"
-BeehaveGlobalMetrics="*res://addons/beehave/metrics/beehave_global_metrics.gd"
-BeehaveGlobalDebugger="*res://addons/beehave/debug/global_debugger.gd"
 
 [debug]
 

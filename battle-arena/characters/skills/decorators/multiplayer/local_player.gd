@@ -1,5 +1,5 @@
 @tool
-extends EmptyDecorator
+extends BTDecorator
 
 
 @export_enum("SUCCESS", "FAILURE") var result: int
@@ -7,5 +7,6 @@ extends EmptyDecorator
 
 func tick(actor: Node, blackboard: Blackboard) -> int:
 	var character: Character = actor.owner
-	if multiplayer.get_unique_id() != character.player_id: return result
-	return super(actor, blackboard)
+	# if multiplayer.get_unique_id() != character.player_id: return result
+	# return super(actor, blackboard)
+	return FAILURE

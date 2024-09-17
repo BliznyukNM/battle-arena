@@ -1,5 +1,5 @@
 @tool
-extends ActionLeaf
+extends BTAction
 
 
 @export var damage: int
@@ -32,7 +32,7 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 	var character = actor.owner
 	var space_state: PhysicsDirectSpaceState3D = character.get_world_3d().direct_space_state
 	
-	var options: Dictionary = blackboard.get_value("options", {}, owner.name)
+	var options: Dictionary # = blackboard.get_value("options", {}, owner.name)
 	var target_transform: Transform3D = options.get("target", character.transform)
 	var shape: = _setup_shape(options.get("radius", 1.0))
 	

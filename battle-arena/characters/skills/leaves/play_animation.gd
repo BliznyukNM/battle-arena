@@ -1,5 +1,5 @@
 @tool
-extends ActionLeaf
+extends BTAction
 
 
 @export var animation_name: String

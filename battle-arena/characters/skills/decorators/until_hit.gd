@@ -1,9 +1,10 @@
 @tool
-extends EmptyDecorator
+extends BTDecorator
 
 
 @export_enum("SUCCESS", "FAILURE") var result: int
 
+"""
 
 var _is_damaged: bool
 
@@ -27,3 +28,4 @@ func after_run(actor: Node, blackboard: Blackboard) -> void:
 
 func _on_damage(source: Character, _value: float) -> void:
     _is_damaged = true
+    """

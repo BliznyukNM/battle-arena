@@ -1,7 +1,8 @@
 @tool
-class_name EmptyDecorator extends Decorator
+class_name EmptyDecorator extends BTDecorator
 
 
+"""
 func tick(actor: Node, blackboard: Blackboard) -> int:
     var c = get_child(0)
 
@@ -28,3 +29,4 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
         _:
             push_error("This should be unreachable")
             return -1
+"""
