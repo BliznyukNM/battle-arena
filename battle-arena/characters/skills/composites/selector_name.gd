@@ -1,6 +1,4 @@
-@tool
-# @icon("res://addons/beehave/icons/selector_reactive.svg")
-extends BTComposite
+extends Node
 
 """
 const Utils = preload("res://characters/skills/utils/utils.gd")

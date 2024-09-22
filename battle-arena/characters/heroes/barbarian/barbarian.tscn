@@ -1,16 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://brn6cw5tr1mxb"]
+[gd_scene load_steps=7 format=3 uid="uid://brn6cw5tr1mxb"]
 
 [ext_resource type="PackedScene" uid="uid://d26br4f45m27g" path="res://characters/character.tscn" id="1_6uqpy"]
 [ext_resource type="Script" path="res://characters/heroes/barbarian/barbarian.gd" id="2_6pbkp"]
 [ext_resource type="PackedScene" uid="uid://bhcwmbvmeavxw" path="res://characters/heroes/barbarian/skin.tscn" id="2_lwxa8"]
 [ext_resource type="Script" path="res://characters/stats/number_stat.gd" id="3_l5iug"]
-[ext_resource type="PackedScene" uid="uid://ja43sf4jseel" path="res://characters/heroes/barbarian/skills/second_skill/second_skill.tscn" id="5_2hxsx"]
+[ext_resource type="PackedScene" uid="uid://cekhxq5m1ngt6" path="res://characters/heroes/barbarian/skills/basic_skill/axe_attack.tscn" id="4_hi321"]
 [ext_resource type="Script" path="res://characters/heroes/barbarian/processors/skin.gd" id="6_5y8y2"]
-[ext_resource type="PackedScene" uid="uid://cawu7vbk3beow" path="res://characters/heroes/barbarian/skills/dodge_skill/jump.tscn" id="6_8bd58"]
-[ext_resource type="PackedScene" uid="uid://cla3pej420s8h" path="res://characters/heroes/barbarian/skills/third_skill/third_skill.tscn" id="6_g0x80"]
-[ext_resource type="PackedScene" uid="uid://b52wq4f1ubfm3" path="res://characters/heroes/barbarian/skills/block_skill/taunt.tscn" id="6_mgqs7"]
-[ext_resource type="PackedScene" uid="uid://c5cf7tg1x0aqg" path="res://characters/heroes/barbarian/skills/basic_skill/basic_skill.tscn" id="9_wsrji"]
-[ext_resource type="PackedScene" uid="uid://d11d4wcjof6yw" path="res://characters/heroes/barbarian/skills/ultimate/berserk.tscn" id="11_5q0hm"]
 
 [node name="Barbarian" instance=ExtResource("1_6uqpy")]
 script = ExtResource("2_6pbkp")
@@ -36,34 +31,10 @@ _spawnable_scenes = PackedStringArray("res://characters/heroes/barbarian/skills/
 spawn_on_reset = Array[String](["res://characters/heroes/barbarian/modifiers/slow_on_attack.tscn", "res://characters/heroes/barbarian/modifiers/slow_on_throw.tscn"])
 
 [node name="BasicAttack" parent="Skills" index="0"]
-enabled = true
+active = true
 
-[node name="BasicAttack" parent="Skills/BasicAttack" index="0" instance=ExtResource("9_wsrji")]
-
-[node name="SecondAttack" parent="Skills" index="1"]
-enabled = true
-
-[node name="SecondAttack" parent="Skills/SecondAttack" index="0" instance=ExtResource("5_2hxsx")]
-
-[node name="ThirdAttack" parent="Skills" index="2"]
-enabled = true
-
-[node name="ThirdSkill" parent="Skills/ThirdAttack" index="0" instance=ExtResource("6_g0x80")]
-
-[node name="Dodge" parent="Skills" index="3"]
-enabled = true
-
-[node name="Jump" parent="Skills/Dodge" index="0" instance=ExtResource("6_8bd58")]
-
-[node name="Block" parent="Skills" index="4"]
-enabled = true
-
-[node name="Taunt" parent="Skills/Block" index="0" instance=ExtResource("6_mgqs7")]
-
-[node name="Ultimate" parent="Skills" index="5"]
-enabled = true
-
-[node name="Berserk" parent="Skills/Ultimate" index="0" instance=ExtResource("11_5q0hm")]
+[node name="Axe" parent="Skills/BasicAttack" index="0" instance=ExtResource("4_hi321")]
+agent_node = NodePath("../../..")
 
 [node name="Skin" type="Node" parent="Processors" index="5" node_paths=PackedStringArray("skin", "move_speed", "attack_speed")]
 script = ExtResource("6_5y8y2")

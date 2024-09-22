@@ -16,15 +16,15 @@ const Utils = preload("res://characters/skills/utils/utils.gd")
 
 
 func tick(actor: Node, blackboard: Blackboard) -> int:
-    var key_value: Variant = _key_expression.execute([actor], blackboard)
-    
-    if _key_expression.has_execute_failed():
-        return FAILURE
-    
-    var value: bool = blackboard.get_value(key_value, false, blackboard_name)
-    if not value: return super(actor, blackboard)
-    
-    if consume: blackboard.erase_value(key_value, blackboard_name)
-    interrupt(actor, blackboard)
-    return result
+	var key_value: Variant = _key_expression.execute([actor], blackboard)
+	
+	if _key_expression.has_execute_failed():
+		return FAILURE
+	
+	var value: bool = blackboard.get_value(key_value, false, blackboard_name)
+	if not value: return super(actor, blackboard)
+	
+	if consume: blackboard.erase_value(key_value, blackboard_name)
+	interrupt(actor, blackboard)
+	return result
 """

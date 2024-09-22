@@ -1,12 +1,12 @@
 class_name SkillManager extends Node
 
 
-@onready var basic_attack: LimboHSM = get_node_or_null("BasicAttack")
-@onready var second_attack: LimboHSM = get_node_or_null("SecondAttack")
-@onready var third_attack: LimboHSM = get_node_or_null("ThirdAttack")
-@onready var block: LimboHSM = get_node_or_null("Block")
-@onready var dodge: LimboHSM = get_node_or_null("Dodge")
-@onready var ultimate: LimboHSM = get_node_or_null("Ultimate")
+@onready var basic_attack: = get_node_or_null("BasicAttack")
+@onready var second_attack: = get_node_or_null("SecondAttack")
+@onready var third_attack: = get_node_or_null("ThirdAttack")
+@onready var block: = get_node_or_null("Block")
+@onready var dodge: = get_node_or_null("Dodge")
+@onready var ultimate: = get_node_or_null("Ultimate")
 
 
 var enabled: bool = true
@@ -59,13 +59,12 @@ func cancel_skill() -> void:
 @rpc("reliable", "call_local")
 func _activate_skill(index: int, pressed: bool) -> void:
 	var skill = _skills[index]
-	if not skill or not skill.enabled: return
-	var key: String = "%s_ready" % skill.name
-	skill.blackboard.set_value(key, pressed)
+	if not skill or not skill.active: return
+	skill.activate(pressed)
 
 
 func reset() -> void:
 	for skill in _skills:
 		if not skill: continue
-		skill.reset()
+		# skill.reset()
 	enabled = true

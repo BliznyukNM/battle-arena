@@ -11,13 +11,14 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 	var position = character.position + (character.input.look_at_point - character.position).limit_length(max_distance)
 	var transform = Transform3D.IDENTITY.translated(position)
 	
-	var options = blackboard.get_value("options", {}, owner.name)
+	var options = blackboard.get_value("options", {})
 	options[key_name] = transform
-	blackboard.set_value("options", options, owner.name)
-	return super(actor, blackboard)
+	blackboard.set_value("options", options)
+	# return super(actor, blackboard)
+	return FAILURE
 
 
 func after_run(actor: Node, blackboard: Blackboard) -> void:
-	super(actor, blackboard)
-	var options: Dictionary = blackboard.get_value("options", {}, owner.name)
+	# super(actor, blackboard)
+	var options: Dictionary = blackboard.get_value("options", {})
 	options.erase(key_name)

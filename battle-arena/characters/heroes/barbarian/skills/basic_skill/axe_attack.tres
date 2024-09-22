@@ -1,0 +1,38 @@
+[gd_resource type="BehaviorTree" load_steps=10 format=3 uid="uid://bleup8i1njcbn"]
+
+[ext_resource type="Script" path="res://characters/skills/tasks/await_trigger.gd" id="1_i7efq"]
+[ext_resource type="BehaviorTree" uid="uid://b8o8w4i2s80k0" path="res://characters/heroes/barbarian/skills/basic_skill/chop.tres" id="1_rrf1w"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_yx42m"]
+var/ready/name = &"ready"
+var/ready/type = 1
+var/ready/value = false
+var/ready/hint = 0
+var/ready/hint_string = ""
+
+[sub_resource type="BTAction" id="BTAction_r76pc"]
+custom_name = "Ready"
+script = ExtResource("1_i7efq")
+variable = &"ready"
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_d5cwo"]
+
+[sub_resource type="BTSubtree" id="BTSubtree_2vf5b"]
+subtree = ExtResource("1_rrf1w")
+blackboard_plan = SubResource("BlackboardPlan_d5cwo")
+custom_name = "Chop"
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_fpo20"]
+
+[sub_resource type="BTSubtree" id="BTSubtree_5roik"]
+subtree = ExtResource("1_rrf1w")
+blackboard_plan = SubResource("BlackboardPlan_fpo20")
+custom_name = "Slice"
+
+[sub_resource type="BTSequence" id="BTSequence_ivpsn"]
+custom_name = "Axe Attack"
+children = [SubResource("BTAction_r76pc"), SubResource("BTSubtree_2vf5b"), SubResource("BTSubtree_5roik")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_yx42m")
+root_task = SubResource("BTSequence_ivpsn")

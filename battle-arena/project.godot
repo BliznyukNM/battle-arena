@@ -47,7 +47,7 @@ mouse_cursor/custom_image="res://assets/ui/basic_cursor.tres"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/beehave/plugin.cfg", "res://addons/gdUnit4/plugin.cfg")
+enabled=PackedStringArray("res://addons/gdUnit4/plugin.cfg")
 
 [file_customization]
 
@@ -189,6 +189,11 @@ locale/translation_remaps={}
 3d_physics/layer_2="Team_A"
 3d_physics/layer_3="Team_B"
 3d_physics/layer_4="Neutral"
+
+[limbo_ai]
+
+behavior_tree/behavior_tree_default_dir="res://characters/skills"
+behavior_tree/user_task_dir_1="res://characters/skills/tasks"
 
 [rendering]
 

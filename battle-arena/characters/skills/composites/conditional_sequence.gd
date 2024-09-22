@@ -1,6 +1,4 @@
-@tool
-# @icon("res://addons/beehave/icons/selector_reactive.svg")
-class_name ConditionalSequence extends BTComposite
+class_name ConditionalSequence extends Node
 
 
 const Utils = preload("res://characters/skills/utils/utils.gd")
