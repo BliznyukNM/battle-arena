@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeBlendTree" load_steps=47 format=3 uid="uid://dcy86h18lfwt8"]
+[gd_resource type="AnimationNodeBlendTree" load_steps=49 format=3 uid="uid://dcy86h18lfwt8"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bth76"]
 animation = &"Dualwield_Melee_Attack_Slice"
@@ -6,19 +6,32 @@ animation = &"Dualwield_Melee_Attack_Slice"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h2nbp"]
 animation = &"Dualwield_Melee_Attack_Chop"
 
-[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_oc5vl"]
-input_0/name = "hands"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h4mam"]
+animation = &"2H_Melee_Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ivgbr"]
+animation = &"Unarmed_Idle"
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_vbmhi"]
+input_0/name = "axe"
 input_0/auto_advance = false
 input_0/break_loop_at_end = false
 input_0/reset = true
-input_1/name = "axe"
+input_1/name = "hands"
 input_1/auto_advance = false
 input_1/break_loop_at_end = false
 input_1/reset = true
-input_2/name = "dual"
-input_2/auto_advance = false
-input_2/break_loop_at_end = false
-input_2/reset = true
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_lr26p"]
+graph_offset = Vector2(-736.273, -155.818)
+nodes/AxeAnimation/node = SubResource("AnimationNodeAnimation_h4mam")
+nodes/AxeAnimation/position = Vector2(-251.657, 101.681)
+nodes/HandsAnimation/node = SubResource("AnimationNodeAnimation_ivgbr")
+nodes/HandsAnimation/position = Vector2(-240, 260)
+nodes/State/node = SubResource("AnimationNodeTransition_vbmhi")
+nodes/State/position = Vector2(60, 100)
+nodes/output/position = Vector2(320, 100)
+node_connections = [&"State", 0, &"AxeAnimation", &"State", 1, &"HandsAnimation", &"output", 0, &"State"]
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_hmea8"]
 
@@ -47,9 +60,6 @@ input_5/name = "dual_slice"
 input_5/auto_advance = false
 input_5/break_loop_at_end = false
 input_5/reset = true
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m5ym3"]
-animation = &"2H_Melee_Idle"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_idjpy"]
 animation = &"barbarian/2H_Melee_Attack_Chop"
@@ -80,9 +90,6 @@ states/Death_A_Pose/node = SubResource("AnimationNodeAnimation_twjpr")
 states/Death_A_Pose/position = Vector2(587, 100)
 states/End/position = Vector2(776, 100)
 transitions = ["Start", "Death_A", SubResource("AnimationNodeStateMachineTransition_epmxa"), "Death_A", "Death_A_Pose", SubResource("AnimationNodeStateMachineTransition_62ilq"), "Death_A_Pose", "End", SubResource("AnimationNodeStateMachineTransition_2f43n")]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tvi5r"]
-animation = &"Idle"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kki0r"]
 animation = &"Jump_Full_Long"
@@ -141,6 +148,8 @@ filters = ["Rig/Skeleton3D:chest", "Rig/Skeleton3D:hand.l", "Rig/Skeleton3D:hand
 fadein_time = 0.2
 fadeout_time = 0.2
 
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_y4u1v"]
+
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_ktkva"]
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_gx5ep"]
@@ -161,6 +170,8 @@ animation = &"Unarmed_Melee_Attack_Punch_A"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dn8ty"]
 animation = &"Unarmed_Melee_Attack_Punch_B"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_uhf74"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ug7rn"]
 animation = &"barbarian/1H_Melee_Attack_Slice_Diagonal"
@@ -183,44 +194,37 @@ animation = &"Throw"
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_8an14"]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4wpm0"]
-animation = &"Unarmed_Idle"
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7ifgj"]
 animation = &"Use_Item"
 
 [resource]
-graph_offset = Vector2(-1503.52, 723.18)
+graph_offset = Vector2(-590.154, 466.266)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_h2nbp")
 nodes/Animation/position = Vector2(-810, 2220)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_bth76")
 "nodes/Animation 2/position" = Vector2(-810, 2330)
-nodes/ArmedState/node = SubResource("AnimationNodeTransition_oc5vl")
-nodes/ArmedState/position = Vector2(-300, 1280)
+nodes/ArmedState/node = SubResource("AnimationNodeBlendTree_lr26p")
+nodes/ArmedState/position = Vector2(-360, 840)
 nodes/AttackSpeed/node = SubResource("AnimationNodeTimeScale_hmea8")
 nodes/AttackSpeed/position = Vector2(200, 1500)
 nodes/AttackType/node = SubResource("AnimationNodeTransition_81ho3")
 nodes/AttackType/position = Vector2(-300, 1740)
-nodes/AxeIdleAnim/node = SubResource("AnimationNodeAnimation_m5ym3")
-nodes/AxeIdleAnim/position = Vector2(-610, 1340)
 nodes/ChopAnim/node = SubResource("AnimationNodeAnimation_idjpy")
 nodes/ChopAnim/position = Vector2(-960, 1600)
 nodes/ChopSpeed/node = SubResource("AnimationNodeTimeScale_ek33d")
 nodes/ChopSpeed/position = Vector2(-560, 1660)
 nodes/Death/node = SubResource("AnimationNodeStateMachine_nk8x4")
 nodes/Death/position = Vector2(1640, 1580)
-nodes/DualIdleAnim/node = SubResource("AnimationNodeAnimation_tvi5r")
-nodes/DualIdleAnim/position = Vector2(-590, 1490)
 nodes/JumpAnim/node = SubResource("AnimationNodeAnimation_kki0r")
 nodes/JumpAnim/position = Vector2(1190, 1790)
 nodes/JumpSpeed/node = SubResource("AnimationNodeTimeScale_siojd")
 nodes/JumpSpeed/position = Vector2(1440, 1570)
 nodes/MoveSpeed/node = SubResource("AnimationNodeTimeScale_auvn2")
-nodes/MoveSpeed/position = Vector2(160, 1260)
+nodes/MoveSpeed/position = Vector2(120, 840)
 nodes/Movement/node = SubResource("AnimationNodeBlendSpace2D_frsya")
-nodes/Movement/position = Vector2(-300, 1540)
+nodes/Movement/position = Vector2(-380, 980)
 nodes/MovementBlend/node = SubResource("AnimationNodeBlend2_mbqps")
-nodes/MovementBlend/position = Vector2(-80, 1280)
+nodes/MovementBlend/position = Vector2(-120, 840)
 nodes/PlayAttack/node = SubResource("AnimationNodeOneShot_55wul")
 nodes/PlayAttack/position = Vector2(420, 1280)
 nodes/PlayDeath/node = SubResource("AnimationNodeOneShot_rpoic")
@@ -229,6 +233,8 @@ nodes/PlayDrink/node = SubResource("AnimationNodeOneShot_ro41e")
 nodes/PlayDrink/position = Vector2(1400, 1280)
 nodes/PlayJump/node = SubResource("AnimationNodeOneShot_f26fl")
 nodes/PlayJump/position = Vector2(1620, 1280)
+nodes/PlaySkill/node = SubResource("AnimationNodeOneShot_y4u1v")
+nodes/PlaySkill/position = Vector2(340, 840)
 nodes/PlaySpawn/node = SubResource("AnimationNodeOneShot_ktkva")
 nodes/PlaySpawn/position = Vector2(2060, 1280)
 nodes/PlaySpinning/node = SubResource("AnimationNodeOneShot_gx5ep")
@@ -241,6 +247,8 @@ nodes/PunchAAnim/node = SubResource("AnimationNodeAnimation_28ral")
 nodes/PunchAAnim/position = Vector2(-930, 1950)
 nodes/PunchBAnim/node = SubResource("AnimationNodeAnimation_dn8ty")
 nodes/PunchBAnim/position = Vector2(-960, 2070)
+nodes/Skill/node = SubResource("AnimationNodeBlendTree_uhf74")
+nodes/Skill/position = Vector2(120, 1040)
 nodes/SliceAnim/node = SubResource("AnimationNodeAnimation_ug7rn")
 nodes/SliceAnim/position = Vector2(-1220, 1780)
 nodes/SliceSpeed/node = SubResource("AnimationNodeTimeScale_aqcoh")
@@ -252,14 +260,12 @@ nodes/SpawnAnim/position = Vector2(1840, 1580)
 nodes/SpinningAnimSpeed/node = SubResource("AnimationNodeTimeScale_2jgt0")
 nodes/SpinningAnimSpeed/position = Vector2(940, 1560)
 nodes/TauntAnim/node = SubResource("AnimationNodeAnimation_3m3k2")
-nodes/TauntAnim/position = Vector2(380, 1520)
+nodes/TauntAnim/position = Vector2(360, 1580)
 nodes/ThrowAnim/node = SubResource("AnimationNodeAnimation_6ltt3")
 nodes/ThrowAnim/position = Vector2(540, 1600)
 nodes/ThrowSpeed/node = SubResource("AnimationNodeTimeScale_8an14")
 nodes/ThrowSpeed/position = Vector2(700, 1560)
-nodes/UnarmedIdleAnim/node = SubResource("AnimationNodeAnimation_4wpm0")
-nodes/UnarmedIdleAnim/position = Vector2(-620, 1180)
 nodes/UseItemAnim/node = SubResource("AnimationNodeAnimation_7ifgj")
 nodes/UseItemAnim/position = Vector2(1160, 1650)
-nodes/output/position = Vector2(2260, 1280)
-node_connections = [&"ArmedState", 0, &"UnarmedIdleAnim", &"ArmedState", 1, &"AxeIdleAnim", &"ArmedState", 2, &"DualIdleAnim", &"AttackSpeed", 0, &"AttackType", &"AttackType", 0, &"ChopSpeed", &"AttackType", 1, &"SliceSpeed", &"AttackType", 2, &"PunchAAnim", &"AttackType", 3, &"PunchBAnim", &"AttackType", 4, &"Animation", &"AttackType", 5, &"Animation 2", &"ChopSpeed", 0, &"ChopAnim", &"JumpSpeed", 0, &"JumpAnim", &"MoveSpeed", 0, &"MovementBlend", &"MovementBlend", 0, &"ArmedState", &"MovementBlend", 1, &"Movement", &"PlayAttack", 0, &"MoveSpeed", &"PlayAttack", 1, &"AttackSpeed", &"PlayDeath", 0, &"PlayJump", &"PlayDeath", 1, &"Death", &"PlayDrink", 0, &"PlaySpinning", &"PlayDrink", 1, &"UseItemAnim", &"PlayJump", 0, &"PlayDrink", &"PlayJump", 1, &"JumpSpeed", &"PlaySpawn", 0, &"PlayDeath", &"PlaySpawn", 1, &"SpawnAnim", &"PlaySpinning", 0, &"PlayThrow", &"PlaySpinning", 1, &"SpinningAnimSpeed", &"PlayTaunt", 0, &"PlayAttack", &"PlayTaunt", 1, &"TauntAnim", &"PlayThrow", 0, &"PlayTaunt", &"PlayThrow", 1, &"ThrowSpeed", &"SliceSpeed", 0, &"SliceAnim", &"SpinningAnimSpeed", 0, &"Spinning Anim", &"ThrowSpeed", 0, &"ThrowAnim", &"output", 0, &"PlaySpawn"]
+nodes/output/position = Vector2(560, 840)
+node_connections = [&"AttackSpeed", 0, &"AttackType", &"AttackType", 0, &"ChopSpeed", &"AttackType", 1, &"SliceSpeed", &"AttackType", 2, &"PunchAAnim", &"AttackType", 3, &"PunchBAnim", &"AttackType", 4, &"Animation", &"AttackType", 5, &"Animation 2", &"ChopSpeed", 0, &"ChopAnim", &"JumpSpeed", 0, &"JumpAnim", &"MoveSpeed", 0, &"MovementBlend", &"MovementBlend", 0, &"ArmedState", &"MovementBlend", 1, &"Movement", &"PlayAttack", 1, &"AttackSpeed", &"PlayDeath", 0, &"PlayJump", &"PlayDeath", 1, &"Death", &"PlayDrink", 0, &"PlaySpinning", &"PlayDrink", 1, &"UseItemAnim", &"PlayJump", 0, &"PlayDrink", &"PlayJump", 1, &"JumpSpeed", &"PlaySkill", 0, &"MoveSpeed", &"PlaySkill", 1, &"Skill", &"PlaySpawn", 0, &"PlayDeath", &"PlaySpawn", 1, &"SpawnAnim", &"PlaySpinning", 0, &"PlayThrow", &"PlaySpinning", 1, &"SpinningAnimSpeed", &"PlayTaunt", 0, &"PlayAttack", &"PlayTaunt", 1, &"TauntAnim", &"PlayThrow", 0, &"PlayTaunt", &"PlayThrow", 1, &"ThrowSpeed", &"SliceSpeed", 0, &"SliceAnim", &"SpinningAnimSpeed", 0, &"Spinning Anim", &"ThrowSpeed", 0, &"ThrowAnim", &"output", 0, &"PlaySkill"]

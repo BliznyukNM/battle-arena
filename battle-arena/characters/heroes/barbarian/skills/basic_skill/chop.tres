@@ -1,6 +1,7 @@
-[gd_resource type="BehaviorTree" load_steps=21 format=3 uid="uid://b8o8w4i2s80k0"]
+[gd_resource type="BehaviorTree" load_steps=22 format=3 uid="uid://b8o8w4i2s80k0"]
 
 [ext_resource type="Script" path="res://characters/skills/tasks/melee_attack.gd" id="1_0xtci"]
+[ext_resource type="Script" path="res://characters/skills/tasks/wait_timer.gd" id="1_7o63v"]
 [ext_resource type="Script" path="res://characters/skills/tasks/cancellable.gd" id="1_p4s35"]
 [ext_resource type="Script" path="res://characters/skills/tasks/multiplayer_authority.gd" id="2_lk17v"]
 [ext_resource type="Script" path="res://characters/skills/tasks/modify_stat.gd" id="2_ps4s1"]
@@ -27,11 +28,14 @@ node = SubResource("BBNode_u7lrv")
 method = &"play_chop"
 custom_name = "PlayChop Animation"
 
-[sub_resource type="BTWait" id="BTWait_70wch"]
-duration = 0.8
+[sub_resource type="BTAction" id="BTAction_f7pxw"]
+script = ExtResource("1_7o63v")
+duration = 1.0
+blackboard_key = &"execution"
+use_top_blackboard = true
 
 [sub_resource type="BTDecorator" id="BTDecorator_5e7hd"]
-children = [SubResource("BTWait_70wch")]
+children = [SubResource("BTAction_f7pxw")]
 script = ExtResource("1_p4s35")
 
 [sub_resource type="BTAction" id="BTAction_jjmcq"]
