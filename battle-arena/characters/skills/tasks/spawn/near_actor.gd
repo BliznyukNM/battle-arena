@@ -6,7 +6,7 @@ extends BTDecorator
 
 
 func _tick(delta: float) -> int:
-	var character = agent.owner
+	var character = agent
 	
 	var spawn_transform: Transform3D = character.transform
 	spawn_transform = spawn_transform.translated_local(offset)

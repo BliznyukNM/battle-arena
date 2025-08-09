@@ -1,13 +1,8 @@
-[gd_resource type="BehaviorTree" load_steps=29 format=3 uid="uid://cpm2vwuvxc0rh"]
+[gd_resource type="BehaviorTree" load_steps=15 format=3 uid="uid://cpm2vwuvxc0rh"]
 
-[ext_resource type="Script" uid="uid://cybcmrcpxb7jp" path="res://characters/skills/tasks/wait_timer.gd" id="1_yondv"]
-[ext_resource type="Script" uid="uid://b00jv08vwurek" path="res://characters/skills/tasks/cancellable.gd" id="2_g3h1c"]
-[ext_resource type="Script" uid="uid://dtkmhe10etxf1" path="res://characters/skills/tasks/local_player.gd" id="3_2jgr0"]
-[ext_resource type="Script" uid="uid://b6m84p6imhb88" path="res://characters/skills/tasks/spawn/spawn_projectile.gd" id="4_oaoly"]
-[ext_resource type="Script" uid="uid://bllmqwog6k8yk" path="res://characters/skills/tasks/spawn/near_actor.gd" id="5_lcy2e"]
+[ext_resource type="BehaviorTree" uid="uid://c1ndef5d5njrr" path="res://characters/heroes/barbarian/barbarian_skills/second_skill/axe_throw.tres" id="1_ai4xh"]
+[ext_resource type="Script" uid="uid://kjss673cwif3" path="res://characters/heroes/barbarian/barbarian_skills/axe_recall.gd" id="2_6wy0w"]
 [ext_resource type="Script" uid="uid://j4e4f4rlfmah" path="res://characters/skills/tasks/multiplayer_authority.gd" id="6_d7tbl"]
-[ext_resource type="Script" uid="uid://cw4ei8nlq4ibb" path="res://characters/skills/tasks/with_options.gd" id="7_hj8jh"]
-[ext_resource type="Script" uid="uid://6rw4pys6qf06" path="res://characters/heroes/barbarian/barbarian_skills/update_stance.gd" id="8_g3h1c"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_islyj"]
 var/ready/name = &"ready"
@@ -15,92 +10,53 @@ var/ready/type = 1
 var/ready/value = false
 var/ready/hint = 0
 var/ready/hint_string = ""
+var/stance/name = &"stance"
+var/stance/type = 2
+var/stance/value = 0
+var/stance/hint = 2
+var/stance/hint_string = "HANDS,AXE"
 
-[sub_resource type="BBVariant" id="BBVariant_285vk"]
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_2djk7"]
+
+[sub_resource type="BTSubtree" id="BTSubtree_6wy0w"]
+subtree = ExtResource("1_ai4xh")
+blackboard_plan = SubResource("BlackboardPlan_2djk7")
+custom_name = "Axe Throw"
+
+[sub_resource type="BBVariant" id="BBVariant_c6rb2"]
+type = 2
+saved_value = 0
+resource_name = "0"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_kq0gw"]
+variable = &"stance"
+value = SubResource("BBVariant_c6rb2")
+custom_name = "If stance is Hands"
+
+[sub_resource type="BBVariant" id="BBVariant_2djk7"]
 type = 1
 saved_value = true
 resource_name = "true"
 
-[sub_resource type="BTCheckVar" id="BTCheckVar_s5l2m"]
+[sub_resource type="BTCheckVar" id="BTCheckVar_6wy0w"]
 variable = &"ready"
-value = SubResource("BBVariant_285vk")
+value = SubResource("BBVariant_2djk7")
 custom_name = "Ready"
 
-[sub_resource type="BBNode" id="BBNode_islyj"]
-saved_value = NodePath("Skin")
-resource_name = "Skin"
+[sub_resource type="BTAction" id="BTAction_2ym4v"]
+script = ExtResource("2_6wy0w")
 
-[sub_resource type="BTCallMethod" id="BTCallMethod_6gl3m"]
-node = SubResource("BBNode_islyj")
-method = &"play_throw"
-custom_name = "PlayThrow Animation"
-
-[sub_resource type="BTAction" id="BTAction_x1cvj"]
-script = ExtResource("1_yondv")
-duration = 0.3000000000029104
-blackboard_key = &"execution"
-
-[sub_resource type="BTDecorator" id="BTDecorator_jhwnn"]
-children = [SubResource("BTAction_x1cvj")]
-script = ExtResource("2_g3h1c")
-
-[sub_resource type="BTComment" id="BTComment_cqvry"]
-custom_name = "Show preview & progress bar"
-
-[sub_resource type="BTSequence" id="BTSequence_25j42"]
-children = [SubResource("BTComment_cqvry")]
-
-[sub_resource type="BTDecorator" id="BTDecorator_ktxio"]
-children = [SubResource("BTSequence_25j42")]
-script = ExtResource("3_2jgr0")
-
-[sub_resource type="BTAction" id="BTAction_jhwnn"]
-script = ExtResource("1_yondv")
-duration = 0.3000000000029104
-blackboard_key = &"execution"
-
-[sub_resource type="BTAction" id="BTAction_x3hs2"]
-custom_name = "Spawn Axe"
-script = ExtResource("4_oaoly")
-scene_path = "uid://c413rb5v027xl"
-
-[sub_resource type="BTDecorator" id="BTDecorator_25j42"]
-children = [SubResource("BTAction_x3hs2")]
-script = ExtResource("5_lcy2e")
-offset = Vector3(0, 1, 1)
-
-[sub_resource type="BTDecorator" id="BTDecorator_x3hs2"]
-children = [SubResource("BTDecorator_25j42")]
+[sub_resource type="BTDecorator" id="BTDecorator_2ym4v"]
+children = [SubResource("BTAction_2ym4v")]
 script = ExtResource("6_d7tbl")
 
-[sub_resource type="BTSequence" id="BTSequence_hed6h"]
-children = [SubResource("BTDecorator_ktxio"), SubResource("BTAction_jhwnn"), SubResource("BTDecorator_x3hs2")]
-
-[sub_resource type="BTDecorator" id="BTDecorator_urf70"]
-children = [SubResource("BTSequence_hed6h")]
-script = ExtResource("7_hj8jh")
-options = {
-"damage": 15.0,
-"distance": 20.0,
-"energy_gain": 7.0,
-"speed": 26.0
-}
-
-[sub_resource type="BTAction" id="BTAction_2jgr0"]
-script = ExtResource("8_g3h1c")
-stance = 1
-
-[sub_resource type="BTAction" id="BTAction_g3h1c"]
-script = ExtResource("1_yondv")
-blackboard_key = &"execution"
-
-[sub_resource type="BTSequence" id="BTSequence_x1cvj"]
-custom_name = "Axe Throw"
-children = [SubResource("BTCheckVar_s5l2m"), SubResource("BTCallMethod_6gl3m"), SubResource("BTDecorator_jhwnn"), SubResource("BTDecorator_urf70"), SubResource("BTAction_2jgr0"), SubResource("BTAction_g3h1c")]
+[sub_resource type="BTSequence" id="BTSequence_ai4xh"]
+custom_name = "Axe Recall"
+children = [SubResource("BTCheckVar_kq0gw"), SubResource("BTCheckVar_6wy0w"), SubResource("BTDecorator_2ym4v")]
 
 [sub_resource type="BTSelector" id="BTSelector_x1cvj"]
 custom_name = "Axe Throw/Return"
-children = [SubResource("BTSequence_x1cvj")]
+children = [SubResource("BTSubtree_6wy0w"), SubResource("BTSequence_ai4xh")]
 
 [resource]
 blackboard_plan = SubResource("BlackboardPlan_islyj")

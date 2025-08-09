@@ -2,14 +2,9 @@
 extends BTAction
 
 
-enum Stance { axe = 0, hands = 1 }
+@export_enum("HANDS:0", "AXE:1") var stance: int
 
 
-@export var stance: Stance
-
-
-func tick(delta: float) -> int:
-	var barbarian: Character = agent.owner
-	barbarian.skin.update_stance(Stance.find_key(stance))
-	# blackboard.set_value("skill_index", stance) TODO
+func _tick(delta: float) -> int:
+	agent.update_stance(stance)
 	return SUCCESS

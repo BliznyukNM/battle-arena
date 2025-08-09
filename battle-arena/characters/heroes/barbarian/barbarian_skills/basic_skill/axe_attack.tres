@@ -10,6 +10,11 @@ var/ready/type = 1
 var/ready/value = false
 var/ready/hint = 0
 var/ready/hint_string = ""
+var/stance/name = &"stance"
+var/stance/type = 2
+var/stance/value = 0
+var/stance/hint = 2
+var/stance/hint_string = "HANDS,AXE"
 
 [sub_resource type="BTAction" id="BTAction_r76pc"]
 custom_name = "Ready"

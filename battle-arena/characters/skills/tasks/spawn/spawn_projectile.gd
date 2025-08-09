@@ -3,7 +3,7 @@ extends "res://characters/skills/leaves/spawners/spawn.gd"
 
 
 func _tick(delta: float) -> int:
-	var character: Character = agent.owner
+	var character: Character = agent
 	var options: Dictionary = blackboard.get_var("options", {})
 	var projectile = _spawn(character, options)
 	projectile.distance = options.get("distance", 0.0)

@@ -25,10 +25,11 @@ extends "res://characters/skin.gd"
 ## Update stance of Barbarian
 ## Type of stances: axe, dual, hands
 func update_stance(stance: String) -> void:
-	big_axe.visible = stance == "axe"
-	left_axe.visible = stance == "dual"
-	right_axe.visible = stance == "dual"
-	animationTree.set("parameters/ArmedState/transition_request", stance)
+	var l_stance = stance.to_lower()
+	big_axe.visible = l_stance == "axe"
+	left_axe.visible = l_stance == "dual"
+	right_axe.visible = l_stance == "dual"
+	animationTree.set("parameters/ArmedState/transition_request", l_stance)
 
 
 func update_attack_speed(speed: float) -> void:

@@ -6,7 +6,7 @@ extends BTAction
 
 
 func _tick(delta: float) -> int:
-	var character: Character = agent.owner
+	var character: Character = agent
 	var options: Dictionary = blackboard.get_value("options", {})
 	_spawn(character, options)
 	return SUCCESS

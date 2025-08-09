@@ -16,7 +16,7 @@
 [ext_resource type="Script" uid="uid://6rw4pys6qf06" path="res://characters/heroes/barbarian/barbarian_skills/update_stance.gd" id="9_bs4lo"]
 [ext_resource type="Script" uid="uid://b3hkweoevsedf" path="res://characters/skills/leaves/wait.gd" id="9_e8d7b"]
 [ext_resource type="Script" uid="uid://c8my4e0ua1emf" path="res://characters/skills/leaves/previews/show_preview.gd" id="9_l1wd4"]
-[ext_resource type="Script" uid="uid://kjss673cwif3" path="res://characters/heroes/barbarian/barbarian_skills/second_skill/axe_recall.gd" id="10_5no05"]
+[ext_resource type="Script" uid="uid://kjss673cwif3" path="res://characters/heroes/barbarian/barbarian_skills/axe_recall.gd" id="10_5no05"]
 [ext_resource type="PackedScene" uid="uid://thap1nms50rw" path="res://characters/skills/preview/arrow_preview.tscn" id="10_68krb"]
 [ext_resource type="Script" uid="uid://cspokmwyrfja5" path="res://characters/heroes/barbarian/barbarian_skills/ultimate/dash_to_axe.gd" id="12_2ex85"]
 [ext_resource type="Script" uid="uid://f367ac730gkt" path="res://characters/skills/leaves/spawners/spawn_projectile.gd" id="12_87xlh"]
