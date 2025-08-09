@@ -190,7 +190,8 @@ animation = &"Unarmed_Idle"
 animation = &"Use_Item"
 
 [resource]
-graph_offset = Vector2(-1503.52, 723.18)
+graph_offset = Vector2(-328.9359, 352.7114)
+nodes/output/position = Vector2(2260, 1280)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_h2nbp")
 nodes/Animation/position = Vector2(-810, 2220)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_bth76")
@@ -261,5 +262,4 @@ nodes/UnarmedIdleAnim/node = SubResource("AnimationNodeAnimation_4wpm0")
 nodes/UnarmedIdleAnim/position = Vector2(-620, 1180)
 nodes/UseItemAnim/node = SubResource("AnimationNodeAnimation_7ifgj")
 nodes/UseItemAnim/position = Vector2(1160, 1650)
-nodes/output/position = Vector2(2260, 1280)
-node_connections = [&"ArmedState", 0, &"UnarmedIdleAnim", &"ArmedState", 1, &"AxeIdleAnim", &"ArmedState", 2, &"DualIdleAnim", &"AttackSpeed", 0, &"AttackType", &"AttackType", 0, &"ChopSpeed", &"AttackType", 1, &"SliceSpeed", &"AttackType", 2, &"PunchAAnim", &"AttackType", 3, &"PunchBAnim", &"AttackType", 4, &"Animation", &"AttackType", 5, &"Animation 2", &"ChopSpeed", 0, &"ChopAnim", &"JumpSpeed", 0, &"JumpAnim", &"MoveSpeed", 0, &"MovementBlend", &"MovementBlend", 0, &"ArmedState", &"MovementBlend", 1, &"Movement", &"PlayAttack", 0, &"MoveSpeed", &"PlayAttack", 1, &"AttackSpeed", &"PlayDeath", 0, &"PlayJump", &"PlayDeath", 1, &"Death", &"PlayDrink", 0, &"PlaySpinning", &"PlayDrink", 1, &"UseItemAnim", &"PlayJump", 0, &"PlayDrink", &"PlayJump", 1, &"JumpSpeed", &"PlaySpawn", 0, &"PlayDeath", &"PlaySpawn", 1, &"SpawnAnim", &"PlaySpinning", 0, &"PlayThrow", &"PlaySpinning", 1, &"SpinningAnimSpeed", &"PlayTaunt", 0, &"PlayAttack", &"PlayTaunt", 1, &"TauntAnim", &"PlayThrow", 0, &"PlayTaunt", &"PlayThrow", 1, &"ThrowSpeed", &"SliceSpeed", 0, &"SliceAnim", &"SpinningAnimSpeed", 0, &"Spinning Anim", &"ThrowSpeed", 0, &"ThrowAnim", &"output", 0, &"PlaySpawn"]
+node_connections = [&"output", 0, &"PlaySpawn", &"ArmedState", 0, &"UnarmedIdleAnim", &"ArmedState", 1, &"AxeIdleAnim", &"ArmedState", 2, &"DualIdleAnim", &"AttackSpeed", 0, &"AttackType", &"AttackType", 0, &"ChopSpeed", &"AttackType", 1, &"SliceSpeed", &"AttackType", 2, &"PunchAAnim", &"AttackType", 3, &"PunchBAnim", &"AttackType", 4, &"Animation", &"AttackType", 5, &"Animation 2", &"ChopSpeed", 0, &"ChopAnim", &"JumpSpeed", 0, &"JumpAnim", &"MoveSpeed", 0, &"MovementBlend", &"MovementBlend", 0, &"ArmedState", &"MovementBlend", 1, &"Movement", &"PlayAttack", 0, &"MoveSpeed", &"PlayAttack", 1, &"AttackSpeed", &"PlayDeath", 0, &"PlayJump", &"PlayDeath", 1, &"Death", &"PlayDrink", 0, &"PlaySpinning", &"PlayDrink", 1, &"UseItemAnim", &"PlayJump", 0, &"PlayDrink", &"PlayJump", 1, &"JumpSpeed", &"PlaySpawn", 0, &"PlayDeath", &"PlaySpawn", 1, &"SpawnAnim", &"PlaySpinning", 0, &"PlayThrow", &"PlaySpinning", 1, &"SpinningAnimSpeed", &"PlayTaunt", 0, &"PlayAttack", &"PlayTaunt", 1, &"TauntAnim", &"PlayThrow", 0, &"PlayTaunt", &"PlayThrow", 1, &"ThrowSpeed", &"SliceSpeed", 0, &"SliceAnim", &"SpinningAnimSpeed", 0, &"Spinning Anim", &"ThrowSpeed", 0, &"ThrowAnim"]

@@ -1,11 +1,11 @@
-[gd_resource type="BehaviorTree" load_steps=22 format=3 uid="uid://b8o8w4i2s80k0"]
+[gd_resource type="BehaviorTree" load_steps=22 format=3 uid="uid://qt0a2pv86gis"]
 
-[ext_resource type="Script" uid="uid://cejrfmcc0mvui" path="res://characters/skills/tasks/melee_attack.gd" id="1_0xtci"]
-[ext_resource type="Script" uid="uid://cybcmrcpxb7jp" path="res://characters/skills/tasks/wait_timer.gd" id="1_7o63v"]
-[ext_resource type="Script" uid="uid://b00jv08vwurek" path="res://characters/skills/tasks/cancellable.gd" id="1_p4s35"]
-[ext_resource type="Script" uid="uid://j4e4f4rlfmah" path="res://characters/skills/tasks/multiplayer_authority.gd" id="2_lk17v"]
-[ext_resource type="Script" uid="uid://8ch6xu62jhul" path="res://characters/skills/tasks/modify_stat.gd" id="2_ps4s1"]
-[ext_resource type="Script" uid="uid://cw4ei8nlq4ibb" path="res://characters/skills/tasks/with_options.gd" id="3_mu3bt"]
+[ext_resource type="Script" uid="uid://cybcmrcpxb7jp" path="res://characters/skills/tasks/wait_timer.gd" id="1_i7a7q"]
+[ext_resource type="Script" uid="uid://b00jv08vwurek" path="res://characters/skills/tasks/cancellable.gd" id="2_4k8pq"]
+[ext_resource type="Script" uid="uid://cejrfmcc0mvui" path="res://characters/skills/tasks/melee_attack.gd" id="3_h3tx1"]
+[ext_resource type="Script" uid="uid://8ch6xu62jhul" path="res://characters/skills/tasks/modify_stat.gd" id="4_xl1pw"]
+[ext_resource type="Script" uid="uid://cw4ei8nlq4ibb" path="res://characters/skills/tasks/with_options.gd" id="5_8b53q"]
+[ext_resource type="Script" uid="uid://j4e4f4rlfmah" path="res://characters/skills/tasks/multiplayer_authority.gd" id="6_ultju"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_c4kka"]
 
@@ -25,27 +25,27 @@ resource_name = "Skin"
 
 [sub_resource type="BTCallMethod" id="BTCallMethod_md4bc"]
 node = SubResource("BBNode_u7lrv")
-method = &"play_chop"
-custom_name = "PlayChop Animation"
+method = &"play_slice"
+custom_name = "PlaySlice Animation"
 
 [sub_resource type="BTAction" id="BTAction_f7pxw"]
-script = ExtResource("1_7o63v")
-duration = 0.5
+script = ExtResource("1_i7a7q")
+duration = 0.40000000000873115
 blackboard_key = &"execution"
 
 [sub_resource type="BTDecorator" id="BTDecorator_5e7hd"]
 children = [SubResource("BTAction_f7pxw")]
-script = ExtResource("1_p4s35")
+script = ExtResource("2_4k8pq")
 
 [sub_resource type="BTAction" id="BTAction_jjmcq"]
-script = ExtResource("1_0xtci")
-damage = 8
+script = ExtResource("3_h3tx1")
+damage = 10
 offset = Vector3(0, 1, 0)
 collision_type = 1
-area = 90.0
+area = 145.0
 
 [sub_resource type="BTAction" id="BTAction_68oqa"]
-script = ExtResource("2_ps4s1")
+script = ExtResource("4_xl1pw")
 stat_name = "Energy"
 flat = 5
 
@@ -57,20 +57,20 @@ children = [SubResource("BTSequence_gwdcd")]
 
 [sub_resource type="BTDecorator" id="BTDecorator_elr2e"]
 children = [SubResource("BTAlwaysSucceed_2mn3o")]
-script = ExtResource("3_mu3bt")
+script = ExtResource("5_8b53q")
 options = {
 "radius": 2.5
 }
 
 [sub_resource type="BTDecorator" id="BTDecorator_5jgon"]
 children = [SubResource("BTDecorator_elr2e")]
-script = ExtResource("2_lk17v")
+script = ExtResource("6_ultju")
 
 [sub_resource type="BTWait" id="BTWait_r5vqs"]
-duration = 0.3000000000029104
+duration = 0.40000000000873115
 
 [sub_resource type="BTSequence" id="BTSequence_e31pb"]
-custom_name = "Chop"
+custom_name = "Slice"
 children = [SubResource("BTCheckVar_f3dyb"), SubResource("BTCallMethod_md4bc"), SubResource("BTDecorator_5e7hd"), SubResource("BTDecorator_5jgon"), SubResource("BTWait_r5vqs")]
 
 [resource]
