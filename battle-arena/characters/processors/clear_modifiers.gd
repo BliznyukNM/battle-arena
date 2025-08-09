@@ -6,8 +6,8 @@ extends Node
 
 
 func _ready() -> void:
-    for skill in skills: skill.execution.timeout.connect(clear)
+	for skill in skills: skill.execution.timeout.connect(clear)
 
 
 func clear() -> void:
-    for modifier in modifiers: owner.modifiers.remove_modifier_by_name(modifier)
+	for modifier in modifiers: owner.modifiers.remove_modifier_by_name(modifier)

@@ -1,6 +1,6 @@
 [gd_resource type="BehaviorTree" load_steps=10 format=3 uid="uid://bleup8i1njcbn"]
 
-[ext_resource type="Script" path="res://characters/skills/tasks/await_trigger.gd" id="1_i7efq"]
+[ext_resource type="Script" uid="uid://ddf7rgf0offlp" path="res://characters/skills/tasks/await_trigger.gd" id="1_i7efq"]
 [ext_resource type="BehaviorTree" uid="uid://b8o8w4i2s80k0" path="res://characters/heroes/barbarian/skills/basic_skill/chop.tres" id="1_rrf1w"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_yx42m"]

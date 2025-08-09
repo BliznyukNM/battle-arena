@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://brn6cw5tr1mxb"]
 
 [ext_resource type="PackedScene" uid="uid://d26br4f45m27g" path="res://characters/character.tscn" id="1_6uqpy"]
-[ext_resource type="Script" path="res://characters/heroes/barbarian/barbarian.gd" id="2_6pbkp"]
+[ext_resource type="Script" uid="uid://cytbkvf8bjca4" path="res://characters/heroes/barbarian/barbarian.gd" id="2_6pbkp"]
 [ext_resource type="PackedScene" uid="uid://bhcwmbvmeavxw" path="res://characters/heroes/barbarian/skin.tscn" id="2_lwxa8"]
-[ext_resource type="Script" path="res://characters/stats/number_stat.gd" id="3_l5iug"]
+[ext_resource type="Script" uid="uid://bq6t7v8igrm3e" path="res://characters/stats/number_stat.gd" id="3_l5iug"]
 [ext_resource type="PackedScene" uid="uid://cekhxq5m1ngt6" path="res://characters/heroes/barbarian/skills/basic_skill/axe_attack.tscn" id="4_hi321"]
-[ext_resource type="Script" path="res://characters/heroes/barbarian/processors/skin.gd" id="6_5y8y2"]
+[ext_resource type="Script" uid="uid://c1vcf3tw603od" path="res://characters/heroes/barbarian/processors/skin.gd" id="6_5y8y2"]
 
 [node name="Barbarian" instance=ExtResource("1_6uqpy")]
 script = ExtResource("2_6pbkp")
@@ -27,7 +27,7 @@ max_value = 100.0
 has_min_value = true
 
 [node name="Spawner" parent="Modifiers" index="0"]
-_spawnable_scenes = PackedStringArray("res://characters/heroes/barbarian/skills/third_skill/whirl_modifier.tscn", "res://characters/heroes/barbarian/skills/block_skill/taunt_modifier.tscn", "res://characters/heroes/barbarian/skills/block_skill/rage_modifier.tscn", "res://characters/heroes/barbarian/modifiers/slow_on_attack.tscn", "res://characters/heroes/barbarian/modifiers/slow_on_throw.tscn")
+_spawnable_scenes = PackedStringArray("uid://3llurpohxl61", "uid://ftxj0pc4tnvd", "uid://eq45bchesouq", "uid://b7hiftft325ce", "uid://d0vml28qm10fl")
 spawn_on_reset = Array[String](["res://characters/heroes/barbarian/modifiers/slow_on_attack.tscn", "res://characters/heroes/barbarian/modifiers/slow_on_throw.tscn"])
 
 [node name="BasicAttack" parent="Skills" index="0"]
@@ -48,6 +48,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.81294, 0)
 energy = NodePath("../Stats/Energy")
 
 [node name="LocalSpawner" parent="." index="8"]
-_spawnable_scenes = PackedStringArray("res://characters/heroes/barbarian/axe.tscn", "res://characters/heroes/barbarian/skills/ultimate/axe.tscn")
+_spawnable_scenes = PackedStringArray("uid://c413rb5v027xl", "uid://cg186hbgu1nf2")
 
 [node name="Skin" parent="." index="11" instance=ExtResource("2_lwxa8")]
