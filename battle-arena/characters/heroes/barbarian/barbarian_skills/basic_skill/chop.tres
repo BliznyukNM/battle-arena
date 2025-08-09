@@ -67,7 +67,10 @@ children = [SubResource("BTDecorator_elr2e")]
 script = ExtResource("6_1lge1")
 
 [sub_resource type="BTWait" id="BTWait_r5vqs"]
-duration = 0.3000000000029104
+duration = 0.5
+script = ExtResource("1_3wfpu")
+duration = 0.5
+blackboard_key = &"cooldown"
 
 [sub_resource type="BTSequence" id="BTSequence_e31pb"]
 custom_name = "Chop"

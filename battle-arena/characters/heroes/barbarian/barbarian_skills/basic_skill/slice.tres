@@ -30,7 +30,7 @@ custom_name = "PlaySlice Animation"
 
 [sub_resource type="BTAction" id="BTAction_f7pxw"]
 script = ExtResource("1_l52ow")
-duration = 0.4000000000087311
+duration = 0.5
 blackboard_key = &"execution"
 
 [sub_resource type="BTDecorator" id="BTDecorator_5e7hd"]
@@ -66,12 +66,14 @@ options = {
 children = [SubResource("BTDecorator_elr2e")]
 script = ExtResource("6_6oylm")
 
-[sub_resource type="BTWait" id="BTWait_r5vqs"]
-duration = 0.4000000000087311
+[sub_resource type="BTAction" id="BTAction_l52ow"]
+script = ExtResource("1_l52ow")
+duration = 0.5
+blackboard_key = &"cooldown"
 
 [sub_resource type="BTSequence" id="BTSequence_e31pb"]
 custom_name = "Slice"
-children = [SubResource("BTCheckVar_f3dyb"), SubResource("BTCallMethod_md4bc"), SubResource("BTDecorator_5e7hd"), SubResource("BTDecorator_5jgon"), SubResource("BTWait_r5vqs")]
+children = [SubResource("BTCheckVar_f3dyb"), SubResource("BTCallMethod_md4bc"), SubResource("BTDecorator_5e7hd"), SubResource("BTDecorator_5jgon"), SubResource("BTAction_l52ow")]
 
 [resource]
 blackboard_plan = SubResource("BlackboardPlan_c4kka")

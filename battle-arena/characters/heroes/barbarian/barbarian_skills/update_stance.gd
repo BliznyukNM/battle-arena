@@ -6,5 +6,5 @@ extends BTAction
 
 
 func _tick(delta: float) -> int:
-	agent.update_stance(stance)
+	blackboard.top().set_var("stance", stance)
 	return SUCCESS

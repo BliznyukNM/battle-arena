@@ -12,13 +12,12 @@ func register(skill) -> void:
 
 
 func _process(delta: float) -> void:
-	if not _skill: return
-	return
+	if not _skill or not _skill.skill: return
 	
-	var icon = _skill.icon
+	var icon = null #_skill.icon
 	if icon: texture = icon
-	cooldown.visible = not is_zero_approx(_skill.cooldown)
+	# cooldown.visible = not is_zero_approx(_skill.cooldown)
 	cooldown.text = "%1.1f" % _skill.cooldown
 	
-	var enabled: bool = _skill.enabled and is_zero_approx(_skill.cooldown)
+	var enabled: bool = _skill.active and is_zero_approx(_skill.cooldown)
 	modulate = Color.WHITE if enabled else Color.GRAY

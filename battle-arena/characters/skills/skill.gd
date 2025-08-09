@@ -7,7 +7,7 @@ extends Node
 
 
 var skill: BTPlayer:
-	get: return get_child(skill_index)
+	get: return null if get_child_count() == 0 else get_child(0)
 
 var execution: float:
 	get: return skill.blackboard.get_var(&"execution", 0.0)
