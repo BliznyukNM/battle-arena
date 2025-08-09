@@ -1,5 +1,6 @@
-[gd_resource type="BehaviorTree" load_steps=30 format=3 uid="uid://c1ndef5d5njrr"]
+[gd_resource type="BehaviorTree" load_steps=32 format=3 uid="uid://c1ndef5d5njrr"]
 
+[ext_resource type="Script" uid="uid://dt58u14hrbit0" path="res://characters/skills/tasks/set_icon.gd" id="1_8paho"]
 [ext_resource type="Script" uid="uid://cybcmrcpxb7jp" path="res://characters/skills/tasks/wait_timer.gd" id="1_iemd8"]
 [ext_resource type="Script" uid="uid://b00jv08vwurek" path="res://characters/skills/tasks/cancellable.gd" id="2_8paho"]
 [ext_resource type="Script" uid="uid://dtkmhe10etxf1" path="res://characters/skills/tasks/local_player.gd" id="3_qrk2o"]
@@ -20,6 +21,10 @@ resource_name = "1"
 variable = &"stance"
 value = SubResource("BBVariant_iemd8")
 custom_name = "If stance is Axe"
+
+[sub_resource type="BTAction" id="BTAction_qrk2o"]
+script = ExtResource("1_8paho")
+icon_path = "uid://o1csbrjvoa4s"
 
 [sub_resource type="BBVariant" id="BBVariant_akfit"]
 type = 1
@@ -101,7 +106,7 @@ blackboard_key = &"cooldown"
 
 [sub_resource type="BTSequence" id="BTSequence_wx6hq"]
 custom_name = "Axe Throw"
-children = [SubResource("BTCheckVar_8paho"), SubResource("BTCheckVar_51yrf"), SubResource("BTCallMethod_l1d6d"), SubResource("BTDecorator_7xaml"), SubResource("BTDecorator_a45kf"), SubResource("BTAction_e7lob"), SubResource("BTAction_hodct")]
+children = [SubResource("BTCheckVar_8paho"), SubResource("BTAction_qrk2o"), SubResource("BTCheckVar_51yrf"), SubResource("BTCallMethod_l1d6d"), SubResource("BTDecorator_7xaml"), SubResource("BTDecorator_a45kf"), SubResource("BTAction_e7lob"), SubResource("BTAction_hodct")]
 
 [resource]
 blackboard_plan = SubResource("BlackboardPlan_iemd8")

@@ -27,6 +27,12 @@ var icon: Texture2D:
 var root_name: String:
 	get: return skill.name
 
+var blackboard: Blackboard:
+	get: return skill.blackboard
+
+var valid: bool:
+	get: return skill != null
+
 
 func activate(pressed: bool) -> void:
 	skill.blackboard.set_var(&"ready", pressed)
