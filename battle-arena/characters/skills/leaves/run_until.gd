@@ -1,7 +1,5 @@
 @tool
-@icon("res://addons/beehave/icons/until_fail.svg")
-class_name RunUntil extends BTAction
-
+extends BTAction
 
 @export var consume_key: bool = true
 
@@ -9,9 +7,7 @@ class_name RunUntil extends BTAction
 @export_placeholder(Utils.EXPRESSION_PLACEHOLDER) var key: String = ""
 @export var blackboard_name: String # = Blackboard.DEFAULT
 
-
 const Utils = preload("res://characters/skills/utils/utils.gd")
-
 
 # @onready var _key_expression: Expression = Utils.parse_expression(key, ["actor"])
 

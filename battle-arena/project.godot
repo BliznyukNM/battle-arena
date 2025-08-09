@@ -194,7 +194,7 @@ locale/translation_remaps={}
 
 behavior_tree/behavior_tree_default_dir="res://characters/skills"
 behavior_tree/user_task_dir_1="res://characters/skills/tasks"
-behavior_tree/user_task_dirs=PackedStringArray("res://characters/skills/tasks")
+behavior_tree/user_task_dirs=PackedStringArray("res://characters/skills/tasks", "res://characters/heroes/barbarian")
 
 [rendering]
 

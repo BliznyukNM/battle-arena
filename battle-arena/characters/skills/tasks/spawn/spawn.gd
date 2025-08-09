@@ -5,10 +5,10 @@ extends BTAction
 @export_file("*.tscn") var scene_path: String
 
 
-func _tick(delta: float) -> int:
-	var character: Character = agent.owner
-	var options: Dictionary = blackboard.get_value("options", {})
-	_spawn(character, options)
+func tick(actor: Node, blackboard: Blackboard) -> int:
+	var character: Character = actor.owner
+	# var options: Dictionary = blackboard.get_value("options", {}, owner.name)
+	# _spawn(character, options)
 	return SUCCESS
 
 

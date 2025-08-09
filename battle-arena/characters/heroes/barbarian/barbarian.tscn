@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://brn6cw5tr1mxb"]
+[gd_scene load_steps=8 format=3 uid="uid://brn6cw5tr1mxb"]
 
 [ext_resource type="PackedScene" uid="uid://d26br4f45m27g" path="res://characters/character.tscn" id="1_6uqpy"]
 [ext_resource type="Script" uid="uid://cytbkvf8bjca4" path="res://characters/heroes/barbarian/barbarian.gd" id="2_6pbkp"]
 [ext_resource type="PackedScene" uid="uid://bhcwmbvmeavxw" path="res://characters/heroes/barbarian/skin.tscn" id="2_lwxa8"]
 [ext_resource type="Script" uid="uid://bq6t7v8igrm3e" path="res://characters/stats/number_stat.gd" id="3_l5iug"]
-[ext_resource type="PackedScene" uid="uid://cekhxq5m1ngt6" path="res://characters/heroes/barbarian/skills/basic_skill/axe_attack.tscn" id="4_hi321"]
+[ext_resource type="PackedScene" uid="uid://cekhxq5m1ngt6" path="res://characters/heroes/barbarian/barbarian_skills/basic_skill/axe_attack.tscn" id="4_hi321"]
+[ext_resource type="PackedScene" uid="uid://ja43sf4jseel" path="res://characters/heroes/barbarian/barbarian_skills/second_skill/second_skill.tscn" id="5_clpbh"]
 [ext_resource type="Script" uid="uid://c1vcf3tw603od" path="res://characters/heroes/barbarian/processors/skin.gd" id="6_5y8y2"]
 
 [node name="Barbarian" instance=ExtResource("1_6uqpy")]
@@ -35,6 +36,11 @@ active = true
 
 [node name="Axe" parent="Skills/BasicAttack" index="0" instance=ExtResource("4_hi321")]
 agent_node = NodePath("../../..")
+
+[node name="SecondAttack" parent="Skills" index="1"]
+active = true
+
+[node name="SecondAttack" parent="Skills/SecondAttack" index="0" instance=ExtResource("5_clpbh")]
 
 [node name="Skin" type="Node" parent="Processors" index="5" node_paths=PackedStringArray("skin", "move_speed", "attack_speed")]
 script = ExtResource("6_5y8y2")
