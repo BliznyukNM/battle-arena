@@ -8,10 +8,10 @@
 [ext_resource type="Script" uid="uid://d4myd32ol3scc" path="res://characters/skills/leaves/progress_bar/show_progress_bar.gd" id="4_f7jmk"]
 [ext_resource type="Script" uid="uid://0vnrlk58qht1" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="5_6cgkh"]
 [ext_resource type="Script" uid="uid://bwbp20nld5p1y" path="res://characters/skills/decorators/cancellable.gd" id="5_cu6iy"]
-[ext_resource type="Script" uid="uid://q531ka1nfi8j" path="res://characters/skills/leaves/modifiers/add_modifier.gd" id="6_vtehk"]
+[ext_resource type="Script" uid="uid://q531ka1nfi8j" path="res://characters/skills/tasks/modifiers/add_modifier.gd" id="6_vtehk"]
 [ext_resource type="Script" uid="uid://by470gudiq2g4" path="res://characters/skills/leaves/stop_animation.gd" id="7_n5n6t"]
 [ext_resource type="Script" uid="uid://sp1a6y25m1yw" path="res://characters/skills/leaves/progress_bar/hide_progress_bar.gd" id="8_q1ot8"]
-[ext_resource type="Script" uid="uid://ctgqjao6836dm" path="res://characters/skills/leaves/modifiers/remove_modifier.gd" id="9_xdbxj"]
+[ext_resource type="Script" uid="uid://ctgqjao6836dm" path="res://characters/skills/tasks/modifiers/remove_modifier.gd" id="9_xdbxj"]
 [ext_resource type="Script" uid="uid://b3hkweoevsedf" path="res://characters/skills/leaves/wait.gd" id="12_fxfsf"]
 
 [node name="Invisibility" type="Node" node_paths=PackedStringArray("finally_node")]

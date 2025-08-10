@@ -21,9 +21,6 @@ var title: String:
 var description: String:
 	get: return tr("%s_desc" % self.root_name)
 
-var icon: Texture2D:
-	get: return skill.get_meta("icon")
-
 var root_name: String:
 	get: return skill.name
 

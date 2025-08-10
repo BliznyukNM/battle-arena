@@ -47,7 +47,7 @@ custom_name = "PlayThrow Animation"
 
 [sub_resource type="BTAction" id="BTAction_wov8g"]
 script = ExtResource("1_iemd8")
-duration = 0.19999999999708962
+duration = 0.1999999999970896
 blackboard_key = &"execution"
 
 [sub_resource type="BTDecorator" id="BTDecorator_7xaml"]
@@ -101,7 +101,7 @@ script = ExtResource("8_swvqe")
 
 [sub_resource type="BTAction" id="BTAction_hodct"]
 script = ExtResource("1_iemd8")
-duration = 0.19999999999708962
+duration = 0.1999999999970896
 blackboard_key = &"cooldown"
 
 [sub_resource type="BTSequence" id="BTSequence_wx6hq"]

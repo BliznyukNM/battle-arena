@@ -2,20 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dt58u14hrbit0" path="res://characters/skills/tasks/set_icon.gd" id="1_08jiu"]
 [ext_resource type="Script" uid="uid://ddf7rgf0offlp" path="res://characters/skills/tasks/await_trigger.gd" id="1_i7efq"]
+[ext_resource type="BlackboardPlan" uid="uid://bcm3xdo1dedf5" path="res://characters/heroes/barbarian/blackboard_plan.tres" id="1_nw7jg"]
 [ext_resource type="BehaviorTree" uid="uid://b8o8w4i2s80k0" path="res://characters/heroes/barbarian/barbarian_skills/basic_skill/chop.tres" id="1_rrf1w"]
 [ext_resource type="BehaviorTree" uid="uid://qt0a2pv86gis" path="res://characters/heroes/barbarian/barbarian_skills/basic_skill/slice.tres" id="3_n84xi"]
-
-[sub_resource type="BlackboardPlan" id="BlackboardPlan_yx42m"]
-var/ready/name = &"ready"
-var/ready/type = 1
-var/ready/value = false
-var/ready/hint = 0
-var/ready/hint_string = ""
-var/stance/name = &"stance"
-var/stance/type = 2
-var/stance/value = 0
-var/stance/hint = 2
-var/stance/hint_string = "HANDS,AXE"
 
 [sub_resource type="BTAction" id="BTAction_nw7jg"]
 script = ExtResource("1_08jiu")
@@ -45,5 +34,5 @@ custom_name = "Axe Attack"
 children = [SubResource("BTAction_nw7jg"), SubResource("BTAction_r76pc"), SubResource("BTSubtree_2vf5b"), SubResource("BTSubtree_5roik")]
 
 [resource]
-blackboard_plan = SubResource("BlackboardPlan_yx42m")
+blackboard_plan = ExtResource("1_nw7jg")
 root_task = SubResource("BTSequence_ivpsn")

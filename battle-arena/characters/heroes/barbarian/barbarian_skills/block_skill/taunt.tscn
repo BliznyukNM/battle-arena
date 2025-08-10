@@ -1,85 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://b52wq4f1ubfm3"]
+[gd_scene load_steps=3 format=3 uid="uid://b52wq4f1ubfm3"]
 
-[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_m11w8"]
-[ext_resource type="Script" uid="uid://bjgljcrqmlsi4" path="res://characters/skills/leaves/run_until.gd" id="2_aptpa"]
-[ext_resource type="Texture2D" uid="uid://8cynie08kmw1" path="res://assets/ui/icons/barbarian/Taunt.png" id="2_o846u"]
-[ext_resource type="Script" uid="uid://cy7e71cp4qkdr" path="res://characters/skills/leaves/play_animation.gd" id="3_cccs0"]
-[ext_resource type="Script" uid="uid://d1xhkhskkia2n" path="res://characters/skills/leaves/wait_executing_skill.gd" id="3_eoscc"]
-[ext_resource type="Script" uid="uid://b3hkweoevsedf" path="res://characters/skills/leaves/wait.gd" id="3_optkk"]
-[ext_resource type="Script" uid="uid://by470gudiq2g4" path="res://characters/skills/leaves/stop_animation.gd" id="4_fokt2"]
-[ext_resource type="Script" uid="uid://0vnrlk58qht1" path="res://characters/skills/decorators/multiplayer/multiplayer_authority.gd" id="5_a61af"]
-[ext_resource type="Script" uid="uid://5h4belyi00g1" path="res://characters/skills/decorators/until_hit.gd" id="6_67an1"]
-[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/succeeder.gd" id="6_bocnx"]
-[ext_resource type="Script" uid="uid://q531ka1nfi8j" path="res://characters/skills/leaves/modifiers/add_modifier.gd" id="6_n2fgy"]
-[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/inverter.gd" id="7_fhvb6"]
-[ext_resource type="Script" uid="uid://bwbp20nld5p1y" path="res://characters/skills/decorators/cancellable.gd" id="7_valut"]
-[ext_resource type="Script" uid="uid://ctgqjao6836dm" path="res://characters/skills/leaves/modifiers/remove_modifier.gd" id="9_chgd5"]
+[ext_resource type="BehaviorTree" uid="uid://31t7fnc8rqnf" path="res://characters/heroes/barbarian/barbarian_skills/block_skill/taunt.tres" id="1_1wbb8"]
 
-[node name="Taunt" type="Node"]
-script = ExtResource("1_m11w8")
-metadata/icon = ExtResource("2_o846u")
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_ob1rp"]
 
-[node name="RunUntil" type="Node" parent="."]
-script = ExtResource("2_aptpa")
-key = "\"%s_ready\" % actor.name"
-
-[node name="WaitExecutingSkill" type="Node" parent="."]
-script = ExtResource("3_eoscc")
-
-[node name="PlayAnimation" type="Node" parent="."]
-script = ExtResource("3_cccs0")
-animation_name = "taunt"
-
-[node name="ApplyWithAuthority" type="Node" parent="."]
-script = ExtResource("5_a61af")
-
-[node name="AddTauntModifier" type="Node" parent="ApplyWithAuthority"]
-script = ExtResource("6_n2fgy")
-modifier_name = "Taunt"
-scene_path = "res://characters/heroes/barbarian/skills/block_skill/taunt_modifier.tscn"
-
-[node name="Taunting" type="Node" parent="."]
-script = ExtResource("6_bocnx")
-
-[node name="Sequence" type="Node" parent="Taunting"]
-script = ExtResource("1_m11w8")
-
-[node name="Inverted" type="Node" parent="Taunting/Sequence"]
-script = ExtResource("7_fhvb6")
-
-[node name="UntilHit" type="Node" parent="Taunting/Sequence/Inverted"]
-script = ExtResource("6_67an1")
-result = 1
-
-[node name="Cancellable" type="Node" parent="Taunting/Sequence/Inverted/UntilHit"]
-script = ExtResource("7_valut")
-key = "\"%s_ready\" % actor.name"
-
-[node name="ExecutionWait" type="Node" parent="Taunting/Sequence/Inverted/UntilHit/Cancellable"]
-script = ExtResource("3_optkk")
-wait_time = 2.0
-cache_key = "execution"
-
-[node name="ApplyWithAuthority" type="Node" parent="Taunting/Sequence"]
-script = ExtResource("5_a61af")
-
-[node name="AddRageModifier" type="Node" parent="Taunting/Sequence/ApplyWithAuthority"]
-script = ExtResource("6_n2fgy")
-modifier_name = "Rage"
-scene_path = "res://characters/heroes/barbarian/skills/block_skill/rage_modifier.tscn"
-
-[node name="CleanWithAuthority" type="Node" parent="."]
-script = ExtResource("5_a61af")
-
-[node name="RemoveTauntModifier" type="Node" parent="CleanWithAuthority"]
-script = ExtResource("9_chgd5")
-modifier_name = "Taunt"
-
-[node name="StopAnimation" type="Node" parent="."]
-script = ExtResource("4_fokt2")
-animation_name = "taunt"
-
-[node name="Cooldown" type="Node" parent="."]
-script = ExtResource("3_optkk")
-wait_time = 5.0
-cache_key = "cooldown"
+[node name="Taunt" type="BTPlayer"]
+behavior_tree = ExtResource("1_1wbb8")
+blackboard_plan = SubResource("BlackboardPlan_ob1rp")

@@ -1,35 +1,10 @@
 [gd_resource type="BehaviorTree" load_steps=17 format=3 uid="uid://cpm2vwuvxc0rh"]
 
 [ext_resource type="BehaviorTree" uid="uid://c1ndef5d5njrr" path="res://characters/heroes/barbarian/barbarian_skills/second_skill/axe_throw.tres" id="1_ai4xh"]
+[ext_resource type="BlackboardPlan" uid="uid://bcm3xdo1dedf5" path="res://characters/heroes/barbarian/blackboard_plan.tres" id="1_c6rb2"]
 [ext_resource type="Script" uid="uid://dt58u14hrbit0" path="res://characters/skills/tasks/set_icon.gd" id="2_2ym4v"]
 [ext_resource type="Script" uid="uid://kjss673cwif3" path="res://characters/heroes/barbarian/barbarian_skills/axe_recall.gd" id="2_6wy0w"]
 [ext_resource type="Script" uid="uid://j4e4f4rlfmah" path="res://characters/skills/tasks/multiplayer_authority.gd" id="6_d7tbl"]
-
-[sub_resource type="BlackboardPlan" id="BlackboardPlan_islyj"]
-var/ready/name = &"ready"
-var/ready/type = 1
-var/ready/value = false
-var/ready/hint = 0
-var/ready/hint_string = ""
-var/cooldown/name = &"cooldown"
-var/cooldown/type = 3
-var/cooldown/value = 0.0
-var/cooldown/hint = 0
-var/cooldown/hint_string = ""
-var/execution/name = &"execution"
-var/execution/type = 3
-var/execution/value = 0.0
-var/execution/hint = 0
-var/execution/hint_string = ""
-var/stance/name = &"stance"
-var/stance/type = 2
-var/stance/value = 0
-var/stance/hint = 2
-var/stance/hint_string = "HANDS,AXE"
-var/icon/name = &"icon"
-var/icon/type = 24
-var/icon/hint = 17
-var/icon/hint_string = ""
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_2djk7"]
 
@@ -78,5 +53,5 @@ custom_name = "Axe Throw/Return"
 children = [SubResource("BTSubtree_6wy0w"), SubResource("BTSequence_ai4xh")]
 
 [resource]
-blackboard_plan = SubResource("BlackboardPlan_islyj")
+blackboard_plan = ExtResource("1_c6rb2")
 root_task = SubResource("BTSelector_x1cvj")

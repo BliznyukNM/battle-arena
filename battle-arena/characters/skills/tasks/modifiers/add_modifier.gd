@@ -6,13 +6,18 @@ extends BTAction
 @export_file("*.tscn") var scene_path: String
 
 
-func tick(actor: Node, blackboard: Blackboard) -> int:
-	var character: Character = actor.owner
-	character.modifiers.add_modifier({
-		"path": scene_path,
-		"name": modifier_name
-	})
+func _tick(delta: float) -> int:
+	if not agent.is_multiplayer_authority(): return SUCCESS
+	
+	var options = blackboard.get_var("options", {}, false)
+	options.path = scene_path
+	options.name = modifier_name
+	agent.modifiers.add_modifier(options)
 	return SUCCESS
+
+
+func _generate_name() -> String:
+	return "Add [%s] modifier" % modifier_name
 
 
 """

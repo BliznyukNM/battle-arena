@@ -7,9 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cekhxq5m1ngt6" path="res://characters/heroes/barbarian/barbarian_skills/basic_skill/axe_attack.tscn" id="4_hi321"]
 [ext_resource type="PackedScene" uid="uid://ja43sf4jseel" path="res://characters/heroes/barbarian/barbarian_skills/second_skill/second_skill.tscn" id="5_clpbh"]
 [ext_resource type="Script" uid="uid://c1vcf3tw603od" path="res://characters/heroes/barbarian/processors/skin.gd" id="6_5y8y2"]
-
-[sub_resource type="BlackboardPlan" id="BlackboardPlan_clpbh"]
-binding/stance = NodePath("../../..:stance")
+[ext_resource type="PackedScene" uid="uid://b52wq4f1ubfm3" path="res://characters/heroes/barbarian/barbarian_skills/block_skill/taunt.tscn" id="6_ej1jh"]
 
 [node name="Barbarian" instance=ExtResource("1_6uqpy")]
 script = ExtResource("2_6pbkp")
@@ -40,14 +38,18 @@ active = true
 
 [node name="Axe" parent="Skills/BasicAttack" index="0" instance=ExtResource("4_hi321")]
 agent_node = NodePath("../../..")
-blackboard_plan = SubResource("BlackboardPlan_clpbh")
 
 [node name="SecondAttack" parent="Skills" index="1"]
 active = true
 
 [node name="SecondAttack" parent="Skills/SecondAttack" index="0" instance=ExtResource("5_clpbh")]
 agent_node = NodePath("../../..")
-blackboard_plan = SubResource("BlackboardPlan_clpbh")
+
+[node name="Block" parent="Skills" index="4"]
+active = true
+
+[node name="Taunt" parent="Skills/Block" index="0" instance=ExtResource("6_ej1jh")]
+agent_node = NodePath("../../..")
 
 [node name="Skin" type="Node" parent="Processors" index="5" node_paths=PackedStringArray("skin", "move_speed", "attack_speed")]
 script = ExtResource("6_5y8y2")
