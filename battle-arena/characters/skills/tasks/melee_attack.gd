@@ -29,6 +29,8 @@ func _setup_shape(radius: float) -> ConvexPolygonShape3D:
 
 
 func _tick(delta: float) -> Status:
+	if not agent.is_multiplayer_authority(): return FAILURE
+	
 	var space_state: PhysicsDirectSpaceState3D = agent.get_world_3d().direct_space_state
 	
 	var options: Dictionary = blackboard.get_var("options", {})

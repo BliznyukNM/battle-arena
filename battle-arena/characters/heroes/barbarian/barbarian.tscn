@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://brn6cw5tr1mxb"]
+[gd_scene load_steps=10 format=3 uid="uid://brn6cw5tr1mxb"]
 
 [ext_resource type="PackedScene" uid="uid://d26br4f45m27g" path="res://characters/character.tscn" id="1_6uqpy"]
 [ext_resource type="Script" uid="uid://cytbkvf8bjca4" path="res://characters/heroes/barbarian/barbarian.gd" id="2_6pbkp"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cekhxq5m1ngt6" path="res://characters/heroes/barbarian/barbarian_skills/basic_skill/axe_attack.tscn" id="4_hi321"]
 [ext_resource type="PackedScene" uid="uid://ja43sf4jseel" path="res://characters/heroes/barbarian/barbarian_skills/second_skill/second_skill.tscn" id="5_clpbh"]
 [ext_resource type="Script" uid="uid://c1vcf3tw603od" path="res://characters/heroes/barbarian/processors/skin.gd" id="6_5y8y2"]
+[ext_resource type="PackedScene" uid="uid://cla3pej420s8h" path="res://characters/heroes/barbarian/barbarian_skills/third_skill/third_skill.tscn" id="6_87bky"]
 [ext_resource type="PackedScene" uid="uid://b52wq4f1ubfm3" path="res://characters/heroes/barbarian/barbarian_skills/block_skill/taunt.tscn" id="6_ej1jh"]
 
 [node name="Barbarian" instance=ExtResource("1_6uqpy")]
@@ -43,6 +44,12 @@ agent_node = NodePath("../../..")
 active = true
 
 [node name="SecondAttack" parent="Skills/SecondAttack" index="0" instance=ExtResource("5_clpbh")]
+agent_node = NodePath("../../..")
+
+[node name="ThirdAttack" parent="Skills" index="2"]
+active = true
+
+[node name="ThirdSkill" parent="Skills/ThirdAttack" index="0" instance=ExtResource("6_87bky")]
 agent_node = NodePath("../../..")
 
 [node name="Block" parent="Skills" index="4"]
