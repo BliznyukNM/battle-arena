@@ -13,7 +13,7 @@ config_version=5
 config/name="Battle Arena"
 config/version="0.4"
 run/main_scene="res://lobby/login.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 run/port=7350
 run/server=false
@@ -30,8 +30,6 @@ networking/stun.editor="stun:stun.l.google.com:19302"
 Matchmaking="*res://multiplayer/matchmaking.gd"
 Nakama="*res://addons/nakama/Nakama.gd"
 NakamaWebRTC="*res://addons/nakama-webrtc/NakamaWebRTC.gd"
-BeehaveGlobalMetrics="*res://addons/beehave/metrics/beehave_global_metrics.gd"
-BeehaveGlobalDebugger="*res://addons/beehave/debug/global_debugger.gd"
 
 [debug]
 
@@ -49,7 +47,7 @@ mouse_cursor/custom_image="res://assets/ui/basic_cursor.tres"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/beehave/plugin.cfg", "res://addons/gdUnit4/plugin.cfg")
+enabled=PackedStringArray("res://addons/gdUnit4/plugin.cfg")
 
 [file_customization]
 
@@ -191,6 +189,12 @@ locale/translation_remaps={}
 3d_physics/layer_2="Team_A"
 3d_physics/layer_3="Team_B"
 3d_physics/layer_4="Neutral"
+
+[limbo_ai]
+
+behavior_tree/behavior_tree_default_dir="res://characters/skills"
+behavior_tree/user_task_dir_1="res://characters/skills/tasks"
+behavior_tree/user_task_dirs=PackedStringArray("res://characters/skills/tasks", "res://characters/heroes/barbarian")
 
 [rendering]
 

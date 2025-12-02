@@ -2,7 +2,7 @@ class_name BaseEffect extends Resource
 
 
 var name: String:
-    get = get_effect_name
+	get = get_effect_name
 
 
 func get_effect_name() -> String: return ""

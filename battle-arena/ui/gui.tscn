@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cfqs7tnlielrb"]
 
-[ext_resource type="Script" path="res://ui/gui.gd" id="1_h8wmn"]
+[ext_resource type="Script" uid="uid://m05xhvhdukyv" path="res://ui/gui.gd" id="1_h8wmn"]
 [ext_resource type="PackedScene" uid="uid://cndg2kkppsmgt" path="res://ui/skill_ui.tscn" id="2_lu0da"]
 [ext_resource type="Texture2D" uid="uid://chcu0sl46yfom" path="res://assets/ui/kenney_input-prompts/Keyboard & Mouse/Vector/mouse_left_outline.svg" id="4_uurqp"]
 [ext_resource type="Texture2D" uid="uid://cjq6oow844tct" path="res://assets/ui/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_q_outline.svg" id="5_8nt8t"]
@@ -20,7 +20,7 @@ script = ExtResource("1_h8wmn")
 
 [node name="BottomHUD" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -35,42 +35,84 @@ alignment = 1
 [node name="LMB_button" parent="BottomHUD" instance=ExtResource("2_lu0da")]
 layout_mode = 2
 
+[node name="Cooldown" parent="BottomHUD/LMB_button" index="0"]
+anchors_preset = -1
+
+[node name="Background" parent="BottomHUD/LMB_button" index="1"]
+anchors_preset = -1
+
 [node name="KeyboardQOutline" parent="BottomHUD/LMB_button" index="2"]
+anchors_preset = -1
 texture = ExtResource("4_uurqp")
 
 [node name="RMB_button" parent="BottomHUD" instance=ExtResource("2_lu0da")]
 layout_mode = 2
 
+[node name="Cooldown" parent="BottomHUD/RMB_button" index="0"]
+anchors_preset = -1
+
+[node name="Background" parent="BottomHUD/RMB_button" index="1"]
+anchors_preset = -1
+
 [node name="KeyboardQOutline" parent="BottomHUD/RMB_button" index="2"]
+anchors_preset = -1
 texture = ExtResource("6_3e34k")
 
 [node name="Q_button" parent="BottomHUD" instance=ExtResource("2_lu0da")]
 layout_mode = 2
 
+[node name="Cooldown" parent="BottomHUD/Q_button" index="0"]
+anchors_preset = -1
+
+[node name="Background" parent="BottomHUD/Q_button" index="1"]
+anchors_preset = -1
+
 [node name="KeyboardQOutline" parent="BottomHUD/Q_button" index="2"]
+anchors_preset = -1
 texture = ExtResource("5_8nt8t")
 
 [node name="E_button" parent="BottomHUD" instance=ExtResource("2_lu0da")]
 layout_mode = 2
 
+[node name="Cooldown" parent="BottomHUD/E_button" index="0"]
+anchors_preset = -1
+
+[node name="Background" parent="BottomHUD/E_button" index="1"]
+anchors_preset = -1
+
 [node name="KeyboardQOutline" parent="BottomHUD/E_button" index="2"]
+anchors_preset = -1
 texture = ExtResource("6_s03ad")
 
 [node name="Space_button" parent="BottomHUD" instance=ExtResource("2_lu0da")]
 layout_mode = 2
 
+[node name="Cooldown" parent="BottomHUD/Space_button" index="0"]
+anchors_preset = -1
+
+[node name="Background" parent="BottomHUD/Space_button" index="1"]
+anchors_preset = -1
+
 [node name="KeyboardQOutline" parent="BottomHUD/Space_button" index="2"]
+anchors_preset = -1
 texture = ExtResource("8_llbca")
 
 [node name="R_button" parent="BottomHUD" instance=ExtResource("2_lu0da")]
 layout_mode = 2
 
+[node name="Cooldown" parent="BottomHUD/R_button" index="0"]
+anchors_preset = -1
+
+[node name="Background" parent="BottomHUD/R_button" index="1"]
+anchors_preset = -1
+
 [node name="KeyboardQOutline" parent="BottomHUD/R_button" index="2"]
+anchors_preset = -1
 texture = ExtResource("8_66pcn")
 
 [node name="ID" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 2
+anchors_preset = -1
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 22.0

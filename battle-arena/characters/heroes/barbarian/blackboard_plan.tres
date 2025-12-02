@@ -1,0 +1,28 @@
+[gd_resource type="BlackboardPlan" format=3 uid="uid://bcm3xdo1dedf5"]
+
+[resource]
+var/ready/name = &"ready"
+var/ready/type = 1
+var/ready/value = false
+var/ready/hint = 0
+var/ready/hint_string = ""
+var/cooldown/name = &"cooldown"
+var/cooldown/type = 3
+var/cooldown/value = 0.0
+var/cooldown/hint = 0
+var/cooldown/hint_string = ""
+var/execution/name = &"execution"
+var/execution/type = 3
+var/execution/value = 0.0
+var/execution/hint = 0
+var/execution/hint_string = ""
+var/icon/name = &"icon"
+var/icon/type = 24
+var/icon/hint = 17
+var/icon/hint_string = ""
+var/stance/name = &"stance"
+var/stance/type = 2
+var/stance/value = 0
+var/stance/hint = 2
+var/stance/hint_string = "HANDS,AXE"
+binding/stance = NodePath(".:stance")

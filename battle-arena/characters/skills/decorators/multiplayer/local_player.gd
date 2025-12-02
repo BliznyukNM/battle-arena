@@ -1,11 +1,11 @@
 @tool
-extends EmptyDecorator
+extends BTDecorator
 
 
 @export_enum("SUCCESS", "FAILURE") var result: int
 
 
-func tick(actor: Node, blackboard: Blackboard) -> int:
-	var character: Character = actor.owner
-	if multiplayer.get_unique_id() != character.player_id: return result
-	return super(actor, blackboard)
+func _tick(delta: float) -> int:
+	var character: Character = agent.owner
+	if character.multiplayer.get_unique_id() != character.player_id: return result
+	return get_child(0).execute(delta)

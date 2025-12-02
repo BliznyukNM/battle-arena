@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cq3ieognt8p8y"]
+
+[ext_resource type="Texture2D" uid="uid://knq7nxjwphfr" path="res://assets/ui/icons/barbarian/BasicAttack.png" id="2_c8sg5"]
+
+[node name="Slice" type="Node"]
+metadata/icon = ExtResource("2_c8sg5")

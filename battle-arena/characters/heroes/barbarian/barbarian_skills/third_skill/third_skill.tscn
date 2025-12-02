@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cla3pej420s8h"]
+
+[ext_resource type="BehaviorTree" uid="uid://c6tdor6mkg5x2" path="res://characters/heroes/barbarian/barbarian_skills/third_skill/third_skill.tres" id="1_s2g0p"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_5m35l"]
+
+[node name="ThirdSkill" type="BTPlayer"]
+behavior_tree = ExtResource("1_s2g0p")
+blackboard_plan = SubResource("BlackboardPlan_5m35l")

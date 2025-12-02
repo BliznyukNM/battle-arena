@@ -8,10 +8,10 @@ extends ActionLeaf
 
 
 func tick(actor: Node, blackboard: Blackboard) -> int:
-    var character: Character = actor.owner
-    var stat: NumberStat = character.stats.get_number_stat(stat_name)
-    if not stat: return FAILURE
-    
-    stat.set_current_value.rpc(stat.current_value + stat.base_value * (percentage * 0.01) + flat)
-    return SUCCESS
-    
+	var character: Character = actor.owner
+	var stat: NumberStat = character.stats.get_number_stat(stat_name)
+	if not stat: return FAILURE
+	
+	stat.set_current_value.rpc(stat.current_value + stat.base_value * (percentage * 0.01) + flat)
+	return SUCCESS
+	

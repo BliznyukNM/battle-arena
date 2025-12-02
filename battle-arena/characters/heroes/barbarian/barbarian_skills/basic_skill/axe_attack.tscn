@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cekhxq5m1ngt6"]
+
+[ext_resource type="BehaviorTree" uid="uid://bleup8i1njcbn" path="res://characters/heroes/barbarian/barbarian_skills/basic_skill/axe_attack.tres" id="1_pmhyd"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_ke8u6"]
+
+[node name="Axe" type="BTPlayer"]
+behavior_tree = ExtResource("1_pmhyd")
+blackboard_plan = SubResource("BlackboardPlan_ke8u6")

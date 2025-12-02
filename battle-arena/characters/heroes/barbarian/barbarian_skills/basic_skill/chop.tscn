@@ -1,0 +1,21 @@
+[gd_scene load_steps=7 format=3 uid="uid://dduw5yupkf46b"]
+
+[ext_resource type="Texture2D" uid="uid://knq7nxjwphfr" path="res://assets/ui/icons/barbarian/BasicAttack.png" id="2_iyx5b"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_6lm1p"]
+
+[sub_resource type="BTParallel" id="BTParallel_8ludm"]
+
+[sub_resource type="BTSequence" id="BTSequence_ki7nn"]
+children = [SubResource("BTParallel_8ludm")]
+
+[sub_resource type="BehaviorTree" id="BehaviorTree_rq86o"]
+blackboard_plan = SubResource("BlackboardPlan_6lm1p")
+root_task = SubResource("BTSequence_ki7nn")
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_q6vrm"]
+
+[node name="Chop" type="BTPlayer"]
+behavior_tree = SubResource("BehaviorTree_rq86o")
+blackboard_plan = SubResource("BlackboardPlan_q6vrm")
+metadata/icon = ExtResource("2_iyx5b")

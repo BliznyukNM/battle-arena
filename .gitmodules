@@ -4,6 +4,6 @@
 [submodule "gd-unit"]
 	path = gd-unit
 	url = https://github.com/MikeSchulze/gdUnit4.git 
-[submodule "beehave"]
-	path = beehave
-	url = https://github.com/bitbrain/beehave.git
+[submodule "limboai"]
+	path = limboai
+	url = https://github.com/limbonaut/limboai.git

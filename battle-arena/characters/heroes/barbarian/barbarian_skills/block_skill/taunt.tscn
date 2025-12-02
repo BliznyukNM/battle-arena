@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b52wq4f1ubfm3"]
+
+[ext_resource type="BehaviorTree" uid="uid://31t7fnc8rqnf" path="res://characters/heroes/barbarian/barbarian_skills/block_skill/taunt.tres" id="1_1wbb8"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_ob1rp"]
+
+[node name="Taunt" type="BTPlayer"]
+behavior_tree = ExtResource("1_1wbb8")
+blackboard_plan = SubResource("BlackboardPlan_ob1rp")

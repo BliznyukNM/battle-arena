@@ -1,5 +1,5 @@
 @tool
-extends EmptyDecorator
+extends BTDecorator
 
 
 @export var stat_name: String
@@ -13,6 +13,7 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
     assert(not (is_zero_approx(stat.current_value) and inverted))
     
     var scale: float = stat.current_value if not inverted else 1 / stat.current_value
-    blackboard.set_value("scale", scale, owner.name)
+    # blackboard.set_value("scale", scale, owner.name)
 
-    return super(actor, blackboard)
+    # return super(actor, blackboard)
+    return FAILURE

@@ -1,0 +1,88 @@
+[gd_resource type="BehaviorTree" load_steps=26 format=3 uid="uid://31t7fnc8rqnf"]
+
+[ext_resource type="Script" uid="uid://q531ka1nfi8j" path="res://characters/skills/tasks/modifiers/add_modifier.gd" id="1_55hou"]
+[ext_resource type="Script" uid="uid://dt58u14hrbit0" path="res://characters/skills/tasks/set_icon.gd" id="1_406us"]
+[ext_resource type="BlackboardPlan" uid="uid://bcm3xdo1dedf5" path="res://characters/heroes/barbarian/blackboard_plan.tres" id="1_j6qu3"]
+[ext_resource type="Script" uid="uid://b00jv08vwurek" path="res://characters/skills/tasks/cancellable.gd" id="2_ttpdw"]
+[ext_resource type="Script" uid="uid://5h4belyi00g1" path="res://characters/skills/tasks/until_hit.gd" id="3_rvli4"]
+[ext_resource type="Script" uid="uid://ctgqjao6836dm" path="res://characters/skills/tasks/modifiers/remove_modifier.gd" id="4_rvli4"]
+[ext_resource type="Script" uid="uid://cybcmrcpxb7jp" path="res://characters/skills/tasks/wait_timer.gd" id="5_nbye2"]
+
+[sub_resource type="BTAction" id="BTAction_ghaua"]
+script = ExtResource("1_406us")
+icon_path = "uid://8cynie08kmw1"
+
+[sub_resource type="BBVariant" id="BBVariant_55hou"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_lk07j"]
+variable = &"ready"
+value = SubResource("BBVariant_55hou")
+custom_name = "Ready"
+
+[sub_resource type="BBNode" id="BBNode_eaa85"]
+saved_value = NodePath("Skin")
+resource_name = "Skin"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_55hou"]
+node = SubResource("BBNode_eaa85")
+method = &"play_taunt"
+custom_name = "Play Taunt Animation"
+
+[sub_resource type="BTAction" id="BTAction_lk07j"]
+script = ExtResource("1_55hou")
+modifier_name = "taunt"
+scene_path = "uid://ftxj0pc4tnvd"
+
+[sub_resource type="BTWait" id="BTWait_nbye2"]
+duration = 1.5
+
+[sub_resource type="BTDecorator" id="BTDecorator_nbye2"]
+children = [SubResource("BTWait_nbye2")]
+script = ExtResource("2_ttpdw")
+
+[sub_resource type="BTDecorator" id="BTDecorator_406us"]
+children = [SubResource("BTDecorator_nbye2")]
+script = ExtResource("3_rvli4")
+
+[sub_resource type="BTInvert" id="BTInvert_406us"]
+children = [SubResource("BTDecorator_406us")]
+
+[sub_resource type="BTAction" id="BTAction_rvli4"]
+script = ExtResource("1_55hou")
+modifier_name = "rage"
+scene_path = "uid://eq45bchesouq"
+
+[sub_resource type="BTSequence" id="BTSequence_ghaua"]
+children = [SubResource("BTInvert_406us"), SubResource("BTAction_rvli4")]
+
+[sub_resource type="BTAlwaysSucceed" id="BTAlwaysSucceed_j6qu3"]
+children = [SubResource("BTSequence_ghaua")]
+
+[sub_resource type="BTAction" id="BTAction_j6qu3"]
+script = ExtResource("4_rvli4")
+modifier_name = "taunt"
+
+[sub_resource type="BBNode" id="BBNode_rvli4"]
+saved_value = NodePath("Skin")
+resource_name = "Skin"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_nbye2"]
+node = SubResource("BBNode_rvli4")
+method = &"stop_taunt"
+custom_name = "Stop Taunt Animation"
+
+[sub_resource type="BTAction" id="BTAction_406us"]
+script = ExtResource("5_nbye2")
+duration = 6.0
+blackboard_key = &"cooldown"
+
+[sub_resource type="BTSequence" id="BTSequence_j6qu3"]
+custom_name = "Taunt"
+children = [SubResource("BTAction_ghaua"), SubResource("BTCheckVar_lk07j"), SubResource("BTCallMethod_55hou"), SubResource("BTAction_lk07j"), SubResource("BTAlwaysSucceed_j6qu3"), SubResource("BTAction_j6qu3"), SubResource("BTCallMethod_nbye2"), SubResource("BTAction_406us")]
+
+[resource]
+blackboard_plan = ExtResource("1_j6qu3")
+root_task = SubResource("BTSequence_j6qu3")

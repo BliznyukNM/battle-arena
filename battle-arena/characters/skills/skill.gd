@@ -1,42 +1,44 @@
-@tool
-extends BeehaveTree
+extends Node
 
 
+@export var active: bool
 @export var interruptable: bool
+@export var skill_index: = 0
 
 
-var pressed: bool
+var skill: BTPlayer:
+	get: return null if get_child_count() == 0 else get_child(0)
 
 var execution: float:
-    get: return blackboard.get_value("execution", 0.0, self.root_name)
+	get: return skill.blackboard.get_var(&"execution", 0.0)
 
 var cooldown: float:
-    get: return blackboard.get_value("cooldown", 0.0, self.root_name)
+	get: return skill.blackboard.get_var(&"cooldown", 0.0)
 
 var title: String:
-    get: return tr(self.root_name)
+	get: return tr(self.root_name)
 
 var description: String:
-    get: return tr("%s_desc" % self.root_name)
-
-var icon: Texture2D:
-    get:
-        var running_action: BeehaveNode = blackboard.get_value("running_action", null, str(actor.get_instance_id()))
-        if not running_action: return null
-        return running_action.owner.get_meta("icon")     
+	get: return tr("%s_desc" % self.root_name)
 
 var root_name: String:
-    get:
-        var running_action: BeehaveNode = blackboard.get_value("running_action", null, str(actor.get_instance_id()))
-        if not running_action: return ""
-        return running_action.owner.name
+	get: return skill.name
+
+var blackboard: Blackboard:
+	get: return skill.blackboard
+
+var valid: bool:
+	get: return skill != null
+
+
+func activate(pressed: bool) -> void:
+	skill.blackboard.set_var(&"ready", pressed)
 
 
 func reset() -> void:
-    interrupt()
-    
-    # FIXME hack to clean all things after
-    # interrupt nodes will start and set their values
-    await get_tree().process_frame 
-    blackboard.blackboard.clear()
-    blackboard._data.clear()
+	# interrupt()
+	
+	# FIXME hack to clean all things after
+	# interrupt nodes will start and set their values
+	await get_tree().process_frame
+	skill.blackboard.clear()

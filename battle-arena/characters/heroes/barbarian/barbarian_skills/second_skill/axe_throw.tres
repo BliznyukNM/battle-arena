@@ -1,0 +1,113 @@
+[gd_resource type="BehaviorTree" load_steps=32 format=3 uid="uid://c1ndef5d5njrr"]
+
+[ext_resource type="Script" uid="uid://dt58u14hrbit0" path="res://characters/skills/tasks/set_icon.gd" id="1_8paho"]
+[ext_resource type="Script" uid="uid://cybcmrcpxb7jp" path="res://characters/skills/tasks/wait_timer.gd" id="1_iemd8"]
+[ext_resource type="Script" uid="uid://b00jv08vwurek" path="res://characters/skills/tasks/cancellable.gd" id="2_8paho"]
+[ext_resource type="Script" uid="uid://dtkmhe10etxf1" path="res://characters/skills/tasks/local_player.gd" id="3_qrk2o"]
+[ext_resource type="Script" uid="uid://b6m84p6imhb88" path="res://characters/skills/tasks/spawn/spawn_projectile.gd" id="4_q5up2"]
+[ext_resource type="Script" uid="uid://bllmqwog6k8yk" path="res://characters/skills/tasks/spawn/near_actor.gd" id="5_v8l5q"]
+[ext_resource type="Script" uid="uid://j4e4f4rlfmah" path="res://characters/skills/tasks/multiplayer_authority.gd" id="6_5htcw"]
+[ext_resource type="Script" uid="uid://cw4ei8nlq4ibb" path="res://characters/skills/tasks/with_options.gd" id="7_5au7r"]
+[ext_resource type="Script" uid="uid://6rw4pys6qf06" path="res://characters/heroes/barbarian/barbarian_skills/update_stance.gd" id="8_swvqe"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_iemd8"]
+
+[sub_resource type="BBVariant" id="BBVariant_iemd8"]
+type = 2
+saved_value = 1
+resource_name = "1"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_8paho"]
+variable = &"stance"
+value = SubResource("BBVariant_iemd8")
+custom_name = "If stance is Axe"
+
+[sub_resource type="BTAction" id="BTAction_qrk2o"]
+script = ExtResource("1_8paho")
+icon_path = "uid://o1csbrjvoa4s"
+
+[sub_resource type="BBVariant" id="BBVariant_akfit"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_51yrf"]
+variable = &"ready"
+value = SubResource("BBVariant_akfit")
+custom_name = "Ready"
+
+[sub_resource type="BBNode" id="BBNode_4x0w4"]
+saved_value = NodePath("Skin")
+resource_name = "Skin"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_l1d6d"]
+node = SubResource("BBNode_4x0w4")
+method = &"play_throw"
+custom_name = "PlayThrow Animation"
+
+[sub_resource type="BTAction" id="BTAction_wov8g"]
+script = ExtResource("1_iemd8")
+duration = 0.1999999999970896
+blackboard_key = &"execution"
+
+[sub_resource type="BTDecorator" id="BTDecorator_7xaml"]
+children = [SubResource("BTAction_wov8g")]
+script = ExtResource("2_8paho")
+
+[sub_resource type="BTComment" id="BTComment_ddxsc"]
+custom_name = "Show preview & progress bar"
+
+[sub_resource type="BTSequence" id="BTSequence_rwctx"]
+children = [SubResource("BTComment_ddxsc")]
+
+[sub_resource type="BTDecorator" id="BTDecorator_p2a1o"]
+children = [SubResource("BTSequence_rwctx")]
+script = ExtResource("3_qrk2o")
+
+[sub_resource type="BTAction" id="BTAction_7f61v"]
+script = ExtResource("1_iemd8")
+duration = 0.3000000000029104
+blackboard_key = &"execution"
+
+[sub_resource type="BTAction" id="BTAction_wra3t"]
+custom_name = "Spawn Axe"
+script = ExtResource("4_q5up2")
+scene_path = "uid://c413rb5v027xl"
+
+[sub_resource type="BTDecorator" id="BTDecorator_7vj2c"]
+children = [SubResource("BTAction_wra3t")]
+script = ExtResource("5_v8l5q")
+offset = Vector3(0, 1, 1)
+
+[sub_resource type="BTDecorator" id="BTDecorator_110dr"]
+children = [SubResource("BTDecorator_7vj2c")]
+script = ExtResource("6_5htcw")
+
+[sub_resource type="BTSequence" id="BTSequence_u3dao"]
+children = [SubResource("BTDecorator_p2a1o"), SubResource("BTAction_7f61v"), SubResource("BTDecorator_110dr")]
+
+[sub_resource type="BTDecorator" id="BTDecorator_a45kf"]
+children = [SubResource("BTSequence_u3dao")]
+script = ExtResource("7_5au7r")
+options = {
+"damage": 15.0,
+"distance": 20.0,
+"energy_gain": 7.0,
+"speed": 26.0
+}
+
+[sub_resource type="BTAction" id="BTAction_e7lob"]
+script = ExtResource("8_swvqe")
+
+[sub_resource type="BTAction" id="BTAction_hodct"]
+script = ExtResource("1_iemd8")
+duration = 0.1999999999970896
+blackboard_key = &"cooldown"
+
+[sub_resource type="BTSequence" id="BTSequence_wx6hq"]
+custom_name = "Axe Throw"
+children = [SubResource("BTCheckVar_8paho"), SubResource("BTAction_qrk2o"), SubResource("BTCheckVar_51yrf"), SubResource("BTCallMethod_l1d6d"), SubResource("BTDecorator_7xaml"), SubResource("BTDecorator_a45kf"), SubResource("BTAction_e7lob"), SubResource("BTAction_hodct")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_iemd8")
+root_task = SubResource("BTSequence_wx6hq")

@@ -1,0 +1,116 @@
+[gd_resource type="BehaviorTree" load_steps=32 format=3 uid="uid://c6tdor6mkg5x2"]
+
+[ext_resource type="Script" uid="uid://dt58u14hrbit0" path="res://characters/skills/tasks/set_icon.gd" id="1_avcel"]
+[ext_resource type="BlackboardPlan" uid="uid://bcm3xdo1dedf5" path="res://characters/heroes/barbarian/blackboard_plan.tres" id="1_dxi7n"]
+[ext_resource type="Script" uid="uid://q531ka1nfi8j" path="res://characters/skills/tasks/modifiers/add_modifier.gd" id="2_44rxe"]
+[ext_resource type="Script" uid="uid://cejrfmcc0mvui" path="res://characters/skills/tasks/melee_attack.gd" id="3_323xq"]
+[ext_resource type="Script" uid="uid://cw4ei8nlq4ibb" path="res://characters/skills/tasks/with_options.gd" id="4_vqej3"]
+[ext_resource type="Script" uid="uid://b00jv08vwurek" path="res://characters/skills/tasks/cancellable.gd" id="5_ic3kl"]
+[ext_resource type="Script" uid="uid://ctgqjao6836dm" path="res://characters/skills/tasks/modifiers/remove_modifier.gd" id="6_vqej3"]
+[ext_resource type="Script" uid="uid://cybcmrcpxb7jp" path="res://characters/skills/tasks/wait_timer.gd" id="7_ic3kl"]
+
+[sub_resource type="BBVariant" id="BBVariant_dxi7n"]
+type = 2
+saved_value = 1
+resource_name = "1"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_tney6"]
+variable = &"stance"
+value = SubResource("BBVariant_dxi7n")
+custom_name = "If stance is Axe"
+
+[sub_resource type="BTAction" id="BTAction_323xq"]
+script = ExtResource("1_avcel")
+icon_path = "uid://bq12ulcev7a72"
+
+[sub_resource type="BBVariant" id="BBVariant_t0mqy"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_fi5k5"]
+variable = &"ready"
+value = SubResource("BBVariant_t0mqy")
+custom_name = "Ready"
+
+[sub_resource type="BBNode" id="BBNode_avcel"]
+saved_value = NodePath("Skin")
+resource_name = "Skin"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_44rxe"]
+node = SubResource("BBNode_avcel")
+method = &"play_spin"
+custom_name = "Play Whirl Animation"
+
+[sub_resource type="BTAction" id="BTAction_t0mqy"]
+script = ExtResource("2_44rxe")
+modifier_name = "whirl"
+scene_path = "uid://3llurpohxl61"
+
+[sub_resource type="BTAction" id="BTAction_dxi7n"]
+script = ExtResource("3_323xq")
+damage = 4
+offset = Vector3(0, 1, 0)
+collision_type = 1
+area = 360.0
+
+[sub_resource type="BTAlwaysSucceed" id="BTAlwaysSucceed_tney6"]
+children = [SubResource("BTAction_dxi7n")]
+
+[sub_resource type="BTWait" id="BTWait_323xq"]
+duration = 0.25
+
+[sub_resource type="BTSequence" id="BTSequence_ic3kl"]
+children = [SubResource("BTAlwaysSucceed_tney6"), SubResource("BTWait_323xq")]
+
+[sub_resource type="BTRepeat" id="BTRepeat_323xq"]
+forever = true
+children = [SubResource("BTSequence_ic3kl")]
+
+[sub_resource type="BTTimeLimit" id="BTTimeLimit_323xq"]
+time_limit = 4.0
+children = [SubResource("BTRepeat_323xq")]
+
+[sub_resource type="BTAlwaysSucceed" id="BTAlwaysSucceed_323xq"]
+children = [SubResource("BTTimeLimit_323xq")]
+
+[sub_resource type="BTDecorator" id="BTDecorator_uiqwm"]
+children = [SubResource("BTAlwaysSucceed_323xq")]
+script = ExtResource("4_vqej3")
+options = {
+"raidus": 3.0
+}
+
+[sub_resource type="BTDecorator" id="BTDecorator_ugn2a"]
+children = [SubResource("BTDecorator_uiqwm")]
+script = ExtResource("5_ic3kl")
+
+[sub_resource type="BTAction" id="BTAction_ic3kl"]
+script = ExtResource("6_vqej3")
+modifier_name = "whirl"
+
+[sub_resource type="BBNode" id="BBNode_vqej3"]
+saved_value = NodePath("Skin")
+resource_name = "Skin"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_ic3kl"]
+node = SubResource("BBNode_vqej3")
+method = &"stop_spin"
+custom_name = "Stop Whirl Animation"
+
+[sub_resource type="BTAction" id="BTAction_tney6"]
+script = ExtResource("7_ic3kl")
+duration = 7.0
+blackboard_key = &"cooldown"
+
+[sub_resource type="BTSequence" id="BTSequence_vqej3"]
+custom_name = "Whirlwind"
+children = [SubResource("BTCheckVar_tney6"), SubResource("BTAction_323xq"), SubResource("BTCheckVar_fi5k5"), SubResource("BTCallMethod_44rxe"), SubResource("BTAction_t0mqy"), SubResource("BTDecorator_ugn2a"), SubResource("BTAction_ic3kl"), SubResource("BTCallMethod_ic3kl"), SubResource("BTAction_tney6")]
+
+[sub_resource type="BTSelector" id="BTSelector_ic3kl"]
+custom_name = "Third Skill"
+children = [SubResource("BTSequence_vqej3")]
+
+[resource]
+blackboard_plan = ExtResource("1_dxi7n")
+root_task = SubResource("BTSelector_ic3kl")
